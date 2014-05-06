@@ -86,8 +86,9 @@ LIBS          = -L$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH) \
 		-lpthread \
 		-lGL \
 		-lX11 \
-		-lXinerama
-
+		-lXinerama \
+		-lglut \
+		-lGLU
 OBJECTS       = main2.cpp
 
 TARGET        = a.out
