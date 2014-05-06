@@ -136,6 +136,5 @@ $(OBJPATH)/Render_XmlSceneLoader.o: ../../Samples/CommonSrc/Render/Render_XmlSce
 	$(CXX_BUILD)Render_XmlSceneLoader.o ../../Samples/CommonSrc/Render/Render_XmlSceneLoader.cpp
 
 clean:
-	-$(DELETEFILE) $(OBJECTS)
 	-$(DELETEFILE) $(TARGET)
 
