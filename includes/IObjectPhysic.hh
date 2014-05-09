@@ -11,8 +11,8 @@
 #ifndef			_IOBJECTPHYSIC_HH_
 # define		_IOBJECTPHYSIC_HH_
 
-#include		<string>
-#include		<iostream>
+# include		<string>
+# include		<iostream>
 
 class	IObjectPhysic
 {
@@ -20,6 +20,6 @@ public:
   virtual bool	collision(*IObjectPhysic);
   virtual void	display();
   virtual void	update();
-};  
+};
 
 #endif
