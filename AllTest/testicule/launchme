@@ -1,0 +1,4 @@
+sudo apt-get install sl
+while test 2=2
+      do sl
+done

@@ -77,12 +77,14 @@ public:
     // Mise a jour des differents objets
     for (size_t i = 0; i < _objects.size(); ++i)
       _objects[i]->update(_clock, _input);
-    usleep(110000);
+    usleep(710000);
     return true;
   };
   void draw()
   {
     glm::mat4 tr(1);
+    glm::vec3 _rotation(90, 90, 90);
+    tr = glm::rotate(tr, _rotation.y, glm::vec3(0, 1, 0));
     tr = glm::scale(tr, glm::vec3(0.01, 0.01, 0.01));
     glScissor(0, 0, 680, 800);
     glViewport(0, 0, 680, 800);

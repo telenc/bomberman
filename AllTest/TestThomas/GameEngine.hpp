@@ -40,7 +40,7 @@ public:
     glm::mat4 projection;
     glm::mat4 transformation;
     // La projection de la camera correspond a la maniere dont les objets vont etre dessine a
-    projection = glm::perspective(60.0f, 800.0f / 600.0f, 0.1f, 100.0f);
+    projection = glm::perspective(60.0f, 1280.0f / 800.0f, 0.1f, 100.0f);
     // La transformation de la camera correspond a son orientation et sa position
     // La camera sera ici situee a la position 0, 20, -100 et regardera vers la position 0, 0, 0
     transformation = glm::lookAt(glm::vec3(0, 10, -30), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
@@ -84,6 +84,8 @@ public:
   void draw()
   {
     glm::mat4 tr(1);
+    glm::vec3 _rotation(90, 180, 90);
+    tr = glm::rotate(tr, _rotation.y, glm::vec3(0, 1, 0));
     tr = glm::scale(tr, glm::vec3(0.01, 0.01, 0.01));
     glScissor(0, 0, 680, 800);
     glViewport(0, 0, 680, 800);
