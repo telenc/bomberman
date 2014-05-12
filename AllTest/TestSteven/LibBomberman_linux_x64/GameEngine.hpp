@@ -27,7 +27,7 @@ public:
   };
   bool initialize()
   {
-    if (!_context.start(800, 600, "My bomberman!")) // on cree une fenetre
+    if (!_context.start(1280, 800, "My bomberman!")) // on cree une fenetre
       return false;
     // On active le test de profondeur d'OpenGL pour que les pixels que l'oeil ne voit pas ne
     glEnable(GL_DEPTH_TEST);
@@ -82,23 +82,42 @@ public:
   };
   void draw()
   {
-    // On clear l'ecran
+    glm::mat4 tr(1);
+    tr = glm::scale(tr, glm::vec3(0.01, 0.01, 0.01));
+    glScissor(0, 0, 680, 800);
+    glViewport(0, 0, 680, 800);
+    glClearColor(255, 0, 0, 0);
+    //
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    // pour utiliser un shader (pour que ce soit ce dernier qui dessine la geometrie) il faut le
-    // Un seul shader peut etre actif en meme temps
     _shader.bind();
-    // On dessine tous les objets composant la scene
+
     for (size_t i = 0; i < _objects.size(); ++i)
       _objects[i]->draw(_shader, _clock);
 
-    glm::mat4 tr(1);
+    test->draw(_shader, tr, GL_QUADS);
 
-    tr = glm::scale(tr, glm::vec3(0.01, 0.01, 0.01));
+
+    //
+    glScissor(640, 0, 720, 700);
+    glViewport(560, 0,720, 800);
+
+    glTranslatef(0, -1, 0);
+    glClearColor(255, 0, 0, 0);
+    //
+
+
+
+    for (size_t i = 0; i < _objects.size(); ++i)
+      _objects[i]->draw(_shader, _clock);
+
     _texture.bind();
     test->draw(_shader, tr, GL_QUADS);
 
     _context.flush();
-    }
+
+
+
+  }
   ~GameEngine()
   {
     // N'oublions pas de supprimer les objets une fois le programme termine!

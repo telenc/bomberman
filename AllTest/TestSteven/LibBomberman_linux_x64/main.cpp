@@ -21,7 +21,6 @@ int main()
     return (EXIT_FAILURE);
   while (engine.update() == true)
     {
-      glClearColor(255, 0, 0, 0);
       engine.draw();
     }
   return EXIT_SUCCESS;

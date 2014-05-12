@@ -1,6 +1,8 @@
 #include <Model.hh>
+#include <fbxsdk.h>
 #include "OVR.h"
 #include <iostream>
+#include <vector>
 #include <unistd.h>
 #include <GL/freeglut.h>
 //#include <conio.h>
@@ -20,6 +22,83 @@ gdl::Model	*test;
 void idle(void)
 {
   glutPostRedisplay();
+}
+
+
+
+
+struct MyVertex
+{
+  float pos[3];
+};
+
+FbxManager* g_pFbxSdkManager = NULL;
+
+int LoadFBX(std::vector<MyVertex> *pOutVertexVector)
+{
+  if(g_pFbxSdkManager == NULL)
+    {
+      g_pFbxSdkManager = FbxManager::Create();
+
+      FbxIOSettings* pIOsettings = FbxIOSettings::Create(g_pFbxSdkManager, IOSROOT );
+      g_pFbxSdkManager->SetIOSettings(pIOsettings);
+    }
+
+  FbxImporter* pImporter = FbxImporter::Create(g_pFbxSdkManager,"");
+  FbxScene* pFbxScene = FbxScene::Create(g_pFbxSdkManager,"");
+
+  bool bSuccess = pImporter->Initialize("assets/marvin.fbx", -1, g_pFbxSdkManager->GetIOSettings() );
+  if(!bSuccess) return 0;
+
+  bSuccess = pImporter->Import(pFbxScene);
+  if(!bSuccess) return 0;
+
+  pImporter->Destroy();
+
+  FbxNode* pFbxRootNode = pFbxScene->GetRootNode();
+
+  if(pFbxRootNode)
+    {
+      for(int i = 0; i < pFbxRootNode->GetChildCount(); i++)
+	{
+	  FbxNode* pFbxChildNode = pFbxRootNode->GetChild(i);
+
+	  if(pFbxChildNode->GetNodeAttribute() == NULL)
+            continue;
+
+	  FbxNodeAttribute::EType AttributeType = pFbxChildNode->GetNodeAttribute()->GetAttributeType();
+
+	  if(AttributeType != FbxNodeAttribute::eMesh)
+            continue;
+
+	  FbxMesh* pMesh = (FbxMesh*) pFbxChildNode->GetNodeAttribute();
+
+	  FbxVector4* pVertices = pMesh->GetControlPoints();
+
+	  for (int j = 0; j < pMesh->GetPolygonCount(); j++)
+	    {
+	      int iNumVertices = pMesh->GetPolygonSize(j);
+	      std::cout << iNumVertices << std::endl;
+	      if (iNumVertices != 3)
+		continue;
+	      //assert( iNumVertices == 3 );
+
+	      for (int k = 0; k < iNumVertices; k++)
+		{
+		  int iControlPointIndex = pMesh->GetPolygonVertex(j, k);
+
+		  MyVertex vertex;
+		  vertex.pos[0] = (float)pVertices[iControlPointIndex].mData[0];
+		  vertex.pos[1] = (float)pVertices[iControlPointIndex].mData[1];
+		  vertex.pos[2] = (float)pVertices[iControlPointIndex].mData[2];
+		  pOutVertexVector->push_back( vertex );
+		}
+	    }
+
+	}
+
+    }
+  return 1;
 }
 
 
@@ -73,8 +152,9 @@ void init()
   glEnable(GL_LIGHT1);
   //glutJoystickFunc(test, 10);
 
-  test = new gdl::Model();
-  test->load("./assets/marvin.fbx");
+  //test = new gdl::Model();
+  //test->load("./assets/marvin.fbx");
+
   //test->setCurrentAnim(0);
 }
 
@@ -98,7 +178,12 @@ void    createCube(double x, double y, double size = 1)
   return;
 }
 
-void opengl(double x, double y, double z)
+void displayy(std::vector<MyVertex> vert)
+{
+
+}
+
+void opengl(double x, double y, double z, std::vector<MyVertex> vert)
 {
   glutMainLoopEvent();
   glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
@@ -121,22 +206,27 @@ void opengl(double x, double y, double z)
   glRotatef(-z, 0, 0, 1);
   glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
   glClearColor(0, 0, 200, 0);
-gluLookAt(5, 5, 0, 0, 0, 0, 1, 1, 1);
+  gluLookAt(-100, 105, 0, 0, 0, 0, 1, 1, 1);
   glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-glClearColor(0, 0, 200, 0);
-  createCube(0, 0);
-  createCube(-10, 0);
-  createCube(0, 10);
+  glClearColor(0, 0, 200, 0);
+//createCube(0, 0);
+//createCube(-10, 0);
+// createCube(0, 10);
+
+
+  displayy(vert);
+
+
   glClear(GL_DEPTH_BUFFER_BIT);
-glClearColor(0, 0, 200, 0);
+  glClearColor(0, 0, 200, 0);
   glScissor(640, 0, 720, 700);
   glViewport(560, 0,720, 800);
 
   glTranslatef(0, -1, 0);
 
-  createCube(0, 0);
-  createCube(-10, 0);
-  createCube(0, 10);
+  //createCube(0, 0);
+  //createCube(-10, 0);
+  //createCube(0, 10);
   //this->createPlan();
 
 
@@ -151,6 +241,9 @@ glClearColor(0, 0, 200, 0);
 void Output()
 {
   int i = 0;
+  std::vector<MyVertex> vert;
+
+  std::cout << LoadFBX(&vert) << std::endl;
   while(1)
     {
 
@@ -168,7 +261,7 @@ void Output()
 
 
 
-      opengl(0, 0, 0);
+      opengl(0, 0, 0, vert);
 
 
 

@@ -98,8 +98,8 @@ LIBS          = -L$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH) \
 		-lGLU \
 		-lpthread \
 		-g
-OBJECTS       = main2.cpp
-
+OBJECTS       = main2.cpp \
+			
 TARGET        = a.out
 
 ####### Rules
