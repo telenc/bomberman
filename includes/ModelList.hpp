@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 06:17:48 2014 Remi telenczak
-// Last update Tue May 13 07:00:26 2014 Remi telenczak
+// Last update Tue May 13 07:27:17 2014 Remi telenczak
 //
 
 #ifndef		_MODEL_LIST
@@ -19,8 +19,8 @@ class ModelList
 {
 public:
   ModelList();
-  gdl::Model	*getModel(std::string);
-  gdl::Model	*createModel(std::string);
+  gdl::Model	*getModel(const std::string);
+  gdl::Model	*createModel(const std::string);
 private:
   std::vector<std::pair<std::string, gdl::Model *> >	list;
 };

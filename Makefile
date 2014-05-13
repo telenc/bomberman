@@ -64,8 +64,9 @@ SRC		= src/main.cpp \
 		src/Occulus.cpp \
 		src/ModelList.cpp \
 		src/Game.cpp \
-		src/EventManager.cpp
-
+		src/EventManager.cpp \
+		src/Menu.cpp \
+		src/Graphics.cpp
 OBJECTS       = $(SRC:.cpp=.o)
 
 TARGET        = bomberman

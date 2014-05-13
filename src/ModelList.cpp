@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 06:17:30 2014 Remi telenczak
-// Last update Tue May 13 07:21:08 2014 Remi telenczak
+// Last update Tue May 13 07:27:29 2014 Remi telenczak
 //
 
 #include	"ModelList.hpp"
@@ -18,17 +18,17 @@ ModelList::ModelList()
   //this->list.push_back(std::make_pair("marvin", mod));
 }
 
-gdl::Model	*ModelList::createModel(std::string path)
+gdl::Model	*ModelList::createModel(const std::string path)
 {
   gdl::Model	*result;
 
-  //  result = new gdl::Model();
+  //result = new gdl::Model();
   //result->load(path.c_str());
   //result->setCurrentAnim(0);
   return (result);
 }
 
-gdl::Model	*ModelList::getModel(std::string name)
+gdl::Model	*ModelList::getModel(const std::string name)
 {
   std::vector<std::pair<std::string, gdl::Model *> >::iterator it;
 

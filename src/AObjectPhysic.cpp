@@ -1,16 +1,16 @@
 //
 // AObjectPhysic.cpp for bomberman in /home/choqua_m/blih/cpp_bomberman/src
-// 
+//
 // Made by Mathieu Choquart
 // Login   <choqua_m@epitech.net>
-// 
+//
 // Started on  Wed May  7 16:17:56 2014 Mathieu Choquart
-// Last update Wed May  7 16:17:57 2014 Mathieu Choquart
+// Last update Tue May 13 08:22:11 2014 Remi telenczak
 //
 
 #include	"AObjectPhysic.hpp"
 
-AObjectPhysic::AObjectPhysic(Map *map, EventManager *eventManager)
+AObjectPhysic::AObjectPhysic(Map *map, EventManager *eventManager): _position(0, 0, 0), _rotation(0, 0, 0),_scale(1, 1, 1)
 {
   this->_map = map;
   this->_eventManager = eventManager;
@@ -18,7 +18,7 @@ AObjectPhysic::AObjectPhysic(Map *map, EventManager *eventManager)
 
 AObjectPhysic::~AObjectPhysic()
 {
-  
+
 }
 
 bool	initialize()
@@ -28,12 +28,12 @@ bool	initialize()
 
 void update(gdl::Clock const &clock, gdl::Input &input)
 {
-    
+
 }
-  
+
 void draw(gdl::AShader &shader, gdl::Clock const &clock) = 0
 {
-  
+
 }
 
 void translate(glm::vec3 const &v)

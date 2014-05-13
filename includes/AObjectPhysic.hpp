@@ -1,11 +1,11 @@
 //
 // AObjectPhysic.hh for bomberman in /home/choqua_m/blih/cpp_bomberman/src
-// 
+//
 // Made by Mathieu Choquart
 // Login   <choqua_m@epitech.net>
-// 
+//
 // Started on  Wed May  7 15:52:43 2014 Mathieu Choquart
-// Last update Wed May  7 15:52:44 2014 Mathieu Choquart
+// Last update Tue May 13 17:41:44 2014 thomas mendez
 //
 
 #ifndef			_AOBJECTPHYSIC_HH_
@@ -15,7 +15,7 @@
 # include		<iostream>
 # include		<glm/glm.hpp>
 # include		<glm/gtc/matrix_transform.hpp>
-# include		"GameEngine.hpp"
+# include		<Model.hh>
 # include		<BasicShader.hh>
 # include		"IObjectPhysic.hh"
 # include		"EventManager.hpp"
@@ -25,12 +25,7 @@
 class	AObjectPhysic : public	IObjectPhysic
 {
 public:
-  virtual AObjectPhysic(Map *map, EventManager *eventManager) :
-    _position(0, 0, 0), // On initialise la position a 0
-    _rotation(0, 0, 0), // pareil pour la rotation
-    _scale(1, 1, 1) // l'echelle est mise a 1
-    {
-    }   
+  AObjectPhysic(Map *map, EventManager *eventManager);
   virtual 	~AObjectPhysic();
   virtual bool	initialize();
   virtual void update(gdl::Clock const &clock, gdl::Input &input);
@@ -52,7 +47,7 @@ public:
   double	get_scaz() const;
   int		get_height() const;
   int		get_width() const;
-  gdl::model	get_skin() const;
+  gdl::Model	get_skin() const;
   Graphics	*get_graphic() const;
   int		get_color() const;
   Map		*get_map() const;
@@ -83,7 +78,7 @@ protected:
   glm::vec3	_speed;
   int		_height;
   int		_width;
-  gdl::model	_skin;
+  gdl::Model	_skin;
   Graphics	*_graphic;
   int		_color;
   Map		*_map;
