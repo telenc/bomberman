@@ -64,7 +64,8 @@ SRC		= src/main.cpp \
 		src/Occulus.cpp \
 		src/ModelList.cpp \
 		src/Game.cpp \
-		src/EventManager.cpp
+		src/EventManager.cpp \
+		src/Menu.cpp
 
 OBJECTS       = $(SRC:.cpp=.o)
 
