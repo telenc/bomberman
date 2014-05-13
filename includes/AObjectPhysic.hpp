@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 15:52:43 2014 Mathieu Choquart
-// Last update Tue May 13 08:21:37 2014 Remi telenczak
+// Last update Tue May 13 08:35:30 2014 Remi telenczak
 //
 
 #ifndef			_AOBJECTPHYSIC_HH_
@@ -15,7 +15,7 @@
 # include		<iostream>
 # include		<glm/glm.hpp>
 # include		<glm/gtc/matrix_transform.hpp>
-# include		"GameEngine.hpp"
+# include		<Model.hh>
 # include		<BasicShader.hh>
 # include		"IObjectPhysic.hh"
 # include		"EventManager.hpp"
