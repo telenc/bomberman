@@ -7,14 +7,12 @@
 ## Started on  Tue May  6 17:28:55 2014 Steven Martreux
 ##
 
-####### Detect system architecture
 
 SYSARCH       = i386
 ifeq ($(shell uname -m),x86_64)
 SYSARCH       = x86_64
 endif
 
-####### Compiler, tools and options
 
 CXX           = g++
 LINK          = g++
@@ -22,7 +20,6 @@ MAKE          = make
 DELETEFILE    = rm -f
 DEFINES       = -DQT_WEBKIT -DGL_GLEXT_PROTOTYPES
 
-####### Detect debug or release
 
 DEBUG         = 0
 ifeq ($(DEBUG), 1)
@@ -35,7 +32,6 @@ else
 	RELEASETYPE   = Release
 endif
 
-####### Paths
 
 LIBOVRPATH    = LibOVR
 COMMONSRCPATH = CommonSrc
@@ -44,7 +40,6 @@ INCPATH       = -I. -I.. -I$(COMMONSRCPATH) -I$(LIBOVRPATH)/Include -I$(LIBOVRPA
 OBJPATH       = a.out
 CXX_BUILD     = $(CXX) -c $(CXXFLAGS) $(INCPATH) 
 
-####### Files
 
 LIBS          = -L$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH) \
 		-L./LibGdl/libs/ \
@@ -69,18 +64,16 @@ SRC		= src/main.cpp
 
 OBJECTS       = $(SRC:.cpp=.o)
 
-TARGET        = bomberman
+TARGET        = a.out
 
-####### Rules
 
-all:    $(TARGET)
+all:   	 $(TARGET)
 
-$(TARGET):
-	$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH)/libovr.a
-	$(MAKE) -C $(LIBOVRPATH) DEBUG=$(DEBUG)
+$(TARGET):	$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH)/libovr.a
+		$(MAKE) -C $(LIBOVRPATH) DEBUG=$(DEBUG)
 
-$(TARGET):$(OBJECTS)
-	$(LINK) $(LFLAGS) $(SRC) $(LIBS) $(INCPATH)
+$(TARGET):	$(OBJECTS)
+		$(LINK) $(LFLAGS) $(SRC) $(LIBS) $(INCPATH)
 
 clean:
 	$(DELETEFILE) $(OBJECTS)
