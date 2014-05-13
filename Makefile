@@ -24,7 +24,7 @@ DEFINES       = -DQT_WEBKIT -DGL_GLEXT_PROTOTYPES
 DEBUG         = 0
 ifeq ($(DEBUG), 1)
 	CXXFLAGS      = -pipe -DDEBUG -g $(DEFINES)
-	LFLAGS        = 
+	LFLAGS        = -g
 	RELEASETYPE   = Debug
 else
 	CXXFLAGS      = -pipe -O2 $(DEFINES)
@@ -82,3 +82,4 @@ fclean:	clean
 	-$(DELETEFILE) $(TARGET)
 
 re :	fclean all
+
