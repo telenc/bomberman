@@ -58,6 +58,7 @@ LIBS          = -L$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH) \
 		-lXinerama \
 		-lglut \
 		-lGLU \
+		-lfbxsdk \
 
 SRC		= src/main.cpp \
 		src/Occulus.cpp \
