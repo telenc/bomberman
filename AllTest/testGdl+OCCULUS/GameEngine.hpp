@@ -34,7 +34,8 @@ public:
   GameEngine()
   {
   };
-  void initOcc()
+
+   void initOcc()
   {
     System::Init();
     pFusionResult = new SensorFusion();
@@ -56,47 +57,47 @@ public:
 	pFusionResult->AttachToSensor(pSensor);
       }
 
-  std::cout << "----- Oculus Console -----" << std::endl;
+    std::cout << "----- Oculus Console -----" << std::endl;
 
-  if (pHMD)
-    {
-      std::cout << " [x] HMD Found" << std::endl;
-    }
-  else
-    {
-      std::cout << " [ ] HMD Not Found" << std::endl;
-    }
+    if (pHMD)
+      {
+	std::cout << " [x] HMD Found" << std::endl;
+      }
+    else
+      {
+	std::cout << " [ ] HMD Not Found" << std::endl;
+      }
 
-  if (pSensor)
-    {
-      std::cout << " [x] Sensor Found" << std::endl;
-    }
-  else
-    {
-      std::cout << " [ ] Sensor Not Found" << std::endl;
-    }
+    if (pSensor)
+      {
+	std::cout << " [x] Sensor Found" << std::endl;
+      }
+    else
+      {
+	std::cout << " [ ] Sensor Not Found" << std::endl;
+      }
 
-  std::cout << "--------------------------" << std::endl;
+    std::cout << "--------------------------" << std::endl;
 
-  if (InfoLoaded)
-    {
-      std::cout << " DisplayDeviceName: " << Info.DisplayDeviceName << std::endl;
-      std::cout << " ProductName: " << Info.ProductName << std::endl;
-      std::cout << " Manufacturer: " << Info.Manufacturer << std::endl;
-      std::cout << " Version: " << Info.Version << std::endl;
-      std::cout << " HResolution: " << Info.HResolution<< std::endl;
-      std::cout << " VResolution: " << Info.VResolution<< std::endl;
-      std::cout << " HScreenSize: " << Info.HScreenSize<< std::endl;
-      std::cout << " VScreenSize: " << Info.VScreenSize<< std::endl;
-      std::cout << " VScreenCenter: " << Info.VScreenCenter<< std::endl;
-      std::cout << " EyeToScreenDistance: " << Info.EyeToScreenDistance << std::endl;
-      std::cout << " LensSeparationDistance: " << Info.LensSeparationDistance << std::endl;
-      std::cout << " InterpupillaryDistance: " << Info.InterpupillaryDistance << std::endl;
-      std::cout << " DistortionK[0]: " << Info.DistortionK[0] << std::endl;
-      std::cout << " DistortionK[1]: " << Info.DistortionK[1] << std::endl;
-      std::cout << " DistortionK[2]: " << Info.DistortionK[2] << std::endl;
-      std::cout << "--------------------------" << std::endl;
-    }
+    if (InfoLoaded)
+      {
+	std::cout << " DisplayDeviceName: " << Info.DisplayDeviceName << std::endl;
+	std::cout << " ProductName: " << Info.ProductName << std::endl;
+	std::cout << " Manufacturer: " << Info.Manufacturer << std::endl;
+	std::cout << " Version: " << Info.Version << std::endl;
+	std::cout << " HResolution: " << Info.HResolution<< std::endl;
+	std::cout << " VResolution: " << Info.VResolution<< std::endl;
+	std::cout << " HScreenSize: " << Info.HScreenSize<< std::endl;
+	std::cout << " VScreenSize: " << Info.VScreenSize<< std::endl;
+	std::cout << " VScreenCenter: " << Info.VScreenCenter<< std::endl;
+	std::cout << " EyeToScreenDistance: " << Info.EyeToScreenDistance << std::endl;
+	std::cout << " LensSeparationDistance: " << Info.LensSeparationDistance << std::endl;
+	std::cout << " InterpupillaryDistance: " << Info.InterpupillaryDistance << std::endl;
+	std::cout << " DistortionK[0]: " << Info.DistortionK[0] << std::endl;
+	std::cout << " DistortionK[1]: " << Info.DistortionK[1] << std::endl;
+	std::cout << " DistortionK[2]: " << Info.DistortionK[2] << std::endl;
+	std::cout << "--------------------------" << std::endl;
+      }
 
 
   }
@@ -173,10 +174,10 @@ public:
 
 	//transformation = glm::lookAt(glm::vec3(0, 10, -30), glm::vec3(-1 * RadToDegree(pitch), -1 * RadToDegree(yaw), -1 *RadToDegree(roll)), glm::vec3(0, 1, 0));
 
-	  transformation = glm::rotate(transformation, -1 *  RadToDegree(pitch), glm::vec3(1, 0, 0));
-	  transformation = glm::rotate(transformation, -1 * RadToDegree(yaw), glm::vec3(0, 1, 0));
-	  transformation = glm::rotate(transformation, -1 * RadToDegree(roll), glm::vec3(0, 0, 1));
-	  transformation = glm::translate(transformation, glm::vec3(0, -5, 1.5));
+	transformation = glm::rotate(transformation, -1 *  RadToDegree(pitch), glm::vec3(1, 0, 0));
+	transformation = glm::rotate(transformation, -1 * RadToDegree(yaw), glm::vec3(0, 1, 0));
+	transformation = glm::rotate(transformation, -1 * RadToDegree(roll), glm::vec3(0, 0, 1));
+	transformation = glm::translate(transformation, glm::vec3(0, -5, 1.5));
 
       }
     _shader.setUniform("view", transformation);
@@ -215,24 +216,24 @@ public:
 
     _context.flush();
   }
-    ~GameEngine()
-      {
-	// N'oublions pas de supprimer les objets une fois le programme termine!
-	for (size_t i = 0; i < _objects.size(); ++i)
-	  delete _objects[i];
-      }
-  private:
-    gdl::Texture _texture;
-    gdl::SdlContext _context;
-    gdl::Clock _clock;
-    gdl::Input _input;
-    gdl::BasicShader _shader;
-    std::vector<AObject*> _objects;
-    gdl::Model	*test;
-    Ptr<DeviceManager> pManager;
-    Ptr<HMDDevice> pHMD;
-    Ptr<SensorDevice> pSensor;
-    SensorFusion *pFusionResult;
-    HMDInfo Info;
-    bool InfoLoaded;
-  };
+  ~GameEngine()
+  {
+    // N'oublions pas de supprimer les objets une fois le programme termine!
+    for (size_t i = 0; i < _objects.size(); ++i)
+      delete _objects[i];
+  }
+private:
+  gdl::Texture _texture;
+  gdl::SdlContext _context;
+  gdl::Clock _clock;
+  gdl::Input _input;
+  gdl::BasicShader _shader;
+  std::vector<AObject*> _objects;
+  gdl::Model	*test;
+  Ptr<DeviceManager> pManager;
+  Ptr<HMDDevice> pHMD;
+  Ptr<SensorDevice> pSensor;
+  SensorFusion *pFusionResult;
+  HMDInfo Info;
+  bool InfoLoaded;
+};
