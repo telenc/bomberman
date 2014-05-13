@@ -48,7 +48,7 @@ void init()
       InfoLoaded = pHMD->GetDeviceInfo(&Info);
       pSensor = *pHMD->GetSensor();
     }
-  else
+  elseo
     {
       pSensor = *pManager->EnumerateDevices<SensorDevice>().CreateDevice();
     }
@@ -138,6 +138,8 @@ void opengl(double x, double y, double z)
 
   glScissor(0, 0, 680, 800);
   glViewport(0, 0, 680, 800);
+
+
   glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
   glClear(GL_DEPTH_BUFFER_BIT);
   glRotatef(-x, 1, 0, 0);
