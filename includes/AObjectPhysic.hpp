@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 15:52:43 2014 Mathieu Choquart
-// Last update Tue May 13 08:35:30 2014 Remi telenczak
+// Last update Tue May 13 17:41:44 2014 thomas mendez
 //
 
 #ifndef			_AOBJECTPHYSIC_HH_
@@ -25,7 +25,7 @@
 class	AObjectPhysic : public	IObjectPhysic
 {
 public:
-  virtual AObjectPhysic(Map *map, EventManager *eventManager);
+  AObjectPhysic(Map *map, EventManager *eventManager);
   virtual 	~AObjectPhysic();
   virtual bool	initialize();
   virtual void update(gdl::Clock const &clock, gdl::Input &input);
@@ -47,7 +47,7 @@ public:
   double	get_scaz() const;
   int		get_height() const;
   int		get_width() const;
-  gdl::model	get_skin() const;
+  gdl::Model	get_skin() const;
   Graphics	*get_graphic() const;
   int		get_color() const;
   Map		*get_map() const;
@@ -78,7 +78,7 @@ protected:
   glm::vec3	_speed;
   int		_height;
   int		_width;
-  gdl::model	_skin;
+  gdl::Model	_skin;
   Graphics	*_graphic;
   int		_color;
   Map		*_map;
