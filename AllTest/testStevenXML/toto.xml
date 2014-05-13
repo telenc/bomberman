@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Bomber>
+  <Map_Size width="50" height="50"/>
+  <Map x="150" y="60" z="40"/>
+  <Map x="15"/>
+  <Map x="15"/>
+  <Map x="156"/>
+  <Map x="1589"/>
+  <Map x="1998"/>
+  <Map x="1848"/>
+  <Map x="1959"/>
+</Bomber>
