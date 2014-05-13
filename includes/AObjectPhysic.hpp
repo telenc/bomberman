@@ -1,11 +1,11 @@
 //
 // AObjectPhysic.hh for bomberman in /home/choqua_m/blih/cpp_bomberman/src
-// 
+//
 // Made by Mathieu Choquart
 // Login   <choqua_m@epitech.net>
-// 
+//
 // Started on  Wed May  7 15:52:43 2014 Mathieu Choquart
-// Last update Wed May  7 15:52:44 2014 Mathieu Choquart
+// Last update Tue May 13 08:21:37 2014 Remi telenczak
 //
 
 #ifndef			_AOBJECTPHYSIC_HH_
@@ -25,12 +25,7 @@
 class	AObjectPhysic : public	IObjectPhysic
 {
 public:
-  virtual AObjectPhysic(Map *map, EventManager *eventManager) :
-    _position(0, 0, 0), // On initialise la position a 0
-    _rotation(0, 0, 0), // pareil pour la rotation
-    _scale(1, 1, 1) // l'echelle est mise a 1
-    {
-    }   
+  virtual AObjectPhysic(Map *map, EventManager *eventManager);
   virtual 	~AObjectPhysic();
   virtual bool	initialize();
   virtual void update(gdl::Clock const &clock, gdl::Input &input);
