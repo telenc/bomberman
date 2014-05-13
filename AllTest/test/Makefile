@@ -88,8 +88,16 @@ LIBS          = -L$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH) \
 		-lX11 \
 		-lXinerama \
 		-lglut \
-		-lGLU
-OBJECTS       = main2.cpp
+		-lGLU \
+		-lGL \
+		-lGlew \
+		-ldl \
+		-lrt \
+		-lfbxsdk \
+		-lSDL2 \
+		-ldl \
+
+OBJECTS       = main.cpp
 
 TARGET        = a.out
 

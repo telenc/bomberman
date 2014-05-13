@@ -1,4 +1,10 @@
 #pragma once
+
+#include "OVR.h"
+#include <iostream>
+#include <unistd.h>
+
+
 #include <Game.hh>
 #include <unistd.h>
 #include <SdlContext.hh>
@@ -19,6 +25,9 @@
 /*
 On cree sa class GameEngine qui herite de game
 */
+
+using namespace OVR;
+
 class GameEngine : public gdl::Game
 {
 public:
@@ -78,7 +87,7 @@ public:
     // Mise a jour des differents objets
     for (size_t i = 0; i < _objects.size(); ++i)
       _objects[i]->update(_clock, _input);
-    usleep(110000);
+    //usleep(110000);
     return true;
   };
   void draw()
@@ -97,7 +106,7 @@ public:
     for (size_t i = 0; i < _objects.size(); ++i)
       _objects[i]->draw(_shader, _clock);
 
-    test->draw(_shader, tr, GL_QUADS);
+    test->draw(_shader, tr, 30000);
 
 
     //
@@ -109,17 +118,13 @@ public:
     //
 
 
-
     for (size_t i = 0; i < _objects.size(); ++i)
       _objects[i]->draw(_shader, _clock);
 
-    _texture.bind();
-    test->draw(_shader, tr, GL_QUADS);
+    //_texture.bind();
+    test->draw(_shader, tr, 0);
 
     _context.flush();
-
-
-
   }
   ~GameEngine()
   {
@@ -135,4 +140,10 @@ gdl::Texture _texture;
   gdl::BasicShader _shader;
   std::vector<AObject*> _objects;
   gdl::Model	*test;
+Ptr<DeviceManager> pManager;
+Ptr<HMDDevice> pHMD;
+Ptr<SensorDevice> pSensor;
+SensorFusion *pFusionResult;
+HMDInfo Info;
+  bool InfoLoaded;
 };
