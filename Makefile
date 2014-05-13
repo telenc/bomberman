@@ -61,7 +61,8 @@ LIBS          = -L$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH) \
 		-lGLU \
 
 SRC		= src/main.cpp \
-		src/Occulus.cpp
+		src/Occulus.cpp \
+		src/ModelList.cpp
 
 OBJECTS       = $(SRC:.cpp=.o)
 
