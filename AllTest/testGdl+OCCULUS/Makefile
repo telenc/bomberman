@@ -98,6 +98,7 @@ LIBS          = -L$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH) \
 		-lXinerama \
 		-lglut \
 		-lGLU \
+		-lrt \
 
 OBJECTS       = main.cpp
 

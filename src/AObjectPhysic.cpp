@@ -8,7 +8,7 @@
 // Last update Wed May  7 16:17:57 2014 Mathieu Choquart
 //
 
-#include	"AObjectPhysic.hh"
+#include	"AObjectPhysic.hpp"
 
 AObjectPhysic::AObjectPhysic(Map *map, EventManager *eventManager)
 {
@@ -21,34 +21,94 @@ AObjectPhysic::~AObjectPhysic()
   
 }
 
+bool	initialize()
+{
+  return true;
+}
+
+void update(gdl::Clock const &clock, gdl::Input &input)
+{
+    
+}
+  
+void draw(gdl::AShader &shader, gdl::Clock const &clock) = 0
+{
+  
+}
+
+void translate(glm::vec3 const &v)
+{
+  this->_position += v;
+}
+
+void rotate(glm::vec3 const& axis, float angle)
+{
+  this->_rotation += axis * angle;
+}
+
+void scale(glm::vec3 const& scale)
+{
+  this->_scale *= scale;
+}
+
 double		AObjectPhysic::get_x() const
 {
-    return this->_x;
+    return this->_position.x;
 }
 
 double		AObjectPhysic::get_y() const
 {
-    return this->_y;
+    return this->_position.y;
 }
 
 double		AObjectPhysic::get_z() const
 {
-    return this->_z;
+    return this->_position.z;
 }
 
 double		AObjectPhysic::get_vx() const
 {
-    return this->_vx;
+    return this->_speed.x;
 }
 
 double		AObjectPhysic::get_vy() const
 {
-    return this->_vy;
+    return this->_speed.y;
 }
 
 double		AObjectPhysic::get_vz() const
 {
-    return this->_vz;
+    return this->_speed.z;
+}
+
+double		AObjectPhysic::get_rotx() const
+{
+    return this->_rotation.x;
+}
+
+double		AObjectPhysic::get_roty() const
+{
+    return this->_rotation.y;
+}
+
+double		AObjectPhysic::get_rotz() const
+{
+    return this->_rotation.z;
+}
+
+double		AObjectPhysic::get_scax() const
+{
+    return this->_scale.x;
+}
+
+double		AObjectPhysic::get_scay() const
+{
+    return this->_scale.y;
+}
+
+double		AObjectPhysic::get_scaz() const
+{
+    return this->_scale.z;
 }
 
 int		AObjectPhysic::get_height() const
@@ -61,7 +121,7 @@ int		AObjectPhysic::get_width() const
     return this->_width;
 }
 
-std::string	AObjectPhysic::get_skin() const
+gdl::model	AObjectPhysic::get_skin() const
 {
     return this->_skin;
 }
@@ -88,32 +148,61 @@ EventManager	AObjectPhysic::get_eventManager() const
 
 void		AObjectPhysic::set_x(double x)
 {
-    this->_x = x;
+    this->_position.x = x;
 }
 
 void		AObjectPhysic::set_y(double y)
 {
-    this->_y = y;
+    this->_position.y = y;
 }
 
 void		AObjectPhysic::set_z(double z)
 {
-    this->_z = z;
+    this->_position.z = z;
 }
 
 void		AObjectPhysic::set_vx(double vx)
 {
-    this->_vx = vx;
+    this->_speed.x = vx;
 }
 
 void		AObjectPhysic::set_vy(double vy)
 {
-    this->_vy = vy;
+    this->_speed.y = vy;
 }
 
 void		AObjectPhysic::set_vz(double vz)
 {
-    this->_vz = vz;
+    this->_speed.z = vz;
+}
+
+void		AObjectPhysic::set_rotx(double x)
+{
+    this->_rotation.x = x;
+}
+
+void		AObjectPhysic::set_roty(double y)
+{
+    this->_rotation.y = y;
+}
+
+void		AObjectPhysic::set_rotz(double z)
+{
+    this->_rotation.z = z;
+}
+
+void		AObjectPhysic::set_scax(double x)
+{
+    this->_scale.x = x;
+}
+
+void		AObjectPhysic::set_scay(double y)
+{
+    this->_scale.y = y;
+}
+void		AObjectPhysic::set_scaz(double z)
+{
+    this->_scale.z = z;
 }
 
 void		AObjectPhysic::set_height(int height)
@@ -126,7 +215,7 @@ void		AObjectPhysic::set_width(int width)
     this->_width = width;
 }
 
-void		AObjectPhysic::set_skin(std::string *skin)
+void		AObjectPhysic::set_skin(gdl::model skin)
 {
     this->_skin = skin;
 }
