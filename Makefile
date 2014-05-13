@@ -66,7 +66,7 @@ SRC		= src/main.cpp \
 		src/Game.cpp \
 		src/EventManager.cpp \
 		src/Menu.cpp \
-
+		src/Graphics.cpp
 OBJECTS       = $(SRC:.cpp=.o)
 
 TARGET        = bomberman
