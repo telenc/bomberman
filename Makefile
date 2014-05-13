@@ -37,7 +37,7 @@ LIBOVRPATH    = LibOVR
 COMMONSRCPATH = CommonSrc
 3RDPARTYPATH  = ../3rdParty
 INCPATH       = -I. -I.. -I$(COMMONSRCPATH) -I$(LIBOVRPATH)/Include -I$(LIBOVRPATH)/Src -I./includes/ -I./LibGdl/includes
-OBJPATH       = a.out
+OBJPATH       = bomberman
 CXX_BUILD     = $(CXX) -c $(CXXFLAGS) $(INCPATH) 
 
 
@@ -64,7 +64,7 @@ SRC		= src/main.cpp
 
 OBJECTS       = $(SRC:.cpp=.o)
 
-TARGET        = a.out
+TARGET        = bomberman
 
 
 all:   	 $(TARGET)
@@ -73,7 +73,7 @@ $(TARGET):	$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH)/libovr.a
 		$(MAKE) -C $(LIBOVRPATH) DEBUG=$(DEBUG)
 
 $(TARGET):	$(OBJECTS)
-		$(LINK) $(LFLAGS) $(SRC) $(LIBS) $(INCPATH)
+		$(LINK) $(LFLAGS) $(SRC) $(LIBS) $(INCPATH) -o $(TARGET)
 
 clean:
 	$(DELETEFILE) $(OBJECTS)
