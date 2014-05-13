@@ -24,11 +24,11 @@ DEFINES       = -DQT_WEBKIT -DGL_GLEXT_PROTOTYPES
 DEBUG         = 0
 ifeq ($(DEBUG), 1)
 	CXXFLAGS      = -pipe -DDEBUG -g $(DEFINES)
-	LFLAGS        = -g
+	LFLAGS        = -g -O3
 	RELEASETYPE   = Debug
 else
 	CXXFLAGS      = -pipe -O2 $(DEFINES)
-	LFLAGS        = -O1
+	LFLAGS        = -O3
 	RELEASETYPE   = Release
 endif
 
@@ -54,7 +54,6 @@ LIBS          = -L$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH) \
 		-lovr \
 		-ludev \
 		-lpthread \
-		-lGL \
 		-lX11 \
 		-lXinerama \
 		-lglut \
@@ -62,7 +61,9 @@ LIBS          = -L$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH) \
 
 SRC		= src/main.cpp \
 		src/Occulus.cpp \
-		src/ModelList.cpp
+		src/ModelList.cpp \
+		src/Game.cpp \
+		src/EventManager.cpp
 
 OBJECTS       = $(SRC:.cpp=.o)
 

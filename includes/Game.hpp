@@ -1,15 +1,17 @@
 //
 // Game.hpp for Game in /home/martre_s/cpp_bomberman/src
-// 
+//
 // Made by Steven Martreux
 // Login   <martre_s@epitech.net>
-// 
+//
 // Started on  Fri May  9 14:19:13 2014 Steven Martreux
-// Last update Fri May  9 14:24:15 2014 Steven Martreux
+// Last update Tue May 13 06:42:13 2014 Remi telenczak
 //
 
 #ifndef		_GAME_HPP_
 #define		_GAME_HPP_
+
+# include	"EventManager.hpp"
 
 class		Game
 {
@@ -17,7 +19,7 @@ public:
   Game();
   ~Game();
 private:
-
+  EventManager	*eventManager;
 };
 
 #endif		/* _GAME_HPP_ */
