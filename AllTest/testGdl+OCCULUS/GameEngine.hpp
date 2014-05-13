@@ -168,15 +168,13 @@ public:
       {
 	Quatf quaternion = pFusionResult->GetOrientation();
 	float yaw, pitch, roll;
+
 	quaternion.GetEulerAngles<Axis_Y, Axis_X, Axis_Z>(&yaw, &pitch, &roll);
-
-
 	//transformation = glm::lookAt(glm::vec3(0, 10, -30), glm::vec3(-1 * RadToDegree(pitch), -1 * RadToDegree(yaw), -1 *RadToDegree(roll)), glm::vec3(0, 1, 0));
-
 	  transformation = glm::rotate(transformation, -1 *  RadToDegree(pitch), glm::vec3(1, 0, 0));
 	  transformation = glm::rotate(transformation, -1 * RadToDegree(yaw), glm::vec3(0, 1, 0));
 	  transformation = glm::rotate(transformation, -1 * RadToDegree(roll), glm::vec3(0, 0, 1));
-	  transformation = glm::translate(transformation, glm::vec3(0, -5, 1.5));
+	  transformation = glm::translate(transformation, glm::vec3(0, -5, -5.5));
 
       }
     _shader.setUniform("view", transformation);
@@ -184,7 +182,7 @@ public:
     glm::mat4 tr(1);
     glm::vec3 _rotation(90, 180, 90);
     tr = glm::rotate(tr, _rotation.y, glm::vec3(0, 1, 0));
-    tr = glm::scale(tr, glm::vec3(0.01, 0.01, 0.01));
+    //tr = glm::scale(tr, glm::vec3(0.01, 0.01, 0.01));
     glScissor(0, 0, 680, 800);
     glViewport(0, 0, 680, 800);
     glClearColor(255, 0, 0, 0);

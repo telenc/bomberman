@@ -39,7 +39,7 @@ COMMONSRCPATH = CommonSrc
 INCPATH       = -I. -I.. -I$(COMMONSRCPATH) -I$(LIBOVRPATH)/Include -I$(LIBOVRPATH)/Src -I./includes/ -I./LibGdl/includes
 OBJPATH       = bomberman
 CXX_BUILD     = $(CXX) -c $(CXXFLAGS) $(INCPATH) 
-
+CXXFLAGS	= $(INCPATH)
 
 LIBS          = -L$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH) \
 		-L./LibGdl/libs/ \
@@ -60,7 +60,8 @@ LIBS          = -L$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH) \
 		-lglut \
 		-lGLU \
 
-SRC		= src/main.cpp
+SRC		= src/main.cpp \
+		src/Occulus.cpp
 
 OBJECTS       = $(SRC:.cpp=.o)
 
@@ -69,11 +70,8 @@ TARGET        = bomberman
 
 all:   	 $(TARGET)
 
-$(TARGET):	$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH)/libovr.a
-		$(MAKE) -C $(LIBOVRPATH) DEBUG=$(DEBUG)
-
 $(TARGET):	$(OBJECTS)
-		$(LINK) $(LFLAGS) $(SRC) $(LIBS) $(INCPATH) -o $(TARGET)
+		$(LINK) $(LFLAGS) $(OBJECTS) $(LIBS) $(INCPATH) -o $(TARGET)
 
 clean:
 	$(DELETEFILE) $(OBJECTS)
