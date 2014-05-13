@@ -5,32 +5,87 @@
 ## Login   <martre_s@epitech.net>
 ## 
 ## Started on  Tue May  6 17:28:55 2014 Steven Martreux
-## Last update Tue May  6 17:31:22 2014 Steven Martreux
 ##
 
-GCC=		g++
+####### Detect system architecture
 
-RM=		rm -rf
+SYSARCH       = i386
+ifeq ($(shell uname -m),x86_64)
+SYSARCH       = x86_64
+endif
 
-CPPFLAGS=	-Wall $(INCLUDES) -lpthread -pthread
+####### Compiler, tools and options
 
-INCLUDES=	-Iincludes/
+CXX           = g++
+LINK          = g++
+MAKE          = make
+DELETEFILE    = rm -f
+DEFINES       = -DQT_WEBKIT -DGL_GLEXT_PROTOTYPES
 
-SRC=		
+####### Detect debug or release
 
-OBJ=		$(SRC:.cpp=.o)
+DEBUG         = 0
+ifeq ($(DEBUG), 1)
+	CXXFLAGS      = -pipe -DDEBUG -g $(DEFINES)
+	LFLAGS        = 
+	RELEASETYPE   = Debug
+else
+	CXXFLAGS      = -pipe -O2 $(DEFINES)
+	LFLAGS        = -O1
+	RELEASETYPE   = Release
+endif
 
-NAME=		bomberman
+####### Paths
 
-all:		$(NAME)
+LIBOVRPATH    = LibOVR
+COMMONSRCPATH = CommonSrc
+3RDPARTYPATH  = ../3rdParty
+INCPATH       = -I. -I.. -I$(COMMONSRCPATH) -I$(LIBOVRPATH)/Include -I$(LIBOVRPATH)/Src -I./includes/ -I./LibGdl/includes
+OBJPATH       = a.out
+CXX_BUILD     = $(CXX) -c $(CXXFLAGS) $(INCPATH) 
 
-$(NAME):	$(OBJ)
-	$(GCC) $(CPPFLAGS) -o $(NAME) $(OBJ)
+####### Files
+
+LIBS          = -L$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH) \
+		-L./LibGdl/libs/ \
+		-lgdl_gl \
+		-lGL \
+		-lGLEW \
+		-ldl \
+		-lrt \
+		-lfbxsdk \
+		-lSDL2 \
+		-ldl \
+		-lovr \
+		-ludev \
+		-lpthread \
+		-lGL \
+		-lX11 \
+		-lXinerama \
+		-lglut \
+		-lGLU \
+
+SRC		= src/main.cpp
+
+OBJECTS       = $(SRC:.cpp=.o)
+
+TARGET        = bomberman
+
+####### Rules
+
+all:    $(TARGET)
+
+$(TARGET):
+	$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH)/libovr.a
+	$(MAKE) -C $(LIBOVRPATH) DEBUG=$(DEBUG)
+
+$(TARGET):$(OBJECTS)
+	$(LINK) $(LFLAGS) $(SRC) $(LIBS) $(INCPATH)
 
 clean:
-	$(RM) $(OBJ)
+	$(DELETEFILE) $(OBJECTS)
 
-fclean: clean
-	$(RM) $(NAME)
+fclean:	clean
+	-$(DELETEFILE) $(TARGET)
 
-re:	fclean all
+re :	fclean all
