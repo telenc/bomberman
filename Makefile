@@ -59,12 +59,14 @@ LIBS          = -L$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH) \
 		-lglut \
 		-lGLU \
 		-lfbxsdk \
+		-ltinyxml \
 
-SRC		= src/main.cpp \
-		src/Occulus.cpp \
-		src/ModelList.cpp \
-		src/Game.cpp \
-		src/EventManager.cpp
+SRC		= src/main.cpp 		\
+		src/Occulus.cpp 	\
+		src/ModelList.cpp 	\
+		src/Game.cpp 		\
+		src/EventManager.cpp	\
+		src/LoadGame.cpp	\
 
 OBJECTS       = $(SRC:.cpp=.o)
 
