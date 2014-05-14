@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Wed May 14 06:44:08 2014 Remi telenczak
+// Last update Wed May 14 07:31:37 2014 Remi telenczak
 //
 
 
@@ -50,20 +50,19 @@ bool		Graphics::initialize()
   glm::mat4 projection;
   glm::mat4 transformation;
 
-  if (!_context.start(1110, 800, "My bomberman!"))
+  if (!_context.start(1280, 800, "My bomberman!"))
     return false;
+  glMatrixMode(GL_PROJECTION);
   glEnable(GL_DEPTH_TEST);
   if (!_shader.load("./shaders/basic.fp", GL_FRAGMENT_SHADER)
       || !_shader.load("./shaders/basic.vp", GL_VERTEX_SHADER)
       || !_shader.build())
     return false;
-  projection = glm::perspective(60.0f, 1280.0f / 800.0f, 0.5f, 200.0f);
-  transformation = glm::lookAt(glm::vec3(0, 10, -30), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
+  projection = glm::perspective(60.0f, 1280.0f/2 / 800.0f, 0.5f, 200.0f);
+  transformation = glm::lookAt(glm::vec3(0, 10, -100), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
   _shader.bind();
   _shader.setUniform("view", transformation);
   _shader.setUniform("projection", projection);
-std::cout << "coucdededeou" << std::endl;
-//glutInit(0, 0);
   return true;
 }
 bool		Graphics::update()
@@ -83,17 +82,20 @@ void		Graphics::draw()
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glClearColor(255, 0, 0, 0);
 
-gdl::Model *test = this->_modelList->getModel("marvin");
-glm::mat4 tr(1);
-tr = glm::scale(tr, glm::vec3(0.1, 0.1, 0.1));
-    test->draw(_shader, tr, 0);
-
+  gdl::Model *test = this->_modelList->getModel("wall");
+  glm::mat4 tr(1);
+  test->draw(_shader, tr, 0);
+  tr = glm::translate(tr, glm::vec3(10, 0, 0));
+  test->draw(_shader, tr, 0);
 
   glScissor(640, 0, 720, 700);
   glViewport(560, 0,720, 800);
-
   glClearColor(255, 0, 0, 0);
-    test->draw(_shader, tr, 0);
+
+  glm::mat4 tr2(1);
+  test->draw(_shader, tr2, 0);
+  tr2 = glm::translate(tr2, glm::vec3(10, 0, 0));
+  test->draw(_shader, tr2, 0);
 
   _context.flush();
 }

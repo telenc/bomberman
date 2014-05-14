@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 06:17:30 2014 Remi telenczak
-// Last update Wed May 14 06:39:41 2014 Remi telenczak
+// Last update Wed May 14 06:45:27 2014 Remi telenczak
 //
 
 #include	"ModelList.hpp"
@@ -16,6 +16,8 @@ ModelList::ModelList()
 
   mod = this->createModel("./assets/marvin.fbx");
   this->list.push_back(std::make_pair("marvin", mod));
+  mod = this->createModel("./assets/wall.fbx");
+  this->list.push_back(std::make_pair("wall", mod));
 }
 
 gdl::Model	*ModelList::createModel(const std::string path)
