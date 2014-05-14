@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 05:18:37 2014 Remi telenczak
-// Last update Tue May 13 05:34:37 2014 Remi telenczak
+// Last update Wed May 14 15:18:48 2014 Steven Martreux
 //
 
 #ifndef		_OCCULUS_BOMBER
