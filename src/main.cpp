@@ -5,20 +5,23 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
-// Last update Wed May 14 03:36:28 2014 Remi telenczak
+// Last update Wed May 14 06:41:26 2014 Remi telenczak
 //
 
 #include <iostream>
 #include	"Menu.hpp"
 #include	"Graphics.hpp"
+#include "ModelList.hpp"
 
 int	main()
 {
   Menu menu;
   Graphics engine;
+  ModelList *mod;
 
   engine.initialize();
-  std::cout << "Coucouc" << std::endl;
+  mod = new ModelList();
+  engine.setModelList(mod);
   while (engine.update())
     {
       engine.draw();

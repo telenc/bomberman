@@ -21,6 +21,7 @@ int main()
     return (EXIT_FAILURE);
   while (engine.update() == true)
     {
+      std::cout << SDL_NumJoysticks() << std::endl;
       engine.draw();
     }
   return EXIT_SUCCESS;

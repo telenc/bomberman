@@ -5,13 +5,14 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:10:16 2014 thomas mendez
-// Last update Wed May 14 03:32:00 2014 Remi telenczak
+// Last update Wed May 14 06:41:00 2014 Remi telenczak
 //
 
 #ifndef		GRAPHICS_HH__BOMBER
 #define		GRAPHICS_HH__BOMBER
 
 #include	"OVR.h"
+# include	"ModelList.hpp"
 #include	<iostream>
 #include	<string>
 #include	<unistd.h>
@@ -35,8 +36,9 @@ class		Graphics
 public:
   Graphics();
   ~Graphics();
-  bool		initialize();
-  void		draw();
+bool		initialize();
+void		setModelList(ModelList *model);
+void		draw();
   bool		update();
 protected:
   gdl::BasicShader	_shader;
@@ -45,7 +47,8 @@ protected:
   gdl::Input		_input;
   std::vector<AObjectPhysic*>	_objects;
   gdl::SdlContext	_context;
-  gdl::Model		*test;
+gdl::Model		*test;
+ModelList *_modelList;
 };
 
 #endif
