@@ -59,6 +59,7 @@ LIBS          = -L$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH) \
 		-lglut \
 		-lGLU \
 		-lfbxsdk \
+		-lrt \
 
 SRC		= src/main.cpp \
 		src/Occulus.cpp \
