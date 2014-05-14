@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 05:18:23 2014 Remi telenczak
-// Last update Tue May 13 05:38:43 2014 Remi telenczak
+// Last update Wed May 14 15:18:38 2014 Steven Martreux
 //
 
 #include	"Occulus.hpp"
