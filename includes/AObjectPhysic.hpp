@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 15:52:43 2014 Mathieu Choquart
-// Last update Tue May 13 17:41:44 2014 thomas mendez
+// Last update Wed May 14 03:32:48 2014 Remi telenczak
 //
 
 #ifndef			_AOBJECTPHYSIC_HH_
@@ -22,6 +22,7 @@
 # include		"Map.hpp"
 # include		"Graphics.hpp"
 
+class Graphics;
 class	AObjectPhysic : public	IObjectPhysic
 {
 public:

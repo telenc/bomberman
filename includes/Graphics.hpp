@@ -5,11 +5,11 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:10:16 2014 thomas mendez
-// Last update Tue May 13 08:44:10 2014 Remi telenczak
+// Last update Wed May 14 03:32:00 2014 Remi telenczak
 //
 
-#ifndef		GRAPHICS_HH__
-#define		GRAPHICS_HH__
+#ifndef		GRAPHICS_HH__BOMBER
+#define		GRAPHICS_HH__BOMBER
 
 #include	"OVR.h"
 #include	<iostream>

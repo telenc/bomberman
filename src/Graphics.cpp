@@ -1,11 +1,11 @@
 //
 // Graphics.cpp for Graphics in /home/mendez_t/local/cpp/cpp_bomberman/AllTest/testGdl+OCCULUS
-// 
+//
 // Made by thomas mendez
 // Login   <mendez_t@epitech.net>
-// 
+//
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Tue May 13 17:39:43 2014 thomas mendez
+// Last update Wed May 14 03:37:24 2014 Remi telenczak
 //
 
 
@@ -57,28 +57,19 @@ bool		Graphics::initialize()
   _shader.bind();
   _shader.setUniform("view", transformation);
   _shader.setUniform("projection", projection);
-  test = new gdl::Model();
-  if (_texture.load("./assets/marvin.fbm/Main_texture_diffuse2.tga") == false)
-    {
-      std::cerr << "Cannot load the cube texture" << std::endl;
-      return (false);
-    }
-  test->load("./assets/marvin.fbx");
-  test->setCurrentAnim(0);
-  std::cout << "merde" << std::endl;
+
   return true;
 }
 bool		Graphics::update()
 {
   if (_input.getKey(SDLK_ESCAPE) || _input.getInput(SDL_QUIT))
     return false;
-  // Mise a jour des inputs et de l'horloge de jeu
+
   _context.updateClock(_clock);
   _context.updateInputs(_input);
-  // Mise a jour des differents objets
-  for (size_t i = 0; i < _objects.size(); ++i)
-    _objects[i]->update(_clock, _input);
-  //usleep(110000);
+
+  //for (size_t i = 0; i < _objects.size(); ++i)
+  //  _objects[i]->update(_clock, _input);
   return true;
 }
 
@@ -93,15 +84,12 @@ void		Graphics::draw()
   glScissor(0, 0, 680, 800);
   glViewport(0, 0, 680, 800);
   glClearColor(255, 0, 0, 0);
-  //
+
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   _shader.bind();
-    
+
   for (size_t i = 0; i < _objects.size(); ++i)
     _objects[i]->draw(_shader, _clock);
-    
-  test->draw(_shader, tr, 30000);
-    
   _shader.setUniform("view", transformation);
   //
   glScissor(640, 0, 720, 700);
@@ -112,13 +100,11 @@ void		Graphics::draw()
   //glTranslatef(0, -1, 0);
   glClearColor(255, 0, 0, 0);
   //
-    
-    
+
+
   for (size_t i = 0; i < _objects.size(); ++i)
     _objects[i]->draw(_shader, _clock);
-    
-  //_texture.bind();
-  test->draw(_shader, tr, 0);
-    
+
+
   _context.flush();
 }
