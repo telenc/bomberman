@@ -1695,7 +1695,7 @@ Objects:  {
 		Properties60:  {
 			Property: "Translation", "Vector", "A+",0,0,0
 			Property: "Rotation", "Vector", "A+",0,0,0
-			Property: "Scaling", "Vector", "A+",1,1,1
+			Property: "Scaling", "Vector", "A+",2,2,2
 			Property: "Texture alpha", "Number", "A+",0
 			Property: "TextureTypeUse", "enum", "",0
 			Property: "CurrentTextureBlendMode", "enum", "",1
