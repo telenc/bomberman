@@ -5,7 +5,11 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
+<<<<<<< HEAD
 // Last update Thu May 15 06:43:48 2014 Remi telenczak
+=======
+// Last update Thu May 15 15:55:35 2014 Steven Martreux
+>>>>>>> 26005defa415206867f226c65629f48412b49ff5
 //
 
 
@@ -108,7 +112,11 @@ void		Graphics::draw()
       _shader.setUniform("view", this->_camera->getTransformationLeft());
       _shader.setUniform("projection", this->_camera->getTest());
 
+<<<<<<< HEAD
       gdl::Model *test = this->_modelList->getModel("wall2");
+=======
+      gdl::Model *test = this->_modelList->getModel("cube2");
+>>>>>>> 26005defa415206867f226c65629f48412b49ff5
       glm::mat4 tr(1);
       test->draw(_shader, tr, 0);
       tr = glm::translate(tr, glm::vec3(10, 0, 0));
@@ -131,11 +139,11 @@ void		Graphics::draw()
 
       _shader.setUniform("view", this->_camera->getTransformationLeft());
       _shader.setUniform("projection", this->_camera->getTest());
-      gdl::Model *test2 = this->_modelList->getModel("wall");
+      gdl::Model *test2 = this->_modelList->getModel("cube2");
       glm::mat4 tr11(1);
       test2->draw(_shader, tr11, 0);
       tr11 = glm::translate(tr11, glm::vec3(10, 0, 0));
-      //tr11 = glm::scale(tr11, glm::vec3(4, 4, 4));
+      tr11 = glm::scale(tr11, glm::vec3(4, 4, 4));
       test2->draw(_shader, tr11, 0);
 
     }
