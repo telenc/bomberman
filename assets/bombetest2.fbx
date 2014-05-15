@@ -1975,7 +1975,7 @@ Objects:  {
 		}
 		UseMipMap: 0
 		Filename: "textureA.tga"
-		RelativeFilename: "./textureA.tga"
+		RelativeFilename: "textureA.tga"
 	}
 	Video: "Video::textureB_png_001", "Clip" {
 		Type: "Clip"
@@ -1996,7 +1996,7 @@ Objects:  {
 		}
 		UseMipMap: 0
 		Filename: "textureB.tga"
-		RelativeFilename: "./textureB.tga"
+		RelativeFilename: "textureB.tga"
 	}
 	Texture: "Texture::textureA_png_001", "TextureVideoClip" {
 		Type: "TextureVideoClip"
@@ -2021,7 +2021,7 @@ Objects:  {
 		}
 		Media: "Video::textureA_png_001"
 		FileName: "textureA.tga"
-		RelativeFilename: "./textureA.tga"
+		RelativeFilename: "textureA.tga"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "None"
@@ -2050,7 +2050,7 @@ Objects:  {
 		}
 		Media: "Video::textureB_png_001"
 		FileName: "textureB.tga"
-		RelativeFilename: "./textureB.tga"
+		RelativeFilename: "textureB.tga"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "None"
