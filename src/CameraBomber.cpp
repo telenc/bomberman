@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 14 07:57:08 2014 Remi telenczak
-// Last update Thu May 15 06:08:28 2014 Remi telenczak
+// Last update Thu May 15 06:11:22 2014 Remi telenczak
 //
 
 #include	"CameraBomber.hpp"
@@ -33,12 +33,9 @@ int	CameraBomber::getStereo()
   return this->stereo;
 }
 
-void CameraBomber::changeStereo()
+void CameraBomber::changeStereo(int a)
 {
-  if (this->stereo == 2)
-    this->stereo = 1;
-  else
-    this->stereo = 2;
+    this->stereo = a;
 }
 
 void CameraBomber::changeRot(float a)

@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Thu May 15 06:06:27 2014 Remi telenczak
+// Last update Thu May 15 06:11:01 2014 Remi telenczak
 //
 
 
@@ -88,7 +88,9 @@ void		Graphics::draw()
   if (_input.getKey(SDLK_z))
     this->_camera->changeRot(-0.01);
   if (_input.getKey(SDLK_e))
-    this->_camera->changeStereo();
+    this->_camera->changeStereo(1);
+  if (_input.getKey(SDLK_r))
+    this->_camera->changeStereo(2);
 
 
 

@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 14 07:57:29 2014 Remi telenczak
-// Last update Thu May 15 06:05:12 2014 Remi telenczak
+// Last update Thu May 15 06:11:11 2014 Remi telenczak
 //
 
 #ifndef		_CAMERA_BOMBER
@@ -26,7 +26,7 @@ public:
   glm::mat4 getTest();
   void	translate(double x, double y, double z);
   void changeRot(float a);
-  void changeStereo();
+  void changeStereo(int );
   int	getStereo();
 private:
   int stereo;
