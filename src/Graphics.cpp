@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Thu May 15 06:41:44 2014 Remi telenczak
+// Last update Thu May 15 06:43:48 2014 Remi telenczak
 //
 
 
@@ -108,7 +108,7 @@ void		Graphics::draw()
       _shader.setUniform("view", this->_camera->getTransformationLeft());
       _shader.setUniform("projection", this->_camera->getTest());
 
-      gdl::Model *test = this->_modelList->getModel("wall");
+      gdl::Model *test = this->_modelList->getModel("wall2");
       glm::mat4 tr(1);
       test->draw(_shader, tr, 0);
       tr = glm::translate(tr, glm::vec3(10, 0, 0));
