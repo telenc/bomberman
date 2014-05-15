@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:16:26 2014 Remi telenczak
-// Last update Thu May 15 09:17:14 2014 Remi telenczak
+// Last update Thu May 15 09:32:58 2014 Remi telenczak
 //
 
 #include	"ABloc.hpp"
@@ -15,7 +15,12 @@ ABloc::ABloc(Map *map, ModelList *model, EventManager *event) : AObjectPhysic(ma
 
 }
 
-ABloc ABloc::~ABloc()
+void	ABloc::draw(gdl::AShader &shader, gdl::Clock const &clock)
+{
+
+}
+
+ABloc::~ABloc()
 {
 
 }

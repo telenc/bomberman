@@ -78,7 +78,8 @@ SRC		= src/main.cpp \
 		src/Player.cpp \
 		src/LoadGame.cpp \
 		src/CameraBomber.cpp \
-
+		src/ABloc.cpp \
+		src/Bloc/DefaultWall.cpp
 OBJECTS       = $(SRC:.cpp=.o)
 
 TARGET        = bomberman
