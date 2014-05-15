@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Thu May 15 06:11:01 2014 Remi telenczak
+// Last update Thu May 15 06:16:33 2014 Remi telenczak
 //
 
 
@@ -125,6 +125,7 @@ void		Graphics::draw()
     }
   else
     {
+      glViewport(0, 0, 1280, 800);
       glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
       glClearColor(255, 0, 0, 0);
 
