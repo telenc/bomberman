@@ -5,30 +5,33 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 15:52:43 2014 Mathieu Choquart
-// Last update Wed May 14 03:32:48 2014 Remi telenczak
+// Last update Thu May 15 07:44:35 2014 Remi telenczak
 //
 
-#ifndef			_AOBJECTPHYSIC_HH_
-# define		_AOBJECTPHYSIC_HH_
+#ifndef			_AOBJECTPHYSIC_HPP_
+# define		_AOBJECTPHYSIC_HPP_
 
-# include		<string>
+#include	<Clock.hh>
+#include	<Input.hh>
 # include		<iostream>
 # include		<glm/glm.hpp>
 # include		<glm/gtc/matrix_transform.hpp>
 # include		<Model.hh>
 # include		<BasicShader.hh>
 # include		"IObjectPhysic.hh"
-# include		"EventManager.hpp"
-# include		"Map.hpp"
-# include		"Graphics.hpp"
 
+
+class EventManager;
+class Map;
 class Graphics;
 class	AObjectPhysic : public	IObjectPhysic
 {
 public:
   AObjectPhysic(Map *map, EventManager *eventManager);
-  virtual 	~AObjectPhysic();
+  ~AObjectPhysic();
+  virtual bool	collision(IObjectPhysic *) {}
   virtual bool	initialize();
+  virtual void	display(){}
   virtual void update(gdl::Clock const &clock, gdl::Input &input);
   virtual void draw(gdl::AShader &shader, gdl::Clock const &clock) = 0;
   void		translate(glm::vec3 const &v);
@@ -67,7 +70,6 @@ public:
   void		set_scaz(double z);
   void		set_height(int height);
   void		set_width(int width);
-  void		set_skin(const std::string *skin);
   void		set_graphic(Graphics *graphic);
   void		set_color(int color);
   void		set_map(Map *map);
@@ -79,7 +81,6 @@ protected:
   glm::vec3	_speed;
   int		_height;
   int		_width;
-  gdl::Model	_skin;
   Graphics	*_graphic;
   int		_color;
   Map		*_map;

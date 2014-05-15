@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Thu May 15 15:55:35 2014 Steven Martreux
+// Last update Thu May 15 07:26:46 2014 Remi telenczak
 //
 
 
@@ -14,7 +14,7 @@
 #include	<string>
 #include	<unistd.h>
 #include	<SdlContext.hh>
-
+#include	"AObjectPhysic.hpp"
 #include	<cstdlib>
 #include	<Game.hh>
 #include	<Clock.hh>
@@ -70,10 +70,11 @@ bool		Graphics::update()
     return false;
   _context.updateClock(_clock);
   _context.updateInputs(_input);
+  this->inputUpdate();
   return true;
 }
 
-void		Graphics::draw()
+void		Graphics::inputUpdate()
 {
   if (_input.getKey(SDLK_UP))
     this->_camera->translate(0, 0, -1);
@@ -91,54 +92,55 @@ void		Graphics::draw()
     this->_camera->changeStereo(1);
   if (_input.getKey(SDLK_r))
     this->_camera->changeStereo(2);
+}
 
+void		Graphics::drawDoubleStereo()
+{
+  gdl::Model *test = this->_modelList->getModel("cube2");
+  glm::mat4 tr(1);
+  glViewport(0, 0, 1280/2, 800);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  glClearColor(255, 0, 0, 0);
 
-
-
-
-  _shader.bind();
-
-  if (this->_camera->getStereo() == 2)
-    {
-      //glScissor(0, 0, 680, 800);
-      glViewport(0, 0, 1280/2, 800);
-      glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-      glClearColor(255, 0, 0, 0);
-
-      _shader.setUniform("view", this->_camera->getTransformationLeft());
-      _shader.setUniform("projection", this->_camera->getTest());
-
-      gdl::Model *test = this->_modelList->getModel("cube2");
-      glm::mat4 tr(1);
+  _shader.setUniform("view", this->_camera->getTransformationLeft());
+  _shader.setUniform("projection", this->_camera->getPerspective());
+test->draw(_shader, tr, 0);
+tr = glm::translate(tr, glm::vec3(10, 0, 0));
+      tr = glm::scale(tr, glm::vec3(4, 4, 4));
       test->draw(_shader, tr, 0);
-      tr = glm::translate(tr, glm::vec3(10, 0, 0));
-      test->draw(_shader, tr, 0);
-
-      //glScissor(640, 0, 720, 700);
-      glViewport(1280/2, 0,1280/2, 800);
+glViewport(1280/2, 0,1280/2, 800);
       glClearColor(255, 0, 0, 0);
       _shader.setUniform("view", this->_camera->getTransformationRight());
       glm::mat4 tr2(1);
       test->draw(_shader, tr2, 0);
       tr2 = glm::translate(tr2, glm::vec3(10, 0, 0));
+      tr2 = glm::scale(tr2, glm::vec3(4, 4, 4));
       test->draw(_shader, tr2, 0);
-    }
-  else
-    {
+}
+
+void		Graphics::drawOneStereo()
+{
       glViewport(0, 0, 1280, 800);
       glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
       glClearColor(255, 0, 0, 0);
 
       _shader.setUniform("view", this->_camera->getTransformationLeft());
-      _shader.setUniform("projection", this->_camera->getTest());
+      _shader.setUniform("projection", this->_camera->getPerspective());
       gdl::Model *test2 = this->_modelList->getModel("cube2");
       glm::mat4 tr11(1);
       test2->draw(_shader, tr11, 0);
       tr11 = glm::translate(tr11, glm::vec3(10, 0, 0));
       tr11 = glm::scale(tr11, glm::vec3(4, 4, 4));
       test2->draw(_shader, tr11, 0);
+}
 
-    }
+void		Graphics::draw()
+{
+  _shader.bind();
 
+  if (this->_camera->getStereo() == 2)
+    drawDoubleStereo();
+  else
+    drawOneStereo();
   _context.flush();
 }

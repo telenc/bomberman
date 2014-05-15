@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 05:18:37 2014 Remi telenczak
-// Last update Thu May 15 02:43:38 2014 Remi telenczak
+// Last update Thu May 15 07:15:41 2014 Remi telenczak
 //
 
 #ifndef		_OCCULUS_BOMBER
@@ -27,7 +27,7 @@ public:
   void		displayInfo();
   glm::vec3	getOrientationRad();
   glm::vec3	getOrientation();
-  glm::mat4 getTest();
+  glm::mat4	getPerspective();
 private:
   OVR::Ptr<OVR::DeviceManager> pManager;
   OVR::Ptr<OVR::HMDDevice> pHMD;

@@ -60,6 +60,7 @@ LIBS          = -L$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH) \
 		-lGLU \
 		-lfbxsdk \
 		-lrt \
+		-ltinyxml \
 
 SRC		= src/main.cpp \
 		src/Occulus.cpp \
@@ -68,6 +69,13 @@ SRC		= src/main.cpp \
 		src/EventManager.cpp \
 		src/Menu.cpp \
 		src/Graphics.cpp \
+		src/AObjectPhysic.cpp \
+		src/APlayer.cpp \
+		src/AObjectLife.cpp \
+		src/Inventory.cpp \
+		src/Map.cpp \
+		src/Player.cpp \
+		src/LoadGame.cpp \
 		src/CameraBomber.cpp \
 
 OBJECTS       = $(SRC:.cpp=.o)

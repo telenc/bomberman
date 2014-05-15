@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 14 07:57:08 2014 Remi telenczak
-// Last update Thu May 15 06:17:37 2014 Remi telenczak
+// Last update Thu May 15 07:14:56 2014 Remi telenczak
 //
 
 #include	"CameraBomber.hpp"
@@ -131,7 +131,7 @@ glm::mat4		CameraBomber::getTransformationRight()
   return transformation;
 }
 
-glm::mat4 CameraBomber::getTest()
+glm::mat4 CameraBomber::getPerspective()
 {
   glm::mat4 result;
 
@@ -140,5 +140,5 @@ glm::mat4 CameraBomber::getTest()
  result = glm::perspective(60.0f, 1280.0f / 800.0f, 0.5f, 200.0f);
  return result;
     }
-  return this->_occulus->getTest();
+  return this->_occulus->getPerspective();
 }

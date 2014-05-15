@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:10:16 2014 thomas mendez
-// Last update Wed May 14 08:01:20 2014 Remi telenczak
+// Last update Thu May 15 07:26:24 2014 Remi telenczak
 //
 
 #ifndef		GRAPHICS_HH__BOMBER
@@ -17,7 +17,6 @@
 #include	<string>
 #include	<unistd.h>
 #include	<SdlContext.hh>
-#include	"AObjectPhysic.hpp"
 #include	<cstdlib>
 #include	<Game.hh>
 #include	<Clock.hh>
@@ -32,6 +31,7 @@
 #include	<glm/gtc/matrix_transform.hpp>
 # include	"CameraBomber.hpp"
 
+class AObjectPhysic;
 class		Graphics
 {
 public:
@@ -41,6 +41,9 @@ bool		initialize();
 void		setModelList(ModelList *model);
 void		draw();
   bool		update();
+  void		inputUpdate();
+  void		drawDoubleStereo();
+  void		drawOneStereo();
 protected:
   gdl::BasicShader	_shader;
   gdl::Texture		_texture;

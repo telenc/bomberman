@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 // 
 // Started on  Fri May  9 14:29:28 2014 Steven Martreux
-// Last update Tue May 13 16:47:49 2014 Steven Martreux
+// Last update Wed May 14 15:36:55 2014 dedicker remi
 //
 
 #ifndef		_INVENTORY_HPP_
@@ -23,6 +23,6 @@ public:
   void	setNbrBomb(int);
 private:
   int	_MaxBomb;
-}
+};
 
 #endif		/* _INVENTORY_HPP_ */
