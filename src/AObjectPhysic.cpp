@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 16:17:56 2014 Mathieu Choquart
-// Last update Thu May 15 07:49:35 2014 Remi telenczak
+// Last update Thu May 15 08:51:53 2014 Remi telenczak
 //
 
 #include	"AObjectPhysic.hpp"
@@ -14,10 +14,11 @@
 # include		"EventManager.hpp"
 # include		"Map.hpp"
 
-AObjectPhysic::AObjectPhysic(Map *map, EventManager *eventManager): _position(0, 0, 0), _rotation(0, 0, 0),_scale(1, 1, 1)
+AObjectPhysic::AObjectPhysic(Map *map, ModelList *modelList, EventManager *eventManager): _position(0, 0, 0), _rotation(0, 0, 0),_scale(1, 1, 1)
 {
   this->_map = map;
   this->_eventManager = eventManager;
+  this->_modelList = modelList;
 }
 
 AObjectPhysic::~AObjectPhysic()

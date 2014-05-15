@@ -5,12 +5,12 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Wed May  7 16:00:11 2014 Steven Martreux
-// Last update Thu May 15 07:37:35 2014 Remi telenczak
+// Last update Thu May 15 08:59:05 2014 Remi telenczak
 //
 
 #include	"ABomb.hpp"
 
-ABomb::ABomb()
+ABomb::ABomb(Map *map, ModelList *model, EventManager *event) :AObjectPhysic(map, model, event)
 {
 
 }
@@ -40,12 +40,12 @@ int	ABomb::getTime(void) const
   return this->_time;
 }
 
-void	ABomb::getDamage(int damage)
+void	ABomb::setDamage(int damage)
 {
   this->_damage = damage;
 }
 
-int	Abomb::setDamage(void) const
+int	ABomb::getDamage(void) const
 {
   return this->_damage;
 }

@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 15:52:43 2014 Mathieu Choquart
-// Last update Thu May 15 07:44:35 2014 Remi telenczak
+// Last update Thu May 15 08:52:18 2014 Remi telenczak
 //
 
 #ifndef			_AOBJECTPHYSIC_HPP_
@@ -24,10 +24,11 @@
 class EventManager;
 class Map;
 class Graphics;
+class ModelList;
 class	AObjectPhysic : public	IObjectPhysic
 {
 public:
-  AObjectPhysic(Map *map, EventManager *eventManager);
+AObjectPhysic(Map *map, ModelList *,EventManager *eventManager);
   ~AObjectPhysic();
   virtual bool	collision(IObjectPhysic *) {}
   virtual bool	initialize();
@@ -85,6 +86,7 @@ protected:
   int		_color;
   Map		*_map;
   EventManager	*_eventManager;
+ModelList	*_modelList;
 };
 
 # endif
