@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Thu May 15 07:20:06 2014 Remi telenczak
+// Last update Thu May 15 07:26:46 2014 Remi telenczak
 //
 
 
@@ -14,7 +14,7 @@
 #include	<string>
 #include	<unistd.h>
 #include	<SdlContext.hh>
-
+#include	"AObjectPhysic.hpp"
 #include	<cstdlib>
 #include	<Game.hh>
 #include	<Clock.hh>
@@ -103,7 +103,7 @@ void		Graphics::drawDoubleStereo()
   glClearColor(255, 0, 0, 0);
 
   _shader.setUniform("view", this->_camera->getTransformationLeft());
-  _shader.setUniform("projection", this->_camera->getPerspective));
+  _shader.setUniform("projection", this->_camera->getPerspective());
 test->draw(_shader, tr, 0);
 tr = glm::translate(tr, glm::vec3(10, 0, 0));
       tr = glm::scale(tr, glm::vec3(4, 4, 4));

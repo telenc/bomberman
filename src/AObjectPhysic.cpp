@@ -5,10 +5,14 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 16:17:56 2014 Mathieu Choquart
-// Last update Wed May 14 16:25:13 2014 dedicker remi
+// Last update Thu May 15 07:49:35 2014 Remi telenczak
 //
 
 #include	"AObjectPhysic.hpp"
+#include	"Graphics.hpp"
+#include	"Model.hh"
+# include		"EventManager.hpp"
+# include		"Map.hpp"
 
 AObjectPhysic::AObjectPhysic(Map *map, EventManager *eventManager): _position(0, 0, 0), _rotation(0, 0, 0),_scale(1, 1, 1)
 {
@@ -21,12 +25,12 @@ AObjectPhysic::~AObjectPhysic()
 
 }
 
-bool	initialize()
+bool	AObjectPhysic::initialize()
 {
   return true;
 }
 
-void update(gdl::Clock const &clock, gdl::Input &input)
+void AObjectPhysic::update(gdl::Clock const &clock, gdl::Input &input)
 {
 
 }
@@ -36,17 +40,17 @@ void draw(gdl::AShader &shader, gdl::Clock const &clock) = 0
 
 }
 */
-void translate(glm::vec3 const &v)
+void AObjectPhysic::translate(glm::vec3 const &v)
 {
   this->_position += v;
 }
 
-void rotate(glm::vec3 const& axis, float angle)
+void AObjectPhysic::rotate(glm::vec3 const& axis, float angle)
 {
   this->_rotation += axis * angle;
 }
 
-void scale(glm::vec3 const& scale)
+void AObjectPhysic::scale(glm::vec3 const& scale)
 {
   this->_scale *= scale;
 }
@@ -121,11 +125,6 @@ int		AObjectPhysic::get_width() const
     return this->_width;
 }
 
-gdl::model	AObjectPhysic::get_skin() const
-{
-    return this->_skin;
-}
-
 Graphics	*AObjectPhysic::get_graphic() const
 {
     return this->_graphic;
@@ -136,12 +135,12 @@ int		AObjectPhysic::get_color() const
     return this->_color;
 }
 
-Map		AObjectPhysic::get_map() const
+Map		*AObjectPhysic::get_map() const
 {
     return this->_map;
 }
 
-EventManager	AObjectPhysic::get_eventManager() const
+EventManager	*AObjectPhysic::get_eventManager() const
 {
     return this->_eventManager;
 }
@@ -215,10 +214,6 @@ void		AObjectPhysic::set_width(int width)
     this->_width = width;
 }
 
-void		AObjectPhysic::set_skin(gdl::model skin)
-{
-    this->_skin = skin;
-}
 
 void		AObjectPhysic::set_graphic(Graphics *graphic)
 {

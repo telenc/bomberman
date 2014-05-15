@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 08:24:19 2014 Remi telenczak
-// Last update Wed May 14 16:08:23 2014 dedicker remi
+// Last update Thu May 15 07:39:01 2014 Remi telenczak
 //
 
 #ifndef		_ALIFE
@@ -14,7 +14,7 @@
 class AObjectLife
 {
 public:
-  AObjectLife();
+  AObjectLife(int);
   virtual ~AObjectLife();
   void	decLife();
   void	incLife();

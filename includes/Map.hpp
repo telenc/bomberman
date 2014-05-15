@@ -1,11 +1,11 @@
 //
 // map.hh for map.hh in /home/dedick_r/Bomberman
-// 
+//
 // Made by dedicker remi
 // Login   <dedick_r@epitech.net>
-// 
+//
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Wed May 14 15:58:53 2014 dedicker remi
+// Last update Thu May 15 07:40:06 2014 Remi telenczak
 //
 
 #ifndef MAP_HPP_
@@ -13,8 +13,8 @@
 
 #include <vector>
 #include "AObjectPhysic.hpp"
-#include "Player.hpp"
 
+class Player;
 class AObjectPhysic;
 class Map
 {
@@ -23,7 +23,7 @@ public:
   ~Map();
   void	update();
   void setMap(int x, int y, AObjectPhysic *bloc);
-  AObjectPhysic *getObject() const;
+AObjectPhysic *getObject(int , int) const;
   int	getWidth() const;
   int	getHeight() const;
   std::vector<Player*> getIa() const;

@@ -1,17 +1,18 @@
 //
 // map.cpp for map.cpp in /home/dedick_r/Bomberman
-// 
+//
 // Made by dedicker remi
 // Login   <dedick_r@epitech.net>
-// 
+//
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Wed May 14 15:35:09 2014 dedicker remi
+// Last update Thu May 15 07:39:50 2014 Remi telenczak
 //
 
 #include <cstdlib>
 #include <vector>
 #include <iostream>
 #include "Map.hpp"
+#include "Player.hpp"
 
 Map::Map(int width, int height) : _width(width), _height(height)
 {
@@ -46,11 +47,11 @@ std::vector<Player *> Map::getIa() const
 void	Map::setMap(int x, int y, AObjectPhysic *bloc)
 {
   if (bloc == NULL)
-    exit();
+    exit(0);
   _map[x][y] = bloc;
 }
 
-ObjectPhysic *Map::getObject(int y, int x) const
+AObjectPhysic *Map::getObject(int y, int x) const
 {
   return this->_map[y][x];
 }

@@ -14,7 +14,7 @@ SYSARCH       = x86_64
 endif
 
 
-CXX           = clang
+CXX           = g++
 LINK          = g++
 MAKE          = make
 DELETEFILE    = rm -f
@@ -60,6 +60,7 @@ LIBS          = -L$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH) \
 		-lGLU \
 		-lfbxsdk \
 		-lrt \
+		-ltinyxml \
 
 SRC		= src/main.cpp \
 		src/Occulus.cpp \
@@ -68,18 +69,14 @@ SRC		= src/main.cpp \
 		src/EventManager.cpp \
 		src/Menu.cpp \
 		src/Graphics.cpp \
-<<<<<<< HEAD
 		src/AObjectPhysic.cpp \
 		src/APlayer.cpp \
-		src/ABomb.cpp \
 		src/AObjectLife.cpp \
 		src/Inventory.cpp \
 		src/Map.cpp \
 		src/Player.cpp \
-		src/LoadGame.cpp
-=======
+		src/LoadGame.cpp \
 		src/CameraBomber.cpp \
->>>>>>> 55645606e1348b25326b9991b8f273e045f806da
 
 OBJECTS       = $(SRC:.cpp=.o)
 
