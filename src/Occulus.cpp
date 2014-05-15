@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 05:18:23 2014 Remi telenczak
-// Last update Wed May 14 15:18:38 2014 Steven Martreux
+// Last update Thu May 15 04:20:15 2014 Remi telenczak
 //
 
 #include	"Occulus.hpp"
@@ -20,12 +20,14 @@ void	Occulus::init()
   OVR::System::Init();
   pFusionResult = new OVR::SensorFusion();
   pManager = *OVR::DeviceManager::Create();
+  //  std::cout << "On init l'occulus" << std::endl;
   pHMD = *pManager->EnumerateDevices<OVR::HMDDevice>().CreateDevice();
   OVR::System::Init(OVR::Log::ConfigureDefaultLog(OVR::LogMask_All));
   if (pHMD)
     {
       InfoLoaded = pHMD->GetDeviceInfo(&Info);
       pSensor = *pHMD->GetSensor();
+      Sconfig.SetHMDInfo(Info);
     }
   else
     {
@@ -90,19 +92,34 @@ glm::vec3	Occulus::getOrientationRad()
 
   quaternion = pFusionResult->GetOrientation();
   quaternion.GetEulerAngles<OVR::Axis_Y, OVR::Axis_X, OVR::Axis_Z>(&yaw, &pitch, &roll);
+  //  std::cout << pitch << "  " << yaw << "  " << roll << std::endl;
   result.x = pitch;
   result.y = yaw;
   result.z = roll;
+
   return (result);
+
 }
 
 glm::vec3	Occulus::getOrientation()
 {
   glm::vec3	result;
 
+
   result = this->getOrientationRad();
+
   result.x = OVR::RadToDegree(result.x);
   result.y = OVR::RadToDegree(result.y);
   result.z = OVR::RadToDegree(result.z);
   return (result);
+}
+
+glm::mat4 Occulus::getTest()
+{
+  glm::mat4 projec;
+
+  //std::cout << Sconfig.GetYFOVDegrees() << std::endl;
+  //std::cout << (float)Info.HResolution / 2.0f / (float)Info.VResolution << std::endl;
+  projec = glm::perspective(Sconfig.GetYFOVDegrees(), (float)Info.HResolution / 2.0f / (float)Info.VResolution, 0.5f, 500.f);
+  return projec;
 }

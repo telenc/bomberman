@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 05:18:37 2014 Remi telenczak
-// Last update Wed May 14 15:18:48 2014 Steven Martreux
+// Last update Thu May 15 02:43:38 2014 Remi telenczak
 //
 
 #ifndef		_OCCULUS_BOMBER
@@ -27,12 +27,15 @@ public:
   void		displayInfo();
   glm::vec3	getOrientationRad();
   glm::vec3	getOrientation();
+  glm::mat4 getTest();
 private:
   OVR::Ptr<OVR::DeviceManager> pManager;
   OVR::Ptr<OVR::HMDDevice> pHMD;
-  OVR:: Ptr<OVR::SensorDevice> pSensor;
+  OVR::Ptr<OVR::SensorDevice> pSensor;
   OVR::SensorFusion *pFusionResult;
   OVR::HMDInfo Info;
+  OVR::Util::Render::StereoConfig Sconfig;
+  //OVR::StereoConfig SConfig;
   bool InfoLoaded;
 };
 
