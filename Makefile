@@ -71,6 +71,7 @@ SRC		= src/main.cpp \
 		src/Graphics.cpp \
 		src/AObjectPhysic.cpp \
 		src/APlayer.cpp \
+		src/ABomb.cpp \
 		src/AObjectLife.cpp \
 		src/Inventory.cpp \
 		src/Map.cpp \

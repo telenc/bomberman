@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:12:08 2014 dedicker remi
-// Last update Thu May 15 07:46:36 2014 Remi telenczak
+// Last update Thu May 15 08:53:45 2014 Remi telenczak
 //
 
 #ifndef _APLAYER_HPP_
@@ -24,10 +24,10 @@
 # include	"Graphics.hpp"
 
 class Map;
-class APlayer : public AObjectLife//, public AObjectPhysic
+class APlayer : public AObjectLife, public AObjectPhysic
 {
 public:
-  APlayer(int x, int y, int z);
+  APlayer(int, int, int, Map *, ModelList *, EventManager *);
   virtual ~APlayer();
   virtual void	update() const = 0;
   void draw(gdl::AShader &shader, gdl::Clock const &clock);

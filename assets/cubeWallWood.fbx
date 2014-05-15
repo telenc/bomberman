@@ -1683,7 +1683,7 @@ Objects:  {
 			Property: "Offset", "KTime", "",0
 			Property: "InterlaceMode", "enum", "",0
 			Property: "FreeRunning", "bool", "",0
-			Property: "Loop", "bool", "",0
+			Property: "Loop", "bool", "",1
 			Property: "AccessMode", "enum", "",0
 		}
 		UseMipMap: 0

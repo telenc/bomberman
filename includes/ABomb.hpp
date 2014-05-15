@@ -5,13 +5,14 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Wed May  7 16:03:12 2014 Steven Martreux
-// Last update Thu May 15 07:38:03 2014 Remi telenczak
+// Last update Thu May 15 08:59:44 2014 Remi telenczak
 //
 
 #ifndef		_ABOMB_HPP_
 # define	_ABOMB_HPP_
 
 #include "AObjectPhysic.hpp"
+
 class		ABomb : public AObjectPhysic
 {
 private:
@@ -19,16 +20,16 @@ private:
     int _damage;
     int	_time;
 public:
-    ABomb();
-    ~ABomb();
-    virtual void createDeflag() = 0;
-    void update(void);
-    void setPo(int po);
-    int	getPo(void) const;
-    void setDamage(int damage);
-    int getDamage(void) const;
-    void setTime(int time);
-    int getTime(void) const;
+  ABomb(Map *, ModelList *, EventManager *);
+  ~ABomb();
+  virtual void createDeflag() = 0;
+  void update(void);
+  void setPo(int po);
+  int	getPo(void) const;
+  void setDamage(int damage);
+  int getDamage(void) const;
+  void setTime(int time);
+  int getTime(void) const;
 };
 
 #endif		/* _ABOMB_HPP_ */
