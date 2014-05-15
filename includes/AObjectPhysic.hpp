@@ -5,11 +5,11 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 15:52:43 2014 Mathieu Choquart
-// Last update Wed May 14 03:32:48 2014 Remi telenczak
+// Last update Wed May 14 16:10:21 2014 dedicker remi
 //
 
-#ifndef			_AOBJECTPHYSIC_HH_
-# define		_AOBJECTPHYSIC_HH_
+#ifndef			_AOBJECTPHYSIC_HPP_
+# define		_AOBJECTPHYSIC_HPP_
 
 # include		<string>
 # include		<iostream>

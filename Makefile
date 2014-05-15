@@ -14,7 +14,7 @@ SYSARCH       = x86_64
 endif
 
 
-CXX           = g++
+CXX           = clang
 LINK          = g++
 MAKE          = make
 DELETEFILE    = rm -f
@@ -67,7 +67,16 @@ SRC		= src/main.cpp \
 		src/Game.cpp \
 		src/EventManager.cpp \
 		src/Menu.cpp \
-		src/Graphics.cpp
+		src/Graphics.cpp \
+		src/AObjectPhysic.cpp \
+		src/APlayer.cpp \
+		src/ABomb.cpp \
+		src/AObjectLife.cpp \
+		src/Inventory.cpp \
+		src/Map.cpp \
+		src/Player.cpp \
+		src/LoadGame.cpp
+
 OBJECTS       = $(SRC:.cpp=.o)
 
 TARGET        = bomberman
