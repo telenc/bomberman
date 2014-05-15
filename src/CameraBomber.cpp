@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 14 07:57:08 2014 Remi telenczak
-// Last update Thu May 15 06:11:22 2014 Remi telenczak
+// Last update Thu May 15 06:17:37 2014 Remi telenczak
 //
 
 #include	"CameraBomber.hpp"
@@ -46,7 +46,7 @@ void CameraBomber::changeRot(float a)
 
 void		CameraBomber::translate(double x, double y, double z)
 {
-  glm::vec3 a(x/20, y/20, z/20);
+  glm::vec3 a(x/10, y/10, z/10);
   this->position += a;
 }
 
@@ -137,7 +137,7 @@ glm::mat4 CameraBomber::getTest()
 
   if (this->stereo == 1)
     {
- result = glm::perspective(60.0f, 1280.0f/2 / 800.0f, 0.5f, 200.0f);
+ result = glm::perspective(60.0f, 1280.0f / 800.0f, 0.5f, 200.0f);
  return result;
     }
   return this->_occulus->getTest();
