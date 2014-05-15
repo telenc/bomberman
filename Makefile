@@ -68,6 +68,7 @@ SRC		= src/main.cpp \
 		src/EventManager.cpp \
 		src/Menu.cpp \
 		src/Graphics.cpp \
+<<<<<<< HEAD
 		src/AObjectPhysic.cpp \
 		src/APlayer.cpp \
 		src/ABomb.cpp \
@@ -76,6 +77,9 @@ SRC		= src/main.cpp \
 		src/Map.cpp \
 		src/Player.cpp \
 		src/LoadGame.cpp
+=======
+		src/CameraBomber.cpp \
+>>>>>>> 55645606e1348b25326b9991b8f273e045f806da
 
 OBJECTS       = $(SRC:.cpp=.o)
 
