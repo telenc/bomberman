@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 05:18:23 2014 Remi telenczak
-// Last update Thu May 15 04:20:15 2014 Remi telenczak
+// Last update Thu May 15 05:59:34 2014 Remi telenczak
 //
 
 #include	"Occulus.hpp"
@@ -120,6 +120,7 @@ glm::mat4 Occulus::getTest()
 
   //std::cout << Sconfig.GetYFOVDegrees() << std::endl;
   //std::cout << (float)Info.HResolution / 2.0f / (float)Info.VResolution << std::endl;
+  std::cout << Info.HResolution << "  " << Info.VResolution<<std::endl;
   projec = glm::perspective(Sconfig.GetYFOVDegrees(), (float)Info.HResolution / 2.0f / (float)Info.VResolution, 0.5f, 500.f);
   return projec;
 }
