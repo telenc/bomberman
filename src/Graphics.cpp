@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Thu May 15 08:23:59 2014 Remi telenczak
+// Last update Thu May 15 09:01:15 2014 Remi telenczak
 //
 
 
@@ -102,7 +102,7 @@ void		Graphics::drawDoubleStereo()
   gdl::Model *test2 = this->_modelList->getModel("cube2");
   gdl::Model *test3 = this->_modelList->getModel("cube3");
   gdl::Model *test4 = this->_modelList->getModel("cube4");
-  gdl::Model *test5 = this->_modelList->getModel("cube5");
+  gdl::Model *test5 = this->_modelList->getModel("bomb");
   gdl::Model *test6 = this->_modelList->getModel("cube7");
   glm::mat4 tr(1);
   glm::mat4 trr(1);

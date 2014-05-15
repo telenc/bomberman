@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 06:17:30 2014 Remi telenczak
-// Last update Thu May 15 08:47:36 2014 Remi telenczak
+// Last update Thu May 15 09:01:03 2014 Remi telenczak
 //
 
 #include	"ModelList.hpp"
@@ -30,6 +30,8 @@ ModelList::ModelList()
   this->list.push_back(std::make_pair("cube6", mod));
   mod = this->createModel("./assets/cubeFloor.fbx");
   this->list.push_back(std::make_pair("cube7", mod));
+  mod = this->createModel("./assets/bombetest2.fbx");
+  this->list.push_back(std::make_pair("bomb", mod));
 }
 
 gdl::Model	*ModelList::createModel(const std::string path)
