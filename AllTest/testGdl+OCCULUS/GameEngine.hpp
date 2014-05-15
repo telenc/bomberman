@@ -139,7 +139,7 @@ public:
 	return (false);
 
       }
-    test->load("./bombetest2_000001.obj");
+    test->load("../../assets/wall.fbx");
     test->setCurrentAnim(0);
     return true;
   }

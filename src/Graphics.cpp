@@ -5,7 +5,11 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
+<<<<<<< HEAD
 // Last update Thu May 15 06:27:02 2014 Remi telenczak
+=======
+// Last update Thu May 15 15:38:35 2014 Steven Martreux
+>>>>>>> 07c8fd8f4196aec9a1d3c72993c4a5d68881538b
 //
 
 
@@ -135,6 +139,7 @@ void		Graphics::draw()
       glm::mat4 tr11(1);
       test2->draw(_shader, tr11, 0);
       tr11 = glm::translate(tr11, glm::vec3(10, 0, 0));
+      tr11 = glm::scale(tr11, glm::vec3(4, 4, 4));
       test2->draw(_shader, tr11, 0);
 
     }
