@@ -5,14 +5,14 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 15:52:43 2014 Mathieu Choquart
-// Last update Fri May 16 00:27:09 2014 Remi telenczak
+// Last update Fri May 16 00:56:47 2014 Remi telenczak
 //
 
 #ifndef			_AOBJECTPHYSIC_HPP_
 # define		_AOBJECTPHYSIC_HPP_
 
-#include	<Clock.hh>
-#include	<Input.hh>
+#include		<Clock.hh>
+#include		<Input.hh>
 # include		<iostream>
 # include		<glm/glm.hpp>
 # include		<glm/gtc/matrix_transform.hpp>
@@ -52,7 +52,8 @@ AObjectPhysic(Map *map, ModelList *,EventManager *eventManager);
   double	get_scaz() const;
   int		get_height() const;
   int		get_width() const;
-  gdl::Model	get_skin() const;
+  gdl::Model	*getSkin() const;
+  void		setSkin(gdl::Model *);
   Graphics	*get_graphic() const;
   int		get_color() const;
   Map		*get_map() const;
@@ -75,6 +76,7 @@ AObjectPhysic(Map *map, ModelList *,EventManager *eventManager);
   void		set_color(int color);
   void		set_map(Map *map);
   void		set_eventManager(EventManager *eventManager);
+  glm::mat4	getTransformation();
 protected:
   glm::vec3	_position;
   glm::vec3	_rotation;
@@ -85,6 +87,7 @@ protected:
   Graphics	*_graphic;
   int		_color;
   Map		*_map;
+  gdl::Model	*_skin;
   EventManager	*_eventManager;
 ModelList	*_modelList;
 };
