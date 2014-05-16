@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Fri May 16 01:09:13 2014 Remi telenczak
+// Last update Fri May 16 05:21:55 2014 Remi telenczak
 //
 
 
@@ -99,11 +99,11 @@ void		Graphics::inputUpdate()
 void		Graphics::drawDoubleStereo()
 {
   gdl::Model *test = this->_modelList->getModel("cube1");
-  gdl::Model *test2 = this->_modelList->getModel("cube2");
+  gdl::Model *test2 = this->_modelList->getModel("cube4");
   gdl::Model *test3 = this->_modelList->getModel("cube3");
   gdl::Model *test4 = this->_modelList->getModel("cube4");
   gdl::Model *test5 = this->_modelList->getModel("bomb2");
-  gdl::Model *test6 = this->_modelList->getModel("cube7");
+  gdl::Model *test6 = this->_modelList->getModel("cube4");
   glm::mat4 tr(1);
   glm::mat4 trr(1);
   glViewport(0, 0, 1280/2, 800);
@@ -115,18 +115,20 @@ void		Graphics::drawDoubleStereo()
   trr = glm::translate(trr, glm::vec3(0, -5, 0));
   trr = glm::scale(trr, glm::vec3(100, 1, 100));
   tr = glm::scale(tr, glm::vec3(4, 4, 4));
+  tr = glm::translate(tr, glm::vec3(-25, 0, -25));
   test->draw(_shader, tr, 0);
-  tr = glm::translate(tr, glm::vec3(4, 0, 0));
+  tr = glm::translate(tr, glm::vec3(2, 0, 0));
   test2->draw(_shader, tr, 0);
-  tr = glm::translate(tr, glm::vec3(4, 0, 0));
+  tr = glm::translate(tr, glm::vec3(2, 0, 0));
   test3->draw(_shader, tr, 0);
-  tr = glm::translate(tr, glm::vec3(4, 0, 0));
+  tr = glm::translate(tr, glm::vec3(2, 0, 0));
   test4->draw(_shader, tr, 0);
-  tr = glm::translate(tr, glm::vec3(4, 0, 0));
-  test5->draw(_shader, tr, 100);
-  tr = glm::translate(tr, glm::vec3(4, 0, 0));
+  tr = glm::translate(tr, glm::vec3(2, 0, 0));
+  test4->draw(_shader, tr, 0);
+  tr = glm::translate(tr, glm::vec3(2, 0, 0));
   test6->draw(_shader, trr, 0);
-
+    tr = glm::translate(tr, glm::vec3(2, 0, 0));
+  test2->draw(_shader, tr, 0);
 
   glViewport(1280/2, 0,1280/2, 800);
   glClearColor(255, 0, 0, 0);
@@ -134,18 +136,17 @@ void		Graphics::drawDoubleStereo()
   glm::mat4 tr2(1);
 
   tr2 = glm::scale(tr2, glm::vec3(4, 4, 4));
+  tr2 = glm::translate(tr2, glm::vec3(-25, 0, -25));
   test->draw(_shader, tr2, 0);
-  tr2 = glm::translate(tr2, glm::vec3(4, 0, 0));
+  tr2 = glm::translate(tr2, glm::vec3(2, 0, 0));
   test2->draw(_shader, tr2, 0);
-  tr2 = glm::translate(tr2, glm::vec3(4, 0, 0));
+  tr2 = glm::translate(tr2, glm::vec3(2, 0, 0));
   test3->draw(_shader, tr2, 0);
-  tr2 = glm::translate(tr2, glm::vec3(4, 0, 0));
+  tr2 = glm::translate(tr2, glm::vec3(2, 0, 0));
   test4->draw(_shader, tr2, 0);
-  tr2 = glm::translate(tr2, glm::vec3(4, 0, 0));
-  test5->draw(_shader, tr2, 0);
+  tr2 = glm::translate(tr2, glm::vec3(2, 0,0));
+  test4->draw(_shader, tr2, 0);
 
-  tr2 = glm::translate(tr2, glm::vec3(4, 0, 0));
-  test6->draw(_shader, trr, 0);
 }
 
 void		Graphics::drawOneStereo()
