@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 15:52:43 2014 Mathieu Choquart
-// Last update Thu May 15 08:52:13 2014 Remi telenczak
+// Last update Fri May 16 00:27:09 2014 Remi telenczak
 //
 
 #ifndef			_AOBJECTPHYSIC_HPP_
@@ -33,8 +33,8 @@ AObjectPhysic(Map *map, ModelList *,EventManager *eventManager);
   virtual bool	collision(IObjectPhysic *) {}
   virtual bool	initialize();
   virtual void	display(){}
-  virtual void update(gdl::Clock const &clock, gdl::Input &input);
-  virtual void draw(gdl::AShader &shader, gdl::Clock const &clock) = 0;
+  virtual void update(gdl::Clock const &clock, gdl::Input &input) = 0;
+  virtual void draw(gdl::AShader &shader, gdl::Clock const &clock);
   void		translate(glm::vec3 const &v);
   void		rotate(glm::vec3 const& axis, float angle);
   void		scale(glm::vec3 const& scale);

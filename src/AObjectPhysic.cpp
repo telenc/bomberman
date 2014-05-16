@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 16:17:56 2014 Mathieu Choquart
-// Last update Thu May 15 08:51:53 2014 Remi telenczak
+// Last update Fri May 16 00:36:03 2014 Remi telenczak
 //
 
 #include	"AObjectPhysic.hpp"
@@ -31,16 +31,11 @@ bool	AObjectPhysic::initialize()
   return true;
 }
 
-void AObjectPhysic::update(gdl::Clock const &clock, gdl::Input &input)
+void AObjectPhysic::draw(gdl::AShader &shader, gdl::Clock const &clock)
 {
 
 }
-/*
-void draw(gdl::AShader &shader, gdl::Clock const &clock) = 0
-{
 
-}
-*/
 void AObjectPhysic::translate(glm::vec3 const &v)
 {
   this->_position += v;

@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Wed May  7 16:03:12 2014 Steven Martreux
-// Last update Thu May 15 08:59:44 2014 Remi telenczak
+// Last update Fri May 16 00:30:45 2014 Remi telenczak
 //
 
 #ifndef		_ABOMB_HPP_
@@ -23,7 +23,7 @@ public:
   ABomb(Map *, ModelList *, EventManager *);
   ~ABomb();
   virtual void createDeflag() = 0;
-  void update(void);
+  virtual void update(gdl::Clock const &clock, gdl::Input &input) = 0;
   void setPo(int po);
   int	getPo(void) const;
   void setDamage(int damage);

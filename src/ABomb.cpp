@@ -5,17 +5,12 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Wed May  7 16:00:11 2014 Steven Martreux
-// Last update Thu May 15 08:59:05 2014 Remi telenczak
+// Last update Fri May 16 00:30:59 2014 Remi telenczak
 //
 
 #include	"ABomb.hpp"
 
 ABomb::ABomb(Map *map, ModelList *model, EventManager *event) :AObjectPhysic(map, model, event)
-{
-
-}
-
-void	ABomb::update(void)
 {
 
 }
