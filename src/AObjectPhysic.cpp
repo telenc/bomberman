@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 16:17:56 2014 Mathieu Choquart
-// Last update Fri May 16 00:36:03 2014 Remi telenczak
+// Last update Fri May 16 00:57:02 2014 Remi telenczak
 //
 
 #include	"AObjectPhysic.hpp"
@@ -31,9 +31,32 @@ bool	AObjectPhysic::initialize()
   return true;
 }
 
+void AObjectPhysic::setSkin(gdl::Model *nskin)
+{
+  this->_skin = nskin;
+}
+
+gdl::Model	*AObjectPhysic::getSkin() const
+{
+  return this->_skin;
+}
+
 void AObjectPhysic::draw(gdl::AShader &shader, gdl::Clock const &clock)
 {
+  this->_skin->draw(shader, this->getTransformation(), 0);
+}
 
+glm::mat4	AObjectPhysic::getTransformation()
+{
+  glm::mat4 transform(1);
+
+  transform = glm::rotate(transform, _rotation.x, glm::vec3(1, 0, 0));
+  transform = glm::rotate(transform, _rotation.y, glm::vec3(0, 1, 0));
+
+  transform = glm::rotate(transform, _rotation.z, glm::vec3(0, 0, 1));
+  transform = glm::translate(transform, _position);
+  transform = glm::scale(transform, _scale);
+  return (transform);
 }
 
 void AObjectPhysic::translate(glm::vec3 const &v)
