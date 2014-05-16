@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 06:17:30 2014 Remi telenczak
-// Last update Fri May 16 02:34:13 2014 Remi telenczak
+// Last update Fri May 16 03:07:46 2014 Remi telenczak
 //
 
 #include	"ModelList.hpp"
@@ -18,7 +18,7 @@ ModelList::ModelList()
   this->list.push_back(std::make_pair("marvin", mod));
   mod = this->createModel("./assets/cubeWall.fbx");
   this->list.push_back(std::make_pair("cube1", mod));
-  mod = this->createModel("./assets/cubeWall2.fbx");
+  mod = this->createModel("./assets/cubePOWA.fbx");
   this->list.push_back(std::make_pair("cube2", mod));
   mod = this->createModel("./assets/cubeWall3.fbx");
   this->list.push_back(std::make_pair("cube3", mod));
@@ -32,7 +32,8 @@ ModelList::ModelList()
   this->list.push_back(std::make_pair("cube7", mod));
   mod = this->createModel("./assets/bombetest2.fbx");
   this->list.push_back(std::make_pair("bomb", mod));
-  mod = this->createModel("./assets/bombe2.fbx");
+  mod = this->createModel("./assets/bombe3.fbx");
+  mod->setCurrentAnim(0);
   this->list.push_back(std::make_pair("bomb2", mod));
 }
 
