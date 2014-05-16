@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 14 07:57:08 2014 Remi telenczak
-// Last update Thu May 15 07:14:56 2014 Remi telenczak
+// Last update Fri May 16 07:31:57 2014 Remi telenczak
 //
 
 #include	"CameraBomber.hpp"
@@ -15,8 +15,8 @@ CameraBomber::CameraBomber(gdl::BasicShader *shader) : _shader(shader)
   glm::mat4 projection;
   glm::mat4 transformation;
 
-  this->position.y = -10;
-  this->position.z = -90;
+  this->position.y = -2;
+  this->position.z = -20;
   this->rot = 4.98002;
   projection = glm::perspective(60.0f, 1280.0f/2 / 800.0f, 0.5f, 200.0f);
   transformation = glm::lookAt(this->position, glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));

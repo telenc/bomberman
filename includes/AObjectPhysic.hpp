@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 15:52:43 2014 Mathieu Choquart
-// Last update Fri May 16 00:56:47 2014 Remi telenczak
+// Last update Fri May 16 07:44:01 2014 Remi telenczak
 //
 
 #ifndef			_AOBJECTPHYSIC_HPP_
@@ -19,7 +19,7 @@
 # include		<Model.hh>
 # include		<BasicShader.hh>
 # include		"IObjectPhysic.hh"
-
+# include	<vector>
 
 class EventManager;
 class Map;
@@ -34,7 +34,8 @@ AObjectPhysic(Map *map, ModelList *,EventManager *eventManager);
   virtual bool	initialize();
   virtual void	display(){}
   virtual void update(gdl::Clock const &clock, gdl::Input &input) = 0;
-  virtual void draw(gdl::AShader &shader, gdl::Clock const &clock);
+  void draw(gdl::AShader &shader, gdl::Clock const &clock);
+  bool		collision(AObjectPhysic *object);
   void		translate(glm::vec3 const &v);
   void		rotate(glm::vec3 const& axis, float angle);
   void		scale(glm::vec3 const& scale);
@@ -51,6 +52,7 @@ AObjectPhysic(Map *map, ModelList *,EventManager *eventManager);
   double	get_scay() const;
   double	get_scaz() const;
   int		get_height() const;
+  int		get_depth() const;
   int		get_width() const;
   gdl::Model	*getSkin() const;
   void		setSkin(gdl::Model *);
@@ -71,12 +73,22 @@ AObjectPhysic(Map *map, ModelList *,EventManager *eventManager);
   void		set_scay(double y);
   void		set_scaz(double z);
   void		set_height(int height);
+  void		set_depth(int depth);
   void		set_width(int width);
   void		set_graphic(Graphics *graphic);
   void		set_color(int color);
   void		set_map(Map *map);
   void		set_eventManager(EventManager *eventManager);
   glm::mat4	getTransformation();
+  glm::vec3	getCornerOne();
+  glm::vec3	getCornerTwo();
+  glm::vec3	getCornerThree();
+  glm::vec3	getCornerFour();
+  glm::vec3	getCornerFive();
+  glm::vec3	getCornerSix();
+  glm::vec3	getCornerSeven();
+  glm::vec3	getCornerHeight();
+  std::vector<glm::vec3> getAllCorner();
 protected:
   glm::vec3	_position;
   glm::vec3	_rotation;
@@ -84,6 +96,7 @@ protected:
   glm::vec3	_speed;
   int		_height;
   int		_width;
+  int		_depth;
   Graphics	*_graphic;
   int		_color;
   Map		*_map;

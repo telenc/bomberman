@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:10:16 2014 thomas mendez
-// Last update Thu May 15 07:26:24 2014 Remi telenczak
+// Last update Fri May 16 07:29:35 2014 Remi telenczak
 //
 
 #ifndef		GRAPHICS_HH__BOMBER
@@ -30,7 +30,7 @@
 #include	<glm/glm.hpp>
 #include	<glm/gtc/matrix_transform.hpp>
 # include	"CameraBomber.hpp"
-
+#include	"DefaultWall.hpp"
 class AObjectPhysic;
 class		Graphics
 {
@@ -51,9 +51,11 @@ protected:
   gdl::Input		_input;
   std::vector<AObjectPhysic*>	_objects;
   gdl::SdlContext	_context;
-  gdl::Model		*test;
+
   ModelList *_modelList;
   CameraBomber	       *_camera;
+  DefaultWall	*test;
+  DefaultWall	*test2;
 };
 
 #endif

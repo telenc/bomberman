@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:28:07 2014 Remi telenczak
-// Last update Fri May 16 00:32:09 2014 Remi telenczak
+// Last update Fri May 16 07:27:39 2014 Remi telenczak
 //
 
 #ifndef		_DEFAULTWALL
@@ -13,7 +13,7 @@
 
 # include	"ABloc.hpp"
 
-class DefaultWall : ABloc
+class DefaultWall : public ABloc
 {
 public:
   DefaultWall(Map *, ModelList *, EventManager *);

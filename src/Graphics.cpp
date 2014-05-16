@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Fri May 16 05:21:55 2014 Remi telenczak
+// Last update Fri May 16 07:39:19 2014 Remi telenczak
 //
 
 
@@ -32,7 +32,6 @@
 
 Graphics::Graphics()
 {
-
 }
 
 Graphics::~Graphics()
@@ -43,6 +42,8 @@ Graphics::~Graphics()
 void		Graphics::setModelList(ModelList *mod)
 {
   this->_modelList = mod;
+  this->test = new DefaultWall(NULL, mod, NULL);
+  this->test2 = new DefaultWall(NULL, mod, NULL);
 }
 
 bool		Graphics::initialize()
@@ -79,13 +80,13 @@ bool		Graphics::update()
 void		Graphics::inputUpdate()
 {
   if (_input.getKey(SDLK_UP))
-    this->_camera->translate(0, 0, -1);
+    this->test2->translate(glm::vec3(0, 0, -0.01));
   if (_input.getKey(SDLK_DOWN))
-    this->_camera->translate(0, 0, 1);
+    this->test2->translate(glm::vec3(0, 0, 0.01));
   if (_input.getKey(SDLK_LEFT))
-    this->_camera->translate(-1, 0, 0);
+    this->test2->translate(glm::vec3(-0.01, 0, 0));
   if (_input.getKey(SDLK_RIGHT))
-    this->_camera->translate(1, 0, 0);
+    this->test2->translate(glm::vec3(0.01, 0, 0));
   if (_input.getKey(SDLK_a))
     this->_camera->changeRot(0.01);
   if (_input.getKey(SDLK_z))
@@ -98,54 +99,18 @@ void		Graphics::inputUpdate()
 
 void		Graphics::drawDoubleStereo()
 {
-  gdl::Model *test = this->_modelList->getModel("cube1");
-  gdl::Model *test2 = this->_modelList->getModel("cube4");
-  gdl::Model *test3 = this->_modelList->getModel("cube3");
-  gdl::Model *test4 = this->_modelList->getModel("cube4");
-  gdl::Model *test5 = this->_modelList->getModel("bomb2");
-  gdl::Model *test6 = this->_modelList->getModel("cube4");
-  glm::mat4 tr(1);
-  glm::mat4 trr(1);
   glViewport(0, 0, 1280/2, 800);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glClearColor(255, 0, 0, 0);
 
   _shader.setUniform("view", this->_camera->getTransformationLeft());
   _shader.setUniform("projection", this->_camera->getPerspective());
-  trr = glm::translate(trr, glm::vec3(0, -5, 0));
-  trr = glm::scale(trr, glm::vec3(100, 1, 100));
-  tr = glm::scale(tr, glm::vec3(4, 4, 4));
-  tr = glm::translate(tr, glm::vec3(-25, 0, -25));
-  test->draw(_shader, tr, 0);
-  tr = glm::translate(tr, glm::vec3(2, 0, 0));
-  test2->draw(_shader, tr, 0);
-  tr = glm::translate(tr, glm::vec3(2, 0, 0));
-  test3->draw(_shader, tr, 0);
-  tr = glm::translate(tr, glm::vec3(2, 0, 0));
-  test4->draw(_shader, tr, 0);
-  tr = glm::translate(tr, glm::vec3(2, 0, 0));
-  test4->draw(_shader, tr, 0);
-  tr = glm::translate(tr, glm::vec3(2, 0, 0));
-  test6->draw(_shader, trr, 0);
-    tr = glm::translate(tr, glm::vec3(2, 0, 0));
-  test2->draw(_shader, tr, 0);
+
+
 
   glViewport(1280/2, 0,1280/2, 800);
   glClearColor(255, 0, 0, 0);
   _shader.setUniform("view", this->_camera->getTransformationRight());
-  glm::mat4 tr2(1);
-
-  tr2 = glm::scale(tr2, glm::vec3(4, 4, 4));
-  tr2 = glm::translate(tr2, glm::vec3(-25, 0, -25));
-  test->draw(_shader, tr2, 0);
-  tr2 = glm::translate(tr2, glm::vec3(2, 0, 0));
-  test2->draw(_shader, tr2, 0);
-  tr2 = glm::translate(tr2, glm::vec3(2, 0, 0));
-  test3->draw(_shader, tr2, 0);
-  tr2 = glm::translate(tr2, glm::vec3(2, 0, 0));
-  test4->draw(_shader, tr2, 0);
-  tr2 = glm::translate(tr2, glm::vec3(2, 0,0));
-  test4->draw(_shader, tr2, 0);
 
 }
 
@@ -157,12 +122,9 @@ void		Graphics::drawOneStereo()
 
       _shader.setUniform("view", this->_camera->getTransformationLeft());
       _shader.setUniform("projection", this->_camera->getPerspective());
-      gdl::Model *test2 = this->_modelList->getModel("cube2");
-      glm::mat4 tr11(1);
-      test2->draw(_shader, tr11, 0);
-      tr11 = glm::translate(tr11, glm::vec3(10, 0, 0));
-      tr11 = glm::scale(tr11, glm::vec3(4, 4, 4));
-      test2->draw(_shader, tr11, 0);
+      this->test->draw(_shader, _clock);
+      this->test2->draw(_shader, _clock);
+      std::cout << test->collision(test2) << std::endl;
 }
 
 void		Graphics::draw()
