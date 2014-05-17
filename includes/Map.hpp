@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Thu May 15 07:40:06 2014 Remi telenczak
+// Last update Thu May 15 17:43:54 2014 dedicker remi
 //
 
 #ifndef MAP_HPP_
@@ -23,16 +23,14 @@ public:
   ~Map();
   void	update();
   void setMap(int x, int y, AObjectPhysic *bloc);
-AObjectPhysic *getObject(int , int) const;
+  AObjectPhysic *getObject(int , int) const;
   int	getWidth() const;
   int	getHeight() const;
   std::vector<Player*> getIa() const;
   std::vector< std::vector<AObjectPhysic *> > getMap() const;
-  //std::vector< std::vector<int> > getMap() const;
   Player *getPlayer() const;
 private:
   std::vector< std::vector<AObjectPhysic *> > _map;
-  //std::vector< std::vector<int> > _map;
   std::vector <Player *> _ia;
   int		_height;
   int		_width;
