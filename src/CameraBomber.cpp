@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 14 07:57:08 2014 Remi telenczak
-// Last update Fri May 16 07:31:57 2014 Remi telenczak
+// Last update Fri May 16 13:51:21 2014 Remi telenczak
 //
 
 #include	"CameraBomber.hpp"
@@ -70,14 +70,7 @@ glm::mat4		CameraBomber::getTransformation()
   glm::vec3	vec;
   glm::mat4 transformation;
 
-  vec = this->_occulus->getOrientation();
-
-  if (this->stereo == 2)
-    {
-      transformation = glm::rotate(transformation, -1 * vec.x, glm::vec3(1, 0, 0));
-      transformation = glm::rotate(transformation, -1 * vec.y, glm::vec3(0, 1, 0));
-      transformation = glm::rotate(transformation, -1 * vec.z, glm::vec3(0, 0, 1));
-    }
+      transformation = glm::rotate(transformation, this->rot, glm::vec3(0, 1, 0));
   transformation = glm::translate(transformation, position);
 
   return transformation;

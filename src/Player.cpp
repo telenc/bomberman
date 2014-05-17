@@ -5,10 +5,11 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:27:38 2014 dedicker remi
-// Last update Fri May 16 00:35:23 2014 Remi telenczak
+// Last update Fri May 16 13:48:57 2014 Remi telenczak
 //
 
 #include "Player.hpp"
+
 
 Player::Player(int x, int y, int z, Map *map, ModelList *model, EventManager *event) : APlayer(x, y, z, map, model, event)
 {

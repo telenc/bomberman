@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 16:17:56 2014 Mathieu Choquart
-// Last update Fri May 16 07:39:46 2014 Remi telenczak
+// Last update Fri May 16 13:40:41 2014 Remi telenczak
 //
 
 #include	"AObjectPhysic.hpp"
@@ -43,7 +43,7 @@ gdl::Model	*AObjectPhysic::getSkin() const
 
 void AObjectPhysic::draw(gdl::AShader &shader, gdl::Clock const &clock)
 {
-  this->_skin->draw(shader, this->getTransformation(), 0);
+  this->_skin->draw(shader, this->getTransformation(), clock.getElapsed());
 }
 
 glm::mat4	AObjectPhysic::getTransformation()

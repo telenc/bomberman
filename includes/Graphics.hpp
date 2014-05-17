@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:10:16 2014 thomas mendez
-// Last update Fri May 16 07:29:35 2014 Remi telenczak
+// Last update Fri May 16 13:35:29 2014 Remi telenczak
 //
 
 #ifndef		GRAPHICS_HH__BOMBER
@@ -31,6 +31,9 @@
 #include	<glm/gtc/matrix_transform.hpp>
 # include	"CameraBomber.hpp"
 #include	"DefaultWall.hpp"
+
+class Player;
+
 class AObjectPhysic;
 class		Graphics
 {
@@ -56,6 +59,7 @@ protected:
   CameraBomber	       *_camera;
   DefaultWall	*test;
   DefaultWall	*test2;
+  Player *player;
 };
 
 #endif

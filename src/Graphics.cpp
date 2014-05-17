@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Fri May 16 07:39:19 2014 Remi telenczak
+// Last update Sat May 17 06:30:41 2014 Remi telenczak
 //
 
 
@@ -29,7 +29,7 @@
 #include	<glm/gtc/matrix_transform.hpp>
 #include	"Graphics.hpp"
 #include "GL/glut.h"
-
+#include "Player.hpp"
 Graphics::Graphics()
 {
 }
@@ -44,6 +44,12 @@ void		Graphics::setModelList(ModelList *mod)
   this->_modelList = mod;
   this->test = new DefaultWall(NULL, mod, NULL);
   this->test2 = new DefaultWall(NULL, mod, NULL);
+  test2->setSkin(mod->getModel("cube6"));
+  this->player = new Player(0, 0, 0, NULL, mod, NULL);
+  //test2->set_x(test->get_x());
+  //test2->set_y(test->get_y());
+  //test2->set_z(test->get_z());
+  //test2->scale(glm::vec3(1.2, 0.01, 1.2));
 }
 
 bool		Graphics::initialize()
@@ -80,17 +86,41 @@ bool		Graphics::update()
 void		Graphics::inputUpdate()
 {
   if (_input.getKey(SDLK_UP))
-    this->test2->translate(glm::vec3(0, 0, -0.01));
+    this->_camera->translate(0, 0, -0.1);
   if (_input.getKey(SDLK_DOWN))
-    this->test2->translate(glm::vec3(0, 0, 0.01));
+    this->_camera->translate(0, 0, 0.1);
   if (_input.getKey(SDLK_LEFT))
-    this->test2->translate(glm::vec3(-0.01, 0, 0));
+    this->_camera->translate(-0.1, 0, 0);
   if (_input.getKey(SDLK_RIGHT))
-    this->test2->translate(glm::vec3(0.01, 0, 0));
-  if (_input.getKey(SDLK_a))
-    this->_camera->changeRot(0.01);
+    this->_camera->translate(0.1, 0, 0);
   if (_input.getKey(SDLK_z))
+    {
+      this->test2->translate(glm::vec3(0, -0.01, 0));
+      std::cout << this->test2->get_y() << std::endl;
+    }
+  if (_input.getKey(SDLK_s))
+    {
+    this->test2->translate(glm::vec3(0, 0.01, 0));
+      std::cout << this->test2->get_y() << std::endl;
+    }
+  if (_input.getKey(SDLK_q))
+    this->test2->translate(glm::vec3(-0.01, 0, 0));
+  if (_input.getKey(SDLK_d))
+    this->test2->translate(glm::vec3(0.01, 0, 0));
+
+  if (_input.getKey(SDLK_m))
+    this->_camera->translate(0, 0.1, 0);
+  if (_input.getKey(SDLK_p))
+    this->_camera->translate(0, -0.1, 0);
+  if (_input.getKey(SDLK_i))
+    this->_camera->changeRot(0.01);
+  if (_input.getKey(SDLK_o))
     this->_camera->changeRot(-0.01);
+
+  //if (_input.getKey(SDLK_a))
+  //  this->_camera->changeRot(0.01);
+  //if (_input.getKey(SDLK_z))
+  //  this->_camera->changeRot(-0.01);
   if (_input.getKey(SDLK_e))
     this->_camera->changeStereo(1);
   if (_input.getKey(SDLK_r))
@@ -120,10 +150,11 @@ void		Graphics::drawOneStereo()
       glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
       glClearColor(255, 0, 0, 0);
 
-      _shader.setUniform("view", this->_camera->getTransformationLeft());
+      _shader.setUniform("view", this->_camera->getTransformation());
       _shader.setUniform("projection", this->_camera->getPerspective());
       this->test->draw(_shader, _clock);
       this->test2->draw(_shader, _clock);
+      this->player->draw(_shader, _clock);
       std::cout << test->collision(test2) << std::endl;
 }
 
