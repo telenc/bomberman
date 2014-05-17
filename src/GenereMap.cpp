@@ -1,11 +1,11 @@
 //
 // Random.cpp for Random.cpp in /home/dedick_r/Bomberman
-// 
+//
 // Made by dedicker remi
 // Login   <dedick_r@epitech.net>
-// 
+//
 // Started on  Wed May  7 17:53:20 2014 dedicker remi
-// Last update Sat May 17 15:36:33 2014 dedicker remi
+// Last update Sat May 17 07:26:29 2014 Remi telenczak
 //
 
 #include	<iostream>
@@ -13,6 +13,8 @@
 #include	<ctime>
 #include	<cstdlib>
 #include	"GenereMap.hpp"
+#include	"Player.hpp"
+#include	"EventManager.hpp"
 
 void	GenereMap::putInside()
 {
@@ -52,7 +54,7 @@ Map	*GenereMap::getMap() const
 void	GenereMap::putIa()
 {
   int	size;
-  
+
   size = (_height * _width) / 5;
   if (size < _ia)
     std::cout << "Map trop petite par rapport au nombre d'IA" << std::endl;
@@ -67,7 +69,7 @@ void	GenereMap::putWall()
   int	i;
   int	y;
   int	wall;
-  
+  DefaultWall	*wallObject;
   i = 0;
   while (i < _width)
     {
@@ -76,10 +78,19 @@ void	GenereMap::putWall()
       while (y < _height)
 	{
 	  if (i == 0 || y == 0 || i == (_width - 1) || y == (_height - 1))
-	    this->_map->setMap(i, y, NULL/* Mur */);
+	    {
+	      wallObject = new DefaultWall(this->_map, this->_model, this->_event);
+	      wallObject->set_x(i * 2);
+	      wallObject->set_z(y * 2);
+	      this->_map->setMap(i, y, wallObject);
+	    }
 	  else if (wall == 1 && (y < (_width - 1)) && (i % 2 == 0))
 	    {
-	      this->_map->setMap(i, y, NULL/* Mur */);
+	      wallObject = new DefaultWall(this->_map, this->_model, this->_event);
+	      wallObject->setSkin(_model->getModel("cube1"));
+	      wallObject->set_x(i * 2);
+	      wallObject->set_z(y * 2);
+	      this->_map->setMap(i, y, wallObject);
 	      wall = 0;
 	    }
 	  else
@@ -115,10 +126,10 @@ void	GenereMap::display()
 */
 void	GenereMap::putPlayer()
 {
-  this->_map->setMap(1, 1, NULL);
+  this->_map->setMap(1, 1, new Player(1, 0, 1, this->_map, this->_model, this->_event));
 }
 
-GenereMap::GenereMap(int width, int height, int ia) : _width(width), _height(height), _ia(ia)
+GenereMap::GenereMap(int width, int height, int ia, EventManager *event, ModelList *model) : _width(width), _height(height), _ia(ia), _event(event), _model(model)
 {
   int	i;
   int	y;
@@ -126,7 +137,7 @@ GenereMap::GenereMap(int width, int height, int ia) : _width(width), _height(hei
   _pos = 0;
   _map = new Map(width, height);
   //  std::cout << "Nombre possible d'IA : " << ((width * height) / 5) << std::endl;
-  //  putWall();
+  putWall();
   putPlayer();
   std::cout << "ici" << std::endl;
   //  putIa();

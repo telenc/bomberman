@@ -5,26 +5,29 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
-// Last update Fri May 16 07:22:13 2014 Remi telenczak
+// Last update Sat May 17 06:57:16 2014 Remi telenczak
 //
 
 #include <iostream>
 #include	"Menu.hpp"
 #include	"Graphics.hpp"
 #include "ModelList.hpp"
-
+#include "GenereMap.hpp"
+#include "Map.hpp"
 int	main()
 {
   Menu menu;
   Graphics engine;
   ModelList *mod;
-
   engine.initialize();
   mod = new ModelList();
   engine.setModelList(mod);
+  GenereMap gen(21, 21, 0, NULL, mod);
+  Map *m = gen.getMap();
   while (engine.update())
     {
-      engine.draw();
+
+      engine.draw(m);
     }
   return (0);
 }

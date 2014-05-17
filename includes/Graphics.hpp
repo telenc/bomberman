@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:10:16 2014 thomas mendez
-// Last update Fri May 16 13:35:29 2014 Remi telenczak
+// Last update Sat May 17 07:11:43 2014 Remi telenczak
 //
 
 #ifndef		GRAPHICS_HH__BOMBER
@@ -31,7 +31,7 @@
 #include	<glm/gtc/matrix_transform.hpp>
 # include	"CameraBomber.hpp"
 #include	"DefaultWall.hpp"
-
+#include	"Map.hpp"
 class Player;
 
 class AObjectPhysic;
@@ -42,11 +42,11 @@ public:
   ~Graphics();
 bool		initialize();
 void		setModelList(ModelList *model);
-void		draw();
+void		draw(Map *);
   bool		update();
   void		inputUpdate();
-  void		drawDoubleStereo();
-  void		drawOneStereo();
+  void		drawDoubleStereo(Map *map);
+  void		drawOneStereo(Map *map);
 protected:
   gdl::BasicShader	_shader;
   gdl::Texture		_texture;

@@ -1,11 +1,11 @@
 //
 // Random.hpp for Random.hpp in /home/dedick_r/Bomberman
-// 
+//
 // Made by dedicker remi
 // Login   <dedick_r@epitech.net>
-// 
+//
 // Started on  Wed May  7 17:51:24 2014 dedicker remi
-// Last update Thu May 15 17:45:07 2014 dedicker remi
+// Last update Sat May 17 06:50:31 2014 Remi telenczak
 //
 
 #ifndef GENEREMAP_HPP_
@@ -16,7 +16,7 @@
 class GenereMap
 {
 public:
-  GenereMap(int width, int height, int ia);
+  GenereMap(int width, int height, int ia, EventManager *, ModelList *);
   ~GenereMap();
   //  void display();
   Map	*getMap() const;
@@ -31,6 +31,8 @@ private:
   int	_width;
   int	_ia;
   int	_pos;
+  EventManager *_event;
+  ModelList *_model;
 };
 
 #endif

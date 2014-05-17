@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Sat May 17 06:30:41 2014 Remi telenczak
+// Last update Sat May 17 07:11:52 2014 Remi telenczak
 //
 
 
@@ -113,9 +113,9 @@ void		Graphics::inputUpdate()
   if (_input.getKey(SDLK_p))
     this->_camera->translate(0, -0.1, 0);
   if (_input.getKey(SDLK_i))
-    this->_camera->changeRot(0.01);
+    this->_camera->changeRot(0.5);
   if (_input.getKey(SDLK_o))
-    this->_camera->changeRot(-0.01);
+    this->_camera->changeRot(-0.5);
 
   //if (_input.getKey(SDLK_a))
   //  this->_camera->changeRot(0.01);
@@ -127,7 +127,7 @@ void		Graphics::inputUpdate()
     this->_camera->changeStereo(2);
 }
 
-void		Graphics::drawDoubleStereo()
+void		Graphics::drawDoubleStereo(Map *map)
 {
   glViewport(0, 0, 1280/2, 800);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -136,15 +136,16 @@ void		Graphics::drawDoubleStereo()
   _shader.setUniform("view", this->_camera->getTransformationLeft());
   _shader.setUniform("projection", this->_camera->getPerspective());
 
-
+      map->draw(_shader, _clock);
 
   glViewport(1280/2, 0,1280/2, 800);
   glClearColor(255, 0, 0, 0);
   _shader.setUniform("view", this->_camera->getTransformationRight());
 
+      map->draw(_shader, _clock);
 }
 
-void		Graphics::drawOneStereo()
+void		Graphics::drawOneStereo(Map *map)
 {
       glViewport(0, 0, 1280, 800);
       glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -152,19 +153,20 @@ void		Graphics::drawOneStereo()
 
       _shader.setUniform("view", this->_camera->getTransformation());
       _shader.setUniform("projection", this->_camera->getPerspective());
-      this->test->draw(_shader, _clock);
-      this->test2->draw(_shader, _clock);
-      this->player->draw(_shader, _clock);
-      std::cout << test->collision(test2) << std::endl;
+      //this->test->draw(_shader, _clock);
+      //this->test2->draw(_shader, _clock);
+      //this->player->draw(_shader, _clock);
+      //std::cout << test->collision(test2) << std::endl;
+      map->draw(_shader, _clock);
 }
 
-void		Graphics::draw()
+void		Graphics::draw(Map *map)
 {
   _shader.bind();
 
   if (this->_camera->getStereo() == 2)
-    drawDoubleStereo();
+    drawDoubleStereo(map);
   else
-    drawOneStereo();
+    drawOneStereo(map);
   _context.flush();
 }
