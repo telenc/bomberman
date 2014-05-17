@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 // 
 // Started on  Wed May  7 17:53:20 2014 dedicker remi
-// Last update Sat May 17 15:31:51 2014 dedicker remi
+// Last update Sat May 17 15:36:33 2014 dedicker remi
 //
 
 #include	<iostream>
@@ -93,7 +93,7 @@ void	GenereMap::putWall()
     }
 }
 
-
+/*
 void	GenereMap::display()
 {
   int i;
@@ -112,7 +112,7 @@ void	GenereMap::display()
       i++;
     }
 }
-
+*/
 void	GenereMap::putPlayer()
 {
   this->_map->setMap(1, 1, NULL);
