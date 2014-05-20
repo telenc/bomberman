@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May  7 06:31:56 2014 Remi telenczak
-// Last update Wed May  7 08:37:38 2014 Remi telenczak
+// Last update Sat May 17 09:41:14 2014 Remi telenczak
 //
 
 #ifndef		_EVENT_MANAGER

@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 05:18:23 2014 Remi telenczak
-// Last update Thu May 15 07:15:28 2014 Remi telenczak
+// Last update Tue May 20 07:45:45 2014 Remi telenczak
 //
 
 #include	"Occulus.hpp"
@@ -20,7 +20,6 @@ void	Occulus::init()
   OVR::System::Init();
   pFusionResult = new OVR::SensorFusion();
   pManager = *OVR::DeviceManager::Create();
-  //  std::cout << "On init l'occulus" << std::endl;
   pHMD = *pManager->EnumerateDevices<OVR::HMDDevice>().CreateDevice();
   OVR::System::Init(OVR::Log::ConfigureDefaultLog(OVR::LogMask_All));
   if (pHMD)
@@ -118,6 +117,6 @@ glm::mat4 Occulus::getPerspective()
 {
   glm::mat4 projec;
 
-  projec = glm::perspective(Sconfig.GetYFOVDegrees()/2, (float)Info.HResolution / 2.0f / (float)Info.VResolution, 0.5f, 500.f);
+  projec = glm::perspective(Sconfig.GetYFOVDegrees()/2, (float)Info.HResolution / 2.0f / (float)Info.VResolution, 2.0f, 500.f);
   return projec;
 }

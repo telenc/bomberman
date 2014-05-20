@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May  7 06:31:46 2014 Remi telenczak
-// Last update Tue May 13 04:02:30 2014 Remi telenczak
+// Last update Mon May 19 05:00:57 2014 Remi telenczak
 //
 
 #include	"EventManager.hpp"
@@ -19,7 +19,7 @@ void CLASS:FUNC(void *param)
 }
 
 listen :
-CallBack call = new CallBack<CLASS>(this, &CLASS:FUNC);
+ICallBack call = new CallBack<CLASS>(this, &CLASS:FUNC);
 event->listenEvent("evenement", call);
 
 remove :
@@ -39,12 +39,20 @@ EventManager::~EventManager()
 {
 
 }
+#include <iostream>
 
 void	EventManager::listenEvent(std::string event, ICallBack *callBack)
 {
-  this->_listEvent.push_back(std::make_pair(event, callBack));
+  std::cout<< "Listen " << event<< std::endl;
+  //if (callBack == NULL)
+  // std::cout << "Pk il est null" << std::endl;
+  //std::pair<std::string, ICallBack *> test;
+  //test = std::make_pair<std::string, ICallBack *>(event, callBack);
+  //_listEvent.push_back(std::pair<std::string, ICallBack *>(event, callBack));
+  this->_listEvent.push_back(std::make_pair<std::string, ICallBack *>(event, callBack));
+  std::cout << "Evnd " << std::endl;
 }
-#include <iostream>
+
 
 void	EventManager::dispatchEvent(std::string event, void *data)
 {
@@ -63,7 +71,8 @@ void	EventManager::dispatchEvent(std::string event, void *data)
     {
       tmp = listCallBack.front();
       listCallBack.pop_front();
-      tmp->call(data);
+      if (tmp)
+	tmp->call(data);
     }
 }
 

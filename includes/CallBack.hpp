@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May  7 07:55:58 2014 Remi telenczak
-// Last update Wed May  7 08:15:56 2014 Remi telenczak
+// Last update Mon May 19 05:02:09 2014 Remi telenczak
 //
 
 #ifndef		_CALLBACK
@@ -14,6 +14,7 @@
 # include	"ICallBack.hpp"
 # include	<unistd.h>
 
+class Player;
 template<class T>
 class CallBack : public ICallBack
 {
@@ -26,7 +27,8 @@ public:
   {};
   void call(void *m_util)
   {
-    (this->m_object->*this->m_methode)(m_util);
+    if (this->m_object && this->m_methode)
+      (this->m_object->*this->m_methode)(m_util);
   }
 };
 

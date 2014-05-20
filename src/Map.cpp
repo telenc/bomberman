@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Sat May 17 07:04:08 2014 Remi telenczak
+// Last update Mon May 19 06:47:00 2014 Remi telenczak
 //
 
 #include <cstdlib>
@@ -46,6 +46,7 @@ void	Map::draw(gdl::BasicShader shader, gdl::Clock clock)
   std::vector<std::vector<AObjectPhysic *> >::iterator itO;
   std::vector<AObjectPhysic *>::iterator itT;
 
+  std::cout << "Player : " << _player->get_x() <<"/"<<_player->get_y()<<"/"<< _player->get_z() << std::endl;
   itO = this->_map.begin();
   while (itO != this->_map.end())
     {
@@ -58,6 +59,7 @@ void	Map::draw(gdl::BasicShader shader, gdl::Clock clock)
 	}
       itO++;
     }
+  this->_player->draw(shader, clock);
 }
 
 std::vector< std::vector<AObjectPhysic *> > Map::getMap() const

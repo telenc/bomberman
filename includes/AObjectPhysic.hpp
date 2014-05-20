@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 15:52:43 2014 Mathieu Choquart
-// Last update Fri May 16 07:44:01 2014 Remi telenczak
+// Last update Mon May 19 06:12:13 2014 Remi telenczak
 //
 
 #ifndef			_AOBJECTPHYSIC_HPP_
@@ -16,6 +16,7 @@
 # include		<iostream>
 # include		<glm/glm.hpp>
 # include		<glm/gtc/matrix_transform.hpp>
+# include		<glm/gtx/rotate_vector.hpp>
 # include		<Model.hh>
 # include		<BasicShader.hh>
 # include		"IObjectPhysic.hh"
@@ -89,6 +90,7 @@ AObjectPhysic(Map *map, ModelList *,EventManager *eventManager);
   glm::vec3	getCornerSeven();
   glm::vec3	getCornerHeight();
   std::vector<glm::vec3> getAllCorner();
+  glm::vec3	getPosition() const;
 protected:
   glm::vec3	_position;
   glm::vec3	_rotation;
@@ -101,8 +103,9 @@ protected:
   int		_color;
   Map		*_map;
   gdl::Model	*_skin;
-  EventManager	*_eventManager;
-ModelList	*_modelList;
+  EventManager	*_event;
+  ModelList	*_modelList;
+  int test;
 };
 
 # endif

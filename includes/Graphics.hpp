@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:10:16 2014 thomas mendez
-// Last update Sat May 17 07:11:43 2014 Remi telenczak
+// Last update Tue May 20 07:48:21 2014 Remi telenczak
 //
 
 #ifndef		GRAPHICS_HH__BOMBER
@@ -32,13 +32,14 @@
 # include	"CameraBomber.hpp"
 #include	"DefaultWall.hpp"
 #include	"Map.hpp"
+#include	"EventManager.hpp"
 class Player;
 
 class AObjectPhysic;
 class		Graphics
 {
 public:
-  Graphics();
+  Graphics(EventManager *);
   ~Graphics();
 bool		initialize();
 void		setModelList(ModelList *model);
@@ -57,9 +58,8 @@ protected:
 
   ModelList *_modelList;
   CameraBomber	       *_camera;
-  DefaultWall	*test;
-  DefaultWall	*test2;
-  Player *player;
+  EventManager *_event;
+
 };
 
 #endif
