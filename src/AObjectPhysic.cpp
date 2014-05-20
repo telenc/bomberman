@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 16:17:56 2014 Mathieu Choquart
-// Last update Fri May 16 13:40:41 2014 Remi telenczak
+// Last update Tue May 20 07:05:14 2014 Remi telenczak
 //
 
 #include	"AObjectPhysic.hpp"
@@ -17,8 +17,9 @@
 AObjectPhysic::AObjectPhysic(Map *map, ModelList *modelList, EventManager *eventManager): _position(0, 0, 0), _rotation(0, 0, 0),_scale(1, 1, 1), _width(2), _height(2), _depth(2)
 {
   this->_map = map;
-  this->_eventManager = eventManager;
+  this->_event = eventManager;
   this->_modelList = modelList;
+  test =0;
 }
 
 AObjectPhysic::~AObjectPhysic()
@@ -48,21 +49,24 @@ void AObjectPhysic::draw(gdl::AShader &shader, gdl::Clock const &clock)
 
 glm::mat4	AObjectPhysic::getTransformation()
 {
-  glm::mat4 transform(1);
+  glm::mat4 transform;
+
+  transform = glm::translate(transform, _position);
+
+  transform = glm::scale(transform, _scale);
 
   transform = glm::rotate(transform, _rotation.x, glm::vec3(1, 0, 0));
-  transform = glm::rotate(transform, _rotation.y, glm::vec3(0, 1, 0));
-
+  transform = glm::rotate(transform, -1 * _rotation.y, glm::vec3(0, 1, 0));
   transform = glm::rotate(transform, _rotation.z, glm::vec3(0, 0, 1));
-  transform = glm::translate(transform, _position);
-  transform = glm::scale(transform, _scale);
+
+
   return (transform);
 }
 
 void AObjectPhysic::translate(glm::vec3 const &v)
 {
-  this->_position += v;
-  std::cout << _position.x << "  " << _position.z << std::endl;
+  glm::vec3 test = glm::rotateY(v, -1 * (_rotation.y - 180));
+  this->_position += test;
 }
 
 void AObjectPhysic::rotate(glm::vec3 const& axis, float angle)
@@ -288,7 +292,7 @@ Map		*AObjectPhysic::get_map() const
 
 EventManager	*AObjectPhysic::get_eventManager() const
 {
-    return this->_eventManager;
+    return this->_event;
 }
 
 void		AObjectPhysic::set_x(double x)
@@ -378,5 +382,10 @@ void		AObjectPhysic::set_color(int color)
 
 void		AObjectPhysic::set_eventManager(EventManager *eventManager)
 {
-    this->_eventManager = eventManager;
+    this->_event = eventManager;
+}
+
+glm::vec3	AObjectPhysic::getPosition() const
+{
+  return this->_position;
 }

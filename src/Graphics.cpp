@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Sat May 17 07:11:52 2014 Remi telenczak
+// Last update Tue May 20 07:48:39 2014 Remi telenczak
 //
 
 
@@ -30,7 +30,8 @@
 #include	"Graphics.hpp"
 #include "GL/glut.h"
 #include "Player.hpp"
-Graphics::Graphics()
+
+Graphics::Graphics(EventManager *event) : _event(event)
 {
 }
 
@@ -42,14 +43,6 @@ Graphics::~Graphics()
 void		Graphics::setModelList(ModelList *mod)
 {
   this->_modelList = mod;
-  this->test = new DefaultWall(NULL, mod, NULL);
-  this->test2 = new DefaultWall(NULL, mod, NULL);
-  test2->setSkin(mod->getModel("cube6"));
-  this->player = new Player(0, 0, 0, NULL, mod, NULL);
-  //test2->set_x(test->get_x());
-  //test2->set_y(test->get_y());
-  //test2->set_z(test->get_z());
-  //test2->scale(glm::vec3(1.2, 0.01, 1.2));
 }
 
 bool		Graphics::initialize()
@@ -62,15 +55,13 @@ bool		Graphics::initialize()
   glMatrixMode(GL_PROJECTION);
   glEnable(GL_DEPTH_TEST);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
- glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
   if (!_shader.load("./shaders/basic.fp", GL_FRAGMENT_SHADER)
       || !_shader.load("./shaders/basic.vp", GL_VERTEX_SHADER)
       || !_shader.build())
     return false;
-
   _shader.bind();
-  this->_camera = new CameraBomber(&_shader);
-
+  this->_camera = new CameraBomber(&_shader, _event);
   return true;
 }
 bool		Graphics::update()
@@ -86,41 +77,21 @@ bool		Graphics::update()
 void		Graphics::inputUpdate()
 {
   if (_input.getKey(SDLK_UP))
-    this->_camera->translate(0, 0, -0.1);
+    this->_event->dispatchEvent("keyUp", NULL);
   if (_input.getKey(SDLK_DOWN))
-    this->_camera->translate(0, 0, 0.1);
+    this->_event->dispatchEvent("keyDown", NULL);
   if (_input.getKey(SDLK_LEFT))
-    this->_camera->translate(-0.1, 0, 0);
+    this->_event->dispatchEvent("keyLeft", NULL);
   if (_input.getKey(SDLK_RIGHT))
-    this->_camera->translate(0.1, 0, 0);
-  if (_input.getKey(SDLK_z))
-    {
-      this->test2->translate(glm::vec3(0, -0.01, 0));
-      std::cout << this->test2->get_y() << std::endl;
-    }
-  if (_input.getKey(SDLK_s))
-    {
-    this->test2->translate(glm::vec3(0, 0.01, 0));
-      std::cout << this->test2->get_y() << std::endl;
-    }
+    this->_event->dispatchEvent("keyRight", NULL);
   if (_input.getKey(SDLK_q))
-    this->test2->translate(glm::vec3(-0.01, 0, 0));
+    this->_event->dispatchEvent("rotateLeft", NULL);
   if (_input.getKey(SDLK_d))
-    this->test2->translate(glm::vec3(0.01, 0, 0));
-
+    this->_event->dispatchEvent("rotateRight", NULL);
   if (_input.getKey(SDLK_m))
     this->_camera->translate(0, 0.1, 0);
   if (_input.getKey(SDLK_p))
     this->_camera->translate(0, -0.1, 0);
-  if (_input.getKey(SDLK_i))
-    this->_camera->changeRot(0.5);
-  if (_input.getKey(SDLK_o))
-    this->_camera->changeRot(-0.5);
-
-  //if (_input.getKey(SDLK_a))
-  //  this->_camera->changeRot(0.01);
-  //if (_input.getKey(SDLK_z))
-  //  this->_camera->changeRot(-0.01);
   if (_input.getKey(SDLK_e))
     this->_camera->changeStereo(1);
   if (_input.getKey(SDLK_r))
@@ -135,29 +106,28 @@ void		Graphics::drawDoubleStereo(Map *map)
 
   _shader.setUniform("view", this->_camera->getTransformationLeft());
   _shader.setUniform("projection", this->_camera->getPerspective());
+  map->draw(_shader, _clock);
 
-      map->draw(_shader, _clock);
 
   glViewport(1280/2, 0,1280/2, 800);
   glClearColor(255, 0, 0, 0);
-  _shader.setUniform("view", this->_camera->getTransformationRight());
 
-      map->draw(_shader, _clock);
+  _shader.setUniform("view", this->_camera->getTransformationRight());
+  map->draw(_shader, _clock);
+
 }
 
 void		Graphics::drawOneStereo(Map *map)
 {
-      glViewport(0, 0, 1280, 800);
-      glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-      glClearColor(255, 0, 0, 0);
+  glViewport(0, 0, 1280, 800);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  glClearColor(255, 0, 0, 0);
 
-      _shader.setUniform("view", this->_camera->getTransformation());
-      _shader.setUniform("projection", this->_camera->getPerspective());
-      //this->test->draw(_shader, _clock);
-      //this->test2->draw(_shader, _clock);
-      //this->player->draw(_shader, _clock);
-      //std::cout << test->collision(test2) << std::endl;
-      map->draw(_shader, _clock);
+
+  map->draw(_shader, _clock);
+
+  _shader.setUniform("projection", this->_camera->getPerspective());
+  _shader.setUniform("view", this->_camera->getTransformation());
 }
 
 void		Graphics::draw(Map *map)

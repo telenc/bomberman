@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:12:08 2014 dedicker remi
-// Last update Fri May 16 00:37:08 2014 Remi telenczak
+// Last update Sat May 17 09:57:13 2014 Remi telenczak
 //
 
 #ifndef _APLAYER_HPP_
@@ -16,7 +16,6 @@
 # include	<glm/gtc/matrix_transform.hpp>
 # include	<Model.hh>
 # include	<BasicShader.hh>
-# include	"EventManager.hpp"
 # include	"AObjectLife.hpp"
 //# include	"AObjectPhysic.hpp"
 # include	"Inventory.hpp"
@@ -32,7 +31,6 @@ public:
   virtual void update(gdl::Clock const &clock, gdl::Input &input) = 0;
 protected:
   Map	*_map;
-  EventManager *_event;
   Inventory *_inventory;
   int	_z;
   int	_x;

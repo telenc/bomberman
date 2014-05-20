@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:11:40 2014 dedicker remi
-// Last update Fri May 16 13:54:30 2014 Remi telenczak
+// Last update Tue May 20 07:49:11 2014 Remi telenczak
 //
 
 #include	"APlayer.hpp"
@@ -20,8 +20,12 @@ APlayer::APlayer(int x, int y, int z, Map *map, ModelList *model, EventManager *
 {
   this->_skin = model->getModel("marvin");
   this->_skin->setCurrentAnim(0);
-  this->translate(glm::vec3(5,0,0));
+  //this->translate(glm::vec3(3,0,0));
   this->scale(glm::vec3(0.005, 0.005, 0.005));
+  this->_position.x = 0;
+  this->_position.y = 0;
+  this->_position.z = 0;
+
 }
 
 APlayer::~APlayer()
