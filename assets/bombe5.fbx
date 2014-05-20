@@ -4940,7 +4940,7 @@ Objects:  {
 			Property: "LastFrame", "int", "",0
 			Property: "Width", "int", "",0
 			Property: "Height", "int", "",0
-			Property: "Path", "charptr", "", "textureBombe2.tga"
+			Property: "Path", "charptr", "", "textureBombe10(test).tga"
 			Property: "StartFrame", "int", "",0
 			Property: "StopFrame", "int", "",0
 			Property: "PlaySpeed", "double", "",1
@@ -4951,8 +4951,8 @@ Objects:  {
 			Property: "AccessMode", "enum", "",0
 		}
 		UseMipMap: 0
-		Filename: "textureBombe2.tga"
-		RelativeFilename: "textureBombe2.tga"
+		Filename: "textureBombe10(test).tga"
+		RelativeFilename: "textureBombe10(test).tga"
 	}
 	Texture: "Texture::untitled", "TextureVideoClip" {
 		Type: "TextureVideoClip"
@@ -4976,8 +4976,8 @@ Objects:  {
 			Property: "VideoProperty", "object", ""
 		}
 		Media: "Video::untitled"
-		FileName: "textureBombe2.tga""
-		RelativeFilename: "textureBombe2.tga""
+		FileName: "textureBombe10(test).tga""
+		RelativeFilename: "textureBombe10(test).tga""
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "None"
