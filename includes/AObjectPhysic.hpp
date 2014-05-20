@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 15:52:43 2014 Mathieu Choquart
-// Last update Mon May 19 06:12:13 2014 Remi telenczak
+// Last update Tue May 20 10:01:29 2014 Remi telenczak
 //
 
 #ifndef			_AOBJECTPHYSIC_HPP_
@@ -17,6 +17,7 @@
 # include		<glm/glm.hpp>
 # include		<glm/gtc/matrix_transform.hpp>
 # include		<glm/gtx/rotate_vector.hpp>
+# include		<glm/gtx/norm.hpp>
 # include		<Model.hh>
 # include		<BasicShader.hh>
 # include		"IObjectPhysic.hh"
@@ -31,13 +32,13 @@ class	AObjectPhysic : public	IObjectPhysic
 public:
 AObjectPhysic(Map *map, ModelList *,EventManager *eventManager);
   ~AObjectPhysic();
-  virtual bool	collision(IObjectPhysic *) {}
+  virtual bool	collision(IObjectPhysic *) { return false; }
   virtual bool	initialize();
   virtual void	display(){}
   virtual void update(gdl::Clock const &clock, gdl::Input &input) = 0;
   void draw(gdl::AShader &shader, gdl::Clock const &clock);
   bool		collision(AObjectPhysic *object);
-  void		translate(glm::vec3 const &v);
+  glm::vec3		translate(glm::vec3 const &v);
   void		rotate(glm::vec3 const& axis, float angle);
   void		scale(glm::vec3 const& scale);
   double	get_x() const;
@@ -96,8 +97,8 @@ protected:
   glm::vec3	_rotation;
   glm::vec3	_scale;
   glm::vec3	_speed;
-  int		_height;
   int		_width;
+  int		_height;
   int		_depth;
   Graphics	*_graphic;
   int		_color;

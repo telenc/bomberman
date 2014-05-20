@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 16:17:56 2014 Mathieu Choquart
-// Last update Tue May 20 07:05:14 2014 Remi telenczak
+// Last update Tue May 20 10:23:04 2014 Remi telenczak
 //
 
 #include	"AObjectPhysic.hpp"
@@ -63,10 +63,11 @@ glm::mat4	AObjectPhysic::getTransformation()
   return (transform);
 }
 
-void AObjectPhysic::translate(glm::vec3 const &v)
+glm::vec3 AObjectPhysic::translate(glm::vec3 const &v)
 {
-  glm::vec3 test = glm::rotateY(v, -1 * (_rotation.y - 180));
+  glm::vec3 test = glm::rotateY(v,  -1 * (_rotation.y - 180));
   this->_position += test;
+  return test;
 }
 
 void AObjectPhysic::rotate(glm::vec3 const& axis, float angle)
@@ -82,10 +83,10 @@ bool	AObjectPhysic::collision(AObjectPhysic *object)
   glm::vec3	minPos;
 
   minPos.x = object->get_x() - (object->get_width() / 2);
-  minPos.y = object->get_y() - (object->get_height() / 2);
+  minPos.y = object->get_y();// - (object->get_height() / 2);
   minPos.z = object->get_z() - (object->get_depth() / 2);
   maxPos.x = object->get_x() + (object->get_width() / 2);
-  maxPos.y = object->get_y() + (object->get_height() / 2);
+  maxPos.y = object->get_y() + (object->get_height());// / 2);
   maxPos.z = object->get_z() + (object->get_depth() / 2);
   arretePos = this->getAllCorner();
   it = arretePos.begin();
@@ -120,7 +121,7 @@ glm::vec3	AObjectPhysic::getCornerOne()
   glm::vec3	result;
 
   result.x = this->_position.x - (this->get_width() / 2);
-  result.y = this->_position.y - (this->get_height() / 2);
+  result.y = this->_position.y;// - (this->get_height() / 2);
   result.z = this->_position.z - (this->get_depth() / 2);
   return result;
 }
@@ -130,7 +131,7 @@ glm::vec3	AObjectPhysic::getCornerTwo()
   glm::vec3	result;
 
   result.x = this->_position.x - (this->get_width() / 2);
-  result.y = this->_position.y + (this->get_height() / 2);
+  result.y = this->_position.y + (this->get_height());// / 2);
   result.z = this->_position.z - (this->get_depth() / 2);
   return result;
 }
@@ -140,7 +141,7 @@ glm::vec3	AObjectPhysic::getCornerThree()
   glm::vec3	result;
 
   result.x = this->_position.x + (this->get_width() / 2);
-  result.y = this->_position.y - (this->get_height() / 2);
+  result.y = this->_position.y;// - (this->get_height() / 2);
   result.z = this->_position.z - (this->get_depth() / 2);
   return result;
 }
@@ -150,7 +151,7 @@ glm::vec3	AObjectPhysic::getCornerFour()
   glm::vec3	result;
 
   result.x = this->_position.x + (this->get_width() / 2);
-  result.y = this->_position.y + (this->get_height() / 2);
+  result.y = this->_position.y + (this->get_height());// / 2);
   result.z = this->_position.z - (this->get_depth() / 2);
   return result;
 }
@@ -160,7 +161,7 @@ glm::vec3	AObjectPhysic::getCornerFive()
   glm::vec3	result;
 
   result.x = this->_position.x - (this->get_width() / 2);
-  result.y = this->_position.y - (this->get_height() / 2);
+  result.y = this->_position.y;// - (this->get_height() / 2);
   result.z = this->_position.z + (this->get_depth() / 2);
   return result;
 }
@@ -170,7 +171,7 @@ glm::vec3	AObjectPhysic::getCornerSix()
   glm::vec3	result;
 
   result.x = this->_position.x - (this->get_width() / 2);
-  result.y = this->_position.y + (this->get_height() / 2);
+  result.y = this->_position.y + (this->get_height());// / 2);
   result.z = this->_position.z + (this->get_depth() / 2);
   return result;
 }
@@ -180,7 +181,7 @@ glm::vec3	AObjectPhysic::getCornerSeven()
   glm::vec3	result;
 
   result.x = this->_position.x + (this->get_width() / 2);
-  result.y = this->_position.y - (this->get_height() / 2);
+  result.y = this->_position.y;// - (this->get_height() / 2);
   result.z = this->_position.z + (this->get_depth() / 2);
   return result;
 }
@@ -190,7 +191,7 @@ glm::vec3	AObjectPhysic::getCornerHeight()
   glm::vec3	result;
 
   result.x = this->_position.x + (this->get_width() / 2);
-  result.y = this->_position.y + (this->get_height() / 2);
+  result.y = this->_position.y + (this->get_height());// / 2);
   result.z = this->_position.z + (this->get_depth() / 2);
   return result;
 }

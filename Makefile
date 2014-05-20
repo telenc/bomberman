@@ -39,7 +39,7 @@ COMMONSRCPATH = CommonSrc
 INCPATH       = -I. -I.. -I$(COMMONSRCPATH) -I$(LIBOVRPATH)/Include -I$(LIBOVRPATH)/Src -I./includes/ -I./LibGdl/includes
 OBJPATH       = bomberman
 CXX_BUILD     = $(CXX) -c $(CXXFLAGS) $(INCPATH) 
-CXXFLAGS	= $(INCPATH)
+CXXFLAGS	= $(INCPATH) -Werror -Wextra -Wall
 
 LIBS          = -L$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH) \
 		-L./LibGdl/libs/ \

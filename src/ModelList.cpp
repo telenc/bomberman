@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 06:17:30 2014 Remi telenczak
-// Last update Tue May 20 07:55:19 2014 Remi telenczak
+// Last update Tue May 20 08:07:41 2014 Remi telenczak
 // Last update Tue May 20 15:43:51 2014 mattieu bernard-guêle
 */
 
@@ -17,26 +17,11 @@ ModelList::ModelList()
 
   mod = this->createModel("./assets/marvin.fbx");
   this->list.push_back(std::make_pair("marvin", mod));
-  mod = this->createModel("./assets/cubeWall.fbx");
-  this->list.push_back(std::make_pair("cube1", mod));
-  mod = this->createModel("./assets/bombe5.fbx");
-  this->list.push_back(std::make_pair("cube2", mod));
-  mod = this->createModel("./assets/cubeWall3.fbx");
-  this->list.push_back(std::make_pair("cube3", mod));
-  mod = this->createModel("./assets/cubeWallGreenS.fbx");
-  this->list.push_back(std::make_pair("cube4", mod));
-  mod = this->createModel("./assets/cubeWallGreenM.fbx");
-  this->list.push_back(std::make_pair("cube5", mod));
 
-  mod = this->createModel("./assets/bombe5.fbx");
+  mod = this->createModel("./assets/cubeWallWood.fbx");
   this->list.push_back(std::make_pair("cube6", mod));
-  mod = this->createModel("./assets/cubeFloor.fbx");
+  mod = this->createModel("./assets/cubeWall.fbx");
   this->list.push_back(std::make_pair("cube7", mod));
-  mod = this->createModel("./assets/bombetest2.fbx");
-  this->list.push_back(std::make_pair("bomb", mod));
-  mod = this->createModel("./assets/bombe3.fbx");
-  mod->setCurrentAnim(0);
-  this->list.push_back(std::make_pair("bomb2", mod));
 }
 
 gdl::Model	*ModelList::createModel(const std::string path)

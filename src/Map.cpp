@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Mon May 19 06:47:00 2014 Remi telenczak
+// Last update Tue May 20 09:34:31 2014 Remi telenczak
 //
 
 #include <cstdlib>
@@ -41,12 +41,41 @@ void	Map::update()
 
 }
 
+std::vector<AObjectPhysic *>	Map::getObjectsPos(AObjectPhysic *obj)
+{
+  std::vector<std::vector<AObjectPhysic *> >::iterator itO;
+  std::vector<AObjectPhysic *>::iterator itT;
+  std::vector<AObjectPhysic *> result;
+  glm::vec3	position;
+
+  itO = this->_map.begin();
+  while (itO != this->_map.end())
+    {
+      itT = itO->begin();
+      while (itT != itO->end())
+	{
+	  if ((*itT) != NULL)
+	    {
+	      if ((*itT) != obj)
+		{
+		  if (glm::distance2(obj->getPosition(), (*itT)->getPosition()) < 30)
+		    {
+		      result.push_back((*itT));
+		    }
+		}
+	    }
+	  itT++;
+	}
+      itO++;
+    }
+  return result;
+}
+
 void	Map::draw(gdl::BasicShader shader, gdl::Clock clock)
 {
   std::vector<std::vector<AObjectPhysic *> >::iterator itO;
   std::vector<AObjectPhysic *>::iterator itT;
 
-  std::cout << "Player : " << _player->get_x() <<"/"<<_player->get_y()<<"/"<< _player->get_z() << std::endl;
   itO = this->_map.begin();
   while (itO != this->_map.end())
     {
@@ -76,14 +105,16 @@ void	Map::setMap(int x, int y, AObjectPhysic *bloc)
 {
   /*  if (bloc == NULL)
       exit(0); */
+  (void)y;
   std::cout << "SET OK" << std::endl;
   //_map[x][y] = bloc;
   this->_map[x].push_back(bloc);
+  this->_map2.push_back(bloc);
 }
 
 AObjectPhysic *Map::getObject(int x, int y) const
 {
-  std::cout << _map.size() << std::endl << _map[x].size() << std::endl;
+  //std::cout << _map.size() << std::endl << _map[x].size() << std::endl;
   return this->_map[x][y];
 }
 

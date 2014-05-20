@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:26:53 2014 Remi telenczak
-// Last update Sat May 17 07:24:47 2014 Remi telenczak
+// Last update Tue May 20 09:08:47 2014 Remi telenczak
 //
 
 #include	"DefaultWall.hpp"
@@ -20,5 +20,6 @@ DefaultWall::DefaultWall(Map *map, ModelList *model, EventManager *event) : ABlo
 
 void DefaultWall::update(gdl::Clock const &clock, gdl::Input &input)
 {
-
+  (void)clock;
+  (void)input;
 }

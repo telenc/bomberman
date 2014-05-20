@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 17:51:24 2014 dedicker remi
-// Last update Sat May 17 06:50:31 2014 Remi telenczak
+// Last update Tue May 20 09:09:21 2014 Remi telenczak
 //
 
 #ifndef GENEREMAP_HPP_
@@ -27,8 +27,8 @@ private:
   void putWall();
   void putIa();
   Map	*_map;
-  int	_height;
   int	_width;
+  int	_height;
   int	_ia;
   int	_pos;
   EventManager *_event;

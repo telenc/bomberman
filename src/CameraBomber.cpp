@@ -5,24 +5,22 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 14 07:57:08 2014 Remi telenczak
-// Last update Tue May 20 07:47:49 2014 Remi telenczak
+// Last update Tue May 20 10:30:47 2014 Remi telenczak
 //
 
 #include	"CameraBomber.hpp"
 #include	"Player.hpp"
 
-CameraBomber::CameraBomber(gdl::BasicShader *shader, EventManager *event) : _shader(shader), _event(event)
+CameraBomber::CameraBomber(gdl::BasicShader *shader, EventManager *event) : _event(event), _shader(shader)
 {
   glm::mat4 projection;
   glm::mat4 transformation;
 
   this->position.y = -4;
-  this->position.z = 0;
-  this->position.x = 0;
+  this->position.z = -2;
+  this->position.x = -2;
   this->rot = 4.98002;
-  projection = glm::perspective(60.0f, 1280.0f/2 / 800.0f, 0.5f, 200.0f);
-  _shader->setUniform("view", transformation);
-  _shader->setUniform("projection", projection);
+
   this->_occulus = new Occulus();
   _occulus->init();
   _occulus->displayInfo();
@@ -46,32 +44,49 @@ CameraBomber::CameraBomber(gdl::BasicShader *shader, EventManager *event) : _sha
 
 void	CameraBomber::eventRotateLeft(void *data)
 {
+  (void)data;
   this->rotation.y -= 5;
 }
 
 void	CameraBomber::eventRotateRight(void *data)
 {
+  (void)data;
   this->rotation.y += 5;
 }
 
 void	CameraBomber::eventKeyUp(void *data)
 {
-  this->translate(0, 0, 0.5);
+  (void)data;
+  glm::vec3 *test;
+  test = (glm::vec3 *)data;
+  this->translate(-1 * test->x, 0, -1 * test->z);
 }
 
 void	CameraBomber::eventKeyDown(void *data)
 {
-  this->translate(0, 0, -0.5);
+  (void)data;
+    glm::vec3 *test;
+  test = (glm::vec3 *)data;
+  this->translate(-1 * test->x, 0, -1 * test->z);
+  //this->translate(0, 0, -0.5);
 }
 
 void	CameraBomber::eventKeyRight(void *data)
 {
-  this->translate(-0.5, 0, 0);
+  (void)data;
+    glm::vec3 *test;
+  test = (glm::vec3 *)data;
+  this->translate(-1 * test->x, 0, -1 * test->z);
+  //  this->translate(-0.5, 0, 0);
 }
 
 void	CameraBomber::eventKeyLeft(void *data)
 {
-  this->translate(0.5, 0, 0);
+  (void)data;
+  glm::vec3 *test;
+  test = (glm::vec3 *)data;
+  this->translate(-1 * test->x, 0, -1 * test->z);
+  //  this->translate(0.5, 0, 0);
 }
 
 int	CameraBomber::getStereo()
@@ -89,8 +104,8 @@ void		CameraBomber::translate(double x, double y, double z)
   glm::vec3 vector(x, y, z);
   glm::vec3 vectorRotate;
 
-  vectorRotate = glm::rotateY(vector, -1 * rotation.y);
-  this->position += vectorRotate;
+  //vectorRotate = glm::rotateY(vector, -1 * rotation.y);
+  this->position += vector;
 }
 
 glm::mat4		CameraBomber::getTransformation()
@@ -127,7 +142,6 @@ glm::mat4		CameraBomber::getTransformationRight()
   glm::mat4 transformation;
 
   vec = this->_occulus->getOrientation();
-
   transformation = glm::rotate(transformation, -1 * vec.z, glm::vec3(0, 0, 1));
   transformation = glm::rotate(transformation, -1 * vec.x, glm::vec3(1, 0, 0));
   transformation = glm::rotate(transformation, this->rotation.y, glm::vec3(0, 1, 0));

@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:27:38 2014 dedicker remi
-// Last update Tue May 20 07:34:30 2014 Remi telenczak
+// Last update Tue May 20 10:34:41 2014 Remi telenczak
 //
 
 #include "Player.hpp"
@@ -39,6 +39,7 @@ Player::Player(int x, int y, int z, Map *map, ModelList *model, EventManager *ev
 
 void	Player::eventRotateLeft(void *data)
 {
+  (void)data;
   // this->rotation.y -= 5;
   this->rotate(glm::vec3(0, 1, 0), -5);
   this->_event->dispatchEvent("playerRotateLeft", this);
@@ -46,39 +47,99 @@ void	Player::eventRotateLeft(void *data)
 
 void	Player::eventRotateRight(void *data)
 {
+  (void)data;
   //this->rotation.y += 5;
   this->rotate(glm::vec3(0, 1, 0), 5);
   this->_event->dispatchEvent("playerRotateRight", this);
 }
 
+bool	Player::checkPositionCollision()
+{
+  std::vector<AObjectPhysic *>	objects;
+  std::vector<AObjectPhysic *>::iterator	it;
+
+  objects = this->_map->getObjectsPos(this);
+  it = objects.begin();
+  while (it != objects.end())
+    {
+      if (this->collision(*it) == true)
+	{
+	  //this->_position = posSauv;
+	  return false;
+	}
+      it++;
+    }
+  return true;
+}
+
+void Player::move(glm::vec3 direct, std::string event)
+{
+  glm::vec3	posSauv;
+  glm::vec3	positionTrans;
+
+  posSauv = this->_position;
+  positionTrans = this->translate(direct);
+  if (checkPositionCollision() == false)
+    {
+      this->_position.x -= positionTrans.x;
+      if (checkPositionCollision() == false)
+	{
+	  this->_position.x += positionTrans.x;
+	  this->_position.z -= positionTrans.z;
+	  if (checkPositionCollision() == false)
+	    {
+	      this->_position = posSauv;
+	    }
+	  else
+	    {
+	      positionTrans.z = 0;
+	      this->_event->dispatchEvent(event, &positionTrans);
+	    }
+	}
+      else
+	{
+	  positionTrans.x = 0;
+	  this->_event->dispatchEvent(event, &positionTrans);
+	}
+    }
+  else
+    this->_event->dispatchEvent(event, &positionTrans);
+}
+
 void	Player::eventKeyUp(void *data)
 {
-  this->translate(glm::vec3(0, 0, -0.5));
-  this->_event->dispatchEvent("playerUp", this);
+  (void)data;
+  this->move(glm::vec3(0, 0, -0.5), "playerUp");
 }
 
 void	Player::eventKeyDown(void *data)
 {
-  this->translate(glm::vec3(0, 0, 0.5));
-  this->_event->dispatchEvent("playerDown", this);
+    (void)data;
+  this->move(glm::vec3(0, 0, 0.5), "playerDown");
+  //this->translate(glm::vec3(0, 0, 0.5));
+  //this->_event->dispatchEvent("playerDown", this);
 }
 
 void	Player::eventKeyRight(void *data)
 {
-  this->translate(glm::vec3(0.5, 0, 0));
-  this->_event->dispatchEvent("playerRight", this);
+    (void)data;
+    this->move(glm::vec3(0.5, 0, 0), "playerRight");
+    //this->translate(glm::vec3(0.5, 0, 0));
+    //this->_event->dispatchEvent("playerRight", this);
 }
 
 void	Player::eventKeyLeft(void *data)
 {
-  this->translate(glm::vec3(-0.5, 0, 0));
-  this->_event->dispatchEvent("playerLeft", this);
+  (void)data;
+    this->move(glm::vec3(-0.5, 0, 0), "playerLeft");
+    //  this->translate(glm::vec3(-0.5, 0, 0));
+    //this->_event->dispatchEvent("playerLeft", this);
 }
-
-
 
 void Player::update(gdl::Clock const &clock, gdl::Input &input)
 {
+  (void)clock;
+  (void)input;
   std::cout << "Update Player" << std::endl;
 }
 

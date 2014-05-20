@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 17:53:20 2014 dedicker remi
-// Last update Tue May 20 07:51:08 2014 Remi telenczak
+// Last update Tue May 20 09:20:09 2014 Remi telenczak
 //
 
 #include	<iostream>
@@ -18,9 +18,7 @@
 
 void	GenereMap::putInside()
 {
-  bool good;
-  int	x;
-  int	y;
+
 }
 
 /*
@@ -81,16 +79,16 @@ void	GenereMap::putWall()
 	    {
 	      wallObject = new DefaultWall(this->_map, this->_model, this->_event);
 	      wallObject->setSkin(this->_model->getModel("cube7"));
-	      wallObject->set_x(i * 2);
-	      wallObject->set_z(y * 2);
+	      wallObject->set_x(i * 2.5);
+	      wallObject->set_z(y * 2.5);
 	      this->_map->setMap(i, y, wallObject);
 	    }
 	  else if (wall == 1 && (y < (_width - 1)) && (i % 2 == 0))
 	    {
 	      wallObject = new DefaultWall(this->_map, this->_model, this->_event);
-	      //wallObject->setSkin(_model->getModel("cube1"));
-	      wallObject->set_x(i * 2);
-	      wallObject->set_z(y * 2);
+
+	      wallObject->set_x(i * 2.5);
+	      wallObject->set_z(y * 2.5);
 	      this->_map->setMap(i, y, wallObject);
 	      wall = 0;
 	    }
@@ -130,14 +128,11 @@ void	GenereMap::putPlayer()
 {
   if (this->_event == NULL)
     std::cout << "EVENNVENEVN NUL" << std::endl;
-
   this->_map->setPlayer(new Player(1 * 2, 0, 1 * 2, this->_map, this->_model, this->_event));
 }
 
 GenereMap::GenereMap(int width, int height, int ia, EventManager *event, ModelList *model) : _width(width), _height(height), _ia(ia), _event(event), _model(model)
 {
-  int	i;
-  int	y;
 
   _pos = 0;
   _map = new Map(width, height);

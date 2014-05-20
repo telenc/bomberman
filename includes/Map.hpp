@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Sat May 17 07:02:23 2014 Remi telenczak
+// Last update Tue May 20 09:34:08 2014 Remi telenczak
 //
 
 #ifndef MAP_HPP_
@@ -33,11 +33,13 @@ public:
   Player *getPlayer() const;
   void	setPlayer(Player *);
   void	draw(gdl::BasicShader, gdl::Clock);
+  std::vector<AObjectPhysic *> getObjectsPos(AObjectPhysic *);
 private:
   std::vector< std::vector<AObjectPhysic *> > _map;
+  std::vector<AObjectPhysic * > _map2;
   std::vector <APlayer *> _ia;
-  int		_height;
   int		_width;
+  int		_height;
   Player *_player;
   //Graphics *_graphics;
   //EventManager *_event;
