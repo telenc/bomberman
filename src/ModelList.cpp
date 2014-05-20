@@ -5,13 +5,9 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 06:17:30 2014 Remi telenczak
-<<<<<<< HEAD
-// Last update Mon May 19 04:52:31 2014 Remi telenczak
-//
-=======
-** Last update Tue May 20 15:43:51 2014 mattieu bernard-guêle
+// Last update Tue May 20 07:55:19 2014 Remi telenczak
+// Last update Tue May 20 15:43:51 2014 mattieu bernard-guêle
 */
->>>>>>> c339f7057ba199b855ba24202aac5cddfc882933
 
 #include	"ModelList.hpp"
 
@@ -31,12 +27,8 @@ ModelList::ModelList()
   this->list.push_back(std::make_pair("cube4", mod));
   mod = this->createModel("./assets/cubeWallGreenM.fbx");
   this->list.push_back(std::make_pair("cube5", mod));
-<<<<<<< HEAD
-  mod = this->createModel("./assets/cubeWallWood.fbx");
-  //mod = this->createModel("./assets/bombe5.fbx");
-=======
+
   mod = this->createModel("./assets/bombe5.fbx");
->>>>>>> c339f7057ba199b855ba24202aac5cddfc882933
   this->list.push_back(std::make_pair("cube6", mod));
   mod = this->createModel("./assets/cubeFloor.fbx");
   this->list.push_back(std::make_pair("cube7", mod));
