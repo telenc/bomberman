@@ -59,9 +59,10 @@ LIBS          = -L$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH) \
 		-lglut \
 		-lGLU \
 		-lfbxsdk \
-		-lrt \
-		-ltinyxml \
-		-Wl,-rpath,./LibGdl/libs/
+		-lrt 				\
+		-ltinyxml 			\
+		-Wl,-rpath,./LibGdl/libs/ 	\
+		-lsfml-audio 			\
 
 SRC		= src/main.cpp \
 		src/Occulus.cpp \
@@ -81,7 +82,8 @@ SRC		= src/main.cpp \
 		src/CameraBomber.cpp \
 		src/ABloc.cpp \
 		src/Bloc/DefaultWall.cpp \
-		src/GenereMap.cpp
+		src/GenereMap.cpp	\
+		src/Sound.cpp		\
 
 
 OBJECTS       = $(SRC:.cpp=.o)
