@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 14 07:57:29 2014 Remi telenczak
-// Last update Tue May 20 07:36:40 2014 Remi telenczak
+// Last update Wed May 21 06:01:55 2014 Remi telenczak
 //
 
 #ifndef		_CAMERA_BOMBER
@@ -26,10 +26,7 @@ public:
   void	translate(double x, double y, double z);
   void changeStereo(int );
   int	getStereo();
-  void	eventKeyUp(void *data);
-  void	eventKeyDown(void *data);
-  void	eventKeyRight(void *data);
-  void	eventKeyLeft(void *data);
+  void	eventPlayerMove(void *data);
   void	eventRotateRight(void *data);
   void	eventRotateLeft(void *data);
   glm::vec3    getRotation();
@@ -42,11 +39,11 @@ private:
   glm::vec3		position;
   glm::vec3		rotation;
   float rot;
-  ICallBack	*callPosPlayer;
-  ICallBack	*callKeyUp;
-  ICallBack	*callKeyDown;
-  ICallBack	*callKeyLeft;
-  ICallBack	*callKeyRight;
+  ICallBack	*callPlayerMove;
+  //  ICallBack	*callKeyUp;
+  //ICallBack	*callKeyDown;
+  //ICallBack	*callKeyLeft;
+  //ICallBack	*callKeyRight;
   ICallBack	*callRotateLeft;
   ICallBack	*callRotateRight;
 };

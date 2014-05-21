@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 14 07:57:08 2014 Remi telenczak
-// Last update Wed May 21 03:49:00 2014 Remi telenczak
+// Last update Wed May 21 06:02:06 2014 Remi telenczak
 //
 
 #include	"CameraBomber.hpp"
@@ -27,7 +27,9 @@ CameraBomber::CameraBomber(gdl::BasicShader *shader, EventManager *event) : _eve
   this->stereo = 2;
 
 
-  callKeyUp = new CallBack<CameraBomber>(this, &CameraBomber::eventKeyUp);
+  callPlayerMove = new CallBack<CameraBomber>(this, &CameraBomber::eventPlayerMove);
+  event->listenEvent("playerMove", callPlayerMove);
+  /*callKeyUp = new CallBack<CameraBomber>(this, &CameraBomber::eventKeyUp);
   event->listenEvent("playerUp", callKeyUp);
   callKeyLeft = new CallBack<CameraBomber>(this, &CameraBomber::eventKeyLeft);
   event->listenEvent("playerLeft", callKeyLeft);
@@ -35,6 +37,7 @@ CameraBomber::CameraBomber(gdl::BasicShader *shader, EventManager *event) : _eve
   event->listenEvent("playerRight", callKeyRight);
   callKeyDown = new CallBack<CameraBomber>(this, &CameraBomber::eventKeyDown);
   event->listenEvent("playerDown", callKeyDown);
+  */
   callRotateLeft = new CallBack<CameraBomber>(this, &CameraBomber::eventRotateLeft);
   event->listenEvent("playerRotateLeft", callRotateLeft);
   callRotateRight = new CallBack<CameraBomber>(this, &CameraBomber::eventRotateRight);
@@ -54,39 +57,13 @@ void	CameraBomber::eventRotateRight(void *data)
   this->rotation.y += 5;
 }
 
-void	CameraBomber::eventKeyUp(void *data)
+void	CameraBomber::eventPlayerMove(void *data)
 {
   (void)data;
   glm::vec3 *test;
-  test = (glm::vec3 *)data;
-  this->translate(-1 * test->x, 0, -1 * test->z);
-}
 
-void	CameraBomber::eventKeyDown(void *data)
-{
-  (void)data;
-    glm::vec3 *test;
   test = (glm::vec3 *)data;
   this->translate(-1 * test->x, 0, -1 * test->z);
-  //this->translate(0, 0, -0.5);
-}
-
-void	CameraBomber::eventKeyRight(void *data)
-{
-  (void)data;
-    glm::vec3 *test;
-  test = (glm::vec3 *)data;
-  this->translate(-1 * test->x, 0, -1 * test->z);
-  //  this->translate(-0.5, 0, 0);
-}
-
-void	CameraBomber::eventKeyLeft(void *data)
-{
-  (void)data;
-  glm::vec3 *test;
-  test = (glm::vec3 *)data;
-  this->translate(-1 * test->x, 0, -1 * test->z);
-  //  this->translate(0.5, 0, 0);
 }
 
 int	CameraBomber::getStereo()
