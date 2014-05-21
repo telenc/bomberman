@@ -5,11 +5,12 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:27:38 2014 dedicker remi
-// Last update Tue May 20 10:34:41 2014 Remi telenczak
+// Last update Wed May 21 04:01:23 2014 Remi telenczak
 //
 
 #include "Player.hpp"
 #include	"EventManager.hpp"
+#include	"DefaultBomb.hpp"
 
 Player::Player(int x, int y, int z, Map *map, ModelList *model, EventManager *event) : APlayer(x, y, z, map, model, event)
 {
@@ -34,6 +35,8 @@ Player::Player(int x, int y, int z, Map *map, ModelList *model, EventManager *ev
   event->listenEvent("rotateLeft", callRotateLeft);
   callRotateRight = new CallBack<Player>(this, &Player::eventRotateRight);
   event->listenEvent("rotateRight", callRotateRight);
+  callKeyA = new CallBack<Player>(this, &Player::eventKeyA);
+  event->listenEvent("keyA", callKeyA);
 }
 
 
@@ -43,6 +46,19 @@ void	Player::eventRotateLeft(void *data)
   // this->rotation.y -= 5;
   this->rotate(glm::vec3(0, 1, 0), -5);
   this->_event->dispatchEvent("playerRotateLeft", this);
+}
+
+void	Player::eventKeyA(void *data)
+{
+  (void)data;
+  DefaultBomb	*bomb;
+
+  bomb = new DefaultBomb(_map, _modelList, _event, this);
+  std::cout << this->_position.x << std::endl;
+  std::cout << this->_position.z << std::endl;
+  bomb->set_x(((int)(this->_position.x / 3)) * 3);
+  bomb->set_z(((int)(this->_position.z / 3)) * 3);
+  this->_map->setMap((int)(this->_position.x/2.5), (int)(this->_position.z/2.5), bomb);
 }
 
 void	Player::eventRotateRight(void *data)
@@ -60,6 +76,7 @@ bool	Player::checkPositionCollision()
 
   objects = this->_map->getObjectsPos(this);
   it = objects.begin();
+
   while (it != objects.end())
     {
       if (this->collision(*it) == true)
@@ -140,7 +157,7 @@ void Player::update(gdl::Clock const &clock, gdl::Input &input)
 {
   (void)clock;
   (void)input;
-  std::cout << "Update Player" << std::endl;
+
 }
 
 Player::~Player()

@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
-// Last update Sat May 17 09:17:57 2014 Remi telenczak
+// Last update Wed May 21 03:00:27 2014 Remi telenczak
 //
 
 #include <iostream>
@@ -29,7 +29,7 @@ int	main()
   engine->setModelList(mod);
   GenereMap gen(21, 21, 0, eventManager, mod);
   Map *m = gen.getMap();
-  while (engine->update())
+  while (engine->update(m))
     {
       engine->draw(m);
     }

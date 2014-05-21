@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 16:17:56 2014 Mathieu Choquart
-// Last update Tue May 20 10:23:04 2014 Remi telenczak
+// Last update Wed May 21 03:55:46 2014 Remi telenczak
 //
 
 #include	"AObjectPhysic.hpp"
@@ -13,18 +13,28 @@
 #include	"Model.hh"
 # include		"EventManager.hpp"
 # include		"Map.hpp"
+#include		"ABomb.hpp"
+#include		"APlayer.hpp"
 
-AObjectPhysic::AObjectPhysic(Map *map, ModelList *modelList, EventManager *eventManager): _position(0, 0, 0), _rotation(0, 0, 0),_scale(1, 1, 1), _width(2), _height(2), _depth(2)
+AObjectPhysic::AObjectPhysic(Map *map, ModelList *modelList, EventManager *eventManager): _position(0, 0, 0), _rotation(0, 0, 0),_scale(1, 1, 1), _width(2), _height(2), _depth(2), _type(NONE)
 {
+  static int idCur = 0;
   this->_map = map;
   this->_event = eventManager;
   this->_modelList = modelList;
-  test =0;
+  test = 0;
+  this->_id = idCur;
+  idCur++;
 }
 
 AObjectPhysic::~AObjectPhysic()
 {
 
+}
+
+int		AObjectPhysic::getId() const
+{
+  return this->_id;
 }
 
 bool	AObjectPhysic::initialize()
@@ -81,7 +91,17 @@ bool	AObjectPhysic::collision(AObjectPhysic *object)
   std::vector<glm::vec3>::iterator	it;
   glm::vec3	maxPos;
   glm::vec3	minPos;
+  ABomb		*bomb;
 
+  if (this->_type == PLAYER && object->getType() == BOMB)
+    {
+      bomb = (ABomb *)object;
+      //(void)bomb;
+      if (bomb->getPlayerColl() == false && this->getId() == bomb->getPlayer()->getId())
+	{
+	  return false;
+	}
+    }
   minPos.x = object->get_x() - (object->get_width() / 2);
   minPos.y = object->get_y();// - (object->get_height() / 2);
   minPos.z = object->get_z() - (object->get_depth() / 2);
@@ -99,6 +119,16 @@ bool	AObjectPhysic::collision(AObjectPhysic *object)
       it++;
     }
   return false;
+}
+
+void	AObjectPhysic::setType(TypeObject type)
+{
+  this->_type = type;
+}
+
+TypeObject	AObjectPhysic::getType() const
+{
+  return this->_type;
 }
 
 std::vector<glm::vec3>	AObjectPhysic::getAllCorner()

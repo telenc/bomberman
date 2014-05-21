@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Tue May 20 09:34:08 2014 Remi telenczak
+// Last update Wed May 21 03:01:49 2014 Remi telenczak
 //
 
 #ifndef MAP_HPP_
@@ -15,6 +15,7 @@
 #include "AObjectPhysic.hpp"
 #include	<BasicShader.hh>
 #include	<Clock.hh>
+#include	<Input.hh>
 class APlayer;
 class Player;
 class AObjectPhysic;
@@ -23,7 +24,7 @@ class Map
 public:
   Map(int x, int y);
   ~Map();
-  void	update();
+  void	update(gdl::Clock, gdl::Input);
   void setMap(int x, int y, AObjectPhysic *bloc);
   AObjectPhysic *getObject(int , int) const;
   int	getWidth() const;

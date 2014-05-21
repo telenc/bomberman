@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 15:52:43 2014 Mathieu Choquart
-// Last update Tue May 20 10:01:29 2014 Remi telenczak
+// Last update Wed May 21 02:41:34 2014 Remi telenczak
 //
 
 #ifndef			_AOBJECTPHYSIC_HPP_
@@ -27,10 +27,19 @@ class EventManager;
 class Map;
 class Graphics;
 class ModelList;
+
+enum	TypeObject
+  {
+    NONE,
+    BOMB,
+    PLAYER,
+    BLOC
+  };
+
 class	AObjectPhysic : public	IObjectPhysic
 {
 public:
-AObjectPhysic(Map *map, ModelList *,EventManager *eventManager);
+  AObjectPhysic(Map *map, ModelList *,EventManager *eventManager);
   ~AObjectPhysic();
   virtual bool	collision(IObjectPhysic *) { return false; }
   virtual bool	initialize();
@@ -92,6 +101,9 @@ AObjectPhysic(Map *map, ModelList *,EventManager *eventManager);
   glm::vec3	getCornerHeight();
   std::vector<glm::vec3> getAllCorner();
   glm::vec3	getPosition() const;
+  void		setType(TypeObject);
+  TypeObject	getType() const;
+  int		getId() const;
 protected:
   glm::vec3	_position;
   glm::vec3	_rotation;
@@ -107,6 +119,8 @@ protected:
   EventManager	*_event;
   ModelList	*_modelList;
   int test;
+  int		_id;
+  TypeObject	_type;
 };
 
 # endif

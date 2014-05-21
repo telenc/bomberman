@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 17:53:20 2014 dedicker remi
-// Last update Tue May 20 09:20:09 2014 Remi telenczak
+// Last update Wed May 21 03:51:32 2014 Remi telenczak
 //
 
 #include	<iostream>
@@ -79,16 +79,16 @@ void	GenereMap::putWall()
 	    {
 	      wallObject = new DefaultWall(this->_map, this->_model, this->_event);
 	      wallObject->setSkin(this->_model->getModel("cube7"));
-	      wallObject->set_x(i * 2.5);
-	      wallObject->set_z(y * 2.5);
+	      wallObject->set_x(i * 3);
+	      wallObject->set_z(y * 3);
 	      this->_map->setMap(i, y, wallObject);
 	    }
 	  else if (wall == 1 && (y < (_width - 1)) && (i % 2 == 0))
 	    {
 	      wallObject = new DefaultWall(this->_map, this->_model, this->_event);
 
-	      wallObject->set_x(i * 2.5);
-	      wallObject->set_z(y * 2.5);
+	      wallObject->set_x(i * 3);
+	      wallObject->set_z(y * 3);
 	      this->_map->setMap(i, y, wallObject);
 	      wall = 0;
 	    }

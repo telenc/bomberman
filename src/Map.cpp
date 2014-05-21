@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Tue May 20 09:34:31 2014 Remi telenczak
+// Last update Wed May 21 03:02:34 2014 Remi telenczak
 //
 
 #include <cstdlib>
@@ -36,9 +36,24 @@ Map::~Map()
   std::cout << "Map Destroyed!" << std::endl;
 }
 
-void	Map::update()
+void	Map::update(gdl::Clock clock, gdl::Input input)
 {
+  std::vector<std::vector<AObjectPhysic *> >::iterator itO;
+  std::vector<AObjectPhysic *>::iterator itT;
 
+  itO = this->_map.begin();
+  while (itO != this->_map.end())
+    {
+      itT = itO->begin();
+      while (itT != itO->end())
+	{
+	  if ((*itT) != NULL)
+	    (*itT)->update(clock, input);
+	  itT++;
+	}
+      itO++;
+    }
+  this->_player->update(clock, input);
 }
 
 std::vector<AObjectPhysic *>	Map::getObjectsPos(AObjectPhysic *obj)
@@ -103,10 +118,8 @@ std::vector<APlayer *> Map::getIa() const
 
 void	Map::setMap(int x, int y, AObjectPhysic *bloc)
 {
-  /*  if (bloc == NULL)
-      exit(0); */
   (void)y;
-  std::cout << "SET OK" << std::endl;
+  std::cout << "SET OK" << x << "/" << y   << "  " << _height << "/" << _width<< std::endl;
   //_map[x][y] = bloc;
   this->_map[x].push_back(bloc);
   this->_map2.push_back(bloc);

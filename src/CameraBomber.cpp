@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 14 07:57:08 2014 Remi telenczak
-// Last update Tue May 20 10:30:47 2014 Remi telenczak
+// Last update Wed May 21 03:49:00 2014 Remi telenczak
 //
 
 #include	"CameraBomber.hpp"
@@ -17,8 +17,8 @@ CameraBomber::CameraBomber(gdl::BasicShader *shader, EventManager *event) : _eve
   glm::mat4 transformation;
 
   this->position.y = -4;
-  this->position.z = -2;
-  this->position.x = -2;
+  this->position.z = -3;
+  this->position.x = -3;
   this->rot = 4.98002;
 
   this->_occulus = new Occulus();

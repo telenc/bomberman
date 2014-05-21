@@ -5,14 +5,31 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Wed May  7 16:00:11 2014 Steven Martreux
-// Last update Fri May 16 00:30:59 2014 Remi telenczak
+// Last update Wed May 21 03:42:37 2014 Remi telenczak
 //
 
 #include	"ABomb.hpp"
 
-ABomb::ABomb(Map *map, ModelList *model, EventManager *event) :AObjectPhysic(map, model, event)
+ABomb::ABomb(Map *map, ModelList *model, EventManager *event, APlayer *player) :AObjectPhysic(map, model, event), _po(1), _time(10000), _damage(1), _player(player)
 {
+  this->_type = BOMB;
+  this->_playerColl = false;
+  this->_direction = 1;
+}
 
+bool	ABomb::getPlayerColl() const
+{
+  return this->_playerColl;
+}
+
+APlayer		*ABomb::getPlayer() const
+{
+  return this->_player;
+}
+
+void		ABomb::setPlayer(APlayer *player)
+{
+  this->_player = player;
 }
 
 void	ABomb::setPo(int po)

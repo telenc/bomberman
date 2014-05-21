@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:10:16 2014 thomas mendez
-// Last update Tue May 20 07:48:21 2014 Remi telenczak
+// Last update Wed May 21 03:00:21 2014 Remi telenczak
 //
 
 #ifndef		GRAPHICS_HH__BOMBER
@@ -44,7 +44,7 @@ public:
 bool		initialize();
 void		setModelList(ModelList *model);
 void		draw(Map *);
-  bool		update();
+  bool		update(Map *);
   void		inputUpdate();
   void		drawDoubleStereo(Map *map);
   void		drawOneStereo(Map *map);

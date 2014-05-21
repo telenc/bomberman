@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:26:53 2014 Remi telenczak
-// Last update Tue May 20 09:08:47 2014 Remi telenczak
+// Last update Wed May 21 03:47:51 2014 Remi telenczak
 //
 
 #include	"DefaultWall.hpp"
@@ -14,8 +14,8 @@
 DefaultWall::DefaultWall(Map *map, ModelList *model, EventManager *event) : ABloc(map, model, event)
 {
   this->_skin = model->getModel("cube6");
-  this->_height = 2;
-  this->_width = 2;
+  this->_height = 3;
+  this->_width = 3;
 }
 
 void DefaultWall::update(gdl::Clock const &clock, gdl::Input &input)

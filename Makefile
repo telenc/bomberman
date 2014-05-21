@@ -83,7 +83,7 @@ SRC		= src/main.cpp \
 		src/ABloc.cpp \
 		src/Bloc/DefaultWall.cpp \
 		src/GenereMap.cpp	\
-		src/Sound.cpp		\
+		src/Bomb/DefaultBomb.cpp \
 
 
 OBJECTS       = $(SRC:.cpp=.o)

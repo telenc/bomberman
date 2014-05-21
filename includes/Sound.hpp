@@ -1,11 +1,11 @@
 //
 // Sound.hpp for Sound in /home/martre_s/cpp_bomberman/src
-// 
+//
 // Made by Steven Martreux
 // Login   <martre_s@epitech.net>
-// 
+//
 // Started on  Fri May  9 14:24:51 2014 Steven Martreux
-// Last update Tue May 20 17:52:59 2014 Steven Martreux
+// Last update Wed May 21 00:38:01 2014 Remi telenczak
 //
 
 #ifndef		_SOUND_HPP_

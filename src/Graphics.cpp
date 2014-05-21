@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Tue May 20 07:48:39 2014 Remi telenczak
+// Last update Wed May 21 03:01:21 2014 Remi telenczak
 //
 
 
@@ -64,12 +64,13 @@ bool		Graphics::initialize()
   this->_camera = new CameraBomber(&_shader, _event);
   return true;
 }
-bool		Graphics::update()
+bool		Graphics::update(Map *map)
 {
   if (_input.getKey(SDLK_ESCAPE) || _input.getInput(SDL_QUIT))
     return false;
   _context.updateClock(_clock);
   _context.updateInputs(_input);
+  map->update(_clock, _input);
   this->inputUpdate();
   return true;
 }
@@ -88,6 +89,8 @@ void		Graphics::inputUpdate()
     this->_event->dispatchEvent("rotateLeft", NULL);
   if (_input.getKey(SDLK_d))
     this->_event->dispatchEvent("rotateRight", NULL);
+  if (_input.getKey(SDLK_SPACE))
+    this->_event->dispatchEvent("keyA", NULL);
   if (_input.getKey(SDLK_m))
     this->_camera->translate(0, 0.1, 0);
   if (_input.getKey(SDLK_p))
