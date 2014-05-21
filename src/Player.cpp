@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:27:38 2014 dedicker remi
-// Last update Wed May 21 04:01:23 2014 Remi telenczak
+// Last update Wed May 21 05:48:31 2014 Remi telenczak
 //
 
 #include "Player.hpp"
@@ -52,12 +52,24 @@ void	Player::eventKeyA(void *data)
 {
   (void)data;
   DefaultBomb	*bomb;
+  int		x;
+  int		z;
 
   bomb = new DefaultBomb(_map, _modelList, _event, this);
   std::cout << this->_position.x << std::endl;
   std::cout << this->_position.z << std::endl;
-  bomb->set_x(((int)(this->_position.x / 3)) * 3);
-  bomb->set_z(((int)(this->_position.z / 3)) * 3);
+
+  x = (int)this->_position.x;
+  z = (int)this->_position.z;
+  while (x % 3 != 0)
+    x++;
+  while (z % 3 != 0)
+    z++;
+  std::cout << x << std::endl;
+  std::cout << z << std::endl << std::endl;
+
+  bomb->set_x(x);
+  bomb->set_z(z);
   this->_map->setMap((int)(this->_position.x/2.5), (int)(this->_position.z/2.5), bomb);
 }
 

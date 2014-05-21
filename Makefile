@@ -62,6 +62,7 @@ LIBS          = -L$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH) \
 		-lrt 				\
 		-ltinyxml 			\
 		-Wl,-rpath,./LibGdl/libs/ 	\
+		-lsfml-system			\
 		-lsfml-audio 			\
 
 SRC		= src/main.cpp \
@@ -84,7 +85,6 @@ SRC		= src/main.cpp \
 		src/Bloc/DefaultWall.cpp \
 		src/GenereMap.cpp	\
 		src/Bomb/DefaultBomb.cpp \
-		src/Sound.cpp \
 
 OBJECTS       = $(SRC:.cpp=.o)
 

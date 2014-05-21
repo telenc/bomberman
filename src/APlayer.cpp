@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:11:40 2014 dedicker remi
-// Last update Wed May 21 03:47:44 2014 Remi telenczak
+// Last update Wed May 21 05:32:24 2014 Remi telenczak
 //
 
 #include	"APlayer.hpp"
@@ -25,6 +25,8 @@ APlayer::APlayer(int x, int y, int z, Map *map, ModelList *model, EventManager *
   this->_position.y = 0;
   this->_position.z = 3;
   this->_type = PLAYER;
+  this->_width = 2.5;
+  this->_height = 2.5;
   (void)y;
   (void)x;
   (void)z;
