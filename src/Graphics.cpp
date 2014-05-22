@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
 ** Graphics.cpp for make in /home/bernar_x/Tech2/Projets/cpp_bomberman
 ** 
@@ -7,6 +8,17 @@
 ** Started on  Thu May 22 14:50:54 2014 mattieu bernard-guêle
 ** Last update Thu May 22 14:58:07 2014 mattieu bernard-guêle
 */
+=======
+//
+// Graphics.cpp for Graphics in /home/mendez_t/local/cpp/cpp_bomberman/AllTest/testGdl+OCCULUS
+//
+// Made by thomas mendez
+// Login   <mendez_t@epitech.net>
+//
+// Started on  Tue May 13 15:12:04 2014 thomas mendez
+// Last update Thu May 22 15:44:23 2014 Steven Martreux
+//
+>>>>>>> f3c459ffb228202f459f7c7cbd63135c2344f729
 
 
 #include	"OVR.h"
