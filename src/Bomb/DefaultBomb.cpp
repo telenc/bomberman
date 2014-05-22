@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 21 01:36:36 2014 Remi telenczak
-// Last update Wed May 21 04:30:27 2014 Remi telenczak
+// Last update Thu May 22 09:23:32 2014 Remi telenczak
 //
 
 #include	"DefaultBomb.hpp"

@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:27:38 2014 dedicker remi
-// Last update Wed May 21 06:03:12 2014 Remi telenczak
+// Last update Thu May 22 09:24:32 2014 Remi telenczak
 //
 
 #include "Player.hpp"
@@ -69,6 +69,13 @@ void	Player::eventKeyA(void *data)
 
   bomb->set_x(x);
   bomb->set_z(z);
+  glm::vec3 t;
+  t.x = x;
+  t.y  = 0;
+  t.z = z;
+
+  _event->dispatchEvent("bombDrop", &(t));
+
   this->_map->setMap((int)(this->_position.x/2.5), (int)(this->_position.z/2.5), bomb);
 }
 
@@ -132,6 +139,7 @@ void Player::move(glm::vec3 direct, std::string event)
     }
   else
     this->_event->dispatchEvent(event, &positionTrans);
+  this->_event->dispatchEvent("playerPosition", &this->_position);
 }
 
 void	Player::eventKeyUp(void *data)

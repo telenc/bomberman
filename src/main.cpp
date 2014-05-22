@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
-// Last update Thu May 22 18:00:14 2014 Steven Martreux
+// Last update Thu May 22 09:15:18 2014 Remi telenczak
 //
 
 #include <iostream>
@@ -28,7 +28,7 @@ int	main()
   Sound		*sound;
 
   eventManager = new EventManager();
-  sound = new Sound();
+  sound = new Sound(eventManager);
   engine = new Graphics(eventManager);
   engine->initialize();
   mod = new ModelList();

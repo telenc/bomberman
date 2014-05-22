@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 14 07:57:29 2014 Remi telenczak
-// Last update Wed May 21 06:01:55 2014 Remi telenczak
+// Last update Thu May 22 09:03:43 2014 Remi telenczak
 //
 
 #ifndef		_CAMERA_BOMBER

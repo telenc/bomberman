@@ -5,12 +5,12 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Fri May  9 14:23:13 2014 Steven Martreux
-// Last update Thu May 22 08:45:50 2014 Remi telenczak
+// Last update Thu May 22 09:28:48 2014 Remi telenczak
 //
 
 #include	"Sound.hpp"
 
-Sound::Sound()
+Sound::Sound(EventManager *event) : _event(event), _position(0, 0, 0)
 {
   if (!_InGame.OpenFromFile("sound/SoundInGame.wav"))
     std::cerr << "Fail to open SoundInGame" << std::endl;
@@ -20,6 +20,10 @@ Sound::Sound()
     std::cerr << "Fail to open Explosion" << std::endl;
   if (!_InMenu.OpenFromFile("sound/Menu.wav"))
     std::cerr << "Fail to open Menu.wav" << std::endl;
+  callBombDrop = new CallBack<Sound>(this, &Sound::eventBombDrop);
+  event->listenEvent("bombDrop", callBombDrop);
+  callPlayerMove = new CallBack<Sound>(this, &Sound::eventPlayerMove);
+  event->listenEvent("playerPosition", callPlayerMove);
 }
 
 Sound::~Sound()
@@ -27,9 +31,29 @@ Sound::~Sound()
 
 }
 
+void	Sound::eventPlayerMove(void *data)
+{
+  (void)data;
+  glm::vec3 *test;
+
+  test = (glm::vec3 *)data;
+  this->setPlayer(test->x, test->y, test->z);
+}
+
+void	Sound::eventBombDrop(void *data)
+{
+  glm::vec3	*test;
+
+  test = (glm::vec3 *) data;
+  std::cout << "Bomb : " << test->x << "/" << test->y << "/" << test->z << std::endl;
+  //this->StartTicTacBomb(test->x * 10, test->y * 10, test->z * 10);
+  this->StartTicTacBomb(1300, 1300, 1300);
+}
+
 void	Sound::setPlayer(float x, float y, float z)
 {
-  sf::Listener::SetPosition(x, y, z);
+  std::cout << "Position : " << x << "/" << y << "/" << z << std::endl;
+  sf::Listener::SetPosition(x * 0, y * 0, z * 0);
 }
 
 void	Sound::InGame()
