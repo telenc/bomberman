@@ -85,6 +85,7 @@ SRC		= src/main.cpp \
 		src/Bloc/DefaultWall.cpp \
 		src/GenereMap.cpp	\
 		src/Bomb/DefaultBomb.cpp \
+		src/Cube.cpp\
 
 OBJECTS       = $(SRC:.cpp=.o)
 
