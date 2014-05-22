@@ -5,7 +5,7 @@
 ** Login <bernar_x@epitech.net>
 ** 
 ** Started on  Thu May 22 14:52:19 2014 mattieu bernard-guêle
-** Last update Thu May 22 14:52:20 2014 mattieu bernard-guêle
+** Last update Thu May 22 14:55:05 2014 mattieu bernard-guêle
 */
 
 #include	"ModelList.hpp"
@@ -23,8 +23,7 @@ ModelList::ModelList()
   this->list.push_back(std::make_pair("cube7", mod));
   mod = this->createModel("./assets/bombe5.fbx");
   this->list.push_back(std::make_pair("defaultBomb", mod));
-  mod = this->createModel("./assets/test2/box.fbx");
-  mod = this->createModel("./assets/test2/groundv2.FBX");
+  mod = this->createModel("./assets/box.fbx");
   this->list.push_back(std::make_pair("box", mod));
 
 }
