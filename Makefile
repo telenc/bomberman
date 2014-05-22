@@ -62,7 +62,6 @@ LIBS          = -L$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH) \
 		-lrt 				\
 		-ltinyxml 			\
 		-Wl,-rpath,./LibGdl/libs/ 	\
-		-lsfml-system			\
 		-lsfml-audio 			\
 		-lSDL				\
 
@@ -88,6 +87,8 @@ SRC		= src/main.cpp \
 		src/Bomb/DefaultBomb.cpp \
 		src/Controller.cpp	\
 		src/Cube.cpp\
+		src/Skybox.cpp \
+		src/Sound.cpp
 
 OBJECTS       = $(SRC:.cpp=.o)
 

@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Wed May 21 03:02:34 2014 Remi telenczak
+// Last update Thu May 22 07:34:22 2014 Remi telenczak
 //
 
 #include <cstdlib>
@@ -13,22 +13,19 @@
 #include <iostream>
 #include "Map.hpp"
 #include "Player.hpp"
-
+#include "Skybox.hpp"
 Map::Map(int width, int height) : _width(width), _height(height)
 {
-  int	pos;
-
-  pos = 0;
   if (width <= 20 || height <= 20)
     {
       std::cout << "Map trop pitite!" << std::endl;
       exit(0);
     }
-  while (pos < height)
+  /*while (pos < height)
     {
       this->_map.push_back(std::vector<AObjectPhysic *>());
       pos++;
-    }
+      }*/
 }
 
 Map::~Map()
@@ -38,48 +35,38 @@ Map::~Map()
 
 void	Map::update(gdl::Clock clock, gdl::Input input)
 {
-  std::vector<std::vector<AObjectPhysic *> >::iterator itO;
+  std::vector<AObjectPhysic *>::iterator itO;
   std::vector<AObjectPhysic *>::iterator itT;
 
   itO = this->_map.begin();
   while (itO != this->_map.end())
     {
-      itT = itO->begin();
-      while (itT != itO->end())
-	{
-	  if ((*itT) != NULL)
-	    (*itT)->update(clock, input);
-	  itT++;
-	}
+      if ((*itO) != NULL)
+	(*itO)->update(clock, input);
       itO++;
     }
   this->_player->update(clock, input);
+  this->_skybox->update(clock, input);
 }
 
 std::vector<AObjectPhysic *>	Map::getObjectsPos(AObjectPhysic *obj)
 {
-  std::vector<std::vector<AObjectPhysic *> >::iterator itO;
-  std::vector<AObjectPhysic *>::iterator itT;
+  std::vector<AObjectPhysic *>::iterator itO;
   std::vector<AObjectPhysic *> result;
   glm::vec3	position;
 
   itO = this->_map.begin();
   while (itO != this->_map.end())
     {
-      itT = itO->begin();
-      while (itT != itO->end())
+      if ((*itO) != NULL)
 	{
-	  if ((*itT) != NULL)
+	  if ((*itO) != obj)
 	    {
-	      if ((*itT) != obj)
+	      if (glm::distance2(obj->getPosition(), (*itO)->getPosition()) < 30)
 		{
-		  if (glm::distance2(obj->getPosition(), (*itT)->getPosition()) < 30)
-		    {
-		      result.push_back((*itT));
-		    }
+		  result.push_back((*itO));
 		}
 	    }
-	  itT++;
 	}
       itO++;
     }
@@ -88,25 +75,20 @@ std::vector<AObjectPhysic *>	Map::getObjectsPos(AObjectPhysic *obj)
 
 void	Map::draw(gdl::BasicShader shader, gdl::Clock clock)
 {
-  std::vector<std::vector<AObjectPhysic *> >::iterator itO;
-  std::vector<AObjectPhysic *>::iterator itT;
+  std::vector<AObjectPhysic *>::iterator itO;
 
   itO = this->_map.begin();
   while (itO != this->_map.end())
     {
-      itT = itO->begin();
-      while (itT != itO->end())
-	{
-	  if ((*itT) != NULL)
-	    (*itT)->draw(shader, clock);
-	  itT++;
-	}
+      if ((*itO) != NULL)
+	(*itO)->draw(shader, clock);
       itO++;
     }
   this->_player->draw(shader, clock);
+  this->_skybox->draw(shader, clock);
 }
 
-std::vector< std::vector<AObjectPhysic *> > Map::getMap() const
+std::vector<AObjectPhysic *> Map::getMap() const
 {
   return _map;
 }
@@ -119,16 +101,10 @@ std::vector<APlayer *> Map::getIa() const
 void	Map::setMap(int x, int y, AObjectPhysic *bloc)
 {
   (void)y;
-  std::cout << "SET OK" << x << "/" << y   << "  " << _height << "/" << _width<< std::endl;
+  (void)x;
   //_map[x][y] = bloc;
-  this->_map[x].push_back(bloc);
-  this->_map2.push_back(bloc);
-}
-
-AObjectPhysic *Map::getObject(int x, int y) const
-{
-  //std::cout << _map.size() << std::endl << _map[x].size() << std::endl;
-  return this->_map[x][y];
+  this->_map.push_back(bloc);
+  //this->_map2.push_back(bloc);
 }
 
 int	Map::getWidth() const
@@ -144,6 +120,11 @@ int	Map::getHeight() const
 Player	*Map::getPlayer() const
 {
   return this->_player;
+}
+
+void	Map::setSkybox(Skybox *skybox)
+{
+  this->_skybox = skybox;
 }
 
 void	Map::setPlayer(Player *player)

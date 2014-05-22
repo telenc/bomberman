@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
-// Last update Thu May 22 15:43:25 2014 Steven Martreux
+// Last update Thu May 22 07:32:37 2014 Remi telenczak
 //
 
 #include <iostream>
@@ -16,7 +16,7 @@
 #include "Map.hpp"
 #include	"EventManager.hpp"
 #include	"Controller.hpp"
-
+#include	"Skybox.hpp"
 int	main()
 {
   Menu menu;
@@ -33,7 +33,7 @@ int	main()
   GenereMap gen(21, 21, 0, eventManager, mod);
   Map *m = gen.getMap();
   joystick = new Controller(eventManager);
-
+  m->setSkybox(new Skybox(m, mod, eventManager));
   while (engine->update(m))
     {
       engine->draw(m);
