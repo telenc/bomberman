@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
-// Last update Thu May 22 07:32:37 2014 Remi telenczak
+// Last update Thu May 22 18:00:14 2014 Steven Martreux
 //
 
 #include <iostream>
@@ -17,6 +17,7 @@
 #include	"EventManager.hpp"
 #include	"Controller.hpp"
 #include	"Skybox.hpp"
+#include	"Sound.hpp"
 int	main()
 {
   Menu menu;
@@ -24,8 +25,10 @@ int	main()
   ModelList *mod;
   EventManager *eventManager;
   Controller	*joystick;
+  Sound		*sound;
 
   eventManager = new EventManager();
+  sound = new Sound();
   engine = new Graphics(eventManager);
   engine->initialize();
   mod = new ModelList();
@@ -34,6 +37,7 @@ int	main()
   Map *m = gen.getMap();
   joystick = new Controller(eventManager);
   m->setSkybox(new Skybox(m, mod, eventManager));
+  sound->InGame();
   while (engine->update(m))
     {
       engine->draw(m);
