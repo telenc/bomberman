@@ -1,20 +1,11 @@
 /*
-// ModelList.cpp for modellist in /home/remi/cpp_bomberman
-//
-// Made by Remi telenczak
-// Login   <remi@epitech.net>
-//
-// Started on  Tue May 13 06:17:30 2014 Remi telenczak
-<<<<<<< HEAD
-<<<<<<< HEAD
-** Last update Thu May 22 14:50:40 2014 mattieu bernard-guêle
-=======
-// Last update Thu May 22 05:48:40 2014 Remi telenczak
->>>>>>> 05cc83eb5a3a916ef4082af2248b87ee187a7c02
-=======
-// Last update Thu May 22 05:50:32 2014 Remi telenczak
->>>>>>> e603027a988b758ebfe3bf88239c66cda61d74a2
-// Last update Tue May 20 15:43:51 2014 mattieu bernard-guêle
+** ModelList.cpp for make in /home/bernar_x/Tech2/Projets/cpp_bomberman
+** 
+** Made by mattieu bernard-guêle
+** Login <bernar_x@epitech.net>
+** 
+** Started on  Thu May 22 14:52:19 2014 mattieu bernard-guêle
+** Last update Thu May 22 14:52:20 2014 mattieu bernard-guêle
 */
 
 #include	"ModelList.hpp"
@@ -32,11 +23,8 @@ ModelList::ModelList()
   this->list.push_back(std::make_pair("cube7", mod));
   mod = this->createModel("./assets/bombe5.fbx");
   this->list.push_back(std::make_pair("defaultBomb", mod));
-<<<<<<< HEAD
   mod = this->createModel("./assets/test2/box.fbx");
-=======
   mod = this->createModel("./assets/test2/groundv2.FBX");
->>>>>>> e603027a988b758ebfe3bf88239c66cda61d74a2
   this->list.push_back(std::make_pair("box", mod));
 
 }
