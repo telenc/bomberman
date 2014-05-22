@@ -5,9 +5,8 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Thu May 22 15:44:23 2014 Steven Martreux
+// Last update Thu May 22 07:08:20 2014 Remi telenczak
 //
-
 
 #include	"OVR.h"
 #include	<iostream>
@@ -28,9 +27,9 @@
 #include	<glm/glm.hpp>
 #include	<glm/gtc/matrix_transform.hpp>
 #include	"Graphics.hpp"
-#include "GL/glut.h"
-#include "Player.hpp"
-#include "Cube.hpp"
+#include	"GL/glut.h"
+#include	"Player.hpp"
+#include	"Cube.hpp"
 
 Graphics::Graphics(EventManager *event) : _event(event)
 {
@@ -112,14 +111,18 @@ void		Graphics::drawDoubleStereo(Map *map)
   _shader.setUniform("view", this->_camera->getTransformationLeft());
   _shader.setUniform("projection", this->_camera->getPerspective());
   map->draw(_shader, _clock);
+  glm::mat4 t(1);
 
+  t = glm::translate(t, glm::vec3(0, 0, 0));
+  t = glm::scale(t, glm::vec3(100, 100, 100));
+  this->sky->draw(_shader, t, _clock.getElapsed());
 
   glViewport(1280/2, 0,1280/2, 800);
   glClearColor(255, 0, 0, 0);
 
   _shader.setUniform("view", this->_camera->getTransformationRight());
   map->draw(_shader, _clock);
-
+  this->sky->draw(_shader, t, _clock.getElapsed());
 }
 
 void		Graphics::drawOneStereo(Map *map)
@@ -132,8 +135,8 @@ void		Graphics::drawOneStereo(Map *map)
   map->draw(_shader, _clock);
   glm::mat4 t(1);
 
-  t = glm::translate(t, glm::vec3(0, 4, 0));
-  //t = glm::scale(t, glm::vec3(0.01, 0.01, 0.01));
+  t = glm::translate(t, glm::vec3(0, 0, 0));
+  t = glm::scale(t, glm::vec3(100, 100, 100));
   this->sky->draw(_shader, t, _clock.getElapsed());
   _shader.setUniform("projection", this->_camera->getPerspective());
   _shader.setUniform("view", this->_camera->getTransformation());
