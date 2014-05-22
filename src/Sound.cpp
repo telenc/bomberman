@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Fri May  9 14:23:13 2014 Steven Martreux
-// Last update Thu May 22 08:23:48 2014 Remi telenczak
+// Last update Thu May 22 08:45:50 2014 Remi telenczak
 //
 
 #include	"Sound.hpp"
