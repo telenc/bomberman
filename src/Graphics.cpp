@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-/*
-** Graphics.cpp for make in /home/bernar_x/Tech2/Projets/cpp_bomberman
-** 
-** Made by mattieu bernard-guêle
-** Login <bernar_x@epitech.net>
-** 
-** Started on  Thu May 22 14:50:54 2014 mattieu bernard-guêle
-** Last update Thu May 22 14:58:07 2014 mattieu bernard-guêle
-*/
-=======
 //
 // Graphics.cpp for Graphics in /home/mendez_t/local/cpp/cpp_bomberman/AllTest/testGdl+OCCULUS
 //
@@ -16,14 +5,8 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-<<<<<<< HEAD
-// Last update Thu May 22 07:03:01 2014 Remi telenczak
-=======
-// Last update Thu May 22 15:44:23 2014 Steven Martreux
->>>>>>> 2757af8d46a74004815ef5ee0e0441c56b522b2c
+// Last update Thu May 22 07:08:20 2014 Remi telenczak
 //
->>>>>>> f3c459ffb228202f459f7c7cbd63135c2344f729
-
 
 #include	"OVR.h"
 #include	<iostream>
@@ -128,14 +111,18 @@ void		Graphics::drawDoubleStereo(Map *map)
   _shader.setUniform("view", this->_camera->getTransformationLeft());
   _shader.setUniform("projection", this->_camera->getPerspective());
   map->draw(_shader, _clock);
+  glm::mat4 t(1);
 
+  t = glm::translate(t, glm::vec3(0, 0, 0));
+  t = glm::scale(t, glm::vec3(100, 100, 100));
+  this->sky->draw(_shader, t, _clock.getElapsed());
 
   glViewport(1280/2, 0,1280/2, 800);
   glClearColor(255, 0, 0, 0);
 
   _shader.setUniform("view", this->_camera->getTransformationRight());
   map->draw(_shader, _clock);
-
+  this->sky->draw(_shader, t, _clock.getElapsed());
 }
 
 void		Graphics::drawOneStereo(Map *map)
@@ -148,11 +135,7 @@ void		Graphics::drawOneStereo(Map *map)
   map->draw(_shader, _clock);
   glm::mat4 t(1);
 
-<<<<<<< HEAD
   t = glm::translate(t, glm::vec3(0, 0, 0));
-=======
-  t = glm::translate(t, glm::vec3(0, 4, 0));
->>>>>>> 2757af8d46a74004815ef5ee0e0441c56b522b2c
   t = glm::scale(t, glm::vec3(100, 100, 100));
   this->sky->draw(_shader, t, _clock.getElapsed());
   _shader.setUniform("projection", this->_camera->getPerspective());
