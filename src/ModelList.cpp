@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 06:17:30 2014 Remi telenczak
-// Last update Wed May 21 01:42:58 2014 Remi telenczak
+// Last update Thu May 22 05:46:59 2014 Remi telenczak
 // Last update Tue May 20 15:43:51 2014 mattieu bernard-guêle
 */
 
@@ -24,6 +24,8 @@ ModelList::ModelList()
   this->list.push_back(std::make_pair("cube7", mod));
   mod = this->createModel("./assets/bombe5.fbx");
   this->list.push_back(std::make_pair("defaultBomb", mod));
+  mod = this->createModel("./assets/test2/fire_old.FBX");
+  this->list.push_back(std::make_pair("box", mod));
 
 }
 

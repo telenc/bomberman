@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Wed May 21 03:01:21 2014 Remi telenczak
+// Last update Thu May 22 05:23:33 2014 Remi telenczak
 //
 
 
@@ -30,6 +30,7 @@
 #include	"Graphics.hpp"
 #include "GL/glut.h"
 #include "Player.hpp"
+#include "Cube.hpp"
 
 Graphics::Graphics(EventManager *event) : _event(event)
 {
@@ -43,6 +44,7 @@ Graphics::~Graphics()
 void		Graphics::setModelList(ModelList *mod)
 {
   this->_modelList = mod;
+  this->sky = mod->getModel("box");
 }
 
 bool		Graphics::initialize()
@@ -60,8 +62,8 @@ bool		Graphics::initialize()
       || !_shader.load("./shaders/basic.vp", GL_VERTEX_SHADER)
       || !_shader.build())
     return false;
-  _shader.bind();
   this->_camera = new CameraBomber(&_shader, _event);
+  _shader.bind();
   return true;
 }
 bool		Graphics::update(Map *map)
@@ -128,7 +130,11 @@ void		Graphics::drawOneStereo(Map *map)
 
 
   map->draw(_shader, _clock);
+  glm::mat4 t(1);
 
+  t = glm::translate(t, glm::vec3(0, 4, 0));
+  //t = glm::scale(t, glm::vec3(0.01, 0.01, 0.01));
+  this->sky->draw(_shader, t, _clock.getElapsed());
   _shader.setUniform("projection", this->_camera->getPerspective());
   _shader.setUniform("view", this->_camera->getTransformation());
 }
