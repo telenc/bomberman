@@ -63,14 +63,15 @@ LIBS          = -L$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH) \
 		-ltinyxml 			\
 		-Wl,-rpath,./LibGdl/libs/ 	\
 		-lsfml-audio 			\
+		-lSDL				\
 
 SRC		= src/main.cpp \
 		src/Occulus.cpp \
 		src/ModelList.cpp \
 		src/Game.cpp \
+		src/Graphics.cpp	\
 		src/EventManager.cpp \
 		src/Menu.cpp \
-		src/Graphics.cpp \
 		src/AObjectPhysic.cpp \
 		src/APlayer.cpp \
 		src/ABomb.cpp \
@@ -84,7 +85,8 @@ SRC		= src/main.cpp \
 		src/Bloc/DefaultWall.cpp \
 		src/GenereMap.cpp	\
 		src/Bomb/DefaultBomb.cpp \
-		src/Sound.cpp \
+		src/Sound.cpp 		\
+		src/Controller.cpp	\
 
 OBJECTS       = $(SRC:.cpp=.o)
 

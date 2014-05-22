@@ -17,7 +17,7 @@ int main(int argc,char **argv)
   joystick = SDL_JoystickOpen(0);
   printf("\n");
   printf("----> %d boutons\n", SDL_JoystickNumButtons(joystick));
-  printf("----> %d axes\n", SDL_JoystickNumAxes(joystick));
+   printf("----> %d axes\n", SDL_JoystickNumAxes(joystick));
   ok();
   SDL_JoystickClose(joystick);
   SDL_Quit();
@@ -38,65 +38,40 @@ void ok()
 	case SDL_JOYAXISMOTION:
 	  if (event.jaxis.which == 0)
 	    {
-	      if (event.jaxis.axis == 5 && event.jaxis.value < -2000)
+	      if (event.jaxis.axis == 0 && event.jaxis.value < -4000)
 		{
-
-		  /*		  if( ( event.jaxis.value > -8000 ) && ( event.jaxis.value < 8000 ) )
-		    {
-		      printf("X = 0\n");
-		    }
-		    else*/
-		    printf("left %d  \n", event.jaxis.value);
+		  printf("left %d  \n", event.jaxis.value);
 		}
-	      //	      if (event.jaxis.axis == 0)
-	      //		    printf("left %d  \n", event.jaxis.value);
-	      if (event.jaxis.axis == 0 && event.jaxis.value > 2000)
+	      else if (event.jaxis.axis == 0 && event.jaxis.value > 4000)
 		{
-
-		  /*		  if( ( event.jaxis.value > -8000 ) && ( event.jaxis.value < 8000 ) )
-		    {
-		      printf("X = 0\n");
-		    }
-		    else*/
-		    printf("droite %d \n  ", event.jaxis.value);
+		  printf("droite %d \n  ", event.jaxis.value);
 		}
-	      if (event.jaxis.axis == 1 && event.jaxis.value < -2000)
+	      if (event.jaxis.axis == 1 && event.jaxis.value < -4000)
 		{
-
-		  /*		  if( ( event.jaxis.value > -8000 ) && ( event.jaxis.value < 8000 ) )
-		    {
-		      printf("X = 0\n");
-		    }
-		    else*/
-		  //printf("bas %d  \n", event.jaxis.value);
+		  printf("haut %d \n  ", event.jaxis.value);
 		}
-	      if (event.jaxis.axis == 1 && event.jaxis.value > 2000)
+	      if (event.jaxis.axis == 1 && event.jaxis.value > 4000)
 		{
-
-		  /*		  if( ( event.jaxis.value > -8000 ) && ( event.jaxis.value < 8000 ) )
-		    {
-		      printf("X = 0\n");
-		    }
-		    else*/
-		  // printf("haut %d \n  ", event.jaxis.value);
+		  printf("bas %d  \n", event.jaxis.value);
 		}
-	      else if (event.jaxis.axis == 1)
+	      if (event.jaxis.axis == 3 && event.jaxis.value < -4000)
 		{
-		  /*if( ( event.jaxis.value > -8000 ) && ( event.jaxis.value < 8000 ) )
-		    {
-		      printf("Y = 0\n");
-		    }
-		    else*/
-		  //  printf("Y = %d ", event.jaxis.value);
+		  printf("Rotate Gauche %d \n", event.jaxis.value);
 		}
-	      //	      printf("\n");
-	      //sleep(1);
+	      if (event.jaxis.axis == 3 && event.jaxis.value > 4000)
+		{
+		  printf("Rotate Droite %d \n", event.jaxis.value);
+		}
 	      break;
 	    }
 	case SDL_JOYBUTTONDOWN:
 	  if (event.jbutton.button == 0)
 	    {
-	      printf("QUITTER\n");
+	      printf("On pose une bombe\n");
+	    }
+	  if (event.jbutton.button == 1)
+	    {
+	      printf("On quitte\n");
 	      continuer = 1;
 	    }
 	  break;
