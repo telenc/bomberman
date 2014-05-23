@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 22 07:25:49 2014 Remi telenczak
-// Last update Thu May 22 09:18:31 2014 Remi telenczak
+// Last update Fri May 23 02:45:09 2014 Remi telenczak
 //
 
 #include	"Skybox.hpp"
@@ -15,7 +15,8 @@ Skybox::Skybox(Map *map, ModelList *model, EventManager *event) : AObjectPhysic(
 {
   callPlayerMove = new CallBack<Skybox>(this, &Skybox::eventPlayerMove);
   event->listenEvent("playerMove", callPlayerMove);
-  this->scale(glm::vec3(50, 50, 50));
+  this->scale(glm::vec3(200, 200, 200));
+  this->translate(glm::vec3(0, 50, 0));
   this->_skin = model->getModel("skybox");
 }
 

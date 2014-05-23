@@ -5,13 +5,14 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Wed May  7 16:03:12 2014 Steven Martreux
-// Last update Wed May 21 03:42:46 2014 Remi telenczak
+// Last update Fri May 23 04:30:56 2014 Remi telenczak
 //
 
 #ifndef		_ABOMB_HPP_
 # define	_ABOMB_HPP_
 
 #include "AObjectPhysic.hpp"
+#include	<time.h>
 
 class		APlayer;
 class		ABomb : public AObjectPhysic
@@ -23,6 +24,7 @@ protected:
   APlayer	*_player;
   bool		_playerColl;
   int		_direction;
+  time_t	_timeCreate;
 public:
   ABomb(Map *, ModelList *, EventManager *, APlayer *player);
   ~ABomb();

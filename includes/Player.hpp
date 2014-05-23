@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:27:33 2014 dedicker remi
-// Last update Wed May 21 01:27:08 2014 Remi telenczak
+// Last update Fri May 23 02:31:11 2014 Remi telenczak
 //
 
 #ifndef PLAYER_HPP_
@@ -25,6 +25,7 @@ public:
   void	eventKeyDown(void *data);
   void	eventKeyRight(void *data);
   void	eventKeyLeft(void *data);
+  void	eventRotate(void *data);
   void	eventRotateRight(void *data);
   void	eventRotateLeft(void *data);
   void	eventKeyA(void *data);
@@ -38,6 +39,7 @@ private:
   ICallBack	*callKeyRight;
   ICallBack	*callRotateLeft;
   ICallBack	*callRotateRight;
+  ICallBack	*callRotate;
   ICallBack	*callKeyA;
 };
 

@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Mon May 19 15:57:02 2014 Steven Martreux
-// Last update Thu May 22 09:31:12 2014 Remi telenczak
+// Last update Thu May 22 23:49:22 2014 Remi telenczak
 //
 
 #include	"Sound.hpp"
@@ -15,7 +15,8 @@ int main()
   Sound s;
 
   s.setPlayer(0, 0, 0);
-  s.StartTicTacBomb(1000, 1000, 1000);
+
+  s.StartExplosion(-200, 20, 0);
   sleep(10);
 }
 
@@ -39,6 +40,7 @@ Sound::~Sound()
 void	Sound::setPlayer(float x, float y, float z)
 {
   sf::Listener::SetPosition(x, y, z);
+  sf::Listener::SetTarget(1, 0, 0);
 }
 
 void	Sound::InGame()
@@ -69,6 +71,7 @@ void	Sound::StartTicTacBomb(float x, float y, float z)
 {
   _TicTacBomb.SetLoop(true);
   _TicTacBomb.SetPosition(x, y, z);
+  //_TicTacBomb.SetAttenuation(0.1f);
   _TicTacBomb.Play();
 }
 

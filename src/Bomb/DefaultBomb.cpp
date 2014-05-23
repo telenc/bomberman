@@ -5,18 +5,22 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 21 01:36:36 2014 Remi telenczak
-// Last update Thu May 22 09:23:32 2014 Remi telenczak
+// Last update Fri May 23 05:58:30 2014 Remi telenczak
 //
 
 #include	"DefaultBomb.hpp"
 #include	"ModelList.hpp"
 #include	"APlayer.hpp"
+#include	"DefaultFire.hpp"
+
 DefaultBomb::DefaultBomb(Map *map, ModelList *model, EventManager *event, APlayer *player) : ABomb(map, model, event, player)
 {
   this->_skin = _modelList->getModel("defaultBomb");
   this->rotate(glm::vec3(0, 1, 0), 45);
   this->rotate(glm::vec3(1, 0, 0), -25);
   this->rotate(glm::vec3(0, 0, 1), -25);
+  this->_time = 1000;
+  this->_po = 5;
 }
 
 void	DefaultBomb::update(gdl::Clock const &clock, gdl::Input &input)
@@ -33,11 +37,104 @@ void	DefaultBomb::update(gdl::Clock const &clock, gdl::Input &input)
       if (this->collision((AObjectPhysic *)this->_player) == false)
 	this->_playerColl = true;
     }
+  time_t currTime;
+
+  time(&currTime);
+  if (difftime(currTime, this->_timeCreate) * 1000 >= this->_time)
+    {
+      this->createDeflag();
+      this->_map->deleteObject(this);
+    }
   (void)clock;
   (void)input;
 }
 
 void	DefaultBomb::createDeflag()
 {
+  DefaultFire	*fire;
+  int		x;
+  int		z;
 
+  x = this->_position.x;// - (this->_po * 3);
+  while (x >= (this->_position.x - this->_po * 3))
+    {
+      if (x != this->_position.x)
+	{
+	  fire = new DefaultFire(_map, _modelList, _event);
+	  fire->set_x(x);
+	  fire->set_z(this->_position.z);
+	  if (fire->checkPositionCollision(BLOC) != NULL)
+	    {
+	      x = this->_position.x - (this->_po * 3) - 1;
+	      delete fire;
+	    }
+else
+	    this->_map->setMap(0, 0, fire);
+	}
+      x -= 3;
+    }
+
+  x = this->_position.x;// - (this->_po * 3);
+  while (x <= (this->_position.x + this->_po * 3))
+    {
+      if (x != this->_position.x)
+	{
+	  fire = new DefaultFire(_map, _modelList, _event);
+	  fire->set_x(x);
+	  fire->set_z(this->_position.z);
+	  if (fire->checkPositionCollision(BLOC) != NULL)
+	    {
+	      x = this->_position.x + (this->_po * 3) + 1;
+	      delete fire;
+	    }
+	  else
+	    this->_map->setMap(0, 0, fire);
+	}
+      x += 3;
+    }
+
+  z = this->_position.z;// - (this->_po * 3);
+  while (z >= this->_position.z - (this->_po * 3))
+    {
+      if (z != this->_position.z)
+	{
+	  fire = new DefaultFire(_map, _modelList, _event);
+	  fire->set_z(z);
+	  fire->set_x(this->_position.x);
+	  if (fire->checkPositionCollision(BLOC) != NULL)
+	    {
+	      z = this->_position.z - (this->_po * 3) - 1;
+	         delete fire;
+	    }
+else
+	    this->_map->setMap(0, 0, fire);
+
+	}
+      z -= 3;
+    }
+
+  z = this->_position.z;// - (this->_po * 3);
+  while (z <= this->_position.z + (this->_po * 3))
+    {
+      if (z != this->_position.z)
+	{
+	  fire = new DefaultFire(_map, _modelList, _event);
+	  fire->set_z(z);
+	  fire->set_x(this->_position.x);
+
+	  if (fire->checkPositionCollision(BLOC) != NULL)
+	    {
+	      z = this->_position.z + (this->_po * 3) + 1;
+	         delete fire;
+	    }
+	  else
+	    this->_map->setMap(0, 0, fire);
+	}
+      z += 3;
+    }
+
+  fire = new DefaultFire(_map, _modelList, _event);
+  fire->set_z(this->_position.z);
+  fire->set_x(this->_position.x);
+  this->_map->setMap(0, 0, fire);
 }

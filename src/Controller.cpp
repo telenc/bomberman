@@ -1,11 +1,11 @@
 //
 // Controller.cpp for Controller in /home/martre_s/Epitech/cpp_bomberman/AllTest/testController
-// 
+//
 // Made by Steven Martreux
 // Login   <martre_s@epitech.net>
-// 
+//
 // Started on  Wed May 21 12:42:20 2014 Steven Martreux
-// Last update Thu May 22 15:41:15 2014 Steven Martreux
+// Last update Fri May 23 02:29:11 2014 Remi telenczak
 //
 
 #include	"Controller.hpp"
@@ -95,10 +95,11 @@ void	Controller::sendEvent()
     _eventManager->dispatchEvent("keyDown", NULL);
   else if (_up == 1)
     _eventManager->dispatchEvent("keyUp", NULL);
-  if (_rotateLeft == 1)
+  /*if (_rotateLeft == 1)
     _eventManager->dispatchEvent("rotateLeft", NULL);
   else if (_rotateRight == 1)
     _eventManager->dispatchEvent("rotateRight", NULL);
+  */
   if (_bomb == 1)
     _eventManager->dispatchEvent("keyA", NULL);
 }

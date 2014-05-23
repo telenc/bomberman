@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:27:38 2014 dedicker remi
-// Last update Thu May 22 09:24:32 2014 Remi telenczak
+// Last update Fri May 23 05:26:58 2014 Remi telenczak
 //
 
 #include "Player.hpp"
@@ -31,10 +31,15 @@ Player::Player(int x, int y, int z, Map *map, ModelList *model, EventManager *ev
   event->listenEvent("keyRight", callKeyRight);
   callKeyDown = new CallBack<Player>(this, &Player::eventKeyDown);
   event->listenEvent("keyDown", callKeyDown);
-  callRotateLeft = new CallBack<Player>(this, &Player::eventRotateLeft);
+
+  callRotate = new CallBack<Player>(this, &Player::eventRotate);
+  event->listenEvent("occulusRotate", callRotate);
+  /*
+    callRotateLeft = new CallBack<Player>(this, &Player::eventRotateLeft);
   event->listenEvent("rotateLeft", callRotateLeft);
   callRotateRight = new CallBack<Player>(this, &Player::eventRotateRight);
   event->listenEvent("rotateRight", callRotateRight);
+  */
   callKeyA = new CallBack<Player>(this, &Player::eventKeyA);
   event->listenEvent("keyA", callKeyA);
 }
@@ -75,7 +80,7 @@ void	Player::eventKeyA(void *data)
   t.z = z;
 
   _event->dispatchEvent("bombDrop", &(t));
-
+  std::cout << "ON POSE UNE BOMB" << std::endl;
   this->_map->setMap((int)(this->_position.x/2.5), (int)(this->_position.z/2.5), bomb);
 }
 
@@ -85,6 +90,18 @@ void	Player::eventRotateRight(void *data)
   //this->rotation.y += 5;
   this->rotate(glm::vec3(0, 1, 0), 5);
   this->_event->dispatchEvent("playerRotateRight", this);
+}
+
+void	Player::eventRotate(void *data)
+{
+  glm::vec3 *test;
+  (void)data;
+
+  test = (glm::vec3 *)data;
+  //this->rotation.y += 5;
+  this->set_roty((-1 * test->y) + 180);
+  //this->rotate(glm::vec3(0, 1, 0), 5);
+  //this->_event->dispatchEvent("playerRotateRight", this);
 }
 
 bool	Player::checkPositionCollision()
@@ -97,7 +114,7 @@ bool	Player::checkPositionCollision()
 
   while (it != objects.end())
     {
-      if (this->collision(*it) == true)
+      if ((*it)->getType() != FIRE && this->collision(*it) == true)
 	{
 	  //this->_position = posSauv;
 	  return false;

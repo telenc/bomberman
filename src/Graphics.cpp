@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Thu May 22 07:51:22 2014 Remi telenczak
+// Last update Fri May 23 02:49:37 2014 Remi telenczak
 //
 
 #include	"OVR.h"
@@ -69,6 +69,17 @@ bool		Graphics::update(Map *map)
 {
   if (_input.getKey(SDLK_ESCAPE) || _input.getInput(SDL_QUIT))
     return false;
+  if (_input.getKey(SDLK_a))
+    {
+      this->_camera->rot -= 0.1;
+      std::cout << this->_camera->rot << std::endl;
+
+    }
+  if (_input.getKey(SDLK_z))
+    {
+      this->_camera->rot += 0.1;
+      std::cout << this->_camera->rot << std::endl;
+    }
   _context.updateClock(_clock);
   _context.updateInputs(_input);
   map->update(_clock, _input);
@@ -108,21 +119,19 @@ void		Graphics::drawDoubleStereo(Map *map)
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glClearColor(255, 0, 0, 0);
 
+  glm::vec3 testt = this->_camera->getRotation();
+  _event->dispatchEvent("occulusRotate", &testt);
+
   _shader.setUniform("view", this->_camera->getTransformationLeft());
   _shader.setUniform("projection", this->_camera->getPerspective());
-  map->draw(_shader, _clock);
-  glm::mat4 t(1);
 
-  t = glm::translate(t, glm::vec3(0, 0, 0));
-  t = glm::scale(t, glm::vec3(100, 100, 100));
-  //this->sky->draw(_shader, t, _clock.getElapsed());
+  map->draw(_shader, _clock);
 
   glViewport(1280/2, 0,1280/2, 800);
   glClearColor(255, 0, 0, 0);
 
   _shader.setUniform("view", this->_camera->getTransformationRight());
   map->draw(_shader, _clock);
-  //this->sky->draw(_shader, t, _clock.getElapsed());
 }
 
 void		Graphics::drawOneStereo(Map *map)

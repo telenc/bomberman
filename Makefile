@@ -88,7 +88,9 @@ SRC		= src/main.cpp \
 		src/Controller.cpp	\
 		src/Cube.cpp\
 		src/Skybox.cpp \
-		src/Sound.cpp
+		src/Sound.cpp \
+		src/AFire.cpp  \
+		src/Fire/DefaultFire.cpp \
 
 OBJECTS       = $(SRC:.cpp=.o)
 

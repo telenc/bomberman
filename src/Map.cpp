@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Thu May 22 07:34:22 2014 Remi telenczak
+// Last update Fri May 23 06:10:18 2014 Remi telenczak
 //
 
 #include <cstdlib>
@@ -41,12 +41,22 @@ void	Map::update(gdl::Clock clock, gdl::Input input)
   itO = this->_map.begin();
   while (itO != this->_map.end())
     {
+      std::cout << "Here" << std::endl;
       if ((*itO) != NULL)
-	(*itO)->update(clock, input);
+	{
+	  std::cout << "Here7" << std::endl;
+	  (*itO)->update(clock, input);
+	  std::cout << "Here 8" << std::endl;
+	}
+      std::cout << "Here2" << std::endl;
+
       itO++;
+      std::cout << "Here3" << std::endl;
+
     }
   this->_player->update(clock, input);
   this->_skybox->update(clock, input);
+  this->refreshDeleteObject();
 }
 
 std::vector<AObjectPhysic *>	Map::getObjectsPos(AObjectPhysic *obj)
@@ -71,6 +81,28 @@ std::vector<AObjectPhysic *>	Map::getObjectsPos(AObjectPhysic *obj)
       itO++;
     }
   return result;
+}
+
+void	Map::refreshDeleteObject()
+{
+  std::vector<AObjectPhysic *>::iterator it;
+  std::vector<AObjectPhysic *>::iterator it2;
+
+  it2 = _objectToDelete.begin();
+  while (it2 != _objectToDelete.end())
+    {
+      if ((it = std::find(this->_map.begin(), this->_map.end(), *it2)) != this->_map.end())
+	{
+	  //_map.erase(it);
+	}
+      it2++;
+    }
+  _objectToDelete.clear();
+}
+
+void	Map::deleteObject(AObjectPhysic *obj)
+{
+  this->_objectToDelete.push_back(obj);
 }
 
 void	Map::draw(gdl::BasicShader shader, gdl::Clock clock)

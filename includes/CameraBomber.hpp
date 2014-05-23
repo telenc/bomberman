@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 14 07:57:29 2014 Remi telenczak
-// Last update Thu May 22 09:03:43 2014 Remi telenczak
+// Last update Fri May 23 03:21:41 2014 Remi telenczak
 //
 
 #ifndef		_CAMERA_BOMBER
@@ -29,8 +29,11 @@ public:
   void	eventPlayerMove(void *data);
   void	eventRotateRight(void *data);
   void	eventRotateLeft(void *data);
+  void	eventChangeTypeDeplacement(void *data);
   glm::vec3    getRotation();
   glm::vec3  getPosition();
+  float rot;
+
 private:
   EventManager *_event;
   int stereo;
@@ -38,14 +41,11 @@ private:
   Occulus		*_occulus;
   glm::vec3		position;
   glm::vec3		rotation;
-  float rot;
   ICallBack	*callPlayerMove;
-  //  ICallBack	*callKeyUp;
-  //ICallBack	*callKeyDown;
-  //ICallBack	*callKeyLeft;
-  //ICallBack	*callKeyRight;
-  ICallBack	*callRotateLeft;
+  ICallBack	*callTypeDeplacement;
+ICallBack	*callRotateLeft;
   ICallBack	*callRotateRight;
+int		_typeDeplacement;
 };
 
 #endif

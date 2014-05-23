@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 15:52:43 2014 Mathieu Choquart
-// Last update Wed May 21 02:41:34 2014 Remi telenczak
+// Last update Fri May 23 03:51:53 2014 Remi telenczak
 //
 
 #ifndef			_AOBJECTPHYSIC_HPP_
@@ -33,6 +33,7 @@ enum	TypeObject
     NONE,
     BOMB,
     PLAYER,
+    FIRE,
     BLOC
   };
 

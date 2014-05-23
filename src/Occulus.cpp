@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 05:18:23 2014 Remi telenczak
-// Last update Tue May 20 07:45:45 2014 Remi telenczak
+// Last update Fri May 23 03:14:58 2014 Remi telenczak
 //
 
 #include	"Occulus.hpp"
@@ -91,13 +91,10 @@ glm::vec3	Occulus::getOrientationRad()
 
   quaternion = pFusionResult->GetOrientation();
   quaternion.GetEulerAngles<OVR::Axis_Y, OVR::Axis_X, OVR::Axis_Z>(&yaw, &pitch, &roll);
-  //  std::cout << pitch << "  " << yaw << "  " << roll << std::endl;
   result.x = pitch;
   result.y = yaw;
   result.z = roll;
-
   return (result);
-
 }
 
 glm::vec3	Occulus::getOrientation()
@@ -117,6 +114,6 @@ glm::mat4 Occulus::getPerspective()
 {
   glm::mat4 projec;
 
-  projec = glm::perspective(Sconfig.GetYFOVDegrees()/2, (float)Info.HResolution / 2.0f / (float)Info.VResolution, 2.0f, 500.f);
+  projec = glm::perspective(Sconfig.GetYFOVDegrees()/1.5f, (float)Info.HResolution / 2.0f / (float)Info.VResolution, 2.0f, 500.f);
   return projec;
 }

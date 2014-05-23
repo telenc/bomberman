@@ -5,13 +5,14 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Thu May 22 07:33:08 2014 Remi telenczak
+// Last update Fri May 23 06:06:00 2014 Remi telenczak
 //
 
 #ifndef MAP_HPP_
 # define MAP_HPP_
 
 #include <vector>
+#include <algorithm>
 #include "AObjectPhysic.hpp"
 #include	<BasicShader.hh>
 #include	<Clock.hh>
@@ -33,13 +34,16 @@ public:
   std::vector<AObjectPhysic *> getMap() const;
   Player *getPlayer() const;
   void	setPlayer(Player *);
+  void	deleteObject(AObjectPhysic *);
   void	setSkybox(Skybox *);
   void	draw(gdl::BasicShader, gdl::Clock);
   std::vector<AObjectPhysic *> getObjectsPos(AObjectPhysic *);
+  void	refreshDeleteObject();
 private:
   //std::vector< std::vector<AObjectPhysic *> > _map;
   std::vector<AObjectPhysic * > _map;
   std::vector <APlayer *> _ia;
+  std::vector<AObjectPhysic *> _objectToDelete;
   int		_width;
   int		_height;
   Player *_player;
