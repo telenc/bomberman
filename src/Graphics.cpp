@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Fri May 23 02:49:37 2014 Remi telenczak
+// Last update Fri May 23 16:50:22 2014 dedicker remi
 //
 
 #include	"OVR.h"
@@ -154,10 +154,27 @@ void		Graphics::drawOneStereo(Map *map)
 void		Graphics::draw(Map *map)
 {
   _shader.bind();
-
   if (this->_camera->getStereo() == 2)
     drawDoubleStereo(map);
   else
     drawOneStereo(map);
   _context.flush();
+}
+
+void            Graphics::draw(Menu *menu)
+{
+  _shader.bind();
+  drawOneStereo(menu);
+  _context.flush();
+}
+
+void            Graphics::drawOneStereo(Menu *menu)
+{
+  glViewport(0, 0, 1280, 800);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  glClearColor(255, 0, 0, 0);
+  std::cout << "hIGHWAY FROM HELL" << std::endl;
+  menu->draw(_shader, _clock, sky);
+  _shader.setUniform("projection", this->_camera->getPerspective());
+  _shader.setUniform("view", this->_camera->getTransformation());
 }

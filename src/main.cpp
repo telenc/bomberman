@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
-// Last update Thu May 22 09:15:18 2014 Remi telenczak
+// Last update Fri May 23 16:45:33 2014 dedicker remi
 //
 
 #include <iostream>
@@ -20,7 +20,7 @@
 #include	"Sound.hpp"
 int	main()
 {
-  Menu menu;
+  Menu *menu = new Menu();
   Graphics *engine;
   ModelList *mod;
   EventManager *eventManager;
@@ -40,7 +40,7 @@ int	main()
   sound->InGame();
   while (engine->update(m))
     {
-      engine->draw(m);
+      engine->draw(menu);
       joystick->update();
     }
   return (0);

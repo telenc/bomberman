@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:10:16 2014 thomas mendez
-// Last update Thu May 22 15:44:02 2014 Steven Martreux
+// Last update Fri May 23 16:43:33 2014 dedicker remi
 //
 
 #ifndef		GRAPHICS_HH__BOMBER
@@ -33,6 +33,7 @@
 #include	"DefaultWall.hpp"
 #include	"Map.hpp"
 #include	"EventManager.hpp"
+#include	"Menu.hpp"
 class Player;
 
 class AObjectPhysic;
@@ -41,13 +42,15 @@ class		Graphics
 public:
   Graphics(EventManager *);
   ~Graphics();
-bool		initialize();
-void		setModelList(ModelList *model);
-void		draw(Map *);
+  bool		initialize();
+  void		setModelList(ModelList *model);
+  void		draw(Map *);
   bool		update(Map *);
   void		inputUpdate();
   void		drawDoubleStereo(Map *map);
   void		drawOneStereo(Map *map);
+  void		drawOneStereo(Menu *menu);
+  void		draw(Menu *);
 protected:
   gdl::BasicShader	_shader;
   gdl::Texture		_texture;
@@ -55,11 +58,9 @@ protected:
   gdl::Input		_input;
   std::vector<AObjectPhysic*>	_objects;
   gdl::SdlContext	_context;
-
   ModelList *_modelList;
   CameraBomber	       *_camera;
   EventManager *_event;
-
   gdl::Model *sky;
 };
 
