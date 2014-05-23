@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 21 01:36:36 2014 Remi telenczak
-// Last update Fri May 23 05:58:30 2014 Remi telenczak
+// Last update Fri May 23 07:49:29 2014 Remi telenczak
 //
 
 #include	"DefaultBomb.hpp"
@@ -20,10 +20,10 @@ DefaultBomb::DefaultBomb(Map *map, ModelList *model, EventManager *event, APlaye
   this->rotate(glm::vec3(1, 0, 0), -25);
   this->rotate(glm::vec3(0, 0, 1), -25);
   this->_time = 1000;
-  this->_po = 5;
+  this->_po = 10;
 }
 
-void	DefaultBomb::update(gdl::Clock const &clock, gdl::Input &input)
+bool	DefaultBomb::update(gdl::Clock const &clock, gdl::Input &input)
 {
   if (this->get_scax() >= 1)
     this->_direction = -1;
@@ -43,8 +43,10 @@ void	DefaultBomb::update(gdl::Clock const &clock, gdl::Input &input)
   if (difftime(currTime, this->_timeCreate) * 1000 >= this->_time)
     {
       this->createDeflag();
-      this->_map->deleteObject(this);
+      //this->_map->deleteObject(this);
+      return false;
     }
+  return true;
   (void)clock;
   (void)input;
 }
@@ -66,9 +68,9 @@ void	DefaultBomb::createDeflag()
 	  if (fire->checkPositionCollision(BLOC) != NULL)
 	    {
 	      x = this->_position.x - (this->_po * 3) - 1;
-	      delete fire;
+	      //delete fire;
 	    }
-else
+	  else
 	    this->_map->setMap(0, 0, fire);
 	}
       x -= 3;
@@ -85,7 +87,7 @@ else
 	  if (fire->checkPositionCollision(BLOC) != NULL)
 	    {
 	      x = this->_position.x + (this->_po * 3) + 1;
-	      delete fire;
+	      //delete fire;
 	    }
 	  else
 	    this->_map->setMap(0, 0, fire);
@@ -104,9 +106,9 @@ else
 	  if (fire->checkPositionCollision(BLOC) != NULL)
 	    {
 	      z = this->_position.z - (this->_po * 3) - 1;
-	         delete fire;
+	      //delete fire;
 	    }
-else
+	  else
 	    this->_map->setMap(0, 0, fire);
 
 	}
@@ -121,11 +123,10 @@ else
 	  fire = new DefaultFire(_map, _modelList, _event);
 	  fire->set_z(z);
 	  fire->set_x(this->_position.x);
-
 	  if (fire->checkPositionCollision(BLOC) != NULL)
 	    {
 	      z = this->_position.z + (this->_po * 3) + 1;
-	         delete fire;
+	      //delete fire;
 	    }
 	  else
 	    this->_map->setMap(0, 0, fire);

@@ -5,15 +5,16 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Fri May 23 03:51:01 2014 Remi telenczak
-// Last update Fri May 23 05:52:37 2014 Remi telenczak
+// Last update Fri May 23 07:08:17 2014 Remi telenczak
 //
 
 #include	"AFire.hpp"
 #include	"Map.hpp"
+
 AFire::AFire(Map *map, ModelList *model, EventManager *event) : AObjectPhysic(map, model, event), _damage(1)
 {
   this->_type = FIRE;
-  this->_time = 2000;
+  this->_time = 1000;
   time(&this->_timeCreate);
 }
 

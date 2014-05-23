@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 21 01:37:38 2014 Remi telenczak
-// Last update Wed May 21 01:51:00 2014 Remi telenczak
+// Last update Fri May 23 07:45:20 2014 Remi telenczak
 //
 
 #ifndef		_DEFAULTBOMB
@@ -17,7 +17,7 @@ class DefaultBomb : public ABomb
 {
 public:
   DefaultBomb(Map *, ModelList *, EventManager *, APlayer *);
-  virtual void update(gdl::Clock const &clock, gdl::Input &input);
+  virtual bool update(gdl::Clock const &clock, gdl::Input &input);
   virtual void createDeflag();
 };
 

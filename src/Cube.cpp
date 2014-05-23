@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 22 02:54:39 2014 Remi telenczak
-// Last update Thu May 22 03:15:02 2014 Remi telenczak
+// Last update Fri May 23 07:48:50 2014 Remi telenczak
 //
 
 #include	"Cube.hpp"
@@ -90,10 +90,11 @@ bool Cube::initialize()
   return (true);
 }
 
-void Cube::update(gdl::Clock const &clock, gdl::Input &input)
+bool Cube::update(gdl::Clock const &clock, gdl::Input &input)
 {
   (void)clock;
   (void)input;
+  return true;
 }
 
 void Cube::draw(gdl::AShader &shader, gdl::Clock const &clock)

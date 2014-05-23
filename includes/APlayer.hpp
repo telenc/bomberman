@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:12:08 2014 dedicker remi
-// Last update Tue May 20 09:24:28 2014 Remi telenczak
+// Last update Fri May 23 07:45:08 2014 Remi telenczak
 //
 
 #ifndef _APLAYER_HPP_
@@ -28,7 +28,7 @@ class APlayer : public AObjectLife, public AObjectPhysic
 public:
   APlayer(int, int, int, Map *, ModelList *, EventManager *);
   virtual ~APlayer();
-  virtual void update(gdl::Clock const &clock, gdl::Input &input) = 0;
+  virtual bool update(gdl::Clock const &clock, gdl::Input &input) = 0;
 protected:
   Inventory *_inventory;
   int	_z;

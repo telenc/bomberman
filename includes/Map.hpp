@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Fri May 23 06:06:00 2014 Remi telenczak
+// Last update Fri May 23 07:41:29 2014 Remi telenczak
 //
 
 #ifndef MAP_HPP_
@@ -17,6 +17,7 @@
 #include	<BasicShader.hh>
 #include	<Clock.hh>
 #include	<Input.hh>
+
 class APlayer;
 class Player;
 class AObjectPhysic;
@@ -44,6 +45,7 @@ private:
   std::vector<AObjectPhysic * > _map;
   std::vector <APlayer *> _ia;
   std::vector<AObjectPhysic *> _objectToDelete;
+  std::vector<AObjectPhysic *> _objectToPush;
   int		_width;
   int		_height;
   Player *_player;

@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 15:47:44 2014 Mathieu Choquart
-// Last update Thu May 15 07:46:12 2014 Remi telenczak
+// Last update Fri May 23 07:48:23 2014 Remi telenczak
 //
 
 #ifndef			_IOBJECTPHYSIC_HH_
@@ -20,7 +20,7 @@ class	IObjectPhysic
 public:
   virtual bool	collision(IObjectPhysic *) = 0;
   virtual void	display() = 0;
-  virtual void	update(gdl::Clock const &clock, gdl::Input &input) =0;
+  virtual bool	update(gdl::Clock const &clock, gdl::Input &input) =0;
 };
 
 #endif

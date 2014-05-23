@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Fri May 23 06:10:18 2014 Remi telenczak
+// Last update Fri May 23 07:54:14 2014 Remi telenczak
 //
 
 #include <cstdlib>
@@ -21,11 +21,6 @@ Map::Map(int width, int height) : _width(width), _height(height)
       std::cout << "Map trop pitite!" << std::endl;
       exit(0);
     }
-  /*while (pos < height)
-    {
-      this->_map.push_back(std::vector<AObjectPhysic *>());
-      pos++;
-      }*/
 }
 
 Map::~Map()
@@ -41,22 +36,30 @@ void	Map::update(gdl::Clock clock, gdl::Input input)
   itO = this->_map.begin();
   while (itO != this->_map.end())
     {
-      std::cout << "Here" << std::endl;
+      //std::cout << "Size map " << this->_map.size() << std::endl;
+      //std::cout << "capacity " << this->_map.capacity() << std::endl;
+      //std::cout << "max " << this->_map.max_size() << std::endl;
       if ((*itO) != NULL)
 	{
-	  std::cout << "Here7" << std::endl;
-	  (*itO)->update(clock, input);
-	  std::cout << "Here 8" << std::endl;
+	  std::cout <<  "adresse:  "<< *itO <<std::endl;
+	  std::cout << "Plahyer :"<< PLAYER << std::endl;
+	  std::cout << "Pas null "<< (*itO)->getType() << " adresse:  "<< *itO <<std::endl;
+	  if ((*itO)->update(clock, input) == false)
+	    {
+	      std::cout << "Ca seg ici?"<<std::endl;
+	      itO = _map.erase(itO);
+	      std::cout << "non" << std::endl;
+	    }
+	  else
+	    itO++;
 	}
-      std::cout << "Here2" << std::endl;
-
-      itO++;
-      std::cout << "Here3" << std::endl;
-
+      else
+	itO++;
     }
+  //std::cout << this << std::endl;
   this->_player->update(clock, input);
   this->_skybox->update(clock, input);
-  this->refreshDeleteObject();
+  //this->refreshDeleteObject();
 }
 
 std::vector<AObjectPhysic *>	Map::getObjectsPos(AObjectPhysic *obj)
@@ -87,22 +90,36 @@ void	Map::refreshDeleteObject()
 {
   std::vector<AObjectPhysic *>::iterator it;
   std::vector<AObjectPhysic *>::iterator it2;
+  AObjectPhysic *obj;
 
   it2 = _objectToDelete.begin();
   while (it2 != _objectToDelete.end())
     {
       if ((it = std::find(this->_map.begin(), this->_map.end(), *it2)) != this->_map.end())
 	{
-	  //_map.erase(it);
+	  obj = *it;
+	  _map.erase(it);
+	  //std::cout << "Size map " << this->_map.size() << std::endl;
+	  delete (obj);
 	}
       it2++;
     }
   _objectToDelete.clear();
+
+
+  it2 = _objectToPush.begin();
+  while (it2 != _objectToPush.end())
+    {
+      this->_map.push_back(*it2);
+      it2++;
+    }
+  _objectToPush.clear();
 }
 
 void	Map::deleteObject(AObjectPhysic *obj)
 {
-  this->_objectToDelete.push_back(obj);
+  //this->_objectToDelete.push_back(obj);
+  (void)obj;
 }
 
 void	Map::draw(gdl::BasicShader shader, gdl::Clock clock)
@@ -135,7 +152,9 @@ void	Map::setMap(int x, int y, AObjectPhysic *bloc)
   (void)y;
   (void)x;
   //_map[x][y] = bloc;
-  this->_map.push_back(bloc);
+  //std::cout << "On set map" << std::endl;
+  if (bloc)
+    this->_map.push_back(bloc);
   //this->_map2.push_back(bloc);
 }
 

@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 17:53:20 2014 dedicker remi
-// Last update Wed May 21 03:51:32 2014 Remi telenczak
+// Last update Fri May 23 06:33:11 2014 Remi telenczak
 //
 
 #include	<iostream>
@@ -95,7 +95,7 @@ void	GenereMap::putWall()
 	  else
 	    {
 	      wall++;
-	      this->_map->setMap(i, y, NULL/* Mur */);
+	      //this->_map->setMap(i, y, NULL/* Mur */);
 	    }
 	  y++;
 	}
