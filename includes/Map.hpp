@@ -5,13 +5,14 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Fri May 23 07:41:29 2014 Remi telenczak
+// Last update Fri May 23 08:00:58 2014 Remi telenczak
 //
 
 #ifndef MAP_HPP_
 # define MAP_HPP_
 
 #include <vector>
+#include <list>
 #include <algorithm>
 #include "AObjectPhysic.hpp"
 #include	<BasicShader.hh>
@@ -32,7 +33,7 @@ public:
   int	getWidth() const;
   int	getHeight() const;
   std::vector<APlayer*> getIa() const;
-  std::vector<AObjectPhysic *> getMap() const;
+  std::list<AObjectPhysic *> getMap() const;
   Player *getPlayer() const;
   void	setPlayer(Player *);
   void	deleteObject(AObjectPhysic *);
@@ -42,7 +43,7 @@ public:
   void	refreshDeleteObject();
 private:
   //std::vector< std::vector<AObjectPhysic *> > _map;
-  std::vector<AObjectPhysic * > _map;
+  std::list<AObjectPhysic * > _map;
   std::vector <APlayer *> _ia;
   std::vector<AObjectPhysic *> _objectToDelete;
   std::vector<AObjectPhysic *> _objectToPush;

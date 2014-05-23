@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Fri May 23 07:54:14 2014 Remi telenczak
+// Last update Fri May 23 08:02:14 2014 Remi telenczak
 //
 
 #include <cstdlib>
@@ -30,8 +30,8 @@ Map::~Map()
 
 void	Map::update(gdl::Clock clock, gdl::Input input)
 {
-  std::vector<AObjectPhysic *>::iterator itO;
-  std::vector<AObjectPhysic *>::iterator itT;
+  std::list<AObjectPhysic *>::iterator itO;
+  //std::vector<AObjectPhysic *>::iterator itT;
 
   itO = this->_map.begin();
   while (itO != this->_map.end())
@@ -64,7 +64,7 @@ void	Map::update(gdl::Clock clock, gdl::Input input)
 
 std::vector<AObjectPhysic *>	Map::getObjectsPos(AObjectPhysic *obj)
 {
-  std::vector<AObjectPhysic *>::iterator itO;
+  std::list<AObjectPhysic *>::iterator itO;
   std::vector<AObjectPhysic *> result;
   glm::vec3	position;
 
@@ -88,7 +88,7 @@ std::vector<AObjectPhysic *>	Map::getObjectsPos(AObjectPhysic *obj)
 
 void	Map::refreshDeleteObject()
 {
-  std::vector<AObjectPhysic *>::iterator it;
+  std::list<AObjectPhysic *>::iterator it;
   std::vector<AObjectPhysic *>::iterator it2;
   AObjectPhysic *obj;
 
@@ -124,7 +124,7 @@ void	Map::deleteObject(AObjectPhysic *obj)
 
 void	Map::draw(gdl::BasicShader shader, gdl::Clock clock)
 {
-  std::vector<AObjectPhysic *>::iterator itO;
+  std::list<AObjectPhysic *>::iterator itO;
 
   itO = this->_map.begin();
   while (itO != this->_map.end())
@@ -137,7 +137,7 @@ void	Map::draw(gdl::BasicShader shader, gdl::Clock clock)
   this->_skybox->draw(shader, clock);
 }
 
-std::vector<AObjectPhysic *> Map::getMap() const
+std::list<AObjectPhysic *> Map::getMap() const
 {
   return _map;
 }

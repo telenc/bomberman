@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
-// Last update Fri May 23 16:45:33 2014 dedicker remi
+// Last update Fri May 23 07:58:55 2014 Remi telenczak
 //
 
 #include <iostream>
@@ -38,9 +38,10 @@ int	main()
   joystick = new Controller(eventManager);
   m->setSkybox(new Skybox(m, mod, eventManager));
   sound->InGame();
+  (void)menu;
   while (engine->update(m))
     {
-      engine->draw(menu);
+      engine->draw(m);
       joystick->update();
     }
   return (0);
