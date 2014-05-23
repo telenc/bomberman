@@ -1674,7 +1674,7 @@ Objects:  {
 			Property: "LastFrame", "int", "",0
 			Property: "Width", "int", "",0
 			Property: "Height", "int", "",0
-			Property: "Path", "charptr", "", "skybox3.tga"
+			Property: "Path", "charptr", "", "skybox4.tga"
 			Property: "StartFrame", "int", "",0
 			Property: "StopFrame", "int", "",0
 			Property: "PlaySpeed", "double", "",1
@@ -1685,8 +1685,8 @@ Objects:  {
 			Property: "AccessMode", "enum", "",0
 		}
 		UseMipMap: 0
-		Filename: "skybox3.tga"
-		RelativeFilename: "skybox3.tga"
+		Filename: "skybox4.tga"
+		RelativeFilename: "skybox4.tga"
 	}
 	Texture: "Texture::untitled_001", "TextureVideoClip" {
 		Type: "TextureVideoClip"
@@ -1710,8 +1710,8 @@ Objects:  {
 			Property: "VideoProperty", "object", ""
 		}
 		Media: "Video::untitled_001"
-		FileName: "skybox3.tga"
-		RelativeFilename: "skybox3.tga"
+		FileName: "skybox4.tga"
+		RelativeFilename: "skybox4.tga"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "None"
