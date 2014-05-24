@@ -91,6 +91,9 @@ SRC		= src/main.cpp \
 		src/Sound.cpp \
 		src/AFire.cpp  \
 		src/Fire/DefaultFire.cpp \
+		src/Loader.cpp	\
+		src/Thread.cpp	\
+		src/myException.cpp	\
 
 OBJECTS       = $(SRC:.cpp=.o)
 

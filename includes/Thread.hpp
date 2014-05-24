@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 // 
 // Started on  Tue May  6 15:00:34 2014 Steven Martreux
-// Last update Tue May  6 15:05:47 2014 Steven Martreux
+// Last update Sat May 24 18:11:06 2014 Steven Martreux
 //
 
 #ifndef		_THREAD_HPP_
@@ -22,6 +22,6 @@ public:
   ~Thread();
 private:
   pthread_t	_thread_ing;
-}
+};
 
 #endif		/* _THREAD_HPP_ */
