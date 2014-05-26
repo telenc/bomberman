@@ -5,12 +5,12 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Wed May  7 16:00:11 2014 Steven Martreux
-// Last update Fri May 23 04:30:56 2014 Remi telenczak
+// Last update Mon May 26 06:31:33 2014 Remi telenczak
 //
 
 #include	"ABomb.hpp"
 
-ABomb::ABomb(Map *map, ModelList *model, EventManager *event, APlayer *player) :AObjectPhysic(map, model, event), _po(1), _time(10000), _damage(1), _player(player)
+ABomb::ABomb(Map *map, ModelList *model, EventManager *event, APlayer *player) :AObjectPhysic(map, model, event), _po(1), _time(10000), _damage(1), _player(player), _died(false)
 {
   this->_type = BOMB;
   this->_playerColl = false;
@@ -56,6 +56,15 @@ int	ABomb::getTime(void) const
 void	ABomb::setDamage(int damage)
 {
   this->_damage = damage;
+}
+
+void	ABomb::explode()
+{
+  if (this->_died == false)
+    {
+      this->createDeflag();
+      this->_died = true;
+    }
 }
 
 int	ABomb::getDamage(void) const

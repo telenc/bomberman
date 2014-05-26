@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
-// Last update Mon May 26 04:08:50 2014 Remi telenczak
+// Last update Mon May 26 05:54:07 2014 Remi telenczak
 //
 
 #include <iostream>
@@ -38,7 +38,7 @@ int	main()
       //eventManager = new EventManager();
       while (load->getFinish() != true);
       engine = load->getEngine();
-      engine->setModelList(load->getModel());
+
       joystick = load->getController();
       //sound = new Sound(eventManager);
       //engine = new Graphics(eventManager);
@@ -51,12 +51,11 @@ int	main()
       //joystick = new Controller(eventManager);
       m->setSkybox(new Skybox(m, load->getModel(), load->getEventManager()));
       //m->setSkybox(new Skybox(m, mod, eventManager));
-      load->getSound()->InGame();
+      //load->getSound()->InGame();
       //sound->InGame();
       //(void)menu;
       while (engine->update(m))
 	{
-	  std::cout << "Draw" << std::endl;;
 	  engine->draw(m);
 	  joystick->update();
 	}

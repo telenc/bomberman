@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Mon May 26 03:36:06 2014 Remi telenczak
+// Last update Mon May 26 07:03:06 2014 Remi telenczak
 //
 
 #include	"OVR.h"
@@ -71,16 +71,10 @@ bool		Graphics::update(Map *map)
   if (_input.getKey(SDLK_ESCAPE) || _input.getInput(SDL_QUIT))
     return false;
   if (_input.getKey(SDLK_a))
-    {
       this->_camera->rot -= 0.1;
-      std::cout << this->_camera->rot << std::endl;
 
-    }
   if (_input.getKey(SDLK_z))
-    {
       this->_camera->rot += 0.1;
-      std::cout << this->_camera->rot << std::endl;
-    }
   _context.updateClock(_clock);
   _context.updateInputs(_input);
   map->update(_clock, _input);
@@ -105,9 +99,9 @@ void		Graphics::inputUpdate()
   if (_input.getKey(SDLK_SPACE))
     this->_event->dispatchEvent("keyA", NULL);
   if (_input.getKey(SDLK_m))
-    this->_camera->translate(0, 0.1, 0);
+    this->_camera->translate(0, 1.0, 0);
   if (_input.getKey(SDLK_p))
-    this->_camera->translate(0, -0.1, 0);
+    this->_camera->translate(0, -1.0, 0);
   if (_input.getKey(SDLK_e))
     this->_camera->changeStereo(1);
   if (_input.getKey(SDLK_r))
@@ -116,7 +110,6 @@ void		Graphics::inputUpdate()
 
 void		Graphics::drawDoubleStereo(Map *map)
 {
-  std::cout << "Draw double" << std::endl;
   glViewport(0, 0, 1280/2, 800);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glClearColor(255, 0, 0, 0);

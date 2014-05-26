@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 15:52:43 2014 Mathieu Choquart
-// Last update Fri May 23 07:44:47 2014 Remi telenczak
+// Last update Mon May 26 06:35:35 2014 Remi telenczak
 //
 
 #ifndef			_AOBJECTPHYSIC_HPP_
@@ -46,6 +46,7 @@ public:
   virtual bool	initialize();
   virtual void	display(){}
   virtual bool update(gdl::Clock const &clock, gdl::Input &input) = 0;
+  AObjectPhysic *checkPositionCollision(TypeObject);
   void draw(gdl::AShader &shader, gdl::Clock const &clock);
   bool		collision(AObjectPhysic *object);
   glm::vec3		translate(glm::vec3 const &v);

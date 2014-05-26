@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 16:17:56 2014 Mathieu Choquart
-// Last update Fri May 23 04:28:48 2014 Remi telenczak
+// Last update Mon May 26 06:35:07 2014 Remi telenczak
 //
 
 #include	"AObjectPhysic.hpp"
@@ -225,6 +225,31 @@ glm::vec3	AObjectPhysic::getCornerHeight()
   result.z = this->_position.z + (this->get_depth() / 2);
   return result;
 }
+
+AObjectPhysic	*AObjectPhysic::checkPositionCollision(TypeObject type)
+{
+  std::vector<AObjectPhysic *>	objects;
+  std::vector<AObjectPhysic *>::iterator	it;
+
+  objects = this->_map->getObjectsPos(this);
+  it = objects.begin();
+  while (it != objects.end())
+    {
+      if (this->collision(*it) == true)
+	{
+	  if (type == NONE)
+	    return (*it);
+	  else if ((*it)->getType() == type)
+	    return (*it);
+	  //this->_map->deleteObject(this);
+	}
+      it++;
+    }
+  return NULL;
+}
+
+
+
 
 void AObjectPhysic::scale(glm::vec3 const& scale)
 {

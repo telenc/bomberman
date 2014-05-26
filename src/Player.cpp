@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:27:38 2014 dedicker remi
-// Last update Fri May 23 08:19:10 2014 Remi telenczak
+// Last update Mon May 26 06:15:16 2014 Remi telenczak
 //
 
 #include "Player.hpp"
@@ -60,6 +60,7 @@ void	Player::eventKeyA(void *data)
   int		z;
 
   bomb = new DefaultBomb(_map, _modelList, _event, this);
+  bomb->setPo(this->_po);
   std::cout << this->_position.x << std::endl;
   std::cout << this->_position.z << std::endl;
 
@@ -187,6 +188,8 @@ bool Player::update(gdl::Clock const &clock, gdl::Input &input)
 {
   (void)clock;
   (void)input;
+  if (this->_life <= 0)
+    std::cout << "PLAYER EST MORT CE CON" << std::endl;
   return true;
 }
 

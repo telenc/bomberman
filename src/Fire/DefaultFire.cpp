@@ -5,14 +5,15 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Fri May 23 04:00:03 2014 Remi telenczak
-// Last update Fri May 23 07:47:35 2014 Remi telenczak
+// Last update Mon May 26 06:29:57 2014 Remi telenczak
 //
 
 #include	"DefaultFire.hpp"
 #include	"ModelList.hpp"
 #include	"Map.hpp"
+#include	"ABomb.hpp"
 
-DefaultFire::DefaultFire(Map *map, ModelList *model, EventManager *event) : AFire(map, model, event)
+DefaultFire::DefaultFire(Map *map, ModelList *model, EventManager *event, std::vector<APlayer *> *playerTouched) : AFire(map, model, event, playerTouched)
 {
   this->_skin = _modelList->getModel("fire");
   this->scale(glm::vec3(0.5, 0.5, 0.5));
@@ -31,11 +32,16 @@ DefaultFire::~DefaultFire()
 bool	DefaultFire::update(gdl::Clock const &clock, gdl::Input &input)
 {
     time_t currTime;
+    ABomb *bomb;
 
   time(&currTime);
-  std::cout << "UPDATE FIRE" << std::endl;
-  std::cout << "     --- " << _map << std::endl;
-  std::cout << difftime(currTime, this->_timeCreate) << std::endl;
+  this->checkPlayerColl();
+  if ((bomb = (ABomb *)this->checkPositionCollision(BOMB)) != NULL)
+    {
+      //std::cout << "Coucou" << std::endl;
+      bomb->explode();
+    }
+  (void)bomb;
   if (difftime(currTime, this->_timeCreate) * 1000 >= this->_time)
     {
       //this->_map->deleteObject(this);

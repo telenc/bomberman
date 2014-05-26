@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:15:05 2014 Remi telenczak
-// Last update Fri May 23 07:45:00 2014 Remi telenczak
+// Last update Mon May 26 07:14:13 2014 Remi telenczak
 //
 
 #ifndef		_ABLOCK_HPP
@@ -19,6 +19,7 @@ public:
   ABloc(Map *, ModelList *, EventManager *);
   virtual ~ABloc();
   virtual bool update(gdl::Clock const &clock, gdl::Input &input) = 0;
+  virtual void fireTouch() = 0;
 };
 
 #endif

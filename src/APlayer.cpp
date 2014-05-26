@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:11:40 2014 dedicker remi
-// Last update Mon May 26 04:55:11 2014 Remi telenczak
+// Last update Mon May 26 06:14:42 2014 Remi telenczak
 //
 
 #include	"APlayer.hpp"
@@ -17,7 +17,7 @@
 //width 1
 //depth 1
 
-APlayer::APlayer(int x, int y, int z, Map *map, ModelList *model, EventManager *event) : AObjectLife(1), AObjectPhysic(map, model, event)
+APlayer::APlayer(int x, int y, int z, Map *map, ModelList *model, EventManager *event) : AObjectLife(2), AObjectPhysic(map, model, event)
 {
   this->_skin = model->getModel("marvin");
   this->_skin->setCurrentAnim(0);
@@ -28,6 +28,7 @@ APlayer::APlayer(int x, int y, int z, Map *map, ModelList *model, EventManager *
   this->_type = PLAYER;
   this->_width = 2.5;
   this->_height = 2.5;
+  this->_po = 2;
   (void)y;
   (void)x;
   (void)z;

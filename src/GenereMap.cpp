@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 17:53:20 2014 dedicker remi
-// Last update Fri May 23 08:42:44 2014 Remi telenczak
+// Last update Mon May 26 07:12:19 2014 Remi telenczak
 //
 
 #include	<iostream>
@@ -15,7 +15,7 @@
 #include	"GenereMap.hpp"
 #include	"Player.hpp"
 #include	"EventManager.hpp"
-
+#include	"DestrucWall.hpp"
 void	GenereMap::putInside()
 {
 
@@ -67,7 +67,7 @@ void	GenereMap::putWall()
   int	i;
   int	y;
   int	wall;
-  DefaultWall	*wallObject;
+  ABloc	*wallObject;
   i = 0;
   while (i < _width)
     {
@@ -78,7 +78,6 @@ void	GenereMap::putWall()
 	  if (i == 0 || y == 0 || i == (_width - 1) || y == (_height - 1))
 	    {
 	      wallObject = new DefaultWall(this->_map, this->_model, this->_event);
-	      wallObject->setSkin(this->_model->getModel("cube7"));
 	      wallObject->set_x(i * 3);
 	      wallObject->set_z(y * 3);
 	      this->_map->setMap(wallObject);
@@ -93,6 +92,15 @@ void	GenereMap::putWall()
 	    }
 	  else
 	    wall++;
+	  if (wall != 0 && ((i > 2  && i < _width-3) || (y > 2 && y < _height - 3) ))
+	    {
+	      wallObject = new DestrucWall(this->_map, this->_model, this->_event);
+	      wallObject->set_x(i * 3);
+	      wallObject->set_z(y * 3);
+	      this->_map->setMap(wallObject);
+
+	    }
+
 	  y++;
 	}
       i++;

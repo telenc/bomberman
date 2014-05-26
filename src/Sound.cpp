@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Fri May  9 14:23:13 2014 Steven Martreux
-// Last update Thu May 22 09:28:48 2014 Remi telenczak
+// Last update Mon May 26 05:55:29 2014 Remi telenczak
 //
 
 #include	"Sound.hpp"
@@ -45,14 +45,13 @@ void	Sound::eventBombDrop(void *data)
   glm::vec3	*test;
 
   test = (glm::vec3 *) data;
-  std::cout << "Bomb : " << test->x << "/" << test->y << "/" << test->z << std::endl;
+  (void)test;
   //this->StartTicTacBomb(test->x * 10, test->y * 10, test->z * 10);
   this->StartTicTacBomb(1300, 1300, 1300);
 }
 
 void	Sound::setPlayer(float x, float y, float z)
 {
-  std::cout << "Position : " << x << "/" << y << "/" << z << std::endl;
   sf::Listener::SetPosition(x * 0, y * 0, z * 0);
 }
 
