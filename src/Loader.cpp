@@ -1,11 +1,11 @@
 //
 // Loader.cpp for Loader in /home/martre_s/workspace/cpp_bomberman/src
-// 
+//
 // Made by Steven Martreux
 // Login   <martre_s@epitech.net>
-// 
+//
 // Started on  Sat May 24 17:09:28 2014 Steven Martreux
-// Last update Sat May 24 18:37:53 2014 Steven Martreux
+// Last update Mon May 26 04:54:36 2014 Remi telenczak
 //
 
 #include	"Loader.hpp"
@@ -29,14 +29,16 @@ Loader::Loader()
   _engine->initialize();
   _controller = new Controller(_eventManager);
   _finish = false;
+  _mod = new ModelList();
+  _mod->loadModel();
+  _sound = new Sound(_eventManager);
   loader = new Thread(runThreadLoader, this, "Thread Loader");
   (void)loader;
 }
 
 void		Loader::InitEvery()
 {
-  _sound = new Sound(_eventManager);
-  _mod = new ModelList();
+
   _engine->setModelList(_mod);
 }
 
