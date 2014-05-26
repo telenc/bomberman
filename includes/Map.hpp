@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Mon May 26 05:00:42 2014 Remi telenczak
+// Last update Mon May 26 05:01:40 2014 Remi telenczak
 //
 
 #ifndef MAP_HPP_
@@ -38,7 +38,7 @@ public:
   void	setSkybox(Skybox *);
   void	draw(gdl::BasicShader, gdl::Clock);
   std::vector<AObjectPhysic *> getObjectsPos(AObjectPhysic *);
-  std::vector<APlayer *> getPlayer();
+  std::vector<APlayer *> getPlayers();
 private:
   std::list<AObjectPhysic * > _map;
   std::vector <APlayer *> _ia;

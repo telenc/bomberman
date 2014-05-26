@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Mon May 26 05:00:43 2014 Remi telenczak
+// Last update Mon May 26 05:01:36 2014 Remi telenczak
 //
 
 #include <cstdlib>
@@ -109,7 +109,7 @@ Player	*Map::getPlayer() const
   return this->_player;
 }
 
-std::vector<APlayer *> Map::getPlayer()
+std::vector<APlayer *> Map::getPlayers()
 {
   std::vector<APlayer *> result;
 
