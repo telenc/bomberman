@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Mon May 26 03:36:06 2014 Remi telenczak
+// Last update Mon May 26 16:39:18 2014 dedicker remi
 //
 
 #include	"OVR.h"
@@ -120,18 +120,13 @@ void		Graphics::drawDoubleStereo(Map *map)
   glViewport(0, 0, 1280/2, 800);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glClearColor(255, 0, 0, 0);
-
   glm::vec3 testt = this->_camera->getRotation();
   _event->dispatchEvent("occulusRotate", &testt);
-
   _shader.setUniform("view", this->_camera->getTransformationLeft());
   _shader.setUniform("projection", this->_camera->getPerspective());
-
   map->draw(_shader, _clock);
-
   glViewport(1280/2, 0,1280/2, 800);
   glClearColor(255, 0, 0, 0);
-
   _shader.setUniform("view", this->_camera->getTransformationRight());
   map->draw(_shader, _clock);
 }
@@ -162,11 +157,14 @@ void		Graphics::draw(Map *map)
     drawOneStereo(map);
   _context.flush();
 }
-/*
+
 void            Graphics::draw(Menu *menu)
 {
   _shader.bind();
-  drawOneStereo(menu);
+  if (this->_camera->getStereo() == 2)
+    drawDoubleStereo(menu);
+  else
+    drawOneStereo(menu);
   _context.flush();
 }
 
@@ -174,10 +172,37 @@ void            Graphics::drawOneStereo(Menu *menu)
 {
   glViewport(0, 0, 1280, 800);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  glClearColor(255, 0, 0, 0);
-  std::cout << "hIGHWAY FROM HELL" << std::endl;
-  menu->draw(_shader, _clock, sky);
+  glClearColor(0, 0, 0, 0);
+  menu->draw(_shader, _clock);
   _shader.setUniform("projection", this->_camera->getPerspective());
   _shader.setUniform("view", this->_camera->getTransformation());
 }
-*/
+
+bool	Graphics::update(Menu *menu)
+{
+  if (_input.getKey(SDLK_ESCAPE) || _input.getInput(SDL_QUIT))
+    return false;
+  _context.updateClock(_clock);
+  _context.updateInputs(_input);
+  menu->update(_clock, _input);
+  this->inputUpdate();
+  return true;
+}
+
+
+void		Graphics::drawDoubleStereo(Menu *menu)
+{
+  this->_camera->setPosition(0, 0, 0);
+  glViewport(0, 0, 1280/2, 800);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  glClearColor(255, 0, 0, 0);
+  glm::vec3 testt = this->_camera->getRotation();
+  _event->dispatchEvent("occulusRotate", &testt);
+  _shader.setUniform("view", this->_camera->getTransformationLeft());
+  _shader.setUniform("projection", this->_camera->getPerspective());
+  menu->draw(_shader, _clock);
+  glViewport(1280/2, 0,1280/2, 800);
+  glClearColor(255, 0, 0, 0);
+  _shader.setUniform("view", this->_camera->getTransformationRight());
+  menu->draw(_shader, _clock);
+}

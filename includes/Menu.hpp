@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:19 2014 Remi telenczak
-// Last update Fri May 23 16:43:10 2014 dedicker remi
+// Last update Mon May 26 16:33:48 2014 dedicker remi
 //
 
 #ifndef		_MENU_BOMBERMAN
@@ -33,15 +33,18 @@
 #include        "DefaultWall.hpp"
 #include        "Map.hpp"
 #include        "EventManager.hpp"
+#include	"Skybox.hpp"
 
 class Menu
 {
 public:
   Menu();
   ~Menu();
-  void  draw(gdl::BasicShader &, gdl::Clock const &, gdl::Model *sky);
+  void	setSkybox(Skybox *skybox);
+  void  draw(gdl::BasicShader &, gdl::Clock const &);
+  void	update(gdl::Clock const &clock, gdl::Input const &input);
 private:
-  gdl::Model *_skin;
+  Skybox *_skin;
 };
 
 #endif
