@@ -5,7 +5,11 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 14 07:57:08 2014 Remi telenczak
+<<<<<<< HEAD
 // Last update Mon May 26 07:04:42 2014 Remi telenczak
+=======
+// Last update Mon May 26 16:38:09 2014 dedicker remi
+>>>>>>> 86fd066f3cca2a094e91194976398fe97236bc1e
 //
 
 #include	"CameraBomber.hpp"
@@ -98,6 +102,17 @@ glm::mat4		CameraBomber::getTransformation()
   return transformation;
 }
 
+
+glm::mat4		CameraBomber::getTransformationMenu()
+{
+  glm::vec3	vec;
+  glm::mat4 transformation;
+
+
+  transformation = glm::rotate(transformation, this->rotation.y, glm::vec3(0, 1, 0));
+  return transformation;
+}
+
 glm::mat4		CameraBomber::getTransformationLeft()
 {
   glm::vec3	vec;
@@ -152,4 +167,11 @@ glm::vec3	CameraBomber::getRotation()
 {
   this->rotation = this->_occulus->getOrientation();
   return this->rotation;
+}
+
+void	CameraBomber::setPosition(float x, float y, float z)
+{
+  this->position.x = x;
+  this->position.y = y;
+  this->position.z = z;
 }

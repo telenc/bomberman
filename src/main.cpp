@@ -5,7 +5,11 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
+<<<<<<< HEAD
 // Last update Mon May 26 05:54:07 2014 Remi telenczak
+=======
+// Last update Mon May 26 17:28:18 2014 dedicker remi
+>>>>>>> 86fd066f3cca2a094e91194976398fe97236bc1e
 //
 
 #include <iostream>
@@ -23,33 +27,21 @@
 
 int	main()
 {
-  //Menu *menu = new Menu();
   try
     {
-      Loader	*load;
-
-      load = new Loader();
+      Loader	*load = new Loader();
       Graphics *engine;
-      //ModelList *mod;
-      //EventManager *eventManager;
       Controller	*joystick;
-      //Sound		*sound;
 
-      //eventManager = new EventManager();
       while (load->getFinish() != true);
       engine = load->getEngine();
 
       joystick = load->getController();
-      //sound = new Sound(eventManager);
-      //engine = new Graphics(eventManager);
-      //engine->initialize();
-      //mod = new ModelList();
-      //engine->setModelList(mod);
       GenereMap gen(21, 21, 0, load->getEventManager(), load->getModel());
-      //GenereMap gen(21, 21, 0, eventManager, mod);
       Map *m = gen.getMap();
-      //joystick = new Controller(eventManager);
+      Menu *menu = new Menu(load->getModel(), load->getEventManager());
       m->setSkybox(new Skybox(m, load->getModel(), load->getEventManager()));
+<<<<<<< HEAD
       //m->setSkybox(new Skybox(m, mod, eventManager));
       //load->getSound()->InGame();
       //sound->InGame();
@@ -57,6 +49,15 @@ int	main()
       while (engine->update(m))
 	{
 	  engine->draw(m);
+=======
+      menu->setSkybox(new Skybox(m, load->getModel(), load->getEventManager()));
+      menu->setBox();
+      load->getSound()->InGame();
+      while (engine->update(menu))
+	{
+	  std::cout << "Draw" << std::endl;
+	  engine->draw(menu);
+>>>>>>> 86fd066f3cca2a094e91194976398fe97236bc1e
 	  joystick->update();
 	}
     }
