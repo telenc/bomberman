@@ -5,11 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:26:53 2014 Remi telenczak
-<<<<<<< HEAD
-// Last update Mon May 26 08:26:48 2014 Remi telenczak
-=======
-// Last update Mon May 26 16:43:12 2014 dedicker remi
->>>>>>> 86fd066f3cca2a094e91194976398fe97236bc1e
+// Last update Mon May 26 08:51:08 2014 Remi telenczak
 //
 
 #include	"DefaultWall.hpp"

@@ -5,11 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-<<<<<<< HEAD
-// Last update Mon May 26 08:01:57 2014 Remi telenczak
-=======
-// Last update Mon May 26 16:19:43 2014 dedicker remi
->>>>>>> 86fd066f3cca2a094e91194976398fe97236bc1e
+// Last update Mon May 26 08:48:25 2014 Remi telenczak
 //
 
 #ifndef MAP_HPP_
@@ -45,11 +41,8 @@ public:
 
   void	draw(gdl::BasicShader, gdl::Clock);
   std::vector<AObjectPhysic *> getObjectsPos(AObjectPhysic *);
-<<<<<<< HEAD
   std::vector<APlayer *> getPlayers();
-=======
   Player *getPlayer() const;
->>>>>>> 86fd066f3cca2a094e91194976398fe97236bc1e
 private:
   std::list<AObjectPhysic * > _map;
   std::vector <APlayer *> _ia;

@@ -83,11 +83,8 @@ SRC		= src/main.cpp \
 		src/CameraBomber.cpp \
 		src/ABloc.cpp \
 		src/Bloc/DefaultWall.cpp \
-<<<<<<< HEAD
 		src/Bloc/DestrucWall.cpp \
-=======
 		src/Bloc/MenuWall.cpp \
->>>>>>> 86fd066f3cca2a094e91194976398fe97236bc1e
 		src/GenereMap.cpp	\
 		src/Bomb/DefaultBomb.cpp \
 		src/Controller.cpp	\

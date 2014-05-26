@@ -5,11 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 14 07:57:08 2014 Remi telenczak
-<<<<<<< HEAD
-// Last update Mon May 26 07:04:42 2014 Remi telenczak
-=======
-// Last update Mon May 26 16:38:09 2014 dedicker remi
->>>>>>> 86fd066f3cca2a094e91194976398fe97236bc1e
+// Last update Mon May 26 08:50:48 2014 Remi telenczak
 //
 
 #include	"CameraBomber.hpp"
