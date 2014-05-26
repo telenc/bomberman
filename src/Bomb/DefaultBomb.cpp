@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 21 01:36:36 2014 Remi telenczak
-// Last update Fri May 23 07:49:29 2014 Remi telenczak
+// Last update Fri May 23 08:20:42 2014 Remi telenczak
 //
 
 #include	"DefaultBomb.hpp"
@@ -71,7 +71,7 @@ void	DefaultBomb::createDeflag()
 	      //delete fire;
 	    }
 	  else
-	    this->_map->setMap(0, 0, fire);
+	    this->_map->setMap(fire);
 	}
       x -= 3;
     }
@@ -85,12 +85,9 @@ void	DefaultBomb::createDeflag()
 	  fire->set_x(x);
 	  fire->set_z(this->_position.z);
 	  if (fire->checkPositionCollision(BLOC) != NULL)
-	    {
 	      x = this->_position.x + (this->_po * 3) + 1;
-	      //delete fire;
-	    }
 	  else
-	    this->_map->setMap(0, 0, fire);
+	    this->_map->setMap(fire);
 	}
       x += 3;
     }
@@ -104,12 +101,9 @@ void	DefaultBomb::createDeflag()
 	  fire->set_z(z);
 	  fire->set_x(this->_position.x);
 	  if (fire->checkPositionCollision(BLOC) != NULL)
-	    {
 	      z = this->_position.z - (this->_po * 3) - 1;
-	      //delete fire;
-	    }
 	  else
-	    this->_map->setMap(0, 0, fire);
+	    this->_map->setMap(fire);
 
 	}
       z -= 3;
@@ -124,12 +118,9 @@ void	DefaultBomb::createDeflag()
 	  fire->set_z(z);
 	  fire->set_x(this->_position.x);
 	  if (fire->checkPositionCollision(BLOC) != NULL)
-	    {
-	      z = this->_position.z + (this->_po * 3) + 1;
-	      //delete fire;
-	    }
+	    z = this->_position.z + (this->_po * 3) + 1;
 	  else
-	    this->_map->setMap(0, 0, fire);
+	    this->_map->setMap(fire);
 	}
       z += 3;
     }
@@ -137,5 +128,5 @@ void	DefaultBomb::createDeflag()
   fire = new DefaultFire(_map, _modelList, _event);
   fire->set_z(this->_position.z);
   fire->set_x(this->_position.x);
-  this->_map->setMap(0, 0, fire);
+  this->_map->setMap(fire);
 }

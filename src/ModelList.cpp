@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 06:17:30 2014 Remi telenczak
-// Last update Fri May 23 03:50:41 2014 Remi telenczak
+// Last update Mon May 26 04:55:01 2014 Remi telenczak
 // Last update Tue May 20 15:43:51 2014 mattieu bernard-guêle
 */
 
@@ -13,11 +13,15 @@
 
 ModelList::ModelList()
 {
+
+}
+
+void		ModelList::loadModel()
+{
   gdl::Model	*mod;
 
   mod = this->createModel("./assets/marvin.fbx");
   this->list.push_back(std::make_pair("marvin", mod));
-
   mod = this->createModel("./assets/cubeWallWood.fbx");
   this->list.push_back(std::make_pair("cube6", mod));
   mod = this->createModel("./assets/cubeWall.fbx");
@@ -30,7 +34,6 @@ ModelList::ModelList()
   this->list.push_back(std::make_pair("fire", mod));
   mod = this->createModel("./assets/mytest.fbx");
   this->list.push_back(std::make_pair("box", mod));
-
 }
 
 gdl::Model	*ModelList::createModel(const std::string path)
@@ -58,5 +61,6 @@ gdl::Model	*ModelList::getModel(const std::string name)
 	return (it->second);
       it++;
     }
+  std::cout << "Retunrn NULLL" << std::endl;
   return (NULL);
 }

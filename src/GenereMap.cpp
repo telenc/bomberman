@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 17:53:20 2014 dedicker remi
-// Last update Fri May 23 06:33:11 2014 Remi telenczak
+// Last update Fri May 23 08:42:44 2014 Remi telenczak
 //
 
 #include	<iostream>
@@ -81,48 +81,23 @@ void	GenereMap::putWall()
 	      wallObject->setSkin(this->_model->getModel("cube7"));
 	      wallObject->set_x(i * 3);
 	      wallObject->set_z(y * 3);
-	      this->_map->setMap(i, y, wallObject);
+	      this->_map->setMap(wallObject);
 	    }
 	  else if (wall == 1 && (y < (_width - 1)) && (i % 2 == 0))
 	    {
 	      wallObject = new DefaultWall(this->_map, this->_model, this->_event);
-
 	      wallObject->set_x(i * 3);
 	      wallObject->set_z(y * 3);
-	      this->_map->setMap(i, y, wallObject);
+	      this->_map->setMap(wallObject);
 	      wall = 0;
 	    }
 	  else
-	    {
-	      wall++;
-	      //this->_map->setMap(i, y, NULL/* Mur */);
-	    }
+	    wall++;
 	  y++;
 	}
       i++;
     }
 }
-
-/*
-void	GenereMap::display()
-{
-  int i;
-  int y;
-
-  i = 0;
-  while (i < _width)
-    {
-      y = 0;
-      while (y < _height)
-	{
-	  std::cout << _map[i][y];
-	  y++;
-	}
-      std::cout << std::endl;
-      i++;
-    }
-}
-*/
 
 void	GenereMap::putPlayer()
 {

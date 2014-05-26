@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Fri May 23 03:52:24 2014 Remi telenczak
-// Last update Fri May 23 07:44:40 2014 Remi telenczak
+// Last update Mon May 26 04:59:19 2014 Remi telenczak
 //
 
 #ifndef		_AFIRE_BOMB
@@ -30,7 +30,7 @@ public:
   int getDamage(void) const;
   void setTime(int time);
   int getTime(void) const;
-
+  void	checkPlayerColl();
 };
 
 #endif

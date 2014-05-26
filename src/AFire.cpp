@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Fri May 23 03:51:01 2014 Remi telenczak
-// Last update Fri May 23 07:08:17 2014 Remi telenczak
+// Last update Mon May 26 05:01:35 2014 Remi telenczak
 //
 
 #include	"AFire.hpp"
@@ -63,4 +63,11 @@ void	AFire::setDamage(int damage)
 int	AFire::getDamage(void) const
 {
   return this->_damage;
+}
+
+void	AFire::checkPlayerColl()
+{
+  std::vector<APlayer *>	players;
+
+  players = this->_map->getPlayers();
 }

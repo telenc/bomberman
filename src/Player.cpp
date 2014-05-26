@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:27:38 2014 dedicker remi
-// Last update Fri May 23 07:49:08 2014 Remi telenczak
+// Last update Fri May 23 08:19:10 2014 Remi telenczak
 //
 
 #include "Player.hpp"
@@ -81,7 +81,7 @@ void	Player::eventKeyA(void *data)
 
   _event->dispatchEvent("bombDrop", &(t));
   std::cout << "ON POSE UNE BOMB" << std::endl;
-  this->_map->setMap((int)(this->_position.x/2.5), (int)(this->_position.z/2.5), bomb);
+  this->_map->setMap(bomb);
 }
 
 void	Player::eventRotateRight(void *data)

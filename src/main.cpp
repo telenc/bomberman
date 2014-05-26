@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
-// Last update Mon May 26 13:08:30 2014 Steven Martreux
+// Last update Mon May 26 17:01:27 2014 Steven Martreux
 //
 
 #include <iostream>
@@ -38,6 +38,7 @@ int	main()
       //eventManager = new EventManager();
       while (load->getFinish() != true);
       engine = load->getEngine();
+      engine->setModelList(load->getModel());
       joystick = load->getController();
       //sound = new Sound(eventManager);
       //engine = new Graphics(eventManager);
@@ -45,13 +46,17 @@ int	main()
       //mod = new ModelList();
       //engine->setModelList(mod);
       GenereMap gen(21, 21, 0, load->getEventManager(), load->getModel());
+      //GenereMap gen(21, 21, 0, eventManager, mod);
       Map *m = gen.getMap();
       //joystick = new Controller(eventManager);
       m->setSkybox(new Skybox(m, load->getModel(), load->getEventManager()));
+      //m->setSkybox(new Skybox(m, mod, eventManager));
+      load->getSound()->InGame();
       //sound->InGame();
       //(void)menu;
       while (engine->update(m))
 	{
+	  std::cout << "Draw" << std::endl;;
 	  engine->draw(m);
 	  joystick->update();
 	}
