@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
-// Last update Mon May 26 16:30:01 2014 dedicker remi
+// Last update Mon May 26 17:28:18 2014 dedicker remi
 //
 
 #include <iostream>
@@ -28,7 +28,6 @@ int	main()
       Loader	*load = new Loader();
       Graphics *engine;
       Controller	*joystick;
-      Menu *menu = new Menu();
 
       while (load->getFinish() != true);
       engine = load->getEngine();
@@ -36,8 +35,10 @@ int	main()
       joystick = load->getController();
       GenereMap gen(21, 21, 0, load->getEventManager(), load->getModel());
       Map *m = gen.getMap();
+      Menu *menu = new Menu(load->getModel(), load->getEventManager());
       m->setSkybox(new Skybox(m, load->getModel(), load->getEventManager()));
       menu->setSkybox(new Skybox(m, load->getModel(), load->getEventManager()));
+      menu->setBox();
       load->getSound()->InGame();
       while (engine->update(menu))
 	{
