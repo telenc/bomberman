@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:10:16 2014 thomas mendez
-// Last update Mon May 26 03:35:29 2014 Remi telenczak
+// Last update Mon May 26 16:36:42 2014 dedicker remi
 //
 
 #ifndef		GRAPHICS_HH__BOMBER
@@ -46,11 +46,13 @@ public:
   void		setModelList(ModelList *model);
   void		draw(Map *);
   bool		update(Map *);
+  bool		update(Menu *);
   void		inputUpdate();
   void		drawDoubleStereo(Map *map);
+  void		drawDoubleStereo(Menu *menu);
   void		drawOneStereo(Map *map);
-  // void		drawOneStereo(Menu *menu);
-  //void		draw(Menu *);
+  void		drawOneStereo(Menu *menu);
+  void		draw(Menu *);
 protected:
   gdl::BasicShader	_shader;
   gdl::Texture		_texture;
