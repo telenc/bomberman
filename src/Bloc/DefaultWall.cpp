@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:26:53 2014 Remi telenczak
-// Last update Mon May 26 07:13:27 2014 Remi telenczak
+// Last update Mon May 26 08:26:48 2014 Remi telenczak
 //
 
 #include	"DefaultWall.hpp"
@@ -26,7 +26,7 @@ bool DefaultWall::update(gdl::Clock const &clock, gdl::Input &input)
   return true;
 }
 
-void DefaultWall::fireTouch()
+bool DefaultWall::fireTouch()
 {
-  return ;
+  return true;
 }

@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 21 01:36:36 2014 Remi telenczak
-// Last update Mon May 26 07:16:54 2014 Remi telenczak
+// Last update Mon May 26 08:45:15 2014 Remi telenczak
 //
 
 #include	"DefaultBomb.hpp"
@@ -19,7 +19,7 @@ DefaultBomb::DefaultBomb(Map *map, ModelList *model, EventManager *event, APlaye
   this->rotate(glm::vec3(0, 1, 0), 45);
   this->rotate(glm::vec3(1, 0, 0), -25);
   this->rotate(glm::vec3(0, 0, 1), -25);
-  this->_time = 2000;
+  this->_time = 4000;
   this->_po = 10;
 }
 
@@ -76,9 +76,9 @@ void	DefaultBomb::createDeflag()
 	  fire->set_z(this->_position.z);
 	  if ((bloc = (ABloc *)fire->checkPositionCollision(BLOC)) != NULL)
 	    {
-	      bloc->fireTouch();
+	      if (bloc->fireTouch() == false)
+		this->_map->setMap(fire);
 	      x = this->_position.x - (this->_po * 3) - 1;
-	      delete fire;
 	    }
 	  else
 	    this->_map->setMap(fire);
@@ -96,9 +96,9 @@ void	DefaultBomb::createDeflag()
 	  fire->set_z(this->_position.z);
 	  if ((bloc = (ABloc *)fire->checkPositionCollision(BLOC)) != NULL)
 	    {
-	      bloc->fireTouch();
+	      if (bloc->fireTouch() == false)
+		this->_map->setMap(fire);
 	      x = this->_position.x + (this->_po * 3) + 1;
-	      delete fire;
 	    }
 	  else
 	    this->_map->setMap(fire);
@@ -116,9 +116,9 @@ void	DefaultBomb::createDeflag()
 	  fire->set_x(this->_position.x);
 	  if ((bloc = (ABloc *)fire->checkPositionCollision(BLOC)) != NULL)
 	    {
-	      bloc->fireTouch();
+	      if (bloc->fireTouch() == false)
+		this->_map->setMap(fire);
 	      z = this->_position.z - (this->_po * 3) - 1;
-	      delete fire;
 	    }
 	  else
 	    this->_map->setMap(fire);
@@ -137,9 +137,9 @@ void	DefaultBomb::createDeflag()
 	  fire->set_x(this->_position.x);
 	  if ((bloc = (ABloc *)fire->checkPositionCollision(BLOC)) != NULL)
 	    {
-	      bloc->fireTouch();
+	      if (bloc->fireTouch() == false)
+		this->_map->setMap(fire);
 	      z = this->_position.z + (this->_po * 3) + 1;
-	      delete fire;
 	    }
 	  else
 	    this->_map->setMap(fire);

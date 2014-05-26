@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:28:07 2014 Remi telenczak
-// Last update Mon May 26 07:14:23 2014 Remi telenczak
+// Last update Mon May 26 08:27:47 2014 Remi telenczak
 //
 
 #ifndef		_DEFAULTWALL
@@ -18,7 +18,7 @@ class DefaultWall : public ABloc
 public:
   DefaultWall(Map *, ModelList *, EventManager *);
   virtual bool update(gdl::Clock const &clock, gdl::Input &input);
-  virtual void fireTouch();
+  virtual bool fireTouch();
 };
 
 #endif

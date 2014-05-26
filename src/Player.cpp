@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:27:38 2014 dedicker remi
-// Last update Mon May 26 06:15:16 2014 Remi telenczak
+// Last update Mon May 26 08:39:23 2014 Remi telenczak
 //
 
 #include "Player.hpp"
@@ -59,20 +59,16 @@ void	Player::eventKeyA(void *data)
   int		x;
   int		z;
 
+  if (this->checkPositionCollision(BOMB) != NULL)
+    return ;
   bomb = new DefaultBomb(_map, _modelList, _event, this);
   bomb->setPo(this->_po);
-  std::cout << this->_position.x << std::endl;
-  std::cout << this->_position.z << std::endl;
-
   x = (int)this->_position.x;
   z = (int)this->_position.z;
   while (x % 3 != 0)
     x++;
   while (z % 3 != 0)
     z++;
-  std::cout << x << std::endl;
-  std::cout << z << std::endl << std::endl;
-
   bomb->set_x(x);
   bomb->set_z(z);
   glm::vec3 t;
@@ -81,7 +77,6 @@ void	Player::eventKeyA(void *data)
   t.z = z;
 
   _event->dispatchEvent("bombDrop", &(t));
-  std::cout << "ON POSE UNE BOMB" << std::endl;
   this->_map->setMap(bomb);
 }
 
@@ -105,7 +100,7 @@ void	Player::eventRotate(void *data)
   //this->_event->dispatchEvent("playerRotateRight", this);
 }
 
-bool	Player::checkPositionCollision()
+bool	Player::checkPositionCollisionPlayer()
 {
   std::vector<AObjectPhysic *>	objects;
   std::vector<AObjectPhysic *>::iterator	it;
@@ -132,14 +127,14 @@ void Player::move(glm::vec3 direct, std::string event)
 
   posSauv = this->_position;
   positionTrans = this->translate(direct);
-  if (checkPositionCollision() == false)
+  if (checkPositionCollisionPlayer() == false)
     {
       this->_position.x -= positionTrans.x;
-      if (checkPositionCollision() == false)
+      if (checkPositionCollisionPlayer() == false)
 	{
 	  this->_position.x += positionTrans.x;
 	  this->_position.z -= positionTrans.z;
-	  if (checkPositionCollision() == false)
+	  if (checkPositionCollisionPlayer() == false)
 	    {
 	      this->_position = posSauv;
 	    }

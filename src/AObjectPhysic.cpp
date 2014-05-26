@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 16:17:56 2014 Mathieu Choquart
-// Last update Mon May 26 06:35:07 2014 Remi telenczak
+// Last update Mon May 26 08:38:16 2014 Remi telenczak
 //
 
 #include	"AObjectPhysic.hpp"
@@ -102,6 +102,32 @@ bool	AObjectPhysic::collision(AObjectPhysic *object)
 	  return false;
 	}
     }
+  minPos.x = object->get_x() - (object->get_width() / 2);
+  minPos.y = object->get_y();// - (object->get_height() / 2);
+  minPos.z = object->get_z() - (object->get_depth() / 2);
+  maxPos.x = object->get_x() + (object->get_width() / 2);
+  maxPos.y = object->get_y() + (object->get_height());// / 2);
+  maxPos.z = object->get_z() + (object->get_depth() / 2);
+  arretePos = this->getAllCorner();
+  it = arretePos.begin();
+  while (it != arretePos.end())
+    {
+      if (it->x <= maxPos.x && it->x >= minPos.x)
+	if (it->y <= maxPos.y && it->y >= minPos.y)
+	  if (it->z <= maxPos.z && it->z >= minPos.z)
+	    return true;
+      it++;
+    }
+  return false;
+}
+
+bool	AObjectPhysic::collisionNo(AObjectPhysic *object)
+{
+  std::vector<glm::vec3>	arretePos;
+  std::vector<glm::vec3>::iterator	it;
+  glm::vec3	maxPos;
+  glm::vec3	minPos;
+
   minPos.x = object->get_x() - (object->get_width() / 2);
   minPos.y = object->get_y();// - (object->get_height() / 2);
   minPos.z = object->get_z() - (object->get_depth() / 2);
@@ -235,13 +261,12 @@ AObjectPhysic	*AObjectPhysic::checkPositionCollision(TypeObject type)
   it = objects.begin();
   while (it != objects.end())
     {
-      if (this->collision(*it) == true)
+      if (this->collisionNo(*it) == true)
 	{
 	  if (type == NONE)
 	    return (*it);
 	  else if ((*it)->getType() == type)
 	    return (*it);
-	  //this->_map->deleteObject(this);
 	}
       it++;
     }

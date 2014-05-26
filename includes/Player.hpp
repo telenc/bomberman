@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:27:33 2014 dedicker remi
-// Last update Fri May 23 07:45:48 2014 Remi telenczak
+// Last update Mon May 26 08:31:17 2014 Remi telenczak
 //
 
 #ifndef PLAYER_HPP_
@@ -31,7 +31,7 @@ public:
   void	eventKeyA(void *data);
 private:
   void	move(glm::vec3, std::string);
-  bool	checkPositionCollision();
+  bool	checkPositionCollisionPlayer();
   ICallBack	*callPosPlayer;
   ICallBack	*callKeyUp;
   ICallBack	*callKeyDown;

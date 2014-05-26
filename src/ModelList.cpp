@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 06:17:30 2014 Remi telenczak
-// Last update Mon May 26 04:55:01 2014 Remi telenczak
+// Last update Mon May 26 08:05:12 2014 Remi telenczak
 // Last update Tue May 20 15:43:51 2014 mattieu bernard-guêle
 */
 
@@ -22,10 +22,14 @@ void		ModelList::loadModel()
 
   mod = this->createModel("./assets/marvin.fbx");
   this->list.push_back(std::make_pair("marvin", mod));
-  mod = this->createModel("./assets/cubeWallWood.fbx");
+  mod = this->createModel("./assets/cubeWallFer.fbx");
   this->list.push_back(std::make_pair("cube6", mod));
   mod = this->createModel("./assets/cubeWall.fbx");
-  this->list.push_back(std::make_pair("cube7", mod));
+  this->list.push_back(std::make_pair("cubeDest3", mod));
+  mod = this->createModel("./assets/cubeWall2.fbx");
+  this->list.push_back(std::make_pair("cubeDest2", mod));
+  mod = this->createModel("./assets/cubeWall3.fbx");
+  this->list.push_back(std::make_pair("cubeDest1", mod));
   mod = this->createModel("./assets/bombe5.fbx");
   this->list.push_back(std::make_pair("defaultBomb", mod));
   mod = this->createModel("./assets/box.fbx");
@@ -61,6 +65,6 @@ gdl::Model	*ModelList::getModel(const std::string name)
 	return (it->second);
       it++;
     }
-  std::cout << "Retunrn NULLL" << std::endl;
+  std::cout << "Retunrn NULLL " << name<< std::endl;
   return (NULL);
 }

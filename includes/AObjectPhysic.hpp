@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 15:52:43 2014 Mathieu Choquart
-// Last update Mon May 26 06:35:35 2014 Remi telenczak
+// Last update Mon May 26 08:37:45 2014 Remi telenczak
 //
 
 #ifndef			_AOBJECTPHYSIC_HPP_
@@ -49,6 +49,7 @@ public:
   AObjectPhysic *checkPositionCollision(TypeObject);
   void draw(gdl::AShader &shader, gdl::Clock const &clock);
   bool		collision(AObjectPhysic *object);
+  bool		collisionNo(AObjectPhysic *object);
   glm::vec3		translate(glm::vec3 const &v);
   void		rotate(glm::vec3 const& axis, float angle);
   void		scale(glm::vec3 const& scale);
