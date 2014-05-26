@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 06:17:30 2014 Remi telenczak
-// Last update Mon May 26 04:55:01 2014 Remi telenczak
+// Last update Mon May 26 17:18:42 2014 dedicker remi
 // Last update Tue May 20 15:43:51 2014 mattieu bernard-guêle
 */
 
@@ -34,6 +34,8 @@ void		ModelList::loadModel()
   this->list.push_back(std::make_pair("fire", mod));
   mod = this->createModel("./assets/mytest.fbx");
   this->list.push_back(std::make_pair("box", mod));
+  mod = this->createModel("./assets/box_menu.fbx");
+  this->list.push_back(std::make_pair("box_menu", mod));
 }
 
 gdl::Model	*ModelList::createModel(const std::string path)

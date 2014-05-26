@@ -5,16 +5,15 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:00 2014 Remi telenczak
-// Last update Mon May 26 16:41:00 2014 dedicker remi
+// Last update Mon May 26 17:22:30 2014 dedicker remi
 //
 
 #include	<iostream>
 #include	"Menu.hpp"
 #include	"Skybox.hpp"
 
-Menu::Menu()
+Menu::Menu(ModelList *mod, EventManager *event) : _mod(mod), _event(event)
 {
-
 }
 
 Menu::~Menu()
@@ -40,4 +39,5 @@ void	Menu::update(gdl::Clock const &clock, gdl::Input const &input)
 void	Menu::setSkybox(Skybox *skybox)
 {
   this->_skin = skybox;
+  skybox->setSkin(_mod->getModel("box_menu"));
 }

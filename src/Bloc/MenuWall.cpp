@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 // 
 // Started on  Mon May 26 16:41:50 2014 dedicker remi
-// Last update Mon May 26 16:43:05 2014 dedicker remi
+// Last update Mon May 26 17:18:13 2014 dedicker remi
 //
 
 #include	"MenuWall.hpp"
@@ -13,7 +13,7 @@
 
 MenuWall::MenuWall(Map *map, ModelList *model, EventManager *event) : ABloc(map, model, event)
 {
-  this->_skin = model->getModel("cube6");
+  this->_skin = model->getModel("box_menu");
   this->_height = 3;
   this->_width = 3;
 }
