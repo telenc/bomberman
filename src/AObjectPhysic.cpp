@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 16:17:56 2014 Mathieu Choquart
-// Last update Tue May 27 02:56:02 2014 Remi telenczak
+// Last update Tue May 27 03:23:12 2014 Remi telenczak
 //
 
 #include	"AObjectPhysic.hpp"
@@ -75,7 +75,8 @@ glm::mat4	AObjectPhysic::getTransformation()
 
 glm::vec3 AObjectPhysic::translate(glm::vec3 const &v)
 {
-  glm::vec3 test = glm::rotateY(v,  -1 * (_rotation.y - 180));
+  glm::vec3 b = v * static_cast<float>(_clock->getElapsed()) * 10.f;
+  glm::vec3 test = glm::rotateY(b,  -1 * (_rotation.y - 180));
   this->_position += test;
   return test;
 }
