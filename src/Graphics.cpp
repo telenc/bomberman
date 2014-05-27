@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Tue May 27 03:08:36 2014 Remi telenczak
+// Last update Tue May 27 17:28:11 2014 dedicker remi
 //
 
 #include	"OVR.h"
@@ -185,6 +185,9 @@ bool	Graphics::update(Menu *menu)
   _context.updateInputs(_input);
   menu->update(*_clock, _input);
   this->inputUpdate();
+  glm::vec3 rotationOculus;
+  rotationOculus = _camera->getRotation();
+  _event->dispatchEvent("rotOcu", &rotationOculus);
   return true;
 }
 
