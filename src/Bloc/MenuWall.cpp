@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Mon May 26 16:41:50 2014 dedicker remi
-// Last update Tue May 27 15:46:26 2014 dedicker remi
+// Last update Tue May 27 16:08:28 2014 dedicker remi
 //
 
 #include	"MenuWall.hpp"
@@ -22,5 +22,10 @@ bool MenuWall::update(gdl::Clock const &clock, gdl::Input &input)
 {
   (void)clock;
   (void)input;
+  return true;
+}
+
+bool MenuWall::fireTouch()
+{
   return true;
 }
