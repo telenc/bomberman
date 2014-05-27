@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Mon May 26 16:41:50 2014 dedicker remi
-// Last update Tue May 27 03:11:10 2014 Remi telenczak
+// Last update Tue May 27 15:46:26 2014 dedicker remi
 //
 
 #include	"MenuWall.hpp"
@@ -20,7 +20,6 @@ MenuWall::MenuWall(Map *map, ModelList *model, EventManager *event, gdl::Clock *
 
 bool MenuWall::update(gdl::Clock const &clock, gdl::Input &input)
 {
-  //  this->_skin->setCurrentAnim(22);
   (void)clock;
   (void)input;
   return true;
