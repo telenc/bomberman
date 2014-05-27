@@ -6,7 +6,7 @@
 //
 // Started on  Tue May 13 06:17:30 2014 Remi telenczak
 <<<<<<< HEAD
-// Last update Mon May 26 08:05:12 2014 Remi telenczak
+// Last update Tue May 27 02:44:56 2014 Remi telenczak
 =======
 // Last update Mon May 26 17:18:42 2014 dedicker remi
 >>>>>>> 86fd066f3cca2a094e91194976398fe97236bc1e
@@ -44,6 +44,8 @@ void		ModelList::loadModel()
   this->list.push_back(std::make_pair("box", mod));
   mod = this->createModel("./assets/box_menu.fbx");
   this->list.push_back(std::make_pair("box_menu", mod));
+  mod = this->createModel("./assets/cubeWallWood.fbx");
+  this->list.push_back(std::make_pair("sol", mod));
 }
 
 gdl::Model	*ModelList::createModel(const std::string path)

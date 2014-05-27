@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 16:17:56 2014 Mathieu Choquart
-// Last update Mon May 26 08:38:16 2014 Remi telenczak
+// Last update Tue May 27 02:56:02 2014 Remi telenczak
 //
 
 #include	"AObjectPhysic.hpp"
@@ -16,7 +16,7 @@
 #include		"ABomb.hpp"
 #include		"APlayer.hpp"
 
-AObjectPhysic::AObjectPhysic(Map *map, ModelList *modelList, EventManager *eventManager): _position(0, 0, 0), _rotation(0, 0, 0),_scale(1, 1, 1), _width(2), _height(2), _depth(2), _type(NONE)
+AObjectPhysic::AObjectPhysic(Map *map, ModelList *modelList, EventManager *eventManager, gdl::Clock *clock): _position(0, 0, 0), _rotation(0, 0, 0),_scale(1, 1, 1), _width(2), _height(2), _depth(2), _type(NONE), _clock(clock)
 {
   static int idCur = 0;
   this->_map = map;

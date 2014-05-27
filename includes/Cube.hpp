@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 22 02:54:48 2014 Remi telenczak
-// Last update Fri May 23 07:48:39 2014 Remi telenczak
+// Last update Tue May 27 03:00:10 2014 Remi telenczak
 //
 
 #ifndef		_CUBE_HPP
@@ -22,7 +22,7 @@ private:
   gdl::Geometry	_geometry;
   float	_speed;
 public:
-  Cube(Map *, ModelList *, EventManager *);
+  Cube(Map *, ModelList *, EventManager *, gdl::Clock *);
   virtual ~Cube();
   virtual bool initialize();
   virtual bool update(gdl::Clock const &clock, gdl::Input &input);

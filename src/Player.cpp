@@ -5,14 +5,14 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:27:38 2014 dedicker remi
-// Last update Mon May 26 08:39:23 2014 Remi telenczak
+// Last update Tue May 27 03:10:01 2014 Remi telenczak
 //
 
 #include "Player.hpp"
 #include	"EventManager.hpp"
 #include	"DefaultBomb.hpp"
 
-Player::Player(int x, int y, int z, Map *map, ModelList *model, EventManager *event) : APlayer(x, y, z, map, model, event)
+Player::Player(int x, int y, int z, Map *map, ModelList *model, EventManager *event, gdl::Clock *clock) : APlayer(x, y, z, map, model, event, clock)
 {
   std::cout << "Player Created" << std::endl;
   this->rotate(glm::vec3(0, 1, 0), 180);
@@ -61,7 +61,7 @@ void	Player::eventKeyA(void *data)
 
   if (this->checkPositionCollision(BOMB) != NULL)
     return ;
-  bomb = new DefaultBomb(_map, _modelList, _event, this);
+  bomb = new DefaultBomb(_map, _modelList, _event, this, _clock);
   bomb->setPo(this->_po);
   x = (int)this->_position.x;
   z = (int)this->_position.z;
@@ -75,7 +75,6 @@ void	Player::eventKeyA(void *data)
   t.x = x;
   t.y  = 0;
   t.z = z;
-
   _event->dispatchEvent("bombDrop", &(t));
   this->_map->setMap(bomb);
 }
@@ -158,6 +157,7 @@ void Player::move(glm::vec3 direct, std::string event)
 void	Player::eventKeyUp(void *data)
 {
   (void)data;
+
   this->move(glm::vec3(0, 0, -0.5), "playerMove");
 }
 

@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Fri May 23 04:00:03 2014 Remi telenczak
-// Last update Mon May 26 06:29:57 2014 Remi telenczak
+// Last update Tue May 27 03:00:24 2014 Remi telenczak
 //
 
 #include	"DefaultFire.hpp"
@@ -13,7 +13,7 @@
 #include	"Map.hpp"
 #include	"ABomb.hpp"
 
-DefaultFire::DefaultFire(Map *map, ModelList *model, EventManager *event, std::vector<APlayer *> *playerTouched) : AFire(map, model, event, playerTouched)
+DefaultFire::DefaultFire(Map *map, ModelList *model, EventManager *event, std::vector<APlayer *> *playerTouched, gdl::Clock *clock) : AFire(map, model, event, playerTouched, clock)
 {
   this->_skin = _modelList->getModel("fire");
   this->scale(glm::vec3(0.5, 0.5, 0.5));

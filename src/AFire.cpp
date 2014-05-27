@@ -5,14 +5,14 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Fri May 23 03:51:01 2014 Remi telenczak
-// Last update Mon May 26 07:07:31 2014 Remi telenczak
+// Last update Tue May 27 02:57:37 2014 Remi telenczak
 //
 
 #include	"AFire.hpp"
 #include	"Map.hpp"
 #include	"APlayer.hpp"
 
-AFire::AFire(Map *map, ModelList *model, EventManager *event, std::vector<APlayer *> *playerTouched) : AObjectPhysic(map, model, event), _damage(1)
+AFire::AFire(Map *map, ModelList *model, EventManager *event, std::vector<APlayer *> *playerTouched, gdl::Clock *clock) : AObjectPhysic(map, model, event, clock), _damage(1)
 {
   this->_type = FIRE;
   this->_time = 2000;

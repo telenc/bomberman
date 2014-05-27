@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:28:07 2014 Remi telenczak
-// Last update Mon May 26 08:27:52 2014 Remi telenczak
+// Last update Tue May 27 02:59:02 2014 Remi telenczak
 //
 
 #ifndef		_DESTRUCALL
@@ -17,7 +17,7 @@
 class DestrucWall : public ABloc, AObjectLife
 {
 public:
-  DestrucWall(Map *, ModelList *, EventManager *);
+  DestrucWall(Map *, ModelList *, EventManager *, gdl::Clock *);
   virtual bool update(gdl::Clock const &clock, gdl::Input &input);
   virtual bool fireTouch();
 };

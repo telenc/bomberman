@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Mon May 26 08:50:19 2014 Remi telenczak
+// Last update Tue May 27 03:08:36 2014 Remi telenczak
 //
 
 #include	"OVR.h"
@@ -33,6 +33,7 @@
 
 Graphics::Graphics(EventManager *event) : _event(event)
 {
+  _clock = new gdl::Clock;
 }
 
 Graphics::~Graphics()
@@ -44,6 +45,11 @@ void		Graphics::setModelList(ModelList *mod)
 {
   this->_modelList = mod;
   this->sky = mod->getModel("box");
+}
+
+gdl::Clock *Graphics::getClock() const
+{
+  return this->_clock;
 }
 
 bool		Graphics::initialize()
@@ -75,9 +81,9 @@ bool		Graphics::update(Map *map)
 
   if (_input.getKey(SDLK_z))
       this->_camera->rot += 0.1;
-  _context.updateClock(_clock);
+  _context.updateClock(*_clock);
   _context.updateInputs(_input);
-  map->update(_clock, _input);
+  map->update(*_clock, _input);
   this->inputUpdate();
   return true;
 }
@@ -117,11 +123,11 @@ void		Graphics::drawDoubleStereo(Map *map)
   _event->dispatchEvent("occulusRotate", &testt);
   _shader.setUniform("view", this->_camera->getTransformationLeft());
   _shader.setUniform("projection", this->_camera->getPerspective());
-  map->draw(_shader, _clock);
+  map->draw(_shader, *_clock);
   glViewport(1280/2, 0,1280/2, 800);
   glClearColor(255, 0, 0, 0);
   _shader.setUniform("view", this->_camera->getTransformationRight());
-  map->draw(_shader, _clock);
+  map->draw(_shader, *_clock);
 }
 
 void		Graphics::drawOneStereo(Map *map)
@@ -131,12 +137,12 @@ void		Graphics::drawOneStereo(Map *map)
   glClearColor(255, 0, 0, 0);
 
 
-  map->draw(_shader, _clock);
+  map->draw(_shader, *_clock);
   glm::mat4 t(1);
 
   t = glm::translate(t, glm::vec3(0, 4, 0));
   //t = glm::scale(t, glm::vec3(100, 100, 100));
-  this->sky->draw(_shader, t, _clock.getElapsed());
+  this->sky->draw(_shader, t, _clock->getElapsed());
   _shader.setUniform("projection", this->_camera->getPerspective());
   _shader.setUniform("view", this->_camera->getTransformation());
 }
@@ -166,7 +172,7 @@ void            Graphics::drawOneStereo(Menu *menu)
   glViewport(0, 0, 1280, 800);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glClearColor(0, 0, 0, 0);
-  menu->draw(_shader, _clock);
+  menu->draw(_shader, *_clock);
   _shader.setUniform("projection", this->_camera->getPerspective());
   _shader.setUniform("view", this->_camera->getTransformation());
 }
@@ -175,9 +181,9 @@ bool	Graphics::update(Menu *menu)
 {
   if (_input.getKey(SDLK_ESCAPE) || _input.getInput(SDL_QUIT))
     return false;
-  _context.updateClock(_clock);
+  _context.updateClock(*_clock);
   _context.updateInputs(_input);
-  menu->update(_clock, _input);
+  menu->update(*_clock, _input);
   this->inputUpdate();
   return true;
 }
@@ -193,9 +199,9 @@ void		Graphics::drawDoubleStereo(Menu *menu)
   _event->dispatchEvent("occulusRotate", &testt);
   _shader.setUniform("view", this->_camera->getTransformationLeft());
   _shader.setUniform("projection", this->_camera->getPerspective());
-  menu->draw(_shader, _clock);
+  menu->draw(_shader, *_clock);
   glViewport(1280/2, 0,1280/2, 800);
   glClearColor(255, 0, 0, 0);
   _shader.setUniform("view", this->_camera->getTransformationRight());
-  menu->draw(_shader, _clock);
+  menu->draw(_shader, *_clock);
 }

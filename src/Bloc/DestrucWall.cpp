@@ -5,13 +5,13 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:26:53 2014 Remi telenczak
-// Last update Mon May 26 08:26:30 2014 Remi telenczak
+// Last update Tue May 27 02:59:12 2014 Remi telenczak
 //
 
 #include	"DestrucWall.hpp"
 #include	"ModelList.hpp"
 
-DestrucWall::DestrucWall(Map *map, ModelList *model, EventManager *event) : ABloc(map, model, event), AObjectLife(3)
+DestrucWall::DestrucWall(Map *map, ModelList *model, EventManager *event, gdl::Clock *clock) : ABloc(map, model, event, clock), AObjectLife(3)
 {
   this->_skin = model->getModel("cubeDest3");
   this->_height = 3;

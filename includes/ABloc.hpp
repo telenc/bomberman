@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:15:05 2014 Remi telenczak
-// Last update Mon May 26 08:26:06 2014 Remi telenczak
+// Last update Tue May 27 02:56:55 2014 Remi telenczak
 //
 
 #ifndef		_ABLOCK_HPP
@@ -16,7 +16,7 @@
 class	ABloc : public AObjectPhysic
 {
 public:
-  ABloc(Map *, ModelList *, EventManager *);
+  ABloc(Map *, ModelList *, EventManager *, gdl::Clock *);
   virtual ~ABloc();
   virtual bool update(gdl::Clock const &clock, gdl::Input &input) = 0;
   virtual bool fireTouch() = 0;

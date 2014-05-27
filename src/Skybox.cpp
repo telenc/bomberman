@@ -5,13 +5,13 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 22 07:25:49 2014 Remi telenczak
-// Last update Fri May 23 07:49:49 2014 Remi telenczak
+// Last update Tue May 27 03:00:57 2014 Remi telenczak
 //
 
 #include	"Skybox.hpp"
 #include	"ModelList.hpp"
 
-Skybox::Skybox(Map *map, ModelList *model, EventManager *event) : AObjectPhysic(map, model, event)
+Skybox::Skybox(Map *map, ModelList *model, EventManager *event, gdl::Clock *clock) : AObjectPhysic(map, model, event, clock)
 {
   callPlayerMove = new CallBack<Skybox>(this, &Skybox::eventPlayerMove);
   event->listenEvent("playerMove", callPlayerMove);

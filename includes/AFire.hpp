@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Fri May 23 03:52:24 2014 Remi telenczak
-// Last update Mon May 26 06:35:26 2014 Remi telenczak
+// Last update Tue May 27 02:57:46 2014 Remi telenczak
 //
 
 #ifndef		_AFIRE_BOMB
@@ -26,7 +26,7 @@ protected:
   std::vector<APlayer *>	*_playerTouched;
 public:
   int	isInVec(APlayer *);
-  AFire(Map *, ModelList *, EventManager *, std::vector<APlayer *> *);
+  AFire(Map *, ModelList *, EventManager *, std::vector<APlayer *> *, gdl::Clock *);
   virtual ~AFire();
   virtual bool update(gdl::Clock const &clock, gdl::Input &input) = 0;
   void setDamage(int damage);

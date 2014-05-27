@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 15:52:43 2014 Mathieu Choquart
-// Last update Mon May 26 08:37:45 2014 Remi telenczak
+// Last update Tue May 27 02:56:09 2014 Remi telenczak
 //
 
 #ifndef			_AOBJECTPHYSIC_HPP_
@@ -40,7 +40,7 @@ enum	TypeObject
 class	AObjectPhysic : public	IObjectPhysic
 {
 public:
-  AObjectPhysic(Map *map, ModelList *,EventManager *eventManager);
+  AObjectPhysic(Map *map, ModelList *,EventManager *eventManager, gdl::Clock *clock);
   virtual ~AObjectPhysic();
   virtual bool	collision(IObjectPhysic *) { return false; }
   virtual bool	initialize();
@@ -124,6 +124,7 @@ protected:
   int test;
   int		_id;
   TypeObject	_type;
+  gdl::Clock	*_clock;
 };
 
 # endif
