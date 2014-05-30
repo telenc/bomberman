@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 22 07:25:49 2014 Remi telenczak
-// Last update Tue May 27 03:00:57 2014 Remi telenczak
+// Last update Tue May 27 06:53:43 2014 Remi telenczak
 //
 
 #include	"Skybox.hpp"
@@ -37,7 +37,7 @@ Skybox::~Skybox()
 
 bool	Skybox::update(gdl::Clock const &clock, gdl::Input &input)
 {
-  this->rotate(glm::vec3(0, 1, 0), 0.5);
+  //this->rotate(glm::vec3(0, 1, 0), 0.5);
   (void)clock;
   (void)input;
   return true;

@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 14 07:57:29 2014 Remi telenczak
-// Last update Mon May 26 16:37:25 2014 dedicker remi
+// Last update Wed May 28 04:25:33 2014 Remi telenczak
 //
 
 #ifndef		_CAMERA_BOMBER
@@ -25,6 +25,8 @@ public:
   glm::mat4 getPerspective();
   void	translate(double x, double y, double z);
   void changeStereo(int );
+  void changeStereoo(int );
+  void changeStereooo(int );
   int	getStereo();
   void	eventPlayerMove(void *data);
   void	eventRotateRight(void *data);
@@ -35,6 +37,8 @@ public:
   float rot;
   void	setPosition(float x, float y, float z);
   glm::mat4 getTransformationMenu();
+  float degCam;
+  float degCam2;
 private:
   EventManager *_event;
   int stereo;

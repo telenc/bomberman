@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 05:18:23 2014 Remi telenczak
-// Last update Fri May 23 03:14:58 2014 Remi telenczak
+// Last update Tue May 27 07:26:59 2014 Remi telenczak
 //
 
 #include	"Occulus.hpp"
@@ -107,6 +107,8 @@ glm::vec3	Occulus::getOrientation()
   result.x = OVR::RadToDegree(result.x);
   result.y = OVR::RadToDegree(result.y);
   result.z = OVR::RadToDegree(result.z);
+
+  //result.y = -180;
   return (result);
 }
 

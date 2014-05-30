@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 17:53:20 2014 dedicker remi
-// Last update Tue May 27 03:07:57 2014 Remi telenczak
+// Last update Wed May 28 05:41:16 2014 Remi telenczak
 //
 
 #include	<iostream>
@@ -82,11 +82,11 @@ void	GenereMap::putWall()
 	      wallObject->set_x(i * 3);
 	      wallObject->set_z(y * 3);
 	      this->_map->setMap(wallObject);
-	      wallObject = new DefaultWall(this->_map, this->_model, this->_event, _clock);
-	      wallObject->set_x(i * 3);
-	      wallObject->set_z(y * 3);
-	      wallObject->set_y(3);
-	      this->_map->setMap(wallObject);
+	      //wallObject = new DefaultWall(this->_map, this->_model, this->_event, _clock);
+	      //wallObject->set_x(i * 3);
+	      //wallObject->set_z(y * 3);
+	      //wallObject->set_y(3);
+	      //this->_map->setMap(wallObject);
 	    }
 	  else if (wall == 1 && (y < (_width - 1)) && (i % 2 == 0))
 	    {
@@ -107,7 +107,6 @@ void	GenereMap::putWall()
 	      wallObject->set_z(y * 3);
 	      this->_map->setMap(wallObject);
 	    }
-
 	  y++;
 	}
       i++;

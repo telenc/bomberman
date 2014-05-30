@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Mon May 26 08:48:25 2014 Remi telenczak
+// Last update Wed May 28 04:25:45 2014 Remi telenczak
 //
 
 #ifndef MAP_HPP_
@@ -19,7 +19,7 @@
 #include	<BasicShader.hh>
 #include	<Clock.hh>
 #include	<Input.hh>
-
+#include	"CameraBomber.hpp"
 
 class APlayer;
 class Player;
@@ -39,7 +39,7 @@ public:
   void	setPlayer(Player *);
   void	setSkybox(Skybox *);
 
-  void	draw(gdl::BasicShader, gdl::Clock);
+  void	draw(gdl::BasicShader, gdl::Clock, CameraBomber *);
   std::vector<AObjectPhysic *> getObjectsPos(AObjectPhysic *);
   std::vector<APlayer *> getPlayers();
   Player *getPlayer() const;

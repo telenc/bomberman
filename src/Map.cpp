@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Thu May 29 16:38:39 2014 Steven Martreux
+// Last update Fri May 30 15:14:31 2014 Steven Martreux
 //
 
 #include <cstdlib>
@@ -46,8 +46,8 @@ void	Map::update(gdl::Clock clock, gdl::Input input)
       else
 	itO++;
     }
-  //this->_player->update(clock, input);
-  //this->_skybox->update(clock, input);
+  this->_player->update(clock, input);
+  this->_skybox->update(clock, input);
 }
 
 std::vector<AObjectPhysic *>	Map::getObjectsPos(AObjectPhysic *obj)
@@ -68,19 +68,20 @@ std::vector<AObjectPhysic *>	Map::getObjectsPos(AObjectPhysic *obj)
   return result;
 }
 
-void	Map::draw(gdl::BasicShader shader, gdl::Clock clock)
+void	Map::draw(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
 {
   std::list<AObjectPhysic *>::iterator itO;
 
   itO = this->_map.begin();
   while (itO != this->_map.end())
     {
-      if ((*itO) != NULL)
+      if ((*itO) != NULL && (*itO)->isInView(camera))
 	(*itO)->draw(shader, clock);
       itO++;
     }
-  //this->_player->draw(shader, clock);
-  //this->_skybox->draw(shader, clock);
+  std::cout << std::endl << std::endl;
+  this->_player->draw(shader, clock);
+  this->_skybox->draw(shader, clock);
 }
 
 std::vector<APlayer *> Map::getIa() const
