@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 15:52:43 2014 Mathieu Choquart
-// Last update Tue May 27 02:56:09 2014 Remi telenczak
+// Last update Tue May 27 07:58:28 2014 Remi telenczak
 //
 
 #ifndef			_AOBJECTPHYSIC_HPP_
@@ -17,11 +17,13 @@
 # include		<glm/glm.hpp>
 # include		<glm/gtc/matrix_transform.hpp>
 # include		<glm/gtx/rotate_vector.hpp>
+# include		<glm/gtx/vector_angle.hpp>
 # include		<glm/gtx/norm.hpp>
 # include		<Model.hh>
 # include		<BasicShader.hh>
 # include		"IObjectPhysic.hh"
 # include	<vector>
+# include		"CameraBomber.hpp"
 
 class EventManager;
 class Map;
@@ -53,6 +55,7 @@ public:
   glm::vec3		translate(glm::vec3 const &v);
   void		rotate(glm::vec3 const& axis, float angle);
   void		scale(glm::vec3 const& scale);
+  bool		isInView(CameraBomber *camera);
   double	get_x() const;
   double	get_y() const;
   double	get_z() const;

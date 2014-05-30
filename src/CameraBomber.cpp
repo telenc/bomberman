@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 14 07:57:08 2014 Remi telenczak
-// Last update Mon May 26 08:50:48 2014 Remi telenczak
+// Last update Wed May 28 06:04:36 2014 Remi telenczak
 //
 
 #include	"CameraBomber.hpp"
@@ -16,7 +16,11 @@ CameraBomber::CameraBomber(gdl::BasicShader *shader, EventManager *event) : _eve
   glm::mat4 projection;
   glm::mat4 transformation;
 
+  degCam = 85;
+  degCam2 = 80;
   this->position.y = -4;
+  this->position.z = -3;
+  this->position.x = -3;
   this->position.z = -3;
   this->position.x = -3;
   this->rot = 4.98002;
@@ -75,6 +79,18 @@ int	CameraBomber::getStereo()
 void CameraBomber::changeStereo(int a)
 {
   this->stereo = a;
+}
+
+void CameraBomber::changeStereoo(int a)
+{
+  this->degCam += a;
+  std::cout << degCam << std::endl;
+}
+
+void CameraBomber::changeStereooo(int a)
+{
+  this->degCam2 += a;
+  std::cout << "Cam 2" << degCam2 << std::endl;
 }
 
 void		CameraBomber::translate(double x, double y, double z)
