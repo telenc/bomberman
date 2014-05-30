@@ -5,12 +5,12 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 22 02:54:39 2014 Remi telenczak
-// Last update Fri May 23 07:48:50 2014 Remi telenczak
+// Last update Tue May 27 03:00:03 2014 Remi telenczak
 //
 
 #include	"Cube.hpp"
 
-Cube::Cube(Map *map, ModelList *model, EventManager *event) : AObjectPhysic(map, model, event)
+Cube::Cube(Map *map, ModelList *model, EventManager *event, gdl::Clock *clock) : AObjectPhysic(map, model, event, clock)
 {
 
 }

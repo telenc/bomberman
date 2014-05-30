@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Mon May 26 03:36:06 2014 Remi telenczak
+// Last update Tue May 27 17:28:11 2014 dedicker remi
 //
 
 #include	"OVR.h"
@@ -33,6 +33,7 @@
 
 Graphics::Graphics(EventManager *event) : _event(event)
 {
+  _clock = new gdl::Clock;
 }
 
 Graphics::~Graphics()
@@ -44,6 +45,11 @@ void		Graphics::setModelList(ModelList *mod)
 {
   this->_modelList = mod;
   this->sky = mod->getModel("box");
+}
+
+gdl::Clock *Graphics::getClock() const
+{
+  return this->_clock;
 }
 
 bool		Graphics::initialize()
@@ -71,19 +77,13 @@ bool		Graphics::update(Map *map)
   if (_input.getKey(SDLK_ESCAPE) || _input.getInput(SDL_QUIT))
     return false;
   if (_input.getKey(SDLK_a))
-    {
       this->_camera->rot -= 0.1;
-      std::cout << this->_camera->rot << std::endl;
 
-    }
   if (_input.getKey(SDLK_z))
-    {
       this->_camera->rot += 0.1;
-      std::cout << this->_camera->rot << std::endl;
-    }
-  _context.updateClock(_clock);
+  _context.updateClock(*_clock);
   _context.updateInputs(_input);
-  map->update(_clock, _input);
+  map->update(*_clock, _input);
   this->inputUpdate();
   return true;
 }
@@ -105,9 +105,9 @@ void		Graphics::inputUpdate()
   if (_input.getKey(SDLK_SPACE))
     this->_event->dispatchEvent("keyA", NULL);
   if (_input.getKey(SDLK_m))
-    this->_camera->translate(0, 0.1, 0);
+    this->_camera->translate(0, 1.0, 0);
   if (_input.getKey(SDLK_p))
-    this->_camera->translate(0, -0.1, 0);
+    this->_camera->translate(0, -1.0, 0);
   if (_input.getKey(SDLK_e))
     this->_camera->changeStereo(1);
   if (_input.getKey(SDLK_r))
@@ -116,24 +116,18 @@ void		Graphics::inputUpdate()
 
 void		Graphics::drawDoubleStereo(Map *map)
 {
-  std::cout << "Draw double" << std::endl;
   glViewport(0, 0, 1280/2, 800);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glClearColor(255, 0, 0, 0);
-
   glm::vec3 testt = this->_camera->getRotation();
   _event->dispatchEvent("occulusRotate", &testt);
-
   _shader.setUniform("view", this->_camera->getTransformationLeft());
   _shader.setUniform("projection", this->_camera->getPerspective());
-
-  map->draw(_shader, _clock);
-
+  map->draw(_shader, *_clock);
   glViewport(1280/2, 0,1280/2, 800);
   glClearColor(255, 0, 0, 0);
-
   _shader.setUniform("view", this->_camera->getTransformationRight());
-  map->draw(_shader, _clock);
+  map->draw(_shader, *_clock);
 }
 
 void		Graphics::drawOneStereo(Map *map)
@@ -143,12 +137,12 @@ void		Graphics::drawOneStereo(Map *map)
   glClearColor(255, 0, 0, 0);
 
 
-  map->draw(_shader, _clock);
+  map->draw(_shader, *_clock);
   glm::mat4 t(1);
 
   t = glm::translate(t, glm::vec3(0, 4, 0));
   //t = glm::scale(t, glm::vec3(100, 100, 100));
-  this->sky->draw(_shader, t, _clock.getElapsed());
+  this->sky->draw(_shader, t, _clock->getElapsed());
   _shader.setUniform("projection", this->_camera->getPerspective());
   _shader.setUniform("view", this->_camera->getTransformation());
 }
@@ -162,11 +156,14 @@ void		Graphics::draw(Map *map)
     drawOneStereo(map);
   _context.flush();
 }
-/*
+
 void            Graphics::draw(Menu *menu)
 {
   _shader.bind();
-  drawOneStereo(menu);
+  if (this->_camera->getStereo() == 2)
+    drawDoubleStereo(menu);
+  else
+    drawOneStereo(menu);
   _context.flush();
 }
 
@@ -174,10 +171,40 @@ void            Graphics::drawOneStereo(Menu *menu)
 {
   glViewport(0, 0, 1280, 800);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  glClearColor(255, 0, 0, 0);
-  std::cout << "hIGHWAY FROM HELL" << std::endl;
-  menu->draw(_shader, _clock, sky);
+  glClearColor(0, 0, 0, 0);
+  menu->draw(_shader, *_clock);
   _shader.setUniform("projection", this->_camera->getPerspective());
   _shader.setUniform("view", this->_camera->getTransformation());
 }
-*/
+
+bool	Graphics::update(Menu *menu)
+{
+  if (_input.getKey(SDLK_ESCAPE) || _input.getInput(SDL_QUIT))
+    return false;
+  _context.updateClock(*_clock);
+  _context.updateInputs(_input);
+  menu->update(*_clock, _input);
+  this->inputUpdate();
+  glm::vec3 rotationOculus;
+  rotationOculus = _camera->getRotation();
+  _event->dispatchEvent("rotOcu", &rotationOculus);
+  return true;
+}
+
+
+void		Graphics::drawDoubleStereo(Menu *menu)
+{
+  this->_camera->setPosition(0, 0, 0);
+  glViewport(0, 0, 1280/2, 800);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  glClearColor(255, 0, 0, 0);
+  glm::vec3 testt = this->_camera->getRotation();
+  _event->dispatchEvent("occulusRotate", &testt);
+  _shader.setUniform("view", this->_camera->getTransformationLeft());
+  _shader.setUniform("projection", this->_camera->getPerspective());
+  menu->draw(_shader, *_clock);
+  glViewport(1280/2, 0,1280/2, 800);
+  glClearColor(255, 0, 0, 0);
+  _shader.setUniform("view", this->_camera->getTransformationRight());
+  menu->draw(_shader, *_clock);
+}

@@ -1676,7 +1676,7 @@ Objects:  {
 			Property: "LastFrame", "int", "",0
 			Property: "Width", "int", "",0
 			Property: "Height", "int", "",0
-			Property: "Path", "charptr", "", "wallFer.tga"
+			Property: "Path", "charptr", "", "wallFer2.tga"
 			Property: "StartFrame", "int", "",0
 			Property: "StopFrame", "int", "",0
 			Property: "PlaySpeed", "double", "",1
@@ -1712,8 +1712,8 @@ Objects:  {
 			Property: "VideoProperty", "object", ""
 		}
 		Media: "Video::mushroomtga_tga"
-		FileName: "wallFer.tga"
-		RelativeFilename: "wallFer.tga"
+		FileName: "wallFer2.tga"
+		RelativeFilename: "wallFer2.tga"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "None"

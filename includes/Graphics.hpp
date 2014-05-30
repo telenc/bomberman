@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:10:16 2014 thomas mendez
-// Last update Mon May 26 03:35:29 2014 Remi telenczak
+// Last update Tue May 27 03:08:41 2014 Remi telenczak
 //
 
 #ifndef		GRAPHICS_HH__BOMBER
@@ -46,15 +46,18 @@ public:
   void		setModelList(ModelList *model);
   void		draw(Map *);
   bool		update(Map *);
+  bool		update(Menu *);
   void		inputUpdate();
   void		drawDoubleStereo(Map *map);
+  void		drawDoubleStereo(Menu *menu);
   void		drawOneStereo(Map *map);
-  // void		drawOneStereo(Menu *menu);
-  //void		draw(Menu *);
+  void		drawOneStereo(Menu *menu);
+  void		draw(Menu *);
+  gdl::Clock *getClock() const;
 protected:
   gdl::BasicShader	_shader;
   gdl::Texture		_texture;
-  gdl::Clock		_clock;
+  gdl::Clock		*_clock;
   gdl::Input		_input;
   std::vector<AObjectPhysic*>	_objects;
   gdl::SdlContext	_context;

@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 17:53:20 2014 dedicker remi
-// Last update Fri May 23 08:42:44 2014 Remi telenczak
+// Last update Tue May 27 03:07:57 2014 Remi telenczak
 //
 
 #include	<iostream>
@@ -15,7 +15,8 @@
 #include	"GenereMap.hpp"
 #include	"Player.hpp"
 #include	"EventManager.hpp"
-
+#include	"DestrucWall.hpp"
+#include	"SolWall.hpp"
 void	GenereMap::putInside()
 {
 
@@ -67,7 +68,7 @@ void	GenereMap::putWall()
   int	i;
   int	y;
   int	wall;
-  DefaultWall	*wallObject;
+  ABloc	*wallObject;
   i = 0;
   while (i < _width)
     {
@@ -77,22 +78,36 @@ void	GenereMap::putWall()
 	{
 	  if (i == 0 || y == 0 || i == (_width - 1) || y == (_height - 1))
 	    {
-	      wallObject = new DefaultWall(this->_map, this->_model, this->_event);
-	      wallObject->setSkin(this->_model->getModel("cube7"));
+	      wallObject = new DefaultWall(this->_map, this->_model, this->_event, _clock);
 	      wallObject->set_x(i * 3);
 	      wallObject->set_z(y * 3);
+	      this->_map->setMap(wallObject);
+	      wallObject = new DefaultWall(this->_map, this->_model, this->_event, _clock);
+	      wallObject->set_x(i * 3);
+	      wallObject->set_z(y * 3);
+	      wallObject->set_y(3);
 	      this->_map->setMap(wallObject);
 	    }
 	  else if (wall == 1 && (y < (_width - 1)) && (i % 2 == 0))
 	    {
-	      wallObject = new DefaultWall(this->_map, this->_model, this->_event);
+	      wallObject = new DefaultWall(this->_map, this->_model, this->_event, _clock);
 	      wallObject->set_x(i * 3);
 	      wallObject->set_z(y * 3);
 	      this->_map->setMap(wallObject);
 	      wall = 0;
 	    }
 	  else
-	    wall++;
+	      wall++;
+	  if (wall != 0 && ((i > 2  && i < _width-2) || (y > 2 && y < _height - 3) ))
+	    {
+	      std::cout << "i = " << i  * 3<< "  y =" << y * 3<< std::endl;
+	      std::cout << "width  = " << _width *3 << "  height =" << _height *3<< std::endl;
+	      wallObject = new DestrucWall(this->_map, this->_model, this->_event, _clock);
+	      wallObject->set_x(i * 3);
+	      wallObject->set_z(y * 3);
+	      this->_map->setMap(wallObject);
+	    }
+
 	  y++;
 	}
       i++;
@@ -103,10 +118,10 @@ void	GenereMap::putPlayer()
 {
   if (this->_event == NULL)
     std::cout << "EVENNVENEVN NUL" << std::endl;
-  this->_map->setPlayer(new Player(1 * 2, 0, 1 * 2, this->_map, this->_model, this->_event));
+  this->_map->setPlayer(new Player(1 * 2, 0, 1 * 2, this->_map, this->_model, this->_event, _clock));
 }
 
-GenereMap::GenereMap(int width, int height, int ia, EventManager *event, ModelList *model) : _width(width), _height(height), _ia(ia), _event(event), _model(model)
+GenereMap::GenereMap(int width, int height, int ia, EventManager *event, ModelList *model, gdl::Clock *clock) : _width(width), _height(height), _ia(ia), _event(event), _model(model), _clock(clock)
 {
 
   _pos = 0;

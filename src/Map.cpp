@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Mon May 26 05:01:36 2014 Remi telenczak
+// Last update Thu May 29 16:38:39 2014 Steven Martreux
 //
 
 #include <cstdlib>
@@ -46,8 +46,8 @@ void	Map::update(gdl::Clock clock, gdl::Input input)
       else
 	itO++;
     }
-  this->_player->update(clock, input);
-  this->_skybox->update(clock, input);
+  //this->_player->update(clock, input);
+  //this->_skybox->update(clock, input);
 }
 
 std::vector<AObjectPhysic *>	Map::getObjectsPos(AObjectPhysic *obj)
@@ -79,8 +79,8 @@ void	Map::draw(gdl::BasicShader shader, gdl::Clock clock)
 	(*itO)->draw(shader, clock);
       itO++;
     }
-  this->_player->draw(shader, clock);
-  this->_skybox->draw(shader, clock);
+  //this->_player->draw(shader, clock);
+  //this->_skybox->draw(shader, clock);
 }
 
 std::vector<APlayer *> Map::getIa() const

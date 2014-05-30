@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 14 07:57:08 2014 Remi telenczak
-// Last update Mon May 26 03:22:00 2014 Remi telenczak
+// Last update Mon May 26 08:50:48 2014 Remi telenczak
 //
 
 #include	"CameraBomber.hpp"
@@ -92,7 +92,20 @@ glm::mat4		CameraBomber::getTransformation()
 
 
   transformation = glm::rotate(transformation, this->rotation.y, glm::vec3(0, 1, 0));
+
+  transformation = glm::rotate(transformation, 90.f, glm::vec3(1, 0, 0));
   transformation = glm::translate(transformation, position);
+  return transformation;
+}
+
+
+glm::mat4		CameraBomber::getTransformationMenu()
+{
+  glm::vec3	vec;
+  glm::mat4 transformation;
+
+
+  transformation = glm::rotate(transformation, this->rotation.y, glm::vec3(0, 1, 0));
   return transformation;
 }
 
@@ -150,4 +163,11 @@ glm::vec3	CameraBomber::getRotation()
 {
   this->rotation = this->_occulus->getOrientation();
   return this->rotation;
+}
+
+void	CameraBomber::setPosition(float x, float y, float z)
+{
+  this->position.x = x;
+  this->position.y = y;
+  this->position.z = z;
 }

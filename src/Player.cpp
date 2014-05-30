@@ -5,14 +5,14 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:27:38 2014 dedicker remi
-// Last update Fri May 23 08:19:10 2014 Remi telenczak
+// Last update Tue May 27 03:10:01 2014 Remi telenczak
 //
 
 #include "Player.hpp"
 #include	"EventManager.hpp"
 #include	"DefaultBomb.hpp"
 
-Player::Player(int x, int y, int z, Map *map, ModelList *model, EventManager *event) : APlayer(x, y, z, map, model, event)
+Player::Player(int x, int y, int z, Map *map, ModelList *model, EventManager *event, gdl::Clock *clock) : APlayer(x, y, z, map, model, event, clock)
 {
   std::cout << "Player Created" << std::endl;
   this->rotate(glm::vec3(0, 1, 0), 180);
@@ -59,28 +59,23 @@ void	Player::eventKeyA(void *data)
   int		x;
   int		z;
 
-  bomb = new DefaultBomb(_map, _modelList, _event, this);
-  std::cout << this->_position.x << std::endl;
-  std::cout << this->_position.z << std::endl;
-
+  if (this->checkPositionCollision(BOMB) != NULL)
+    return ;
+  bomb = new DefaultBomb(_map, _modelList, _event, this, _clock);
+  bomb->setPo(this->_po);
   x = (int)this->_position.x;
   z = (int)this->_position.z;
   while (x % 3 != 0)
     x++;
   while (z % 3 != 0)
     z++;
-  std::cout << x << std::endl;
-  std::cout << z << std::endl << std::endl;
-
   bomb->set_x(x);
   bomb->set_z(z);
   glm::vec3 t;
   t.x = x;
   t.y  = 0;
   t.z = z;
-
   _event->dispatchEvent("bombDrop", &(t));
-  std::cout << "ON POSE UNE BOMB" << std::endl;
   this->_map->setMap(bomb);
 }
 
@@ -104,7 +99,7 @@ void	Player::eventRotate(void *data)
   //this->_event->dispatchEvent("playerRotateRight", this);
 }
 
-bool	Player::checkPositionCollision()
+bool	Player::checkPositionCollisionPlayer()
 {
   std::vector<AObjectPhysic *>	objects;
   std::vector<AObjectPhysic *>::iterator	it;
@@ -131,14 +126,14 @@ void Player::move(glm::vec3 direct, std::string event)
 
   posSauv = this->_position;
   positionTrans = this->translate(direct);
-  if (checkPositionCollision() == false)
+  if (checkPositionCollisionPlayer() == false)
     {
       this->_position.x -= positionTrans.x;
-      if (checkPositionCollision() == false)
+      if (checkPositionCollisionPlayer() == false)
 	{
 	  this->_position.x += positionTrans.x;
 	  this->_position.z -= positionTrans.z;
-	  if (checkPositionCollision() == false)
+	  if (checkPositionCollisionPlayer() == false)
 	    {
 	      this->_position = posSauv;
 	    }
@@ -162,6 +157,7 @@ void Player::move(glm::vec3 direct, std::string event)
 void	Player::eventKeyUp(void *data)
 {
   (void)data;
+
   this->move(glm::vec3(0, 0, -0.5), "playerMove");
 }
 
@@ -187,6 +183,8 @@ bool Player::update(gdl::Clock const &clock, gdl::Input &input)
 {
   (void)clock;
   (void)input;
+  if (this->_life <= 0)
+    std::cout << "PLAYER EST MORT CE CON" << std::endl;
   return true;
 }
 

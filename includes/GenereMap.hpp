@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 17:51:24 2014 dedicker remi
-// Last update Tue May 20 09:09:21 2014 Remi telenczak
+// Last update Tue May 27 03:10:20 2014 Remi telenczak
 //
 
 #ifndef GENEREMAP_HPP_
@@ -16,7 +16,7 @@
 class GenereMap
 {
 public:
-  GenereMap(int width, int height, int ia, EventManager *, ModelList *);
+  GenereMap(int width, int height, int ia, EventManager *, ModelList *, gdl::Clock *);
   ~GenereMap();
   //  void display();
   Map	*getMap() const;
@@ -33,6 +33,8 @@ private:
   int	_pos;
   EventManager *_event;
   ModelList *_model;
+  gdl::Clock *_clock;
+
 };
 
 #endif

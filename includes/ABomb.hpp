@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Wed May  7 16:03:12 2014 Steven Martreux
-// Last update Fri May 23 07:44:55 2014 Remi telenczak
+// Last update Tue May 27 02:57:22 2014 Remi telenczak
 //
 
 #ifndef		_ABOMB_HPP_
@@ -25,9 +25,11 @@ protected:
   bool		_playerColl;
   int		_direction;
   time_t	_timeCreate;
+  bool		_died;
 public:
-  ABomb(Map *, ModelList *, EventManager *, APlayer *player);
+  ABomb(Map *, ModelList *, EventManager *, APlayer *, gdl::Clock *);
   ~ABomb();
+  void	explode();
   virtual void createDeflag() = 0;
   virtual bool update(gdl::Clock const &clock, gdl::Input &input) = 0;
   APlayer	*getPlayer() const;

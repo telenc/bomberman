@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 16:17:56 2014 Mathieu Choquart
-// Last update Fri May 23 04:28:48 2014 Remi telenczak
+// Last update Tue May 27 03:23:12 2014 Remi telenczak
 //
 
 #include	"AObjectPhysic.hpp"
@@ -16,7 +16,7 @@
 #include		"ABomb.hpp"
 #include		"APlayer.hpp"
 
-AObjectPhysic::AObjectPhysic(Map *map, ModelList *modelList, EventManager *eventManager): _position(0, 0, 0), _rotation(0, 0, 0),_scale(1, 1, 1), _width(2), _height(2), _depth(2), _type(NONE)
+AObjectPhysic::AObjectPhysic(Map *map, ModelList *modelList, EventManager *eventManager, gdl::Clock *clock): _position(0, 0, 0), _rotation(0, 0, 0),_scale(1, 1, 1), _width(2), _height(2), _depth(2), _type(NONE), _clock(clock)
 {
   static int idCur = 0;
   this->_map = map;
@@ -75,7 +75,8 @@ glm::mat4	AObjectPhysic::getTransformation()
 
 glm::vec3 AObjectPhysic::translate(glm::vec3 const &v)
 {
-  glm::vec3 test = glm::rotateY(v,  -1 * (_rotation.y - 180));
+  glm::vec3 b = v * static_cast<float>(_clock->getElapsed()) * 10.f;
+  glm::vec3 test = glm::rotateY(b,  -1 * (_rotation.y - 180));
   this->_position += test;
   return test;
 }
@@ -102,6 +103,32 @@ bool	AObjectPhysic::collision(AObjectPhysic *object)
 	  return false;
 	}
     }
+  minPos.x = object->get_x() - (object->get_width() / 2);
+  minPos.y = object->get_y();// - (object->get_height() / 2);
+  minPos.z = object->get_z() - (object->get_depth() / 2);
+  maxPos.x = object->get_x() + (object->get_width() / 2);
+  maxPos.y = object->get_y() + (object->get_height());// / 2);
+  maxPos.z = object->get_z() + (object->get_depth() / 2);
+  arretePos = this->getAllCorner();
+  it = arretePos.begin();
+  while (it != arretePos.end())
+    {
+      if (it->x <= maxPos.x && it->x >= minPos.x)
+	if (it->y <= maxPos.y && it->y >= minPos.y)
+	  if (it->z <= maxPos.z && it->z >= minPos.z)
+	    return true;
+      it++;
+    }
+  return false;
+}
+
+bool	AObjectPhysic::collisionNo(AObjectPhysic *object)
+{
+  std::vector<glm::vec3>	arretePos;
+  std::vector<glm::vec3>::iterator	it;
+  glm::vec3	maxPos;
+  glm::vec3	minPos;
+
   minPos.x = object->get_x() - (object->get_width() / 2);
   minPos.y = object->get_y();// - (object->get_height() / 2);
   minPos.z = object->get_z() - (object->get_depth() / 2);
@@ -225,6 +252,30 @@ glm::vec3	AObjectPhysic::getCornerHeight()
   result.z = this->_position.z + (this->get_depth() / 2);
   return result;
 }
+
+AObjectPhysic	*AObjectPhysic::checkPositionCollision(TypeObject type)
+{
+  std::vector<AObjectPhysic *>	objects;
+  std::vector<AObjectPhysic *>::iterator	it;
+
+  objects = this->_map->getObjectsPos(this);
+  it = objects.begin();
+  while (it != objects.end())
+    {
+      if (this->collisionNo(*it) == true)
+	{
+	  if (type == NONE)
+	    return (*it);
+	  else if ((*it)->getType() == type)
+	    return (*it);
+	}
+      it++;
+    }
+  return NULL;
+}
+
+
+
 
 void AObjectPhysic::scale(glm::vec3 const& scale)
 {

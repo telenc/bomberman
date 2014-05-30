@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:12:08 2014 dedicker remi
-// Last update Fri May 23 07:45:08 2014 Remi telenczak
+// Last update Tue May 27 02:58:21 2014 Remi telenczak
 //
 
 #ifndef _APLAYER_HPP_
@@ -26,7 +26,7 @@ class Map;
 class APlayer : public AObjectLife, public AObjectPhysic
 {
 public:
-  APlayer(int, int, int, Map *, ModelList *, EventManager *);
+  APlayer(int, int, int, Map *, ModelList *, EventManager *, gdl::Clock *);
   virtual ~APlayer();
   virtual bool update(gdl::Clock const &clock, gdl::Input &input) = 0;
 protected:
@@ -34,6 +34,7 @@ protected:
   int	_z;
   int	_x;
   int	_y;
+  int	_po;
 };
 
 #endif
