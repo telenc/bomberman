@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
-// Last update Tue May 27 17:00:46 2014 dedicker remi
+// Last update Thu May 29 16:22:36 2014 Steven Martreux
 //
 
 #include <iostream>
@@ -19,6 +19,7 @@
 #include	"Skybox.hpp"
 #include	"Sound.hpp"
 #include	"Loader.hpp"
+#include	"LoadGame.hpp"
 
 
 int	main(int ac, char **av)
@@ -28,13 +29,17 @@ int	main(int ac, char **av)
       Loader	*load = new Loader();
       Graphics *engine;
       Controller	*joystick;
+      LoadGame	*save;
 
       while (load->getFinish() != true);
       engine = load->getEngine();
 
       joystick = load->getController();
-      GenereMap gen(21, 21, 0, load->getEventManager(), load->getModel(), engine->getClock());
-      Map *m = gen.getMap();
+      //GenereMap gen(21, 21, 0, load->getEventManager(), load->getModel(), engine->getClock());
+      Map *m;
+      save = new LoadGame("save/test.xml", load->getEventManager(), load->getModel(), engine->getClock());
+      m = save->getMap();
+      //Map *m = gen.getMap();
       Menu *menu = new Menu(load->getModel(), load->getEventManager());
       m->setSkybox(new Skybox(m, load->getModel(), load->getEventManager(), engine->getClock()));
       //m->setSkybox(new Skybox(m, mod, eventManager));
@@ -52,7 +57,6 @@ int	main(int ac, char **av)
       else
 	{
 	  Skybox *test = new Skybox(m, load->getModel(), load->getEventManager(), engine->getClock());
-	 
 	  menu->setSkybox(test);
 	  load->getSound()->InGame();
 	  while (engine->update(menu))
