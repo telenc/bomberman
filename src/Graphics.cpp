@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Fri May 30 04:19:20 2014 Remi telenczak
+// Last update Fri May 30 17:07:34 2014 thomas mendez
 //
 
 #include	"OVR.h"
@@ -203,7 +203,7 @@ bool	Graphics::update(Menu *menu)
 
 void		Graphics::drawDoubleStereo(Menu *menu)
 {
-  this->_camera->setPosition(0, 0, 0);
+  this->_camera->setPosition(0,  0, 0);
   glViewport(0, 0, 1280/2, 800);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glClearColor(255, 0, 0, 0);
