@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Mon May 12 13:48:39 2014 Steven Martreux
-// Last update Fri May 30 15:13:31 2014 Steven Martreux
+// Last update Fri May 30 15:17:51 2014 Steven Martreux
 //
 
 #include	<tinyxml.h>
@@ -64,7 +64,7 @@ AObjectPhysic	*LoadGame::CreateDestrucWall(TiXmlElement *line)
   wall->set_x(atof(line->Attribute("x")));
   wall->set_y(atof(line->Attribute("y")));
   wall->set_z(atof(line->Attribute("z")));
-  wall->setLife(atoi(line->Attribute("life")));
+  //wall->setLife(atoi(line->Attribute("life")));
   return (AObjectPhysic *)wall;
 }
 

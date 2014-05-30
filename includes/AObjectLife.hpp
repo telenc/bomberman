@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 08:24:19 2014 Remi telenczak
-// Last update Fri May 30 15:06:44 2014 Steven Martreux
+// Last update Fri May 30 15:18:32 2014 Steven Martreux
 //
 
 #ifndef		_ALIFE
@@ -19,7 +19,7 @@ public:
   void	decLife();
   void	incLife();
   int	getLife() const;
-  virtual void	setLife(int) = 0;
+  void	setLife(int);
 protected:
   int	_life;
 };
