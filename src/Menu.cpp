@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:00 2014 Remi telenczak
-// Last update Mon May 26 17:22:30 2014 dedicker remi
+// Last update Tue May 27 17:49:00 2014 dedicker remi
 //
 
 #include	<iostream>
@@ -14,6 +14,8 @@
 
 Menu::Menu(ModelList *mod, EventManager *event) : _mod(mod), _event(event)
 {
+  _boxmenu = new MenuBox(NULL, mod, event, NULL);
+  //_menuwall = new MenuWall(NULL, mod, event, NULL);
 }
 
 Menu::~Menu()
@@ -27,7 +29,9 @@ void    Menu::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
   t = glm::translate(t, glm::vec3(0, 0, 0));
   t = glm::scale(t, glm::vec3(100, 100, 100));
   _skin->draw(shader, clock);
-  
+  //  _menuwall->draw(shader, clock);
+  _boxmenu->draw(shader,clock);
+  //_menu->draw(shader, clock);
 }
 
 void	Menu::update(gdl::Clock const &clock, gdl::Input const &input)

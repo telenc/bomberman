@@ -86,6 +86,7 @@ SRC		= src/main.cpp \
 		src/Bloc/SolWall.cpp \
 		src/Bloc/DestrucWall.cpp \
 		src/Bloc/MenuWall.cpp \
+		src/Bloc/MenuBox.cpp \
 		src/GenereMap.cpp	\
 		src/Bomb/DefaultBomb.cpp \
 		src/Controller.cpp	\
