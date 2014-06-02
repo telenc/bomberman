@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Fri May 23 04:00:03 2014 Remi telenczak
-// Last update Fri May 30 08:29:08 2014 Remi telenczak
+// Last update Sun Jun  1 23:54:32 2014 Remi telenczak
 //
 
 #include	"DefaultFire.hpp"
