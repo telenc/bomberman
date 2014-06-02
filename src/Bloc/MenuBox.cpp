@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Mon May 26 16:41:50 2014 dedicker remi
-// Last update Fri May 30 17:23:43 2014 thomas mendez
+// Last update Mon Jun  2 16:38:07 2014 thomas mendez
 //
 
 #include	<iostream>
@@ -35,6 +35,17 @@ MenuBox::MenuBox(Map *map, ModelList *model, EventManager *event, gdl::Clock *cl
   event->listenEvent("rotOcu", callRotOcu);
 }
 
+glm::vec3*	MenuBox::getRotation()
+{
+  return this->rot;
+}
+
+int		MenuBox::getRotationy()
+{
+  std::cout << "///////////////////" << this->rot->y << std::endl;
+  return this->rot->y;
+}
+
 void	MenuBox::eventRotOcu(void *data)
 {
   glm::vec3 *rotation;
@@ -48,6 +59,7 @@ void	MenuBox::eventRotOcu(void *data)
   //  newpos = glm::rotateX(newpos, rotation->x);
   //  newpos = glm::rotateZ(newpos, rotation->z);
   this->_position = newpos;
+  this->rot = (glm::vec3 *)data;
   std::cout << rotation->y << std::endl;
 }
 
@@ -63,6 +75,7 @@ void	MenuBox::eventRotOcu2(void *data)
   //  newpos = glm::rotateZ(newpos, rotation->z);
   this->_position = newpos;
   this->set_roty(rotation->z);
+  this->rot = (glm::vec3 *)data;
   std::cout << rotation->y << "laaa" << std::endl;
 }
 
@@ -78,6 +91,7 @@ void	MenuBox::eventRotOcu3(void *data)
   //  newpos = glm::rotateZ(newpos, rotation->z);
   this->_position = newpos;
   this->set_roty(rotation->z);
+  this->rot = (glm::vec3 *)data;
   std::cout << rotation->y << "laaa" << std::endl;
 }
 

@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:00 2014 Remi telenczak
-// Last update Fri May 30 17:22:37 2014 thomas mendez
+// Last update Mon Jun  2 16:38:28 2014 thomas mendez
 //
 
 #include	<iostream>
@@ -28,6 +28,10 @@ Menu::~Menu()
 void    Menu::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
 {
   glm::mat4 t(1);
+  int		roty;
+
+  roty = _boxmenu3->getRotationy();
+  std::cout << "dans la classe menu : " << roty << std::endl;
   t = glm::translate(t, glm::vec3(0, 0, 0));
   t = glm::scale(t, glm::vec3(100, 100, 100));
   _skin->draw(shader, clock);

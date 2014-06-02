@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:28:07 2014 Remi telenczak
-// Last update Fri May 30 17:21:42 2014 thomas mendez
+// Last update Mon Jun  2 15:59:42 2014 thomas mendez
 //
 
 #ifndef		_MENUBOX_HPP
@@ -24,9 +24,12 @@ public:
   void	eventRotOcu(void *data);
   void	eventRotOcu2(void *data);
   void	eventRotOcu3(void *data);
+  glm::vec3   *getRotation();
+  int   getRotationy();
 protected:
   int _i;
   glm::vec3 posSauv;
+  glm::vec3 *rot;
 };
 
 #endif
