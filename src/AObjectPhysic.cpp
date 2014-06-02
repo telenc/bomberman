@@ -5,7 +5,11 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 16:17:56 2014 Mathieu Choquart
+<<<<<<< HEAD
 // Last update Fri May 30 07:29:50 2014 Remi telenczak
+=======
+// Last update Fri May 30 16:49:44 2014 thomas mendez
+>>>>>>> 835bdcd6d7d702041aaf3514844071fa7a5493aa
 //
 
 #include	"AObjectPhysic.hpp"

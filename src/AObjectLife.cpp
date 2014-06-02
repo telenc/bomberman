@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 08:25:08 2014 Remi telenczak
-// Last update Thu May 15 07:48:59 2014 Remi telenczak
+// Last update Fri May 30 14:55:08 2014 Steven Martreux
 //
 
 #include	"AObjectLife.hpp"
@@ -30,7 +30,12 @@ void	AObjectLife::incLife()
   this->_life++;
 }
 
-int	AObjectLife::getLife()
+int	AObjectLife::getLife() const
 {
   return (this->_life);
+}
+
+void	AObjectLife::setLife(int life)
+{
+  _life = life;
 }

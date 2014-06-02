@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:00 2014 Remi telenczak
-// Last update Tue May 27 17:49:00 2014 dedicker remi
+// Last update Fri May 30 17:22:37 2014 thomas mendez
 //
 
 #include	<iostream>
@@ -14,7 +14,9 @@
 
 Menu::Menu(ModelList *mod, EventManager *event) : _mod(mod), _event(event)
 {
-  _boxmenu = new MenuBox(NULL, mod, event, NULL);
+  _boxmenu = new MenuBox(NULL, mod, event, NULL, 1);
+  _boxmenu2 = new MenuBox(NULL, mod, event, NULL, 2);
+  _boxmenu3 = new MenuBox(NULL, mod, event, NULL, 3);
   //_menuwall = new MenuWall(NULL, mod, event, NULL);
 }
 
@@ -31,11 +33,15 @@ void    Menu::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
   _skin->draw(shader, clock);
   //  _menuwall->draw(shader, clock);
   _boxmenu->draw(shader,clock);
+  _boxmenu2->draw(shader,clock);
+  _boxmenu3->draw(shader,clock);
   //_menu->draw(shader, clock);
 }
 
-void	Menu::update(gdl::Clock const &clock, gdl::Input const &input)
+void	Menu::update(gdl::Clock &clock, gdl::Input &input)
 {
+  _boxmenu->update(clock, input);
+  _boxmenu2->update(clock, input);
   (void)clock;
   (void)input;
 }

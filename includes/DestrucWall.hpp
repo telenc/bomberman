@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:28:07 2014 Remi telenczak
-// Last update Tue May 27 02:59:02 2014 Remi telenczak
+// Last update Fri May 30 15:16:18 2014 Steven Martreux
 //
 
 #ifndef		_DESTRUCALL
