@@ -1,0 +1,585 @@
+src/ABloc.cpp:  this->scale(glm::vec3(1.5, 1.5, 1.5));
+src/ABloc.cpp:  this->_type = BLOC;
+Binary file src/ABloc.o matches
+src/ABomb.cpp:  this->_type = BOMB;
+src/ABomb.cpp:  this->_playerColl = false;
+src/ABomb.cpp:  this->_direction = 1;
+src/ABomb.cpp:  time(&this->_timeCreate);
+src/ABomb.cpp:  return this->_playerColl;
+src/ABomb.cpp:  return this->_player;
+src/ABomb.cpp:  this->_player = player;
+src/ABomb.cpp:  this->_po = po;
+src/ABomb.cpp:  return this->_po;
+src/ABomb.cpp:  this->_time = time;
+src/ABomb.cpp:  return this->_time;
+src/ABomb.cpp:  this->_damage = damage;
+src/ABomb.cpp:  if (this->_died == false)
+src/ABomb.cpp:      this->createDeflag();
+src/ABomb.cpp:      this->_died = true;
+src/ABomb.cpp:  return this->_damage;
+Binary file src/ABomb.o matches
+src/ABonus.cpp:  this->_type = BONUS;
+src/ABonus.cpp:  this->_height = 3;
+src/ABonus.cpp:  this->_width = 3;
+src/ABonus.cpp:  this->_depth = 3;
+src/ABonus.cpp:  this->_died = false;
+src/ABonus.cpp:  this->_died = true;
+Binary file src/ABonus.o matches
+src/AFire.cpp:  this->_type = FIRE;
+src/AFire.cpp:  this->_time = 2000;
+src/AFire.cpp:  time(&this->_timeCreate);
+src/AFire.cpp:  this->_playerTouched = playerTouched;
+src/AFire.cpp:  this->_time = time;
+src/AFire.cpp:  return this->_time;
+src/AFire.cpp:  this->_damage = damage;
+src/AFire.cpp:  return this->_damage;
+src/AFire.cpp:  it = _playerTouched->begin();
+src/AFire.cpp:  while (it != _playerTouched->end())
+src/AFire.cpp:  players = this->_map->getPlayers();
+src/AFire.cpp:      if (this->collision(*it) == true)
+src/AFire.cpp:	      this->_playerTouched->push_back(*it);
+src/AFire.cpp:	      (*it)->decLife();
+Binary file src/AFire.o matches
+src/AObjectLife.cpp:  this->_life--;
+src/AObjectLife.cpp:  this->_life++;
+src/AObjectLife.cpp:  return (this->_life);
+Binary file src/AObjectLife.o matches
+src/AObjectPhysic.cpp:  this->_map = map;
+src/AObjectPhysic.cpp:  this->_event = eventManager;
+src/AObjectPhysic.cpp:  this->_modelList = modelList;
+src/AObjectPhysic.cpp:  this->_id = idCur;
+src/AObjectPhysic.cpp:  return this->_id;
+src/AObjectPhysic.cpp:  this->_skin = nskin;
+src/AObjectPhysic.cpp:  return this->_skin;
+src/AObjectPhysic.cpp:  this->_skin->draw(shader, this->getTransformation(), clock.getElapsed());
+src/AObjectPhysic.cpp:  A.x = camera->getPosition().x;
+src/AObjectPhysic.cpp:  A.z = camera->getPosition().z;
+src/AObjectPhysic.cpp:  direc = glm::rotateY(direc, 85 + camera->getRotation().y);
+src/AObjectPhysic.cpp:  B = glm::rotateY(direc, camera->degCam2 *-1);
+src/AObjectPhysic.cpp:  C = glm::rotateY(direc, camera->degCam2);
+src/AObjectPhysic.cpp:  D.x = this->_position.x - (camera->getPosition().x * -1);
+src/AObjectPhysic.cpp:  D.z = this->_position.z - (camera->getPosition().z * -1);
+src/AObjectPhysic.cpp:  transform = glm::rotate(transform, -1 * _rotation.y, glm::vec3(0, 1, 0));
+src/AObjectPhysic.cpp:  glm::vec3 b = v * static_cast<float>(_clock->getElapsed()) * 10.f;
+src/AObjectPhysic.cpp:  glm::vec3 test = glm::rotateY(b,  -1 * (_rotation.y - 180));
+src/AObjectPhysic.cpp:  this->_position += test;
+src/AObjectPhysic.cpp:  this->_rotation += axis * angle;
+src/AObjectPhysic.cpp:  if (this->_type == PLAYER && object->getType() == BOMB)
+src/AObjectPhysic.cpp:      if (bomb->getPlayerColl() == false && this->getId() == bomb->getPlayer()->getId())
+src/AObjectPhysic.cpp:  else if (this->_type == PLAYER && object->getType() == BONUS)
+src/AObjectPhysic.cpp:  minPos.x = object->get_x() - (object->get_width() / 2);
+src/AObjectPhysic.cpp:  minPos.y = object->get_y();// - (object->get_height() / 2);
+src/AObjectPhysic.cpp:  minPos.z = object->get_z() - (object->get_depth() / 2);
+src/AObjectPhysic.cpp:  maxPos.x = object->get_x() + (object->get_width() / 2);
+src/AObjectPhysic.cpp:  maxPos.y = object->get_y() + (object->get_height());// / 2);
+src/AObjectPhysic.cpp:  maxPos.z = object->get_z() + (object->get_depth() / 2);
+src/AObjectPhysic.cpp:  arretePos = this->getAllCorner();
+src/AObjectPhysic.cpp:      if (it->x <= maxPos.x && it->x >= minPos.x)
+src/AObjectPhysic.cpp:	if (it->y <= maxPos.y && it->y >= minPos.y)
+src/AObjectPhysic.cpp:	  if (it->z <= maxPos.z && it->z >= minPos.z)
+src/AObjectPhysic.cpp:  minPos.x = object->get_x() - (object->get_width() / 2);
+src/AObjectPhysic.cpp:  minPos.y = object->get_y();// - (object->get_height() / 2);
+src/AObjectPhysic.cpp:  minPos.z = object->get_z() - (object->get_depth() / 2);
+src/AObjectPhysic.cpp:  maxPos.x = object->get_x() + (object->get_width() / 2);
+src/AObjectPhysic.cpp:  maxPos.y = object->get_y() + (object->get_height());// / 2);
+src/AObjectPhysic.cpp:  maxPos.z = object->get_z() + (object->get_depth() / 2);
+src/AObjectPhysic.cpp:  arretePos = this->getAllCorner();
+src/AObjectPhysic.cpp:      if (it->x <= maxPos.x && it->x >= minPos.x)
+src/AObjectPhysic.cpp:	if (it->y <= maxPos.y && it->y >= minPos.y)
+src/AObjectPhysic.cpp:	  if (it->z <= maxPos.z && it->z >= minPos.z)
+src/AObjectPhysic.cpp:  this->_type = type;
+src/AObjectPhysic.cpp:  return this->_type;
+src/AObjectPhysic.cpp:  result.push_back(this->getCornerOne());
+src/AObjectPhysic.cpp:  result.push_back(this->getCornerTwo());
+src/AObjectPhysic.cpp:  result.push_back(this->getCornerThree());
+src/AObjectPhysic.cpp:  result.push_back(this->getCornerFour());
+src/AObjectPhysic.cpp:  result.push_back(this->getCornerFive());
+src/AObjectPhysic.cpp:  result.push_back(this->getCornerSix());
+src/AObjectPhysic.cpp:  result.push_back(this->getCornerSeven());
+src/AObjectPhysic.cpp:  result.push_back(this->getCornerHeight());
+src/AObjectPhysic.cpp:  result.x = this->_position.x - (this->get_width() / 2);
+src/AObjectPhysic.cpp:  result.y = this->_position.y;// - (this->get_height() / 2);
+src/AObjectPhysic.cpp:  result.z = this->_position.z - (this->get_depth() / 2);
+src/AObjectPhysic.cpp:  result.x = this->_position.x - (this->get_width() / 2);
+src/AObjectPhysic.cpp:  result.y = this->_position.y + (this->get_height());// / 2);
+src/AObjectPhysic.cpp:  result.z = this->_position.z - (this->get_depth() / 2);
+src/AObjectPhysic.cpp:  result.x = this->_position.x + (this->get_width() / 2);
+src/AObjectPhysic.cpp:  result.y = this->_position.y;// - (this->get_height() / 2);
+src/AObjectPhysic.cpp:  result.z = this->_position.z - (this->get_depth() / 2);
+src/AObjectPhysic.cpp:  result.x = this->_position.x + (this->get_width() / 2);
+src/AObjectPhysic.cpp:  result.y = this->_position.y + (this->get_height());// / 2);
+src/AObjectPhysic.cpp:  result.z = this->_position.z - (this->get_depth() / 2);
+src/AObjectPhysic.cpp:  result.x = this->_position.x - (this->get_width() / 2);
+src/AObjectPhysic.cpp:  result.y = this->_position.y;// - (this->get_height() / 2);
+src/AObjectPhysic.cpp:  result.z = this->_position.z + (this->get_depth() / 2);
+src/AObjectPhysic.cpp:  result.x = this->_position.x - (this->get_width() / 2);
+src/AObjectPhysic.cpp:  result.y = this->_position.y + (this->get_height());// / 2);
+src/AObjectPhysic.cpp:  result.z = this->_position.z + (this->get_depth() / 2);
+src/AObjectPhysic.cpp:  result.x = this->_position.x + (this->get_width() / 2);
+src/AObjectPhysic.cpp:  result.y = this->_position.y;// - (this->get_height() / 2);
+src/AObjectPhysic.cpp:  result.z = this->_position.z + (this->get_depth() / 2);
+src/AObjectPhysic.cpp:  result.x = this->_position.x + (this->get_width() / 2);
+src/AObjectPhysic.cpp:  result.y = this->_position.y + (this->get_height());// / 2);
+src/AObjectPhysic.cpp:  result.z = this->_position.z + (this->get_depth() / 2);
+src/AObjectPhysic.cpp:  objects = this->_map->getObjectsPos(this);
+src/AObjectPhysic.cpp:      if (this->collisionNo(*it) == true)
+src/AObjectPhysic.cpp:	  else if ((*it)->getType() == type)
+src/AObjectPhysic.cpp:  this->_scale *= scale;
+src/AObjectPhysic.cpp:    return this->_position.x;
+src/AObjectPhysic.cpp:    return this->_position.y;
+src/AObjectPhysic.cpp:    return this->_position.z;
+src/AObjectPhysic.cpp:    return this->_speed.x;
+src/AObjectPhysic.cpp:    return this->_speed.y;
+src/AObjectPhysic.cpp:    return this->_speed.z;
+src/AObjectPhysic.cpp:    return this->_rotation.x;
+src/AObjectPhysic.cpp:    return this->_rotation.y;
+src/AObjectPhysic.cpp:    return this->_rotation.z;
+src/AObjectPhysic.cpp:    return this->_scale.x;
+src/AObjectPhysic.cpp:    return this->_scale.y;
+src/AObjectPhysic.cpp:    return this->_scale.z;
+src/AObjectPhysic.cpp:    return this->_height;
+src/AObjectPhysic.cpp:    return this->_width;
+src/AObjectPhysic.cpp:    return this->_depth;
+src/AObjectPhysic.cpp:    return this->_graphic;
+src/AObjectPhysic.cpp:    return this->_color;
+src/AObjectPhysic.cpp:    return this->_map;
+src/AObjectPhysic.cpp:    return this->_event;
+src/AObjectPhysic.cpp:    this->_position.x = x;
+src/AObjectPhysic.cpp:    this->_position.y = y;
+src/AObjectPhysic.cpp:    this->_position.z = z;
+src/AObjectPhysic.cpp:    this->_speed.x = vx;
+src/AObjectPhysic.cpp:    this->_speed.y = vy;
+src/AObjectPhysic.cpp:    this->_speed.z = vz;
+src/AObjectPhysic.cpp:    this->_rotation.x = x;
+src/AObjectPhysic.cpp:    this->_rotation.y = y;
+src/AObjectPhysic.cpp:    this->_rotation.z = z;
+src/AObjectPhysic.cpp:    this->_scale.x = x;
+src/AObjectPhysic.cpp:    this->_scale.y = y;
+src/AObjectPhysic.cpp:    this->_scale.z = z;
+src/AObjectPhysic.cpp:    this->_height = height;
+src/AObjectPhysic.cpp:    this->_width = width;
+src/AObjectPhysic.cpp:    this->_depth = depth;
+src/AObjectPhysic.cpp:    this->_graphic = graphic;
+src/AObjectPhysic.cpp:    this->_color = color;
+src/AObjectPhysic.cpp:    this->_event = eventManager;
+src/AObjectPhysic.cpp:  return this->_position;
+src/AObjectPhysic.cpp:  this->_position = pos;
+Binary file src/AObjectPhysic.o matches
+src/APlayer.cpp:  this->_skin = model->getModel("marvin");
+src/APlayer.cpp:  this->_skin->createSubAnim(0, "run", 20, 46);
+src/APlayer.cpp:  this->_skin->createSubAnim(0, "beginRun", 0, 20);
+src/APlayer.cpp:  this->_skin->createSubAnim(0, "endRun", 46, 100);
+src/APlayer.cpp:  this->_skin->createSubAnim(0, "none", 0, 0);
+src/APlayer.cpp:  this->_skin->setCurrentSubAnim("none", true);
+src/APlayer.cpp:  //  this->_skin->setCurrentAnim(0);
+src/APlayer.cpp:  this->scale(glm::vec3(0.005, 0.005, 0.005));
+src/APlayer.cpp:  this->_position.x = 3;
+src/APlayer.cpp:  this->_position.y = 0;
+src/APlayer.cpp:  this->_position.z = 3;
+src/APlayer.cpp:  this->_type = PLAYER;
+src/APlayer.cpp:  this->_width = 2.8;
+src/APlayer.cpp:  this->_height = 2.8;
+src/APlayer.cpp:  this->_depth = 2.8;
+src/APlayer.cpp:  this->_po = 2;
+src/APlayer.cpp:  this->_nbrBomb = 1;
+src/APlayer.cpp:  this->_nbrBombMax = 1;
+src/APlayer.cpp:  this->_nbrBomb++;
+src/APlayer.cpp:  this->_nbrBombMax++;
+src/APlayer.cpp:  this->_nbrBomb++;
+src/APlayer.cpp:  this->_po++;
+Binary file src/APlayer.o matches
+src/CameraBomber.cpp:  this->position.y = -4;
+src/CameraBomber.cpp:  this->position.z = -3;
+src/CameraBomber.cpp:  this->position.x = -3;
+src/CameraBomber.cpp:  this->position.z = -3;
+src/CameraBomber.cpp:  this->position.x = -3;
+src/CameraBomber.cpp:  this->rot = 4.98002;
+src/CameraBomber.cpp:  this->_occulus = new Occulus();
+src/CameraBomber.cpp:  _occulus->init();
+src/CameraBomber.cpp:  _occulus->displayInfo();
+src/CameraBomber.cpp:  this->stereo = 2;
+src/CameraBomber.cpp:  event->listenEvent("playerMove", callPlayerMove);
+src/CameraBomber.cpp:  event->listenEvent("playerMove", callTypeDeplacement);
+src/CameraBomber.cpp:  event->listenEvent("playerRotateLeft", callRotateLeft);
+src/CameraBomber.cpp:  event->listenEvent("playerRotateRight", callRotateRight);
+src/CameraBomber.cpp:  this->_typeDeplacement = 0;
+src/CameraBomber.cpp:  this->_typeDeplacement = *newType;
+src/CameraBomber.cpp:  this->rotation.y -= 5;
+src/CameraBomber.cpp:  this->rotation.y += 5;
+src/CameraBomber.cpp:  this->translate(-1 * test->x, 0, -1 * test->z);
+src/CameraBomber.cpp:  return this->stereo;
+src/CameraBomber.cpp:  this->stereo = a;
+src/CameraBomber.cpp:  this->degCam += a;
+src/CameraBomber.cpp:  this->degCam2 += a;
+src/CameraBomber.cpp:  this->position += vector;
+src/CameraBomber.cpp:  transformation = glm::rotate(transformation, this->rotation.y, glm::vec3(0, 1, 0));
+src/CameraBomber.cpp:  transformation = glm::rotate(transformation, this->rotation.y, glm::vec3(0, 1, 0));
+src/CameraBomber.cpp:  vec = this->_occulus->getOrientation();
+src/CameraBomber.cpp:  transformation = glm::rotate(transformation, -1 * vec.z, glm::vec3(0, 0, 1));
+src/CameraBomber.cpp:  transformation = glm::rotate(transformation, -1 * vec.x, glm::vec3(1, 0, 0));
+src/CameraBomber.cpp:  if (this->_typeDeplacement == 1)
+src/CameraBomber.cpp:    transformation = glm::rotate(transformation, this->rotation.y, glm::vec3(0, 1, 0));
+src/CameraBomber.cpp:  transformation = glm::rotate(transformation, -1 * vec.y, glm::vec3(0, 1, 0));
+src/CameraBomber.cpp:  transformation = glm::rotate(transformation, this->rot *-1, glm::vec3(0, 1, 0));
+src/CameraBomber.cpp:  vec = this->_occulus->getOrientation();
+src/CameraBomber.cpp:  transformation = glm::rotate(transformation, -1 * vec.z, glm::vec3(0, 0, 1));
+src/CameraBomber.cpp:  transformation = glm::rotate(transformation, -1 * vec.x, glm::vec3(1, 0, 0));
+src/CameraBomber.cpp:  if (this->_typeDeplacement == 1)
+src/CameraBomber.cpp:    transformation = glm::rotate(transformation, this->rotation.y, glm::vec3(0, 1, 0));
+src/CameraBomber.cpp:  transformation = glm::rotate(transformation, -1 * vec.y, glm::vec3(0, 1, 0));
+src/CameraBomber.cpp:  transformation = glm::rotate(transformation, this->rot, glm::vec3(0, 1, 0));
+src/CameraBomber.cpp:  if (this->stereo == 1)
+src/CameraBomber.cpp:  return this->_occulus->getPerspective();
+src/CameraBomber.cpp:  return this->position;
+src/CameraBomber.cpp:  this->rotation = this->_occulus->getOrientation();
+src/CameraBomber.cpp:  return this->rotation;
+src/CameraBomber.cpp:  this->position.x = x;
+src/CameraBomber.cpp:  this->position.y = y;
+src/CameraBomber.cpp:  this->position.z = z;
+Binary file src/CameraBomber.o matches
+src/Controller.cpp:  if (SDL_JoystickGetAxis(_joystick, 0) < -4000)
+src/Controller.cpp:    this->setRightLeft(0, 1);
+src/Controller.cpp:    this->setRightLeft(1, 0);
+src/Controller.cpp:    this->setRightLeft(0, 0);
+src/Controller.cpp:  if (SDL_JoystickGetAxis(_joystick, 1) < -4000)
+src/Controller.cpp:    this->setUpDown(1, 0);
+src/Controller.cpp:    this->setUpDown(0, 1);
+src/Controller.cpp:    this->setUpDown(0, 0);
+src/Controller.cpp:  if (SDL_JoystickGetAxis(_joystick, 3) < -4000)
+src/Controller.cpp:    this->setRotate(0, 1);
+src/Controller.cpp:    this->setRotate(1, 0);
+src/Controller.cpp:    this->setRotate(0, 0);
+src/Controller.cpp:    _eventManager->dispatchEvent("keyRight", NULL);
+src/Controller.cpp:    _eventManager->dispatchEvent("keyLeft", NULL);
+src/Controller.cpp:    _eventManager->dispatchEvent("keyDown", NULL);
+src/Controller.cpp:    _eventManager->dispatchEvent("keyUp", NULL);
+src/Controller.cpp:    _eventManager->dispatchEvent("rotateLeft", NULL);
+src/Controller.cpp:    _eventManager->dispatchEvent("rotateRight", NULL);
+src/Controller.cpp:    _eventManager->dispatchEvent("keyA", NULL);
+src/Controller.cpp:  if (SDL_JoystickGetAxis(_joystick, 0) < -4000 || SDL_JoystickGetAxis(_joystick, 0) > 4000)
+src/Controller.cpp:  if (SDL_JoystickGetAxis(_joystick, 1) < -4000 || SDL_JoystickGetAxis(_joystick, 1) > 4000)
+src/Controller.cpp:  if (SDL_JoystickGetAxis(_joystick, 3) < -4000 || SDL_JoystickGetAxis(_joystick, 3) > 4000)
+Binary file src/Controller.o matches
+src/Cube.cpp:  _geometry.pushVertex(glm::vec3(0.5, -0.5, 0.5));
+src/Cube.cpp:  _geometry.pushVertex(glm::vec3(-0.5, 0.5, 0.5));
+src/Cube.cpp:  _geometry.pushVertex(glm::vec3(-0.5, -0.5, 0.5));
+src/Cube.cpp:  _geometry.pushVertex(glm::vec3(0.5, -0.5, -0.5));
+src/Cube.cpp:  _geometry.pushVertex(glm::vec3(0.5, 0.5, -0.5));
+src/Cube.cpp:  _geometry.pushVertex(glm::vec3(-0.5, 0.5, -0.5));
+src/Cube.cpp:  _geometry.pushVertex(glm::vec3(-0.5, -0.5, -0.5));
+src/Cube.cpp:  _geometry.pushVertex(glm::vec3(0.5, -0.5, -0.5));
+src/Cube.cpp:  _geometry.pushVertex(glm::vec3(0.5, 0.5, -0.5));
+src/Cube.cpp:  _geometry.pushVertex(glm::vec3(0.5, -0.5, 0.5));
+src/Cube.cpp:  _geometry.pushVertex(glm::vec3(-0.5, -0.5, 0.5));
+src/Cube.cpp:  _geometry.pushVertex(glm::vec3(-0.5, 0.5, 0.5));
+src/Cube.cpp:  _geometry.pushVertex(glm::vec3(-0.5, 0.5, -0.5));
+src/Cube.cpp:  _geometry.pushVertex(glm::vec3(-0.5, -0.5, -0.5));
+src/Cube.cpp:  _geometry.pushVertex(glm::vec3(0.5, 0.5, -0.5));
+src/Cube.cpp:  _geometry.pushVertex(glm::vec3(-0.5, 0.5, -0.5));
+src/Cube.cpp:  _geometry.pushVertex(glm::vec3(-0.5, 0.5, 0.5));
+src/Cube.cpp:  _geometry.pushVertex(glm::vec3(0.5, -0.5, -0.5));
+src/Cube.cpp:  _geometry.pushVertex(glm::vec3(0.5, -0.5, 0.5));
+src/Cube.cpp:  _geometry.pushVertex(glm::vec3(-0.5, -0.5, 0.5));
+src/Cube.cpp:  _geometry.pushVertex(glm::vec3(-0.5, -0.5, -0.5));
+Binary file src/Cube.o matches
+src/EventManager.cpp:event->listenEvent("evenement", call);
+src/EventManager.cpp:event->removeEvent("evenement", call);
+src/EventManager.cpp:event->dispatchEvent("evenement", param)
+src/EventManager.cpp:  this->_listEvent.push_back(std::make_pair<std::string, ICallBack *>(event, callBack));
+src/EventManager.cpp:  it = this->_listEvent.begin();
+src/EventManager.cpp:  while (it != this->_listEvent.end())
+src/EventManager.cpp:      if (it->first == event)
+src/EventManager.cpp:	listCallBack.push_back(it->second);
+src/EventManager.cpp:	tmp->call(data);
+src/EventManager.cpp:  it = this->_listEvent.begin();
+src/EventManager.cpp:  while (it != this->_listEvent.end())
+src/EventManager.cpp:      if (it->second == callBack && it->first == event)
+src/EventManager.cpp:	  this->_listEvent.erase(it);
+Binary file src/EventManager.o matches
+src/Game.cpp:  this->eventManager = new EventManager();
+Binary file src/Game.o matches
+src/GenereMap.cpp:      _map[1][_height - 3] = 3;
+src/GenereMap.cpp:      _map[_width - 2][1] = 3;
+src/GenereMap.cpp:      _map[_width - 2][_height - 2] = 3;
+src/GenereMap.cpp:  _ia--;
+src/GenereMap.cpp:  return this->_map;
+src/GenereMap.cpp:	  if (i == 0 || y == 0 || i == (_width - 1) || y == (_height - 1))
+src/GenereMap.cpp:	      wallObject = new DefaultWall(this->_map, this->_model, this->_event, _clock);
+src/GenereMap.cpp:	      wallObject->set_x(i * 3);
+src/GenereMap.cpp:	      wallObject->set_z(y * 3);
+src/GenereMap.cpp:	      this->_map->setMap(wallObject);
+src/GenereMap.cpp:	      //wallObject = new DefaultWall(this->_map, this->_model, this->_event, _clock);
+src/GenereMap.cpp:	      //wallObject->set_x(i * 3);
+src/GenereMap.cpp:	      //wallObject->set_z(y * 3);
+src/GenereMap.cpp:	      //wallObject->set_y(3);
+src/GenereMap.cpp:	      //this->_map->setMap(wallObject);
+src/GenereMap.cpp:	  else if (wall == 1 && (y < (_width - 1)) && (i % 2 == 0))
+src/GenereMap.cpp:	      wallObject = new DefaultWall(this->_map, this->_model, this->_event, _clock);
+src/GenereMap.cpp:	      wallObject->set_x(i * 3);
+src/GenereMap.cpp:	      wallObject->set_z(y * 3);
+src/GenereMap.cpp:	      this->_map->setMap(wallObject);
+src/GenereMap.cpp:	  if (wall != 0 && ((i > 2  && i < _width-2) || (y > 2 && y < _height - 3) ))
+src/GenereMap.cpp:	      wallObject = new DestrucWall(this->_map, this->_model, this->_event, _clock);
+src/GenereMap.cpp:	      wallObject->set_x(i * 3);
+src/GenereMap.cpp:	      wallObject->set_z(y * 3);
+src/GenereMap.cpp:	      this->_map->setMap(wallObject);
+src/GenereMap.cpp:  if (this->_event == NULL)
+src/GenereMap.cpp:  this->_map->setPlayer(new Player(1 * 2, 0, 1 * 2, this->_map, this->_model, this->_event, _clock));
+Binary file src/GenereMap.o matches
+src/Graphics.cpp:  this->_modelList = mod;
+src/Graphics.cpp:  this->sky = mod->getModel("box");
+src/Graphics.cpp:  return this->_clock;
+src/Graphics.cpp:  this->_camera = new CameraBomber(&_shader, _event);
+src/Graphics.cpp:      this->_camera->rot -= 0.1;
+src/Graphics.cpp:      this->_camera->rot += 0.1;
+src/Graphics.cpp:  map->update(*_clock, _input);
+src/Graphics.cpp:  this->inputUpdate();
+src/Graphics.cpp:    this->_event->dispatchEvent("keyUp", NULL);
+src/Graphics.cpp:    this->_event->dispatchEvent("keyDown", NULL);
+src/Graphics.cpp:    this->_event->dispatchEvent("keyLeft", NULL);
+src/Graphics.cpp:    this->_event->dispatchEvent("keyRight", NULL);
+src/Graphics.cpp:    this->_event->dispatchEvent("rotateLeft", NULL);
+src/Graphics.cpp:    this->_event->dispatchEvent("rotateRight", NULL);
+src/Graphics.cpp:    this->_event->dispatchEvent("keyA", NULL);
+src/Graphics.cpp:    this->_camera->translate(0, 1.0, 0);
+src/Graphics.cpp:    this->_camera->translate(0, -1.0, 0);
+src/Graphics.cpp:    this->_camera->changeStereo(1);
+src/Graphics.cpp:    this->_camera->changeStereo(2);
+src/Graphics.cpp:    this->_camera->changeStereoo(-1);
+src/Graphics.cpp:    this->_camera->changeStereoo(1);
+src/Graphics.cpp:    this->_camera->changeStereooo(-1);
+src/Graphics.cpp:    this->_camera->changeStereooo(1);
+src/Graphics.cpp:  glm::vec3 testt = this->_camera->getRotation();
+src/Graphics.cpp:  _event->dispatchEvent("occulusRotate", &testt);
+src/Graphics.cpp:  _shader.setUniform("view", this->_camera->getTransformationLeft());
+src/Graphics.cpp:  _shader.setUniform("projection", this->_camera->getPerspective());
+src/Graphics.cpp:  map->draw(_shader, *_clock, _camera);
+src/Graphics.cpp:  _shader.setUniform("view", this->_camera->getTransformationRight());
+src/Graphics.cpp:  map->draw(_shader, *_clock, _camera);
+src/Graphics.cpp:  map->draw(_shader, *_clock, this->_camera);
+src/Graphics.cpp:  this->sky->draw(_shader, t, _clock->getElapsed());
+src/Graphics.cpp:  _shader.setUniform("projection", this->_camera->getPerspective());
+src/Graphics.cpp:  _shader.setUniform("view", this->_camera->getTransformation());
+src/Graphics.cpp:  if (this->_camera->getStereo() == 2)
+src/Graphics.cpp:  if (this->_camera->getStereo() == 2)
+src/Graphics.cpp:  menu->draw(_shader, *_clock);
+src/Graphics.cpp:  _shader.setUniform("projection", this->_camera->getPerspective());
+src/Graphics.cpp:  _shader.setUniform("view", this->_camera->getTransformation());
+src/Graphics.cpp:  menu->update(*_clock, _input);
+src/Graphics.cpp:  this->inputUpdate();
+src/Graphics.cpp:  rotationOculus = _camera->getRotation();
+src/Graphics.cpp:  _event->dispatchEvent("rotOcu", &rotationOculus);
+src/Graphics.cpp:  this->_camera->setPosition(0,  0, 0);
+src/Graphics.cpp:  glm::vec3 testt = this->_camera->getRotation();
+src/Graphics.cpp:  _event->dispatchEvent("occulusRotate", &testt);
+src/Graphics.cpp:  _shader.setUniform("view", this->_camera->getTransformationLeft());
+src/Graphics.cpp:  _shader.setUniform("projection", this->_camera->getPerspective());
+src/Graphics.cpp:  menu->draw(_shader, *_clock);
+src/Graphics.cpp:  _shader.setUniform("view", this->_camera->getTransformationRight());
+src/Graphics.cpp:  menu->draw(_shader, *_clock);
+Binary file src/Graphics.o matches
+src/Inventory.cpp:  return this->_MaxBomb;
+src/Inventory.cpp:  this->_MaxBomb = MaxBomb;
+Binary file src/Inventory.o matches
+src/Loader.cpp:  load->InitEvery();
+src/Loader.cpp:  load->setFinish(true);
+src/Loader.cpp:  _engine->initialize();
+src/Loader.cpp:  _mod->loadModel();
+src/Loader.cpp:  _engine->setModelList(_mod);
+src/Loader.cpp:  return this->_eventManager;
+src/Loader.cpp:  return this->_engine;
+src/Loader.cpp:  return this->_mod;
+src/Loader.cpp:  return this->_controller;
+src/Loader.cpp:  return this->_sound;
+Binary file src/Loader.o matches
+src/LoadGame.cpp:  this->getMapSize();
+src/LoadGame.cpp:  this->getObjMap();
+src/LoadGame.cpp:  wall->set_x(atof(line->Attribute("x")));
+src/LoadGame.cpp:  wall->set_y(atof(line->Attribute("y")));
+src/LoadGame.cpp:  wall->set_z(atof(line->Attribute("z")));
+src/LoadGame.cpp:  wall->set_x(atof(line->Attribute("x")));
+src/LoadGame.cpp:  wall->set_y(atof(line->Attribute("y")));
+src/LoadGame.cpp:  wall->set_z(atof(line->Attribute("z")));
+src/LoadGame.cpp:  //wall->setLife(atoi(line->Attribute("life")));
+src/LoadGame.cpp:  _map = _bomberman->FirstChildElement("Map");
+src/LoadGame.cpp:      i = _mapObject.find(_map->Attribute("object"));
+src/LoadGame.cpp: 	_mapGame->setMap((this->*_mapObject[_map->Attribute("object")])(_map));
+src/LoadGame.cpp:      _map = _map->NextSiblingElement("Map");
+src/LoadGame.cpp:  _map_size = _bomberman->FirstChildElement("Map_Size");
+src/LoadGame.cpp:      if (!_map_size->Attribute("width") || !_map_size->Attribute("height"))
+src/LoadGame.cpp:      width = atoi(_map_size->Attribute("width"));
+src/LoadGame.cpp:      height = atoi(_map_size->Attribute("height"));
+src/LoadGame.cpp:      this->_mapGame = new Map(width, height);
+Binary file src/LoadGame.o matches
+src/main.cpp:      while (load->getFinish() != true);
+src/main.cpp:      engine = load->getEngine();
+src/main.cpp:      joystick = load->getController();
+src/main.cpp:      GenereMap gen(21, 21, 0, load->getEventManager(), load->getModel(), engine->getClock());
+src/main.cpp:      //save = new LoadGame("save/test.xml", load->getEventManager(), load->getModel(), engine->getClock());
+src/main.cpp:      //m = save->getMap();
+src/main.cpp:      Menu *menu = new Menu(load->getModel(), load->getEventManager());
+src/main.cpp:      m->setSkybox(new Skybox(m, load->getModel(), load->getEventManager(), engine->getClock()));
+src/main.cpp:      //m->setSkybox(new Skybox(m, mod, eventManager));
+src/main.cpp:      //load->getSound()->InGame();
+src/main.cpp:      //sound->InGame();
+src/main.cpp:	  while (engine->update(m))
+src/main.cpp:	      engine->draw(m);
+src/main.cpp:	  Skybox *test = new Skybox(m, load->getModel(), load->getEventManager(), engine->getClock());
+src/main.cpp:	  menu->setSkybox(test);
+src/main.cpp:	  load->getSound()->InGame();
+src/main.cpp:	  while (engine->update(menu))
+src/main.cpp:	      engine->draw(menu);
+src/main.cpp:	      joystick->update();
+src/main.cpp:      std::cerr << "Error :" << e->what() << std::endl;
+Binary file src/main.o matches
+src/Map.cpp:  itO = this->_map.begin();
+src/Map.cpp:  while (itO != this->_map.end())
+src/Map.cpp:	  if ((*itO)->update(clock, input) == false)
+src/Map.cpp:  this->_player->update(clock, input);
+src/Map.cpp:  this->_skybox->update(clock, input);
+src/Map.cpp:  itO = this->_map.begin();
+src/Map.cpp:  while (itO != this->_map.end())
+src/Map.cpp:	  if (glm::distance2(obj->getPosition(), (*itO)->getPosition()) < 30)
+src/Map.cpp:  itO = this->_map.begin();
+src/Map.cpp:  while (itO != this->_map.end())
+src/Map.cpp:      if ((*itO) != NULL)// && (*itO)->isInView(camera))
+src/Map.cpp:	(*itO)->draw(shader, clock);
+src/Map.cpp:  this->_player->draw(shader, clock);
+src/Map.cpp:  this->_skybox->draw(shader, clock);
+src/Map.cpp:    this->_map.push_back(bloc);
+src/Map.cpp:  return this->_player;
+src/Map.cpp:  result.push_back(this->_player);
+src/Map.cpp:  this->_skybox = skybox;
+src/Map.cpp:  this->_player = player;
+Binary file src/Map.o matches
+src/Menu.cpp:  _skin->draw(shader, clock);
+src/Menu.cpp:  //  _menuwall->draw(shader, clock);
+src/Menu.cpp:  _boxmenu->draw(shader,clock);
+src/Menu.cpp:  _boxmenu2->draw(shader,clock);
+src/Menu.cpp:  _boxmenu3->draw(shader,clock);
+src/Menu.cpp:  //_menu->draw(shader, clock);
+src/Menu.cpp:  _boxmenu->update(clock, input);
+src/Menu.cpp:  _boxmenu2->update(clock, input);
+src/Menu.cpp:  this->_skin = skybox;
+src/Menu.cpp:  skybox->setSkin(_mod->getModel("box_menu"));
+Binary file src/Menu.o matches
+src/ModelList.cpp:// Last update Tue May 20 15:43:51 2014 mattieu bernard-guêle
+src/ModelList.cpp:  mod = this->createModel("./assets/marvin.fbx");
+src/ModelList.cpp:  this->list.push_back(std::make_pair("marvin", mod));
+src/ModelList.cpp:  mod = this->createModel("./assets/cubeWallFer.fbx");
+src/ModelList.cpp:  this->list.push_back(std::make_pair("cube6", mod));
+src/ModelList.cpp:  mod = this->createModel("./assets/bonus_bomb_up.FBX");
+src/ModelList.cpp:  this->list.push_back(std::make_pair("bombBonus", mod));
+src/ModelList.cpp:  mod = this->createModel("./assets/bonus_fire_up.FBX");
+src/ModelList.cpp:  this->list.push_back(std::make_pair("poBonus", mod));
+src/ModelList.cpp:  mod = this->createModel("./assets/cubeWall.fbx");
+src/ModelList.cpp:  this->list.push_back(std::make_pair("cubeDest3", mod));
+src/ModelList.cpp:  mod = this->createModel("./assets/cubeWall2.fbx");
+src/ModelList.cpp:  this->list.push_back(std::make_pair("cubeDest2", mod));
+src/ModelList.cpp:  mod = this->createModel("./assets/cubeWall3.fbx");
+src/ModelList.cpp:  this->list.push_back(std::make_pair("cubeDest1", mod));
+src/ModelList.cpp:  mod = this->createModel("./assets/bombe5.fbx");
+src/ModelList.cpp:  this->list.push_back(std::make_pair("defaultBomb", mod));
+src/ModelList.cpp:  mod = this->createModel("./assets/box.fbx");
+src/ModelList.cpp:  this->list.push_back(std::make_pair("skybox", mod));
+src/ModelList.cpp:  mod = this->createModel("./assets/fire_box.FBX");
+src/ModelList.cpp:  this->list.push_back(std::make_pair("fire", mod));
+src/ModelList.cpp:  mod = this->createModel("./assets/mytest.fbx");
+src/ModelList.cpp:  this->list.push_back(std::make_pair("box", mod));
+src/ModelList.cpp:  mod = this->createModel("./assets/box_menu.fbx");
+src/ModelList.cpp:  this->list.push_back(std::make_pair("box_menu", mod));
+src/ModelList.cpp:  mod = this->createModel("./assets/menu.fbx");
+src/ModelList.cpp:  this->list.push_back(std::make_pair("menu", mod));
+src/ModelList.cpp:  mod = this->createModel("./assets/cubeWallWood.fbx");
+src/ModelList.cpp:  this->list.push_back(std::make_pair("sol", mod));
+src/ModelList.cpp:  if (result->load(path.c_str()))
+src/ModelList.cpp:    result->setCurrentAnim(0);
+src/ModelList.cpp:  it = this->list.begin();
+src/ModelList.cpp:  while (it != this->list.end())
+src/ModelList.cpp:      if (it->first == name)
+src/ModelList.cpp:	return (it->second);
+Binary file src/ModelList.o matches
+src/myException.cpp:  return (this->_str.c_str());
+Binary file src/myException.o matches
+src/Occulus.cpp:  pHMD = *pManager->EnumerateDevices<OVR::HMDDevice>().CreateDevice();
+src/Occulus.cpp:      InfoLoaded = pHMD->GetDeviceInfo(&Info);
+src/Occulus.cpp:      pSensor = *pHMD->GetSensor();
+src/Occulus.cpp:      pSensor = *pManager->EnumerateDevices<OVR::SensorDevice>().CreateDevice();
+src/Occulus.cpp:    pFusionResult->AttachToSensor(pSensor);
+src/Occulus.cpp:  std::cout << "----- Oculus Console -----" << std::endl;
+src/Occulus.cpp:  std::cout << "--------------------------" << std::endl;
+src/Occulus.cpp:      std::cout << "--------------------------" << std::endl;
+src/Occulus.cpp:  quaternion = pFusionResult->GetOrientation();
+src/Occulus.cpp:  result = this->getOrientationRad();
+src/Occulus.cpp:  //result.y = -180;
+Binary file src/Occulus.o matches
+src/Player.cpp:  this->rotate(glm::vec3(0, 1, 0), 180);
+src/Player.cpp:  event->listenEvent("keyUp", callKeyUp);
+src/Player.cpp:  event->listenEvent("keyLeft", callKeyLeft);
+src/Player.cpp:  event->listenEvent("keyRight", callKeyRight);
+src/Player.cpp:  event->listenEvent("keyDown", callKeyDown);
+src/Player.cpp:  event->listenEvent("occulusRotate", callRotate);
+src/Player.cpp:  event->listenEvent("keyA", callKeyA);
+src/Player.cpp:  this->none = true;
+src/Player.cpp:  this->rotate(glm::vec3(0, 1, 0), -5);
+src/Player.cpp:  this->_event->dispatchEvent("playerRotateLeft", this);
+src/Player.cpp:  if (this->_nbrBomb <= 0)
+src/Player.cpp:  if (this->checkPositionCollision(BOMB) != NULL)
+src/Player.cpp:  this->_nbrBomb--;
+src/Player.cpp:  bomb->setPo(this->_po);
+src/Player.cpp:  x = (int)this->_position.x;
+src/Player.cpp:  z = (int)this->_position.z;
+src/Player.cpp:  bomb->set_x(x);
+src/Player.cpp:  bomb->set_z(z);
+src/Player.cpp:  _event->dispatchEvent("bombDrop", &(t));
+src/Player.cpp:  this->_map->setMap(bomb);
+src/Player.cpp:  //this->rotation.y += 5;
+src/Player.cpp:  this->rotate(glm::vec3(0, 1, 0), 5);
+src/Player.cpp:  this->_event->dispatchEvent("playerRotateRight", this);
+src/Player.cpp:  //this->rotation.y += 5;
+src/Player.cpp:  this->set_roty((-1 * test->y) + 180);
+src/Player.cpp:  //this->rotate(glm::vec3(0, 1, 0), 5);
+src/Player.cpp:  //this->_event->dispatchEvent("playerRotateRight", this);
+src/Player.cpp:  objects = this->_map->getObjectsPos(this);
+src/Player.cpp:      if ((*it)->getType() != FIRE && this->collision(*it) == true)
+src/Player.cpp:	  //this->_position = posSauv;
+src/Player.cpp:  this->run = false;
+src/Player.cpp:  this->none = false;
+src/Player.cpp:  this->beginRun = false;
+src/Player.cpp:  this->endRun = false;
+src/Player.cpp:  posSauv = this->_position;
+src/Player.cpp:  positionTrans = this->translate(direct);
+src/Player.cpp:  if (this->run == false)
+src/Player.cpp:      this->resetAnim();
+src/Player.cpp:      this->_skin->setCurrentSubAnim("run", true);
+src/Player.cpp:      this->run = true;
+src/Player.cpp:      this->_position.x -= positionTrans.x;
+src/Player.cpp:	  this->_position.x += positionTrans.x;
+src/Player.cpp:	  this->_position.z -= positionTrans.z;
+src/Player.cpp:	      this->_position = posSauv;
+src/Player.cpp:	      this->_event->dispatchEvent(event, &positionTrans);
+src/Player.cpp:	  this->_event->dispatchEvent(event, &positionTrans);
+src/Player.cpp:    this->_event->dispatchEvent(event, &positionTrans);
+src/Player.cpp:  this->_event->dispatchEvent("playerPosition", &this->_position);
+src/Player.cpp:  this->move(glm::vec3(0, 0, -0.5), "playerMove");
+src/Player.cpp:  this->move(glm::vec3(0, 0, 0.5), "playerMove");
+src/Player.cpp:    this->move(glm::vec3(0.5, 0, 0), "playerMove");
+src/Player.cpp:    this->move(glm::vec3(-0.5, 0, 0), "playerMove");
+src/Player.cpp:  //if (this->_life <= 0)
+Binary file src/Player.o matches
+src/Skybox.cpp:  event->listenEvent("playerMove", callPlayerMove);
+src/Skybox.cpp:  this->scale(glm::vec3(200, 200, 200));
+src/Skybox.cpp:  this->translate(glm::vec3(0, 50, 0));
+src/Skybox.cpp:  this->_skin = model->getModel("skybox");
+src/Skybox.cpp:  //this->translate(glm::vec3(1 * test->x, 0, 1 * test->z));
+src/Skybox.cpp:  //this->rotate(glm::vec3(0, 1, 0), 0.5);
+Binary file src/Skybox.o matches
+src/Sound.cpp:  event->listenEvent("bombDrop", callBombDrop);
+src/Sound.cpp:  event->listenEvent("playerPosition", callPlayerMove);
+src/Sound.cpp:  this->setPlayer(test->x, test->y, test->z);
+src/Sound.cpp:  //this->StartTicTacBomb(test->x * 10, test->y * 10, test->z * 10);
+src/Sound.cpp:  this->StartTicTacBomb(1300, 1300, 1300);
+Binary file src/Sound.o matches
+src/Thread.cpp:  if (pthread_create(&(this->_thread_ing), NULL, fct, data) != 0)
+src/Thread.cpp:  if (pthread_cancel(this->_thread_ing) != 0)
+Binary file src/Thread.o matches
