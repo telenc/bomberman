@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 16:17:56 2014 Mathieu Choquart
-// Last update Fri May 30 04:16:34 2014 Remi telenczak
+// Last update Fri May 30 07:29:50 2014 Remi telenczak
 //
 
 #include	"AObjectPhysic.hpp"
@@ -141,6 +141,8 @@ bool	AObjectPhysic::collision(AObjectPhysic *object)
 	  return false;
 	}
     }
+  else if (this->_type == PLAYER && object->getType() == BONUS)
+    return false;
   minPos.x = object->get_x() - (object->get_width() / 2);
   minPos.y = object->get_y();// - (object->get_height() / 2);
   minPos.z = object->get_z() - (object->get_depth() / 2);
@@ -508,4 +510,9 @@ void		AObjectPhysic::set_eventManager(EventManager *eventManager)
 glm::vec3	AObjectPhysic::getPosition() const
 {
   return this->_position;
+}
+
+void	AObjectPhysic::setPosition(glm::vec3 pos)
+{
+  this->_position = pos;
 }

@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Fri May 30 04:18:29 2014 Remi telenczak
+// Last update Fri May 30 07:32:26 2014 Remi telenczak
 //
 
 #include <cstdlib>
@@ -75,11 +75,11 @@ void	Map::draw(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
   itO = this->_map.begin();
   while (itO != this->_map.end())
     {
-      if ((*itO) != NULL && (*itO)->isInView(camera))
+      if ((*itO) != NULL)// && (*itO)->isInView(camera))
 	(*itO)->draw(shader, clock);
       itO++;
     }
-  std::cout << std::endl << std::endl;
+  (void)camera;
   this->_player->draw(shader, clock);
   this->_skybox->draw(shader, clock);
 }

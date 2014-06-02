@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:12:08 2014 dedicker remi
-// Last update Tue May 27 02:58:21 2014 Remi telenczak
+// Last update Fri May 30 08:19:20 2014 Remi telenczak
 //
 
 #ifndef _APLAYER_HPP_
@@ -28,6 +28,9 @@ class APlayer : public AObjectLife, public AObjectPhysic
 public:
   APlayer(int, int, int, Map *, ModelList *, EventManager *, gdl::Clock *);
   virtual ~APlayer();
+  void	incPo();
+  void	incNbrBombMax();
+  void	incNbrBomb();
   virtual bool update(gdl::Clock const &clock, gdl::Input &input) = 0;
 protected:
   Inventory *_inventory;
@@ -35,6 +38,8 @@ protected:
   int	_x;
   int	_y;
   int	_po;
+  int	_nbrBomb;
+  int	_nbrBombMax;
 };
 
 #endif

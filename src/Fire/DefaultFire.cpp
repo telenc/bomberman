@@ -5,13 +5,14 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Fri May 23 04:00:03 2014 Remi telenczak
-// Last update Tue May 27 03:00:24 2014 Remi telenczak
+// Last update Fri May 30 08:29:08 2014 Remi telenczak
 //
 
 #include	"DefaultFire.hpp"
 #include	"ModelList.hpp"
 #include	"Map.hpp"
 #include	"ABomb.hpp"
+#include	"ABonus.hpp"
 
 DefaultFire::DefaultFire(Map *map, ModelList *model, EventManager *event, std::vector<APlayer *> *playerTouched, gdl::Clock *clock) : AFire(map, model, event, playerTouched, clock)
 {
@@ -33,6 +34,7 @@ bool	DefaultFire::update(gdl::Clock const &clock, gdl::Input &input)
 {
     time_t currTime;
     ABomb *bomb;
+    ABonus *bonus;
 
   time(&currTime);
   this->checkPlayerColl();
@@ -41,6 +43,11 @@ bool	DefaultFire::update(gdl::Clock const &clock, gdl::Input &input)
       //std::cout << "Coucou" << std::endl;
       bomb->explode();
     }
+  if ((bonus = (ABonus *)this->checkPositionCollision(BONUS)) != NULL)
+    {
+      bonus->fireTouch();
+    }
+
   (void)bomb;
   if (difftime(currTime, this->_timeCreate) * 1000 >= this->_time)
     {

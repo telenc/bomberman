@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 15:52:43 2014 Mathieu Choquart
-// Last update Tue May 27 07:58:28 2014 Remi telenczak
+// Last update Fri May 30 05:21:09 2014 Remi telenczak
 //
 
 #ifndef			_AOBJECTPHYSIC_HPP_
@@ -34,6 +34,7 @@ enum	TypeObject
   {
     NONE,
     BOMB,
+    BONUS,
     PLAYER,
     FIRE,
     BLOC
@@ -107,6 +108,7 @@ public:
   glm::vec3	getCornerHeight();
   std::vector<glm::vec3> getAllCorner();
   glm::vec3	getPosition() const;
+  void		setPosition(glm::vec3);
   void		setType(TypeObject);
   TypeObject	getType() const;
   int		getId() const;

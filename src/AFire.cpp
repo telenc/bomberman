@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Fri May 23 03:51:01 2014 Remi telenczak
-// Last update Tue May 27 02:57:37 2014 Remi telenczak
+// Last update Fri May 30 05:35:50 2014 Remi telenczak
 //
 
 #include	"AFire.hpp"

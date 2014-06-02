@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Wed May  7 16:00:11 2014 Steven Martreux
-// Last update Tue May 27 02:57:10 2014 Remi telenczak
+// Last update Fri May 30 05:35:50 2014 Remi telenczak
 //
 
 #include	"ABomb.hpp"

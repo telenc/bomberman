@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
-// Last update Tue May 27 17:00:46 2014 dedicker remi
+// Last update Fri May 30 07:36:18 2014 Remi telenczak
 //
 
 #include <iostream>
@@ -52,12 +52,11 @@ int	main(int ac, char **av)
       else
 	{
 	  Skybox *test = new Skybox(m, load->getModel(), load->getEventManager(), engine->getClock());
-	 
+
 	  menu->setSkybox(test);
 	  load->getSound()->InGame();
 	  while (engine->update(menu))
 	    {
-	      std::cout << "Draw" << std::endl;
 	      engine->draw(menu);
 	      joystick->update();
 	    }

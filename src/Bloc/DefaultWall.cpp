@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:26:53 2014 Remi telenczak
-// Last update Tue May 27 02:58:34 2014 Remi telenczak
+// Last update Fri May 30 05:01:12 2014 Remi telenczak
 //
 
 #include	"DefaultWall.hpp"
@@ -20,7 +20,7 @@ DefaultWall::DefaultWall(Map *map, ModelList *model, EventManager *event, gdl::C
 
 bool DefaultWall::update(gdl::Clock const &clock, gdl::Input &input)
 {
-  //  this->_skin->setCurrentAnim(22);
+  //this->_skin->setCurrentAnim(22);
   (void)clock;
   (void)input;
   return true;

@@ -98,6 +98,9 @@ SRC		= src/main.cpp \
 		src/Loader.cpp	\
 		src/Thread.cpp	\
 		src/myException.cpp	\
+		src/ABonus.cpp \
+		src/Bonus/PoBonus.cpp \
+		src/Bonus/BombBonus.cpp \
 
 OBJECTS       = $(SRC:.cpp=.o)
 

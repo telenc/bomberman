@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:27:38 2014 dedicker remi
-// Last update Tue May 27 03:10:01 2014 Remi telenczak
+// Last update Fri May 30 08:19:03 2014 Remi telenczak
 //
 
 #include "Player.hpp"
@@ -59,8 +59,11 @@ void	Player::eventKeyA(void *data)
   int		x;
   int		z;
 
+  if (this->_nbrBomb <= 0)
+    return ;
   if (this->checkPositionCollision(BOMB) != NULL)
     return ;
+  this->_nbrBomb--;
   bomb = new DefaultBomb(_map, _modelList, _event, this, _clock);
   bomb->setPo(this->_po);
   x = (int)this->_position.x;
@@ -77,6 +80,7 @@ void	Player::eventKeyA(void *data)
   t.z = z;
   _event->dispatchEvent("bombDrop", &(t));
   this->_map->setMap(bomb);
+
 }
 
 void	Player::eventRotateRight(void *data)
@@ -183,8 +187,8 @@ bool Player::update(gdl::Clock const &clock, gdl::Input &input)
 {
   (void)clock;
   (void)input;
-  if (this->_life <= 0)
-    std::cout << "PLAYER EST MORT CE CON" << std::endl;
+  //if (this->_life <= 0)
+    //std::cout << "PLAYER EST MORT CE CON" << std::endl;
   return true;
 }
 
