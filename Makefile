@@ -103,6 +103,7 @@ SRC		= src/main.cpp \
 		src/Bonus/PoBonus.cpp \
 		src/Bonus/BombBonus.cpp \
 		src/MenuNumber.cpp \
+		src/MainMenu.cpp \
 
 OBJECTS       = $(SRC:.cpp=.o)
 
