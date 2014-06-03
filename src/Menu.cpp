@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:00 2014 Remi telenczak
-// Last update Mon Jun  2 16:38:28 2014 thomas mendez
+// Last update Mon Jun  2 18:35:11 2014 thomas mendez
 //
 
 #include	<iostream>
@@ -30,7 +30,7 @@ void    Menu::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
   glm::mat4 t(1);
   int		roty;
 
-  roty = _boxmenu3->getRotationy();
+  roty = _boxmenu->getRotationy();
   std::cout << "dans la classe menu : " << roty << std::endl;
   t = glm::translate(t, glm::vec3(0, 0, 0));
   t = glm::scale(t, glm::vec3(100, 100, 100));
@@ -42,10 +42,14 @@ void    Menu::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
   //_menu->draw(shader, clock);
 }
 
-void	Menu::update(gdl::Clock &clock, gdl::Input &input)
+void	Menu::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus)
 {
   _boxmenu->update(clock, input);
   _boxmenu2->update(clock, input);
+  this->_rotationOculus = cameraOculus;
+  std::cout << this->_rotationOculus.x << std::endl;
+  std::cout << this->_rotationOculus.y << std::endl;
+  std::cout << this->_rotationOculus.z << std::endl;
   (void)clock;
   (void)input;
 }

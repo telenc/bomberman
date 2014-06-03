@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:19 2014 Remi telenczak
-// Last update Mon Jun  2 14:37:28 2014 thomas mendez
+// Last update Mon Jun  2 18:24:51 2014 thomas mendez
 //
 
 #ifndef		_MENU_BOMBERMAN
@@ -45,7 +45,7 @@ public:
   void	setSkybox(Skybox *skybox);
   void	setBox(gdl::Model *model);
   void  draw(gdl::BasicShader &, gdl::Clock const &);
-  void	update(gdl::Clock &clock, gdl::Input &input);
+  void	update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus);
 private:
   gdl::Model *_box;
   ModelList *_mod;
@@ -54,6 +54,7 @@ private:
   MenuBox *_boxmenu2;
   MenuBox *_boxmenu3;
   Skybox *_skin;
+  glm::vec3 _rotationOculus;
   // MenuWall *_menuwall;
 };
 
