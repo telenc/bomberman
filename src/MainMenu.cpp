@@ -5,29 +5,35 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:00 2014 Remi telenczak
-// Last update Tue Jun  3 16:45:50 2014 dedicker remi
+// Last update Tue Jun  3 17:37:06 2014 dedicker remi
 //
 
 #include	<iostream>
 #include	"MainMenu.hpp"
 #include	"Skybox.hpp"
+#include	"CallBack.hpp"
 
 MainMenu::MainMenu(ModelList *mod, EventManager *event) : _mod(mod), _event(event)
 {
-  //  _callKeyA = new CallBack<MainMenu>(this, &MainMenu::eventKeyA);
-  //event->listenEvent("keyA", _callKeyA);
   _boxmenu = new MenuBox(NULL, mod, event, NULL, 1);
   _boxmenu2 = new MenuBox(NULL, mod, event, NULL, 2);
   _boxmenu3 = new MenuBox(NULL, mod, event, NULL, 3);
+  _callKeyA = new CallBack<MainMenu>(this, &MainMenu::eventKeyA);
+  event->listenEvent("keyA", _callKeyA);
 }
 
 MainMenu::~MainMenu()
 {
   std::cout << "MainMenu Destroyed!" << std::endl;
+  delete _callKeyA;
+  delete _boxmenu;
+  delete _boxmenu2;
+  delete _boxmenu3;
 }
 
 void	MainMenu::eventKeyA(void *data)
 {
+  std::cout << "A Press" << std::endl;
   (void)data;
 }
 

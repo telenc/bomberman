@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:19 2014 Remi telenczak
-// Last update Tue Jun  3 16:41:43 2014 dedicker remi
+// Last update Tue Jun  3 17:36:21 2014 dedicker remi
 //
 
 #ifndef		_MAIN_MENU
@@ -36,6 +36,7 @@
 #include	"Skybox.hpp"
 #include	"MenuBox.hpp"
 #include	"MenuWall.hpp"
+#include	"CallBack.hpp"
 
 class MainMenu
 {
