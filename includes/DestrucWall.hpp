@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:28:07 2014 Remi telenczak
-// Last update Fri May 30 15:16:18 2014 Steven Martreux
+// Last update Mon Jun  2 05:02:27 2014 Remi telenczak
 //
 
 #ifndef		_DESTRUCALL
@@ -20,6 +20,11 @@ public:
   DestrucWall(Map *, ModelList *, EventManager *, gdl::Clock *);
   virtual bool update(gdl::Clock const &clock, gdl::Input &input);
   virtual bool fireTouch();
+private:
+  std::string	currentModel;
+  gdl::Model	*modelLife1;
+  gdl::Model	*modelLife2;
+  gdl::Model	*modelLife3;
 };
 
 #endif

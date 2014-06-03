@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:27:33 2014 dedicker remi
-// Last update Mon Jun  2 01:46:32 2014 Remi telenczak
+// Last update Mon Jun  2 02:51:56 2014 Remi telenczak
 //
 
 #ifndef PLAYER_HPP_

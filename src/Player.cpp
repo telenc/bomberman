@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:27:38 2014 dedicker remi
-// Last update Mon Jun  2 01:52:15 2014 Remi telenczak
+// Last update Mon Jun  2 04:28:33 2014 Remi telenczak
 //
 
 #include "Player.hpp"
@@ -140,7 +140,6 @@ void Player::move(glm::vec3 direct, std::string event)
       this->_skin->setCurrentSubAnim("beginRun", true);
       this->run = true;
     }
-  std::cout << this->_skin->getAnimationFrameNumber(0) << std::endl;
 
   if (checkPositionCollisionPlayer() == false)
     {

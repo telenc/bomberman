@@ -87,6 +87,7 @@ SRC		= src/main.cpp \
 		src/Bloc/DestrucWall.cpp \
 		src/Bloc/MenuWall.cpp \
 		src/Bloc/MenuBox.cpp \
+		src/Bloc/MenuBoxNumber.cpp \
 		src/GenereMap.cpp	\
 		src/Bomb/DefaultBomb.cpp \
 		src/Controller.cpp	\
@@ -101,6 +102,7 @@ SRC		= src/main.cpp \
 		src/ABonus.cpp \
 		src/Bonus/PoBonus.cpp \
 		src/Bonus/BombBonus.cpp \
+		src/MenuNumber.cpp \
 
 OBJECTS       = $(SRC:.cpp=.o)
 

@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:11:40 2014 dedicker remi
-// Last update Mon Jun  2 00:08:39 2014 Remi telenczak
+// Last update Mon Jun  2 02:15:16 2014 Remi telenczak
 //
 
 #include	"APlayer.hpp"
@@ -40,6 +40,7 @@ APlayer::APlayer(int x, int y, int z, Map *map, ModelList *model, EventManager *
   this->_po = 2;
   this->_nbrBomb = 1;
   this->_nbrBombMax = 1;
+
   (void)y;
   (void)x;
   (void)z;

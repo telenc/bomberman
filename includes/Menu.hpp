@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:19 2014 Remi telenczak
-// Last update Fri May 30 17:22:56 2014 thomas mendez
+// Last update Mon Jun  2 02:34:55 2014 Remi telenczak
 //
 
 #ifndef		_MENU_BOMBERMAN
@@ -37,10 +37,12 @@
 #include	"MenuBox.hpp"
 #include	"MenuWall.hpp"
 
+# include	"MenuNumber.hpp"
+
 class Menu
 {
 public:
-  Menu(ModelList *mod, EventManager *event);
+  Menu(ModelList *mod, EventManager *event, gdl::Clock *);
   ~Menu();
   void	setSkybox(Skybox *skybox);
   void	setBox(gdl::Model *model);
@@ -54,6 +56,8 @@ private:
   MenuBox *_boxmenu2;
   MenuBox *_boxmenu3;
   Skybox *_skin;
+  gdl::Clock *_clock;
+  MenuNumber	*_menuBox;
   // MenuWall *_menuwall;
 };
 
