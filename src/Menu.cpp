@@ -5,11 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:00 2014 Remi telenczak
-<<<<<<< HEAD
-// Last update Tue Jun  3 07:24:58 2014 Remi telenczak
-=======
-// Last update Mon Jun  2 18:35:11 2014 thomas mendez
->>>>>>> f8c3636b7bbd7447af40c21fcd82e71635a0e91c
+// Last update Tue Jun  3 07:26:06 2014 Remi telenczak
 //
 
 #include	<iostream>

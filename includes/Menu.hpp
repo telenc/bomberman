@@ -5,11 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:19 2014 Remi telenczak
-<<<<<<< HEAD
-// Last update Mon Jun  2 02:34:55 2014 Remi telenczak
-=======
-// Last update Mon Jun  2 18:24:51 2014 thomas mendez
->>>>>>> f8c3636b7bbd7447af40c21fcd82e71635a0e91c
+// Last update Tue Jun  3 07:25:58 2014 Remi telenczak
 //
 
 #ifndef		_MENU_BOMBERMAN
@@ -60,12 +56,9 @@ private:
   MenuBox *_boxmenu2;
   MenuBox *_boxmenu3;
   Skybox *_skin;
-<<<<<<< HEAD
   gdl::Clock *_clock;
   MenuNumber	*_menuBox;
-=======
   glm::vec3 _rotationOculus;
->>>>>>> f8c3636b7bbd7447af40c21fcd82e71635a0e91c
   // MenuWall *_menuwall;
 };
 
