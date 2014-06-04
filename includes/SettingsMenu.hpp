@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 // 
 // Started on  Wed Jun  4 11:38:08 2014 thomas mendez
-// Last update Wed Jun  4 11:47:26 2014 thomas mendez
+// Last update Wed Jun  4 17:32:26 2014 dedicker remi
 //
 
 #ifndef		_SETTINGS_MENU
@@ -37,6 +37,7 @@
 #include	"MenuBox.hpp"
 #include	"MenuWall.hpp"
 #include	"CallBack.hpp"
+#include	"SettingBox.hpp"
 
 class SettingsMenu
 {
@@ -52,9 +53,7 @@ private:
   gdl::Model *_box;
   ModelList *_mod;
   EventManager *_event;
-  MenuBox *_boxmenu;
-  MenuBox *_boxmenu2;
-  MenuBox *_boxmenu3;
+  SettingBox *_boxmenu;
   Skybox *_skin;
   glm::vec3 _rotationOculus;
   ICallBack *_callKeyA;

@@ -88,6 +88,7 @@ SRC		= src/main.cpp \
 		src/Bloc/MenuWall.cpp \
 		src/Bloc/MenuBox.cpp \
 		src/Bloc/MenuBoxNumber.cpp \
+		src/Bloc/SettingBox.cpp \
 		src/GenereMap.cpp	\
 		src/Bomb/DefaultBomb.cpp \
 		src/Controller.cpp	\

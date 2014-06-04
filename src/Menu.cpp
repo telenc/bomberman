@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:00 2014 Remi telenczak
-// Last update Wed Jun  4 14:16:26 2014 thomas mendez
+// Last update Wed Jun  4 17:38:26 2014 dedicker remi
 //
 
 #include	<iostream>
@@ -44,8 +44,6 @@ void	Menu::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus)
 
 void	Menu::setSkybox(Skybox *skybox)
 {
-  if (this->currentMenu == 0)
-    _mainMenu->setSkybox(skybox);
-  else if (this->currentMenu == 1)
-    _settingsMenu->setSkybox(skybox);
+  _mainMenu->setSkybox(skybox);
+  _settingsMenu->setSkybox(skybox);
 }

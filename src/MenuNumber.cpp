@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Mon Jun  2 02:08:04 2014 Remi telenczak
-// Last update Tue Jun  3 07:13:12 2014 Remi telenczak
+// Last update Wed Jun  4 11:33:47 2014 dedicker remi
 //
 
 #include	"MenuNumber.hpp"
@@ -20,11 +20,8 @@ MenuNumber::MenuNumber(ModelList *mod, EventManager *event, gdl::Clock *clock) :
   firstBox->set_y(20);
   firstBox->set_vy(-1.8);
   this->listBox.push_back(firstBox);
-
-
   callKeyA = new CallBack<MenuNumber>(this, &MenuNumber::eventKeyA);
   event->listenEvent("keyA", callKeyA);
-
   callKeyUp = new CallBack<MenuNumber>(this, &MenuNumber::eventKeyUp);
   event->listenEvent("keyUp", callKeyUp);
   callKeyDown = new CallBack<MenuNumber>(this, &MenuNumber::eventKeyDown);

@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:19 2014 Remi telenczak
-// Last update Wed Jun  4 11:52:42 2014 thomas mendez
+// Last update Wed Jun  4 16:44:13 2014 dedicker remi
 //
 
 #ifndef		_MAIN_MENU

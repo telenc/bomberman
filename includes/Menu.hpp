@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:19 2014 Remi telenczak
-// Last update Wed Jun  4 11:44:20 2014 thomas mendez
+// Last update Wed Jun  4 16:55:00 2014 dedicker remi
 //
 
 #ifndef		_MENU_BOMBERMAN
@@ -38,7 +38,6 @@
 #include	"MenuWall.hpp"
 # include	"MainMenu.hpp"
 # include	"SettingsMenu.hpp"
-
 # include	"MenuNumber.hpp"
 
 class Menu

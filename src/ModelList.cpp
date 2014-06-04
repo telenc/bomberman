@@ -6,7 +6,7 @@
 //
 // Started on  Tue May 13 06:17:30 2014 Remi telenczak
 <<<<<<< HEAD
-// Last update Tue Jun  3 03:28:17 2014 Remi telenczak
+// Last update Wed Jun  4 16:32:07 2014 dedicker remi
 =======
 // Last update Mon May 26 17:18:42 2014 dedicker remi
 >>>>>>> 86fd066f3cca2a094e91194976398fe97236bc1e
@@ -61,6 +61,8 @@ void		ModelList::loadModel()
   mod = this->createModel("./assets/cubeTelen90.fbx");
   this->list.push_back(std::make_pair("menu4", mod));
 
+  mod = this->createModel("./assets/menuSettings.fbx");
+  this->list.push_back(std::make_pair("box_setting", mod));
 
   this->listChemin.push_back(std::make_pair("marvin", "./assets/marvin.fbx"));
   this->listChemin.push_back(std::make_pair("cube6", "./assets/cubeWallFer.fbx"));
