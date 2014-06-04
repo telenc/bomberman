@@ -5,22 +5,20 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:00 2014 Remi telenczak
-// Last update Tue Jun  3 16:38:07 2014 dedicker remi
+// Last update Wed Jun  4 14:16:26 2014 thomas mendez
 //
 
 #include	<iostream>
 #include	"Menu.hpp"
 #include	"Skybox.hpp"
+#include	"SettingsMenu.hpp"
 #include	"MainMenu.hpp"
 
 Menu::Menu(ModelList *mod, EventManager *event, gdl::Clock *clock) : _mod(mod), _event(event), _clock(clock)
 {
   _mainMenu = new MainMenu(mod, event);
-  //_menuBox = new MenuNumber(mod, event, clock);
-  _boxmenu = new MenuBox(NULL, mod, event, NULL, 1);
-  _boxmenu2 = new MenuBox(NULL, mod, event, NULL, 2);
-  _boxmenu3 = new MenuBox(NULL, mod, event, NULL, 3);
-  //_menuwall = new MenuWall(NULL, mod, event, NULL);
+  _settingsMenu = new SettingsMenu(mod, event);
+  currentMenu = 0;
 }
 
 Menu::~Menu()
@@ -30,15 +28,24 @@ Menu::~Menu()
 
 void    Menu::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
 {
-  _mainMenu->draw(shader, clock);
+  if (this->currentMenu == 0)
+    this->currentMenu = _mainMenu->draw(shader, clock);
+  else if (this->currentMenu == 1)
+    this->currentMenu = _settingsMenu->draw(shader, clock);
 }
 
 void	Menu::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus)
 {
-  _mainMenu->update(clock, input, cameraOculus);
+  if (this->currentMenu == 0)
+    _mainMenu->update(clock, input, cameraOculus);
+  else if (this->currentMenu == 1)
+    _settingsMenu->update(clock, input, cameraOculus);
 }
 
 void	Menu::setSkybox(Skybox *skybox)
 {
-  _mainMenu->setSkybox(skybox);
+  if (this->currentMenu == 0)
+    _mainMenu->setSkybox(skybox);
+  else if (this->currentMenu == 1)
+    _settingsMenu->setSkybox(skybox);
 }

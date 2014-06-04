@@ -1,15 +1,15 @@
 //
-// MainMenu.hpp for MainMenu in /home/remi/cpp_bomberman
-//
-// Made by Remi telenczak
-// Login   <remi@epitech.net>
-//
-// Started on  Tue May 13 07:24:19 2014 Remi telenczak
-// Last update Wed Jun  4 11:52:42 2014 thomas mendez
+// SettingsMenu.hpp for SettingsMenu in /home/mendez_t/local/cpp/cpp_bomberman/includes
+// 
+// Made by thomas mendez
+// Login   <mendez_t@epitech.net>
+// 
+// Started on  Wed Jun  4 11:38:08 2014 thomas mendez
+// Last update Wed Jun  4 11:47:26 2014 thomas mendez
 //
 
-#ifndef		_MAIN_MENU
-# define	_MAIN_MENU
+#ifndef		_SETTINGS_MENU
+# define	_SETTINGS_MENU
 
 #include        "OVR.h"
 # include       "ModelList.hpp"
@@ -38,11 +38,11 @@
 #include	"MenuWall.hpp"
 #include	"CallBack.hpp"
 
-class MainMenu
+class SettingsMenu
 {
 public:
-  MainMenu(ModelList *mod, EventManager *event);
-  ~MainMenu();
+  SettingsMenu(ModelList *mod, EventManager *event);
+  ~SettingsMenu();
   void	setSkybox(Skybox *skybox);
   void	setBox(gdl::Model *model);
   int  draw(gdl::BasicShader &, gdl::Clock const &);
@@ -58,7 +58,6 @@ private:
   Skybox *_skin;
   glm::vec3 _rotationOculus;
   ICallBack *_callKeyA;
-  int	_A;
 };
 
 #endif

@@ -1,46 +1,46 @@
 //
-// Menu.cpp for Menu in /home/remi/cpp_bomberman
-//
-// Made by Remi telenczak
-// Login   <remi@epitech.net>
-//
-// Started on  Tue May 13 07:24:00 2014 Remi telenczak
-// Last update Wed Jun  4 14:12:32 2014 thomas mendez
+// SettingsMenu.cpp for SettingsMenu in /home/mendez_t/local/cpp/cpp_bomberman/src
+// 
+// Made by thomas mendez
+// Login   <mendez_t@epitech.net>
+// 
+// Started on  Wed Jun  4 12:24:31 2014 thomas mendez
+// Last update Wed Jun  4 12:29:37 2014 thomas mendez
 //
 
 #include	<iostream>
-#include	"MainMenu.hpp"
+#include	"SettingsMenu.hpp"
 #include	"Skybox.hpp"
 #include	"CallBack.hpp"
 
-MainMenu::MainMenu(ModelList *mod, EventManager *event) : _mod(mod), _event(event)
+SettingsMenu::SettingsMenu(ModelList *mod, EventManager *event) : _mod(mod), _event(event)
 {
   _boxmenu = new MenuBox(NULL, mod, event, NULL, 1);
   _boxmenu2 = new MenuBox(NULL, mod, event, NULL, 2);
   _boxmenu3 = new MenuBox(NULL, mod, event, NULL, 3);
-  _callKeyA = new CallBack<MainMenu>(this, &MainMenu::eventKeyA);
+  _callKeyA = new CallBack<SettingsMenu>(this, &SettingsMenu::eventKeyA);
   event->listenEvent("keyA", _callKeyA);
-  _A = 0;
+  std::cout << "SettingsMenu create" << std::endl;
 }
 
-MainMenu::~MainMenu()
+SettingsMenu::~SettingsMenu()
 {
-  std::cout << "MainMenu Destroyed!" << std::endl;
+  std::cout << "SettingsMenu Destroyed!" << std::endl;
   delete _callKeyA;
   delete _boxmenu;
   delete _boxmenu2;
   delete _boxmenu3;
 }
 
-void	MainMenu::eventKeyA(void *data)
+void	SettingsMenu::eventKeyA(void *data)
 {
   std::cout << "A Press" << std::endl;
-  this->_A = 1;
   (void)data;
 }
 
-int    MainMenu::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
+int    SettingsMenu::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
 {
+  std::cout << "SettingsMenu draw 1" << std::endl;
   glm::mat4 t(1);
   int		roty;
   (void)roty;
@@ -54,13 +54,13 @@ int    MainMenu::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
   _boxmenu2->draw(shader,clock);
   _boxmenu3->draw(shader,clock);
   //_menu->draw(shader, clock);
-  if (this->_A == 1)
-    return this->_A;
-  return 0;
+  std::cout << "SettingsMenu draw 2" << std::endl;
+  return 1;
 }
 
-void	MainMenu::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus)
+void	SettingsMenu::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus)
 {
+  std::cout << "SettingsMenu update 1" << std::endl;
   _boxmenu->update(clock, input);
   _boxmenu2->update(clock, input);
   this->_rotationOculus = cameraOculus;
@@ -69,9 +69,10 @@ void	MainMenu::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOcul
   std::cout << this->_rotationOculus.z << std::endl;*/
   (void)clock;
   (void)input;
+  std::cout << "SettingsMenu update 2" << std::endl;
 }
 
-void	MainMenu::setSkybox(Skybox *skybox)
+void	SettingsMenu::setSkybox(Skybox *skybox)
 {
   this->_skin = skybox;
   skybox->setSkin(_mod->getModel("box_menu"));

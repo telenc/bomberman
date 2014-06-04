@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:19 2014 Remi telenczak
-// Last update Tue Jun  3 16:33:27 2014 dedicker remi
+// Last update Wed Jun  4 11:44:20 2014 thomas mendez
 //
 
 #ifndef		_MENU_BOMBERMAN
@@ -37,6 +37,7 @@
 #include	"MenuBox.hpp"
 #include	"MenuWall.hpp"
 # include	"MainMenu.hpp"
+# include	"SettingsMenu.hpp"
 
 # include	"MenuNumber.hpp"
 
@@ -61,6 +62,8 @@ private:
   MenuNumber	*_menuBox;
   glm::vec3 _rotationOculus;
   MainMenu *_mainMenu;
+  SettingsMenu *_settingsMenu;
+  int	currentMenu;
   // MenuWall *_menuwall;
 };
 

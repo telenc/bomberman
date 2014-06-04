@@ -21,7 +21,7 @@ DELETEFILE    = rm -f
 DEFINES       = -DQT_WEBKIT -DGL_GLEXT_PROTOTYPES
 
 
-DEBUG         = 0
+DEBUG         = 1
 ifeq ($(DEBUG), 1)
 	CXXFLAGS      = -pipe -DDEBUG -g $(DEFINES)
 	LFLAGS        = -g -O3
@@ -104,6 +104,7 @@ SRC		= src/main.cpp \
 		src/Bonus/BombBonus.cpp \
 		src/MenuNumber.cpp \
 		src/MainMenu.cpp \
+		src/SettingsMenu.cpp \
 
 OBJECTS       = $(SRC:.cpp=.o)
 
