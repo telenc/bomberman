@@ -1,15 +1,15 @@
 //
-// Menu.hpp for Menu in /home/remi/cpp_bomberman
+// MainMenu.hpp for MainMenu in /home/remi/cpp_bomberman
 //
 // Made by Remi telenczak
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:19 2014 Remi telenczak
-// Last update Tue Jun  3 16:33:27 2014 dedicker remi
+// Last update Tue Jun  3 17:47:59 2014 dedicker remi
 //
 
-#ifndef		_MENU_BOMBERMAN
-# define	_MENU_BOMBERMAN
+#ifndef		_MAIN_MENU
+# define	_MAIN_MENU
 
 #include        "OVR.h"
 # include       "ModelList.hpp"
@@ -36,19 +36,18 @@
 #include	"Skybox.hpp"
 #include	"MenuBox.hpp"
 #include	"MenuWall.hpp"
-# include	"MainMenu.hpp"
+#include	"CallBack.hpp"
 
-# include	"MenuNumber.hpp"
-
-class Menu
+class MainMenu
 {
 public:
-  Menu(ModelList *mod, EventManager *event, gdl::Clock *);
-  ~Menu();
+  MainMenu(ModelList *mod, EventManager *event);
+  ~MainMenu();
   void	setSkybox(Skybox *skybox);
   void	setBox(gdl::Model *model);
   void  draw(gdl::BasicShader &, gdl::Clock const &);
   void	update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus);
+  void	eventKeyA(void *data);
 private:
   gdl::Model *_box;
   ModelList *_mod;
@@ -57,11 +56,8 @@ private:
   MenuBox *_boxmenu2;
   MenuBox *_boxmenu3;
   Skybox *_skin;
-  gdl::Clock *_clock;
-  MenuNumber	*_menuBox;
   glm::vec3 _rotationOculus;
-  MainMenu *_mainMenu;
-  // MenuWall *_menuwall;
+  ICallBack *_callKeyA;
 };
 
 #endif

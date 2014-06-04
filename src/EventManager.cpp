@@ -5,9 +5,10 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May  7 06:31:46 2014 Remi telenczak
-// Last update Mon May 19 05:00:57 2014 Remi telenczak
+// Last update Tue Jun  3 17:23:35 2014 dedicker remi
 //
 
+#include	<iostream>
 #include	"EventManager.hpp"
 
 /*
@@ -39,7 +40,7 @@ EventManager::~EventManager()
 {
 
 }
-#include <iostream>
+
 
 void	EventManager::listenEvent(std::string event, ICallBack *callBack)
 {
