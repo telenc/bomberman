@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
-// Last update Thu Jun  5 16:24:57 2014 dedicker remi
+// Last update Thu Jun  5 16:47:56 2014 dedicker remi
 //
 
 #include <iostream>
@@ -46,7 +46,7 @@ int	main(int ac, char **av)
       //(void)menu;
       if (ac == 2 && av[1][0] == 'm')
 	{
-	  GenereMap gen(15, 15, 0, load->getEventManager(), load->getModel(), engine->getClock());
+	  GenereMap gen(21, 21, 0, load->getEventManager(), load->getModel(), engine->getClock());
 	  Map *m = gen.getMap();
 	  m->setSkybox(new Skybox(m, load->getModel(), load->getEventManager(), engine->getClock()));
 	  while (engine->update(m))

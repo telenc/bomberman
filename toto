@@ -1,0 +1,3869 @@
+OVR::Linux::HIDDevice - Opened '/dev/hidraw0'
+                    Manufacturer:'Oculus VR, Inc.'  Product:'Tracker DK'  Serial#:'OP4GH3TGQO37'
+OVR::SensorDevice initialized.
+----- Oculus Console -----
+ [x] HMD Found
+ [x] Sensor Found
+--------------------------
+ DisplayDeviceName: 
+ ProductName: Oculus Rift DK1
+ Manufacturer: Oculus VR
+ Version: 0
+ HResolution: 1280
+ VResolution: 800
+ HScreenSize: 0.14976
+ VScreenSize: 0.0936
+ VScreenCenter: 0.0468
+ EyeToScreenDistance: 0.041
+ LensSeparationDistance: 0.0635
+ InterpupillaryDistance: 0.064
+ DistortionK[0]: 1
+ DistortionK[1]: 0.22
+ DistortionK[2]: 0.24
+--------------------------
+Listen playerMove
+Evnd 
+Listen playerMove
+Evnd 
+Listen playerRotateLeft
+Evnd 
+Listen playerRotateRight
+Evnd 
+FAILLLLLL
+./assets/marvin.fbx
+Importing file ./assets/marvin.fbx
+Please wait!
+./assets/cubeWallFer.fbx
+Autodesk FBX SDK version 2014.2.1 Release (225309)
+Importing file ./assets/cubeWallFer.fbx
+Please wait!
+./assets/bonus_bomb_up.FBX
+Autodesk FBX SDK version 2014.2.1 Release (225309)
+Importing file ./assets/bonus_bomb_up.FBX
+Please wait!
+./assets/bonus_fire_up.FBX
+Autodesk FBX SDK version 2014.2.1 Release (225309)
+Importing file ./assets/bonus_fire_up.FBX
+Please wait!
+./assets/cubeWall.fbx
+Autodesk FBX SDK version 2014.2.1 Release (225309)
+Importing file ./assets/cubeWall.fbx
+Please wait!
+./assets/cubeWall2.fbx
+Autodesk FBX SDK version 2014.2.1 Release (225309)
+Importing file ./assets/cubeWall2.fbx
+Please wait!
+./assets/cubeWall3.fbx
+Autodesk FBX SDK version 2014.2.1 Release (225309)
+Importing file ./assets/cubeWall3.fbx
+Please wait!
+./assets/bombe5.fbx
+Autodesk FBX SDK version 2014.2.1 Release (225309)
+Importing file ./assets/bombe5.fbx
+Please wait!
+./assets/box.fbx
+Autodesk FBX SDK version 2014.2.1 Release (225309)
+Importing file ./assets/box.fbx
+Please wait!
+./assets/fire_box.FBX
+Autodesk FBX SDK version 2014.2.1 Release (225309)
+Importing file ./assets/fire_box.FBX
+Please wait!
+./assets/mytest.fbx
+Autodesk FBX SDK version 2014.2.1 Release (225309)
+Importing file ./assets/mytest.fbx
+Please wait!
+./assets/box_menu.fbx
+Autodesk FBX SDK version 2014.2.1 Release (225309)
+Importing file ./assets/box_menu.fbx
+Please wait!
+./assets/menu.fbx
+Autodesk FBX SDK version 2014.2.1 Release (225309)
+Importing file ./assets/menu.fbx
+Please wait!
+./assets/cubeWallWood.fbx
+Autodesk FBX SDK version 2014.2.1 Release (225309)
+Importing file ./assets/cubeWallWood.fbx
+Please wait!
+./assets/cubeTelen0123.fbx
+Autodesk FBX SDK version 2014.2.1 Release (225309)
+Importing file ./assets/cubeTelen0123.fbx
+Please wait!
+./assets/cubeTelen3456.fbx
+Autodesk FBX SDK version 2014.2.1 Release (225309)
+Importing file ./assets/cubeTelen3456.fbx
+Please wait!
+./assets/cubeTelen6789.fbx
+Autodesk FBX SDK version 2014.2.1 Release (225309)
+Importing file ./assets/cubeTelen6789.fbx
+Please wait!
+./assets/cubeTelen90.fbx
+Autodesk FBX SDK version 2014.2.1 Release (225309)
+Importing file ./assets/cubeTelen90.fbx
+Please wait!
+./assets/menuSettings.fbx
+Autodesk FBX SDK version 2014.2.1 Release (225309)
+Importing file ./assets/menuSettings.fbx
+Please wait!
+./assets/menuPlay.fbx
+Autodesk FBX SDK version 2014.2.1 Release (225309)
+Importing file ./assets/menuPlay.fbx
+Please wait!
+Listen bombDrop
+Evnd 
+Listen playerPosition
+Evnd 
+Listen rotOcu
+Evnd 
+Listen rotOcu
+Evnd 
+Listen rotOcu
+Evnd 
+Listen keyA
+Evnd 
+Listen rotOcu
+Evnd 
+Listen keyA
+Evnd 
+SettingsMenu create
+Listen keyA
+Evnd 
+i = 3  y =9
+width  = 63  height =63
+i = 3  y =12
+width  = 63  height =63
+i = 3  y =15
+width  = 63  height =63
+i = 3  y =18
+width  = 63  height =63
+i = 3  y =21
+width  = 63  height =63
+i = 3  y =24
+width  = 63  height =63
+i = 3  y =27
+width  = 63  height =63
+i = 3  y =30
+width  = 63  height =63
+i = 3  y =33
+width  = 63  height =63
+i = 3  y =36
+width  = 63  height =63
+i = 3  y =39
+width  = 63  height =63
+i = 3  y =42
+width  = 63  height =63
+i = 3  y =45
+width  = 63  height =63
+i = 3  y =48
+width  = 63  height =63
+i = 3  y =51
+width  = 63  height =63
+i = 6  y =9
+width  = 63  height =63
+i = 6  y =15
+width  = 63  height =63
+i = 6  y =21
+width  = 63  height =63
+i = 6  y =27
+width  = 63  height =63
+i = 6  y =33
+width  = 63  height =63
+i = 6  y =39
+width  = 63  height =63
+i = 6  y =45
+width  = 63  height =63
+i = 6  y =51
+width  = 63  height =63
+i = 9  y =3
+width  = 63  height =63
+i = 9  y =6
+width  = 63  height =63
+i = 9  y =9
+width  = 63  height =63
+i = 9  y =12
+width  = 63  height =63
+i = 9  y =15
+width  = 63  height =63
+i = 9  y =18
+width  = 63  height =63
+i = 9  y =21
+width  = 63  height =63
+i = 9  y =24
+width  = 63  height =63
+i = 9  y =27
+width  = 63  height =63
+i = 9  y =30
+width  = 63  height =63
+i = 9  y =33
+width  = 63  height =63
+i = 9  y =36
+width  = 63  height =63
+i = 9  y =39
+width  = 63  height =63
+i = 9  y =42
+width  = 63  height =63
+i = 9  y =45
+width  = 63  height =63
+i = 9  y =48
+width  = 63  height =63
+i = 9  y =51
+width  = 63  height =63
+i = 9  y =54
+width  = 63  height =63
+i = 9  y =57
+width  = 63  height =63
+i = 9  y =60
+width  = 63  height =63
+i = 12  y =3
+width  = 63  height =63
+i = 12  y =9
+width  = 63  height =63
+i = 12  y =15
+width  = 63  height =63
+i = 12  y =21
+width  = 63  height =63
+i = 12  y =27
+width  = 63  height =63
+i = 12  y =33
+width  = 63  height =63
+i = 12  y =39
+width  = 63  height =63
+i = 12  y =45
+width  = 63  height =63
+i = 12  y =51
+width  = 63  height =63
+i = 12  y =57
+width  = 63  height =63
+i = 12  y =60
+width  = 63  height =63
+i = 15  y =3
+width  = 63  height =63
+i = 15  y =6
+width  = 63  height =63
+i = 15  y =9
+width  = 63  height =63
+i = 15  y =12
+width  = 63  height =63
+i = 15  y =15
+width  = 63  height =63
+i = 15  y =18
+width  = 63  height =63
+i = 15  y =21
+width  = 63  height =63
+i = 15  y =24
+width  = 63  height =63
+i = 15  y =27
+width  = 63  height =63
+i = 15  y =30
+width  = 63  height =63
+i = 15  y =33
+width  = 63  height =63
+i = 15  y =36
+width  = 63  height =63
+i = 15  y =39
+width  = 63  height =63
+i = 15  y =42
+width  = 63  height =63
+i = 15  y =45
+width  = 63  height =63
+i = 15  y =48
+width  = 63  height =63
+i = 15  y =51
+width  = 63  height =63
+i = 15  y =54
+width  = 63  height =63
+i = 15  y =57
+width  = 63  height =63
+i = 15  y =60
+width  = 63  height =63
+i = 18  y =3
+width  = 63  height =63
+i = 18  y =9
+width  = 63  height =63
+i = 18  y =15
+width  = 63  height =63
+i = 18  y =21
+width  = 63  height =63
+i = 18  y =27
+width  = 63  height =63
+i = 18  y =33
+width  = 63  height =63
+i = 18  y =39
+width  = 63  height =63
+i = 18  y =45
+width  = 63  height =63
+i = 18  y =51
+width  = 63  height =63
+i = 18  y =57
+width  = 63  height =63
+i = 18  y =60
+width  = 63  height =63
+i = 21  y =3
+width  = 63  height =63
+i = 21  y =6
+width  = 63  height =63
+i = 21  y =9
+width  = 63  height =63
+i = 21  y =12
+width  = 63  height =63
+i = 21  y =15
+width  = 63  height =63
+i = 21  y =18
+width  = 63  height =63
+i = 21  y =21
+width  = 63  height =63
+i = 21  y =24
+width  = 63  height =63
+i = 21  y =27
+width  = 63  height =63
+i = 21  y =30
+width  = 63  height =63
+i = 21  y =33
+width  = 63  height =63
+i = 21  y =36
+width  = 63  height =63
+i = 21  y =39
+width  = 63  height =63
+i = 21  y =42
+width  = 63  height =63
+i = 21  y =45
+width  = 63  height =63
+i = 21  y =48
+width  = 63  height =63
+i = 21  y =51
+width  = 63  height =63
+i = 21  y =54
+width  = 63  height =63
+i = 21  y =57
+width  = 63  height =63
+i = 21  y =60
+width  = 63  height =63
+i = 24  y =3
+width  = 63  height =63
+i = 24  y =9
+width  = 63  height =63
+i = 24  y =15
+width  = 63  height =63
+i = 24  y =21
+width  = 63  height =63
+i = 24  y =27
+width  = 63  height =63
+i = 24  y =33
+width  = 63  height =63
+i = 24  y =39
+width  = 63  height =63
+i = 24  y =45
+width  = 63  height =63
+i = 24  y =51
+width  = 63  height =63
+i = 24  y =57
+width  = 63  height =63
+i = 24  y =60
+width  = 63  height =63
+i = 27  y =3
+width  = 63  height =63
+i = 27  y =6
+width  = 63  height =63
+i = 27  y =9
+width  = 63  height =63
+i = 27  y =12
+width  = 63  height =63
+i = 27  y =15
+width  = 63  height =63
+i = 27  y =18
+width  = 63  height =63
+i = 27  y =21
+width  = 63  height =63
+i = 27  y =24
+width  = 63  height =63
+i = 27  y =27
+width  = 63  height =63
+i = 27  y =30
+width  = 63  height =63
+i = 27  y =33
+width  = 63  height =63
+i = 27  y =36
+width  = 63  height =63
+i = 27  y =39
+width  = 63  height =63
+i = 27  y =42
+width  = 63  height =63
+i = 27  y =45
+width  = 63  height =63
+i = 27  y =48
+width  = 63  height =63
+i = 27  y =51
+width  = 63  height =63
+i = 27  y =54
+width  = 63  height =63
+i = 27  y =57
+width  = 63  height =63
+i = 27  y =60
+width  = 63  height =63
+i = 30  y =3
+width  = 63  height =63
+i = 30  y =9
+width  = 63  height =63
+i = 30  y =15
+width  = 63  height =63
+i = 30  y =21
+width  = 63  height =63
+i = 30  y =27
+width  = 63  height =63
+i = 30  y =33
+width  = 63  height =63
+i = 30  y =39
+width  = 63  height =63
+i = 30  y =45
+width  = 63  height =63
+i = 30  y =51
+width  = 63  height =63
+i = 30  y =57
+width  = 63  height =63
+i = 30  y =60
+width  = 63  height =63
+i = 33  y =3
+width  = 63  height =63
+i = 33  y =6
+width  = 63  height =63
+i = 33  y =9
+width  = 63  height =63
+i = 33  y =12
+width  = 63  height =63
+i = 33  y =15
+width  = 63  height =63
+i = 33  y =18
+width  = 63  height =63
+i = 33  y =21
+width  = 63  height =63
+i = 33  y =24
+width  = 63  height =63
+i = 33  y =27
+width  = 63  height =63
+i = 33  y =30
+width  = 63  height =63
+i = 33  y =33
+width  = 63  height =63
+i = 33  y =36
+width  = 63  height =63
+i = 33  y =39
+width  = 63  height =63
+i = 33  y =42
+width  = 63  height =63
+i = 33  y =45
+width  = 63  height =63
+i = 33  y =48
+width  = 63  height =63
+i = 33  y =51
+width  = 63  height =63
+i = 33  y =54
+width  = 63  height =63
+i = 33  y =57
+width  = 63  height =63
+i = 33  y =60
+width  = 63  height =63
+i = 36  y =3
+width  = 63  height =63
+i = 36  y =9
+width  = 63  height =63
+i = 36  y =15
+width  = 63  height =63
+i = 36  y =21
+width  = 63  height =63
+i = 36  y =27
+width  = 63  height =63
+i = 36  y =33
+width  = 63  height =63
+i = 36  y =39
+width  = 63  height =63
+i = 36  y =45
+width  = 63  height =63
+i = 36  y =51
+width  = 63  height =63
+i = 36  y =57
+width  = 63  height =63
+i = 36  y =60
+width  = 63  height =63
+i = 39  y =3
+width  = 63  height =63
+i = 39  y =6
+width  = 63  height =63
+i = 39  y =9
+width  = 63  height =63
+i = 39  y =12
+width  = 63  height =63
+i = 39  y =15
+width  = 63  height =63
+i = 39  y =18
+width  = 63  height =63
+i = 39  y =21
+width  = 63  height =63
+i = 39  y =24
+width  = 63  height =63
+i = 39  y =27
+width  = 63  height =63
+i = 39  y =30
+width  = 63  height =63
+i = 39  y =33
+width  = 63  height =63
+i = 39  y =36
+width  = 63  height =63
+i = 39  y =39
+width  = 63  height =63
+i = 39  y =42
+width  = 63  height =63
+i = 39  y =45
+width  = 63  height =63
+i = 39  y =48
+width  = 63  height =63
+i = 39  y =51
+width  = 63  height =63
+i = 39  y =54
+width  = 63  height =63
+i = 39  y =57
+width  = 63  height =63
+i = 39  y =60
+width  = 63  height =63
+i = 42  y =3
+width  = 63  height =63
+i = 42  y =9
+width  = 63  height =63
+i = 42  y =15
+width  = 63  height =63
+i = 42  y =21
+width  = 63  height =63
+i = 42  y =27
+width  = 63  height =63
+i = 42  y =33
+width  = 63  height =63
+i = 42  y =39
+width  = 63  height =63
+i = 42  y =45
+width  = 63  height =63
+i = 42  y =51
+width  = 63  height =63
+i = 42  y =57
+width  = 63  height =63
+i = 42  y =60
+width  = 63  height =63
+i = 45  y =3
+width  = 63  height =63
+i = 45  y =6
+width  = 63  height =63
+i = 45  y =9
+width  = 63  height =63
+i = 45  y =12
+width  = 63  height =63
+i = 45  y =15
+width  = 63  height =63
+i = 45  y =18
+width  = 63  height =63
+i = 45  y =21
+width  = 63  height =63
+i = 45  y =24
+width  = 63  height =63
+i = 45  y =27
+width  = 63  height =63
+i = 45  y =30
+width  = 63  height =63
+i = 45  y =33
+width  = 63  height =63
+i = 45  y =36
+width  = 63  height =63
+i = 45  y =39
+width  = 63  height =63
+i = 45  y =42
+width  = 63  height =63
+i = 45  y =45
+width  = 63  height =63
+i = 45  y =48
+width  = 63  height =63
+i = 45  y =51
+width  = 63  height =63
+i = 45  y =54
+width  = 63  height =63
+i = 45  y =57
+width  = 63  height =63
+i = 45  y =60
+width  = 63  height =63
+i = 48  y =3
+width  = 63  height =63
+i = 48  y =9
+width  = 63  height =63
+i = 48  y =15
+width  = 63  height =63
+i = 48  y =21
+width  = 63  height =63
+i = 48  y =27
+width  = 63  height =63
+i = 48  y =33
+width  = 63  height =63
+i = 48  y =39
+width  = 63  height =63
+i = 48  y =45
+width  = 63  height =63
+i = 48  y =51
+width  = 63  height =63
+i = 48  y =57
+width  = 63  height =63
+i = 48  y =60
+width  = 63  height =63
+i = 51  y =3
+width  = 63  height =63
+i = 51  y =6
+width  = 63  height =63
+i = 51  y =9
+width  = 63  height =63
+i = 51  y =12
+width  = 63  height =63
+i = 51  y =15
+width  = 63  height =63
+i = 51  y =18
+width  = 63  height =63
+i = 51  y =21
+width  = 63  height =63
+i = 51  y =24
+width  = 63  height =63
+i = 51  y =27
+width  = 63  height =63
+i = 51  y =30
+width  = 63  height =63
+i = 51  y =33
+width  = 63  height =63
+i = 51  y =36
+width  = 63  height =63
+i = 51  y =39
+width  = 63  height =63
+i = 51  y =42
+width  = 63  height =63
+i = 51  y =45
+width  = 63  height =63
+i = 51  y =48
+width  = 63  height =63
+i = 51  y =51
+width  = 63  height =63
+i = 51  y =54
+width  = 63  height =63
+i = 51  y =57
+width  = 63  height =63
+i = 51  y =60
+width  = 63  height =63
+i = 54  y =3
+width  = 63  height =63
+i = 54  y =9
+width  = 63  height =63
+i = 54  y =15
+width  = 63  height =63
+i = 54  y =21
+width  = 63  height =63
+i = 54  y =27
+width  = 63  height =63
+i = 54  y =33
+width  = 63  height =63
+i = 54  y =39
+width  = 63  height =63
+i = 54  y =45
+width  = 63  height =63
+i = 54  y =51
+width  = 63  height =63
+i = 54  y =57
+width  = 63  height =63
+i = 54  y =60
+width  = 63  height =63
+i = 57  y =9
+width  = 63  height =63
+i = 57  y =12
+width  = 63  height =63
+i = 57  y =15
+width  = 63  height =63
+i = 57  y =18
+width  = 63  height =63
+i = 57  y =21
+width  = 63  height =63
+i = 57  y =24
+width  = 63  height =63
+i = 57  y =27
+width  = 63  height =63
+i = 57  y =30
+width  = 63  height =63
+i = 57  y =33
+width  = 63  height =63
+i = 57  y =36
+width  = 63  height =63
+i = 57  y =39
+width  = 63  height =63
+i = 57  y =42
+width  = 63  height =63
+i = 57  y =45
+width  = 63  height =63
+i = 57  y =48
+width  = 63  height =63
+i = 57  y =51
+width  = 63  height =63
+Player Created
+Listen keyUp
+Evnd 
+Listen keyLeft
+Evnd 
+Listen keyRight
+Evnd 
+Listen keyDown
+Evnd 
+Listen occulusRotate
+Evnd 
+Listen keyA
+Evnd 
+ici
+Listen playerMove
+Evnd 
+A Press
+A MENU
+|-- Image de presentation --|
+0.099
+3901
+0.102
+3799
+0.104
+3695
+0.104
+3591
+0.096
+3495
+0.099
+3396
+0.102
+3294
+0.099
+3195
+0.097
+3098
+0.1
+2998
+0.102
+2896
+0.103
+2793
+0.097
+2696
+0.102
+2594
+0.103
+2491
+0.096
+2395
+0.104
+2291
+0.099
+2192
+0.104
+2088
+0.097
+1991
+0.1
+1891
+0.102
+1789
+0.103
+1686
+0.101
+1585
+0.096
+1489
+0.098
+1391
+0.105
+1286
+0.094
+1192
+0.101
+1091
+0.099
+992
+0.099
+893
+0.099
+794
+0.099
+695
+0.099
+596
+0.105
+491
+0.139
+352
+0.088
+264
+0.087
+177
+0.103
+74
+0.095
+-21
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+0.083
+3917
+0.083
+3834
+0.086
+3748
+0.085
+3663
+0.099
+3564
+0.083
+3481
+A Press
+A MENU
+|-- Image de presentation --|
+0.085
+3396
+0.084
+3312
+A Press
+A MENU
+|-- Image de presentation --|
+0.098
+3214
+0.083
+3131
+A Press
+A MENU
+|-- Image de presentation --|
+0.079
+3052
+0.085
+2967
+A Press
+A MENU
+|-- Image de presentation --|
+0.087
+2880
+0.083
+2797
+A Press
+A MENU
+|-- Image de presentation --|
+0.087
+2710
+0.101
+2609
+0.099
+2510
+A Press
+A MENU
+|-- Image de presentation --|
+0.101
+2409
+0.1
+2309
+A Press
+A MENU
+|-- Image de presentation --|
+0.1
+2209
+0.099
+2110
+A Press
+A MENU
+|-- Image de presentation --|
+0.084
+2026
+0.088
+1938
+A Press
+A MENU
+|-- Image de presentation --|
+0.097
+1841
+A Press
+A MENU
+|-- Image de presentation --|
+0.101
+1740
+0.099
+1641
+A Press
+A MENU
+|-- Image de presentation --|
+0.1
+1541
+A Press
+A MENU
+|-- Image de presentation --|
+0.101
+1440
+A Press
+A MENU
+|-- Image de presentation --|
+0.102
+1338
+0.099
+1239
+A Press
+A MENU
+|-- Image de presentation --|
+0.101
+1138
+0.102
+1036
+A Press
+A MENU
+|-- Image de presentation --|
+0.097
+939
+0.101
+838
+0.098
+740
+0.101
+639
+0.101
+538
+A Press
+A MENU
+|-- Image de presentation --|
+0.105
+433
+0.098
+335
+A Press
+A MENU
+|-- Image de presentation --|
+0.101
+234
+0.102
+132
+0.099
+33
+0.1
+-67
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+0.084
+3916
+0.085
+3831
+A Press
+A MENU
+|-- Image de presentation --|
+0.084
+3747
+0.079
+3668
+A Press
+A MENU
+|-- Image de presentation --|
+0.087
+3581
+0.087
+3494
+A Press
+A MENU
+|-- Image de presentation --|
+0.081
+3413
+0.084
+3329
+A Press
+A MENU
+|-- Image de presentation --|
+0.086
+3243
+0.081
+3162
+A Press
+A MENU
+|-- Image de presentation --|
+0.084
+3078
+0.083
+2995
+0.084
+2911
+0.082
+2829
+0.085
+2744
+0.083
+2661
+0.08
+2581
+0.081
+2500
+0.085
+2415
+A Press
+A MENU
+|-- Image de presentation --|
+0.086
+2329
+0.081
+2248
+A Press
+A MENU
+|-- Image de presentation --|
+0.084
+2164
+0.083
+2081
+0.082
+1999
+0.08
+1919
+0.083
+1836
+A Press
+A MENU
+|-- Image de presentation --|
+0.073
+1763
+0.081
+1682
+A Press
+A MENU
+|-- Image de presentation --|
+0.084
+1598
+0.084
+1514
+A Press
+A MENU
+|-- Image de presentation --|
+0.082
+1432
+0.085
+1347
+A Press
+A MENU
+|-- Image de presentation --|
+0.081
+1266
+0.083
+1183
+A Press
+A MENU
+|-- Image de presentation --|
+0.081
+1102
+0.07
+1032
+0.078
+954
+A Press
+A MENU
+|-- Image de presentation --|
+0.07
+884
+0.069
+815
+A Press
+A MENU
+|-- Image de presentation --|
+0.081
+734
+0.067
+667
+0.069
+598
+A Press
+A MENU
+|-- Image de presentation --|
+0.086
+512
+0.08
+432
+A Press
+A MENU
+|-- Image de presentation --|
+0.088
+344
+0.079
+265
+A Press
+A MENU
+|-- Image de presentation --|
+0.072
+193
+0.079
+114
+A Press
+A MENU
+|-- Image de presentation --|
+0.083
+31
+0.082
+-51
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+0.073
+3927
+0.078
+3849
+0.073
+3776
+A Press
+A MENU
+|-- Image de presentation --|
+0.076
+3700
+0.071
+3629
+A Press
+A MENU
+|-- Image de presentation --|
+0.082
+3547
+0.083
+3464
+0.086
+3378
+A Press
+A MENU
+|-- Image de presentation --|
+0.08
+3298
+0.074
+3224
+A Press
+A MENU
+|-- Image de presentation --|
+0.079
+3145
+0.084
+3061
+0.083
+2978
+A Press
+A MENU
+|-- Image de presentation --|
+0.085
+2893
+0.085
+2808
+A Press
+A MENU
+|-- Image de presentation --|
+0.084
+2724
+0.085
+2639
+0.08
+2559
+A Press
+A MENU
+|-- Image de presentation --|
+0.087
+2472
+0.081
+2391
+A Press
+A MENU
+|-- Image de presentation --|
+0.086
+2305
+0.081
+2224
+A Press
+A MENU
+|-- Image de presentation --|
+0.084
+2140
+0.08
+2060
+0.086
+1974
+A Press
+A MENU
+|-- Image de presentation --|
+0.082
+1892
+0.086
+1806
+A Press
+A MENU
+|-- Image de presentation --|
+0.084
+1722
+0.081
+1641
+0.084
+1557
+A Press
+A MENU
+|-- Image de presentation --|
+0.085
+1472
+0.086
+1386
+A Press
+A MENU
+|-- Image de presentation --|
+0.083
+1303
+0.08
+1223
+0.086
+1137
+0.083
+1054
+0.086
+968
+A Press
+A MENU
+|-- Image de presentation --|
+0.082
+886
+0.082
+804
+A Press
+A MENU
+|-- Image de presentation --|
+0.084
+720
+0.082
+638
+A Press
+A MENU
+|-- Image de presentation --|
+0.087
+551
+0.081
+470
+A Press
+A MENU
+|-- Image de presentation --|
+0.084
+386
+0.083
+303
+0.082
+221
+0.089
+132
+0.08
+52
+A Press
+A MENU
+|-- Image de presentation --|
+0.085
+-33
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+0.087
+3913
+0.081
+3832
+A Press
+A MENU
+|-- Image de presentation --|
+0.083
+3749
+0.082
+3667
+A Press
+A MENU
+|-- Image de presentation --|
+0.089
+3578
+0.082
+3496
+0.08
+3416
+A Press
+A MENU
+|-- Image de presentation --|
+0.087
+3329
+0.089
+3240
+A Press
+A MENU
+|-- Image de presentation --|
+0.081
+3159
+0.079
+3080
+A Press
+A MENU
+|-- Image de presentation --|
+0.082
+2998
+0.086
+2912
+A Press
+A MENU
+|-- Image de presentation --|
+0.083
+2829
+0.084
+2745
+0.085
+2660
+A Press
+A MENU
+|-- Image de presentation --|
+0.084
+2576
+0.082
+2494
+A Press
+A MENU
+|-- Image de presentation --|
+0.078
+2416
+0.083
+2333
+A Press
+A MENU
+|-- Image de presentation --|
+0.084
+2249
+0.086
+2163
+0.083
+2080
+0.083
+1997
+0.083
+1914
+A Press
+A MENU
+|-- Image de presentation --|
+0.085
+1829
+0.08
+1749
+0.079
+1670
+0.067
+1603
+0.068
+1535
+A Press
+A MENU
+|-- Image de presentation --|
+0.068
+1467
+0.067
+1400
+0.066
+1334
+A Press
+A MENU
+|-- Image de presentation --|
+0.064
+1270
+0.068
+1202
+0.063
+1139
+A Press
+A MENU
+|-- Image de presentation --|
+0.065
+1074
+0.068
+1006
+0.066
+940
+A Press
+A MENU
+|-- Image de presentation --|
+0.067
+873
+0.066
+807
+0.069
+738
+A Press
+A MENU
+|-- Image de presentation --|
+0.067
+671
+0.069
+602
+0.069
+533
+A Press
+A MENU
+|-- Image de presentation --|
+0.068
+465
+0.066
+399
+0.069
+330
+A Press
+A MENU
+|-- Image de presentation --|
+0.084
+246
+0.068
+178
+0.083
+95
+A Press
+A MENU
+|-- Image de presentation --|
+0.081
+14
+0.073
+-59
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+0.081
+3919
+0.088
+3831
+0.082
+3749
+A Press
+A MENU
+|-- Image de presentation --|
+0.083
+3666
+0.089
+3577
+A Press
+A MENU
+|-- Image de presentation --|
+0.082
+3495
+0.081
+3414
+0.087
+3327
+A Press
+A MENU
+|-- Image de presentation --|
+0.081
+3246
+0.086
+3160
+A Press
+A MENU
+|-- Image de presentation --|
+0.085
+3075
+0.083
+2992
+0.084
+2908
+A Press
+A MENU
+|-- Image de presentation --|
+0.087
+2821
+0.081
+2740
+0.084
+2656
+0.088
+2568
+0.083
+2485
+A Press
+A MENU
+|-- Image de presentation --|
+0.078
+2407
+0.084
+2323
+A Press
+A MENU
+|-- Image de presentation --|
+0.086
+2237
+0.092
+2145
+A Press
+A MENU
+|-- Image de presentation --|
+0.101
+2044
+0.102
+1942
+A Press
+A MENU
+|-- Image de presentation --|
+0.097
+1845
+0.103
+1742
+0.1
+1642
+0.1
+1542
+0.103
+1439
+0.098
+1341
+0.098
+1243
+0.098
+1145
+0.101
+1044
+0.098
+946
+0.104
+842
+0.101
+741
+0.1
+641
+0.102
+539
+0.099
+440
+0.099
+341
+0.097
+244
+0.101
+143
+0.104
+39
+0.097
+-58
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+0.08
+3920
+A Press
+A MENU
+|-- Image de presentation --|
+0.087
+3833
+0.083
+3750
+0.084
+3666
+0.084
+3582
+A Press
+A MENU
+|-- Image de presentation --|
+0.084
+3498
+0.082
+3416
+0.087
+3329
+0.082
+3247
+0.082
+3165
+A Press
+A MENU
+|-- Image de presentation --|
+0.084
+3081
+0.082
+2999
+0.087
+2912
+A Press
+A MENU
+|-- Image de presentation --|
+0.081
+2831
+0.082
+2749
+A Press
+A MENU
+|-- Image de presentation --|
+0.087
+2662
+0.08
+2582
+A Press
+A MENU
+|-- Image de presentation --|
+0.087
+2495
+0.081
+2414
+A Press
+A MENU
+|-- Image de presentation --|
+0.081
+2333
+0.086
+2247
+A Press
+A MENU
+|-- Image de presentation --|
+0.081
+2166
+0.086
+2080
+0.085
+1995
+0.079
+1916
+0.083
+1833
+A Press
+A MENU
+|-- Image de presentation --|
+0.084
+1749
+0.084
+1665
+A Press
+A MENU
+|-- Image de presentation --|
+0.084
+1581
+0.078
+1503
+A Press
+A MENU
+|-- Image de presentation --|
+0.086
+1417
+A Press
+A MENU
+|-- Image de presentation --|
+0.082
+1335
+0.084
+1251
+A Press
+A MENU
+|-- Image de presentation --|
+0.085
+1166
+0.081
+1085
+A Press
+A MENU
+|-- Image de presentation --|
+0.084
+1001
+0.084
+917
+0.081
+836
+A Press
+A MENU
+|-- Image de presentation --|
+0.082
+754
+0.067
+687
+A Press
+A MENU
+|-- Image de presentation --|
+0.082
+605
+0.065
+540
+0.066
+474
+A Press
+A MENU
+|-- Image de presentation --|
+0.069
+405
+0.067
+338
+0.066
+272
+A Press
+A MENU
+|-- Image de presentation --|
+0.065
+207
+0.064
+143
+0.065
+78
+0.068
+10
+0.066
+-56
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+0.067
+3933
+A Press
+A MENU
+|-- Image de presentation --|
+0.075
+3858
+0.083
+3775
+A Press
+A MENU
+|-- Image de presentation --|
+0.083
+3692
+0.086
+3606
+0.081
+3525
+A Press
+A MENU
+|-- Image de presentation --|
+0.082
+3443
+0.074
+3369
+A Press
+A MENU
+|-- Image de presentation --|
+0.081
+3288
+0.074
+3214
+0.071
+3143
+A Press
+A MENU
+|-- Image de presentation --|
+0.07
+3073
+0.082
+2991
+0.087
+2904
+0.085
+2819
+0.084
+2735
+A Press
+A MENU
+|-- Image de presentation --|
+0.082
+2653
+0.079
+2574
+0.082
+2492
+0.072
+2420
+0.081
+2339
+A Press
+A MENU
+|-- Image de presentation --|
+0.086
+2253
+0.083
+2170
+0.084
+2086
+0.082
+2004
+0.085
+1919
+0.081
+1838
+0.086
+1752
+0.08
+1672
+0.07
+1602
+0.081
+1521
+0.084
+1437
+0.081
+1356
+0.065
+1291
+A Press
+A MENU
+|-- Image de presentation --|
+0.065
+1226
+0.065
+1161
+0.069
+1092
+A Press
+A MENU
+|-- Image de presentation --|
+0.063
+1029
+0.066
+963
+A Press
+A MENU
+|-- Image de presentation --|
+0.066
+897
+0.07
+827
+0.072
+755
+0.065
+690
+0.074
+616
+0.088
+528
+0.091
+437
+0.09
+347
+0.1
+247
+0.103
+144
+0.099
+45
+0.095
+-50
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+0.102
+3898
+0.096
+3802
+A Press
+A MENU
+|-- Image de presentation --|
+0.099
+3703
+0.102
+3601
+A Press
+A MENU
+|-- Image de presentation --|
+0.102
+3499
+0.098
+3401
+0.099
+3302
+A Press
+A MENU
+|-- Image de presentation --|
+0.099
+3203
+0.099
+3104
+A Press
+A MENU
+|-- Image de presentation --|
+0.08
+3024
+0.085
+2939
+A Press
+A MENU
+|-- Image de presentation --|
+0.086
+2853
+0.084
+2769
+A Press
+A MENU
+|-- Image de presentation --|
+0.085
+2684
+0.093
+2591
+0.084
+2507
+A Press
+A MENU
+|-- Image de presentation --|
+0.084
+2423
+0.081
+2342
+A Press
+A MENU
+|-- Image de presentation --|
+0.087
+2255
+0.082
+2173
+A Press
+A MENU
+|-- Image de presentation --|
+0.078
+2095
+0.084
+2011
+0.089
+1922
+0.083
+1839
+0.084
+1755
+A Press
+A MENU
+|-- Image de presentation --|
+0.081
+1674
+0.08
+1594
+A Press
+A MENU
+|-- Image de presentation --|
+0.086
+1508
+0.084
+1424
+A Press
+A MENU
+|-- Image de presentation --|
+0.08
+1344
+0.084
+1260
+0.082
+1178
+A Press
+A MENU
+|-- Image de presentation --|
+0.087
+1091
+0.084
+1007
+A Press
+A MENU
+|-- Image de presentation --|
+0.083
+924
+0.081
+843
+A Press
+A MENU
+|-- Image de presentation --|
+0.084
+759
+0.083
+676
+0.08
+596
+A Press
+A MENU
+|-- Image de presentation --|
+0.083
+513
+0.082
+431
+A Press
+A MENU
+|-- Image de presentation --|
+0.069
+362
+A Press
+A MENU
+|-- Image de presentation --|
+0.08
+282
+0.068
+214
+0.068
+146
+A Press
+A MENU
+|-- Image de presentation --|
+0.062
+84
+0.063
+21
+0.066
+-45
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+0.067
+3933
+0.066
+3867
+0.067
+3800
+A Press
+A MENU
+|-- Image de presentation --|
+0.069
+3731
+0.064
+3667
+0.065
+3602
+A Press
+A MENU
+|-- Image de presentation --|
+0.067
+3535
+0.067
+3468
+0.066
+3402
+A Press
+A MENU
+|-- Image de presentation --|
+0.067
+3335
+0.067
+3268
+0.069
+3199
+A Press
+A MENU
+|-- Image de presentation --|
+0.065
+3134
+A Press
+A MENU
+|-- Image de presentation --|
+0.067
+3067
+0.068
+2999
+0.066
+2933
+0.069
+2864
+0.066
+2798
+0.07
+2728
+0.062
+2666
+0.071
+2595
+0.066
+2529
+0.068
+2461
+0.07
+2391
+0.065
+2326
+0.069
+2257
+0.066
+2191
+0.068
+2123
+0.067
+2056
+0.065
+1991
+0.067
+1924
+0.069
+1855
+0.064
+1791
+0.067
+1724
+0.066
+1658
+0.066
+1592
+0.067
+1525
+0.067
+1458
+0.067
+1391
+0.066
+1325
+0.07
+1255
+0.062
+1193
+0.07
+1123
+0.063
+1060
+0.067
+993
+0.066
+927
+0.067
+860
+0.069
+791
+0.068
+723
+0.064
+659
+0.067
+592
+0.067
+525
+0.07
+455
+0.067
+388
+0.068
+320
+0.066
+254
+0.07
+184
+0.068
+116
+0.073
+43
+0.082
+-39
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+0.085
+3915
+0.08
+3835
+0.068
+3767
+0.08
+3687
+0.062
+3625
+A Press
+A MENU
+|-- Image de presentation --|
+0.067
+3558
+0.068
+3490
+0.068
+3422
+0.066
+3356
+0.066
+3290
+0.066
+3224
+0.064
+3160
+0.068
+3092
+0.067
+3025
+0.067
+2958
+0.065
+2893
+0.067
+2826
+0.068
+2758
+0.072
+2686
+0.068
+2618
+0.062
+2556
+0.066
+2490
+0.069
+2421
+0.064
+2357
+0.069
+2288
+0.067
+2221
+0.069
+2152
+0.067
+2085
+0.07
+2015
+0.063
+1952
+0.066
+1886
+0.071
+1815
+0.071
+1744
+0.082
+1662
+0.082
+1580
+0.067
+1513
+0.086
+1427
+0.086
+1341
+0.081
+1260
+0.084
+1176
+0.086
+1090
+0.082
+1008
+0.085
+923
+0.081
+842
+0.087
+755
+0.083
+672
+0.086
+586
+0.085
+501
+0.082
+419
+0.087
+332
+0.081
+251
+0.084
+167
+0.086
+81
+0.083
+-2
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+0.101
+3899
+A Press
+A MENU
+|-- Image de presentation --|
+0.1
+3799
+0.104
+3695
+0.095
+3600
+0.101
+3499
+A Press
+A MENU
+|-- Image de presentation --|
+0.098
+3401
+0.105
+3296
+0.102
+3194
+A Press
+A MENU
+|-- Image de presentation --|
+0.103
+3091
+0.099
+2992
+A Press
+A MENU
+|-- Image de presentation --|
+0.1
+2892
+0.103
+2789
+A Press
+A MENU
+|-- Image de presentation --|
+0.099
+2690
+A Press
+A MENU
+|-- Image de presentation --|
+0.099
+2591
+0.099
+2492
+A Press
+A MENU
+|-- Image de presentation --|
+0.099
+2393
+0.097
+2296
+A Press
+A MENU
+|-- Image de presentation --|
+0.101
+2195
+0.098
+2097
+A Press
+A MENU
+|-- Image de presentation --|
+0.1
+1997
+0.096
+1901
+0.089
+1812
+0.097
+1715
+0.098
+1617
+0.082
+1535
+0.084
+1451
+0.085
+1366
+0.086
+1280
+0.095
+1185
+0.084
+1101
+0.082
+1019
+0.084
+935
+0.084
+851
+0.083
+768
+0.087
+681
+0.081
+600
+0.079
+521
+0.086
+435
+0.085
+350
+0.08
+270
+0.086
+184
+0.086
+98
+0.082
+16
+0.08
+-64
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+0.084
+3916
+0.084
+3832
+0.091
+3741
+0.098
+3643
+0.1
+3543
+0.101
+3442
+0.099
+3343
+0.105
+3238
+0.096
+3142
+0.101
+3041
+0.1
+2941
+0.097
+2844
+0.089
+2755
+0.098
+2657
+0.098
+2559
+0.102
+2457
+0.096
+2361
+0.086
+2275
+0.084
+2191
+0.097
+2094
+0.081
+2013
+0.086
+1927
+0.085
+1842
+0.082
+1760
+0.083
+1677
+0.079
+1598
+0.083
+1515
+0.084
+1431
+0.082
+1349
+0.087
+1262
+0.079
+1183
+0.083
+1100
+0.085
+1015
+0.083
+932
+0.083
+849
+0.084
+765
+0.083
+682
+0.086
+596
+0.08
+516
+0.087
+429
+0.081
+348
+0.087
+261
+0.08
+181
+0.085
+96
+0.075
+21
+0.065
+-44
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+0.086
+3914
+0.087
+3827
+0.083
+3744
+A Press
+A MENU
+|-- Image de presentation --|
+0.085
+3659
+0.088
+3571
+A Press
+A MENU
+|-- Image de presentation --|
+0.083
+3488
+0.083
+3405
+A Press
+A MENU
+|-- Image de presentation --|
+0.079
+3326
+0.084
+3242
+A Press
+A MENU
+|-- Image de presentation --|
+0.084
+3158
+0.083
+3075
+0.087
+2988
+0.085
+2903
+A Press
+A MENU
+|-- Image de presentation --|
+0.08
+2823
+A Press
+A MENU
+|-- Image de presentation --|
+0.083
+2740
+0.08
+2660
+0.089
+2571
+0.084
+2487
+A Press
+A MENU
+|-- Image de presentation --|
+0.085
+2402
+A Press
+A MENU
+|-- Image de presentation --|
+0.083
+2319
+0.081
+2238
+0.082
+2156
+0.085
+2071
+0.084
+1987
+0.082
+1905
+0.088
+1817
+A Press
+A MENU
+|-- Image de presentation --|
+0.083
+1734
+0.082
+1652
+0.083
+1569
+0.082
+1487
+0.085
+1402
+0.082
+1320
+A Press
+A MENU
+|-- Image de presentation --|
+0.082
+1238
+0.084
+1154
+0.082
+1072
+0.085
+987
+0.086
+901
+A Press
+A MENU
+|-- Image de presentation --|
+0.083
+818
+0.081
+737
+0.086
+651
+0.083
+568
+0.083
+485
+0.08
+405
+A Press
+A MENU
+|-- Image de presentation --|
+0.082
+323
+0.089
+234
+0.078
+156
+0.086
+70
+0.087
+-17
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+0.081
+3919
+0.082
+3837
+0.084
+3753
+0.082
+3671
+0.086
+3585
+0.081
+3504
+0.084
+3420
+A Press
+A MENU
+|-- Image de presentation --|
+0.083
+3337
+0.083
+3254
+A Press
+A MENU
+|-- Image de presentation --|
+0.08
+3174
+0.084
+3090
+0.084
+3006
+0.086
+2920
+0.078
+2842
+A Press
+A MENU
+|-- Image de presentation --|
+0.084
+2758
+0.082
+2676
+0.071
+2605
+A Press
+A MENU
+|-- Image de presentation --|
+0.079
+2526
+0.067
+2459
+A Press
+A MENU
+|-- Image de presentation --|
+0.068
+2391
+0.08
+2311
+0.066
+2245
+A Press
+A MENU
+|-- Image de presentation --|
+0.066
+2179
+0.068
+2111
+0.066
+2045
+A Press
+A MENU
+|-- Image de presentation --|
+0.066
+1979
+A Press
+A MENU
+|-- Image de presentation --|
+0.067
+1912
+0.065
+1847
+0.067
+1780
+A Press
+A MENU
+|-- Image de presentation --|
+0.068
+1712
+0.066
+1646
+0.07
+1576
+A Press
+A MENU
+|-- Image de presentation --|
+0.07
+1506
+A Press
+A MENU
+|-- Image de presentation --|
+0.07
+1436
+0.085
+1351
+A Press
+A MENU
+|-- Image de presentation --|
+0.086
+1265
+0.089
+1176
+A Press
+A MENU
+|-- Image de presentation --|
+0.082
+1094
+0.085
+1009
+0.087
+922
+0.086
+836
+0.1
+736
+A Press
+A MENU
+|-- Image de presentation --|
+0.099
+637
+0.086
+551
+A Press
+A MENU
+|-- Image de presentation --|
+0.096
+455
+0.083
+372
+A Press
+A MENU
+|-- Image de presentation --|
+0.082
+290
+0.079
+211
+0.082
+129
+A Press
+A MENU
+|-- Image de presentation --|
+0.083
+46
+0.08
+-34
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+0.08
+3920
+0.07
+3850
+0.079
+3771
+A Press
+A MENU
+|-- Image de presentation --|
+0.067
+3704
+0.069
+3635
+0.079
+3556
+0.068
+3488
+0.065
+3423
+0.063
+3360
+0.067
+3293
+0.07
+3223
+0.063
+3160
+0.066
+3094
+0.068
+3026
+0.065
+2961
+0.069
+2892
+0.065
+2827
+0.071
+2756
+0.074
+2682
+0.082
+2600
+0.074
+2526
+0.076
+2450
+0.068
+2382
+0.078
+2304
+0.07
+2234
+0.065
+2169
+A Press
+A MENU
+|-- Image de presentation --|
+0.064
+2105
+0.072
+2033
+0.065
+1968
+A Press
+A MENU
+|-- Image de presentation --|
+0.067
+1901
+0.066
+1835
+A Press
+A MENU
+|-- Image de presentation --|
+0.067
+1768
+A Press
+A MENU
+|-- Image de presentation --|
+0.067
+1701
+0.066
+1635
+A Press
+A MENU
+|-- Image de presentation --|
+0.064
+1571
+0.065
+1506
+0.056
+1450
+A Press
+A MENU
+|-- Image de presentation --|
+0.058
+1392
+A Press
+A MENU
+|-- Image de presentation --|
+0.057
+1335
+0.063
+1272
+0.067
+1205
+A Press
+A MENU
+|-- Image de presentation --|
+0.076
+1129
+0.068
+1061
+0.074
+987
+A Press
+A MENU
+|-- Image de presentation --|
+0.079
+908
+0.068
+840
+A Press
+A MENU
+|-- Image de presentation --|
+0.073
+767
+0.078
+689
+0.074
+615
+A Press
+A MENU
+|-- Image de presentation --|
+0.066
+549
+0.076
+473
+0.077
+396
+A Press
+A MENU
+|-- Image de presentation --|
+0.067
+329
+0.067
+262
+0.072
+190
+A Press
+A MENU
+|-- Image de presentation --|
+0.081
+109
+0.084
+25
+0.081
+-56
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+0.103
+3897
+0.101
+3796
+A Press
+A MENU
+|-- Image de presentation --|
+0.1
+3696
+0.093
+3603
+A Press
+A MENU
+|-- Image de presentation --|
+0.106
+3497
+0.1
+3397
+0.099
+3298
+A Press
+A MENU
+|-- Image de presentation --|
+0.101
+3197
+0.102
+3095
+A Press
+A MENU
+|-- Image de presentation --|
+0.094
+3001
+0.106
+2895
+A Press
+A MENU
+|-- Image de presentation --|
+0.099
+2796
+A Press
+A MENU
+|-- Image de presentation --|
+0.096
+2700
+0.089
+2611
+A Press
+A MENU
+|-- Image de presentation --|
+0.076
+2535
+0.076
+2459
+0.063
+2396
+A Press
+A MENU
+|-- Image de presentation --|
+0.067
+2329
+0.069
+2260
+0.071
+2189
+A Press
+A MENU
+|-- Image de presentation --|
+0.065
+2124
+0.066
+2058
+A Press
+A MENU
+|-- Image de presentation --|
+0.067
+1991
+0.066
+1925
+0.067
+1858
+A Press
+A MENU
+|-- Image de presentation --|
+0.068
+1790
+0.066
+1724
+0.066
+1658
+A Press
+A MENU
+|-- Image de presentation --|
+0.068
+1590
+0.067
+1523
+0.064
+1459
+A Press
+A MENU
+|-- Image de presentation --|
+0.07
+1389
+0.064
+1325
+0.067
+1258
+A Press
+A MENU
+|-- Image de presentation --|
+0.067
+1191
+0.065
+1126
+0.068
+1058
+A Press
+A MENU
+|-- Image de presentation --|
+0.068
+990
+0.069
+921
+A Press
+A MENU
+|-- Image de presentation --|
+0.066
+855
+A Press
+A MENU
+|-- Image de presentation --|
+0.064
+791
+0.067
+724
+A Press
+A MENU
+|-- Image de presentation --|
+0.067
+657
+0.066
+591
+0.069
+522
+A Press
+A MENU
+|-- Image de presentation --|
+0.068
+454
+0.064
+390
+0.071
+319
+A Press
+A MENU
+|-- Image de presentation --|
+0.067
+252
+0.064
+188
+0.082
+106
+A Press
+A MENU
+|-- Image de presentation --|
+0.081
+25
+0.071
+-46
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+0.065
+3935
+0.065
+3870
+0.067
+3803
+A Press
+A MENU
+|-- Image de presentation --|
+0.067
+3736
+0.071
+3665
+0.069
+3596
+0.072
+3524
+0.087
+3437
+0.087
+3350
+A Press
+A MENU
+|-- Image de presentation --|
+0.081
+3269
+0.085
+3184
+A Press
+A MENU
+|-- Image de presentation --|
+0.082
+3102
+A Press
+A MENU
+|-- Image de presentation --|
+0.087
+3015
+0.082
+2933
+0.084
+2849
+A Press
+A MENU
+|-- Image de presentation --|
+0.085
+2764
+0.073
+2691
+A Press
+A MENU
+|-- Image de presentation --|
+0.087
+2604
+0.092
+2512
+0.081
+2431
+A Press
+A MENU
+|-- Image de presentation --|
+0.084
+2347
+0.078
+2269
+A Press
+A MENU
+|-- Image de presentation --|
+0.092
+2177
+0.086
+2091
+0.081
+2010
+A Press
+A MENU
+|-- Image de presentation --|
+0.08
+1930
+0.09
+1840
+A Press
+A MENU
+|-- Image de presentation --|
+0.103
+1737
+0.095
+1642
+A Press
+A MENU
+|-- Image de presentation --|
+0.085
+1557
+0.085
+1472
+A Press
+A MENU
+|-- Image de presentation --|
+0.096
+1376
+0.084
+1292
+A Press
+A MENU
+|-- Image de presentation --|
+0.082
+1210
+0.083
+1127
+0.084
+1043
+A Press
+A MENU
+|-- Image de presentation --|
+0.071
+972
+0.086
+886
+A Press
+A MENU
+|-- Image de presentation --|
+0.087
+799
+0.076
+723
+0.072
+651
+A Press
+A MENU
+|-- Image de presentation --|
+0.077
+574
+0.059
+515
+0.079
+436
+0.085
+351
+0.084
+267
+0.082
+185
+A Press
+A MENU
+|-- Image de presentation --|
+0.086
+99
+0.08
+19
+0.089
+-70
+Hereeeeeee
+1
+ON DELETE FIRE
+ON DELETE FIRE
+ON DELETE FIRE
+A Press
+A MENU
+|-- Image de presentation --|
+0.088
+3912
+0.084
+3828
+0.082
+3746
+0.083
+3663
+A Press
+A MENU
+|-- Image de presentation --|
+0.079
+3584
+0.085
+3499
+A Press
+A MENU
+|-- Image de presentation --|
+0.081
+3418
+0.085
+3333
+A Press
+A MENU
+|-- Image de presentation --|
+0.08
+3253
+0.084
+3169
+0.084
+3085
+0.084
+3001
+0.084
+2917
+A Press
+A MENU
+|-- Image de presentation --|
+0.081
+2836
+0.086
+2750
+A Press
+A MENU
+|-- Image de presentation --|
+0.083
+2667
+0.081
+2586
+A Press
+A MENU
+|-- Image de presentation --|
+0.086
+2500
+0.084
+2416
+A Press
+A MENU
+|-- Image de presentation --|
+0.091
+2325
+0.084
+2241
+A Press
+A MENU
+|-- Image de presentation --|
+0.082
+2159
+0.083
+2076
+0.086
+1990
+0.081
+1909
+0.085
+1824
+0.081
+1743
+GenereMap Destroyed!
