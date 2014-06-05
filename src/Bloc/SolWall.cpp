@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:26:53 2014 Remi telenczak
-// Last update Tue May 27 03:10:46 2014 Remi telenczak
+// Last update Wed Jun  4 11:30:43 2014 dedicker remi
 //
 
 #include	"SolWall.hpp"
@@ -21,7 +21,6 @@ SolWall::SolWall(Map *map, ModelList *model, EventManager *event, gdl::Clock *cl
 
 bool SolWall::update(gdl::Clock const &clock, gdl::Input &input)
 {
-  //  this->_skin->setCurrentAnim(22);
   (void)clock;
   (void)input;
   return true;

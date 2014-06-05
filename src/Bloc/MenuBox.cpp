@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Mon May 26 16:41:50 2014 dedicker remi
-// Last update Fri May 30 17:23:43 2014 thomas mendez
+// Last update Wed Jun  4 11:22:27 2014 dedicker remi
 //
 
 #include	<iostream>
@@ -35,20 +35,58 @@ MenuBox::MenuBox(Map *map, ModelList *model, EventManager *event, gdl::Clock *cl
   event->listenEvent("rotOcu", callRotOcu);
 }
 
+glm::vec3*	MenuBox::getRotation()
+{
+  return this->rot;
+}
+
+int		MenuBox::getRotationy()
+{
+  return this->rot->y;
+}
+
+void	MenuBox::checkBoxExit(glm::vec3 *rotation)
+{
+  if (rotation->y >= -15)
+    if (rotation->x >= 60 && rotation->x <= 90)
+      std::cout << "|-- Image de Exit! --|" << std::endl; 
+}
+
+void	MenuBox::checkBoxCredit(glm::vec3 *rotation)
+{
+  if (rotation->y >= -20)
+    if (rotation->x <= -50 && rotation->x >= -90)
+      std::cout << "|-- Image de Credit! --|" << std::endl;
+}
+
+void	MenuBox::checkFacetteBoxMenu(glm::vec3 *rotation)
+{
+  if (rotation->x <= 20 && rotation->x >= -20)
+    {
+      if (rotation->y >= -40 && rotation->y <= 50)
+	std::cout << "|-- Image de presentation --|" << std::endl;
+      else if (rotation->y >= 50 && rotation->y <= 120)
+	std::cout << "|-- Image de Play --|" << std::endl;
+      else if (rotation->y <= -41 && rotation->y >= -129)
+	std::cout << "|-- Image de setting --|" << std::endl;
+      else if (rotation->y >= 120 || rotation->y <= -130)
+	std::cout << "|-- Image de Derriere --|" << std::endl;
+      else
+	std::cout << "|-- Dans le vide --|" << std::endl;
+    }
+}
+
+
 void	MenuBox::eventRotOcu(void *data)
 {
   glm::vec3 *rotation;
   rotation = (glm::vec3 *)data;
   glm::vec3 newpos(0, 0, -10);
-  //data.z = 0;
-  //  newpos = glm::rotate(newpos, data);
   newpos = this->posSauv;
-  
   newpos = glm::rotateY(newpos, rotation->y);
-  //  newpos = glm::rotateX(newpos, rotation->x);
-  //  newpos = glm::rotateZ(newpos, rotation->z);
   this->_position = newpos;
-  std::cout << rotation->y << std::endl;
+  this->rot = (glm::vec3 *)data;
+  checkFacetteBoxMenu(rotation);
 }
 
 void	MenuBox::eventRotOcu2(void *data)
@@ -56,14 +94,11 @@ void	MenuBox::eventRotOcu2(void *data)
   glm::vec3 *rotation;
   rotation = (glm::vec3 *)data;
   glm::vec3 newpos(0, 10, 0);
-  //data.z = 0;
-  //  newpos = glm::rotate(newpos, data);
-  // newpos = glm::rotateY(newpos, rotation->y);
-  //newpos = glm::rotateX(newpos, rotation->x);
-  //  newpos = glm::rotateZ(newpos, rotation->z);
   this->_position = newpos;
   this->set_roty(rotation->z);
-  std::cout << rotation->y << "laaa" << std::endl;
+  this->rot = (glm::vec3 *)data;
+  checkBoxExit(rotation);
+  std::cout << "Rotation y " << rotation->y << " Rotation x :" << rotation->x << "Rotation z:" << rotation->z << std::endl;
 }
 
 void	MenuBox::eventRotOcu3(void *data)
@@ -71,14 +106,10 @@ void	MenuBox::eventRotOcu3(void *data)
   glm::vec3 *rotation;
   rotation = (glm::vec3 *)data;
   glm::vec3 newpos(0, -10, 0);
-  //data.z = 0;
-  //  newpos = glm::rotate(newpos, data);
-  // newpos = glm::rotateY(newpos, rotation->y);
-  //newpos = glm::rotateX(newpos, rotation->x);
-  //  newpos = glm::rotateZ(newpos, rotation->z);
   this->_position = newpos;
   this->set_roty(rotation->z);
-  std::cout << rotation->y << "laaa" << std::endl;
+  this->rot = (glm::vec3 *)data;
+  checkBoxCredit(rotation);
 }
 
 bool MenuBox::update(gdl::Clock const &clock, gdl::Input &input)

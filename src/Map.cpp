@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Mon Jun  2 14:58:38 2014 Steven Martreux
+// Last update Thu Jun  5 18:18:21 2014 Steven Martreux
 //
 
 #include <cstdlib>
@@ -50,6 +50,11 @@ void	Map::update(gdl::Clock clock, gdl::Input input)
   this->_skybox->update(clock, input);
 }
 
+int	Map::distanceObj(AObjectPhysic *obj)
+{
+  return glm::distance2(obj->getPosition(), this->_player->getPosition());
+}
+
 std::vector<AObjectPhysic *>	Map::getObjectsPos(AObjectPhysic *obj)
 {
   std::list<AObjectPhysic *>::iterator itO;
@@ -75,7 +80,7 @@ void	Map::draw(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
   itO = this->_map.begin();
   while (itO != this->_map.end())
     {
-      if ((*itO) != NULL && (*itO)->isInView(camera))
+      if ((*itO) != NULL && (*itO)->isInView(camera) && this->distanceObj(*itO) < 400)
 	(*itO)->draw(shader, clock);
       itO++;
     }

@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:19 2014 Remi telenczak
-// Last update Fri May 30 17:22:56 2014 thomas mendez
+// Last update Thu Jun  5 16:36:24 2014 dedicker remi
 //
 
 #ifndef		_MENU_BOMBERMAN
@@ -36,16 +36,24 @@
 #include	"Skybox.hpp"
 #include	"MenuBox.hpp"
 #include	"MenuWall.hpp"
+# include	"MainMenu.hpp"
+# include	"SettingsMenu.hpp"
+# include	"MenuNumber.hpp"
+# include	"CallBack.hpp"
 
 class Menu
 {
 public:
-  Menu(ModelList *mod, EventManager *event);
+  Menu(ModelList *mod, EventManager *event, gdl::Clock *);
   ~Menu();
   void	setSkybox(Skybox *skybox);
   void	setBox(gdl::Model *model);
   void  draw(gdl::BasicShader &, gdl::Clock const &);
-  void	update(gdl::Clock &clock, gdl::Input &input);
+  void	update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus);
+  void  faceSettingsMenu();
+  void  faceMainMenu();
+  void  callFaceFunction();
+  void	eventKeyA(void *data);
 private:
   gdl::Model *_box;
   ModelList *_mod;
@@ -54,7 +62,13 @@ private:
   MenuBox *_boxmenu2;
   MenuBox *_boxmenu3;
   Skybox *_skin;
-  // MenuWall *_menuwall;
+  gdl::Clock *_clock;
+  MenuNumber	*_menuBox;
+  glm::vec3 _rotationOculus;
+  MainMenu *_mainMenu;
+  SettingsMenu *_settingsMenu;
+  int	currentMenu;
+  ICallBack *_callKeyA;
 };
 
 #endif

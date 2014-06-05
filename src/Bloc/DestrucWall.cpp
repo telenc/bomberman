@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:26:53 2014 Remi telenczak
-// Last update Tue Jun  3 16:11:23 2014 Steven Martreux
+// Last update Thu Jun  5 18:19:22 2014 Steven Martreux
 //
 
 #include	"DestrucWall.hpp"
@@ -16,7 +16,11 @@
 
 DestrucWall::DestrucWall(Map *map, ModelList *model, EventManager *event, gdl::Clock *clock) : ABloc(map, model, event, clock), AObjectLife(3)
 {
-  this->_skin = model->getModel("cubeDest3");
+  this->modelLife3 = model->getModel("cubeDest3");
+  this->modelLife2 = model->getModel("cubeDest2");
+  this->modelLife1 = model->getModel("cubeDest1");
+  this->_skin = modelLife3;
+  this->currentModel = "cubeDest3";
   this->_height = 3;
   this->_width = 3;
   this->_typePrecis = DESTRUCTWALL;
@@ -25,11 +29,22 @@ DestrucWall::DestrucWall(Map *map, ModelList *model, EventManager *event, gdl::C
 bool DestrucWall::update(gdl::Clock const &clock, gdl::Input &input)
 {
   if (this->_life >= 3 && this->_life > 0)
-    this->_skin = _modelList->getModel("cubeDest3");
+    {
+      this->_skin = modelLife3;//_modelList->getModel("cubeDest3");
+      this->currentModel = "cubeDest3";
+    }
   else if (this->_life == 2)
-    this->_skin = _modelList->getModel("cubeDest2");
+    {
+      this->_skin = modelLife2;
+      //this->_skin = _modelList->getModel("cubeDest2");
+      this->currentModel = "cubeDest2";
+    }
   else
-    this->_skin = _modelList->getModel("cubeDest1");
+    {
+      this->_skin = modelLife1;
+      //this->_skin = _modelList->getModel("cubeDest1");
+      this->currentModel = "cubeDest1";
+    }
   (void)clock;
   (void)input;
   if (this->_life <= 0)

@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Mon Jun  2 14:58:39 2014 Steven Martreux
+// Last update Thu Jun  5 18:14:49 2014 Steven Martreux
 //
 
 #ifndef MAP_HPP_
@@ -38,6 +38,7 @@ public:
   std::vector<APlayer *>getPlayers() const;
   void	setPlayer(Player *);
   void	setSkybox(Skybox *);
+  int	distanceObj(AObjectPhysic *);
   void	draw(gdl::BasicShader, gdl::Clock, CameraBomber *);
   std::vector<AObjectPhysic *> getObjectsPos(AObjectPhysic *);
   std::vector<APlayer *> getPlayers();

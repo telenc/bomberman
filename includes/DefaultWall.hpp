@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:28:07 2014 Remi telenczak
-// Last update Tue May 27 02:58:46 2014 Remi telenczak
+// Last update Tue Jun  3 07:25:33 2014 Remi telenczak
 //
 
 #ifndef		_DEFAULTWALL

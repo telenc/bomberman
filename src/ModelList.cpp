@@ -6,7 +6,7 @@
 //
 // Started on  Tue May 13 06:17:30 2014 Remi telenczak
 <<<<<<< HEAD
-// Last update Fri May 30 05:26:54 2014 Remi telenczak
+// Last update Thu Jun  5 16:42:57 2014 dedicker remi
 =======
 // Last update Mon May 26 17:18:42 2014 dedicker remi
 >>>>>>> 86fd066f3cca2a094e91194976398fe97236bc1e
@@ -52,6 +52,36 @@ void		ModelList::loadModel()
   this->list.push_back(std::make_pair("menu", mod));
   mod = this->createModel("./assets/cubeWallWood.fbx");
   this->list.push_back(std::make_pair("sol", mod));
+  mod = this->createModel("./assets/cubeTelen0123.fbx");
+  this->list.push_back(std::make_pair("menu1", mod));
+  mod = this->createModel("./assets/cubeTelen3456.fbx");
+  this->list.push_back(std::make_pair("menu2", mod));
+  mod = this->createModel("./assets/cubeTelen6789.fbx");
+  this->list.push_back(std::make_pair("menu3", mod));
+  mod = this->createModel("./assets/cubeTelen90.fbx");
+  this->list.push_back(std::make_pair("menu4", mod));
+  mod = this->createModel("./assets/menuSettings.fbx");
+  this->list.push_back(std::make_pair("box_setting", mod));
+  mod = this->createModel("./assets/menuPlay.fbx");
+  this->list.push_back(std::make_pair("box_play", mod));
+  this->listChemin.push_back(std::make_pair("marvin", "./assets/marvin.fbx"));
+  this->listChemin.push_back(std::make_pair("cube6", "./assets/cubeWallFer.fbx"));
+  this->listChemin.push_back(std::make_pair("bombBonus", "./assets/bonus_bomb_up.FBX"));
+  this->listChemin.push_back(std::make_pair("poBonus", "./assets/bonus_fire_up.FBX"));
+  this->listChemin.push_back(std::make_pair("cubeDest3", "./assets/cubeWall.fbx"));
+  this->listChemin.push_back(std::make_pair("cubeDest2", "./assets/cubeWall2.fbx"));
+  this->listChemin.push_back(std::make_pair("cubeDest1", "./assets/cubeWall3.fbx"));
+  this->listChemin.push_back(std::make_pair("defaultBomb", "./assets/bombe5.fbx"));
+  this->listChemin.push_back(std::make_pair("skybox", "./assets/box.fbx"));
+  this->listChemin.push_back(std::make_pair("fire", "./assets/fire_box.FBX"));
+  this->listChemin.push_back(std::make_pair("box", "./assets/mytest.fbx"));
+  this->listChemin.push_back(std::make_pair("box_menu", "./assets/box_menu.fbx"));
+  this->listChemin.push_back(std::make_pair("menu", "./assets/menu.fbx"));
+  this->listChemin.push_back(std::make_pair("sol", "./assets/cubeWallWood.fbx"));
+  this->listChemin.push_back(std::make_pair("menu1", "./assets/cubeTelen0123.fbx"));
+  this->listChemin.push_back(std::make_pair("menu2", "./assets/cubeTelen3456.fbx"));
+  this->listChemin.push_back(std::make_pair("menu3", "./assets/cubeTelen6789.fbx"));
+  this->listChemin.push_back(std::make_pair("menu4", "./assets/cubeTelen90.fbx"));
 }
 
 gdl::Model	*ModelList::createModel(const std::string path)
@@ -64,7 +94,6 @@ gdl::Model	*ModelList::createModel(const std::string path)
     result->setCurrentAnim(0);
   else
     std::cout << "Erre" << path << std::endl;
-  std::cout << "Model : " << path << " chargé" << std::endl;
   return (result);
 }
 
@@ -76,9 +105,8 @@ gdl::Model	*ModelList::getModel(const std::string name)
   while (it != this->list.end())
     {
       if (it->first == name)
-	return (it->second);
+	return it->second;//(this->createModel(it->second));
       it++;
     }
-  std::cout << "Retunrn NULLL " << name<< std::endl;
   return (NULL);
 }

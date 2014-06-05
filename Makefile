@@ -21,7 +21,7 @@ DELETEFILE    = rm -f
 DEFINES       = -DQT_WEBKIT -DGL_GLEXT_PROTOTYPES
 
 
-DEBUG         = 0
+DEBUG         = 1
 ifeq ($(DEBUG), 1)
 	CXXFLAGS      = -pipe -DDEBUG -g $(DEFINES)
 	LFLAGS        = -g -O3
@@ -87,6 +87,8 @@ SRC		= src/main.cpp \
 		src/Bloc/DestrucWall.cpp \
 		src/Bloc/MenuWall.cpp \
 		src/Bloc/MenuBox.cpp \
+		src/Bloc/MenuBoxNumber.cpp \
+		src/Bloc/SettingBox.cpp \
 		src/GenereMap.cpp	\
 		src/Bomb/DefaultBomb.cpp \
 		src/Controller.cpp	\
@@ -101,7 +103,10 @@ SRC		= src/main.cpp \
 		src/ABonus.cpp \
 		src/Bonus/PoBonus.cpp \
 		src/Bonus/BombBonus.cpp \
-		src/SaveGame.cpp
+		src/SaveGame.cpp	\
+		src/MenuNumber.cpp \
+		src/MainMenu.cpp \
+		src/SettingsMenu.cpp \
 
 OBJECTS       = $(SRC:.cpp=.o)
 

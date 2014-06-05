@@ -5,11 +5,10 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:11:40 2014 dedicker remi
-// Last update Thu Jun  5 17:50:00 2014 Steven Martreux
+// Last update Thu Jun  5 18:17:52 2014 Steven Martreux
 //
 
 #include	"APlayer.hpp"
-
 
 //Player
 // x /y /z = la base en bas
@@ -40,6 +39,7 @@ APlayer::APlayer(int x, int y, int z, Map *map, ModelList *model, EventManager *
   this->_po = 2;
   this->_nbrBomb = 1;
   this->_nbrBombMax = 1;
+
   (void)y;
   (void)x;
   (void)z;
