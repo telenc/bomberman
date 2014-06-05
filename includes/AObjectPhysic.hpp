@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 15:52:43 2014 Mathieu Choquart
-// Last update Fri May 30 05:21:09 2014 Remi telenczak
+// Last update Thu Jun  5 15:53:38 2014 Steven Martreux
 //
 
 #ifndef			_AOBJECTPHYSIC_HPP_
@@ -38,6 +38,19 @@ enum	TypeObject
     PLAYER,
     FIRE,
     BLOC
+  };
+
+enum	TypeObjectPrecis
+  {
+    NONEPRECIS,
+    DEFAULTBOMB,
+    POBONUS,
+    BOMBBONUS,
+    PLAYERPRECIS,
+    IA,
+    FIREPRECIS,
+    DEFAULTWALL,
+    DESTRUCTWALL,
   };
 
 class	AObjectPhysic : public	IObjectPhysic
@@ -112,6 +125,8 @@ public:
   void		setType(TypeObject);
   TypeObject	getType() const;
   int		getId() const;
+  void		setId(int);
+  TypeObjectPrecis	getTypePrecis() const;
 protected:
   glm::vec3	_position;
   glm::vec3	_rotation;
@@ -126,10 +141,10 @@ protected:
   gdl::Model	*_skin;
   EventManager	*_event;
   ModelList	*_modelList;
-  int test;
   int		_id;
   TypeObject	_type;
   gdl::Clock	*_clock;
+  TypeObjectPrecis _typePrecis;
 };
 
 # endif

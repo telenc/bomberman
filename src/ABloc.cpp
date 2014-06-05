@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:16:26 2014 Remi telenczak
-// Last update Tue May 27 02:56:29 2014 Remi telenczak
+// Last update Tue Jun  3 16:11:24 2014 Steven Martreux
 //
 
 #include	"ABloc.hpp"

@@ -101,6 +101,7 @@ SRC		= src/main.cpp \
 		src/ABonus.cpp \
 		src/Bonus/PoBonus.cpp \
 		src/Bonus/BombBonus.cpp \
+		src/SaveGame.cpp
 
 OBJECTS       = $(SRC:.cpp=.o)
 
