@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Mon May 26 16:41:50 2014 dedicker remi
-// Last update Wed Jun  4 17:36:59 2014 dedicker remi
+// Last update Thu Jun  5 14:33:03 2014 thomas mendez
 //
 
 #include	<iostream>
@@ -22,6 +22,8 @@ SettingBox::SettingBox(Map *map, ModelList *model, EventManager *event, gdl::Clo
   this->set_y(0);
   this->set_x(0);
   this->_i = i;
+  this->_position.z = -1;
+  this->posSauv.z = -4.5;
   callRotOcu = new CallBack<SettingBox>(this, &SettingBox::eventRotOcu);
   event->listenEvent("rotOcu", callRotOcu);
   //  event->listenEvent("rotOcu", callRotOcu);
