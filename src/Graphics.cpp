@@ -159,6 +159,7 @@ void		Graphics::drawOneStereo(Map *map)
 void		Graphics::draw(Map *map)
 {
   _shader.bind();
+  usleep(2000);
   if (this->_camera->getStereo() == 2)
     drawDoubleStereo(map);
   else

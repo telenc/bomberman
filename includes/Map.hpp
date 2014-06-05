@@ -38,7 +38,7 @@ public:
   std::vector<APlayer *>getPlayers() const;
   void	setPlayer(Player *);
   void	setSkybox(Skybox *);
-
+  int	distanceObj(AObjectPhysic *);
   void	draw(gdl::BasicShader, gdl::Clock, CameraBomber *);
   std::vector<AObjectPhysic *> getObjectsPos(AObjectPhysic *);
   std::vector<APlayer *> getPlayers();

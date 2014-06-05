@@ -25,7 +25,7 @@ SettingsMenu::SettingsMenu(ModelList *mod, EventManager *event) : _mod(mod), _ev
 SettingsMenu::~SettingsMenu()
 {
   std::cout << "SettingsMenu Destroyed!" << std::endl;
-  delete _callKeyA;
+  //delete _callKeyA;
   delete _boxmenu;
 }
 

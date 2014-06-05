@@ -26,7 +26,7 @@ MainMenu::MainMenu(ModelList *mod, EventManager *event) : _mod(mod), _event(even
 MainMenu::~MainMenu()
 {
   std::cout << "MainMenu Destroyed!" << std::endl;
-  delete _callKeyA;
+  //delete _callKeyA;
   delete _boxmenu;
   delete _boxmenu2;
   delete _boxmenu3;

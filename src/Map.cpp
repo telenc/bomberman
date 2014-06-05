@@ -50,6 +50,11 @@ void	Map::update(gdl::Clock clock, gdl::Input input)
   this->_skybox->update(clock, input);
 }
 
+int	Map::distanceObj(AObjectPhysic *obj)
+{
+  return glm::distance2(obj->getPosition(), this->_player->getPosition());
+}
+
 std::vector<AObjectPhysic *>	Map::getObjectsPos(AObjectPhysic *obj)
 {
   std::list<AObjectPhysic *>::iterator itO;
@@ -75,7 +80,7 @@ void	Map::draw(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
   itO = this->_map.begin();
   while (itO != this->_map.end())
     {
-      if ((*itO) != NULL && (*itO)->isInView(camera))
+      if ((*itO) != NULL && (*itO)->isInView(camera) && this->distanceObj(*itO) < 400)
 	(*itO)->draw(shader, clock);
       itO++;
     }

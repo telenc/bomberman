@@ -40,12 +40,15 @@ bool	DefaultBomb::update(gdl::Clock const &clock, gdl::Input &input)
   time_t currTime;
 
   time(&currTime);
+  this->_time -= (clock.getElapsed() * 1000);
   if (this->_died == true)
     {
       this->_player->incNbrBomb();
       return false;
     }
-  if (difftime(currTime, this->_timeCreate) * 1000 >= this->_time)
+  std::cout << clock.getElapsed() << std::endl;
+  std::cout << this->_time << std::endl;
+  if (0 >= this->_time)
     {
       this->_died = true;
       this->createDeflag();
