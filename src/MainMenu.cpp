@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:00 2014 Remi telenczak
-// Last update Wed Jun  4 16:53:48 2014 dedicker remi
+// Last update Thu Jun  5 16:39:08 2014 dedicker remi
 //
 
 #include	<iostream>
@@ -34,8 +34,6 @@ MainMenu::~MainMenu()
 
 void	MainMenu::eventKeyA(void *data)
 {
-  std::cout << "A Press" << std::endl;
-  this->_A = 1;
   (void)data;
 }
 
@@ -54,8 +52,8 @@ int    MainMenu::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
   _boxmenu2->draw(shader,clock);
   _boxmenu3->draw(shader,clock);
   //_menu->draw(shader, clock);
-  if (this->_A == 1)
-    return this->_A;
+  //  if (this->_A == 1)
+  //return this->_A;
   return 0;
 }
 
