@@ -1,15 +1,15 @@
 //
-// Menu.hpp for Menu in /home/remi/cpp_bomberman
+// MainMenu.hpp for MainMenu in /home/remi/cpp_bomberman
 //
 // Made by Remi telenczak
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:19 2014 Remi telenczak
-// Last update Fri Jun  6 13:16:38 2014 thomas mendez
+// Last update Fri Jun  6 15:20:38 2014 thomas mendez
 //
 
-#ifndef		_MENU_BOMBERMAN
-# define	_MENU_BOMBERMAN
+#ifndef		_PLAY_MENU
+# define	_PLAY_MENU
 
 #include        "OVR.h"
 # include       "ModelList.hpp"
@@ -35,43 +35,29 @@
 #include        "EventManager.hpp"
 #include	"Skybox.hpp"
 #include	"MenuBox.hpp"
+#include	"PlayBox.hpp"
 #include	"MenuWall.hpp"
-# include	"MainMenu.hpp"
-# include	"SettingsMenu.hpp"
-# include	"PlayMenu.hpp"
-# include	"MenuNumber.hpp"
-# include	"CallBack.hpp"
+#include	"CallBack.hpp"
 
-class Menu
+class PlayMenu
 {
 public:
-  Menu(ModelList *mod, EventManager *event, gdl::Clock *);
-  ~Menu();
+  PlayMenu(ModelList *mod, EventManager *event);
+  ~PlayMenu();
   void	setSkybox(Skybox *skybox);
   void	setBox(gdl::Model *model);
-  void  draw(gdl::BasicShader &, gdl::Clock const &);
+  int  draw(gdl::BasicShader &, gdl::Clock const &);
   void	update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus);
-  void  faceSettingsMenu();
-  void  faceMainMenu();
-  void  facePlayMenu();
-  void  callFaceFunction();
   void	eventKeyA(void *data);
 private:
   gdl::Model *_box;
   ModelList *_mod;
   EventManager *_event;
-  MenuBox *_boxmenu;
-  MenuBox *_boxmenu2;
-  MenuBox *_boxmenu3;
+  PlayBox *_boxmenu;
   Skybox *_skin;
-  gdl::Clock *_clock;
-  MenuNumber	*_menuBox;
   glm::vec3 _rotationOculus;
-  MainMenu *_mainMenu;
-  SettingsMenu *_settingsMenu;
-  PlayMenu *_playMenu;
-  int	currentMenu;
   ICallBack *_callKeyA;
+  int	_A;
 };
 
 #endif
