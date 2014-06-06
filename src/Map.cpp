@@ -14,14 +14,17 @@
 #include "Map.hpp"
 #include "Player.hpp"
 #include "Skybox.hpp"
+#include	"EventManager.hpp"
 
-Map::Map(int width, int height) : _width(width), _height(height)
+Map::Map(int width, int height, EventManager *event) : _width(width), _height(height), _event(event), _pause(false)
 {
   if (width <= 20 || height <= 20)
     {
       std::cout << "Map trop pitite!" << std::endl;
       exit(0);
     }
+  callPause = new CallBack<Map>(this, &Map::eventCallPause);
+  event->listenEvent("pause", callPause);
 }
 
 Map::~Map()
@@ -33,6 +36,8 @@ void	Map::update(gdl::Clock clock, gdl::Input input)
 {
   std::list<AObjectPhysic *>::iterator itO;
 
+  if (this->_pause == true)
+    return;
   itO = this->_map.begin();
   while (itO != this->_map.end())
     {
@@ -48,6 +53,21 @@ void	Map::update(gdl::Clock clock, gdl::Input input)
     }
   this->_player->update(clock, input);
   this->_skybox->update(clock, input);
+}
+
+void	Map::eventCallPause(void *data)
+{
+  if (this->_pause == true)
+    {
+      std::cout << "false" << std::endl;
+      this->_pause = false;
+    }
+  else
+    {
+    this->_pause = true;
+    std::cout << "true" << std::endl;
+    }
+  (void)data;
 }
 
 int	Map::distanceObj(AObjectPhysic *obj)

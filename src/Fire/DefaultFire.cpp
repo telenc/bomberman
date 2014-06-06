@@ -49,7 +49,8 @@ bool	DefaultFire::update(gdl::Clock const &clock, gdl::Input &input)
     }
 
   (void)bomb;
-  if (difftime(currTime, this->_timeCreate) * 1000 >= this->_time)
+  this->_time -= (clock.getElapsed() * 1000);
+  if (0 >= this->_time)
     {
       //this->_map->deleteObject(this);
       return false;
