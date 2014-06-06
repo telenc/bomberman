@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Mon May 12 13:48:39 2014 Steven Martreux
-// Last update Fri May 30 15:17:51 2014 Steven Martreux
+// Last update Thu Jun  5 15:53:39 2014 Steven Martreux
 //
 
 #include	<tinyxml.h>
@@ -50,6 +50,7 @@ AObjectPhysic	*LoadGame::CreateDefaultWall(TiXmlElement *line)
   DefaultWall	*wall;
 
   wall = new DefaultWall(_mapGame, _model, _event, _clock);
+  wall->setId(atoi(line->Attribute("id")));
   wall->set_x(atof(line->Attribute("x")));
   wall->set_y(atof(line->Attribute("y")));
   wall->set_z(atof(line->Attribute("z")));
@@ -61,10 +62,11 @@ AObjectPhysic	*LoadGame::CreateDestrucWall(TiXmlElement *line)
   DestrucWall	*wall;
 
   wall = new DestrucWall(_mapGame, _model, _event, _clock);
+  wall->setId(atoi(line->Attribute("id")));
   wall->set_x(atof(line->Attribute("x")));
   wall->set_y(atof(line->Attribute("y")));
   wall->set_z(atof(line->Attribute("z")));
-  //wall->setLife(atoi(line->Attribute("life")));
+  wall->setLife(atoi(line->Attribute("life")));
   return (AObjectPhysic *)wall;
 }
 

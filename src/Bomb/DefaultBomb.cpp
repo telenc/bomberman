@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 21 01:36:36 2014 Remi telenczak
-// Last update Fri May 30 08:24:24 2014 Remi telenczak
+// Last update Tue Jun  3 16:11:20 2014 Steven Martreux
 //
 
 #include	"DefaultBomb.hpp"
@@ -21,6 +21,7 @@ DefaultBomb::DefaultBomb(Map *map, ModelList *model, EventManager *event, APlaye
   this->rotate(glm::vec3(0, 0, 1), -25);
   this->_time = 4000;
   this->_po = 10;
+  this->_typePrecis = DEFAULTBOMB;
 }
 
 bool	DefaultBomb::update(gdl::Clock const &clock, gdl::Input &input)

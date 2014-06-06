@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
-// Last update Mon Jun  2 05:08:34 2014 Remi telenczak
+// Last update Thu Jun  5 18:13:39 2014 Steven Martreux
 //
 
 #include <iostream>
@@ -20,7 +20,7 @@
 #include	"Sound.hpp"
 #include	"Loader.hpp"
 #include	"LoadGame.hpp"
-
+#include	"SaveGame.hpp"
 
 int	main(int ac, char **av)
 {
@@ -53,6 +53,9 @@ int	main(int ac, char **av)
 	    {
 	      engine->draw(m);
 	    }
+	  SaveGame *test;
+	  test = new SaveGame(m, "test.xml");
+	  (void)test;
 	}
       else
 	{

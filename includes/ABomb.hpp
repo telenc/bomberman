@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Wed May  7 16:03:12 2014 Steven Martreux
-// Last update Fri May 30 04:42:51 2014 Remi telenczak
+// Last update Thu Jun  5 18:12:56 2014 Steven Martreux
 //
 
 #ifndef		_ABOMB_HPP_
@@ -41,6 +41,7 @@ public:
   void setTime(int time);
   int getTime(void) const;
   bool	getPlayerColl() const;
+  bool	getDied() const;
 };
 
 #endif		/* _ABOMB_HPP_ */

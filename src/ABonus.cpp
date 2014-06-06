@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Wed May  7 16:00:11 2014 Steven Martreux
-// Last update Fri May 30 08:29:36 2014 Remi telenczak
+// Last update Thu Jun  5 18:06:51 2014 Steven Martreux
 //
 
 #include	"ABonus.hpp"
@@ -22,6 +22,11 @@ ABonus::ABonus(Map *map, ModelList *model, EventManager *event, gdl::Clock *cloc
 void	ABonus::fireTouch()
 {
   this->_died = true;
+}
+
+bool	ABonus::getDied() const
+{
+  return _died;
 }
 
 ABonus::~ABonus()

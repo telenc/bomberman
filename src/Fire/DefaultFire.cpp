@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Fri May 23 04:00:03 2014 Remi telenczak
-// Last update Sun Jun  1 23:54:32 2014 Remi telenczak
+// Last update Thu Jun  5 15:53:41 2014 Steven Martreux
 //
 
 #include	"DefaultFire.hpp"
@@ -23,7 +23,8 @@ DefaultFire::DefaultFire(Map *map, ModelList *model, EventManager *event, std::v
   //this->_skin->createSubAnim(2, "end", 22, 31);
   this->_skin->setCurrentSubAnim("while", false);
   this->i = 0;
- }
+  this->_typePrecis = FIREPRECIS;
+}
 
 DefaultFire::~DefaultFire()
 {
@@ -32,9 +33,9 @@ DefaultFire::~DefaultFire()
 
 bool	DefaultFire::update(gdl::Clock const &clock, gdl::Input &input)
 {
-    time_t currTime;
-    ABomb *bomb;
-    ABonus *bonus;
+  time_t currTime;
+  ABomb *bomb;
+  ABonus *bonus;
 
   time(&currTime);
   this->checkPlayerColl();

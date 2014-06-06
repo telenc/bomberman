@@ -5,16 +5,16 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:28:07 2014 Remi telenczak
-// Last update Mon Jun  2 05:02:27 2014 Remi telenczak
+// Last update Thu Jun  5 18:15:15 2014 Steven Martreux
 //
 
 #ifndef		_DESTRUCALL
-# define	_DESTRUCALLo
+# define	_DESTRUCALL
 
 # include	"ABloc.hpp"
 # include	"AObjectLife.hpp"
 
-class DestrucWall : public ABloc, AObjectLife
+class DestrucWall : public ABloc, public AObjectLife
 {
 public:
   DestrucWall(Map *, ModelList *, EventManager *, gdl::Clock *);

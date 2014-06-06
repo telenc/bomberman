@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:26:53 2014 Remi telenczak
-// Last update Mon Jun  2 05:05:17 2014 Remi telenczak
+// Last update Thu Jun  5 18:19:22 2014 Steven Martreux
 //
 
 #include	"DestrucWall.hpp"
@@ -23,6 +23,7 @@ DestrucWall::DestrucWall(Map *map, ModelList *model, EventManager *event, gdl::C
   this->currentModel = "cubeDest3";
   this->_height = 3;
   this->_width = 3;
+  this->_typePrecis = DESTRUCTWALL;
 }
 
 bool DestrucWall::update(gdl::Clock const &clock, gdl::Input &input)

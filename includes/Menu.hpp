@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:19 2014 Remi telenczak
-// Last update Thu Jun  5 15:23:28 2014 thomas mendez
+// Last update Thu Jun  5 16:36:24 2014 dedicker remi
 //
 
 #ifndef		_MENU_BOMBERMAN
@@ -39,6 +39,7 @@
 # include	"MainMenu.hpp"
 # include	"SettingsMenu.hpp"
 # include	"MenuNumber.hpp"
+# include	"CallBack.hpp"
 
 class Menu
 {
@@ -52,7 +53,7 @@ public:
   void  faceSettingsMenu();
   void  faceMainMenu();
   void  callFaceFunction();
-
+  void	eventKeyA(void *data);
 private:
   gdl::Model *_box;
   ModelList *_mod;
@@ -67,7 +68,7 @@ private:
   MainMenu *_mainMenu;
   SettingsMenu *_settingsMenu;
   int	currentMenu;
-  // MenuWall *_menuwall;
+  ICallBack *_callKeyA;
 };
 
 #endif

@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 16:17:56 2014 Mathieu Choquart
-// Last update Sun Jun  1 23:55:12 2014 Remi telenczak
+// Last update Thu Jun  5 15:53:56 2014 Steven Martreux
 //
 
 #include	"AObjectPhysic.hpp"
@@ -16,13 +16,12 @@
 #include		"ABomb.hpp"
 #include		"APlayer.hpp"
 
-AObjectPhysic::AObjectPhysic(Map *map, ModelList *modelList, EventManager *eventManager, gdl::Clock *clock): _position(0, 0, 0), _rotation(0, 0, 0),_scale(1, 1, 1), _width(2), _height(2), _depth(2), _type(NONE), _clock(clock)
+AObjectPhysic::AObjectPhysic(Map *map, ModelList *modelList, EventManager *eventManager, gdl::Clock *clock): _position(0, 0, 0), _rotation(0, 0, 0),_scale(1, 1, 1), _width(2), _height(2), _depth(2), _type(NONE), _clock(clock), _typePrecis(NONEPRECIS)
 {
   static int idCur = 0;
   this->_map = map;
   this->_event = eventManager;
   this->_modelList = modelList;
-  test = 0;
   this->_id = idCur;
   idCur++;
 }
@@ -35,6 +34,11 @@ AObjectPhysic::~AObjectPhysic()
 int		AObjectPhysic::getId() const
 {
   return this->_id;
+}
+
+void		AObjectPhysic::setId(int id)
+{
+  this->_id = id;
 }
 
 bool	AObjectPhysic::initialize()
@@ -100,14 +104,10 @@ glm::mat4	AObjectPhysic::getTransformation()
   glm::mat4 transform;
 
   transform = glm::translate(transform, _position);
-
   transform = glm::scale(transform, _scale);
-
   transform = glm::rotate(transform, _rotation.x, glm::vec3(1, 0, 0));
   transform = glm::rotate(transform, -1 * _rotation.y, glm::vec3(0, 1, 0));
   transform = glm::rotate(transform, _rotation.z, glm::vec3(0, 0, 1));
-
-
   return (transform);
 }
 
@@ -293,6 +293,11 @@ glm::vec3	AObjectPhysic::getCornerHeight()
   return result;
 }
 
+TypeObjectPrecis	AObjectPhysic::getTypePrecis() const
+{
+  return this->_typePrecis;
+}
+
 AObjectPhysic	*AObjectPhysic::checkPositionCollision(TypeObject type)
 {
   std::vector<AObjectPhysic *>	objects;
@@ -313,9 +318,6 @@ AObjectPhysic	*AObjectPhysic::checkPositionCollision(TypeObject type)
     }
   return NULL;
 }
-
-
-
 
 void AObjectPhysic::scale(glm::vec3 const& scale)
 {

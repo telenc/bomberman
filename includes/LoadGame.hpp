@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 // 
 // Started on  Mon May 12 13:51:56 2014 Steven Martreux
-// Last update Fri May 30 15:12:58 2014 Steven Martreux
+// Last update Wed Jun  4 17:41:42 2014 Steven Martreux
 //
 
 #ifndef		_LOAD_GAME_HPP
@@ -14,10 +14,11 @@
 #include	<tinyxml.h>
 #include	<string>
 #include	<iostream>
-#include	"Map.hpp"
 #include	<map>
+
 #include	"DefaultWall.hpp"
 #include	"DestrucWall.hpp"
+#include	"Map.hpp"
 
 class		LoadGame
 {

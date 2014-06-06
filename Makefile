@@ -103,6 +103,7 @@ SRC		= src/main.cpp \
 		src/ABonus.cpp \
 		src/Bonus/PoBonus.cpp \
 		src/Bonus/BombBonus.cpp \
+		src/SaveGame.cpp	\
 		src/MenuNumber.cpp \
 		src/MainMenu.cpp \
 		src/SettingsMenu.cpp \

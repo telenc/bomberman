@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Wed May 28 04:25:45 2014 Remi telenczak
+// Last update Thu Jun  5 18:14:49 2014 Steven Martreux
 //
 
 #ifndef MAP_HPP_
@@ -44,7 +44,11 @@ public:
   std::vector<AObjectPhysic *> getObjectsPos(AObjectPhysic *);
   std::vector<APlayer *> getPlayers();
   Player *getPlayer() const;
+<<<<<<< HEAD
   void	eventCallPause(void *);
+=======
+  std::list<AObjectPhysic * > getObject() const;
+>>>>>>> 3f92e05efded6eb695a792b51bb5e37700c47c15
 private:
   std::list<AObjectPhysic * > _map;
   std::vector <APlayer *> _ia;

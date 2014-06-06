@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Wed May  7 16:00:11 2014 Steven Martreux
-// Last update Fri May 30 05:35:50 2014 Remi telenczak
+// Last update Thu Jun  5 18:12:57 2014 Steven Martreux
 //
 
 #include	"ABomb.hpp"
@@ -16,6 +16,11 @@ ABomb::ABomb(Map *map, ModelList *model, EventManager *event, APlayer *player, g
   this->_playerColl = false;
   this->_direction = 1;
   time(&this->_timeCreate);
+}
+
+bool	ABomb::getDied() const
+{
+  return _died;
 }
 
 bool	ABomb::getPlayerColl() const

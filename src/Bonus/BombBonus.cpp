@@ -5,18 +5,20 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Fri May 30 04:40:51 2014 Remi telenczak
-// Last update Fri May 30 08:28:38 2014 Remi telenczak
+// Last update Tue Jun  3 16:11:22 2014 Steven Martreux
 //
 
 #include	"BombBonus.hpp"
 #include	"ModelList.hpp"
 #include	"Map.hpp"
 #include	"APlayer.hpp"
+
 BombBonus::BombBonus(Map *map, ModelList *model, EventManager *event, gdl::Clock *clock) : ABonus(map, model, event, clock)
 {
   this->_skin = model->getModel("bombBonus");
   this->_skin->setCurrentAnim(0, false);
   this->scale(glm::vec3(0.04, 0.04, 0.04));
+  this->_typePrecis = BOMBBONUS;
 }
 
 bool	BombBonus::update(gdl::Clock const &clock, gdl::Input &input)
