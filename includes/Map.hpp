@@ -44,11 +44,8 @@ public:
   std::vector<AObjectPhysic *> getObjectsPos(AObjectPhysic *);
   std::vector<APlayer *> getPlayers();
   Player *getPlayer() const;
-<<<<<<< HEAD
   void	eventCallPause(void *);
-=======
   std::list<AObjectPhysic * > getObject() const;
->>>>>>> 3f92e05efded6eb695a792b51bb5e37700c47c15
 private:
   std::list<AObjectPhysic * > _map;
   std::vector <APlayer *> _ia;
