@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 // 
 // Started on  Fri May 30 16:39:48 2014 Steven Martreux
-// Last update Thu Jun  5 18:29:35 2014 Steven Martreux
+// Last update Sat Jun  7 18:38:29 2014 Steven Martreux
 //
 
 #include	"SaveGame.hpp"
@@ -17,12 +17,12 @@ SaveGame::SaveGame(Map *map, const std::string & filename) : _map(map), _fileNam
   _mapObject.insert(std::pair<TypeObjectPrecis, void(SaveGame::*)(AObjectPhysic *)>(DEFAULTWALL, &SaveGame::SaveDefaultWall));
   _mapObject.insert(std::pair<TypeObjectPrecis, void(SaveGame::*)(AObjectPhysic *)>(DESTRUCTWALL, &SaveGame::SaveDestructWall));
   _mapObject.insert(std::pair<TypeObjectPrecis, void(SaveGame::*)(AObjectPhysic *)>(DEFAULTBOMB, &SaveGame::SaveDefaultBomb));
-  _mapObject.insert(std::pair<TypeObjectPrecis, void(SaveGame::*)(AObjectPhysic *)>(PLAYERPRECIS, &SaveGame::SavePlayer));
   _mapObject.insert(std::pair<TypeObjectPrecis, void(SaveGame::*)(AObjectPhysic *)>(BOMBBONUS, &SaveGame::SaveBonusBomb));
   _mapObject.insert(std::pair<TypeObjectPrecis, void(SaveGame::*)(AObjectPhysic *)>(POBONUS, &SaveGame::SaveBonusPo));
   _bomberman = new TiXmlElement("Bomberman");
   _file.LinkEndChild(_bomberman);
   this->SaveMapSize();
+  this->SavePlayer();
   this->setObjMap();
   _file.SaveFile(_fileName.c_str());
 }
@@ -76,12 +76,12 @@ void		SaveGame::SaveDefaultBomb(AObjectPhysic *Aobj)
   _bomberman->LinkEndChild(_obj);
 }
 
-void		SaveGame::SavePlayer(AObjectPhysic *Aobj)
+void		SaveGame::SavePlayer()
 {
   Player	*obj;
 
-  obj = (Player *)Aobj;
-  _obj = new TiXmlElement("Map");
+  obj = _map->getPlayer();
+  _obj = new TiXmlElement("Player");
   _obj->SetAttribute("object", "player");
   _obj->SetAttribute("id", ConstCharByInt(obj->getId()).c_str());
   _obj->SetAttribute("x", ConstCharByFloat(obj->get_x()).c_str());

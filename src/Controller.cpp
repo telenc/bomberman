@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Wed May 21 12:42:20 2014 Steven Martreux
-// Last update Fri May 23 02:29:11 2014 Remi telenczak
+// Last update Sat Jun  7 18:50:32 2014 Steven Martreux
 //
 
 #include	"Controller.hpp"
@@ -95,11 +95,6 @@ void	Controller::sendEvent()
     _eventManager->dispatchEvent("keyDown", NULL);
   else if (_up == 1)
     _eventManager->dispatchEvent("keyUp", NULL);
-  /*if (_rotateLeft == 1)
-    _eventManager->dispatchEvent("rotateLeft", NULL);
-  else if (_rotateRight == 1)
-    _eventManager->dispatchEvent("rotateRight", NULL);
-  */
   if (_bomb == 1)
     _eventManager->dispatchEvent("keyA", NULL);
 }

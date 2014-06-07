@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:11:40 2014 dedicker remi
-// Last update Thu Jun  5 18:17:52 2014 Steven Martreux
+// Last update Fri Jun  6 17:13:49 2014 Steven Martreux
 //
 
 #include	"APlayer.hpp"
@@ -73,6 +73,21 @@ int	APlayer::getNbrMaxBomb() const
 int	APlayer::getNbrBomb() const
 {
   return _nbrBomb;
+}
+
+void	APlayer::setPo(int po)
+{
+  this->_po = po;
+}
+
+void	APlayer::setNbrBomb(int bomb)
+{
+  this->_nbrBomb = bomb;
+}
+
+void	APlayer::setNbrMaxBomb(int bomb)
+{
+  this->_nbrBombMax = bomb;
 }
 
 APlayer::~APlayer()

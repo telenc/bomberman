@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 // 
 // Started on  Wed May 21 12:52:03 2014 Steven Martreux
-// Last update Thu May 22 15:32:12 2014 Steven Martreux
+// Last update Sat Jun  7 18:50:20 2014 Steven Martreux
 //
 
 #ifndef		_CONTROLLER_HPP_

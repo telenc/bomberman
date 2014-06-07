@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:12:08 2014 dedicker remi
-// Last update Thu Jun  5 17:49:59 2014 Steven Martreux
+// Last update Fri Jun  6 17:13:47 2014 Steven Martreux
 //
 
 #ifndef _APLAYER_HPP_
@@ -34,6 +34,9 @@ public:
   int	getPo(void) const;
   int	getNbrBomb(void) const;
   int	getNbrMaxBomb(void) const;
+  void	setPo(int);
+  void	setNbrBomb(int);
+  void	setNbrMaxBomb(int);
   virtual bool update(gdl::Clock const &clock, gdl::Input &input) = 0;
 protected:
   Inventory *_inventory;
