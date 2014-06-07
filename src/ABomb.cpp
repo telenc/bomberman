@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Wed May  7 16:00:11 2014 Steven Martreux
-// Last update Thu Jun  5 18:12:57 2014 Steven Martreux
+// Last update Sat Jun  7 18:43:33 2014 Steven Martreux
 //
 
 #include	"ABomb.hpp"
@@ -23,9 +23,19 @@ bool	ABomb::getDied() const
   return _died;
 }
 
+void	ABomb::setDied(bool died)
+{
+  _died = died;
+}
+
 bool	ABomb::getPlayerColl() const
 {
   return this->_playerColl;
+}
+
+void	ABomb::setPlayerColl(bool player)
+{
+  _playerColl = player;
 }
 
 APlayer		*ABomb::getPlayer() const

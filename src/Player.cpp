@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:27:38 2014 dedicker remi
-// Last update Thu Jun  5 18:16:47 2014 Steven Martreux
+// Last update Fri Jun  6 17:13:50 2014 Steven Martreux
 //
 
 #include "Player.hpp"
@@ -21,7 +21,6 @@ Player::Player(int x, int y, int z, Map *map, ModelList *model, EventManager *ev
       std::cout << "Event null" << std::endl;
       exit(0);
     }
-
   callKeyUp = new CallBack<Player>(this, &Player::eventKeyUp);
   event->listenEvent("keyUp", callKeyUp);
   callKeyLeft = new CallBack<Player>(this, &Player::eventKeyLeft);
@@ -30,10 +29,8 @@ Player::Player(int x, int y, int z, Map *map, ModelList *model, EventManager *ev
   event->listenEvent("keyRight", callKeyRight);
   callKeyDown = new CallBack<Player>(this, &Player::eventKeyDown);
   event->listenEvent("keyDown", callKeyDown);
-
   callRotate = new CallBack<Player>(this, &Player::eventRotate);
   event->listenEvent("occulusRotate", callRotate);
-
   callKeyA = new CallBack<Player>(this, &Player::eventKeyA);
   event->listenEvent("keyA", callKeyA);
   this->none = true;

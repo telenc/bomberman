@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Mon May 12 13:48:39 2014 Steven Martreux
-// Last update Thu Jun  5 15:53:39 2014 Steven Martreux
+// Last update Sat Jun  7 18:42:37 2014 Steven Martreux
 //
 
 #include	<tinyxml.h>
@@ -25,7 +25,10 @@ LoadGame::LoadGame(const std::string & file, EventManager *event, ModelList *mod
   _mapObject.insert(std::pair<std::string, AObjectPhysic*(LoadGame::*)(TiXmlElement *)>("defaultwall", &LoadGame::CreateDefaultWall));
   _mapObject.insert(std::pair<std::string, AObjectPhysic*(LoadGame::*)(TiXmlElement *)>("destrucwall", &LoadGame::CreateDestrucWall));
   _mapObject.insert(std::pair<std::string, AObjectPhysic*(LoadGame::*)(TiXmlElement *)>("defaultbomb", &LoadGame::CreateDefaultBomb));
+  _mapObject.insert(std::pair<std::string, AObjectPhysic*(LoadGame::*)(TiXmlElement *)>("bonuspo", &LoadGame::CreateBonusPo));
+  _mapObject.insert(std::pair<std::string, AObjectPhysic*(LoadGame::*)(TiXmlElement *)>("bonusbomb", &LoadGame::CreateBonusBomb));
   this->getMapSize();
+  this->getPlayer();
   this->getObjMap();
 }
 
@@ -39,10 +42,69 @@ bool	LoadGame::getLoad() const
   return _loadOkay;
 }
 
+AObjectPhysic	*LoadGame::CreateBonusPo(TiXmlElement *line)
+{
+  PoBonus	*obj;
+
+  obj = new PoBonus(_mapGame, _model, _event, _clock);
+  obj->setId(atoi(line->Attribute("id")));
+  obj->set_x(atof(line->Attribute("x")));
+  obj->set_y(atof(line->Attribute("y")));
+  obj->set_z(atof(line->Attribute("z")));
+  obj->setDied(atoi(line->Attribute("died")));
+  return (AObjectPhysic *)obj;
+}
+
+AObjectPhysic	*LoadGame::CreateBonusBomb(TiXmlElement *line)
+{
+  BombBonus	*obj;
+
+  obj = new BombBonus(_mapGame, _model, _event, _clock);
+  obj->setId(atoi(line->Attribute("id")));
+  obj->set_x(atof(line->Attribute("x")));
+  obj->set_y(atof(line->Attribute("y")));
+  obj->set_z(atof(line->Attribute("z")));
+  obj->setDied(atoi(line->Attribute("died")));
+  return (AObjectPhysic *)obj;
+}
+
+APlayer		*LoadGame::GetPlayerBomb(int id_player)
+{
+  std::vector<APlayer *> play;
+  std::vector<APlayer *>::iterator it;
+
+  play = _mapGame->getPlayers();
+  it = play.begin();
+  while (it != play.end())
+    {
+      if ((*it)->getId() == id_player)
+	return (*it);
+      it++;
+    }
+  //THROW
+  std::cout << "NOT FIND id_player" << std::endl;
+  return NULL;
+}
+
 AObjectPhysic	*LoadGame::CreateDefaultBomb(TiXmlElement *line)
 {
-  (void)line;
-  return NULL;
+  DefaultBomb	*bomb;
+  int		id_player;
+  APlayer      	*player;
+
+  id_player = atoi(line->Attribute("id_player"));
+  player = this->GetPlayerBomb(id_player);
+  bomb = new DefaultBomb(_mapGame, _model, _event, player, _clock);
+  bomb->setId(atoi(line->Attribute("id")));
+  bomb->set_x(atof(line->Attribute("x")));
+  bomb->set_y(atof(line->Attribute("y")));
+  bomb->set_z(atof(line->Attribute("z")));
+  bomb->setPo(atoi(line->Attribute("po")));
+  bomb->setDamage(atoi(line->Attribute("damage")));
+  bomb->setTime(atoi(line->Attribute("time")));
+  bomb->setPlayerColl(atoi(line->Attribute("playercoll")));
+  bomb->setDied(atoi(line->Attribute("died")));
+  return (AObjectPhysic *)bomb;
 }
 
 AObjectPhysic	*LoadGame::CreateDefaultWall(TiXmlElement *line)
@@ -104,6 +166,34 @@ void	LoadGame::getMapSize()
   else
     std::cerr << "Balise Map_Size not find" << std::endl;
   //TRHOW
+}
+
+void	 LoadGame::getPlayer()
+{
+  Player	*player;
+  int		x;
+  int		y;
+  int		z;
+
+  _player = _bomberman->FirstChildElement("Player");
+  if (_player)
+    {
+      x = atoi(_player->Attribute("x"));
+      y = atoi(_player->Attribute("y"));
+      z = atoi(_player->Attribute("z"));
+      player = new Player(x, y , z, _mapGame, _model, _event, _clock);
+      player->setId(atoi(_player->Attribute("id")));
+      player->setPo(atoi(_player->Attribute("po")));
+      player->setLife(atoi(_player->Attribute("life")));
+      player->set_rotx(atoi(_player->Attribute("rot_x")));
+      player->set_roty(atoi(_player->Attribute("rot_y")));
+      player->set_rotz(atoi(_player->Attribute("rot_z")));
+      player->setNbrBomb(atoi(_player->Attribute("nbrMaxBomb")));
+      player->setNbrMaxBomb(atoi(_player->Attribute("nbrCurrentBomb")));
+      _mapGame->setMap((AObjectPhysic *)player);
+    }
+  else
+    std::cerr << "Balise Player not found" << std::endl;
 }
 
 LoadGame::~LoadGame()

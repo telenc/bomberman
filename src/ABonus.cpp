@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Wed May  7 16:00:11 2014 Steven Martreux
-// Last update Thu Jun  5 18:06:51 2014 Steven Martreux
+// Last update Fri Jun  6 17:13:51 2014 Steven Martreux
 //
 
 #include	"ABonus.hpp"
@@ -27,6 +27,11 @@ void	ABonus::fireTouch()
 bool	ABonus::getDied() const
 {
   return _died;
+}
+
+void	ABonus::setDied(int died)
+{
+  this->_died = died;
 }
 
 ABonus::~ABonus()
