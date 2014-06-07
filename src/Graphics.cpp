@@ -92,6 +92,8 @@ void		Graphics::inputUpdate()
 {
   if (_input.getKey(SDLK_UP))
     this->_event->dispatchEvent("keyUp", NULL);
+  if (_input.getKey(SDLK_w))
+    this->_event->dispatchEvent("pause", NULL);
   if (_input.getKey(SDLK_DOWN))
     this->_event->dispatchEvent("keyDown", NULL);
   if (_input.getKey(SDLK_LEFT))

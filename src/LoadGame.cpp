@@ -161,7 +161,7 @@ void	LoadGame::getMapSize()
       //TRHOW
       width = atoi(_map_size->Attribute("width"));
       height = atoi(_map_size->Attribute("height"));
-      this->_mapGame = new Map(width, height);
+      this->_mapGame = new Map(width, height, _event);
     }
   else
     std::cerr << "Balise Map_Size not find" << std::endl;

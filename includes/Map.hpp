@@ -25,10 +25,11 @@ class APlayer;
 class Player;
 class AObjectPhysic;
 class Skybox;
+class EventManager;
 class Map
 {
 public:
-  Map(int x, int y);
+  Map(int x, int y, EventManager *);
   ~Map();
   void	update(gdl::Clock, gdl::Input);
   void setMap(AObjectPhysic *bloc);
@@ -43,6 +44,7 @@ public:
   std::vector<AObjectPhysic *> getObjectsPos(AObjectPhysic *);
   std::vector<APlayer *> getPlayers();
   Player *getPlayer() const;
+  void	eventCallPause(void *);
   std::list<AObjectPhysic * > getObject() const;
 private:
   std::list<AObjectPhysic * > _map;
@@ -51,7 +53,10 @@ private:
   std::vector<AObjectPhysic *> _objectToPush;
   int		_width;
   int		_height;
+  EventManager	*_event;
   Player *_player;
+  ICallBack	*callPause;
+  bool		_pause;
   Skybox	*_skybox;
 };
 

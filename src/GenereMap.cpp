@@ -124,7 +124,7 @@ GenereMap::GenereMap(int width, int height, int ia, EventManager *event, ModelLi
 {
 
   _pos = 0;
-  _map = new Map(width, height);
+  _map = new Map(width, height, event);
   //  std::cout << "Nombre possible d'IA : " << ((width * height) / 5) << std::endl;
   putWall();
   putPlayer();
