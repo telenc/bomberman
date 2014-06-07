@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:00 2014 Remi telenczak
-// Last update Fri Jun  6 16:35:58 2014 thomas mendez
+// Last update Sat Jun  7 18:52:34 2014 Steven Martreux
 //
 
 #include	<iostream>
@@ -79,8 +79,8 @@ void	Menu::facePlayMenu()
     {
       if (_rotationOculus.y >= -45 && _rotationOculus.y <= 45)
 	std::cout << "|-- Image de presentation --|" << std::endl;
-      else if (_rotatiodescendenOculus.y >= 45 && _rotationOculus.y <= 135)
-	std::cout << "|-- Image de Play --|" << std::endl;
+      //else if (_rotatiodescendenOculus.y >= 45 && _rotationOculus.y <= 135)
+      //	std::cout << "|-- Image de Play --|" << std::endl;
       else if (_rotationOculus.y <= -45 && _rotationOculus.y >= -135)
 	std::cout << "|-- Image de setting --|" << std::endl;
       else if (_rotationOculus.y >= 135 || _rotationOculus.y <= -135)
