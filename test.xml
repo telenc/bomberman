@@ -22,6 +22,7 @@
     <Map object="defaultwall" id="23" x="0" y="0" z="57" />
     <Map object="defaultwall" id="24" x="0" y="0" z="60" />
     <Map object="defaultwall" id="25" x="3" y="0" z="0" />
+    <Map object="destrucwall" id="26" x="3" y="0" z="9" life="3" />
     <Map object="destrucwall" id="27" x="3" y="0" z="12" life="3" />
     <Map object="destrucwall" id="28" x="3" y="0" z="15" life="3" />
     <Map object="destrucwall" id="29" x="3" y="0" z="18" life="3" />
@@ -57,6 +58,7 @@
     <Map object="defaultwall" id="59" x="6" y="0" z="54" />
     <Map object="defaultwall" id="60" x="6" y="0" z="60" />
     <Map object="defaultwall" id="61" x="9" y="0" z="0" />
+    <Map object="destrucwall" id="62" x="9" y="0" z="3" life="3" />
     <Map object="destrucwall" id="63" x="9" y="0" z="6" life="3" />
     <Map object="destrucwall" id="64" x="9" y="0" z="9" life="3" />
     <Map object="destrucwall" id="65" x="9" y="0" z="12" life="3" />
@@ -445,5 +447,4 @@
     <Map object="defaultwall" id="448" x="60" y="0" z="54" />
     <Map object="defaultwall" id="449" x="60" y="0" z="57" />
     <Map object="defaultwall" id="450" x="60" y="0" z="60" />
-    <Map object="bonuspo" id="496" x="9" y="0" z="3" died="0" />
 </Bomberman>
