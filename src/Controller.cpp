@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Wed May 21 12:42:20 2014 Steven Martreux
-// Last update Mon Jun  9 16:25:34 2014 Steven Martreux
+// Last update Mon Jun  9 17:16:37 2014 Steven Martreux
 //
 
 #include	"Controller.hpp"
@@ -96,26 +96,23 @@ void	Controller::sendEvent()
   if (_down == 1)
     _eventManager->dispatchEvent("keyDown", NULL);
   else if (_up == 1)
-    {
-      std::cout << "KEY UP" << std::endl;
-      _eventManager->dispatchEvent("keyUp", NULL);
-    }
+    _eventManager->dispatchEvent("keyUp", NULL);
   if (_bomb == 1)
     _eventManager->dispatchEvent("keyA", NULL);
   else if (_back == 1)
     _eventManager->dispatchEvent("keyB", NULL);
   if (_upMenu == 2)
     {
-      std::cout << "OUI" << std::endl;
       _eventManager->dispatchEvent("keyUpMenu", NULL);
       _upMenu = 0;
     }
   else if (_downMenu == 2)
     {
-      std::cout << "NON" << std::endl;
       _downMenu = 0;
       _eventManager->dispatchEvent("keyDownMenu", NULL);
     }
+  if (_start == 1)
+    _eventManager->dispatchEvent("pause", NULL);
 }
 
 void	Controller::update()
@@ -129,6 +126,7 @@ void	Controller::update()
   _rotateLeft = 0;
   _rotateRight = 0;
   _back = 0;
+  _start = 0;
   if (SDL_JoystickGetAxis(_joystick, 0) < -4000 || SDL_JoystickGetAxis(_joystick, 0) > 4000)
     CheckAxeLeftRight();
   else if (SDL_JoystickGetAxis(_joystick, 1) < -4000 || SDL_JoystickGetAxis(_joystick, 1) > 4000)
@@ -147,5 +145,7 @@ void	Controller::update()
     _upMenu = 2;
   else if (SDL_JoystickGetHat(_joystick, 0) != SDL_HAT_DOWN && _downMenu == 1)
     _downMenu = 2;
+  if (SDL_JoystickGetButton(_joystick, 7) == 1)
+    _start = 1;
   sendEvent();
 }
