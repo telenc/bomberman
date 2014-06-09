@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 14 07:57:29 2014 Remi telenczak
-// Last update Wed May 28 04:25:33 2014 Remi telenczak
+// Last update Fri Jun  6 11:35:08 2014 Remi telenczak
 //
 
 #ifndef		_CAMERA_BOMBER
@@ -24,6 +24,7 @@ public:
   glm::mat4	      getTransformationRight();
   glm::mat4 getPerspective();
   void	translate(double x, double y, double z);
+  void	eventCallPause(void *);
   void changeStereo(int );
   void changeStereoo(int );
   void changeStereooo(int );
@@ -42,9 +43,12 @@ public:
 private:
   EventManager *_event;
   int stereo;
+  ICallBack	*callPause;
+  bool _pause;
   gdl::BasicShader	*_shader;
   Occulus		*_occulus;
   glm::vec3		position;
+  glm::vec3		positionPause;
   glm::vec3		rotation;
   ICallBack	*callPlayerMove;
   ICallBack	*callTypeDeplacement;

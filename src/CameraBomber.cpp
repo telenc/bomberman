@@ -5,13 +5,13 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 14 07:57:08 2014 Remi telenczak
-// Last update Wed May 28 06:04:36 2014 Remi telenczak
+// Last update Fri Jun  6 11:53:14 2014 Remi telenczak
 //
 
 #include	"CameraBomber.hpp"
 #include	"Player.hpp"
 
-CameraBomber::CameraBomber(gdl::BasicShader *shader, EventManager *event) : _event(event), _shader(shader)
+CameraBomber::CameraBomber(gdl::BasicShader *shader, EventManager *event) : _event(event), _pause(false), _shader(shader)
 {
   glm::mat4 projection;
   glm::mat4 transformation;
@@ -39,6 +39,9 @@ CameraBomber::CameraBomber(gdl::BasicShader *shader, EventManager *event) : _eve
   event->listenEvent("playerRotateLeft", callRotateLeft);
   callRotateRight = new CallBack<CameraBomber>(this, &CameraBomber::eventRotateRight);
   event->listenEvent("playerRotateRight", callRotateRight);
+  callPause = new CallBack<CameraBomber>(this, &CameraBomber::eventCallPause);
+  event->listenEvent("pause", callPause);
+
   this->_typeDeplacement = 0;
 }
 
@@ -106,14 +109,39 @@ glm::mat4		CameraBomber::getTransformation()
   glm::vec3	vec;
   glm::mat4 transformation;
 
+  if (this->_pause == false)
+    {
+      transformation = glm::rotate(transformation, this->rotation.y, glm::vec3(0, 1, 0));
 
-  transformation = glm::rotate(transformation, this->rotation.y, glm::vec3(0, 1, 0));
-
-  transformation = glm::rotate(transformation, 90.f, glm::vec3(1, 0, 0));
-  transformation = glm::translate(transformation, position);
+      transformation = glm::rotate(transformation, 90.f, glm::vec3(1, 0, 0));
+      transformation = glm::translate(transformation, position);
+    }
+  else
+    {
+      std::cout << "seg ici?" << std::endl;
+      transformation = glm::lookAt(glm::vec3(position.x, position.y + 20, position.z-20), position, glm::vec3(0, 1, 0));
+      std::cout << "oui" << std::endl;
+    }
   return transformation;
 }
 
+void	CameraBomber::eventCallPause(void *data)
+{
+  if (this->_pause == true)
+    {
+      std::cout << "false" << std::endl;
+      this->_pause = false;
+    }
+  else
+    {
+      this->_pause = true;
+      this->positionPause.x = this->position.x;
+      this->positionPause.z = this->position.z;
+      this->positionPause.y = 20;
+      std::cout << "true" << std::endl;
+    }
+  (void)data;
+}
 
 glm::mat4		CameraBomber::getTransformationMenu()
 {
@@ -132,13 +160,20 @@ glm::mat4		CameraBomber::getTransformationLeft()
 
   vec = this->_occulus->getOrientation();
 
-  transformation = glm::rotate(transformation, -1 * vec.z, glm::vec3(0, 0, 1));
-  transformation = glm::rotate(transformation, -1 * vec.x, glm::vec3(1, 0, 0));
-  if (this->_typeDeplacement == 1)
-    transformation = glm::rotate(transformation, this->rotation.y, glm::vec3(0, 1, 0));
-  transformation = glm::rotate(transformation, -1 * vec.y, glm::vec3(0, 1, 0));
-  transformation = glm::rotate(transformation, this->rot *-1, glm::vec3(0, 1, 0));
-  transformation = glm::translate(transformation, position);
+  if (this->_pause == false)
+    {
+      transformation = glm::rotate(transformation, -1 * vec.z, glm::vec3(0, 0, 1));
+      transformation = glm::rotate(transformation, -1 * vec.x, glm::vec3(1, 0, 0));
+      if (this->_typeDeplacement == 1)
+	transformation = glm::rotate(transformation, this->rotation.y, glm::vec3(0, 1, 0));
+      transformation = glm::rotate(transformation, -1 * vec.y, glm::vec3(0, 1, 0));
+      transformation = glm::rotate(transformation, this->rot *-1, glm::vec3(0, 1, 0));
+      transformation = glm::translate(transformation, position);
+    }
+  else
+    {
+      transformation = glm::lookAt(glm::vec3(position.x - 10, position.y + 20, position.z), position, glm::vec3(0, 1, 0));
+    }
   return transformation;
 }
 
@@ -147,14 +182,21 @@ glm::mat4		CameraBomber::getTransformationRight()
   glm::vec3	vec;
   glm::mat4 transformation;
 
-  vec = this->_occulus->getOrientation();
-  transformation = glm::rotate(transformation, -1 * vec.z, glm::vec3(0, 0, 1));
-  transformation = glm::rotate(transformation, -1 * vec.x, glm::vec3(1, 0, 0));
-  if (this->_typeDeplacement == 1)
-    transformation = glm::rotate(transformation, this->rotation.y, glm::vec3(0, 1, 0));
-  transformation = glm::rotate(transformation, -1 * vec.y, glm::vec3(0, 1, 0));
-  transformation = glm::rotate(transformation, this->rot, glm::vec3(0, 1, 0));
-  transformation = glm::translate(transformation, position);
+  if (this->_pause == false)
+    {
+      vec = this->_occulus->getOrientation();
+      transformation = glm::rotate(transformation, -1 * vec.z, glm::vec3(0, 0, 1));
+      transformation = glm::rotate(transformation, -1 * vec.x, glm::vec3(1, 0, 0));
+      if (this->_typeDeplacement == 1)
+	transformation = glm::rotate(transformation, this->rotation.y, glm::vec3(0, 1, 0));
+      transformation = glm::rotate(transformation, -1 * vec.y, glm::vec3(0, 1, 0));
+      transformation = glm::rotate(transformation, this->rot, glm::vec3(0, 1, 0));
+      transformation = glm::translate(transformation, position);
+    }
+  else
+    {
+      transformation = glm::lookAt(glm::vec3(position.x - 10, position.y + 20, position.z), position, glm::vec3(0, 1, 0));
+    }
   return transformation;
 }
 

@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Thu Jun  5 18:18:21 2014 Steven Martreux
+// Last update Fri Jun  6 11:01:54 2014 Remi telenczak
 //
 
 #include <cstdlib>
