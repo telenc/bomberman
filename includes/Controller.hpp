@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 // 
 // Started on  Wed May 21 12:52:03 2014 Steven Martreux
-// Last update Sat Jun  7 18:50:20 2014 Steven Martreux
+// Last update Mon Jun  9 15:54:58 2014 Steven Martreux
 //
 
 #ifndef		_CONTROLLER_HPP_
@@ -40,6 +40,9 @@ private:
   int		_rotateRight;
   SDL_Joystick	*_joystick;
   int		_bomb;
+  int		_back;
+  int		_upMenu;
+  int		_downMenu;
 };
 
 #endif		/* _CONTROLLER_HPP_ */

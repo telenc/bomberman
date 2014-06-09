@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:00 2014 Remi telenczak
-// Last update Sat Jun  7 18:52:34 2014 Steven Martreux
+// Last update Mon Jun  9 16:29:26 2014 Steven Martreux
 //
 
 #include	<iostream>
@@ -119,7 +119,7 @@ void	Menu::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus)
   else if (this->currentMenu == 1)
     _settingsMenu->update(clock, input, cameraOculus);
   else if (this->currentMenu == 2)
-    _playMenu->update(clock, input, cameraOculus);
+  _playMenu->update(clock, input, cameraOculus);
 }
 
 void	Menu::setSkybox(Skybox *skybox)
