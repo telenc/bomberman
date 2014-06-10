@@ -5,11 +5,13 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Mon Jun  2 02:08:04 2014 Remi telenczak
-// Last update Mon Jun  9 15:54:56 2014 Steven Martreux
+// Last update Tue Jun 10 14:59:29 2014 thomas mendez
 //
 
 #include	"MenuNumber.hpp"
 #include	"MenuBoxNumber.hpp"
+#include        "Skybox.hpp"
+
 MenuNumber::MenuNumber(ModelList *mod, EventManager *event, gdl::Clock *clock) : _mod(mod), _event(event), _clock(clock)
 {
   MenuBoxNumber	*firstBox;
@@ -190,7 +192,7 @@ MenuNumber::~MenuNumber()
 {
 }
 
-void MenuNumber::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
+int MenuNumber::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
 {
   std::list<MenuBoxNumber *>::iterator it;
 
@@ -209,6 +211,7 @@ void MenuNumber::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
 
   (void)shader;
   (void)clock;
+  return 3;
 }
 
 int	MenuNumber::update(gdl::Clock &clock, gdl::Input &input)
@@ -244,4 +247,10 @@ int	MenuNumber::update(gdl::Clock &clock, gdl::Input &input)
   (void)clock;
   (void)input;
   return -1;
+}
+
+void	MenuNumber::setSkybox(Skybox *skybox)
+{
+  this->_skin = skybox;
+  skybox->setSkin(_mod->getModel("box_menu"));
 }

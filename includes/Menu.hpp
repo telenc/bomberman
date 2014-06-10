@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:19 2014 Remi telenczak
-// Last update Tue Jun 10 10:51:56 2014 dedicker remi
+// Last update Tue Jun 10 14:37:47 2014 thomas mendez
 //
 
 #ifndef		_MENU_BOMBERMAN
@@ -71,6 +71,7 @@ private:
   MainMenu *_mainMenu;
   SettingsMenu *_settingsMenu;
   PlayMenu *_playMenu;
+  MenuNumber *_MenuNumber;
   int	currentMenu;
   ICallBack *_callKeyA;
   ICallBack *_callKeyB;
