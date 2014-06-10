@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May  7 07:55:58 2014 Remi telenczak
-// Last update Mon May 19 05:02:09 2014 Remi telenczak
+// Last update Tue Jun 10 12:41:21 2014 Remi telenczak
 //
 
 #ifndef		_CALLBACK
@@ -25,6 +25,7 @@ private:
 public:
   CallBack(T* object, void (T::*methode)(void*))  : m_object(object), m_methode(methode)
   {};
+  virtual ~CallBack() {};
   void call(void *m_util)
   {
     if (this->m_object && this->m_methode)

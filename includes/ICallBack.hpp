@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May  7 07:57:15 2014 Remi telenczak
-// Last update Wed May  7 08:26:18 2014 Remi telenczak
+// Last update Tue Jun 10 12:41:41 2014 Remi telenczak
 //
 
 #ifndef		_ICALLBACK
@@ -15,6 +15,7 @@ class	ICallBack
 {
 public:
   virtual void call(void *util) = 0;
+  virtual ~ICallBack() {};
 };
 
 #endif
