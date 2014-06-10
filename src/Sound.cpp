@@ -1,12 +1,12 @@
-//
-// Sound.cpp for Sound in /home/martre_s/cpp_bomberman/src
-//
-// Made by Steven Martreux
-// Login   <martre_s@epitech.net>
-//
-// Started on  Fri May  9 14:23:13 2014 Steven Martreux
-// Last update Mon May 26 05:55:29 2014 Remi telenczak
-//
+/*
+** Sound.cpp for make in /home/bernar_x/Tech2/Projets/cpp_bomberman
+** 
+** Made by mattieu bernard-guêle
+** Login <bernar_x@epitech.net>
+** 
+** Started on  Thu Jun  5 16:20:43 2014 mattieu bernard-guêle
+** Last update Mon Jun  9 16:27:00 2014 mattieu bernard-guêle
+*/
 
 #include	"Sound.hpp"
 
@@ -93,7 +93,7 @@ void	Sound::StopTicTacBomb()
 
 void	Sound::StartExplosion(float x, float y, float z)
 {
-  _ExplosionBomb.SetLoop(true);
+  //_ExplosionBomb.SetLoop(true);
   _ExplosionBomb.SetPosition(x, y, z);
   _ExplosionBomb.Play();
 }
