@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 14 07:57:08 2014 Remi telenczak
-// Last update Tue Jun 10 17:46:24 2014 Remi telenczak
+// Last update Tue Jun 10 17:48:57 2014 Remi telenczak
 //
 
 #include	"CameraBomber.hpp"
@@ -248,7 +248,7 @@ glm::mat4		CameraBomber::getTransformationLeft()
     {
       transformation = glm::lookAt(positionPause, glm::vec3(positionPause.x, 0, positionPause.z-1), glm::vec3(0, 1, 0));
     }
-  //testt("Salut");
+  testt("Salut");
   return transformation;
 }
 
