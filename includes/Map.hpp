@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Tue Jun 10 15:57:05 2014 Remi telenczak
+// Last update Tue Jun 10 17:06:02 2014 Remi telenczak
 //
 
 #ifndef MAP_HPP_
@@ -63,6 +63,11 @@ private:
   ICallBack	*callPause;
   bool		_pause;
   Skybox	*_skybox;
+
+
+
+  gdl::Texture texture;
+  gdl::Geometry geometry;
 };
 
 #endif

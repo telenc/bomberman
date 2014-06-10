@@ -5,11 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Mon Jun  2 02:10:08 2014 Remi telenczak
-<<<<<<< HEAD
-// Last update Tue Jun 10 16:58:03 2014 Remi telenczak
-=======
-// Last update Tue Jun 10 15:00:00 2014 thomas mendez
->>>>>>> 916de7b3c20cf250f236b6b4424aec081965524c
+// Last update Tue Jun 10 17:08:05 2014 Remi telenczak
 //
 
 #ifndef		_MENUNUMBER
@@ -33,16 +29,10 @@ public:
   void	eventKeyUp(void *data);
   void	eventKeyA(void *data);
   void	eventKeyDown(void *data);
-<<<<<<< HEAD
   void	upIt(std::list<int>::iterator );
-  void	downIt(std::list<int>::iterator);
-  int	getResult();
-=======
-void	upIt(std::list<int>::iterator );
 void	downIt(std::list<int>::iterator);
 int	getResult();
 void	setSkybox(Skybox *skybox);
->>>>>>> 916de7b3c20cf250f236b6b4424aec081965524c
 private:
   ModelList	*_mod;
   EventManager	*_event;
@@ -52,17 +42,11 @@ private:
   ICallBack	*callKeyUp;
   ICallBack	*callKeyDown;
   ICallBack	*callKeyA;
-<<<<<<< HEAD
+  bool		end;
   std::list<int>		result;
   int		_nextX;
   std::map<int, float> rotationCube;
-  bool		end;
-=======
-std::list<int>		result;
-int		_nextX;
-std::map<int, float> rotationCube;
   Skybox *_skin;
->>>>>>> 916de7b3c20cf250f236b6b4424aec081965524c
 };
 
 #endif

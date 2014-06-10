@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Mon Jun  2 02:08:04 2014 Remi telenczak
-// Last update Tue Jun 10 16:59:13 2014 Remi telenczak
+// Last update Tue Jun 10 17:05:07 2014 Remi telenczak
 //
 
 #include	"MenuNumber.hpp"
@@ -40,6 +40,7 @@ MenuNumber::MenuNumber(ModelList *mod, EventManager *event, gdl::Clock *clock) :
   rotationCube.insert(std::pair<int, float>(7, 630));
   rotationCube.insert(std::pair<int, float>(8, 720));
   rotationCube.insert(std::pair<int, float>(9, 810));
+
 }
 
 void	MenuNumber::upIt(std::list<int>::iterator it)
