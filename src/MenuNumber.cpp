@@ -5,11 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Mon Jun  2 02:08:04 2014 Remi telenczak
-<<<<<<< HEAD
-// Last update Tue Jun 10 16:58:12 2014 Remi telenczak
-=======
-// Last update Tue Jun 10 14:59:29 2014 thomas mendez
->>>>>>> 916de7b3c20cf250f236b6b4424aec081965524c
+// Last update Tue Jun 10 16:59:13 2014 Remi telenczak
 //
 
 #include	"MenuNumber.hpp"
@@ -162,6 +158,7 @@ void	MenuNumber::eventKeyUp(void *data)
 void	MenuNumber::eventKeyA(void *data)
 {
   (void)data;
+  this->end = true;
 }
 
 void	MenuNumber::eventKeyDown(void *data)
@@ -225,6 +222,8 @@ int	MenuNumber::update(gdl::Clock &clock, gdl::Input &input)
   std::list<int>::iterator it2;
   int i = 0;
 
+  if (this->end)
+    return getResult();
   it = listBox.begin();
   it2 = result.begin();
   while (it != listBox.end())
