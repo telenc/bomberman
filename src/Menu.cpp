@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:00 2014 Remi telenczak
-// Last update Mon Jun  9 16:29:26 2014 Steven Martreux
+// Last update Tue Jun 10 11:47:55 2014 dedicker remi
 //
 
 #include	<iostream>
@@ -24,6 +24,21 @@ Menu::Menu(ModelList *mod, EventManager *event, gdl::Clock *clock) : _mod(mod), 
   currentMenu = 0;
   _callKeyA = new CallBack<Menu>(this, &Menu::eventKeyA);
   event->listenEvent("keyA", _callKeyA);
+  _callKeyB = new CallBack<Menu>(this, &Menu::eventKeyB);
+  event->listenEvent("keyB", _callKeyB);
+}
+
+void    Menu::eventKeyB(void *data)
+{
+  //  std::cout << "MENU B ->" << currentMenu << std::endl;
+  currentMenu = 0;
+  switch (currentMenu)
+    {
+    default:
+      currentMenu = 0;
+      break;
+    }
+  (void)data;
 }
 
 void    Menu::eventKeyA(void *data)
@@ -78,20 +93,25 @@ void	Menu::facePlayMenu()
   if (_rotationOculus.x <= 40 && _rotationOculus.x >= -40)
     {
       if (_rotationOculus.y >= -45 && _rotationOculus.y <= 45)
-	std::cout << "|-- Image de presentation --|" << std::endl;
-      //else if (_rotatiodescendenOculus.y >= 45 && _rotationOculus.y <= 135)
-      //	std::cout << "|-- Image de Play --|" << std::endl;
+	std::cout << "L|-- Play Game --|" << std::endl;
+      else if (_rotationOculus.y >= 45 && _rotationOculus.y <= 135)
+      	{
+	  std::cout << "L|-- Load Game --|" << std::endl;
+	}
       else if (_rotationOculus.y <= -45 && _rotationOculus.y >= -135)
-	std::cout << "|-- Image de setting --|" << std::endl;
+	{
+	  std::cout << "L|-- Load Game --|" << std::endl;
+	}
       else if (_rotationOculus.y >= 135 || _rotationOculus.y <= -135)
-	std::cout << "|-- Image de Derriere --|" << std::endl;
+	std::cout << "L|-- Image de Derriere --|" << std::endl;
       else
-	std::cout << "|-- Dans le vide --|" << std::endl;
+	std::cout << "L|-- Dans le vide --|" << std::endl;
     }
 }
 
 void	Menu::callFaceFunction()
 {
+  std::cout << "Ici currentMenu: " << currentMenu << std::endl;
   if (this->currentMenu == 0)
     faceMainMenu();
   else if (this->currentMenu == 1)
@@ -112,6 +132,7 @@ void    Menu::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
 
 void	Menu::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus)
 {
+  std::cout << currentMenu << std::endl;
   this->_rotationOculus = cameraOculus;
   //  this->callFaceFunction();
   if (this->currentMenu == 0)
@@ -119,7 +140,7 @@ void	Menu::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus)
   else if (this->currentMenu == 1)
     _settingsMenu->update(clock, input, cameraOculus);
   else if (this->currentMenu == 2)
-  _playMenu->update(clock, input, cameraOculus);
+    _playMenu->update(clock, input, cameraOculus);
 }
 
 void	Menu::setSkybox(Skybox *skybox)

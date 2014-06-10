@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 // 
 // Started on  Wed Jun  4 12:24:31 2014 thomas mendez
-// Last update Wed Jun  4 17:31:05 2014 dedicker remi
+// Last update Mon Jun  9 16:19:11 2014 dedicker remi
 //
 
 #include	<iostream>
@@ -25,7 +25,7 @@ SettingsMenu::SettingsMenu(ModelList *mod, EventManager *event) : _mod(mod), _ev
 SettingsMenu::~SettingsMenu()
 {
   std::cout << "SettingsMenu Destroyed!" << std::endl;
-  //delete _callKeyA;
+  delete _callKeyA;
   delete _boxmenu;
 }
 

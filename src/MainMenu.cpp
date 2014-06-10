@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:00 2014 Remi telenczak
-// Last update Thu Jun  5 16:39:08 2014 dedicker remi
+// Last update Mon Jun  9 16:24:38 2014 dedicker remi
 //
 
 #include	<iostream>
@@ -47,13 +47,9 @@ int    MainMenu::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
   t = glm::translate(t, glm::vec3(0, 0, 0));
   t = glm::scale(t, glm::vec3(100, 100, 100));
   _skin->draw(shader, clock);
-  //  _menuwall->draw(shader, clock);
   _boxmenu->draw(shader,clock);
   _boxmenu2->draw(shader,clock);
   _boxmenu3->draw(shader,clock);
-  //_menu->draw(shader, clock);
-  //  if (this->_A == 1)
-  //return this->_A;
   return 0;
 }
 
