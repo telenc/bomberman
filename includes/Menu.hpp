@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:19 2014 Remi telenczak
-// Last update Fri Jun  6 13:16:38 2014 thomas mendez
+// Last update Tue Jun 10 10:51:56 2014 dedicker remi
 //
 
 #ifndef		_MENU_BOMBERMAN
@@ -56,6 +56,7 @@ public:
   void  facePlayMenu();
   void  callFaceFunction();
   void	eventKeyA(void *data);
+  void	eventKeyB(void *data);
 private:
   gdl::Model *_box;
   ModelList *_mod;
@@ -72,6 +73,7 @@ private:
   PlayMenu *_playMenu;
   int	currentMenu;
   ICallBack *_callKeyA;
+  ICallBack *_callKeyB;
 };
 
 #endif

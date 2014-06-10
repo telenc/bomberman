@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Wed May 21 12:42:20 2014 Steven Martreux
-// Last update Sat Jun  7 18:50:32 2014 Steven Martreux
+// Last update Mon Jun  9 17:16:37 2014 Steven Martreux
 //
 
 #include	"Controller.hpp"
@@ -30,6 +30,8 @@ Controller::Controller(EventManager *event) : _eventManager(event)
   _rotateLeft = 0;
   _rotateRight = 0;
   _bomb = 0;
+  _upMenu = 0;
+  _downMenu = 0;
 }
 
 Controller::~Controller()
@@ -97,6 +99,20 @@ void	Controller::sendEvent()
     _eventManager->dispatchEvent("keyUp", NULL);
   if (_bomb == 1)
     _eventManager->dispatchEvent("keyA", NULL);
+  else if (_back == 1)
+    _eventManager->dispatchEvent("keyB", NULL);
+  if (_upMenu == 2)
+    {
+      _eventManager->dispatchEvent("keyUpMenu", NULL);
+      _upMenu = 0;
+    }
+  else if (_downMenu == 2)
+    {
+      _downMenu = 0;
+      _eventManager->dispatchEvent("keyDownMenu", NULL);
+    }
+  if (_start == 1)
+    _eventManager->dispatchEvent("pause", NULL);
 }
 
 void	Controller::update()
@@ -109,13 +125,27 @@ void	Controller::update()
   _down = 0;
   _rotateLeft = 0;
   _rotateRight = 0;
+  _back = 0;
+  _start = 0;
   if (SDL_JoystickGetAxis(_joystick, 0) < -4000 || SDL_JoystickGetAxis(_joystick, 0) > 4000)
     CheckAxeLeftRight();
-  if (SDL_JoystickGetAxis(_joystick, 1) < -4000 || SDL_JoystickGetAxis(_joystick, 1) > 4000)
+  else if (SDL_JoystickGetAxis(_joystick, 1) < -4000 || SDL_JoystickGetAxis(_joystick, 1) > 4000)
     CheckAxeUpDown();
-  if (SDL_JoystickGetAxis(_joystick, 3) < -4000 || SDL_JoystickGetAxis(_joystick, 3) > 4000)
+  else if (SDL_JoystickGetAxis(_joystick, 3) < -4000 || SDL_JoystickGetAxis(_joystick, 3) > 4000)
     CheckAxeRotate();
   if (SDL_JoystickGetButton(_joystick, 0) == 1)
     _bomb = 1;
+  else if (SDL_JoystickGetButton(_joystick, 1) == 1)
+    _back = 1;
+  if (SDL_JoystickGetHat(_joystick, 0) == SDL_HAT_UP)
+    _upMenu = 1;
+  else if (SDL_JoystickGetHat(_joystick, 0) == SDL_HAT_DOWN)
+    _downMenu = 1;
+  if (SDL_JoystickGetHat(_joystick, 0) != SDL_HAT_UP && _upMenu == 1)
+    _upMenu = 2;
+  else if (SDL_JoystickGetHat(_joystick, 0) != SDL_HAT_DOWN && _downMenu == 1)
+    _downMenu = 2;
+  if (SDL_JoystickGetButton(_joystick, 7) == 1)
+    _start = 1;
   sendEvent();
 }
