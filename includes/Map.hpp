@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Thu Jun  5 18:14:49 2014 Steven Martreux
+// Last update Mon Jun  9 16:16:24 2014 Remi telenczak
 //
 
 #ifndef MAP_HPP_
@@ -35,6 +35,7 @@ public:
   void setMap(AObjectPhysic *bloc);
   int	getWidth() const;
   int	getHeight() const;
+  bool	isPause();
   std::vector<APlayer*> getIa() const;
   std::vector<APlayer *>getPlayers() const;
   void	setPlayer(Player *);

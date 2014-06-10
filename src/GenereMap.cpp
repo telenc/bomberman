@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 17:53:20 2014 dedicker remi
-// Last update Wed May 28 05:41:16 2014 Remi telenczak
+// Last update Mon Jun  9 16:26:19 2014 Remi telenczak
 //
 
 #include	<iostream>
@@ -100,8 +100,6 @@ void	GenereMap::putWall()
 	      wall++;
 	  if (wall != 0 && ((i > 2  && i < _width-2) || (y > 2 && y < _height - 3) ))
 	    {
-	      std::cout << "i = " << i  * 3<< "  y =" << y * 3<< std::endl;
-	      std::cout << "width  = " << _width *3 << "  height =" << _height *3<< std::endl;
 	      wallObject = new DestrucWall(this->_map, this->_model, this->_event, _clock);
 	      wallObject->set_x(i * 3);
 	      wallObject->set_z(y * 3);

@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Fri Jun  6 11:01:54 2014 Remi telenczak
+// Last update Mon Jun  9 16:33:29 2014 Remi telenczak
 //
 
 #include <cstdlib>
@@ -18,6 +18,8 @@
 
 Map::Map(int width, int height, EventManager *event) : _width(width), _height(height), _event(event), _pause(false)
 {
+  glm::vec2	size;
+
   if (width <= 20 || height <= 20)
     {
       std::cout << "Map trop pitite!" << std::endl;
@@ -25,6 +27,9 @@ Map::Map(int width, int height, EventManager *event) : _width(width), _height(he
     }
   callPause = new CallBack<Map>(this, &Map::eventCallPause);
   event->listenEvent("pause", callPause);
+  size.x = width;
+  size.y = height;
+  event->dispatchEvent("newMap", &size);
 }
 
 Map::~Map()
@@ -70,6 +75,11 @@ void	Map::eventCallPause(void *data)
   (void)data;
 }
 
+bool	Map::isPause()
+{
+  return this->_pause;
+}
+
 int	Map::distanceObj(AObjectPhysic *obj)
 {
   return glm::distance2(obj->getPosition(), this->_player->getPosition());
@@ -100,7 +110,9 @@ void	Map::draw(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
   itO = this->_map.begin();
   while (itO != this->_map.end())
     {
-      if ((*itO) != NULL && (*itO)->isInView(camera) && this->distanceObj(*itO) < 400)
+      if (this->_pause == true)
+	(*itO)->draw(shader, clock);
+      else if ((*itO) != NULL && (*itO)->isInView(camera) && this->distanceObj(*itO) < 400)
 	(*itO)->draw(shader, clock);
       itO++;
     }

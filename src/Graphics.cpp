@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Mon Jun  2 18:21:35 2014 thomas mendez
+// Last update Tue Jun 10 12:29:12 2014 Remi telenczak
 //
 
 #include	"OVR.h"
@@ -67,7 +67,7 @@ bool		Graphics::initialize()
       || !_shader.load("./shaders/basic.vp", GL_VERTEX_SHADER)
       || !_shader.build())
     return false;
-  this->_camera = new CameraBomber(&_shader, _event);
+  this->_camera = new CameraBomber(&_shader, _event, this->_clock);
   _shader.bind();
   return true;
 }

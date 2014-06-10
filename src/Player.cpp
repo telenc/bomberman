@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:27:38 2014 dedicker remi
-// Last update Fri Jun  6 17:13:50 2014 Steven Martreux
+// Last update Tue Jun 10 12:19:28 2014 Remi telenczak
 //
 
 #include "Player.hpp"
@@ -42,6 +42,8 @@ Player::Player(int x, int y, int z, Map *map, ModelList *model, EventManager *ev
 void	Player::eventRotateLeft(void *data)
 {
   (void)data;
+  if (this->_map->isPause() == true)
+    return;
   this->rotate(glm::vec3(0, 1, 0), -5);
   this->_event->dispatchEvent("playerRotateLeft", this);
 }
@@ -53,6 +55,8 @@ void	Player::eventKeyA(void *data)
   int		x;
   int		z;
 
+  if (this->_map->isPause() == true)
+    return ;
   if (this->_nbrBomb <= 0)
     return ;
   if (this->checkPositionCollision(BOMB) != NULL)
@@ -80,6 +84,8 @@ void	Player::eventKeyA(void *data)
 void	Player::eventRotateRight(void *data)
 {
   (void)data;
+  if (this->_map->isPause() == true)
+    return ;
   //this->rotation.y += 5;
   this->rotate(glm::vec3(0, 1, 0), 5);
   this->_event->dispatchEvent("playerRotateRight", this);
@@ -90,6 +96,8 @@ void	Player::eventRotate(void *data)
   glm::vec3 *test;
   (void)data;
 
+  if (this->_map->isPause() == true)
+    return ;
   test = (glm::vec3 *)data;
   //this->rotation.y += 5;
   this->set_roty((-1 * test->y) + 180);
@@ -171,26 +179,33 @@ void Player::move(glm::vec3 direct, std::string event)
 void	Player::eventKeyUp(void *data)
 {
   (void)data;
-
+    if (this->_map->isPause() == true)
+    return ;
   this->move(glm::vec3(0, 0, -0.5), "playerMove");
 }
 
 void	Player::eventKeyDown(void *data)
 {
+    if (this->_map->isPause() == true)
+    return ;
     (void)data;
   this->move(glm::vec3(0, 0, 0.5), "playerMove");
 }
 
 void	Player::eventKeyRight(void *data)
 {
+  if (this->_map->isPause() == true)
+    return ;
     (void)data;
     this->move(glm::vec3(0.5, 0, 0), "playerMove");
 }
 
 void	Player::eventKeyLeft(void *data)
 {
+  if (this->_map->isPause() == true)
+    return ;
   (void)data;
-    this->move(glm::vec3(-0.5, 0, 0), "playerMove");
+  this->move(glm::vec3(-0.5, 0, 0), "playerMove");
 }
 
 bool Player::update(gdl::Clock const &clock, gdl::Input &input)
