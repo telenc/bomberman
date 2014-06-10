@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:11:40 2014 dedicker remi
-// Last update Tue Jun 10 16:23:37 2014 Remi telenczak
+// Last update Tue Jun 10 17:43:21 2014 Remi telenczak
 //
 
 #include	"APlayer.hpp"
@@ -19,13 +19,13 @@
 APlayer::APlayer(int x, int y, int z, Map *map, ModelList *model, EventManager *event, gdl::Clock *clock) : AObjectLife(2), AObjectPhysic(map, model, event, clock)
 {
   this->_skin = model->getModel("marvin");
-  /*
+
   this->_skin->createSubAnim(0, "run", 20, 46);
   this->_skin->createSubAnim(0, "beginRun", 0, 20);
   this->_skin->createSubAnim(0, "endRun", 46, 100);
   this->_skin->createSubAnim(0, "none", 0, 0);
   this->_skin->setCurrentSubAnim("none", true);
-  */
+
 
   //  this->_skin->setCurrentAnim(0);
   this->scale(glm::vec3(0.005, 0.005, 0.005));

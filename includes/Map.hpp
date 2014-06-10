@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Tue Jun 10 17:06:02 2014 Remi telenczak
+// Last update Tue Jun 10 17:44:21 2014 Remi telenczak
 //
 
 #ifndef MAP_HPP_
@@ -21,7 +21,7 @@
 #include	<Input.hh>
 #include	"CameraBomber.hpp"
 #include	"Texture.hh"
-
+#include	"Geometry.hh"
 #include "drawtext.h"
 
 class APlayer;
@@ -66,8 +66,6 @@ private:
 
 
 
-  gdl::Texture texture;
-  gdl::Geometry geometry;
 };
 
 #endif

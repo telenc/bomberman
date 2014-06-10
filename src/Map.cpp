@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Tue Jun 10 17:05:32 2014 Remi telenczak
+// Last update Tue Jun 10 17:47:12 2014 Remi telenczak
 //
 
 #include <cstdlib>
@@ -32,30 +32,6 @@ Map::Map(int width, int height, EventManager *event) : _width(width), _height(he
   size.x = width;
   size.y = height;
   event->dispatchEvent("newMap", &size);
-
-
-if (!this->texture.load("./images/bomber.tga"))
-  {
-    std::cerr << "Impossible de charger la texture bomber.tga" << std::endl;
-    return false;
-  }
-
-this->geometry.setColor(glm::vec4(1, 1, 1, 1));
-
-this->geometry.pushVertex(glm::vec3(0, 0, 0));
-this->geometry.pushVertex(glm::vec3(this->texture.getWidth(), 0, 0));
-this->geometry.pushVertex(glm::vec3(this->texture.getWidth(), this->texture.getHeight(), 0));
-this->geometry.pushVertex(glm::vec3(0, this->texture.getHeight(), 0));
-
-this->geometry.pushUv(glm::vec2(0.0f, 1.0f));
-this->geometry.pushUv(glm::vec2(1.0f, 1.0f));
-this->geometry.pushUv(glm::vec2(1.0f, 0.0f));
-this->geometry.pushUv(glm::vec2(0.0f, 0.0f));
-
-this->geometry.build();
-
-
-
 }
 
 Map::~Map()
@@ -65,7 +41,7 @@ Map::~Map()
 
 void	Map::update(gdl::Clock clock, gdl::Input input)
 {
-  /*  std::list<AObjectPhysic *>::iterator itO;
+    std::list<AObjectPhysic *>::iterator itO;
 
   if (this->_pause == true)
     return;
@@ -83,9 +59,7 @@ void	Map::update(gdl::Clock clock, gdl::Input input)
 	itO++;
     }
   this->_player->update(clock, input);
-  this->_skybox->update(clock, input);*/
-  (void)clock;
-  (void)input;
+  this->_skybox->update(clock, input);
 }
 
 void	Map::eventCallPause(void *data)
@@ -133,7 +107,7 @@ std::vector<AObjectPhysic *>	Map::getObjectsPos(AObjectPhysic *obj)
 
 void	Map::draw(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
 {
-  /*
+
   std::list<AObjectPhysic *>::iterator itO;
 
   itO = this->_map.begin();
@@ -145,16 +119,18 @@ void	Map::draw(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
 	(*itO)->draw(shader, clock);
       itO++;
     }
-  (void)camera;
   this->_player->draw(shader, clock);
-  this->_skybox->draw(shader, clock);*/
+  this->_skybox->draw(shader, clock);
   (void)shader;
   (void)clock;
   (void)camera;
 
-  std::cout << "Coucou" << std::endl;
-this->texture.bind();
-this->geometry.draw(this->shader, glm::mat4(1), GL_QUADS);
+  //usleep(1000);
+  //this->texture.bind();
+  //glm::mat4 t;
+  //t = camera->getTransformation();
+  //t = glm::translate(t, glm::vec3(0,10,0));
+  //this->geometry.draw(shader, t, GL_QUADS);
 
 }
 

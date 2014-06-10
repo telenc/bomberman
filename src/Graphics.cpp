@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Tue Jun 10 12:29:12 2014 Remi telenczak
+// Last update Tue Jun 10 17:15:41 2014 Remi telenczak
 //
 
 #include	"OVR.h"
@@ -149,11 +149,11 @@ void		Graphics::drawOneStereo(Map *map)
 
 
   map->draw(_shader, *_clock, this->_camera);
-  glm::mat4 t(1);
+  //  glm::mat4 t(1);
 
-  t = glm::translate(t, glm::vec3(0, 4, 0));
+  //t = glm::translate(t, glm::vec3(0, 4, 0));
   //t = glm::scale(t, glm::vec3(100, 100, 100));
-  this->sky->draw(_shader, t, _clock->getElapsed());
+  //this->sky->draw(_shader, t, _clock->getElapsed());
   _shader.setUniform("projection", this->_camera->getPerspective());
   _shader.setUniform("view", this->_camera->getTransformation());
 }
