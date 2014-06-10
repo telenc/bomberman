@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Tue Jun 10 14:50:38 2014 Remi telenczak
+// Last update Tue Jun 10 15:57:05 2014 Remi telenczak
 //
 
 #ifndef MAP_HPP_
@@ -21,6 +21,9 @@
 #include	<Input.hh>
 #include	"CameraBomber.hpp"
 #include	"Texture.hh"
+
+#include "drawtext.h"
+
 class APlayer;
 class Player;
 class AObjectPhysic;
@@ -36,8 +39,6 @@ public:
   int	getWidth() const;
   int	getHeight() const;
   bool	isPause();
-  void	testTexture();
-  gdl::Texture text;
 
   std::vector<APlayer*> getIa() const;
   std::vector<APlayer *>getPlayers() const;

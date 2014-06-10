@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Mon Jun  2 02:10:08 2014 Remi telenczak
-// Last update Tue Jun  3 07:11:08 2014 Remi telenczak
+// Last update Tue Jun 10 16:58:03 2014 Remi telenczak
 //
 
 #ifndef		_MENUNUMBER
@@ -26,11 +26,11 @@ public:
   void	draw(gdl::BasicShader &, gdl::Clock const &);
   int	update(gdl::Clock &, gdl::Input &);
   void	eventKeyUp(void *data);
-void	eventKeyA(void *data);
+  void	eventKeyA(void *data);
   void	eventKeyDown(void *data);
-void	upIt(std::list<int>::iterator );
-void	downIt(std::list<int>::iterator);
-int	getResult();
+  void	upIt(std::list<int>::iterator );
+  void	downIt(std::list<int>::iterator);
+  int	getResult();
 private:
   ModelList	*_mod;
   EventManager	*_event;
@@ -40,9 +40,10 @@ private:
   ICallBack	*callKeyUp;
   ICallBack	*callKeyDown;
   ICallBack	*callKeyA;
-std::list<int>		result;
-int		_nextX;
-std::map<int, float> rotationCube;
+  std::list<int>		result;
+  int		_nextX;
+  std::map<int, float> rotationCube;
+  bool		end;
 };
 
 #endif

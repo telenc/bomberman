@@ -36,7 +36,7 @@ endif
 LIBOVRPATH    = LibOVR
 COMMONSRCPATH = CommonSrc
 3RDPARTYPATH  = ../3rdParty
-INCPATH       = -I. -I.. -I$(COMMONSRCPATH) -I$(LIBOVRPATH)/Include -I$(LIBOVRPATH)/Src -I./includes/ -I./LibGdl/includes
+INCPATH       = -I. -I.. -I$(COMMONSRCPATH) -I$(LIBOVRPATH)/Include -I$(LIBOVRPATH)/Src -I./includes/ -I./LibGdl/includes -I./src_libtext/
 OBJPATH       = bomberman
 CXX_BUILD     = $(CXX) -c $(CXXFLAGS) $(INCPATH) 
 CXXFLAGS	= $(INCPATH) -Werror -Wextra -Wall
@@ -64,6 +64,7 @@ LIBS          = -L$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH) \
 		-Wl,-rpath,./LibGdl/libs/ 	\
 		-lsfml-audio 			\
 		-lSDL				\
+		libdrawtext.so.0.2		\
 
 SRC		= src/main.cpp \
 		src/Occulus.cpp \

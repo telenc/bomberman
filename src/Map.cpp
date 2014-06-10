@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Tue Jun 10 15:00:10 2014 Remi telenczak
+// Last update Tue Jun 10 16:22:49 2014 Remi telenczak
 //
 
 #include <cstdlib>
@@ -16,6 +16,8 @@
 #include "Skybox.hpp"
 #include	"EventManager.hpp"
 #include	<GL/freeglut.h>
+#include	"drawtext.h"
+
 Map::Map(int width, int height, EventManager *event) : _width(width), _height(height), _event(event), _pause(false)
 {
   glm::vec2	size;
@@ -30,10 +32,6 @@ Map::Map(int width, int height, EventManager *event) : _width(width), _height(he
   size.x = width;
   size.y = height;
   event->dispatchEvent("newMap", &size);
-  if (text.load("./assets/aplha.tga") == false)
-    {
-      std::cout << "Eroor"<<std::endl;
-    }
 }
 
 Map::~Map()
@@ -43,7 +41,7 @@ Map::~Map()
 
 void	Map::update(gdl::Clock clock, gdl::Input input)
 {
-  std::list<AObjectPhysic *>::iterator itO;
+  /*  std::list<AObjectPhysic *>::iterator itO;
 
   if (this->_pause == true)
     return;
@@ -61,32 +59,9 @@ void	Map::update(gdl::Clock clock, gdl::Input input)
 	itO++;
     }
   this->_player->update(clock, input);
-  this->_skybox->update(clock, input);
-}
-
-void	Map::testTexture()
-{
-  glDisable(GL_DEPTH_TEST);
-  glMatrixMode(GL_PROJECTION);
-  glPushMatrix();
-  glLoadIdentity();
-  glOrtho(0, 1280, 800, 0, -1, 1);
-  glMatrixMode(GL_MODELVIEW);
-  glLoadIdentity();
-
-  text.bind();
-  glBegin(GL_QUADS);
-  glTexCoord2f(.0f,.0f); glVertex2d(0, 0);
-  glTexCoord2f(.11f,.0f); glVertex2d(100, 0);
-  glTexCoord2f(.11f,.3f); glVertex2d(100, 100);
-  glTexCoord2f(.0f,.3f); glVertex2d(0, 100);
-  glEnd();
-  std::cout <<"DRAW" <<std::endl;
-
-  glEnable(GL_DEPTH_TEST);
-  glMatrixMode(GL_PROJECTION);
-  glPopMatrix();
-  glMatrixMode(GL_MODELVIEW);
+  this->_skybox->update(clock, input);*/
+  (void)clock;
+  (void)input;
 }
 
 void	Map::eventCallPause(void *data)
@@ -134,6 +109,7 @@ std::vector<AObjectPhysic *>	Map::getObjectsPos(AObjectPhysic *obj)
 
 void	Map::draw(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
 {
+  /*
   std::list<AObjectPhysic *>::iterator itO;
 
   itO = this->_map.begin();
@@ -147,8 +123,11 @@ void	Map::draw(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
     }
   (void)camera;
   this->_player->draw(shader, clock);
-  this->_skybox->draw(shader, clock);
-  testTexture();
+  this->_skybox->draw(shader, clock);*/
+  (void)shader;
+  (void)clock;
+  (void)camera;
+  std::cout << "Coucou" << std::endl;
 }
 
 std::vector<APlayer *> Map::getIa() const

@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Mon Jun  2 02:08:04 2014 Remi telenczak
-// Last update Mon Jun  9 15:54:56 2014 Steven Martreux
+// Last update Tue Jun 10 16:58:12 2014 Remi telenczak
 //
 
 #include	"MenuNumber.hpp"
@@ -16,6 +16,7 @@ MenuNumber::MenuNumber(ModelList *mod, EventManager *event, gdl::Clock *clock) :
 
   firstBox = new MenuBoxNumber(NULL, _mod, _event, _clock);
   firstBox->set_x(10);
+  this->end = false;
   this->_nextX = 5;
   firstBox->set_y(20);
   firstBox->set_vy(-1.8);

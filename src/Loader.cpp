@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Sat May 24 17:09:28 2014 Steven Martreux
-// Last update Mon May 26 17:01:26 2014 Steven Martreux
+// Last update Tue Jun 10 16:22:21 2014 Remi telenczak
 //
 
 #include	"Loader.hpp"
@@ -30,7 +30,7 @@ Loader::Loader()
   _controller = new Controller(_eventManager);
   _finish = false;
   _mod = new ModelList();
-  _mod->loadModel();
+  //_mod->loadModel();
   _sound = new Sound(_eventManager);
   loader = new Thread(runThreadLoader, this, "Thread Loader");
   (void)loader;
