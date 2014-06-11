@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Tue Jun 10 17:47:12 2014 Remi telenczak
+// Last update Wed Jun 11 14:30:15 2014 Remi telenczak
 //
 
 #include <cstdlib>
@@ -32,6 +32,7 @@ Map::Map(int width, int height, EventManager *event) : _width(width), _height(he
   size.x = width;
   size.y = height;
   event->dispatchEvent("newMap", &size);
+
 }
 
 Map::~Map()
@@ -65,15 +66,9 @@ void	Map::update(gdl::Clock clock, gdl::Input input)
 void	Map::eventCallPause(void *data)
 {
   if (this->_pause == true)
-    {
-      std::cout << "false" << std::endl;
       this->_pause = false;
-    }
   else
-    {
     this->_pause = true;
-    std::cout << "true" << std::endl;
-    }
   (void)data;
 }
 
@@ -87,11 +82,11 @@ int	Map::distanceObj(AObjectPhysic *obj)
   return glm::distance2(obj->getPosition(), this->_player->getPosition());
 }
 
-std::vector<AObjectPhysic *>	Map::getObjectsPos(AObjectPhysic *obj)
+std::vector<AObjectPhysic *>		Map::getObjectsPos(AObjectPhysic *obj)
 {
-  std::list<AObjectPhysic *>::iterator itO;
-  std::vector<AObjectPhysic *> result;
-  glm::vec3	position;
+  std::list<AObjectPhysic *>::iterator	itO;
+  std::vector<AObjectPhysic *>		result;
+  glm::vec3				position;
 
   itO = this->_map.begin();
   while (itO != this->_map.end())
@@ -105,10 +100,9 @@ std::vector<AObjectPhysic *>	Map::getObjectsPos(AObjectPhysic *obj)
   return result;
 }
 
-void	Map::draw(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
+void					Map::draw(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
 {
-
-  std::list<AObjectPhysic *>::iterator itO;
+  std::list<AObjectPhysic *>::iterator	itO;
 
   itO = this->_map.begin();
   while (itO != this->_map.end())
@@ -124,50 +118,42 @@ void	Map::draw(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
   (void)shader;
   (void)clock;
   (void)camera;
-
-  //usleep(1000);
-  //this->texture.bind();
-  //glm::mat4 t;
-  //t = camera->getTransformation();
-  //t = glm::translate(t, glm::vec3(0,10,0));
-  //this->geometry.draw(shader, t, GL_QUADS);
-
 }
 
-std::vector<APlayer *> Map::getIa() const
+std::vector<APlayer *>		Map::getIa() const
 {
   return _ia;
 }
 
-void	Map::setMap(AObjectPhysic *bloc)
+void				Map::setMap(AObjectPhysic *bloc)
 {
   if (bloc)
     this->_map.push_back(bloc);
 }
 
-int	Map::getWidth() const
+int				Map::getWidth() const
 {
   return _width;
 }
 
-int	Map::getHeight() const
+int				Map::getHeight() const
 {
   return _height;
 }
 
-Player	*Map::getPlayer() const
+Player				*Map::getPlayer() const
 {
   return this->_player;
 }
 
-std::list<AObjectPhysic *> Map::getObject() const
+std::list<AObjectPhysic *>	Map::getObject() const
 {
   return this->_map;
 }
 
-std::vector<APlayer *> Map::getPlayers()
+std::vector<APlayer *>		Map::getPlayers()
 {
-  std::vector<APlayer *> result;
+  std::vector<APlayer *>	result;
 
   result.push_back(this->_player);
   return result;

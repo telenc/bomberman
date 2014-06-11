@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
-// Last update Wed Jun 11 11:14:56 2014 dedicker remi
+// Last update Wed Jun 11 12:45:37 2014 Remi telenczak
 */
 
 #include <iostream>
@@ -27,7 +27,7 @@ int	main(int ac, char **av)
 {
   try
     {
-      /*      Loader	*load = new Loader();
+           Loader	*load = new Loader();
 	      Graphics *engine;
 	      Controller	*joystick;
 	      //LoadGame	*save;
@@ -68,11 +68,11 @@ int	main(int ac, char **av)
 	      engine->draw(menu);
 	      joystick->update();
 	      }
-	      }*/
+	      }
       (void)av;
       (void)ac;
-      Game	game;
-      game.playMenu();
+      //Game	game;
+      //game.playMenu();
     }
   catch(const myException *e)
     {

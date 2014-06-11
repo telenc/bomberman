@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 16:17:56 2014 Mathieu Choquart
-// Last update Thu Jun  5 15:53:56 2014 Steven Martreux
+// Last update Wed Jun 11 14:30:44 2014 Remi telenczak
 //
 
 #include	"AObjectPhysic.hpp"
@@ -71,6 +71,8 @@ bool AObjectPhysic::isInView(CameraBomber *camera)
   glm::vec3	direc(0, 0, 0);
   glm::vec3	pos(0, 0, 0);
   glm::vec3	dir(0,0,0);
+  float or1;
+  float or2;
 
   A.x = camera->getPosition().x;
   A.z = camera->getPosition().z;
@@ -85,9 +87,6 @@ bool AObjectPhysic::isInView(CameraBomber *camera)
   D.x = this->_position.x - (camera->getPosition().x * -1);
   D.z = this->_position.z - (camera->getPosition().z * -1);
   D.y = 0;
-
-  float or1;
-  float or2;
 
   or1 = glm::orientedAngle(glm::normalize(D), glm::normalize(B), glm::vec3(0,1,0));
   or2 = glm::orientedAngle(glm::normalize(C), glm::normalize(D), glm::vec3(0, 1, 0));

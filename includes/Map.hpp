@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Tue Jun 10 17:44:21 2014 Remi telenczak
+// Last update Wed Jun 11 13:15:50 2014 Remi telenczak
 //
 
 #ifndef MAP_HPP_
@@ -23,6 +23,9 @@
 #include	"Texture.hh"
 #include	"Geometry.hh"
 #include "drawtext.h"
+
+
+
 
 class APlayer;
 class Player;
