@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Sat May 24 17:09:28 2014 Steven Martreux
-// Last update Mon May 26 17:01:26 2014 Steven Martreux
+// Last update Tue Jun 10 17:47:57 2014 Remi telenczak
 //
 
 #include	"Loader.hpp"

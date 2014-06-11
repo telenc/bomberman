@@ -5,17 +5,20 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Mon Jun  2 02:08:04 2014 Remi telenczak
-// Last update Mon Jun  9 15:54:56 2014 Steven Martreux
+// Last update Tue Jun 10 18:13:41 2014 dedicker remi
 //
 
 #include	"MenuNumber.hpp"
 #include	"MenuBoxNumber.hpp"
+#include        "Skybox.hpp"
+
 MenuNumber::MenuNumber(ModelList *mod, EventManager *event, gdl::Clock *clock) : _mod(mod), _event(event), _clock(clock)
 {
   MenuBoxNumber	*firstBox;
 
   firstBox = new MenuBoxNumber(NULL, _mod, _event, _clock);
   firstBox->set_x(10);
+  this->end = false;
   this->_nextX = 5;
   firstBox->set_y(20);
   firstBox->set_vy(-1.8);
@@ -37,6 +40,7 @@ MenuNumber::MenuNumber(ModelList *mod, EventManager *event, gdl::Clock *clock) :
   rotationCube.insert(std::pair<int, float>(7, 630));
   rotationCube.insert(std::pair<int, float>(8, 720));
   rotationCube.insert(std::pair<int, float>(9, 810));
+
 }
 
 void	MenuNumber::upIt(std::list<int>::iterator it)
@@ -155,6 +159,7 @@ void	MenuNumber::eventKeyUp(void *data)
 void	MenuNumber::eventKeyA(void *data)
 {
   (void)data;
+  this->end = true;
 }
 
 void	MenuNumber::eventKeyDown(void *data)
@@ -190,10 +195,11 @@ MenuNumber::~MenuNumber()
 {
 }
 
-void MenuNumber::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
+int MenuNumber::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
 {
   std::list<MenuBoxNumber *>::iterator it;
 
+  _skin->draw(shader, clock);
   it = listBox.begin();
   while (it != listBox.end())
     {
@@ -209,6 +215,7 @@ void MenuNumber::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
 
   (void)shader;
   (void)clock;
+  return 3;
 }
 
 int	MenuNumber::update(gdl::Clock &clock, gdl::Input &input)
@@ -217,6 +224,8 @@ int	MenuNumber::update(gdl::Clock &clock, gdl::Input &input)
   std::list<int>::iterator it2;
   int i = 0;
 
+  if (this->end)
+    return getResult();
   it = listBox.begin();
   it2 = result.begin();
   while (it != listBox.end())
@@ -244,4 +253,10 @@ int	MenuNumber::update(gdl::Clock &clock, gdl::Input &input)
   (void)clock;
   (void)input;
   return -1;
+}
+
+void	MenuNumber::setSkybox(Skybox *skybox)
+{
+  this->_skin = skybox;
+  skybox->setSkin(_mod->getModel("box_menu"));
 }

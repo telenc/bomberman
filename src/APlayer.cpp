@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:11:40 2014 dedicker remi
-// Last update Fri Jun  6 17:13:49 2014 Steven Martreux
+// Last update Tue Jun 10 17:43:21 2014 Remi telenczak
 //
 
 #include	"APlayer.hpp"

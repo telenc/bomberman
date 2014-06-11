@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:26:53 2014 Remi telenczak
-// Last update Tue Jun  3 04:10:11 2014 Remi telenczak
+// Last update Tue Jun 10 16:55:05 2014 thomas mendez
 //
 
 #include	"MenuBoxNumber.hpp"
@@ -47,11 +47,11 @@ bool MenuBoxNumber::update(gdl::Clock const &clock, gdl::Input &input)
     }
   if (this->_targetRot < this->get_rotx())
     {
-      this->rotate(glm::vec3(1, 0, 0), -1);
+      this->rotate(glm::vec3(1, 0, 0), -3);
     }
   else if (this->_targetRot > this->get_rotx())
     {
-      this->rotate(glm::vec3(1, 0, 0), 1);
+      this->rotate(glm::vec3(1, 0, 0), 3);
     }
     (void)clock;
   (void)input;

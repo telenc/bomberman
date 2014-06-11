@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Mon Jun  9 16:16:24 2014 Remi telenczak
+// Last update Tue Jun 10 17:44:21 2014 Remi telenczak
 //
 
 #ifndef MAP_HPP_
@@ -20,6 +20,9 @@
 #include	<Clock.hh>
 #include	<Input.hh>
 #include	"CameraBomber.hpp"
+#include	"Texture.hh"
+#include	"Geometry.hh"
+#include "drawtext.h"
 
 class APlayer;
 class Player;
@@ -36,6 +39,7 @@ public:
   int	getWidth() const;
   int	getHeight() const;
   bool	isPause();
+
   std::vector<APlayer*> getIa() const;
   std::vector<APlayer *>getPlayers() const;
   void	setPlayer(Player *);
@@ -59,6 +63,9 @@ private:
   ICallBack	*callPause;
   bool		_pause;
   Skybox	*_skybox;
+
+
+
 };
 
 #endif

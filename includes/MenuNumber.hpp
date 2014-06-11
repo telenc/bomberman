@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Mon Jun  2 02:10:08 2014 Remi telenczak
-// Last update Tue Jun  3 07:11:08 2014 Remi telenczak
+// Last update Tue Jun 10 17:08:05 2014 Remi telenczak
 //
 
 #ifndef		_MENUNUMBER
@@ -13,6 +13,7 @@
 
 # include	"ModelList.hpp"
 # include	"EventManager.hpp"
+#include        "Skybox.hpp"
 # include	<Clock.hh>
 # include	<BasicShader.hh>
 # include	<Input.hh>
@@ -23,14 +24,15 @@ class MenuNumber
 public:
   MenuNumber(ModelList *, EventManager *, gdl::Clock *);
   ~MenuNumber();
-  void	draw(gdl::BasicShader &, gdl::Clock const &);
+  int	draw(gdl::BasicShader &, gdl::Clock const &);
   int	update(gdl::Clock &, gdl::Input &);
   void	eventKeyUp(void *data);
-void	eventKeyA(void *data);
+  void	eventKeyA(void *data);
   void	eventKeyDown(void *data);
-void	upIt(std::list<int>::iterator );
+  void	upIt(std::list<int>::iterator );
 void	downIt(std::list<int>::iterator);
 int	getResult();
+void	setSkybox(Skybox *skybox);
 private:
   ModelList	*_mod;
   EventManager	*_event;
@@ -40,9 +42,11 @@ private:
   ICallBack	*callKeyUp;
   ICallBack	*callKeyDown;
   ICallBack	*callKeyA;
-std::list<int>		result;
-int		_nextX;
-std::map<int, float> rotationCube;
+  bool		end;
+  std::list<int>		result;
+  int		_nextX;
+  std::map<int, float> rotationCube;
+  Skybox *_skin;
 };
 
 #endif

@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 14 07:57:08 2014 Remi telenczak
-// Last update Tue Jun 10 12:39:23 2014 Remi telenczak
+// Last update Tue Jun 10 17:48:57 2014 Remi telenczak
 //
 
 #include	"CameraBomber.hpp"
@@ -158,6 +158,17 @@ void		CameraBomber::translate(double x, double y, double z)
   this->position += vector;
 }
 
+void	testt(const char *format, ...)
+{
+  char textBuff[2048];
+  va_list argList;
+
+  va_start(argList, format);
+  OVR::OVR_vsprintf(textBuff, sizeof(textBuff), format, argList);
+  va_end(argList);
+  std::cout << "Tageule" << std::endl;
+}
+
 glm::mat4		CameraBomber::getTransformation()
 {
   glm::vec3	vec;
@@ -174,6 +185,7 @@ glm::mat4		CameraBomber::getTransformation()
     {
       transformation = glm::lookAt(positionPause, glm::vec3(positionPause.x, 0, positionPause.z-1), glm::vec3(0, 1, 0));
     }
+
   return transformation;
 }
 
@@ -236,6 +248,7 @@ glm::mat4		CameraBomber::getTransformationLeft()
     {
       transformation = glm::lookAt(positionPause, glm::vec3(positionPause.x, 0, positionPause.z-1), glm::vec3(0, 1, 0));
     }
+  testt("Salut");
   return transformation;
 }
 

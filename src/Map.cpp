@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Mon Jun  9 16:33:29 2014 Remi telenczak
+// Last update Tue Jun 10 17:47:12 2014 Remi telenczak
 //
 
 #include <cstdlib>
@@ -15,6 +15,8 @@
 #include "Player.hpp"
 #include "Skybox.hpp"
 #include	"EventManager.hpp"
+#include	<GL/freeglut.h>
+#include	"drawtext.h"
 
 Map::Map(int width, int height, EventManager *event) : _width(width), _height(height), _event(event), _pause(false)
 {
@@ -39,7 +41,7 @@ Map::~Map()
 
 void	Map::update(gdl::Clock clock, gdl::Input input)
 {
-  std::list<AObjectPhysic *>::iterator itO;
+    std::list<AObjectPhysic *>::iterator itO;
 
   if (this->_pause == true)
     return;
@@ -105,6 +107,7 @@ std::vector<AObjectPhysic *>	Map::getObjectsPos(AObjectPhysic *obj)
 
 void	Map::draw(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
 {
+
   std::list<AObjectPhysic *>::iterator itO;
 
   itO = this->_map.begin();
@@ -116,9 +119,19 @@ void	Map::draw(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
 	(*itO)->draw(shader, clock);
       itO++;
     }
-  (void)camera;
   this->_player->draw(shader, clock);
   this->_skybox->draw(shader, clock);
+  (void)shader;
+  (void)clock;
+  (void)camera;
+
+  //usleep(1000);
+  //this->texture.bind();
+  //glm::mat4 t;
+  //t = camera->getTransformation();
+  //t = glm::translate(t, glm::vec3(0,10,0));
+  //this->geometry.draw(shader, t, GL_QUADS);
+
 }
 
 std::vector<APlayer *> Map::getIa() const
