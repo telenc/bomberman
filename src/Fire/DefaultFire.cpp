@@ -5,7 +5,11 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Fri May 23 04:00:03 2014 Remi telenczak
+<<<<<<< HEAD
 // Last update Wed Jun 11 14:27:52 2014 Remi telenczak
+=======
+// Last update Wed Jun 11 14:47:13 2014 Steven Martreux
+>>>>>>> 8146f5a676b208b33e59d3cfeef18af3ce41e36a
 //
 
 #include	"DefaultFire.hpp"
@@ -14,13 +18,12 @@
 #include	"ABomb.hpp"
 #include	"ABonus.hpp"
 
-DefaultFire::DefaultFire(Map *map, ModelList *model, EventManager *event, std::vector<APlayer *> *playerTouched, gdl::Clock *clock) : AFire(map, model, event, playerTouched, clock)
+DefaultFire::DefaultFire(Map *map, ModelList *model, EventManager *event, std::vector<APlayer *> *playerTouched, gdl::Clock *clock, int idBomb) : AFire(map, model, event, playerTouched, clock, idBomb)
 {
   this->_skin = _modelList->getModel("fire");
   this->scale(glm::vec3(0.5, 0.5, 0.5));
   this->_skin->createSubAnim(0, "while", 15, 15);
   this->_skin->setCurrentSubAnim("while", false);
-  this->i = 0;
   this->_typePrecis = FIREPRECIS;
 }
 
@@ -43,7 +46,15 @@ bool	DefaultFire::update(gdl::Clock const &clock, gdl::Input &input)
     bonus->fireTouch();
   this->_time -= (clock.getElapsed() * 1000);
   if (0 >= this->_time)
+<<<<<<< HEAD
     return false;
+=======
+    {
+      std::cout << "SUPPPRESSIOON" << std::endl;
+      //this->_map->deleteObject(this);
+      return false;
+    }
+>>>>>>> 8146f5a676b208b33e59d3cfeef18af3ce41e36a
   return true;
   (void)clock;
   (void)input;

@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Fri May 23 03:58:43 2014 Remi telenczak
-// Last update Tue May 27 03:00:32 2014 Remi telenczak
+// Last update Tue Jun 10 14:16:40 2014 Steven Martreux
 //
 
 #ifndef		_DEFAULTFIRE
@@ -16,7 +16,7 @@
 class DefaultFire : public AFire
 {
 public:
-  DefaultFire(Map *, ModelList *, EventManager *, std::vector<APlayer *> *, gdl::Clock *);
+  DefaultFire(Map *, ModelList *, EventManager *, std::vector<APlayer *> *, gdl::Clock *, int);
   virtual ~DefaultFire();
   virtual bool update(gdl::Clock const &clock, gdl::Input &input);
 };

@@ -5,7 +5,11 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
+<<<<<<< HEAD
 // Last update Wed Jun 11 12:45:37 2014 Remi telenczak
+=======
+// Last update Wed Jun 11 15:07:21 2014 Steven Martreux
+>>>>>>> 8146f5a676b208b33e59d3cfeef18af3ce41e36a
 */
 
 #include <iostream>
@@ -41,6 +45,34 @@ int	main(int ac, char **av)
 	      //m = save->getMap();
 	      Menu *menu = new Menu(load->getModel(), load->getEventManager(), engine->getClock());
 
+<<<<<<< HEAD
+      //m->setSkybox(new Skybox(m, mod, eventManager));
+      //load->getSound()->InGame();
+      //sound->InGame();
+      //(void)menu;
+      LoadGame *charge = new LoadGame("test.xml", load->getEventManager(), load->getModel(), engine->getClock());
+      if (ac == 2 && av[1][0] == 'm')
+	{
+	  //GenereMap gen(21, 21, 0, load->getEventManager(), load->getModel(), engine->getClock());
+	  Map *m = charge->getMap();//gen.getMap();
+	  m->setSkybox(new Skybox(m, load->getModel(), load->getEventManager(), engine->getClock()));
+	  while (engine->update(m))
+	    {
+	      engine->draw(m);
+	      joystick->update();
+	    }
+	  SaveGame *test;
+	  test = new SaveGame(m, "test.xml");
+	  (void)test;
+	}
+      else
+	{
+	  Skybox *test = new Skybox(NULL, load->getModel(), load->getEventManager(), engine->getClock());
+	  menu->setSkybox(test);
+	  load->getSound()->InGame();
+	  while (engine->update(menu))
+	    {
+=======
 	      //m->setSkybox(new Skybox(m, mod, eventManager));
 	      load->getSound()->InGame();
 	      //sound->InGame();
@@ -65,6 +97,7 @@ int	main(int ac, char **av)
 	      load->getSound()->InGame();
 	      while (engine->update(menu))
 	      {
+>>>>>>> b06a4f1ed569f01d71ede5b25fa225af387e1106
 	      engine->draw(menu);
 	      joystick->update();
 	      }
