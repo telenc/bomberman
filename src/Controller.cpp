@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Wed May 21 12:42:20 2014 Steven Martreux
-// Last update Tue Jun 10 13:55:32 2014 Steven Martreux
+// Last update Wed Jun 11 15:16:57 2014 Steven Martreux
 //
 
 #include	"Controller.hpp"
@@ -43,6 +43,7 @@ void	Controller::initVar()
   _upMenu = 0;
   _downMenu = 0;
   _start = 0;
+  _back = 0;
 }
 
 void	Controller::setRightLeft(int right, int left)
@@ -123,10 +124,16 @@ void	Controller::sendEvent()
 {
   this->sendEventMenu();
   this->sendEventMove();
-  if (_bomb == 1)
-    _eventManager->dispatchEvent("keyA", NULL);
-  else if (_back == 1)
-    _eventManager->dispatchEvent("keyB", NULL);
+  if (_bomb == 2)
+    {
+      _bomb = 0;
+      _eventManager->dispatchEvent("keyA", NULL);
+    }
+  else if (_back == 2)
+    {
+      _back = 0;
+      _eventManager->dispatchEvent("keyB", NULL);
+    }
   if (_start == 2)
     {
       _start = 0;
@@ -136,14 +143,12 @@ void	Controller::sendEvent()
 
 void	Controller::varUpdate()
 {
-  _bomb = 0;
   _right = 0;
   _left = 0;
   _up = 0;
   _down = 0;
   _rotateLeft = 0;
   _rotateRight = 0;
-  _back = 0;
 }
 
 void	Controller::update()
@@ -158,8 +163,12 @@ void	Controller::update()
     CheckAxeRotate();
   if (SDL_JoystickGetButton(_joystick, 0) == 1)
     _bomb = 1;
-  else if (SDL_JoystickGetButton(_joystick, 1) == 1)
+  else if (SDL_JoystickGetButton(_joystick, 0) != 1 && _bomb == 1)
+    _bomb = 2;
+  if (SDL_JoystickGetButton(_joystick, 1) == 1)
     _back = 1;
+  else if (SDL_JoystickGetButton(_joystick, 1) != 1 && _back == 1)
+    _back = 2;
   if (SDL_JoystickGetHat(_joystick, 0) == SDL_HAT_UP)
     _upMenu = 1;
   else if (SDL_JoystickGetHat(_joystick, 0) == SDL_HAT_DOWN)
