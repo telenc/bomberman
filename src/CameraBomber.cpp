@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 14 07:57:08 2014 Remi telenczak
-// Last update Tue Jun 10 17:48:57 2014 Remi telenczak
+// Last update Tue Jun 10 17:51:39 2014 Remi telenczak
 //
 
 #include	"CameraBomber.hpp"
@@ -177,7 +177,6 @@ glm::mat4		CameraBomber::getTransformation()
   if (this->_pause == false)
     {
       transformation = glm::rotate(transformation, this->rotation.y, glm::vec3(0, 1, 0));
-
       transformation = glm::rotate(transformation, 90.f, glm::vec3(1, 0, 0));
       transformation = glm::translate(transformation, position);
     }

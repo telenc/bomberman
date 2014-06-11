@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Fri May 23 04:00:03 2014 Remi telenczak
-// Last update Wed Jun 11 14:47:13 2014 Steven Martreux
+// Last update Wed Jun 11 15:14:12 2014 Remi telenczak
 //
 
 #include	"DefaultFire.hpp"
@@ -18,9 +18,7 @@ DefaultFire::DefaultFire(Map *map, ModelList *model, EventManager *event, std::v
 {
   this->_skin = _modelList->getModel("fire");
   this->scale(glm::vec3(0.5, 0.5, 0.5));
-  //this->_skin->createSubAnim(0, "start", 0, 15);
   this->_skin->createSubAnim(0, "while", 15, 15);
-  //this->_skin->createSubAnim(2, "end", 22, 31);
   this->_skin->setCurrentSubAnim("while", false);
   this->_typePrecis = FIREPRECIS;
 }
@@ -39,26 +37,13 @@ bool	DefaultFire::update(gdl::Clock const &clock, gdl::Input &input)
   time(&currTime);
   this->checkPlayerColl();
   if ((bomb = (ABomb *)this->checkPositionCollision(BOMB)) != NULL)
-    {
-      //std::cout << "Coucou" << std::endl;
-      bomb->explode();
-    }
+    bomb->explode();
   if ((bonus = (ABonus *)this->checkPositionCollision(BONUS)) != NULL)
-    {
-      bonus->fireTouch();
-    }
-
-  (void)bomb;
+    bonus->fireTouch();
   this->_time -= (clock.getElapsed() * 1000);
   if (0 >= this->_time)
-    {
-      std::cout << "SUPPPRESSIOON" << std::endl;
-      //this->_map->deleteObject(this);
-      return false;
-    }
+    return false;
   return true;
-
-
   (void)clock;
   (void)input;
 }
