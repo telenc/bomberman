@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:00 2014 Remi telenczak
-// Last update Tue Jun 10 14:57:17 2014 thomas mendez
+// Last update Tue Jun 10 18:09:40 2014 dedicker remi
 //
 
 #include	<iostream>
@@ -36,6 +36,9 @@ void    Menu::eventKeyB(void *data)
   currentMenu = 0;
   switch (currentMenu)
     {
+    case 3:
+      currentMenu -= 1;
+      break;
     default:
       currentMenu = 0;
       break;

@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Mon Jun  2 02:08:04 2014 Remi telenczak
-// Last update Tue Jun 10 17:05:07 2014 Remi telenczak
+// Last update Tue Jun 10 18:13:41 2014 dedicker remi
 //
 
 #include	"MenuNumber.hpp"
@@ -199,6 +199,7 @@ int MenuNumber::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
 {
   std::list<MenuBoxNumber *>::iterator it;
 
+  _skin->draw(shader, clock);
   it = listBox.begin();
   while (it != listBox.end())
     {
