@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
-// Last update Wed Jun 11 11:14:56 2014 dedicker remi
+// Last update Wed Jun 11 16:08:01 2014 dedicker remi
 */
 
 #include <iostream>
@@ -72,7 +72,9 @@ int	main(int ac, char **av)
       (void)av;
       (void)ac;
       Game	game;
-      game.playMenu();
+    
+      while (game.isFinish())
+	game.draw();	  
     }
   catch(const myException *e)
     {

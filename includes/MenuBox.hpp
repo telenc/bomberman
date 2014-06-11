@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:28:07 2014 Remi telenczak
-// Last update Tue Jun  3 11:04:12 2014 dedicker remi
+// Last update Wed Jun 11 15:42:19 2014 dedicker remi
 //
 
 #ifndef		_MENUBOX_HPP
@@ -26,9 +26,9 @@ public:
   void	eventRotOcu3(void *data);
   glm::vec3   *getRotation();
   int   getRotationy();
-  void	checkFacetteBoxMenu(glm::vec3 *rotation);
-  void checkBoxExit(glm::vec3 *rotation);
-  void	checkBoxCredit(glm::vec3 *rotation);
+  /*  void	checkFacetteBoxMenu(glm::vec3 *rotation);
+      void checkBoxExit(glm::vec3 *rotation);
+      void	checkBoxCredit(glm::vec3 *rotation);*/
 protected:
   int _i;
   glm::vec3 posSauv;

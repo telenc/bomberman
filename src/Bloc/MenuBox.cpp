@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Mon May 26 16:41:50 2014 dedicker remi
-// Last update Wed Jun  4 11:22:27 2014 dedicker remi
+// Last update Wed Jun 11 15:42:47 2014 dedicker remi
 //
 
 #include	<iostream>
@@ -44,7 +44,7 @@ int		MenuBox::getRotationy()
 {
   return this->rot->y;
 }
-
+/*
 void	MenuBox::checkBoxExit(glm::vec3 *rotation)
 {
   if (rotation->y >= -15)
@@ -75,7 +75,7 @@ void	MenuBox::checkFacetteBoxMenu(glm::vec3 *rotation)
 	std::cout << "|-- Dans le vide --|" << std::endl;
     }
 }
-
+*/
 
 void	MenuBox::eventRotOcu(void *data)
 {
@@ -86,7 +86,7 @@ void	MenuBox::eventRotOcu(void *data)
   newpos = glm::rotateY(newpos, rotation->y);
   this->_position = newpos;
   this->rot = (glm::vec3 *)data;
-  checkFacetteBoxMenu(rotation);
+  //checkFacetteBoxMenu(rotation);
 }
 
 void	MenuBox::eventRotOcu2(void *data)
@@ -97,8 +97,8 @@ void	MenuBox::eventRotOcu2(void *data)
   this->_position = newpos;
   this->set_roty(rotation->z);
   this->rot = (glm::vec3 *)data;
-  checkBoxExit(rotation);
-  std::cout << "Rotation y " << rotation->y << " Rotation x :" << rotation->x << "Rotation z:" << rotation->z << std::endl;
+  //checkBoxExit(rotation);
+  //std::cout << "Rotation y " << rotation->y << " Rotation x :" << rotation->x << "Rotation z:" << rotation->z << std::endl;
 }
 
 void	MenuBox::eventRotOcu3(void *data)
@@ -109,7 +109,7 @@ void	MenuBox::eventRotOcu3(void *data)
   this->_position = newpos;
   this->set_roty(rotation->z);
   this->rot = (glm::vec3 *)data;
-  checkBoxCredit(rotation);
+  //checkBoxCredit(rotation);
 }
 
 bool MenuBox::update(gdl::Clock const &clock, gdl::Input &input)
