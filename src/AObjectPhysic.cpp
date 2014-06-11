@@ -5,11 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 16:17:56 2014 Mathieu Choquart
-<<<<<<< HEAD
-// Last update Wed Jun 11 14:30:44 2014 Remi telenczak
-=======
-// Last update Wed Jun 11 14:45:11 2014 Steven Martreux
->>>>>>> 8146f5a676b208b33e59d3cfeef18af3ce41e36a
+// Last update Wed Jun 11 15:11:52 2014 Remi telenczak
 //
 
 #include	"AObjectPhysic.hpp"
@@ -89,14 +85,9 @@ bool AObjectPhysic::isInView(CameraBomber *camera)
   D.z = this->_position.z - (camera->getPosition().z * -1);
   D.y = 0;
 
-<<<<<<< HEAD
-=======
-  float or1;
-  float or2;
-
   if (D.x == 0 && D.z == 0)
     return false;
->>>>>>> 8146f5a676b208b33e59d3cfeef18af3ce41e36a
+
   or1 = glm::orientedAngle(glm::normalize(D), glm::normalize(B), glm::vec3(0,1,0));
   or2 = glm::orientedAngle(glm::normalize(C), glm::normalize(D), glm::vec3(0, 1, 0));
   if ((or1 < 0 && or2 < 0))

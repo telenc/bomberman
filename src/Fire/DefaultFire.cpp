@@ -5,11 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Fri May 23 04:00:03 2014 Remi telenczak
-<<<<<<< HEAD
-// Last update Wed Jun 11 14:27:52 2014 Remi telenczak
-=======
-// Last update Wed Jun 11 14:47:13 2014 Steven Martreux
->>>>>>> 8146f5a676b208b33e59d3cfeef18af3ce41e36a
+// Last update Wed Jun 11 15:14:12 2014 Remi telenczak
 //
 
 #include	"DefaultFire.hpp"
@@ -46,15 +42,7 @@ bool	DefaultFire::update(gdl::Clock const &clock, gdl::Input &input)
     bonus->fireTouch();
   this->_time -= (clock.getElapsed() * 1000);
   if (0 >= this->_time)
-<<<<<<< HEAD
     return false;
-=======
-    {
-      std::cout << "SUPPPRESSIOON" << std::endl;
-      //this->_map->deleteObject(this);
-      return false;
-    }
->>>>>>> 8146f5a676b208b33e59d3cfeef18af3ce41e36a
   return true;
   (void)clock;
   (void)input;

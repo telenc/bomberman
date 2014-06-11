@@ -5,11 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 21 01:36:36 2014 Remi telenczak
-<<<<<<< HEAD
-// Last update Wed Jun 11 14:32:55 2014 Remi telenczak
-=======
-// Last update Tue Jun 10 14:18:01 2014 Steven Martreux
->>>>>>> 8146f5a676b208b33e59d3cfeef18af3ce41e36a
+// Last update Wed Jun 11 15:12:36 2014 Remi telenczak
 //
 
 #include	"DefaultBomb.hpp"
@@ -76,11 +72,7 @@ void	DefaultBomb::createDeflag()
 
   listPlayer = new std::vector<APlayer *>;
   (void)listPlayer;
-<<<<<<< HEAD
   x = this->_position.x;
-=======
-  x = this->_position.x;// - (this->_po * 3);
->>>>>>> 8146f5a676b208b33e59d3cfeef18af3ce41e36a
   while (x >= (this->_position.x - this->_po * 3))
     {
       if (x != this->_position.x)
