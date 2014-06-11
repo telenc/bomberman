@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 15:52:43 2014 Mathieu Choquart
-// Last update Thu Jun  5 15:53:38 2014 Steven Martreux
+// Last update Tue Jun 10 14:16:39 2014 Steven Martreux
 //
 
 #ifndef			_AOBJECTPHYSIC_HPP_
@@ -21,9 +21,10 @@
 # include		<glm/gtx/norm.hpp>
 # include		<Model.hh>
 # include		<BasicShader.hh>
-# include		"IObjectPhysic.hh"
-# include	<vector>
+# include		<vector>
+
 # include		"CameraBomber.hpp"
+# include		"IObjectPhysic.hh"
 
 class EventManager;
 class Map;

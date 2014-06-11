@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
-// Last update Thu Jun  5 18:13:39 2014 Steven Martreux
+// Last update Wed Jun 11 13:26:52 2014 Steven Martreux
 //
 
 #include <iostream>
@@ -44,14 +44,16 @@ int	main(int ac, char **av)
       //load->getSound()->InGame();
       //sound->InGame();
       //(void)menu;
+      LoadGame *charge = new LoadGame("test.xml", load->getEventManager(), load->getModel(), engine->getClock());
       if (ac == 2 && av[1][0] == 'm')
 	{
-	  GenereMap gen(21, 21, 0, load->getEventManager(), load->getModel(), engine->getClock());
-	  Map *m = gen.getMap();
+	  //GenereMap gen(21, 21, 0, load->getEventManager(), load->getModel(), engine->getClock());
+	  Map *m = charge->getMap();//gen.getMap();
 	  m->setSkybox(new Skybox(m, load->getModel(), load->getEventManager(), engine->getClock()));
 	  while (engine->update(m))
 	    {
 	      engine->draw(m);
+	      joystick->update();
 	    }
 	  SaveGame *test;
 	  test = new SaveGame(m, "test.xml");

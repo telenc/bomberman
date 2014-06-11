@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Mon May 12 13:48:39 2014 Steven Martreux
-// Last update Sat Jun  7 18:42:37 2014 Steven Martreux
+// Last update Wed Jun 11 14:23:23 2014 Steven Martreux
 //
 
 #include	<tinyxml.h>
@@ -13,13 +13,13 @@
 
 LoadGame::LoadGame(const std::string & file, EventManager *event, ModelList *model, gdl::Clock *clock) : _file(file), _event(event), _model(model), _clock(clock)
 {
-  TiXmlDocument	XmlDoc(file.c_str());
-  _loadOkay = XmlDoc.LoadFile();
+  TiXmlDocument	doc(file);
+  _loadOkay = doc.LoadFile();
   if (!_loadOkay)
-    std::cerr << "Load of " << file << " : Error" << std::endl;
+     std::cerr << "Load of " << file << " : Error" << std::endl;
   //THROW A FAIRE
-  _bomberman = XmlDoc.FirstChildElement("Bomberman");
-  if (!_bomberman)
+  _bomberman = doc.FirstChildElement("Bomberman");
+  if (_bomberman == NULL)
     std::cerr << "Balise <Bomberman> inexistant" << std::endl;
   //TRHOW A FAIRE
   _mapObject.insert(std::pair<std::string, AObjectPhysic*(LoadGame::*)(TiXmlElement *)>("defaultwall", &LoadGame::CreateDefaultWall));
@@ -27,6 +27,7 @@ LoadGame::LoadGame(const std::string & file, EventManager *event, ModelList *mod
   _mapObject.insert(std::pair<std::string, AObjectPhysic*(LoadGame::*)(TiXmlElement *)>("defaultbomb", &LoadGame::CreateDefaultBomb));
   _mapObject.insert(std::pair<std::string, AObjectPhysic*(LoadGame::*)(TiXmlElement *)>("bonuspo", &LoadGame::CreateBonusPo));
   _mapObject.insert(std::pair<std::string, AObjectPhysic*(LoadGame::*)(TiXmlElement *)>("bonusbomb", &LoadGame::CreateBonusBomb));
+  _mapObject.insert(std::pair<std::string, AObjectPhysic*(LoadGame::*)(TiXmlElement *)>("fire", &LoadGame::CreateDefaultFire));
   this->getMapSize();
   this->getPlayer();
   this->getObjMap();
@@ -53,6 +54,38 @@ AObjectPhysic	*LoadGame::CreateBonusPo(TiXmlElement *line)
   obj->set_z(atof(line->Attribute("z")));
   obj->setDied(atoi(line->Attribute("died")));
   return (AObjectPhysic *)obj;
+}
+
+std::vector<APlayer *> *LoadGame::getVectorPlayer(TiXmlElement *line)
+{
+  const char	       	*idPlayer;
+  char			*id;
+  std::vector<APlayer *> *playerTouched;
+
+  idPlayer = line->Attribute("ID_PLAYER");
+  id = strtok((char *)idPlayer, ",");
+  playerTouched = new std::vector<APlayer *>;
+  while (id != NULL)
+    {
+      playerTouched->push_back(GetPlayerBomb(atoi(id)));
+      id = strtok(NULL, ",");
+    }
+  return playerTouched;
+}
+
+AObjectPhysic	*LoadGame::CreateDefaultFire(TiXmlElement *line)
+{
+  DefaultFire	*fire;
+
+  fire = new DefaultFire(_mapGame, _model, _event, getVectorPlayer(line), _clock, atoi(line->Attribute("idbomb")));
+  fire->setId(atoi(line->Attribute("id")));
+  fire->set_x(atof(line->Attribute("x")));
+  fire->set_y(atof(line->Attribute("y")));
+  fire->set_z(atof(line->Attribute("z")));
+  fire->setTime(atoi(line->Attribute("time")));
+  fire->setDamage(atoi(line->Attribute("damage")));
+  fire->setBombId(atoi(line->Attribute("idbomb")));
+  return (AObjectPhysic *)fire;
 }
 
 AObjectPhysic	*LoadGame::CreateBonusBomb(TiXmlElement *line)
@@ -190,7 +223,7 @@ void	 LoadGame::getPlayer()
       player->set_rotz(atoi(_player->Attribute("rot_z")));
       player->setNbrBomb(atoi(_player->Attribute("nbrMaxBomb")));
       player->setNbrMaxBomb(atoi(_player->Attribute("nbrCurrentBomb")));
-      _mapGame->setMap((AObjectPhysic *)player);
+      _mapGame->setPlayer(player);
     }
   else
     std::cerr << "Balise Player not found" << std::endl;

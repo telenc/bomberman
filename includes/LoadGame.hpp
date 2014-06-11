@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 // 
 // Started on  Mon May 12 13:51:56 2014 Steven Martreux
-// Last update Sat Jun  7 18:40:35 2014 Steven Martreux
+// Last update Tue Jun 10 18:59:47 2014 Steven Martreux
 //
 
 #ifndef		_LOAD_GAME_HPP
@@ -15,6 +15,7 @@
 #include	<string>
 #include	<iostream>
 #include	<map>
+#include	<vector>
 
 #include	"DefaultWall.hpp"
 #include	"DestrucWall.hpp"
@@ -23,6 +24,7 @@
 #include	"BombBonus.hpp"
 #include	"Player.hpp"
 #include	"DefaultBomb.hpp"
+#include	"DefaultFire.hpp"
 
 class		LoadGame
 {
@@ -38,6 +40,8 @@ public:
   AObjectPhysic	*CreateDefaultBomb(TiXmlElement *);
   AObjectPhysic *CreateBonusPo(TiXmlElement *);
   AObjectPhysic *CreateBonusBomb(TiXmlElement *);
+  AObjectPhysic	*CreateDefaultFire(TiXmlElement *);
+  std::vector<APlayer *> *getVectorPlayer(TiXmlElement *);
   APlayer	*GetPlayerBomb(int);
   void		 getPlayer();
 private:

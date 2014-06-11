@@ -5,14 +5,14 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Fri May 23 03:51:01 2014 Remi telenczak
-// Last update Fri May 30 05:35:50 2014 Remi telenczak
+// Last update Wed Jun 11 14:47:39 2014 Steven Martreux
 //
 
 #include	"AFire.hpp"
 #include	"Map.hpp"
 #include	"APlayer.hpp"
 
-AFire::AFire(Map *map, ModelList *model, EventManager *event, std::vector<APlayer *> *playerTouched, gdl::Clock *clock) : AObjectPhysic(map, model, event, clock), _damage(1)
+AFire::AFire(Map *map, ModelList *model, EventManager *event, std::vector<APlayer *> *playerTouched, gdl::Clock *clock, int bombId) : AObjectPhysic(map, model, event, clock), _damage(1), _bombId(bombId)
 {
   this->_type = FIRE;
   this->_time = 2000;
@@ -23,6 +23,26 @@ AFire::AFire(Map *map, ModelList *model, EventManager *event, std::vector<APlaye
 AFire::~AFire()
 {
 
+}
+
+int	AFire::getBombId() const
+{
+  return _bombId;
+}
+
+void	AFire::setBombId(int bombId)
+{
+  _bombId = bombId;
+}
+
+std::vector<APlayer *> *AFire::getPlayerTouched() const
+{
+  return _playerTouched;
+}
+
+void	AFire::setPlayerTouched(std::vector<APlayer *> *playerTouched)
+{
+  _playerTouched = playerTouched;
 }
 
 void	AFire::setTime(int time)

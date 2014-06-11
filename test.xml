@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <Bomberman>
     <Map_Size width="21" height="21" />
-    <Player object="player" id="452" x="3" y="0" z="3" po="2" life="2" nbrMaxBomb="1" nbrCurrentBomb="1" rot_x="0" rot_y="180" rot_z="0" />
+    <Player object="player" id="452" x="2.23" y="0" z="12.97" po="3" life="-6" nbrMaxBomb="2" nbrCurrentBomb="0" rot_x="0" rot_y="180" rot_z="0" />
     <Map object="defaultwall" id="5" x="0" y="0" z="0" />
     <Map object="defaultwall" id="6" x="0" y="0" z="3" />
     <Map object="defaultwall" id="7" x="0" y="0" z="6" />
@@ -23,9 +24,7 @@
     <Map object="defaultwall" id="24" x="0" y="0" z="57" />
     <Map object="defaultwall" id="25" x="0" y="0" z="60" />
     <Map object="defaultwall" id="26" x="3" y="0" z="0" />
-    <Map object="destrucwall" id="27" x="3" y="0" z="9" life="3" />
-    <Map object="destrucwall" id="28" x="3" y="0" z="12" life="3" />
-    <Map object="destrucwall" id="29" x="3" y="0" z="15" life="3" />
+    <Map object="destrucwall" id="29" x="3" y="0" z="15" life="2" />
     <Map object="destrucwall" id="30" x="3" y="0" z="18" life="3" />
     <Map object="destrucwall" id="31" x="3" y="0" z="21" life="3" />
     <Map object="destrucwall" id="32" x="3" y="0" z="24" life="3" />
@@ -41,7 +40,6 @@
     <Map object="defaultwall" id="42" x="3" y="0" z="60" />
     <Map object="defaultwall" id="43" x="6" y="0" z="0" />
     <Map object="defaultwall" id="44" x="6" y="0" z="6" />
-    <Map object="destrucwall" id="45" x="6" y="0" z="9" life="3" />
     <Map object="defaultwall" id="46" x="6" y="0" z="12" />
     <Map object="destrucwall" id="47" x="6" y="0" z="15" life="3" />
     <Map object="defaultwall" id="48" x="6" y="0" z="18" />
@@ -59,8 +57,7 @@
     <Map object="defaultwall" id="60" x="6" y="0" z="54" />
     <Map object="defaultwall" id="61" x="6" y="0" z="60" />
     <Map object="defaultwall" id="62" x="9" y="0" z="0" />
-    <Map object="destrucwall" id="63" x="9" y="0" z="3" life="3" />
-    <Map object="destrucwall" id="64" x="9" y="0" z="6" life="3" />
+    <Map object="destrucwall" id="64" x="9" y="0" z="6" life="1" />
     <Map object="destrucwall" id="65" x="9" y="0" z="9" life="3" />
     <Map object="destrucwall" id="66" x="9" y="0" z="12" life="3" />
     <Map object="destrucwall" id="67" x="9" y="0" z="15" life="3" />
@@ -81,7 +78,6 @@
     <Map object="defaultwall" id="82" x="9" y="0" z="60" />
     <Map object="destrucwall" id="83" x="9" y="0" z="60" life="3" />
     <Map object="defaultwall" id="84" x="12" y="0" z="0" />
-    <Map object="destrucwall" id="85" x="12" y="0" z="3" life="3" />
     <Map object="defaultwall" id="86" x="12" y="0" z="6" />
     <Map object="destrucwall" id="87" x="12" y="0" z="9" life="3" />
     <Map object="defaultwall" id="88" x="12" y="0" z="12" />
@@ -103,7 +99,7 @@
     <Map object="defaultwall" id="104" x="12" y="0" z="60" />
     <Map object="destrucwall" id="105" x="12" y="0" z="60" life="3" />
     <Map object="defaultwall" id="106" x="15" y="0" z="0" />
-    <Map object="destrucwall" id="107" x="15" y="0" z="3" life="3" />
+    <Map object="destrucwall" id="107" x="15" y="0" z="3" life="2" />
     <Map object="destrucwall" id="108" x="15" y="0" z="6" life="3" />
     <Map object="destrucwall" id="109" x="15" y="0" z="9" life="3" />
     <Map object="destrucwall" id="110" x="15" y="0" z="12" life="3" />
@@ -447,5 +443,5 @@
     <Map object="defaultwall" id="448" x="60" y="0" z="51" />
     <Map object="defaultwall" id="449" x="60" y="0" z="54" />
     <Map object="defaultwall" id="450" x="60" y="0" z="57" />
-    <Map object="defaultwall" id="451" x="60" y="0" z="60" />
+    <Map object="defaultwall" id="451" x="60" y="0" />
 </Bomberman>
