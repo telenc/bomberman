@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Thu Jun 12 13:01:46 2014 Remi telenczak
+// Last update Thu Jun 12 15:24:39 2014 Remi telenczak
 //
 
 #ifndef MAP_HPP_
@@ -40,38 +40,45 @@ public:
   Map(int x, int y, EventManager *);
   ~Map();
   void	update(gdl::Clock, gdl::Input);
-  void setBlock(ABloc *bloc);
+  void	updateBomb(gdl::Clock, gdl::Input);
+  void	updateBonus(gdl::Clock, gdl::Input);
+  void	updateFire(gdl::Clock, gdl::Input);
+  void	updateBloc(gdl::Clock, gdl::Input);
+
+  void	draw(gdl::BasicShader, gdl::Clock, CameraBomber *);
+  void	drawBomb(gdl::BasicShader, gdl::Clock, CameraBomber *);
+  void	drawFire(gdl::BasicShader, gdl::Clock, CameraBomber *);
+  void	drawBloc(gdl::BasicShader, gdl::Clock, CameraBomber *);
+  void	drawBonus(gdl::BasicShader, gdl::Clock, CameraBomber *);
+
   int	getWidth() const;
   int	getHeight() const;
   bool	isPause();
-  void	updateBomb(gdl::Clock, gdl::Input);
-  std::list<ABomb *>	getBombs() const;
-  std::vector<APlayer*> getIa() const;
-  std::vector<APlayer *>getPlayers() const;
+
+  int	distanceObj(AObjectPhysic *);
+  void	eventCallPause(void *);
+
   void	setPlayer(Player *);
   void	setSkybox(Skybox *);
-  int	distanceObj(AObjectPhysic *);
-  void	draw(gdl::BasicShader, gdl::Clock, CameraBomber *);
-  void	drawBomb(gdl::BasicShader, gdl::Clock, CameraBomber *);
-  std::vector<AObjectPhysic *> getObjectsPos(AObjectPhysic *);
-  std::vector<APlayer *> getPlayers();
-  Player *getPlayer() const;
-  void	eventCallPause(void *);
-  std::list<AObjectPhysic * > getObject();
   void	setBomb(ABomb *);
-  void	drawBonus(gdl::BasicShader, gdl::Clock, CameraBomber *);
-  void	updateBonus(gdl::Clock, gdl::Input);
   void	setBonus(ABonus *);
-  std::list<ABonus *> getBonus() const;
-  void	drawFire(gdl::BasicShader, gdl::Clock, CameraBomber *);
-  void	updateFire(gdl::Clock, gdl::Input);
-void	drawBloc(gdl::BasicShader, gdl::Clock, CameraBomber *);
-  void	updateBloc(gdl::Clock, gdl::Input);
   void	setFire(AFire *);
-void	setBloc(ABloc *);
-  std::list<AObjectPhysic *> getAllObject();
-  std::list<AFire *> getFire() const;
-  std::list<ABloc *> getBloc() const;
+  void	setBloc(ABloc *);
+  void	setBlock(ABloc *bloc);
+
+  std::vector<AObjectPhysic *> getObjectsPos(AObjectPhysic *, int dist = 30, TypeObject type = NONE);
+
+  std::list<ABomb *>		getBombs() const;
+  std::vector<APlayer*>		getIa() const;
+  std::vector<APlayer *>	getPlayers() const;
+  std::vector<APlayer *>	getPlayers();
+  Player			*getPlayer() const;
+  std::list<AObjectPhysic *>	getAllObject();
+  std::list<AFire *>		getFire() const;
+  std::list<ABloc *>		getBloc() const;
+  std::list<ABonus *>		getBonus() const;
+  std::list<AObjectPhysic * >	getObject();
+
   bool isBlock(int x, int z);
 private:
   std::list<ABloc * > _blocs;

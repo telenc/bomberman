@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Mon Jun  2 02:08:04 2014 Remi telenczak
-// Last update Tue Jun 10 18:13:41 2014 dedicker remi
+// Last update Thu Jun 12 16:06:51 2014 Remi telenczak
 //
 
 #include	"MenuNumber.hpp"
@@ -30,6 +30,7 @@ MenuNumber::MenuNumber(ModelList *mod, EventManager *event, gdl::Clock *clock) :
   callKeyDown = new CallBack<MenuNumber>(this, &MenuNumber::eventKeyDown);
   event->listenEvent("keyDownMenu", callKeyDown);
   result.push_back(1);
+
   rotationCube.insert(std::pair<int, float>(0, 0));
   rotationCube.insert(std::pair<int, float>(1, 90));
   rotationCube.insert(std::pair<int, float>(2, 180));
@@ -40,7 +41,6 @@ MenuNumber::MenuNumber(ModelList *mod, EventManager *event, gdl::Clock *clock) :
   rotationCube.insert(std::pair<int, float>(7, 630));
   rotationCube.insert(std::pair<int, float>(8, 720));
   rotationCube.insert(std::pair<int, float>(9, 810));
-
 }
 
 void	MenuNumber::upIt(std::list<int>::iterator it)

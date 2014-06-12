@@ -1,6 +1,6 @@
 <Bomberman>
     <Map_Size width="21" height="21" />
-    <Player object="player" id="453" x="3" y="0" z="6.87" po="2" life="2" nbrMaxBomb="1" nbrCurrentBomb="1" rot_x="0" rot_y="180" rot_z="0" />
+    <Player object="player" id="453" x="6.4" y="0" z="3.625" po="2" life="1" nbrMaxBomb="1" nbrCurrentBomb="1" rot_x="0" rot_y="180" rot_z="0" />
     <Map object="defaultwall" id="6" x="0" y="0" z="0" />
     <Map object="defaultwall" id="7" x="0" y="0" z="3" />
     <Map object="defaultwall" id="8" x="0" y="0" z="6" />
@@ -23,7 +23,7 @@
     <Map object="defaultwall" id="25" x="0" y="0" z="57" />
     <Map object="defaultwall" id="26" x="0" y="0" z="60" />
     <Map object="defaultwall" id="27" x="3" y="0" z="0" />
-    <Map object="destrucwall" id="28" x="3" y="0" z="9" life="3" />
+    <Map object="destrucwall" id="28" x="3" y="0" z="9" life="1" />
     <Map object="destrucwall" id="29" x="3" y="0" z="12" life="3" />
     <Map object="destrucwall" id="30" x="3" y="0" z="15" life="3" />
     <Map object="destrucwall" id="31" x="3" y="0" z="18" life="3" />
@@ -59,7 +59,6 @@
     <Map object="defaultwall" id="61" x="6" y="0" z="54" />
     <Map object="defaultwall" id="62" x="6" y="0" z="60" />
     <Map object="defaultwall" id="63" x="9" y="0" z="0" />
-    <Map object="destrucwall" id="64" x="9" y="0" z="3" life="3" />
     <Map object="destrucwall" id="65" x="9" y="0" z="6" life="3" />
     <Map object="destrucwall" id="66" x="9" y="0" z="9" life="3" />
     <Map object="destrucwall" id="67" x="9" y="0" z="12" life="3" />

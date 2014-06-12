@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Thu Jun 12 14:59:40 2014 Remi telenczak
+// Last update Thu Jun 12 15:25:04 2014 Remi telenczak
 //
 
 #include <cstdlib>
@@ -222,7 +222,7 @@ std::list<AObjectPhysic *>		Map::getAllObject()
   return result;
 }
 
-std::vector<AObjectPhysic *>		Map::getObjectsPos(AObjectPhysic *obj)
+std::vector<AObjectPhysic *>		Map::getObjectsPos(AObjectPhysic *obj, int dist, TypeObject type)
 {
   std::list<AObjectPhysic *>::iterator	itO;
   std::vector<AObjectPhysic *>		result;
@@ -236,8 +236,9 @@ std::vector<AObjectPhysic *>		Map::getObjectsPos(AObjectPhysic *obj)
       if ((*itO) != NULL)
 	if ((*itO) != obj)
 	  {
-	  if (glm::distance2(obj->getPosition(), (*itO)->getPosition()) < 30)
-	    result.push_back((*itO));
+	  if (glm::distance2(obj->getPosition(), (*itO)->getPosition()) < dist)
+	    if (type == NONE || obj->getType() == type)
+	      result.push_back((*itO));
 	  }
       itO++;
     }
