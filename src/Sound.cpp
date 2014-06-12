@@ -5,7 +5,7 @@
 ** Login <bernar_x@epitech.net>
 ** 
 ** Started on  Thu Jun  5 16:20:43 2014 mattieu bernard-guêle
-** Last update Mon Jun  9 16:27:00 2014 mattieu bernard-guêle
+// Last update Thu Jun 12 16:40:13 2014 Steven Martreux
 */
 
 #include	"Sound.hpp"
@@ -24,11 +24,28 @@ Sound::Sound(EventManager *event) : _event(event), _position(0, 0, 0)
   event->listenEvent("bombDrop", callBombDrop);
   callPlayerMove = new CallBack<Sound>(this, &Sound::eventPlayerMove);
   event->listenEvent("playerPosition", callPlayerMove);
+  callSoundOn = new CallBack<Sound>(this, &Sound::soundOn);
+  event->listenEvent("soundon", callSoundOn);
+  callSoundOff = new CallBack<Sound>(this, &Sound::soundOff);
+  event->listenEvent("soundoff", callSoundOff);
+  _soundOn = 0;
 }
 
 Sound::~Sound()
 {
 
+}
+
+void	Sound::soundOff(void *data)
+{
+  (void)data;
+  _soundOn = 1;
+}
+
+void	Sound::soundOn(void *data)
+{
+  (void)data;
+  _soundOn = 0;
 }
 
 void	Sound::eventPlayerMove(void *data)
@@ -44,61 +61,84 @@ void	Sound::eventBombDrop(void *data)
 {
   glm::vec3	*test;
 
-  test = (glm::vec3 *) data;
-  (void)test;
-  //this->StartTicTacBomb(test->x * 10, test->y * 10, test->z * 10);
-  this->StartTicTacBomb(1300, 1300, 1300);
+  if (_soundOn == 0)
+    {
+      test = (glm::vec3 *) data;
+      (void)test;
+      //this->StartTicTacBomb(test->x * 10, test->y * 10, test->z * 10);
+      this->StartTicTacBomb(1300, 1300, 1300);
+    }
 }
 
 void	Sound::setPlayer(float x, float y, float z)
 {
-  sf::Listener::SetPosition(x * 0, y * 0, z * 0);
+  if (_soundOn == 0)
+    {
+      sf::Listener::SetPosition(x * 0, y * 0, z * 0);
+    }
 }
 
 void	Sound::InGame()
 {
-  _InGame.SetLoop(true);
-  _InGame.SetVolume(20.5);
-  _InGame.Play();
+  if (_soundOn == 0)
+    {
+      _InGame.SetLoop(true);
+      _InGame.SetVolume(20.5);
+      _InGame.Play();
+    }
 }
 
 void	Sound::InGameStop()
 {
-  _InGame.Stop();
+  if (_soundOn == 0)
+    {
+      _InGame.Stop();
+    }
 }
 
 void	Sound::InMenuStop()
 {
-  _InMenu.Stop();
+  if (_soundOn == 0)
+    _InMenu.Stop();
 }
 
 void	Sound::InMenu()
 {
-  _InMenu.SetLoop(true);
-  _InMenu.SetVolume(20.5);
-  _InMenu.Play();
+  if (_soundOn == 0)
+    {
+      _InMenu.SetLoop(true);
+      _InMenu.SetVolume(20.5);
+      _InMenu.Play();
+    }
 }
 
 void	Sound::StartTicTacBomb(float x, float y, float z)
 {
-  _TicTacBomb.SetLoop(true);
-  _TicTacBomb.SetPosition(x, y, z);
-  _TicTacBomb.Play();
+  if (_soundOn == 0)
+    {
+      _TicTacBomb.SetPosition(x, y, z);
+      _TicTacBomb.Play();
+    }
 }
 
 void	Sound::StopTicTacBomb()
 {
-  _TicTacBomb.Stop();
+  if (_soundOn == 0)
+    _TicTacBomb.Stop();
 }
 
 void	Sound::StartExplosion(float x, float y, float z)
 {
-  //_ExplosionBomb.SetLoop(true);
-  _ExplosionBomb.SetPosition(x, y, z);
-  _ExplosionBomb.Play();
+  if (_soundOn == 0)
+    {
+      //_ExplosionBomb.SetLoop(true);
+      _ExplosionBomb.SetPosition(x, y, z);
+      _ExplosionBomb.Play();
+    }
 }
 
 void	Sound::StopExplosion()
 {
-  _ExplosionBomb.Stop();
+  if (_soundOn == 0)
+    _ExplosionBomb.Stop();
 }

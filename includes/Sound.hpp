@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Fri May  9 14:24:51 2014 Steven Martreux
-// Last update Thu May 22 09:13:57 2014 Remi telenczak
+// Last update Thu Jun 12 16:40:11 2014 Steven Martreux
 //
 
 #ifndef		_SOUND_HPP_
@@ -31,16 +31,21 @@ public:
   void	InMenu();
   void	setPlayer(float, float, float);
   void	eventBombDrop(void *data);
-void	eventPlayerMove(void *data);
+  void	eventPlayerMove(void *data);
+  void	soundOff(void *);
+  void	soundOn(void *);
 private:
   EventManager *_event;
-ICallBack	*callBombDrop;
+  ICallBack	*callBombDrop;
   ICallBack	*callPlayerMove;
+  ICallBack	*callSoundOn;
+  ICallBack	*callSoundOff;
   sf::Music		_InGame;
   sf::Music		_TicTacBomb;
   sf::Music		_ExplosionBomb;
   sf::Music		_InMenu;
-glm::vec3		_position;
+  glm::vec3		_position;
+  int		_soundOn;
 };
 
 
