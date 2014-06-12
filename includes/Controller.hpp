@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 // 
 // Started on  Wed May 21 12:52:03 2014 Steven Martreux
-// Last update Mon Jun  9 17:16:36 2014 Steven Martreux
+// Last update Tue Jun 10 13:55:33 2014 Steven Martreux
 //
 
 #ifndef		_CONTROLLER_HPP_
@@ -30,6 +30,10 @@ public:
   void	setUpDown(int, int);
   void	setRightLeft(int, int);
   void	sendEvent();
+  void	sendEventMove();
+  void	sendEventMenu();
+  void	initVar();
+  void	varUpdate();
 private:
   EventManager	*_eventManager;
   int		_right;

@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 // 
 // Started on  Fri May 30 16:39:48 2014 Steven Martreux
-// Last update Sat Jun  7 18:38:29 2014 Steven Martreux
+// Last update Tue Jun 10 16:34:07 2014 Steven Martreux
 //
 
 #include	"SaveGame.hpp"
@@ -19,6 +19,7 @@ SaveGame::SaveGame(Map *map, const std::string & filename) : _map(map), _fileNam
   _mapObject.insert(std::pair<TypeObjectPrecis, void(SaveGame::*)(AObjectPhysic *)>(DEFAULTBOMB, &SaveGame::SaveDefaultBomb));
   _mapObject.insert(std::pair<TypeObjectPrecis, void(SaveGame::*)(AObjectPhysic *)>(BOMBBONUS, &SaveGame::SaveBonusBomb));
   _mapObject.insert(std::pair<TypeObjectPrecis, void(SaveGame::*)(AObjectPhysic *)>(POBONUS, &SaveGame::SaveBonusPo));
+  _mapObject.insert(std::pair<TypeObjectPrecis, void(SaveGame::*)(AObjectPhysic *)>(FIREPRECIS, &SaveGame::SaveDefaultFire));
   _bomberman = new TiXmlElement("Bomberman");
   _file.LinkEndChild(_bomberman);
   this->SaveMapSize();
@@ -73,6 +74,45 @@ void		SaveGame::SaveDefaultBomb(AObjectPhysic *Aobj)
   _obj->SetAttribute("died", ConstCharByInt(obj->getDied()).c_str());
   player = obj->getPlayer();
   _obj->SetAttribute("id_player", ConstCharByInt(player->getId()).c_str());
+  _bomberman->LinkEndChild(_obj);
+}
+
+void		SaveGame::SaveDefaultFire(AObjectPhysic *Aobj)
+{
+  DefaultFire	*fire;
+
+  fire = (DefaultFire *)Aobj;
+  _obj = new TiXmlElement("Map");
+  _obj->SetAttribute("object", "fire");
+  _obj->SetAttribute("id", ConstCharByInt(fire->getId()).c_str());
+  _obj->SetAttribute("x", ConstCharByFloat(fire->get_x()).c_str());
+  _obj->SetAttribute("y", ConstCharByFloat(fire->get_y()).c_str());
+  _obj->SetAttribute("z", ConstCharByFloat(fire->get_z()).c_str());
+  _obj->SetAttribute("time", ConstCharByInt(fire->getTime()).c_str());
+  _obj->SetAttribute("damage", ConstCharByInt(fire->getDamage()).c_str());
+  _obj->SetAttribute("idbomb", ConstCharByInt(fire->getBombId()).c_str());
+  this->SavePlayerInFire((AFire *)fire);
+}
+
+void		SaveGame::SavePlayerInFire(AFire *fire)
+{
+  std::vector<APlayer *> *playerTouched;
+  std::vector<APlayer *>::iterator it;
+  std::string	idPlayer;
+  int		id;
+
+  playerTouched = fire->getPlayerTouched();
+  it = playerTouched->begin();
+  while (it != playerTouched->end())
+    {
+      id = (*it)->getId();
+      if (it + 1 != playerTouched->end())
+	idPlayer = idPlayer + ConstCharByInt(id) + ",";
+      else
+	idPlayer = idPlayer + ConstCharByInt(id);
+      it++;
+    }
+  _obj->SetAttribute("ID_PLAYER", idPlayer.c_str());
   _bomberman->LinkEndChild(_obj);
 }
 

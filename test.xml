@@ -1,6 +1,6 @@
 <Bomberman>
     <Map_Size width="21" height="21" />
-    <Player object="player" id="453" x="3" y="0" z="3" po="2" life="2" nbrMaxBomb="1" nbrCurrentBomb="1" rot_x="0" rot_y="116.673" rot_z="0" />
+    <Player object="player" id="453" x="3" y="0" z="6.87" po="2" life="2" nbrMaxBomb="1" nbrCurrentBomb="1" rot_x="0" rot_y="180" rot_z="0" />
     <Map object="defaultwall" id="6" x="0" y="0" z="0" />
     <Map object="defaultwall" id="7" x="0" y="0" z="3" />
     <Map object="defaultwall" id="8" x="0" y="0" z="6" />

@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 // 
 // Started on  Mon Jun  2 15:02:25 2014 Steven Martreux
-// Last update Fri Jun  6 16:02:34 2014 Steven Martreux
+// Last update Tue Jun 10 16:21:34 2014 Steven Martreux
 //
 
 #ifndef		_SAVEGAME_HPP_
@@ -19,6 +19,7 @@
 #include	"DefaultWall.hpp"
 #include	"DestrucWall.hpp"
 #include	"DefaultBomb.hpp"
+#include	"DefaultFire.hpp"
 #include	"BombBonus.hpp"
 #include	"PoBonus.hpp"
 #include	"Player.hpp"
@@ -40,6 +41,8 @@ public:
   void		SavePlayer();
   void		SaveBonusPo(AObjectPhysic *);
   void		SaveBonusBomb(AObjectPhysic *);
+  void		SavePlayerInFire(AFire *);
+  void		SaveDefaultFire(AObjectPhysic *);
 private:
   TiXmlDocument _file;
   TiXmlElement	*_mapSize;

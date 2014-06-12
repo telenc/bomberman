@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:00 2014 Remi telenczak
-// Last update Wed Jun 11 15:49:22 2014 dedicker remi
+// Last update Thu Jun 12 16:15:05 2014 dedicker remi
 //
 
 #include	<iostream>
@@ -133,7 +133,6 @@ void	Menu::faceMainMenu()
 
 void	Menu::callFaceFunction()
 {
-  std::cout << "Ici currentMenu: " << currentMenu << std::endl;
   if (this->currentMenu == 0)
     faceMainMenu();
   else if (this->currentMenu == 1)

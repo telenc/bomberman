@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Tue Jun 10 17:15:41 2014 Remi telenczak
+// Last update Thu Jun 12 14:34:35 2014 Remi telenczak
 //
 
 #include	"OVR.h"
@@ -107,7 +107,7 @@ void		Graphics::inputUpdate()
   if (_input.getKey(SDLK_SPACE))
     this->_event->dispatchEvent("keyA", NULL);
   if (_input.getKey(SDLK_m))
-    this->_camera->translate(0, 1.0, 0);
+   this->_camera->translate(0, 1.0, 0);
   if (_input.getKey(SDLK_p))
     this->_camera->translate(0, -1.0, 0);
   if (_input.getKey(SDLK_e))

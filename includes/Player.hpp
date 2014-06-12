@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:27:33 2014 dedicker remi
-// Last update Tue Jun 10 12:28:43 2014 Remi telenczak
+// Last update Thu Jun 12 12:13:08 2014 Remi telenczak
 //
 
 #ifndef PLAYER_HPP_
@@ -20,6 +20,8 @@ public:
   Player(int x, int y, int z, Map *, ModelList *, EventManager *, gdl::Clock *);
   virtual bool update(gdl::Clock const &clock, gdl::Input &input);
   ~Player();
+  bool	isInRisk(int x = -1, int z = -1);
+  glm::vec2	getPositionNoRisk();
   void	eventPosPlayer(void *);
   void	eventKeyUp(void *data);
   void	eventKeyDown(void *data);
