@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:26:53 2014 Remi telenczak
-// Last update Thu Jun  5 18:19:22 2014 Steven Martreux
+// Last update Thu Jun 12 13:04:26 2014 Remi telenczak
 //
 
 #include	"DestrucWall.hpp"
@@ -56,7 +56,7 @@ bool DestrucWall::update(gdl::Clock const &clock, gdl::Input &input)
 	  po->set_x(this->getPosition().x);
 	  po->set_y(this->getPosition().y);
 	  po->set_z(this->getPosition().z);
-	  this->_map->setMap(po);
+	  this->_map->setBonus(po);
 	}
       if (v1 == 1)
 	{
@@ -64,7 +64,7 @@ bool DestrucWall::update(gdl::Clock const &clock, gdl::Input &input)
 	  po->set_x(this->getPosition().x);
 	  po->set_y(this->getPosition().y);
 	  po->set_z(this->getPosition().z);
-	  this->_map->setMap(po);
+	  this->_map->setBonus(po);
 	}
 
       return false;

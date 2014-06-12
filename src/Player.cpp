@@ -5,12 +5,13 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:27:38 2014 dedicker remi
-// Last update Tue Jun 10 12:19:28 2014 Remi telenczak
+// Last update Thu Jun 12 15:00:20 2014 Remi telenczak
 //
 
-#include "Player.hpp"
+#include	"Player.hpp"
 #include	"EventManager.hpp"
 #include	"DefaultBomb.hpp"
+#include	<algorithm>
 
 Player::Player(int x, int y, int z, Map *map, ModelList *model, EventManager *event, gdl::Clock *clock) : APlayer(x, y, z, map, model, event, clock)
 {
@@ -23,16 +24,22 @@ Player::Player(int x, int y, int z, Map *map, ModelList *model, EventManager *ev
     }
   callKeyUp = new CallBack<Player>(this, &Player::eventKeyUp);
   event->listenEvent("keyUp", callKeyUp);
+
   callKeyLeft = new CallBack<Player>(this, &Player::eventKeyLeft);
   event->listenEvent("keyLeft", callKeyLeft);
+
   callKeyRight = new CallBack<Player>(this, &Player::eventKeyRight);
   event->listenEvent("keyRight", callKeyRight);
+
   callKeyDown = new CallBack<Player>(this, &Player::eventKeyDown);
   event->listenEvent("keyDown", callKeyDown);
+
   callRotate = new CallBack<Player>(this, &Player::eventRotate);
   event->listenEvent("occulusRotate", callRotate);
+
   callKeyA = new CallBack<Player>(this, &Player::eventKeyA);
   event->listenEvent("keyA", callKeyA);
+
   this->none = true;
   this->checkRun = false;
   this->_typePrecis = PLAYERPRECIS;
@@ -77,8 +84,7 @@ void	Player::eventKeyA(void *data)
   t.y  = 0;
   t.z = z;
   _event->dispatchEvent("bombDrop", &(t));
-  this->_map->setMap(bomb);
-
+  this->_map->setBomb(bomb);
 }
 
 void	Player::eventRotateRight(void *data)
@@ -117,6 +123,7 @@ bool	Player::checkPositionCollisionPlayer()
     {
       if ((*it)->getType() != FIRE && this->collision(*it) == true)
 	{
+
 	  //this->_position = posSauv;
 	  return false;
 	}
@@ -146,7 +153,6 @@ void Player::move(glm::vec3 direct, std::string event)
       this->_skin->setCurrentSubAnim("beginRun", true);
       this->run = true;
     }
-
   if (checkPositionCollisionPlayer() == false)
     {
       this->_position.x -= positionTrans.x;
@@ -216,6 +222,64 @@ bool Player::update(gdl::Clock const &clock, gdl::Input &input)
   //if (this->_life <= 0)
     //std::cout << "PLAYER EST MORT CE CON" << std::endl;
   return true;
+}
+
+glm::vec2	Player::getPositionNoRisk()
+{
+  glm::vec2	position;
+
+  position.x = (int)this->get_x() - ((int)this->get_x() % 3);
+  position.y = (int)this->get_z() - ((int)this->get_z() % 3);
+  position.x -= 3;
+  if (_map->isBlock(position.x, position.y) == false && isInRisk(position.x, position.y) == false)
+    return position;
+  position.x += 3;
+  position.y -= 3;
+  if (_map->isBlock(position.x, position.y) == false && isInRisk(position.x, position.y) == false)
+    return position;
+  position.x += 3;
+  position.y += 3;
+  if (_map->isBlock(position.x, position.y) == false && isInRisk(position.x, position.y) == false)
+    return position;
+  position.x -= 3;
+  position.y += 3;
+  if (_map->isBlock(position.x, position.y) == false && isInRisk(position.x, position.y) == false)
+    return position;
+  position.y -= 3;
+  return position;
+}
+
+bool	Player::isInRisk(int x, int z)
+{
+  std::list<ABomb *>	list;
+  std::list<ABomb *>::iterator	it;
+  int xB;
+  int zB;
+
+  if (x == -1 || z == -1)
+    {
+      x = (int)this->get_x() - ((int)this->get_x() % 3);
+      z = (int)this->get_z() - ((int)this->get_z() % 3);
+    }
+  list = this->_map->getBombs();
+  it = list.begin();
+  while (it != list.end())
+    {
+      xB = (int)(*it)->get_x();
+      zB = (int)(*it)->get_z();
+      if (xB == x)
+	{
+	  if (std::max(zB, z) - std::min(zB, z) < (*it)->getPo() * 3)
+	    return true;
+	}
+      else if (zB == z)
+	{
+	  if (std::max(xB, x) - std::min(xB, x) < (*it)->getPo() * 3)
+	    return true;
+	}
+      it++;
+    }
+  return false;
 }
 
 Player::~Player()

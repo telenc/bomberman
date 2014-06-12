@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 16:17:56 2014 Mathieu Choquart
-// Last update Wed Jun 11 15:11:52 2014 Remi telenczak
+// Last update Thu Jun 12 13:47:23 2014 Remi telenczak
 //
 
 #include	"AObjectPhysic.hpp"

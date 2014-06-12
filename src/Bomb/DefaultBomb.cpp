@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 21 01:36:36 2014 Remi telenczak
-// Last update Wed Jun 11 15:12:36 2014 Remi telenczak
+// Last update Thu Jun 12 13:05:36 2014 Remi telenczak
 //
 
 #include	"DefaultBomb.hpp"
@@ -89,7 +89,7 @@ void	DefaultBomb::createDeflag()
 	      x = this->_position.x - (this->_po * 3) - 1;
 	    }
 	  else
-	    this->_map->setMap(fire);
+	    this->_map->setFire(fire);
 	}
       x -= 3;
     }
@@ -111,7 +111,7 @@ void	DefaultBomb::createDeflag()
 	      x = this->_position.x + (this->_po * 3) + 1;
 	    }
 	  else
-	    this->_map->setMap(fire);
+	    this->_map->setFire(fire);
 	}
       x += 3;
     }
@@ -133,7 +133,7 @@ void	DefaultBomb::createDeflag()
 	      z = this->_position.z - (this->_po * 3) - 1;
 	    }
 	  else
-	    this->_map->setMap(fire);
+	    this->_map->setFire(fire);
 
 	}
       z -= 3;
@@ -156,12 +156,12 @@ void	DefaultBomb::createDeflag()
 	      z = this->_position.z + (this->_po * 3) + 1;
 	    }
 	  else
-	    this->_map->setMap(fire);
+	    this->_map->setFire(fire);
 	}
       z += 3;
     }
   fire = new DefaultFire(_map, _modelList, _event, listPlayer, _clock, this->_id);
   fire->set_z(this->_position.z);
   fire->set_x(this->_position.x);
-  this->_map->setMap(fire);
+  this->_map->setFire(fire);
 }

@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 14 07:57:08 2014 Remi telenczak
-// Last update Tue Jun 10 17:51:39 2014 Remi telenczak
+// Last update Thu Jun 12 15:00:53 2014 Remi telenczak
 //
 
 #include	"CameraBomber.hpp"
@@ -40,7 +40,7 @@ CameraBomber::CameraBomber(gdl::BasicShader *shader, EventManager *event, gdl::C
   callPlayerMove = new CallBack<CameraBomber>(this, &CameraBomber::eventPlayerMove);
   event->listenEvent("playerMove", callPlayerMove);
   callTypeDeplacement = new CallBack<CameraBomber>(this, &CameraBomber::eventChangeTypeDeplacement);
-  event->listenEvent("playerMove", callTypeDeplacement);
+  //event->listenEvent("playerMove", callTypeDeplacement);
   callRotateLeft = new CallBack<CameraBomber>(this, &CameraBomber::eventRotateLeft);
   event->listenEvent("playerRotateLeft", callRotateLeft);
   callRotateRight = new CallBack<CameraBomber>(this, &CameraBomber::eventRotateRight);
@@ -126,6 +126,7 @@ void	CameraBomber::eventPlayerMove(void *data)
 
   test = (glm::vec3 *)data;
   this->translate(-1 * test->x, 0, -1 * test->z);
+  (void)test;
 }
 
 int	CameraBomber::getStereo()
@@ -153,8 +154,6 @@ void CameraBomber::changeStereooo(int a)
 void		CameraBomber::translate(double x, double y, double z)
 {
   glm::vec3 vector(x, y, z);
-  glm::vec3 vectorRotate;
-
   this->position += vector;
 }
 

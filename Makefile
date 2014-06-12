@@ -64,7 +64,6 @@ LIBS          = -L$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH) \
 		-Wl,-rpath,./LibGdl/libs/ 	\
 		-lsfml-audio 			\
 		-lSDL				\
-		libdrawtext.so.0.2		\
 
 SRC		= src/main.cpp \
 		src/Occulus.cpp \

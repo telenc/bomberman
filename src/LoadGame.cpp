@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Mon May 12 13:48:39 2014 Steven Martreux
-// Last update Wed Jun 11 14:23:23 2014 Steven Martreux
+// Last update Thu Jun 12 13:04:03 2014 Remi telenczak
 //
 
 #include	<tinyxml.h>
@@ -175,8 +175,8 @@ void	LoadGame::getObjMap()
   while (_map)
     {
       i = _mapObject.find(_map->Attribute("object"));
-      if (i != _mapObject.end())
- 	_mapGame->setMap((this->*_mapObject[_map->Attribute("object")])(_map));
+      //if (i != _mapObject.end())
+      //_mapGame->setMap((this->*_mapObject[_map->Attribute("object")])(_map));
       _map = _map->NextSiblingElement("Map");
     }
 }
