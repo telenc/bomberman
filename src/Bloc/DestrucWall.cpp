@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:26:53 2014 Remi telenczak
-// Last update Thu Jun 12 13:04:26 2014 Remi telenczak
+// Last update Thu Jun 12 17:55:16 2014 Remi telenczak
 //
 
 #include	"DestrucWall.hpp"
@@ -16,9 +16,17 @@
 
 DestrucWall::DestrucWall(Map *map, ModelList *model, EventManager *event, gdl::Clock *clock) : ABloc(map, model, event, clock), AObjectLife(3)
 {
+  int lifeRand = rand() % 10;
+
   this->modelLife3 = model->getModel("cubeDest3");
   this->modelLife2 = model->getModel("cubeDest2");
   this->modelLife1 = model->getModel("cubeDest1");
+  if (lifeRand <= 5)
+    this->setLife(1);
+  else if (lifeRand <= 8)
+    this->setLife(2);
+  else
+    this->setLife(3);
   this->_skin = modelLife3;
   this->currentModel = "cubeDest3";
   this->_height = 3;

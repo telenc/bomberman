@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Mon Jun  2 02:08:04 2014 Remi telenczak
-// Last update Thu Jun 12 16:06:51 2014 Remi telenczak
+// Last update Thu Jun 12 17:56:43 2014 Remi telenczak
 //
 
 #include	"MenuNumber.hpp"
@@ -140,6 +140,7 @@ void	MenuNumber::downIt(std::list<int>::iterator it)
 	    }
 
 	}
+
       it3++;
       it++;
     }
