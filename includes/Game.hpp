@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Fri May  9 14:19:13 2014 Steven Martreux
-// Last update Wed Jun 11 11:14:02 2014 dedicker remi
+// Last update Wed Jun 11 15:50:32 2014 dedicker remi
 //
 
 #ifndef		_GAME_HPP_
@@ -24,7 +24,11 @@ public:
   ~Game();
   void		playMenu();
   bool		update();
+  void		draw();
+  void		playMap();
+  int		isFinish();
 private:
+  int		_display;
   EventManager	*eventManager;
   Menu		*menu;
   Loader	*load;
