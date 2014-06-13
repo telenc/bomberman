@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Fri Jun 13 14:51:06 2014 Remi telenczak
+// Last update Fri Jun 13 16:02:12 2014 Remi telenczak
 //
 
 #ifndef MAP_HPP_
@@ -48,6 +48,7 @@ public:
   void	updateIa(gdl::Clock, gdl::Input);
 
   void	draw(gdl::BasicShader, gdl::Clock, CameraBomber *);
+  void	drawSol(gdl::BasicShader, gdl::Clock, CameraBomber *);
   void	drawBomb(gdl::BasicShader, gdl::Clock, CameraBomber *);
   void	drawFire(gdl::BasicShader, gdl::Clock, CameraBomber *);
   void	drawBloc(gdl::BasicShader, gdl::Clock, CameraBomber *);
@@ -70,6 +71,7 @@ public:
   void	setBloc(ABloc *);
   void	setBlock(ABloc *bloc);
   void	setIa(Ia *);
+  void	setSol(ABloc *);
 
   std::vector<AObjectPhysic *> getObjectsPos(AObjectPhysic *, int dist = 30, TypeObject type = NONE);
   std::vector<AObjectPhysic *> getObjectsPrecisPos(AObjectPhysic *, int dist = 30, TypeObjectPrecis type = NONEPRECIS);
@@ -90,6 +92,7 @@ private:
   std::list<ABloc * > _blocs;
   std::list<ABomb * > _bombs;
   std::list<ABonus * > _bonus;
+  std::list<ABloc * > _sol;
   std::list<AFire * > _fire;
   std::list <Ia *> _ia;
   std::vector<AObjectPhysic *> _objectToDelete;

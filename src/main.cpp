@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
-// Last update Fri Jun 13 15:22:23 2014 Steven Martreux
+// Last update Fri Jun 13 16:58:16 2014 Remi telenczak
 */
 
 #include <iostream>
@@ -35,7 +35,7 @@ int	main(int ac, char **av)
       Controller	*joystick;
       //LoadGame	*save;
 
-      
+
       while (load->getFinish() != true);
       engine = load->getEngine();
 
@@ -43,6 +43,7 @@ int	main(int ac, char **av)
       //Map *m;
       //save = new LoadGame("save/test.xml", load->getEventManager(), load->getModel(), engine->getClock());
       //m = save->getMap();
+      std::cout << "Menu " << std::endl;
       Menu *menu = new Menu(load->getModel(), load->getEventManager(), engine->getClock());
 
       //m->setSkybox(new Skybox(m, mod, eventManager));
@@ -52,12 +53,16 @@ int	main(int ac, char **av)
       //LoadGame *charge = new LoadGame("test.xml", load->getEventManager(), load->getModel(), engine->getClock());
       if (ac == 2 && av[1][0] == 'm')
 	{
+	  std::cout << "gen" << std::endl;
 	  GenereMap gen(21, 21, 0, load->getEventManager(), load->getModel(), engine->getClock());
+	  std::cout << "Map " << std::endl;
 	  Map *m = gen.getMap();//charge->getMap();//gen.getMap();
 	  m->setSkybox(new Skybox(m, load->getModel(), load->getEventManager(), engine->getClock()));
 	  //(void)charge;
+	  std::cout << "update" << std::endl;
 	  while (engine->update(m))
 	    {
+	      std::cout << "Draw" << std::endl;
 	      engine->draw(m);
 	      joystick->update();
 	    }

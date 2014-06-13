@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 17:53:20 2014 dedicker remi
-// Last update Fri Jun 13 14:02:18 2014 Remi telenczak
+// Last update Fri Jun 13 17:02:03 2014 Remi telenczak
 //
 
 #include	<iostream>
@@ -83,11 +83,6 @@ void	GenereMap::putWall()
 	      wallObject->set_x(i * 3);
 	      wallObject->set_z(y * 3);
 	      this->_map->setBloc(wallObject);
-	      //wallObject = new DefaultWall(this->_map, this->_model, this->_event, _clock);
-	      //wallObject->set_x(i * 3);
-	      //wallObject->set_z(y * 3);
-	      //wallObject->set_y(3);
-	      //this->_map->setMap(wallObject);
 	    }
 	  else if (wall == 1 && (y < (_width - 1)) && (i % 2 == 0))
 	    {
@@ -96,15 +91,28 @@ void	GenereMap::putWall()
 	      wallObject->set_z(y * 3);
 	      this->_map->setBloc(wallObject);
 	      wall = 0;
+
 	    }
 	  else
+	    {
+	      wallObject = new SolWall(this->_map, _model, _event, _clock);
+	      wallObject->set_x(i * 3);
+	      wallObject->set_z(y * 3);
+	      wallObject->set_y(-3);
+	      this->_map->setSol(wallObject);
 	      wall++;
+	    }
 	  if (wall != 0 && ((i > 2  && i < _width-2) || (y > 2 && y < _height - 3) ))
 	    {
 	      wallObject = new DestrucWall(this->_map, this->_model, this->_event, _clock);
 	      wallObject->set_x(i * 3);
 	      wallObject->set_z(y * 3);
 	      this->_map->setBloc(wallObject);
+	      wallObject = new SolWall(this->_map, _model, _event, _clock);
+	      wallObject->set_x(i * 3);
+	      wallObject->set_z(y * 3);
+	      wallObject->set_y(-3);
+	      this->_map->setSol(wallObject);
 	    }
 	  y++;
 	}
@@ -124,9 +132,12 @@ GenereMap::GenereMap(int width, int height, int ia, EventManager *event, ModelLi
 {
 
   _pos = 0;
+  std::cout << "Mapp" << std::endl;
   _map = new Map(width, height, event);
+  std::cout << "Put player" << std::endl;
   //  std::cout << "Nombre possible d'IA : " << ((width * height) / 5) << std::endl;
   putWall();
+  std::cout << "Put wall" << std::endl;
   putPlayer();
   std::cout << "ici" << std::endl;
   //  putIa();

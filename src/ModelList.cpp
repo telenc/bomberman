@@ -27,7 +27,7 @@ void		ModelList::loadModel()
   this->list.push_back(std::make_pair("bombBonus", mod));
   mod = this->createModel("./assets/bonus_fire_up.FBX");
   this->list.push_back(std::make_pair("poBonus", mod));
-  mod = this->createModel("./assets/cubeWall1.fbx");
+  mod = this->createModel("./assets/cubeWall.fbx");
   this->list.push_back(std::make_pair("cubeDest2", mod));
   mod = this->createModel("./assets/cubeWall2.fbx");
   this->list.push_back(std::make_pair("cubeDest1", mod));
@@ -43,7 +43,7 @@ void		ModelList::loadModel()
   this->list.push_back(std::make_pair("box_menu", mod));
   mod = this->createModel("./assets/menu.fbx");
   this->list.push_back(std::make_pair("menu", mod));
-  mod = this->createModel("./assets/cubeWallWood.fbx");
+  mod = this->createModel("./assets/cubeFloor.fbx");
   this->list.push_back(std::make_pair("sol", mod));
   mod = this->createModel("./assets/cubeTelen0123.fbx");
   this->list.push_back(std::make_pair("menu1", mod));
@@ -85,8 +85,11 @@ gdl::Model	*ModelList::createModel(const std::string path)
   if (result->load(path.c_str()))
     result->setCurrentAnim(0);
   else
-    std::cout << "Erre" << path << std::endl;
-  return (result);
+    {
+      std::cout << "Erre" << path << std::endl;
+      exit(0);
+    }
+return (result);
 }
 
 

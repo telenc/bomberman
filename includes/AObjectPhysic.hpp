@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 15:52:43 2014 Mathieu Choquart
-// Last update Tue Jun 10 14:16:39 2014 Steven Martreux
+// Last update Fri Jun 13 16:10:26 2014 Remi telenczak
 //
 
 #ifndef			_AOBJECTPHYSIC_HPP_
@@ -71,6 +71,7 @@ public:
   void		rotate(glm::vec3 const& axis, float angle);
   void		scale(glm::vec3 const& scale);
   bool		isInView(CameraBomber *camera);
+  bool		isInViewSol(CameraBomber *camera);
   double	get_x() const;
   double	get_y() const;
   double	get_z() const;
