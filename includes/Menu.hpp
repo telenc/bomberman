@@ -5,7 +5,11 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:19 2014 Remi telenczak
+<<<<<<< HEAD
 // Last update Fri Jun 13 17:49:35 2014 dedicker remi
+=======
+// Last update Fri Jun 13 15:29:35 2014 thomas mendez
+>>>>>>> 046ecb8aa4cc2564f6aafa388d64534391379453
 //
 
 #ifndef		_MENU_BOMBERMAN
@@ -40,6 +44,7 @@
 # include	"SettingsMenu.hpp"
 # include	"PlayMenu.hpp"
 # include	"MenuNumber.hpp"
+# include	"CreditsMenu.hpp"
 # include	"CallBack.hpp"
 
 class Menu
@@ -77,6 +82,7 @@ private:
   glm::vec3 _rotationOculus;
   MainMenu *_mainMenu;
   SettingsMenu *_settingsMenu;
+  CreditsMenu *_creditsMenu;
   PlayMenu *_playMenu;
   MenuNumber *_MenuNumber;
   int	currentMenu;

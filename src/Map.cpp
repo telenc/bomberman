@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Fri Jun 13 14:54:55 2014 Remi telenczak
+// Last update Fri Jun 13 17:01:44 2014 Remi telenczak
 //
 
 #include <cstdlib>
@@ -309,6 +309,21 @@ void		Map::drawBomb(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *cam
     }
 }
 
+void		Map::drawSol(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
+{
+  std::list<ABloc *>::iterator	itO;
+
+  itO = this->_sol.begin();
+  while (itO != this->_sol.end())
+    {
+      if (this->_pause == true)
+	(*itO)->draw(shader, clock);
+      else if ((*itO) != NULL && (*itO)->isInViewSol(camera) && this->distanceObj(*itO) < 400)
+	(*itO)->draw(shader, clock);
+      itO++;
+    }
+}
+
 void		Map::drawFire(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
 {
   std::list<AFire *>::iterator	itO;
@@ -377,6 +392,7 @@ void					Map::draw(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *came
   this->drawBonus(shader, clock, camera);
   this->drawFire(shader, clock, camera);
   this->drawIa(shader, clock, camera);
+  this->drawSol(shader, clock, camera);
   this->_player->draw(shader, clock);
   this->_skybox->draw(shader, clock);
   (void)shader;
@@ -405,6 +421,12 @@ void				Map::setBonus(ABonus *bloc)
 {
   if (bloc)
     this->_bonus.push_back(bloc);
+}
+
+void				Map::setSol(ABloc *bloc)
+{
+  if (bloc)
+    this->_sol.push_back(bloc);
 }
 
 void				Map::setFire(AFire *bloc)
