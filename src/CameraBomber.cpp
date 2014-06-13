@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 14 07:57:08 2014 Remi telenczak
-// Last update Thu Jun 12 15:00:53 2014 Remi telenczak
+// Last update Thu Jun 12 18:23:10 2014 dedicker remi
 //
 
 #include	"CameraBomber.hpp"
@@ -165,7 +165,7 @@ void	testt(const char *format, ...)
   va_start(argList, format);
   OVR::OVR_vsprintf(textBuff, sizeof(textBuff), format, argList);
   va_end(argList);
-  std::cout << "Tageule" << std::endl;
+  //  std::cout << "Tageule" << std::endl;
 }
 
 glm::mat4		CameraBomber::getTransformation()

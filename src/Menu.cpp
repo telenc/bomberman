@@ -5,7 +5,11 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:00 2014 Remi telenczak
+<<<<<<< HEAD
+// Last update Fri Jun 13 17:49:02 2014 dedicker remi
+=======
 // Last update Fri Jun 13 15:51:35 2014 thomas mendez
+>>>>>>> 046ecb8aa4cc2564f6aafa388d64534391379453
 //
 
 #include	<iostream>
@@ -17,7 +21,7 @@
 #include	"MenuNumber.hpp"
 #include	"CallBack.hpp"
 
-Menu::Menu(ModelList *mod, EventManager *event, gdl::Clock *clock) : _mod(mod), _event(event), _clock(clock), _finish(1)
+Menu::Menu(ModelList *mod, EventManager *event, gdl::Clock *clock) : _mod(mod), _event(event), _clock(clock), _finish(1), _sound(1), _gomap(0)
 {
   std::cout << "Debut constructeur MEnu" << std::endl;
   _mainMenu = new MainMenu(mod, event);
@@ -29,8 +33,13 @@ Menu::Menu(ModelList *mod, EventManager *event, gdl::Clock *clock) : _mod(mod), 
   _callKeyA = new CallBack<Menu>(this, &Menu::eventKeyA);
   event->listenEvent("keyA", _callKeyA);
   _callKeyB = new CallBack<Menu>(this, &Menu::eventKeyB);
-  event->listenEvent("keyB", _callKeyB);
+  event->listenEvent("keyB", _callKeyB);  
   std::cout << "Fin constructeur MEnu" << std::endl;
+}
+
+void	Menu::setFinish(int finish)
+{
+  this->_finish = finish;
 }
 
 void    Menu::eventKeyB(void *data)
@@ -39,6 +48,9 @@ void    Menu::eventKeyB(void *data)
   switch (currentMenu)
     {
     case 3:
+      currentMenu -= 1;
+      break;
+    case 4:
       currentMenu -= 1;
       break;
     default:
@@ -53,6 +65,23 @@ void    Menu::eventKeyA(void *data)
   std::cout << "A MENU" << std::endl;
   this->callFaceFunction();
   (void)data;
+  if (currentMenu == 3)
+    {
+      _sizemap = _MenuNumber->getResult();
+      std::cout << "Taille de la map = " << _sizemap << std::endl;
+      //currentMenu++;
+    }
+  if (currentMenu == 4)
+    {
+      _numberia = _MenuNumber->getResult();
+      std::cout << "Number IA = " << _numberia << std::endl;
+      // currentMenu++;
+    }
+}
+
+int	Menu::getGoMap()
+{
+  return this->_gomap;
 }
 
 int	Menu::getFinish()
@@ -80,9 +109,8 @@ void	Menu::faceMainMenu()
     }
   else if (_rotationOculus.y >= -15)
     {
-      if (_rotationOculus.x >= 60 && _rotationOculus.x <= 90){
-	std::cout << "|-- Image de Exit! --|" << std::endl; 
-	_finish = 0;}
+      if (_rotationOculus.x >= 60 && _rotationOculus.x <= 90)
+	_finish = 0;
     }
   if (_rotationOculus.x <= -50 && _rotationOculus.x >= -90)
     {
@@ -91,48 +119,60 @@ void	Menu::faceMainMenu()
     }
 }
 
-  void	Menu::faceSettingsMenu()
-  {
-    if (_rotationOculus.x <= 40 && _rotationOculus.x >= -40)
-      {
-	if (_rotationOculus.y >= -45 && _rotationOculus.y <= 45)
-	  std::cout << "|- - Image de presentation - -|" << std::endl;
-	else if (_rotationOculus.y >= 45 && _rotationOculus.y <= 135)
-	  std::cout << "|- - Image de Play - -|" << std::endl;
-	else if (_rotationOculus.y <= -45 && _rotationOculus.y >= -135)
-	  std::cout << "|- - Image de setting - -|" << std::endl;
-	else if (_rotationOculus.y >= 135 || _rotationOculus.y <= -135)
-	  std::cout << "|- - Image de Derriere - -|" << std::endl;
-	else
-	  currentMenu = 0;
-      }
-    else
-      currentMenu = 0;
-  }
+void	Menu::faceSettingsMenu()
+{
+  if (_rotationOculus.x <= 40 && _rotationOculus.x >= -40)
+    {
+      if (_rotationOculus.y >= -45 && _rotationOculus.y <= 45)
+	std::cout << "|- - Image de presentation - -|" << std::endl;
+      else if (_rotationOculus.y >= 45 && _rotationOculus.y <= 135)
+	this->_event->dispatchEvent("soundon", NULL);
+      else if (_rotationOculus.y <= -45 && _rotationOculus.y >= -135)
+	this->_event->dispatchEvent("soundoff", NULL);
+      else if (_rotationOculus.y >= 135 || _rotationOculus.y <= -135)
+	std::cout << "|- - Image de Derriere - -|" << std::endl;
+      else
+	currentMenu = 0;
+    }
+  else
+    currentMenu = 0;
+}
 
-  void	Menu::facePlayMenu()
-  {
-    if (_rotationOculus.x <= 40 && _rotationOculus.x >= -40)
-      {
-	if (_rotationOculus.y >= -45 && _rotationOculus.y <= 45)
-	  {
-	    std::cout << "L|-- Play Game --|" << std::endl;
-	    currentMenu = 3;
-	  }
-	else if (_rotationOculus.y >= 45 && _rotationOculus.y <= 135)
-	  {
-	    std::cout << "L|-- Load Game --|" << std::endl;
-	  }
-	else if (_rotationOculus.y <= -45 && _rotationOculus.y >= -135)
-	  {
-	    std::cout << "L|-- Load Game --|" << std::endl;
-	  }
-	else if (_rotationOculus.y >= 135 || _rotationOculus.y <= -135)
-	  std::cout << "L|-- Image de Derriere --|" << std::endl;
-      }
-    else
-      currentMenu = 0;
-  }
+void	Menu::facePlayMenu()
+{
+  if (_rotationOculus.x <= 40 && _rotationOculus.x >= -40)
+    {
+      if (_rotationOculus.y >= -45 && _rotationOculus.y <= 45)
+	{
+	  std::cout << "L|-- Play Game --|" << std::endl;
+	  currentMenu = 3;
+	}
+      else if (_rotationOculus.y >= 45 && _rotationOculus.y <= 135)
+	{
+	  std::cout << "L|-- Load Game --|" << std::endl;
+	}
+      else if (_rotationOculus.y <= -45 && _rotationOculus.y >= -135)
+	{
+	  std::cout << "L|-- Load Game --|" << std::endl;
+	}
+      else if (_rotationOculus.y >= 135 || _rotationOculus.y <= -135)
+	std::cout << "L|-- Image de Derriere --|" << std::endl;
+    }
+  else
+    currentMenu = 0;
+}
+
+void	Menu::faceSizeMap()
+{
+  _sizemap = _MenuNumber->getResult();
+  currentMenu++;
+}
+
+void	Menu::faceNumberIa()
+{
+  _numberia = _MenuNumber->getResult();
+  _gomap = 1;
+}
 
 void	Menu::callFaceFunction()
 {
@@ -142,6 +182,20 @@ void	Menu::callFaceFunction()
     faceSettingsMenu();
   else if (this->currentMenu == 2)
     facePlayMenu();
+  else if (this->currentMenu == 3)
+    faceSizeMap();
+  else if (this->currentMenu == 4)
+    faceNumberIa();
+}
+
+int	Menu::getSizemap()
+{
+  return this->_sizemap;
+}
+
+int	Menu::getNumberIa()
+{
+  return this->_numberia;
 }
 
 void    Menu::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
@@ -155,6 +209,24 @@ void    Menu::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
   else if (this->currentMenu == 3)
     this->currentMenu = _MenuNumber->draw(shader, clock);
   else if (this->currentMenu == 4)
+<<<<<<< HEAD
+    this->currentMenu = _MenuNumber->draw(shader, clock);
+}
+
+void	Menu::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus)
+{
+  this->_rotationOculus = cameraOculus;
+  if (this->currentMenu == 0)
+    _mainMenu->update(clock, input, cameraOculus);
+  else if (this->currentMenu == 1)
+    _settingsMenu->update(clock, input, cameraOculus);
+  else if (this->currentMenu == 2)
+    _playMenu->update(clock, input, cameraOculus);
+  else if (this->currentMenu == 3)
+    _MenuNumber->update(clock, input);
+}
+
+=======
     this->currentMenu = _creditsMenu->draw(shader, clock);
 }
 
@@ -173,10 +245,15 @@ void	Menu::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus)
     _creditsMenu->update(clock, input, cameraOculus);
 }
 
+>>>>>>> 046ecb8aa4cc2564f6aafa388d64534391379453
 void	Menu::setSkybox(Skybox *skybox)
 {
   _mainMenu->setSkybox(skybox);
   _settingsMenu->setSkybox(skybox);
   _playMenu->setSkybox(skybox);
+<<<<<<< HEAD
+  _MenuNumber->setSkybox(skybox);
+=======
   _creditsMenu->setSkybox(skybox);
+>>>>>>> 046ecb8aa4cc2564f6aafa388d64534391379453
 }

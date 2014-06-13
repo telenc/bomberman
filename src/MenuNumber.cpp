@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Mon Jun  2 02:08:04 2014 Remi telenczak
-// Last update Thu Jun 12 17:56:43 2014 Remi telenczak
+// Last update Fri Jun 13 16:10:15 2014 dedicker remi
 //
 
 #include	"MenuNumber.hpp"
@@ -30,7 +30,6 @@ MenuNumber::MenuNumber(ModelList *mod, EventManager *event, gdl::Clock *clock) :
   callKeyDown = new CallBack<MenuNumber>(this, &MenuNumber::eventKeyDown);
   event->listenEvent("keyDownMenu", callKeyDown);
   result.push_back(1);
-
   rotationCube.insert(std::pair<int, float>(0, 0));
   rotationCube.insert(std::pair<int, float>(1, 90));
   rotationCube.insert(std::pair<int, float>(2, 180));
@@ -140,7 +139,6 @@ void	MenuNumber::downIt(std::list<int>::iterator it)
 	    }
 
 	}
-
       it3++;
       it++;
     }
@@ -194,6 +192,7 @@ int	MenuNumber::getResult()
 
 MenuNumber::~MenuNumber()
 {
+
 }
 
 int MenuNumber::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
@@ -213,7 +212,6 @@ int MenuNumber::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
       (*it)->draw(shader, clock);
       it++;
     }
-
   (void)shader;
   (void)clock;
   return 3;
@@ -225,8 +223,8 @@ int	MenuNumber::update(gdl::Clock &clock, gdl::Input &input)
   std::list<int>::iterator it2;
   int i = 0;
 
-  if (this->end)
-    return getResult();
+  //  if (this->end)
+  // return getResult();
   it = listBox.begin();
   it2 = result.begin();
   while (it != listBox.end())

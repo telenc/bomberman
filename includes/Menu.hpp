@@ -5,7 +5,11 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:19 2014 Remi telenczak
+<<<<<<< HEAD
+// Last update Fri Jun 13 17:49:35 2014 dedicker remi
+=======
 // Last update Fri Jun 13 15:29:35 2014 thomas mendez
+>>>>>>> 046ecb8aa4cc2564f6aafa388d64534391379453
 //
 
 #ifndef		_MENU_BOMBERMAN
@@ -56,6 +60,12 @@ public:
   void  faceSettingsMenu();
   void  faceMainMenu();
   void  facePlayMenu();
+  void	faceSizeMap();
+  void	faceNumberIa();
+  int	getSizemap();
+  int	getNumberIa();
+  int	getGoMap();
+  void	setFinish(int finish);
   void  callFaceFunction();
   void	eventKeyA(void *data);
   void	eventKeyB(void *data);
@@ -79,6 +89,10 @@ private:
   ICallBack *_callKeyA;
   ICallBack *_callKeyB;
   int		_finish;
+  int		_sound;
+  int		_sizemap;
+  int		_numberia;
+  int		_gomap;
 };
 
 #endif
