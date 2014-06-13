@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:11:40 2014 dedicker remi
-// Last update Fri Jun 13 12:35:20 2014 Remi telenczak
+// Last update Fri Jun 13 14:10:04 2014 Remi telenczak
 //
 
 #include	"APlayer.hpp"
@@ -44,6 +44,29 @@ APlayer::APlayer(int x, int y, int z, Map *map, ModelList *model, EventManager *
   (void)x;
   (void)z;
 }
+
+bool	APlayer::checkPositionCollisionPlayer()
+{
+  std::vector<AObjectPhysic *>	objects;
+  std::vector<AObjectPhysic *>::iterator	it;
+
+  objects = this->_map->getObjectsPos(this);
+  it = objects.begin();
+
+  while (it != objects.end())
+    {
+      if ((*it)->getType() != FIRE && this->collision(*it) == true)
+	{
+
+	  //this->_position = posSauv;
+	  return false;
+	}
+      it++;
+    }
+  return true;
+}
+
+
 
 void	APlayer::incNbrBomb()
 {
