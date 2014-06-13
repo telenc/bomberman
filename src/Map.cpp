@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Thu Jun 12 15:25:04 2014 Remi telenczak
+// Last update Fri Jun 13 12:42:43 2014 Remi telenczak
 //
 
 #include <cstdlib>
@@ -20,6 +20,7 @@
 #include	"ABomb.hpp"
 #include	"ABonus.hpp"
 #include	"AFire.hpp"
+#include	"Ia.hpp"
 
 Map::Map(int width, int height, EventManager *event) : _width(width), _height(height), _event(event), _pause(false)
 {
@@ -54,6 +55,25 @@ void	Map::updateBomb(gdl::Clock clock, gdl::Input input)
 	{
 	  if ((*itO)->update(clock, input) == false)
 	    itO = _bombs.erase(itO);
+	  else
+	    itO++;
+	}
+      else
+	itO++;
+    }
+}
+
+void	Map::updateIa(gdl::Clock clock, gdl::Input input)
+{
+  std::list<Ia *>::iterator itO;
+
+  itO = this->_ia.begin();
+  while (itO != this->_ia.end())
+    {
+      if ((*itO) != NULL)
+	{
+	  if ((*itO)->update(clock, input) == false)
+	    itO = _ia.erase(itO);
 	  else
 	    itO++;
 	}
@@ -164,6 +184,7 @@ void	Map::update(gdl::Clock clock, gdl::Input input)
   this->updateBomb(clock, input);
   this->updateBonus(clock, input);
   this->updateFire(clock, input);
+  this->updateIa(clock, input);
   this->_player->update(clock, input);
   this->_skybox->update(clock, input);
 }
@@ -275,6 +296,21 @@ void		Map::drawFire(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *cam
     }
 }
 
+void		Map::drawIa(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
+{
+  std::list<Ia *>::iterator	itO;
+
+  itO = this->_ia.begin();
+  while (itO != this->_ia.end())
+    {
+      if (this->_pause == true)
+	(*itO)->draw(shader, clock);
+      else if ((*itO) != NULL && (*itO)->isInView(camera) && this->distanceObj(*itO) < 400)
+	(*itO)->draw(shader, clock);
+      itO++;
+    }
+}
+
 void		Map::drawBloc(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
 {
   std::list<ABloc *>::iterator	itO;
@@ -312,6 +348,7 @@ void					Map::draw(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *came
   this->drawBomb(shader, clock, camera);
   this->drawBonus(shader, clock, camera);
   this->drawFire(shader, clock, camera);
+  this->drawIa(shader, clock, camera);
   this->_player->draw(shader, clock);
   this->_skybox->draw(shader, clock);
   (void)shader;
@@ -319,7 +356,7 @@ void					Map::draw(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *came
   (void)camera;
 }
 
-std::vector<APlayer *>		Map::getIa() const
+std::list<Ia *>		Map::getIa() const
 {
   return _ia;
 }
@@ -384,4 +421,9 @@ void	Map::setSkybox(Skybox *skybox)
 void	Map::setPlayer(Player *player)
 {
   this->_player = player;
+}
+
+void	Map::setIa(Ia	*ia)
+{
+  this->_ia.push_back(ia);
 }

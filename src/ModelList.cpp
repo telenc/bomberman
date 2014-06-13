@@ -27,11 +27,9 @@ void		ModelList::loadModel()
   this->list.push_back(std::make_pair("bombBonus", mod));
   mod = this->createModel("./assets/bonus_fire_up.FBX");
   this->list.push_back(std::make_pair("poBonus", mod));
-  mod = this->createModel("./assets/cubeWall.fbx");
-  this->list.push_back(std::make_pair("cubeDest3", mod));
-  mod = this->createModel("./assets/cubeWall2.fbx");
+  mod = this->createModel("./assets/cubeWall1.fbx");
   this->list.push_back(std::make_pair("cubeDest2", mod));
-  mod = this->createModel("./assets/cubeWall3.fbx");
+  mod = this->createModel("./assets/cubeWall2.fbx");
   this->list.push_back(std::make_pair("cubeDest1", mod));
   mod = this->createModel("./assets/bombe5.fbx");
   this->list.push_back(std::make_pair("defaultBomb", mod));
@@ -63,7 +61,6 @@ void		ModelList::loadModel()
   this->listChemin.push_back(std::make_pair("cube6", "./assets/cubeWallFer.fbx"));
   this->listChemin.push_back(std::make_pair("bombBonus", "./assets/bonus_bomb_up.FBX"));
   this->listChemin.push_back(std::make_pair("poBonus", "./assets/bonus_fire_up.FBX"));
-  this->listChemin.push_back(std::make_pair("cubeDest3", "./assets/cubeWall.fbx"));
   this->listChemin.push_back(std::make_pair("cubeDest2", "./assets/cubeWall2.fbx"));
   this->listChemin.push_back(std::make_pair("cubeDest1", "./assets/cubeWall3.fbx"));
   this->listChemin.push_back(std::make_pair("defaultBomb", "./assets/bombe5.fbx"));
@@ -92,6 +89,7 @@ gdl::Model	*ModelList::createModel(const std::string path)
   return (result);
 }
 
+
 gdl::Model	*ModelList::getModel(const std::string name)
 {
   std::vector<std::pair<std::string, gdl::Model *> >::iterator it;
@@ -101,6 +99,20 @@ gdl::Model	*ModelList::getModel(const std::string name)
     {
       if (it->first == name)
 	return it->second;//(this->createModel(it->second));
+      it++;
+    }
+  return (NULL);
+}
+
+gdl::Model	*ModelList::getModelCopy(const std::string name)
+{
+  std::vector<std::pair<std::string, std::string > >::iterator it;
+
+  it = this->listChemin.begin();
+  while (it != this->listChemin.end())
+    {
+      if (it->first == name)
+	return (this->createModel(it->second));
       it++;
     }
   return (NULL);

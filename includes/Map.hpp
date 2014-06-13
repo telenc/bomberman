@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Thu Jun 12 15:24:39 2014 Remi telenczak
+// Last update Fri Jun 13 12:42:29 2014 Remi telenczak
 //
 
 #ifndef MAP_HPP_
@@ -33,6 +33,7 @@ class Player;
 class AObjectPhysic;
 class Skybox;
 class	AFire;
+class	Ia;
 class EventManager;
 class Map
 {
@@ -44,12 +45,14 @@ public:
   void	updateBonus(gdl::Clock, gdl::Input);
   void	updateFire(gdl::Clock, gdl::Input);
   void	updateBloc(gdl::Clock, gdl::Input);
+  void	updateIa(gdl::Clock, gdl::Input);
 
   void	draw(gdl::BasicShader, gdl::Clock, CameraBomber *);
   void	drawBomb(gdl::BasicShader, gdl::Clock, CameraBomber *);
   void	drawFire(gdl::BasicShader, gdl::Clock, CameraBomber *);
   void	drawBloc(gdl::BasicShader, gdl::Clock, CameraBomber *);
   void	drawBonus(gdl::BasicShader, gdl::Clock, CameraBomber *);
+  void	drawIa(gdl::BasicShader, gdl::Clock, CameraBomber *);
 
   int	getWidth() const;
   int	getHeight() const;
@@ -65,11 +68,12 @@ public:
   void	setFire(AFire *);
   void	setBloc(ABloc *);
   void	setBlock(ABloc *bloc);
+  void	setIa(Ia *);
 
   std::vector<AObjectPhysic *> getObjectsPos(AObjectPhysic *, int dist = 30, TypeObject type = NONE);
 
   std::list<ABomb *>		getBombs() const;
-  std::vector<APlayer*>		getIa() const;
+  std::list<Ia*>			getIa() const;
   std::vector<APlayer *>	getPlayers() const;
   std::vector<APlayer *>	getPlayers();
   Player			*getPlayer() const;
@@ -85,7 +89,7 @@ private:
   std::list<ABomb * > _bombs;
   std::list<ABonus * > _bonus;
   std::list<AFire * > _fire;
-  std::vector <APlayer *> _ia;
+  std::list <Ia *> _ia;
   std::vector<AObjectPhysic *> _objectToDelete;
   std::vector<AObjectPhysic *> _objectToPush;
   int		_width;

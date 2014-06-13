@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:26:53 2014 Remi telenczak
-// Last update Thu Jun 12 17:55:16 2014 Remi telenczak
+// Last update Fri Jun 13 13:57:36 2014 Remi telenczak
 //
 
 #include	"DestrucWall.hpp"
@@ -18,15 +18,12 @@ DestrucWall::DestrucWall(Map *map, ModelList *model, EventManager *event, gdl::C
 {
   int lifeRand = rand() % 10;
 
-  this->modelLife3 = model->getModel("cubeDest3");
-  this->modelLife2 = model->getModel("cubeDest2");
-  this->modelLife1 = model->getModel("cubeDest1");
-  if (lifeRand <= 5)
+  this->modelLife2 = model->getModel("cubeDest1");
+  this->modelLife1 = model->getModel("cubeDest2");
+  if (lifeRand <= 7)
     this->setLife(1);
-  else if (lifeRand <= 8)
-    this->setLife(2);
   else
-    this->setLife(3);
+    this->setLife(2);
   this->_skin = modelLife3;
   this->currentModel = "cubeDest3";
   this->_height = 3;
@@ -36,12 +33,7 @@ DestrucWall::DestrucWall(Map *map, ModelList *model, EventManager *event, gdl::C
 
 bool DestrucWall::update(gdl::Clock const &clock, gdl::Input &input)
 {
-  if (this->_life >= 3 && this->_life > 0)
-    {
-      this->_skin = modelLife3;//_modelList->getModel("cubeDest3");
-      this->currentModel = "cubeDest3";
-    }
-  else if (this->_life == 2)
+  if (this->_life == 2)
     {
       this->_skin = modelLife2;
       //this->_skin = _modelList->getModel("cubeDest2");
