@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Fri Jun 13 12:42:43 2014 Remi telenczak
+// Last update Fri Jun 13 14:54:55 2014 Remi telenczak
 //
 
 #include <cstdlib>
@@ -208,6 +208,11 @@ int	Map::distanceObj(AObjectPhysic *obj)
   return glm::distance2(obj->getPosition(), this->_player->getPosition());
 }
 
+int	Map::distanceObj(AObjectPhysic *obj, AObjectPhysic *obj2)
+{
+  return glm::distance2(obj->getPosition(), obj2->getPosition());
+}
+
 std::list<AObjectPhysic *>		Map::getAllObject()
 {
   std::list<AObjectPhysic *>		result;
@@ -259,6 +264,29 @@ std::vector<AObjectPhysic *>		Map::getObjectsPos(AObjectPhysic *obj, int dist, T
 	  {
 	  if (glm::distance2(obj->getPosition(), (*itO)->getPosition()) < dist)
 	    if (type == NONE || obj->getType() == type)
+	      result.push_back((*itO));
+	  }
+      itO++;
+    }
+  return result;
+}
+
+std::vector<AObjectPhysic *>		Map::getObjectsPrecisPos(AObjectPhysic *obj, int dist, TypeObjectPrecis type)
+{
+  std::list<AObjectPhysic *>::iterator	itO;
+  std::vector<AObjectPhysic *>		result;
+  glm::vec3				position;
+  std::list<AObjectPhysic *>	_map;
+
+  _map = this->getAllObject();
+  itO = _map.begin();
+  while (itO != _map.end())
+    {
+      if ((*itO) != NULL)
+	if ((*itO) != obj)
+	  {
+	  if (glm::distance2(obj->getPosition(), (*itO)->getPosition()) < dist)
+	    if (type == NONEPRECIS || obj->getTypePrecis() == type)
 	      result.push_back((*itO));
 	  }
       itO++;
