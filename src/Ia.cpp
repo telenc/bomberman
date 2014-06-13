@@ -5,13 +5,13 @@
 // Login   <telenc_r@epitech.net>
 //
 // Started on  Fri Jun 13 12:28:13 2014 Remi telenczak
-// Last update Fri Jun 13 14:57:39 2014 Remi telenczak
+// Last update Fri Jun 13 15:11:18 2014 Remi telenczak
 //
 
 #include		"Ia.hpp"
 #include	"EventManager.hpp"
 #include	"DefaultBomb.hpp"
-
+#include	"ABonus.hpp"
 
 Ia::Ia(int x, int y, int z, Map *map, ModelList *model, EventManager *event, gdl::Clock *clock) : APlayer(x, y, z, map, model, event, clock)
 {
@@ -148,8 +148,8 @@ int	Ia::minDistanceDestruc()
 
 ABonus	*Ia::getBonus(int size)
 {
-  std::list<ABonus *>	list;
-  std::list<Abonus *>::iterator	it;
+  std::vector<AObjectPhysic *>	list;
+  std::vector<AObjectPhysic *>::iterator	it;
   int			result;
   ABonus		*resultBonus;
   result = -1;
@@ -161,7 +161,7 @@ ABonus	*Ia::getBonus(int size)
 	{
 	  if (result == -1 || result > _map->distanceObj(*it, this))
 	    {
-	      resultBonus = *it;
+	      resultBonus = (ABonus *)*it;
 	      result = _map->distanceObj(*it, this);
 	    }
 	}
