@@ -5,11 +5,8 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:00 2014 Remi telenczak
-<<<<<<< HEAD
-// Last update Fri Jun 13 17:49:02 2014 dedicker remi
-=======
+// Last update Fri Jun 13 18:03:14 2014 thomas mendez
 // Last update Fri Jun 13 15:51:35 2014 thomas mendez
->>>>>>> 046ecb8aa4cc2564f6aafa388d64534391379453
 //
 
 #include	<iostream>
@@ -209,24 +206,6 @@ void    Menu::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
   else if (this->currentMenu == 3)
     this->currentMenu = _MenuNumber->draw(shader, clock);
   else if (this->currentMenu == 4)
-<<<<<<< HEAD
-    this->currentMenu = _MenuNumber->draw(shader, clock);
-}
-
-void	Menu::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus)
-{
-  this->_rotationOculus = cameraOculus;
-  if (this->currentMenu == 0)
-    _mainMenu->update(clock, input, cameraOculus);
-  else if (this->currentMenu == 1)
-    _settingsMenu->update(clock, input, cameraOculus);
-  else if (this->currentMenu == 2)
-    _playMenu->update(clock, input, cameraOculus);
-  else if (this->currentMenu == 3)
-    _MenuNumber->update(clock, input);
-}
-
-=======
     this->currentMenu = _creditsMenu->draw(shader, clock);
 }
 
@@ -245,15 +224,11 @@ void	Menu::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus)
     _creditsMenu->update(clock, input, cameraOculus);
 }
 
->>>>>>> 046ecb8aa4cc2564f6aafa388d64534391379453
 void	Menu::setSkybox(Skybox *skybox)
 {
   _mainMenu->setSkybox(skybox);
   _settingsMenu->setSkybox(skybox);
   _playMenu->setSkybox(skybox);
-<<<<<<< HEAD
   _MenuNumber->setSkybox(skybox);
-=======
   _creditsMenu->setSkybox(skybox);
->>>>>>> 046ecb8aa4cc2564f6aafa388d64534391379453
 }

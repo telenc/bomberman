@@ -5,11 +5,8 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:19 2014 Remi telenczak
-<<<<<<< HEAD
-// Last update Fri Jun 13 17:49:35 2014 dedicker remi
-=======
+// Last update Fri Jun 13 17:58:33 2014 thomas mendez
 // Last update Fri Jun 13 15:29:35 2014 thomas mendez
->>>>>>> 046ecb8aa4cc2564f6aafa388d64534391379453
 //
 
 #ifndef		_MENU_BOMBERMAN
