@@ -5,7 +5,7 @@
 ** Login <bernar_x@epitech.net>
 ** 
 ** Started on  Thu Jun  5 16:20:43 2014 mattieu bernard-guêle
-// Last update Thu Jun 12 16:40:13 2014 Steven Martreux
+// Last update Thu Jun 12 17:59:32 2014 dedicker remi
 */
 
 #include	"Sound.hpp"
@@ -39,12 +39,16 @@ Sound::~Sound()
 void	Sound::soundOff(void *data)
 {
   (void)data;
+  if (_soundOn != 1)
+    _InGame.Stop();
   _soundOn = 1;
 }
 
 void	Sound::soundOn(void *data)
 {
   (void)data;
+  if (_soundOn != 0)
+    _InGame.Play();
   _soundOn = 0;
 }
 
