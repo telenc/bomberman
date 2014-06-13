@@ -89,6 +89,7 @@ gdl::Model	*ModelList::createModel(const std::string path)
   return (result);
 }
 
+
 gdl::Model	*ModelList::getModel(const std::string name)
 {
   std::vector<std::pair<std::string, gdl::Model *> >::iterator it;
@@ -98,6 +99,20 @@ gdl::Model	*ModelList::getModel(const std::string name)
     {
       if (it->first == name)
 	return it->second;//(this->createModel(it->second));
+      it++;
+    }
+  return (NULL);
+}
+
+gdl::Model	*ModelList::getModelCopy(const std::string name)
+{
+  std::vector<std::pair<std::string, std::string > >::iterator it;
+
+  it = this->listChemin.begin();
+  while (it != this->listChemin.end())
+    {
+      if (it->first == name)
+	return (this->createModel(it->second));
       it++;
     }
   return (NULL);
