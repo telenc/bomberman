@@ -6,10 +6,14 @@
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Last update Fri Jun 13 15:56:55 2014 thomas mendez
 =======
 // Last update Thu Jun 12 14:58:42 2014 Remi telenczak
 >>>>>>> df97ba9b35f9523e3a7a6272661c31986b3e76ac
+=======
+// Last update Fri Jun 13 15:22:23 2014 Steven Martreux
+>>>>>>> 6c9ebefc5d64979c505d19b9464ba21bd69268d8
 */
 
 #include <iostream>
@@ -26,11 +30,13 @@
 #include	"LoadGame.hpp"
 #include	"SaveGame.hpp"
 #include	"Game.hpp"
+#include	<stdlib.h>
 
 int	main(int ac, char **av)
 {
   try
     {
+<<<<<<< HEAD
       // Loader	*load = new Loader();
       // Graphics *engine;
       // Controller	*joystick;
@@ -38,6 +44,18 @@ int	main(int ac, char **av)
 
       // while (load->getFinish() != true);
       // engine = load->getEngine();
+=======
+      if (getenv("DISPLAY") == NULL)
+	throw new myException("Where is env ?");
+      Loader	*load = new Loader();
+      Graphics *engine;
+      Controller	*joystick;
+      //LoadGame	*save;
+
+      
+      while (load->getFinish() != true);
+      engine = load->getEngine();
+>>>>>>> 6c9ebefc5d64979c505d19b9464ba21bd69268d8
 
       // joystick = load->getController();
       // //Map *m;

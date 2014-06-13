@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:27:38 2014 dedicker remi
-// Last update Thu Jun 12 15:00:20 2014 Remi telenczak
+// Last update Fri Jun 13 14:09:53 2014 Remi telenczak
 //
 
 #include	"Player.hpp"
@@ -111,27 +111,6 @@ void	Player::eventRotate(void *data)
   //this->_event->dispatchEvent("playerRotateRight", this);
 }
 
-bool	Player::checkPositionCollisionPlayer()
-{
-  std::vector<AObjectPhysic *>	objects;
-  std::vector<AObjectPhysic *>::iterator	it;
-
-  objects = this->_map->getObjectsPos(this);
-  it = objects.begin();
-
-  while (it != objects.end())
-    {
-      if ((*it)->getType() != FIRE && this->collision(*it) == true)
-	{
-
-	  //this->_position = posSauv;
-	  return false;
-	}
-      it++;
-    }
-  return true;
-}
-
 void	Player::resetAnim()
 {
   this->run = false;
@@ -224,63 +203,7 @@ bool Player::update(gdl::Clock const &clock, gdl::Input &input)
   return true;
 }
 
-glm::vec2	Player::getPositionNoRisk()
-{
-  glm::vec2	position;
 
-  position.x = (int)this->get_x() - ((int)this->get_x() % 3);
-  position.y = (int)this->get_z() - ((int)this->get_z() % 3);
-  position.x -= 3;
-  if (_map->isBlock(position.x, position.y) == false && isInRisk(position.x, position.y) == false)
-    return position;
-  position.x += 3;
-  position.y -= 3;
-  if (_map->isBlock(position.x, position.y) == false && isInRisk(position.x, position.y) == false)
-    return position;
-  position.x += 3;
-  position.y += 3;
-  if (_map->isBlock(position.x, position.y) == false && isInRisk(position.x, position.y) == false)
-    return position;
-  position.x -= 3;
-  position.y += 3;
-  if (_map->isBlock(position.x, position.y) == false && isInRisk(position.x, position.y) == false)
-    return position;
-  position.y -= 3;
-  return position;
-}
-
-bool	Player::isInRisk(int x, int z)
-{
-  std::list<ABomb *>	list;
-  std::list<ABomb *>::iterator	it;
-  int xB;
-  int zB;
-
-  if (x == -1 || z == -1)
-    {
-      x = (int)this->get_x() - ((int)this->get_x() % 3);
-      z = (int)this->get_z() - ((int)this->get_z() % 3);
-    }
-  list = this->_map->getBombs();
-  it = list.begin();
-  while (it != list.end())
-    {
-      xB = (int)(*it)->get_x();
-      zB = (int)(*it)->get_z();
-      if (xB == x)
-	{
-	  if (std::max(zB, z) - std::min(zB, z) < (*it)->getPo() * 3)
-	    return true;
-	}
-      else if (zB == z)
-	{
-	  if (std::max(xB, x) - std::min(xB, x) < (*it)->getPo() * 3)
-	    return true;
-	}
-      it++;
-    }
-  return false;
-}
 
 Player::~Player()
 {

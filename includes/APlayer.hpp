@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:12:08 2014 dedicker remi
-// Last update Fri Jun  6 17:13:47 2014 Steven Martreux
+// Last update Fri Jun 13 14:10:21 2014 Remi telenczak
 //
 
 #ifndef _APLAYER_HPP_
@@ -39,6 +39,7 @@ public:
   void	setNbrMaxBomb(int);
   virtual bool update(gdl::Clock const &clock, gdl::Input &input) = 0;
 protected:
+  bool	checkPositionCollisionPlayer();
   Inventory *_inventory;
   int	_z;
   int	_x;
