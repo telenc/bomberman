@@ -27,8 +27,6 @@ void		ModelList::loadModel()
   this->list.push_back(std::make_pair("bombBonus", mod));
   mod = this->createModel("./assets/bonus_fire_up.FBX");
   this->list.push_back(std::make_pair("poBonus", mod));
-  mod = this->createModel("./assets/cubeWall.fbx");
-  this->list.push_back(std::make_pair("cubeDest3", mod));
   mod = this->createModel("./assets/cubeWall2.fbx");
   this->list.push_back(std::make_pair("cubeDest2", mod));
   mod = this->createModel("./assets/cubeWall3.fbx");
@@ -63,7 +61,6 @@ void		ModelList::loadModel()
   this->listChemin.push_back(std::make_pair("cube6", "./assets/cubeWallFer.fbx"));
   this->listChemin.push_back(std::make_pair("bombBonus", "./assets/bonus_bomb_up.FBX"));
   this->listChemin.push_back(std::make_pair("poBonus", "./assets/bonus_fire_up.FBX"));
-  this->listChemin.push_back(std::make_pair("cubeDest3", "./assets/cubeWall.fbx"));
   this->listChemin.push_back(std::make_pair("cubeDest2", "./assets/cubeWall2.fbx"));
   this->listChemin.push_back(std::make_pair("cubeDest1", "./assets/cubeWall3.fbx"));
   this->listChemin.push_back(std::make_pair("defaultBomb", "./assets/bombe5.fbx"));
