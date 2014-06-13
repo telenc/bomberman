@@ -1,15 +1,15 @@
 //
-// Menu.hpp for Menu in /home/remi/cpp_bomberman
-//
-// Made by Remi telenczak
-// Login   <remi@epitech.net>
-//
-// Started on  Tue May 13 07:24:19 2014 Remi telenczak
-// Last update Fri Jun 13 15:29:35 2014 thomas mendez
+// CreditsMenu.hpp for CreditsMenu in /home/mendez_t/local/cpp/cpp_bomberman/includes
+// 
+// Made by thomas mendez
+// Login   <mendez_t@epitech.net>
+// 
+// Started on  Fri Jun 13 15:16:49 2014 thomas mendez
+// Last update Fri Jun 13 16:16:59 2014 thomas mendez
 //
 
-#ifndef		_MENU_BOMBERMAN
-# define	_MENU_BOMBERMAN
+#ifndef		_CREDITS_MENU
+# define	_CREDITS_MENU
 
 #include        "OVR.h"
 # include       "ModelList.hpp"
@@ -36,49 +36,29 @@
 #include	"Skybox.hpp"
 #include	"MenuBox.hpp"
 #include	"MenuWall.hpp"
-# include	"MainMenu.hpp"
-# include	"SettingsMenu.hpp"
-# include	"PlayMenu.hpp"
-# include	"MenuNumber.hpp"
-# include	"CreditsMenu.hpp"
-# include	"CallBack.hpp"
+#include	"CallBack.hpp"
+#include	"CreditsBox.hpp"
 
-class Menu
+class CreditsMenu
 {
 public:
-  Menu(ModelList *mod, EventManager *event, gdl::Clock *);
-  ~Menu();
-  int	getFinish();
+  CreditsMenu(ModelList *mod, EventManager *event);
+  ~CreditsMenu();
   void	setSkybox(Skybox *skybox);
   void	setBox(gdl::Model *model);
-  void  draw(gdl::BasicShader &, gdl::Clock const &);
+  int  draw(gdl::BasicShader &, gdl::Clock const &);
   void	update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus);
-  void  faceSettingsMenu();
-  void  faceMainMenu();
-  void  facePlayMenu();
-  void  callFaceFunction();
   void	eventKeyA(void *data);
-  void	eventKeyB(void *data);
 private:
   gdl::Model *_box;
   ModelList *_mod;
   EventManager *_event;
-  MenuBox *_boxmenu;
-  MenuBox *_boxmenu2;
-  MenuBox *_boxmenu3;
+  CreditsBox *_boxmenu;
+  CreditsBox *_boxmenu2;
+  CreditsBox *_boxmenu3;
   Skybox *_skin;
-  gdl::Clock *_clock;
-  MenuNumber	*_menuBox;
   glm::vec3 _rotationOculus;
-  MainMenu *_mainMenu;
-  SettingsMenu *_settingsMenu;
-  CreditsMenu *_creditsMenu;
-  PlayMenu *_playMenu;
-  MenuNumber *_MenuNumber;
-  int	currentMenu;
   ICallBack *_callKeyA;
-  ICallBack *_callKeyB;
-  int		_finish;
 };
 
 #endif

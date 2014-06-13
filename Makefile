@@ -88,6 +88,7 @@ SRC		= src/main.cpp \
 		src/Bloc/MenuWall.cpp \
 		src/Bloc/MenuBox.cpp \
 		src/Bloc/PlayBox.cpp \
+		src/Bloc/CreditsBox.cpp \
 		src/Bloc/MenuBoxNumber.cpp \
 		src/Bloc/SettingBox.cpp \
 		src/GenereMap.cpp	\
@@ -109,6 +110,7 @@ SRC		= src/main.cpp \
 		src/MainMenu.cpp \
 		src/PlayMenu.cpp \
 		src/SettingsMenu.cpp \
+		src/CreditsMenu.cpp \
 		src/Ia.cpp \
 
 OBJECTS       = $(SRC:.cpp=.o)
