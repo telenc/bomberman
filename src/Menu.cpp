@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:00 2014 Remi telenczak
-// Last update Thu Jun 12 16:15:05 2014 dedicker remi
+// Last update Fri Jun 13 15:51:35 2014 thomas mendez
 //
 
 #include	<iostream>
@@ -22,6 +22,7 @@ Menu::Menu(ModelList *mod, EventManager *event, gdl::Clock *clock) : _mod(mod), 
   std::cout << "Debut constructeur MEnu" << std::endl;
   _mainMenu = new MainMenu(mod, event);
   _settingsMenu = new SettingsMenu(mod, event);
+  _creditsMenu = new CreditsMenu(mod, event);
   _MenuNumber = new MenuNumber(mod, event, clock);
   _playMenu = new PlayMenu(mod, event);
   currentMenu = 0;
@@ -83,9 +84,11 @@ void	Menu::faceMainMenu()
 	std::cout << "|-- Image de Exit! --|" << std::endl; 
 	_finish = 0;}
     }
-  else if (_rotationOculus.y >= -20)
-    if (_rotationOculus.x <= -50 && _rotationOculus.x >= -90)
+  if (_rotationOculus.x <= -50 && _rotationOculus.x >= -90)
+    {
       std::cout << "|-- Image de Credit! --|" << std::endl; 
+      currentMenu = 4;
+    }
 }
 
   void	Menu::faceSettingsMenu()
@@ -151,25 +154,29 @@ void    Menu::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
     this->currentMenu = _playMenu->draw(shader, clock);
   else if (this->currentMenu == 3)
     this->currentMenu = _MenuNumber->draw(shader, clock);
+  else if (this->currentMenu == 4)
+    this->currentMenu = _creditsMenu->draw(shader, clock);
 }
 
-  void	Menu::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus)
-  {
-    this->_rotationOculus = cameraOculus;
-    if (this->currentMenu == 0)
-      _mainMenu->update(clock, input, cameraOculus);
-    else if (this->currentMenu == 1)
-      _settingsMenu->update(clock, input, cameraOculus);
-    else if (this->currentMenu == 2)
-      _playMenu->update(clock, input, cameraOculus);
-    else if (this->currentMenu == 3)
-      _MenuNumber->update(clock, input);
-  }
+void	Menu::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus)
+{
+  this->_rotationOculus = cameraOculus;
+  if (this->currentMenu == 0)
+    _mainMenu->update(clock, input, cameraOculus);
+  else if (this->currentMenu == 1)
+    _settingsMenu->update(clock, input, cameraOculus);
+  else if (this->currentMenu == 2)
+    _playMenu->update(clock, input, cameraOculus);
+  else if (this->currentMenu == 3)
+    _MenuNumber->update(clock, input);
+  else if (this->currentMenu == 4)
+    _creditsMenu->update(clock, input, cameraOculus);
+}
 
-  void	Menu::setSkybox(Skybox *skybox)
-  {
-    _mainMenu->setSkybox(skybox);
-    _settingsMenu->setSkybox(skybox);
-    _playMenu->setSkybox(skybox);
-    _MenuNumber->setSkybox(skybox);
-  }
+void	Menu::setSkybox(Skybox *skybox)
+{
+  _mainMenu->setSkybox(skybox);
+  _settingsMenu->setSkybox(skybox);
+  _playMenu->setSkybox(skybox);
+  _creditsMenu->setSkybox(skybox);
+}

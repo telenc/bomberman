@@ -1,51 +1,53 @@
 //
-// MenuBox.cpp for MenuBox.cpp in /home/dedick_r/Tek2/c++/cpp_bomberman
-//
-// Made by dedicker remi
-// Login   <dedick_r@epitech.net>
-//
-// Started on  Mon May 26 16:41:50 2014 dedicker remi
-// Last update Fri Jun 13 16:59:19 2014 thomas mendez
+// CreditsBox.cpp for CreditsBox in /home/mendez_t/local/cpp/cpp_bomberman/src/Bloc
+// 
+// Made by thomas mendez
+// Login   <mendez_t@epitech.net>
+// 
+// Started on  Fri Jun 13 15:14:48 2014 thomas mendez
+// Last update Fri Jun 13 16:57:15 2014 thomas mendez
 //
 
 #include	<iostream>
-#include	"MenuBox.hpp"
+#include	"CreditsBox.hpp"
 #include	"ModelList.hpp"
 #include	"EventManager.hpp"
 
-MenuBox::MenuBox(Map *map, ModelList *model, EventManager *event, gdl::Clock *clock, int i) : ABloc(map, model, event, clock)
+CreditsBox::CreditsBox(Map *map, ModelList *model, EventManager *event, gdl::Clock *clock, int i) : ABloc(map, model, event, clock)
 {
-  this->_skin = model->getModel("menu");
+  this->_skin = model->getModel("box_credits");
   this->_height = 10;
   this->_width = 10;
-  this->set_z(0);
+  this->set_z(-10);
   this->set_y(0);
   this->set_x(0);
   this->_i = i;
+  this->_position.z = -1;
+  this->posSauv.z = -4.5;
   if (i == 1)
     {
       this->_position.z = -1;
       this->posSauv.z = -4.5;
-      callRotOcu = new CallBack<MenuBox>(this, &MenuBox::eventRotOcu);
+  callRotOcu = new CallBack<CreditsBox>(this, &CreditsBox::eventRotOcu);
     }
   else if (i == 2)
-    callRotOcu = new CallBack<MenuBox>(this, &MenuBox::eventRotOcu2);    
+  callRotOcu = new CallBack<CreditsBox>(this, &CreditsBox::eventRotOcu2);
   else
-    callRotOcu = new CallBack<MenuBox>(this, &MenuBox::eventRotOcu3);
+  callRotOcu = new CallBack<CreditsBox>(this, &CreditsBox::eventRotOcu3);
   event->listenEvent("rotOcu", callRotOcu);
 }
 
-glm::vec3*	MenuBox::getRotation()
+glm::vec3*	CreditsBox::getRotation()
 {
   return this->rot;
 }
 
-int		MenuBox::getRotationy()
+int		CreditsBox::getRotationy()
 {
   return this->rot->y;
 }
 
-void	MenuBox::eventRotOcu(void *data)
+void	CreditsBox::eventRotOcu(void *data)
 {
   glm::vec3 *rotation;
   rotation = (glm::vec3 *)data;
@@ -56,7 +58,7 @@ void	MenuBox::eventRotOcu(void *data)
   this->rot = (glm::vec3 *)data;
 }
 
-void	MenuBox::eventRotOcu2(void *data)
+void	CreditsBox::eventRotOcu2(void *data)
 {
   glm::vec3 *rotation;
   rotation = (glm::vec3 *)data;
@@ -66,7 +68,7 @@ void	MenuBox::eventRotOcu2(void *data)
   this->rot = (glm::vec3 *)data;
 }
 
-void	MenuBox::eventRotOcu3(void *data)
+void	CreditsBox::eventRotOcu3(void *data)
 {
   glm::vec3 *rotation;
   rotation = (glm::vec3 *)data;
@@ -76,7 +78,7 @@ void	MenuBox::eventRotOcu3(void *data)
   this->rot = (glm::vec3 *)data;
 }
 
-bool MenuBox::update(gdl::Clock const &clock, gdl::Input &input)
+bool CreditsBox::update(gdl::Clock const &clock, gdl::Input &input)
 {
   if (this->_i == 1 && this->posSauv.z > -10)
     {
@@ -87,7 +89,7 @@ bool MenuBox::update(gdl::Clock const &clock, gdl::Input &input)
   return true;
 }
 
-bool MenuBox::fireTouch()
+bool CreditsBox::fireTouch()
 {
   return true;
 }
