@@ -5,7 +5,11 @@
 // Login   <telenc_r@epitech.net>
 //
 // Started on  Fri Jun 13 12:28:13 2014 Remi telenczak
+<<<<<<< HEAD
 // Last update Sat Jun 14 18:40:52 2014 Steven Martreux
+=======
+// Last update Sat Jun 14 18:40:14 2014 Remi telenczak
+>>>>>>> 56e469264282f8368f855807d9415f305e96c51e
 */
 
 #include		"Ia.hpp"
@@ -18,7 +22,7 @@ Ia::Ia(int x, int y, int z, Map *map, ModelList *model, EventManager *event, gdl
   std::cout << "Ia created" << std::endl;
   this->set_x(x);
   this->set_z(z);
-    this->set_roty(90);
+  this->set_roty(90);
   _mapName.insert(std::pair<std::string, int (Ia::*)()>("isInRisk", &Ia::isInRiskIa));
   _mapName.insert(std::pair<std::string, int (Ia::*)()>("enemyDistance", &Ia::enemyDistanceIa));
   _mapName.insert(std::pair<std::string, int (Ia::*)()>("wallDistance", &Ia::wallDistanceIa));
@@ -42,7 +46,7 @@ int	Ia::isInRiskIa()
 {
   if (this->isInRisk() == true)
     return 1;
-  return 0;
+  return -1;
 }
 
 int	Ia::enemyDistanceIa()
@@ -82,11 +86,16 @@ int	Ia::enemyNearIa()
   result = this->minDistanceEnemy();
   if ( _map->distanceObj(result, this) < 30)
     return 1;
-  return 0;
+  return -1;
 }
 
 bool	Ia::goSafeIa()
 {
+  glm::vec2	target;
+
+  target = getPositionNoRisk();
+  changeRot(target.x, target.y);
+  this->move(glm::vec3(0, 0, -0.5));
   return true;
 }
 
