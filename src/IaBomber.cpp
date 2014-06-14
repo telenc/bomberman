@@ -5,7 +5,7 @@
 // Login   <telenc_r@epitech.net>
 //
 // Started on  Fri Jun 13 12:28:13 2014 Remi telenczak
-// Last update Sat Jun 14 22:01:43 2014 Remi telenczak
+// Last update Sat Jun 14 22:46:18 2014 Steven Martreux
 */
 
 #include	"IaBomber.hpp"
@@ -405,7 +405,6 @@ void	IaBomber::getList()
       listXml.push_back(_IaX);
       _action = _action->NextSiblingElement("action");
     }
-  //THROW
 }
 
 bool		IaBomber::update(gdl::Clock const &clock, gdl::Input &input)

@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Mon May 12 13:48:39 2014 Steven Martreux
-// Last update Sat Jun 14 22:34:51 2014 Steven Martreux
+// Last update Sat Jun 14 22:58:34 2014 Steven Martreux
 //
 
 #include	<tinyxml.h>
@@ -34,6 +34,7 @@ LoadGame::LoadGame(const std::string & file, EventManager *event, ModelList *mod
   _mapObject.insert(std::pair<std::string, AObjectPhysic*(LoadGame::*)(TiXmlElement *)>("wallsol", &LoadGame::CreateSol));
   this->getMapSize();
   this->getPlayer();
+  this->getIas();
   this->getObjMap();
 }
 
@@ -315,6 +316,45 @@ void	 LoadGame::getPlayer()
     }
   else
     std::cerr << "Balise Player not found" << std::endl;
+}
+
+IaBomber	*LoadGame::getIa(int x, int y, int z)
+{
+  IaBomber     	*ia;
+
+  ia = new IaBomber(x, y , z, _mapGame, _model, _event, _clock);
+  ia->setId(atoi(_ia->Attribute("id")));
+  ia->setPo(atoi(_ia->Attribute("po")));
+  ia->setLife(atoi(_ia->Attribute("life")));
+  ia->set_rotx(atoi(_ia->Attribute("rot_x")));
+  ia->set_roty(atoi(_ia->Attribute("rot_y")));
+  ia->set_rotz(atoi(_ia->Attribute("rot_z")));
+  ia->setNbrBomb(atoi(_ia->Attribute("nbrMaxBomb")));
+  ia->setNbrMaxBomb(atoi(_ia->Attribute("nbrCurrentBomb")));
+  return ia;
+}
+
+void	LoadGame::getIas()
+{
+  IaBomber	*ia;
+  int	x;
+  int	y;
+  int	z;
+
+  _ia = _bomberman->FirstChildElement("Ia");
+  if(_ia)
+    {
+      while (_ia)
+	{
+	  x = atoi(_ia->Attribute("x"));
+	  y = atoi(_ia->Attribute("y"));
+	  z = atoi(_ia->Attribute("z"));
+	  ia = getIa(x, y, z);
+	  _mapGame->setIa(ia);
+	  _ia = _ia->NextSiblingElement("Ia");
+	}
+    }
+  std::cerr << "BALISE IA NOT FOUND" << std::endl;
 }
 
 LoadGame::~LoadGame()

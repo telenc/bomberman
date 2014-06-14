@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 // 
 // Started on  Mon Jun  2 15:02:25 2014 Steven Martreux
-// Last update Sat Jun 14 22:28:07 2014 Steven Martreux
+// Last update Sat Jun 14 23:07:14 2014 Steven Martreux
 //
 
 #ifndef		_SAVEGAME_HPP_
@@ -25,6 +25,7 @@
 #include	"PoBonus.hpp"
 #include	"Player.hpp"
 #include	"SolWall.hpp"
+#include	"IaBomber.hpp"
 
 class		Map;
 class		SaveGame
@@ -47,6 +48,7 @@ public:
   void		SaveDefaultFire(AObjectPhysic *);
   void		ChangeMd5();
   void		SaveSol();
+  void		SaveIa();
 private:
   TiXmlDocument _file;
   TiXmlElement	*_mapSize;
