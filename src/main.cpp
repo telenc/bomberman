@@ -5,12 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
-// Last update Sat Jun 14 14:51:17 2014 Remi telenczak
-// Last update Fri Jun 13 15:56:55 2014 thomas mendez
-// Last update Fri Jun 13 17:33:58 2014 Remi telenczak
-// Last update Fri Jun 13 17:43:22 2014 dedicker remi
-// Last update Fri Jun 13 15:56:55 2014 thomas mendez
-// Last update Thu Jun 12 14:58:42 2014 Remi telenczak
+// Last update Sat Jun 14 14:52:01 2014 Remi telenczak
 */
 
 #include <iostream>
