@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Sat Jun 14 22:27:23 2014 Steven Martreux
+// Last update Sat Jun 14 22:35:44 2014 Steven Martreux
 //
 
 #ifndef MAP_HPP_
@@ -33,7 +33,7 @@ class Player;
 class AObjectPhysic;
 class Skybox;
 class	AFire;
-class	Ia;
+class	IaBomber;
 class EventManager;
 class Map
 {
@@ -70,14 +70,14 @@ public:
   void	setFire(AFire *);
   void	setBloc(ABloc *);
   void	setBlock(ABloc *bloc);
-  void	setIa(Ia *);
+  void	setIa(IaBomber *);
   void	setSol(ABloc *);
 
   std::vector<AObjectPhysic *> getObjectsPos(AObjectPhysic *, int dist = 30, TypeObject type = NONE);
   std::vector<AObjectPhysic *> getObjectsPrecisPos(AObjectPhysic *, int dist = 30, TypeObjectPrecis type = NONEPRECIS);
 
   std::list<ABomb *>		getBombs() const;
-  std::list<Ia*>			getIa() const;
+  std::list<IaBomber*>			getIa() const;
   std::vector<APlayer *>	getPlayers() const;
   std::vector<APlayer *>	getPlayers();
   Player			*getPlayer() const;
@@ -95,7 +95,7 @@ private:
   std::list<ABonus * > _bonus;
   std::list<ABloc * > _sol;
   std::list<AFire * > _fire;
-  std::list <Ia *> _ia;
+  std::list <IaBomber *> _ia;
   std::vector<AObjectPhysic *> _objectToDelete;
   std::vector<AObjectPhysic *> _objectToPush;
   int		_width;
