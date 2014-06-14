@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Sat Jun 14 22:02:48 2014 Remi telenczak
+// Last update Sun Jun 15 01:30:36 2014 Remi telenczak
 //
 
 #ifndef MAP_HPP_
@@ -73,6 +73,7 @@ public:
   void	setIa(IaBomber *);
   void	setSol(ABloc *);
 
+  std::vector<AObjectPhysic *> getObjectsList(AObjectPhysic *, int dist, std::list<AObjectPhysic *>);
   std::vector<AObjectPhysic *> getObjectsPos(AObjectPhysic *, int dist = 30, TypeObject type = NONE);
   std::vector<AObjectPhysic *> getObjectsPrecisPos(AObjectPhysic *, int dist = 30, TypeObjectPrecis type = NONEPRECIS);
 

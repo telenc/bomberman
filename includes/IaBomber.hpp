@@ -5,7 +5,7 @@
 // Login   <telenc_r@epitech.net>
 //
 // Started on  Fri Jun 13 12:28:24 2014 Remi telenczak
-// Last update Sat Jun 14 22:02:06 2014 Remi telenczak
+// Last update Sat Jun 14 23:33:51 2014 Remi telenczak
 //
 
 #ifndef		_IABOMBER
@@ -53,6 +53,7 @@ private:
   std::map<std::string, bool (IaBomber::*)() > _mapAction;
   std::list<IaXml *>	listXml;
   IaXml		*_IaX;
+  glm::vec2	_positionTo;
 };
 
 #endif

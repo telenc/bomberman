@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Fri May 23 03:51:01 2014 Remi telenczak
-// Last update Wed Jun 11 14:47:39 2014 Steven Martreux
+// Last update Sat Jun 14 23:32:19 2014 Remi telenczak
 //
 
 #include	"AFire.hpp"
@@ -86,14 +86,17 @@ void	AFire::checkPlayerColl()
 
   players = this->_map->getPlayers();
   it = players.begin();
+
   while (it != players.end())
     {
+
       if (this->collision(*it) == true)
 	{
 	  if (isInVec(*it) == 0)
 	    {
 	      this->_playerTouched->push_back(*it);
 	      (*it)->decLife();
+	      std::cout << "Player touched" << std::endl;
 	    }
 	}
       it++;

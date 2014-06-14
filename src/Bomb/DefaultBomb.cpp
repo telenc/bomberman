@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 21 01:36:36 2014 Remi telenczak
-// Last update Thu Jun 12 13:05:36 2014 Remi telenczak
+// Last update Sat Jun 14 22:24:26 2014 Remi telenczak
 //
 
 #include	"DefaultBomb.hpp"
@@ -47,8 +47,6 @@ bool	DefaultBomb::update(gdl::Clock const &clock, gdl::Input &input)
       this->_player->incNbrBomb();
       return false;
     }
-  std::cout << clock.getElapsed() << std::endl;
-  std::cout << this->_time << std::endl;
   if (0 >= this->_time)
     {
       this->_died = true;

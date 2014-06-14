@@ -5,20 +5,23 @@
 // Login   <telenc_r@epitech.net>
 //
 // Started on  Fri Jun 13 12:28:13 2014 Remi telenczak
-// Last update Sat Jun 14 22:01:43 2014 Remi telenczak
+// Last update Sun Jun 15 01:36:54 2014 Remi telenczak
 */
 
 #include	"IaBomber.hpp"
 #include	"EventManager.hpp"
 #include	"DefaultBomb.hpp"
 #include	"ABonus.hpp"
+#include	"AFire.hpp"
 
 IaBomber::IaBomber(int x, int y, int z, Map *map, ModelList *model, EventManager *event, gdl::Clock *clock) : APlayer(x, y, z, map, model, event, clock)
 {
   std::cout << "Ia created" << std::endl;
+  this->getList();
   this->set_x(x);
   this->set_z(z);
   this->set_roty(90);
+
   _mapName.insert(std::pair<std::string, int (IaBomber::*)()>("isInRisk", &IaBomber::isInRiskIa));
   _mapName.insert(std::pair<std::string, int (IaBomber::*)()>("enemyDistance", &IaBomber::enemyDistanceIa));
   _mapName.insert(std::pair<std::string, int (IaBomber::*)()>("wallDistance", &IaBomber::wallDistanceIa));
@@ -30,6 +33,7 @@ IaBomber::IaBomber(int x, int y, int z, Map *map, ModelList *model, EventManager
   _mapAction.insert(std::pair<std::string, bool (IaBomber::*)()>("goBonus", &IaBomber::goBonusIa));
   _mapAction.insert(std::pair<std::string, bool (IaBomber::*)()>("goWall", &IaBomber::goWallIa));
   _mapAction.insert(std::pair<std::string, bool (IaBomber::*)()>("goEnemyNear", &IaBomber::goEnemyNearIa));
+  this->_positionTo.x = -1;
   this->changeRot(0, 1);
 }
 
@@ -42,6 +46,7 @@ int	IaBomber::isInRiskIa()
 {
   if (this->isInRisk() == true)
     return 1;
+  //std::cout << "Return -1" << std::endl;
   return -1;
 }
 
@@ -61,7 +66,10 @@ int	IaBomber::wallDistanceIa()
 
   result = this->minDistanceDestruc();
   if (result)
+    {
+      std::cout << "Go wall !!!" << std::endl;
     return _map->distanceObj(result, this);
+    }
   return -1;
 }
 
@@ -69,7 +77,7 @@ int	IaBomber::bonusDistanceIa()
 {
   ABonus	*result;
 
-  result = this->getBonus(1000);
+  result = this->getBonus(100);
   if (result)
     return _map->distanceObj(result, this);
   return -1;
@@ -80,7 +88,7 @@ int	IaBomber::enemyNearIa()
   APlayer	*result;
 
   result = this->minDistanceEnemy();
-  if ( _map->distanceObj(result, this) < 30)
+  if (result)
     return 1;
   return -1;
 }
@@ -91,6 +99,8 @@ bool	IaBomber::goSafeIa()
 
   target = getPositionNoRisk();
   changeRot(target.x, target.y);
+  this->_positionTo.x = target.x;
+  this->_positionTo.y = target.y;
   this->move(glm::vec3(0, 0, -0.5));
   return true;
 }
@@ -127,16 +137,40 @@ bool	IaBomber::poseBombIa()
 
 bool	IaBomber::goBonusIa()
 {
+  ABonus	*result;
+
+  result = this->getBonus(100);
+  changeRot(result->get_x(), result->get_z());
+  this->_positionTo.x = result->get_x();
+  this->_positionTo.y = result->get_z();
+  this->move(glm::vec3(0, 0, -0.5));
   return true;
 }
 
 bool	IaBomber::goWallIa()
 {
+  AObjectPhysic	*result;
+
+  result = this->minDistanceDestruc();
+  changeRot(result->get_x(), result->get_z());
+  this->_positionTo.x = result->get_x();
+  this->_positionTo.y = result->get_z();
+  this->move(glm::vec3(0, 0, -0.5));
   return true;
 }
 
 bool	IaBomber::goEnemyNearIa()
 {
+   APlayer	*result;
+
+  result = this->minDistanceEnemy();
+  if (result)
+    {
+      changeRot(result->get_x(), result->get_z());
+      this->_positionTo.x = result->get_x();
+      this->_positionTo.y = result->get_z();
+      this->move(glm::vec3(0, 0, -0.5));
+    }
   return true;
 }
 
@@ -201,35 +235,61 @@ glm::vec2	IaBomber::getPositionNoRisk()
   int		sauvX;
   int		sauvY;
   int		decal;
+  int		end;
 
+  end = 0;
   decal = 1;
+  //std::cout << "On est en risk" << std::endl;
   while (1)
     {
       sauvX = (this)->get_x() - ((int)this->get_x() % 3);
+      //if (sauvX + 1.5 < this->get_x())
+      //	sauvX += 3;
       sauvY = (this)->get_z() - ((int)this->get_z() % 3);
-      x = (this)->get_x() - ((int)this->get_x() % 3);
-      y = (this)->get_z() - ((int)this->get_z() % 3);
+      //if (sauvY += 1.5 < this->get_z())
+      //	sauvY += 3;
+      x = sauvX;
+      y = sauvY;
       x -= (decal * 3);
-      if (x < 0 && sauvX + (decal * 3) > _map->getWidth())
+      if (x < 0 && sauvX + (decal * 3) > _map->getWidth() * 3)
 	{
 	  position.x = this->get_x();
 	  position.y = this->get_y();
 	}
       while (x < sauvX + (decal * 3))
 	{
-
 	  y = sauvY - (decal * 3);
 	  while (y < sauvY + (decal * 3))
 	    {
-	      if (_map->isBlock(x, y) == false && isInRisk(x, y) == false)
+	      //std::cout << "On check " << x << "/" << y << std::endl;
+	      if (x > 0 && y > 0 && x < _map->getWidth() * 3 && y < _map->getHeight() * 3 &&  _map->isBlock(x, y) == false && isInRisk(x, y) == false)
 		{
-		  position.x = x;
-		  position.y= y;
-		  return position;
+		  if (end == 1)
+		    {
+		      if (std::max((int)this->get_x(), (int)x) - std::min((int)this->get_x(),(int) x) + std::max((int)this->get_y(),(int) y) - std::min((int)this->get_y(),(int) y) < std::max((int)position.x, (int)this->get_x()) - std::min((int)position.x, (int)this->get_x()) + std::max((int)position.y, (int)this->get_y()) - std::min((int)position.y,(int) this->get_y()))
+			{
+			  position.x = x;
+			  position.y = y;
+			}
+
+		    }
+		  else
+		    {
+		      position.x = x;
+		      position.y= y;
+		    }
+		  end = 1;
+
 		}
 	      y += 3;
 	    }
 	  x += 3;
+	}
+      if (end == 1)
+	{
+	  //std::cout << "Return " << x << "/" << y << std::endl;
+	  //std::cout << "this " << this->get_x() << "/" << this->get_y() << std::endl;
+	  return position;
 	}
       decal++;
     }
@@ -261,7 +321,7 @@ APlayer	*IaBomber::minDistanceEnemy()
   if (result == -1 || result > _map->distanceObj(this))
     {
       result = _map->distanceObj(this);
-      resultPlayer = *it;
+      resultPlayer = (APlayer *)(_map->getPlayer());
     }
   return resultPlayer;
 }
@@ -275,7 +335,7 @@ AObjectPhysic	*IaBomber::minDistanceDestruc()
 
   resultBloc = NULL;
   result = -1;
-  list = _map->getObjectsPrecisPos(this, 100, DESTRUCTWALL);
+  list = _map->getObjectsPrecisPos(this, 10000, DESTRUCTWALL);
   it = list.begin();
   while (it != list.end())
     {
@@ -350,6 +410,8 @@ bool	IaBomber::poseBomb()
 
 bool	IaBomber::isInRisk(int x, int z)
 {
+  std::list<AFire *>	listFire;
+  std::list<AFire *>::iterator	itF;
   std::list<ABomb *>	list;
   std::list<ABomb *>::iterator	it;
   int xB;
@@ -358,7 +420,13 @@ bool	IaBomber::isInRisk(int x, int z)
   if (x == -1 || z == -1)
     {
       x = (int)this->get_x() - ((int)this->get_x() % 3);
+      if (x + 1.5 < this->get_x())
+	{
+	  x += 3;
+	}
       z = (int)this->get_z() - ((int)this->get_z() % 3);
+      if (z + 1.5 < this->get_z())
+	z += 3;
     }
   list = this->_map->getBombs();
   it = list.begin();
@@ -368,15 +436,28 @@ bool	IaBomber::isInRisk(int x, int z)
       zB = (int)(*it)->get_z();
       if (xB == x)
 	{
-	  if (std::max(zB, z) - std::min(zB, z) < (*it)->getPo() * 3)
+	  if (std::max(zB, z) - std::min(zB, z) <= (*it)->getPo() * 3)
 	    return true;
 	}
       else if (zB == z)
 	{
-	  if (std::max(xB, x) - std::min(xB, x) < (*it)->getPo() * 3)
+	  if (std::max(xB, x) - std::min(xB, x) <= (*it)->getPo() * 3)
 	    return true;
 	}
       it++;
+    }
+  listFire = this->_map->getFire();
+  itF = listFire.begin();
+  while (itF != listFire.end())
+    {
+      xB = (int)(*itF)->get_x();
+      zB = (int)(*itF)->get_z();
+      std::cout << xB << "/" << zB << "   " << x << "//" << z << std::endl;
+      if (xB == x)
+	return true;
+      else if (zB == z)
+	return true;
+      itF++;
     }
   return false;
 }
@@ -415,12 +496,27 @@ bool		IaBomber::update(gdl::Clock const &clock, gdl::Input &input)
 
   (void)clock;
   (void)input;
+  if (this->_positionTo.x != -1)
+    {
+      //std::cout << _positionTo.x << "//////" << _positionTo.y << std::endl;
+      changeRot(_positionTo.x, _positionTo.y);
+      this->move(glm::vec3(0, 0, -0.5));
+      if (glm::distance2(_position, glm::vec3(_positionTo.x, 0, _positionTo.y)) < 5)
+	_positionTo.x = -1;
+    }
+  //if (this->_life <= 0)
+  //  std::cout << "Ia mort " << std::endl;
   it = listXml.begin();
   while (it != listXml.end())
     {
       elenczk = (this->*_mapName[(*it)->name])();
-      if (elenczk >= 0 || elenczk <= (*it)->condition)
-	(this->*_mapAction[(*it)->action])();
+      if (elenczk >= 0 && elenczk <= (*it)->condition)
+	{
+	  std::cout << (*it)->name << std::endl;
+	  //std::cout << "Elezenc " << elenczk << "   " << (*it)->condition<< std::endl;
+	  if (((this->*_mapAction[(*it)->action])()) ==  true)
+	      return true;
+	}
       it++;
     }
   return true;

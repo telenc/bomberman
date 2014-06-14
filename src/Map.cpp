@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Sat Jun 14 22:02:34 2014 Remi telenczak
+// Last update Sun Jun 15 01:42:26 2014 Remi telenczak
 //
 
 #include <cstdlib>
@@ -29,7 +29,7 @@ Map::Map(int width, int height, EventManager *event) : _width(width), _height(he
   if (width <= 20 || height <= 20)
     {
       std::cout << "Map trop pitite!" << std::endl;
-      exit(0);
+      //exit(0);
     }
   callPause = new CallBack<Map>(this, &Map::eventCallPause);
   event->listenEvent("pause", callPause);
@@ -271,6 +271,7 @@ std::vector<AObjectPhysic *>		Map::getObjectsPos(AObjectPhysic *obj, int dist, T
   return result;
 }
 
+
 std::vector<AObjectPhysic *>		Map::getObjectsPrecisPos(AObjectPhysic *obj, int dist, TypeObjectPrecis type)
 {
   std::list<AObjectPhysic *>::iterator	itO;
@@ -284,10 +285,35 @@ std::vector<AObjectPhysic *>		Map::getObjectsPrecisPos(AObjectPhysic *obj, int d
     {
       if ((*itO) != NULL)
 	if ((*itO) != obj)
-	  {
 	  if (glm::distance2(obj->getPosition(), (*itO)->getPosition()) < dist)
-	    if (type == NONEPRECIS || obj->getTypePrecis() == type)
+	    if (type == NONEPRECIS || (*itO)->getTypePrecis() == type)
 	      result.push_back((*itO));
+      itO++;
+    }
+  return result;
+}
+
+std::vector<AObjectPhysic *>		Map::getObjectsList(AObjectPhysic *obj, int dist, std::list<AObjectPhysic *> list)
+{
+  std::list<AObjectPhysic *>::iterator	itO;
+  std::vector<AObjectPhysic *>		result;
+  glm::vec3				position;
+
+
+  itO = list.begin();
+  while (itO != list.end())
+    {
+      if ((*itO) != NULL)
+	if ((*itO) != obj)
+	  {
+	    if (glm::distance2(obj->getPosition(), (*itO)->getPosition()) < dist)
+	      {
+		if ((*itO)->getTypePrecis() == DESTRUCTWALL)
+		  {
+		    std::cout << "ON push un mur" << std::endl;
+		    result.push_back((*itO));
+		  }
+	      }
 	  }
       itO++;
     }
@@ -459,8 +485,15 @@ std::list<AObjectPhysic *>	Map::getObject()
 std::vector<APlayer *>		Map::getPlayers()
 {
   std::vector<APlayer *>	result;
+  std::list<IaBomber *>::iterator	it;
 
   result.push_back(this->_player);
+  it = _ia.begin();
+  while (it != _ia.end())
+    {
+      result.push_back(*it);
+      it++;
+    }
   return result;
 }
 
