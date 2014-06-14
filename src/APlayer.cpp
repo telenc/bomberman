@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:11:40 2014 dedicker remi
-// Last update Fri Jun 13 14:10:04 2014 Remi telenczak
+// Last update Sat Jun 14 15:42:40 2014 Remi telenczak
 //
 
 #include	"APlayer.hpp"
@@ -78,6 +78,17 @@ void	APlayer::incNbrBombMax()
   this->_nbrBombMax++;
   this->_nbrBomb++;
 }
+
+void	APlayer::decNbrBombMax()
+{
+  if (_nbrBombMax > 1)
+    {
+      this->_nbrBombMax--;
+      if (_nbrBomb > 0)
+	this->_nbrBomb--;
+    }
+}
+
 void	APlayer::incPo()
 {
   this->_po++;

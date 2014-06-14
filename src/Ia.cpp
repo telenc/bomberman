@@ -1,12 +1,12 @@
-//
+/*
 // Ia.cpp for Ia in /home/telenc_r/cpp_bomberman
 //
 // Made by Remi telenczak
 // Login   <telenc_r@epitech.net>
 //
 // Started on  Fri Jun 13 12:28:13 2014 Remi telenczak
-// Last update Fri Jun 13 15:11:18 2014 Remi telenczak
-//
+** Last update Sat Jun 14 15:34:09 2014 mattieu bernard-guêle
+*/
 
 #include		"Ia.hpp"
 #include	"EventManager.hpp"
