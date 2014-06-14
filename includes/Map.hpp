@@ -5,11 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-<<<<<<< HEAD
-// Last update Sun Jun 15 01:30:36 2014 Remi telenczak
-=======
-// Last update Sat Jun 14 22:35:44 2014 Steven Martreux
->>>>>>> 544762e450695e0c4ec2a6538d654c8ff41a9e16
+// Last update Sun Jun 15 01:46:43 2014 Remi telenczak
 //
 
 #ifndef MAP_HPP_
