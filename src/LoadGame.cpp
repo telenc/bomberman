@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Mon May 12 13:48:39 2014 Steven Martreux
-// Last update Thu Jun 12 13:04:03 2014 Remi telenczak
+// Last update Sat Jun 14 18:09:21 2014 Steven Martreux
 //
 
 #include	<tinyxml.h>
@@ -13,6 +13,9 @@
 
 LoadGame::LoadGame(const std::string & file, EventManager *event, ModelList *model, gdl::Clock *clock) : _file(file), _event(event), _model(model), _clock(clock)
 {
+  if (checkFile() == false)
+    std::cout << "FAILLLLLLLLLL SAUVEGARDE" << std::endl;
+  //THROW;
   TiXmlDocument	doc(file);
   _loadOkay = doc.LoadFile();
   if (!_loadOkay)
@@ -28,9 +31,73 @@ LoadGame::LoadGame(const std::string & file, EventManager *event, ModelList *mod
   _mapObject.insert(std::pair<std::string, AObjectPhysic*(LoadGame::*)(TiXmlElement *)>("bonuspo", &LoadGame::CreateBonusPo));
   _mapObject.insert(std::pair<std::string, AObjectPhysic*(LoadGame::*)(TiXmlElement *)>("bonusbomb", &LoadGame::CreateBonusBomb));
   _mapObject.insert(std::pair<std::string, AObjectPhysic*(LoadGame::*)(TiXmlElement *)>("fire", &LoadGame::CreateDefaultFire));
+  _mapObject.insert(std::pair<std::string, AObjectPhysic*(LoadGame::*)(TiXmlElement *)>("wallsol", &LoadGame::CreateSol));
   this->getMapSize();
   this->getPlayer();
   this->getObjMap();
+}
+
+bool	LoadGame::ChangeMd5()
+{
+  std::string file2name = "." + _file + "00.md5";
+  std::string filename = "." + _file + ".md5";
+  std::fstream file1(file2name.c_str());
+  std::ofstream file2(filename.c_str());
+  char	string1[256];
+  int	i = 0;
+
+  if (!file1.is_open())
+    {
+      while (!file1.eof())
+	{
+	  file1.getline(string1, 256);
+	  while (string1[i])
+	    i++;
+	  i--;
+	  while (i >= 0)
+	    {
+	      string1[i] = string1[i] - 30;
+	      i--;
+	    }
+	  file2 << string1;
+	}
+      remove(file2name.c_str());
+      return true;
+    }
+  return false;
+}
+
+bool	LoadGame::checkFile()
+{
+  if (this->ChangeMd5() == false)
+    return false;
+  std::string str = "md5sum " + _file + " > ." + _file + ".md5test";
+  system(str.c_str());
+  std::string namefile1 = "." + _file + ".md5test";
+  std::string namefile2 = "." + _file + ".md5";
+  std::fstream file1(namefile1.c_str());
+  std::fstream file2(namefile2.c_str());
+  char	string1[256];
+  char	string2[256];
+
+  if (!file1.is_open() || !file2.is_open())
+    {
+      while (!file1.eof())
+	{
+	  file1.getline(string1, 256);
+	  file2.getline(string2, 256);
+	  if (strcmp(string1, string2) != 0)
+	    {
+	      remove(namefile1.c_str());
+	      remove(namefile2.c_str());
+	      return false;
+	    }
+	}
+      remove(namefile1.c_str());
+      remove(namefile2.c_str());
+      return true;
+    }
+  return false;
 }
 
 Map	*LoadGame::getMap() const
@@ -86,6 +153,18 @@ AObjectPhysic	*LoadGame::CreateDefaultFire(TiXmlElement *line)
   fire->setDamage(atoi(line->Attribute("damage")));
   fire->setBombId(atoi(line->Attribute("idbomb")));
   return (AObjectPhysic *)fire;
+}
+
+AObjectPhysic	*LoadGame::CreateSol(TiXmlElement *line)
+{
+  SolWall      	*wall;
+
+  wall = new SolWall(_mapGame, _model, _event, _clock);
+  wall->setId(atoi(line->Attribute("id")));
+  wall->set_x(atof(line->Attribute("x")));
+  wall->set_y(atof(line->Attribute("y")));
+  wall->set_z(atof(line->Attribute("z")));
+  return (AObjectPhysic *)wall;
 }
 
 AObjectPhysic	*LoadGame::CreateBonusBomb(TiXmlElement *line)

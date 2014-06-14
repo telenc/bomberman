@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 // 
 // Started on  Mon Jun  2 15:02:25 2014 Steven Martreux
-// Last update Tue Jun 10 16:21:34 2014 Steven Martreux
+// Last update Sat Jun 14 18:11:26 2014 Steven Martreux
 //
 
 #ifndef		_SAVEGAME_HPP_
@@ -13,6 +13,7 @@
 
 #include	<tinyxml.h>
 #include	<iostream>
+#include	<fstream>
 #include	<string>
 
 #include	"AObjectPhysic.hpp"
@@ -23,6 +24,7 @@
 #include	"BombBonus.hpp"
 #include	"PoBonus.hpp"
 #include	"Player.hpp"
+#include	"SolWall.hpp"
 
 class		Map;
 class		SaveGame
@@ -43,6 +45,8 @@ public:
   void		SaveBonusBomb(AObjectPhysic *);
   void		SavePlayerInFire(AFire *);
   void		SaveDefaultFire(AObjectPhysic *);
+  void		ChangeMd5();
+  void		SaveSol(AObjectPhysic *);
 private:
   TiXmlDocument _file;
   TiXmlElement	*_mapSize;
