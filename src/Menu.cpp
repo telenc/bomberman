@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:00 2014 Remi telenczak
-// Last update Fri Jun 13 18:03:14 2014 thomas mendez
+// Last update Sat Jun 14 17:11:33 2014 thomas mendez
 // Last update Fri Jun 13 15:51:35 2014 thomas mendez
 //
 
@@ -22,6 +22,7 @@ Menu::Menu(ModelList *mod, EventManager *event, gdl::Clock *clock) : _mod(mod), 
 {
   std::cout << "Debut constructeur MEnu" << std::endl;
   _mainMenu = new MainMenu(mod, event);
+  _loadMenu = new LoadMenu(mod, event);
   _settingsMenu = new SettingsMenu(mod, event);
   _creditsMenu = new CreditsMenu(mod, event);
   _MenuNumber = new MenuNumber(mod, event, clock);
@@ -150,6 +151,7 @@ void	Menu::facePlayMenu()
 	}
       else if (_rotationOculus.y <= -45 && _rotationOculus.y >= -135)
 	{
+	  currentMenu = 5;
 	  std::cout << "L|-- Load Game --|" << std::endl;
 	}
       else if (_rotationOculus.y >= 135 || _rotationOculus.y <= -135)
@@ -207,6 +209,8 @@ void    Menu::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
     this->currentMenu = _MenuNumber->draw(shader, clock);
   else if (this->currentMenu == 4)
     this->currentMenu = _creditsMenu->draw(shader, clock);
+  else if (this->currentMenu == 5)
+    this->currentMenu = _loadMenu->draw(shader, clock);
 }
 
 void	Menu::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus)
@@ -222,6 +226,8 @@ void	Menu::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus)
     _MenuNumber->update(clock, input);
   else if (this->currentMenu == 4)
     _creditsMenu->update(clock, input, cameraOculus);
+  else if (this->currentMenu == 5)
+    _loadMenu->update(clock, input, cameraOculus);
 }
 
 void	Menu::setSkybox(Skybox *skybox)
@@ -231,4 +237,5 @@ void	Menu::setSkybox(Skybox *skybox)
   _playMenu->setSkybox(skybox);
   _MenuNumber->setSkybox(skybox);
   _creditsMenu->setSkybox(skybox);
+  _loadMenu->setSkybox(skybox);
 }

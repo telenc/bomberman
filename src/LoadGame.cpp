@@ -1,3 +1,4 @@
+
 //
 // LoadGame.cpp for LoadGame in /home/martre_s/cpp_bomberman/src
 //
@@ -5,7 +6,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Mon May 12 13:48:39 2014 Steven Martreux
-// Last update Thu Jun 12 13:04:03 2014 Remi telenczak
+// Last update Sat Jun 14 18:00:09 2014 thomas mendez
 //
 
 #include	<tinyxml.h>

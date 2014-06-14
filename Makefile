@@ -90,6 +90,7 @@ SRC		= src/main.cpp \
 		src/Bloc/PlayBox.cpp \
 		src/Bloc/CreditsBox.cpp \
 		src/Bloc/MenuBoxNumber.cpp \
+		src/Bloc/LoadBox.cpp \
 		src/Bloc/SettingBox.cpp \
 		src/GenereMap.cpp	\
 		src/Bomb/DefaultBomb.cpp \
@@ -110,6 +111,7 @@ SRC		= src/main.cpp \
 		src/MainMenu.cpp \
 		src/PlayMenu.cpp \
 		src/SettingsMenu.cpp \
+		src/LoadMenu.cpp \
 		src/CreditsMenu.cpp \
 #		src/Ia.cpp \
 
