@@ -5,7 +5,7 @@
 // Login   <telenc_r@epitech.net>
 //
 // Started on  Fri Jun 13 12:28:24 2014 Remi telenczak
-// Last update Sat Jun 14 18:41:09 2014 Steven Martreux
+// Last update Sat Jun 14 20:14:23 2014 Steven Martreux
 //
 
 #ifndef		_IABOMBER
@@ -14,6 +14,7 @@
 # include	<map>
 # include	"APlayer.hpp"
 # include	"Input.hh"
+# include	<tinyxml.h>
 
 struct		IaXml
 {
@@ -46,9 +47,12 @@ public:
   bool		goBonusIa();
   bool		goWallIa();
   bool		goEnemyNearIa();
+  void		getList();
 private:
   std::map<std::string, int (Ia::*)() > _mapName;
   std::map<std::string, bool (Ia::*)() > _mapAction;
+  std::list<IaXml *>	listXml;
+  IaXml		*_IaX;
 };
 
 #endif

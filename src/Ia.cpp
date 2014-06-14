@@ -5,11 +5,7 @@
 // Login   <telenc_r@epitech.net>
 //
 // Started on  Fri Jun 13 12:28:13 2014 Remi telenczak
-<<<<<<< HEAD
-// Last update Sat Jun 14 18:40:52 2014 Steven Martreux
-=======
-// Last update Sat Jun 14 18:40:14 2014 Remi telenczak
->>>>>>> 56e469264282f8368f855807d9415f305e96c51e
+// Last update Sat Jun 14 21:19:20 2014 Steven Martreux
 */
 
 #include		"Ia.hpp"
@@ -385,10 +381,42 @@ bool	Ia::isInRisk(int x, int z)
   return false;
 }
 
+void	Ia::getList()
+{
+  TiXmlDocument	doc("ia.xml");
+  bool CheckFile = doc.LoadFile();
+  if (!CheckFile)
+    std::cerr << "LOAD OF FILE IA NOT FOUND" << std::endl;
+  TiXmlElement	*_ia;
+  _ia = doc.FirstChildElement("ia");
+  if (_ia == NULL)
+    std::cout << "BALISE <ia> not found" << std::endl;
+  TiXmlElement	*_action;
+  _action = _ia->FirstChildElement("action");
+  while (_action)
+    {
+      std::string name(_action->Attribute("name"));
+      int condition = atoi(_action->Attribute("condition"));
+      std::string action(_action->Attribute("action"));
+      _IaX = new IaXml;
+      _IaX->name = name;
+      _IaX->condition = condition;
+      _IaX->action = action;
+      listXml.push_back(_IaX);
+      _action = _action->NextSiblingElement("action");
+    }
+  //THROW
+}
+
 bool	Ia::update(gdl::Clock const &clock, gdl::Input &input)
 {
-  (void)clock;
-  (void)input;
+  std::list<IaXml *>::iterator	it;
 
+  it = listXml.begin();
+  while (it != listXml.end())
+    {
+      if ((this->*_mapName[(*it)->name])();
+      it++;
+    }
   return true;
 }
