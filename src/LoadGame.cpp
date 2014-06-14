@@ -6,11 +6,8 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Mon May 12 13:48:39 2014 Steven Martreux
-<<<<<<< HEAD
-// Last update Sat Jun 14 18:00:09 2014 thomas mendez
-=======
+// Last update Sun Jun 15 01:33:39 2014 thomas mendez
 // Last update Sat Jun 14 22:58:34 2014 Steven Martreux
->>>>>>> 72f293e10c52f65a9f8e9e9331af7775ac0dd55a
 //
 
 #include	<tinyxml.h>
