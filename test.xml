@@ -1,6 +1,6 @@
 <Bomberman>
     <Map_Size width="21" height="21" />
-    <Player object="player" id="1013" x="51.505" y="0" z="3.8" po="2" life="-19" nbrMaxBomb="4" nbrCurrentBomb="3" rot_x="0" rot_y="180" rot_z="0" />
+    <Player object="player" id="1013" x="45.35" y="0" z="16.405" po="2" life="2" nbrMaxBomb="1" nbrCurrentBomb="1" rot_x="0" rot_y="180" rot_z="0" />
     <Map object="defaultwall" id="0" x="0" y="0" z="0" />
     <Map object="defaultwall" id="1" x="0" y="0" z="3" />
     <Map object="defaultwall" id="2" x="0" y="0" z="6" />
@@ -23,391 +23,42 @@
     <Map object="defaultwall" id="19" x="0" y="0" z="57" />
     <Map object="defaultwall" id="20" x="0" y="0" z="60" />
     <Map object="defaultwall" id="21" x="3" y="0" z="0" />
-    <Map object="destrucwall" id="25" x="3" y="0" z="9" life="1" />
-    <Map object="destrucwall" id="28" x="3" y="0" z="12" life="1" />
-    <Map object="destrucwall" id="31" x="3" y="0" z="15" life="1" />
-    <Map object="destrucwall" id="34" x="3" y="0" z="18" life="1" />
-    <Map object="destrucwall" id="37" x="3" y="0" z="21" life="1" />
-    <Map object="destrucwall" id="40" x="3" y="0" z="24" life="1" />
-    <Map object="destrucwall" id="43" x="3" y="0" z="27" life="1" />
-    <Map object="destrucwall" id="46" x="3" y="0" z="30" life="1" />
-    <Map object="destrucwall" id="49" x="3" y="0" z="33" life="2" />
-    <Map object="destrucwall" id="52" x="3" y="0" z="36" life="1" />
-    <Map object="destrucwall" id="55" x="3" y="0" z="39" life="1" />
-    <Map object="destrucwall" id="58" x="3" y="0" z="42" life="1" />
-    <Map object="destrucwall" id="61" x="3" y="0" z="45" life="1" />
-    <Map object="destrucwall" id="64" x="3" y="0" z="48" life="1" />
-    <Map object="destrucwall" id="67" x="3" y="0" z="51" life="1" />
     <Map object="defaultwall" id="71" x="3" y="0" z="60" />
     <Map object="defaultwall" id="72" x="6" y="0" z="0" />
-    <Map object="defaultwall" id="74" x="6" y="0" z="6" />
-    <Map object="destrucwall" id="76" x="6" y="0" z="9" life="1" />
-    <Map object="defaultwall" id="78" x="6" y="0" z="12" />
-    <Map object="destrucwall" id="80" x="6" y="0" z="15" life="1" />
-    <Map object="defaultwall" id="82" x="6" y="0" z="18" />
-    <Map object="destrucwall" id="84" x="6" y="0" z="21" life="1" />
-    <Map object="defaultwall" id="86" x="6" y="0" z="24" />
-    <Map object="destrucwall" id="88" x="6" y="0" z="27" life="1" />
-    <Map object="defaultwall" id="90" x="6" y="0" z="30" />
-    <Map object="destrucwall" id="92" x="6" y="0" z="33" life="1" />
-    <Map object="defaultwall" id="94" x="6" y="0" z="36" />
-    <Map object="destrucwall" id="96" x="6" y="0" z="39" life="1" />
-    <Map object="defaultwall" id="98" x="6" y="0" z="42" />
-    <Map object="destrucwall" id="100" x="6" y="0" z="45" life="1" />
-    <Map object="defaultwall" id="102" x="6" y="0" z="48" />
-    <Map object="destrucwall" id="104" x="6" y="0" z="51" life="1" />
-    <Map object="defaultwall" id="106" x="6" y="0" z="54" />
     <Map object="defaultwall" id="108" x="6" y="0" z="60" />
     <Map object="defaultwall" id="109" x="9" y="0" z="0" />
-    <Map object="destrucwall" id="117" x="9" y="0" z="9" life="1" />
-    <Map object="destrucwall" id="120" x="9" y="0" z="12" life="2" />
-    <Map object="destrucwall" id="123" x="9" y="0" z="15" life="1" />
-    <Map object="destrucwall" id="126" x="9" y="0" z="18" life="1" />
-    <Map object="destrucwall" id="129" x="9" y="0" z="21" life="1" />
-    <Map object="destrucwall" id="132" x="9" y="0" z="24" life="1" />
-    <Map object="destrucwall" id="135" x="9" y="0" z="27" life="1" />
-    <Map object="destrucwall" id="138" x="9" y="0" z="30" life="1" />
-    <Map object="destrucwall" id="141" x="9" y="0" z="33" life="1" />
-    <Map object="destrucwall" id="144" x="9" y="0" z="36" life="1" />
-    <Map object="destrucwall" id="147" x="9" y="0" z="39" life="1" />
-    <Map object="destrucwall" id="150" x="9" y="0" z="42" life="1" />
-    <Map object="destrucwall" id="153" x="9" y="0" z="45" life="1" />
-    <Map object="destrucwall" id="156" x="9" y="0" z="48" life="1" />
-    <Map object="destrucwall" id="159" x="9" y="0" z="51" life="2" />
-    <Map object="destrucwall" id="162" x="9" y="0" z="54" life="1" />
-    <Map object="destrucwall" id="165" x="9" y="0" z="57" life="1" />
     <Map object="defaultwall" id="167" x="9" y="0" z="60" />
-    <Map object="destrucwall" id="168" x="9" y="0" z="60" life="2" />
     <Map object="defaultwall" id="170" x="12" y="0" z="0" />
-    <Map object="defaultwall" id="174" x="12" y="0" z="6" />
-    <Map object="destrucwall" id="176" x="12" y="0" z="9" life="1" />
-    <Map object="defaultwall" id="178" x="12" y="0" z="12" />
-    <Map object="destrucwall" id="180" x="12" y="0" z="15" life="1" />
-    <Map object="defaultwall" id="182" x="12" y="0" z="18" />
-    <Map object="destrucwall" id="184" x="12" y="0" z="21" life="1" />
-    <Map object="defaultwall" id="186" x="12" y="0" z="24" />
-    <Map object="destrucwall" id="188" x="12" y="0" z="27" life="1" />
-    <Map object="defaultwall" id="190" x="12" y="0" z="30" />
-    <Map object="destrucwall" id="192" x="12" y="0" z="33" life="1" />
-    <Map object="defaultwall" id="194" x="12" y="0" z="36" />
-    <Map object="destrucwall" id="196" x="12" y="0" z="39" life="1" />
-    <Map object="defaultwall" id="198" x="12" y="0" z="42" />
-    <Map object="destrucwall" id="200" x="12" y="0" z="45" life="1" />
-    <Map object="defaultwall" id="202" x="12" y="0" z="48" />
-    <Map object="destrucwall" id="204" x="12" y="0" z="51" life="1" />
-    <Map object="defaultwall" id="206" x="12" y="0" z="54" />
-    <Map object="destrucwall" id="208" x="12" y="0" z="57" life="1" />
     <Map object="defaultwall" id="210" x="12" y="0" z="60" />
-    <Map object="destrucwall" id="211" x="12" y="0" z="60" life="1" />
     <Map object="defaultwall" id="213" x="15" y="0" z="0" />
-    <Map object="destrucwall" id="218" x="15" y="0" z="6" life="1" />
-    <Map object="destrucwall" id="221" x="15" y="0" z="9" life="1" />
-    <Map object="destrucwall" id="224" x="15" y="0" z="12" life="2" />
-    <Map object="destrucwall" id="227" x="15" y="0" z="15" life="1" />
-    <Map object="destrucwall" id="230" x="15" y="0" z="18" life="2" />
-    <Map object="destrucwall" id="233" x="15" y="0" z="21" life="1" />
-    <Map object="destrucwall" id="236" x="15" y="0" z="24" life="1" />
-    <Map object="destrucwall" id="239" x="15" y="0" z="27" life="1" />
-    <Map object="destrucwall" id="242" x="15" y="0" z="30" life="2" />
-    <Map object="destrucwall" id="245" x="15" y="0" z="33" life="1" />
-    <Map object="destrucwall" id="248" x="15" y="0" z="36" life="1" />
-    <Map object="destrucwall" id="251" x="15" y="0" z="39" life="1" />
-    <Map object="destrucwall" id="254" x="15" y="0" z="42" life="1" />
-    <Map object="destrucwall" id="257" x="15" y="0" z="45" life="1" />
-    <Map object="destrucwall" id="260" x="15" y="0" z="48" life="2" />
-    <Map object="destrucwall" id="263" x="15" y="0" z="51" life="1" />
-    <Map object="destrucwall" id="266" x="15" y="0" z="54" life="1" />
-    <Map object="destrucwall" id="269" x="15" y="0" z="57" life="1" />
     <Map object="defaultwall" id="271" x="15" y="0" z="60" />
-    <Map object="destrucwall" id="272" x="15" y="0" z="60" life="1" />
     <Map object="defaultwall" id="274" x="18" y="0" z="0" />
-    <Map object="defaultwall" id="278" x="18" y="0" z="6" />
-    <Map object="destrucwall" id="280" x="18" y="0" z="9" life="1" />
-    <Map object="defaultwall" id="282" x="18" y="0" z="12" />
-    <Map object="destrucwall" id="284" x="18" y="0" z="15" life="1" />
-    <Map object="defaultwall" id="286" x="18" y="0" z="18" />
-    <Map object="destrucwall" id="288" x="18" y="0" z="21" life="1" />
-    <Map object="defaultwall" id="290" x="18" y="0" z="24" />
-    <Map object="destrucwall" id="292" x="18" y="0" z="27" life="1" />
-    <Map object="defaultwall" id="294" x="18" y="0" z="30" />
-    <Map object="destrucwall" id="296" x="18" y="0" z="33" life="1" />
-    <Map object="defaultwall" id="298" x="18" y="0" z="36" />
-    <Map object="destrucwall" id="300" x="18" y="0" z="39" life="1" />
-    <Map object="defaultwall" id="302" x="18" y="0" z="42" />
-    <Map object="destrucwall" id="304" x="18" y="0" z="45" life="2" />
-    <Map object="defaultwall" id="306" x="18" y="0" z="48" />
-    <Map object="destrucwall" id="308" x="18" y="0" z="51" life="1" />
-    <Map object="defaultwall" id="310" x="18" y="0" z="54" />
-    <Map object="destrucwall" id="312" x="18" y="0" z="57" life="1" />
     <Map object="defaultwall" id="314" x="18" y="0" z="60" />
-    <Map object="destrucwall" id="315" x="18" y="0" z="60" life="1" />
     <Map object="defaultwall" id="317" x="21" y="0" z="0" />
-    <Map object="destrucwall" id="322" x="21" y="0" z="6" life="1" />
-    <Map object="destrucwall" id="325" x="21" y="0" z="9" life="1" />
-    <Map object="destrucwall" id="328" x="21" y="0" z="12" life="1" />
-    <Map object="destrucwall" id="331" x="21" y="0" z="15" life="1" />
-    <Map object="destrucwall" id="334" x="21" y="0" z="18" life="1" />
-    <Map object="destrucwall" id="337" x="21" y="0" z="21" life="1" />
-    <Map object="destrucwall" id="340" x="21" y="0" z="24" life="1" />
-    <Map object="destrucwall" id="343" x="21" y="0" z="27" life="2" />
-    <Map object="destrucwall" id="346" x="21" y="0" z="30" life="1" />
-    <Map object="destrucwall" id="349" x="21" y="0" z="33" life="1" />
-    <Map object="destrucwall" id="352" x="21" y="0" z="36" life="1" />
-    <Map object="destrucwall" id="355" x="21" y="0" z="39" life="1" />
-    <Map object="destrucwall" id="358" x="21" y="0" z="42" life="1" />
-    <Map object="destrucwall" id="361" x="21" y="0" z="45" life="1" />
-    <Map object="destrucwall" id="364" x="21" y="0" z="48" life="1" />
-    <Map object="destrucwall" id="367" x="21" y="0" z="51" life="1" />
-    <Map object="destrucwall" id="370" x="21" y="0" z="54" life="2" />
-    <Map object="destrucwall" id="373" x="21" y="0" z="57" life="1" />
     <Map object="defaultwall" id="375" x="21" y="0" z="60" />
-    <Map object="destrucwall" id="376" x="21" y="0" z="60" life="2" />
     <Map object="defaultwall" id="378" x="24" y="0" z="0" />
-    <Map object="defaultwall" id="382" x="24" y="0" z="6" />
-    <Map object="destrucwall" id="384" x="24" y="0" z="9" life="1" />
-    <Map object="defaultwall" id="386" x="24" y="0" z="12" />
-    <Map object="destrucwall" id="388" x="24" y="0" z="15" life="2" />
-    <Map object="defaultwall" id="390" x="24" y="0" z="18" />
-    <Map object="destrucwall" id="392" x="24" y="0" z="21" life="1" />
-    <Map object="defaultwall" id="394" x="24" y="0" z="24" />
-    <Map object="destrucwall" id="396" x="24" y="0" z="27" life="1" />
-    <Map object="defaultwall" id="398" x="24" y="0" z="30" />
-    <Map object="destrucwall" id="400" x="24" y="0" z="33" life="1" />
-    <Map object="defaultwall" id="402" x="24" y="0" z="36" />
-    <Map object="destrucwall" id="404" x="24" y="0" z="39" life="2" />
-    <Map object="defaultwall" id="406" x="24" y="0" z="42" />
-    <Map object="destrucwall" id="408" x="24" y="0" z="45" life="1" />
-    <Map object="defaultwall" id="410" x="24" y="0" z="48" />
-    <Map object="destrucwall" id="412" x="24" y="0" z="51" life="1" />
-    <Map object="defaultwall" id="414" x="24" y="0" z="54" />
-    <Map object="destrucwall" id="416" x="24" y="0" z="57" life="1" />
     <Map object="defaultwall" id="418" x="24" y="0" z="60" />
-    <Map object="destrucwall" id="419" x="24" y="0" z="60" life="1" />
     <Map object="defaultwall" id="421" x="27" y="0" z="0" />
-    <Map object="destrucwall" id="426" x="27" y="0" z="6" life="1" />
-    <Map object="destrucwall" id="429" x="27" y="0" z="9" life="1" />
-    <Map object="destrucwall" id="432" x="27" y="0" z="12" life="1" />
-    <Map object="destrucwall" id="435" x="27" y="0" z="15" life="1" />
-    <Map object="destrucwall" id="438" x="27" y="0" z="18" life="1" />
-    <Map object="destrucwall" id="441" x="27" y="0" z="21" life="1" />
-    <Map object="destrucwall" id="444" x="27" y="0" z="24" life="1" />
-    <Map object="destrucwall" id="447" x="27" y="0" z="27" life="1" />
-    <Map object="destrucwall" id="450" x="27" y="0" z="30" life="1" />
-    <Map object="destrucwall" id="453" x="27" y="0" z="33" life="1" />
-    <Map object="destrucwall" id="456" x="27" y="0" z="36" life="1" />
-    <Map object="destrucwall" id="459" x="27" y="0" z="39" life="1" />
-    <Map object="destrucwall" id="462" x="27" y="0" z="42" life="1" />
-    <Map object="destrucwall" id="465" x="27" y="0" z="45" life="1" />
-    <Map object="destrucwall" id="468" x="27" y="0" z="48" life="2" />
-    <Map object="destrucwall" id="471" x="27" y="0" z="51" life="1" />
-    <Map object="destrucwall" id="474" x="27" y="0" z="54" life="1" />
-    <Map object="destrucwall" id="477" x="27" y="0" z="57" life="1" />
     <Map object="defaultwall" id="479" x="27" y="0" z="60" />
-    <Map object="destrucwall" id="480" x="27" y="0" z="60" life="1" />
     <Map object="defaultwall" id="482" x="30" y="0" z="0" />
-    <Map object="defaultwall" id="486" x="30" y="0" z="6" />
-    <Map object="destrucwall" id="488" x="30" y="0" z="9" life="1" />
-    <Map object="defaultwall" id="490" x="30" y="0" z="12" />
-    <Map object="destrucwall" id="492" x="30" y="0" z="15" life="1" />
-    <Map object="defaultwall" id="494" x="30" y="0" z="18" />
-    <Map object="destrucwall" id="496" x="30" y="0" z="21" life="2" />
-    <Map object="defaultwall" id="498" x="30" y="0" z="24" />
-    <Map object="destrucwall" id="500" x="30" y="0" z="27" life="1" />
-    <Map object="defaultwall" id="502" x="30" y="0" z="30" />
-    <Map object="destrucwall" id="504" x="30" y="0" z="33" life="2" />
-    <Map object="defaultwall" id="506" x="30" y="0" z="36" />
-    <Map object="destrucwall" id="508" x="30" y="0" z="39" life="1" />
-    <Map object="defaultwall" id="510" x="30" y="0" z="42" />
-    <Map object="destrucwall" id="512" x="30" y="0" z="45" life="1" />
-    <Map object="defaultwall" id="514" x="30" y="0" z="48" />
-    <Map object="destrucwall" id="516" x="30" y="0" z="51" life="2" />
-    <Map object="defaultwall" id="518" x="30" y="0" z="54" />
-    <Map object="destrucwall" id="520" x="30" y="0" z="57" life="1" />
     <Map object="defaultwall" id="522" x="30" y="0" z="60" />
-    <Map object="destrucwall" id="523" x="30" y="0" z="60" life="1" />
     <Map object="defaultwall" id="525" x="33" y="0" z="0" />
-    <Map object="destrucwall" id="530" x="33" y="0" z="6" life="1" />
-    <Map object="destrucwall" id="533" x="33" y="0" z="9" life="1" />
-    <Map object="destrucwall" id="536" x="33" y="0" z="12" life="1" />
-    <Map object="destrucwall" id="539" x="33" y="0" z="15" life="1" />
-    <Map object="destrucwall" id="542" x="33" y="0" z="18" life="1" />
-    <Map object="destrucwall" id="545" x="33" y="0" z="21" life="1" />
-    <Map object="destrucwall" id="548" x="33" y="0" z="24" life="2" />
-    <Map object="destrucwall" id="551" x="33" y="0" z="27" life="1" />
-    <Map object="destrucwall" id="554" x="33" y="0" z="30" life="1" />
-    <Map object="destrucwall" id="557" x="33" y="0" z="33" life="2" />
-    <Map object="destrucwall" id="560" x="33" y="0" z="36" life="1" />
-    <Map object="destrucwall" id="563" x="33" y="0" z="39" life="1" />
-    <Map object="destrucwall" id="566" x="33" y="0" z="42" life="1" />
-    <Map object="destrucwall" id="569" x="33" y="0" z="45" life="1" />
-    <Map object="destrucwall" id="572" x="33" y="0" z="48" life="1" />
-    <Map object="destrucwall" id="575" x="33" y="0" z="51" life="1" />
-    <Map object="destrucwall" id="578" x="33" y="0" z="54" life="2" />
-    <Map object="destrucwall" id="581" x="33" y="0" z="57" life="1" />
     <Map object="defaultwall" id="583" x="33" y="0" z="60" />
-    <Map object="destrucwall" id="584" x="33" y="0" z="60" life="2" />
     <Map object="defaultwall" id="586" x="36" y="0" z="0" />
-    <Map object="defaultwall" id="590" x="36" y="0" z="6" />
-    <Map object="destrucwall" id="592" x="36" y="0" z="9" life="2" />
-    <Map object="defaultwall" id="594" x="36" y="0" z="12" />
-    <Map object="destrucwall" id="596" x="36" y="0" z="15" life="1" />
-    <Map object="defaultwall" id="598" x="36" y="0" z="18" />
-    <Map object="destrucwall" id="600" x="36" y="0" z="21" life="1" />
-    <Map object="defaultwall" id="602" x="36" y="0" z="24" />
-    <Map object="destrucwall" id="604" x="36" y="0" z="27" life="1" />
-    <Map object="defaultwall" id="606" x="36" y="0" z="30" />
-    <Map object="destrucwall" id="608" x="36" y="0" z="33" life="1" />
-    <Map object="defaultwall" id="610" x="36" y="0" z="36" />
-    <Map object="destrucwall" id="612" x="36" y="0" z="39" life="1" />
-    <Map object="defaultwall" id="614" x="36" y="0" z="42" />
-    <Map object="destrucwall" id="616" x="36" y="0" z="45" life="1" />
-    <Map object="defaultwall" id="618" x="36" y="0" z="48" />
-    <Map object="destrucwall" id="620" x="36" y="0" z="51" life="1" />
-    <Map object="defaultwall" id="622" x="36" y="0" z="54" />
-    <Map object="destrucwall" id="624" x="36" y="0" z="57" life="2" />
     <Map object="defaultwall" id="626" x="36" y="0" z="60" />
-    <Map object="destrucwall" id="627" x="36" y="0" z="60" life="1" />
     <Map object="defaultwall" id="629" x="39" y="0" z="0" />
-    <Map object="destrucwall" id="634" x="39" y="0" z="6" life="1" />
-    <Map object="destrucwall" id="637" x="39" y="0" z="9" life="2" />
-    <Map object="destrucwall" id="640" x="39" y="0" z="12" life="1" />
-    <Map object="destrucwall" id="643" x="39" y="0" z="15" life="1" />
-    <Map object="destrucwall" id="646" x="39" y="0" z="18" life="1" />
-    <Map object="destrucwall" id="649" x="39" y="0" z="21" life="1" />
-    <Map object="destrucwall" id="652" x="39" y="0" z="24" life="1" />
-    <Map object="destrucwall" id="655" x="39" y="0" z="27" life="1" />
-    <Map object="destrucwall" id="658" x="39" y="0" z="30" life="2" />
-    <Map object="destrucwall" id="661" x="39" y="0" z="33" life="1" />
-    <Map object="destrucwall" id="664" x="39" y="0" z="36" life="1" />
-    <Map object="destrucwall" id="667" x="39" y="0" z="39" life="1" />
-    <Map object="destrucwall" id="670" x="39" y="0" z="42" life="1" />
-    <Map object="destrucwall" id="673" x="39" y="0" z="45" life="1" />
-    <Map object="destrucwall" id="676" x="39" y="0" z="48" life="1" />
-    <Map object="destrucwall" id="679" x="39" y="0" z="51" life="2" />
-    <Map object="destrucwall" id="682" x="39" y="0" z="54" life="1" />
-    <Map object="destrucwall" id="685" x="39" y="0" z="57" life="2" />
     <Map object="defaultwall" id="687" x="39" y="0" z="60" />
-    <Map object="destrucwall" id="688" x="39" y="0" z="60" life="2" />
     <Map object="defaultwall" id="690" x="42" y="0" z="0" />
-    <Map object="defaultwall" id="694" x="42" y="0" z="6" />
-    <Map object="destrucwall" id="696" x="42" y="0" z="9" life="1" />
-    <Map object="defaultwall" id="698" x="42" y="0" z="12" />
-    <Map object="destrucwall" id="700" x="42" y="0" z="15" life="1" />
-    <Map object="defaultwall" id="702" x="42" y="0" z="18" />
-    <Map object="destrucwall" id="704" x="42" y="0" z="21" life="2" />
-    <Map object="defaultwall" id="706" x="42" y="0" z="24" />
-    <Map object="destrucwall" id="708" x="42" y="0" z="27" life="1" />
-    <Map object="defaultwall" id="710" x="42" y="0" z="30" />
-    <Map object="destrucwall" id="712" x="42" y="0" z="33" life="1" />
-    <Map object="defaultwall" id="714" x="42" y="0" z="36" />
-    <Map object="destrucwall" id="716" x="42" y="0" z="39" life="1" />
-    <Map object="defaultwall" id="718" x="42" y="0" z="42" />
-    <Map object="destrucwall" id="720" x="42" y="0" z="45" life="1" />
-    <Map object="defaultwall" id="722" x="42" y="0" z="48" />
-    <Map object="destrucwall" id="724" x="42" y="0" z="51" life="1" />
-    <Map object="defaultwall" id="726" x="42" y="0" z="54" />
-    <Map object="destrucwall" id="728" x="42" y="0" z="57" life="1" />
     <Map object="defaultwall" id="730" x="42" y="0" z="60" />
-    <Map object="destrucwall" id="731" x="42" y="0" z="60" life="1" />
     <Map object="defaultwall" id="733" x="45" y="0" z="0" />
-    <Map object="destrucwall" id="744" x="45" y="0" z="12" life="1" />
-    <Map object="destrucwall" id="747" x="45" y="0" z="15" life="1" />
-    <Map object="destrucwall" id="750" x="45" y="0" z="18" life="1" />
-    <Map object="destrucwall" id="753" x="45" y="0" z="21" life="1" />
-    <Map object="destrucwall" id="756" x="45" y="0" z="24" life="1" />
-    <Map object="destrucwall" id="759" x="45" y="0" z="27" life="1" />
-    <Map object="destrucwall" id="762" x="45" y="0" z="30" life="1" />
-    <Map object="destrucwall" id="765" x="45" y="0" z="33" life="1" />
-    <Map object="destrucwall" id="768" x="45" y="0" z="36" life="1" />
-    <Map object="destrucwall" id="771" x="45" y="0" z="39" life="2" />
-    <Map object="destrucwall" id="774" x="45" y="0" z="42" life="1" />
-    <Map object="destrucwall" id="777" x="45" y="0" z="45" life="1" />
-    <Map object="destrucwall" id="780" x="45" y="0" z="48" life="1" />
-    <Map object="destrucwall" id="783" x="45" y="0" z="51" life="1" />
-    <Map object="destrucwall" id="786" x="45" y="0" z="54" life="1" />
-    <Map object="destrucwall" id="789" x="45" y="0" z="57" life="2" />
     <Map object="defaultwall" id="791" x="45" y="0" z="60" />
-    <Map object="destrucwall" id="792" x="45" y="0" z="60" life="1" />
     <Map object="defaultwall" id="794" x="48" y="0" z="0" />
-    <Map object="defaultwall" id="798" x="48" y="0" z="6" />
-    <Map object="destrucwall" id="800" x="48" y="0" z="9" life="2" />
-    <Map object="defaultwall" id="802" x="48" y="0" z="12" />
-    <Map object="destrucwall" id="804" x="48" y="0" z="15" life="2" />
-    <Map object="defaultwall" id="806" x="48" y="0" z="18" />
-    <Map object="destrucwall" id="808" x="48" y="0" z="21" life="1" />
-    <Map object="defaultwall" id="810" x="48" y="0" z="24" />
-    <Map object="destrucwall" id="812" x="48" y="0" z="27" life="1" />
-    <Map object="defaultwall" id="814" x="48" y="0" z="30" />
-    <Map object="destrucwall" id="816" x="48" y="0" z="33" life="2" />
-    <Map object="defaultwall" id="818" x="48" y="0" z="36" />
-    <Map object="destrucwall" id="820" x="48" y="0" z="39" life="1" />
-    <Map object="defaultwall" id="822" x="48" y="0" z="42" />
-    <Map object="destrucwall" id="824" x="48" y="0" z="45" life="2" />
-    <Map object="defaultwall" id="826" x="48" y="0" z="48" />
-    <Map object="destrucwall" id="828" x="48" y="0" z="51" life="1" />
-    <Map object="defaultwall" id="830" x="48" y="0" z="54" />
-    <Map object="destrucwall" id="832" x="48" y="0" z="57" life="1" />
     <Map object="defaultwall" id="834" x="48" y="0" z="60" />
-    <Map object="destrucwall" id="835" x="48" y="0" z="60" life="2" />
     <Map object="defaultwall" id="837" x="51" y="0" z="0" />
-    <Map object="destrucwall" id="842" x="51" y="0" z="6" life="2" />
-    <Map object="destrucwall" id="845" x="51" y="0" z="9" life="1" />
-    <Map object="destrucwall" id="848" x="51" y="0" z="12" life="2" />
-    <Map object="destrucwall" id="851" x="51" y="0" z="15" life="1" />
-    <Map object="destrucwall" id="854" x="51" y="0" z="18" life="1" />
-    <Map object="destrucwall" id="857" x="51" y="0" z="21" life="1" />
-    <Map object="destrucwall" id="860" x="51" y="0" z="24" life="1" />
-    <Map object="destrucwall" id="863" x="51" y="0" z="27" life="1" />
-    <Map object="destrucwall" id="866" x="51" y="0" z="30" life="1" />
-    <Map object="destrucwall" id="869" x="51" y="0" z="33" life="2" />
-    <Map object="destrucwall" id="872" x="51" y="0" z="36" life="2" />
-    <Map object="destrucwall" id="875" x="51" y="0" z="39" life="1" />
-    <Map object="destrucwall" id="878" x="51" y="0" z="42" life="1" />
-    <Map object="destrucwall" id="881" x="51" y="0" z="45" life="1" />
-    <Map object="destrucwall" id="884" x="51" y="0" z="48" life="1" />
-    <Map object="destrucwall" id="887" x="51" y="0" z="51" life="1" />
-    <Map object="destrucwall" id="890" x="51" y="0" z="54" life="1" />
-    <Map object="destrucwall" id="893" x="51" y="0" z="57" life="2" />
     <Map object="defaultwall" id="895" x="51" y="0" z="60" />
-    <Map object="destrucwall" id="896" x="51" y="0" z="60" life="1" />
     <Map object="defaultwall" id="898" x="54" y="0" z="0" />
-    <Map object="destrucwall" id="900" x="54" y="0" z="3" life="1" />
-    <Map object="defaultwall" id="902" x="54" y="0" z="6" />
-    <Map object="destrucwall" id="904" x="54" y="0" z="9" life="1" />
-    <Map object="defaultwall" id="906" x="54" y="0" z="12" />
-    <Map object="destrucwall" id="908" x="54" y="0" z="15" life="1" />
-    <Map object="defaultwall" id="910" x="54" y="0" z="18" />
-    <Map object="destrucwall" id="912" x="54" y="0" z="21" life="1" />
-    <Map object="defaultwall" id="914" x="54" y="0" z="24" />
-    <Map object="destrucwall" id="916" x="54" y="0" z="27" life="2" />
-    <Map object="defaultwall" id="918" x="54" y="0" z="30" />
-    <Map object="destrucwall" id="920" x="54" y="0" z="33" life="1" />
-    <Map object="defaultwall" id="922" x="54" y="0" z="36" />
-    <Map object="destrucwall" id="924" x="54" y="0" z="39" life="1" />
-    <Map object="defaultwall" id="926" x="54" y="0" z="42" />
-    <Map object="destrucwall" id="928" x="54" y="0" z="45" life="1" />
-    <Map object="defaultwall" id="930" x="54" y="0" z="48" />
-    <Map object="destrucwall" id="932" x="54" y="0" z="51" life="1" />
-    <Map object="defaultwall" id="934" x="54" y="0" z="54" />
-    <Map object="destrucwall" id="936" x="54" y="0" z="57" life="1" />
     <Map object="defaultwall" id="938" x="54" y="0" z="60" />
-    <Map object="destrucwall" id="939" x="54" y="0" z="60" life="2" />
     <Map object="defaultwall" id="941" x="57" y="0" z="0" />
-    <Map object="destrucwall" id="945" x="57" y="0" z="9" life="2" />
-    <Map object="destrucwall" id="948" x="57" y="0" z="12" life="2" />
-    <Map object="destrucwall" id="951" x="57" y="0" z="15" life="1" />
-    <Map object="destrucwall" id="954" x="57" y="0" z="18" life="1" />
-    <Map object="destrucwall" id="957" x="57" y="0" z="21" life="1" />
-    <Map object="destrucwall" id="960" x="57" y="0" z="24" life="1" />
-    <Map object="destrucwall" id="963" x="57" y="0" z="27" life="1" />
-    <Map object="destrucwall" id="966" x="57" y="0" z="30" life="1" />
-    <Map object="destrucwall" id="969" x="57" y="0" z="33" life="1" />
-    <Map object="destrucwall" id="972" x="57" y="0" z="36" life="1" />
-    <Map object="destrucwall" id="975" x="57" y="0" z="39" life="1" />
-    <Map object="destrucwall" id="978" x="57" y="0" z="42" life="1" />
-    <Map object="destrucwall" id="981" x="57" y="0" z="45" life="2" />
-    <Map object="destrucwall" id="984" x="57" y="0" z="48" life="1" />
-    <Map object="destrucwall" id="987" x="57" y="0" z="51" life="1" />
     <Map object="defaultwall" id="991" x="57" y="0" z="60" />
     <Map object="defaultwall" id="992" x="60" y="0" z="0" />
     <Map object="defaultwall" id="993" x="60" y="0" z="3" />
@@ -430,7 +81,4 @@
     <Map object="defaultwall" id="1010" x="60" y="0" z="54" />
     <Map object="defaultwall" id="1011" x="60" y="0" z="57" />
     <Map object="defaultwall" id="1012" x="60" y="0" z="60" />
-    <Map object="defaultbomb" id="1193" x="51" y="0" z="3" po="2" damage="1" time="2492" playercoll="0" died="0" id_player="1013" />
-    <Map object="bonusbomb" id="1040" x="9" y="0" z="6" died="0" />
-    <Map object="bonusbomb" id="1184" x="45" y="0" z="9" died="0" />
 </Bomberman>

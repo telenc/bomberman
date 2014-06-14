@@ -5,7 +5,7 @@
 // Login   <telenc_r@epitech.net>
 //
 // Started on  Fri Jun 13 12:28:13 2014 Remi telenczak
-** Last update Sat Jun 14 15:34:09 2014 mattieu bernard-guêle
+// Last update Sat Jun 14 18:16:17 2014 Remi telenczak
 */
 
 #include		"Ia.hpp"
@@ -18,11 +18,139 @@ Ia::Ia(int x, int y, int z, Map *map, ModelList *model, EventManager *event, gdl
   std::cout << "Ia created" << std::endl;
   this->set_x(x);
   this->set_z(z);
+    this->set_roty(90);
+  _mapName.insert(std::pair<std::string, int (Ia::*)()>("isInRisk", &Ia::isInRiskIa));
+  _mapName.insert(std::pair<std::string, int (Ia::*)()>("enemyDistance", &Ia::enemyDistanceIa));
+  _mapName.insert(std::pair<std::string, int (Ia::*)()>("wallDistance", &Ia::wallDistanceIa));
+  _mapName.insert(std::pair<std::string, int (Ia::*)()>("bonusDistance", &Ia::bonusDistanceIa));
+  _mapName.insert(std::pair<std::string, int (Ia::*)()>("enemyNear", &Ia::enemyNearIa));
+
+  _mapAction.insert(std::pair<std::string, bool (Ia::*)()>("goSafe", &Ia::goSafeIa));
+  _mapAction.insert(std::pair<std::string, bool (Ia::*)()>("poseBomb", &Ia::poseBombIa));
+  _mapAction.insert(std::pair<std::string, bool (Ia::*)()>("goBonus", &Ia::goBonusIa));
+  _mapAction.insert(std::pair<std::string, bool (Ia::*)()>("goWall", &Ia::goWallIa));
+  _mapAction.insert(std::pair<std::string, bool (Ia::*)()>("goEnemyNear", &Ia::goEnemyNearIa));
+  this->changeRot(0, 1);
 }
 
 Ia::~Ia()
 {
 
+}
+
+int	Ia::isInRiskIa()
+{
+  if (this->isInRisk() == true)
+    return 1;
+  return 0;
+}
+
+int	Ia::enemyDistanceIa()
+{
+  APlayer	*result;
+
+  result = this->minDistanceEnemy();
+  if (result)
+    return _map->distanceObj(result, this);
+  return -1;
+}
+
+int	Ia::wallDistanceIa()
+{
+  AObjectPhysic	*result;
+
+  result = this->minDistanceDestruc();
+  if (result)
+    return _map->distanceObj(result, this);
+  return -1;
+}
+
+int	Ia::bonusDistanceIa()
+{
+  ABonus	*result;
+
+  result = this->getBonus(1000);
+  if (result)
+    return _map->distanceObj(result, this);
+  return -1;
+}
+
+int	Ia::enemyNearIa()
+{
+  APlayer	*result;
+
+  result = this->minDistanceEnemy();
+  if ( _map->distanceObj(result, this) < 30)
+    return 1;
+  return 0;
+}
+
+bool	Ia::goSafeIa()
+{
+  return true;
+}
+
+bool	Ia::poseBombIa()
+{
+  DefaultBomb	*bomb;
+  int		x;
+  int		z;
+  glm::vec3 t;
+
+  if (this->_nbrBomb <= 0)
+    return false;
+  if (this->checkPositionCollision(BOMB) != NULL)
+    return false;
+  this->_nbrBomb--;
+  bomb = new DefaultBomb(_map, _modelList, _event, this, _clock);
+  bomb->setPo(this->_po);
+  x = (int)this->_position.x;
+  z = (int)this->_position.z;
+  while (x % 3 != 0)
+    x++;
+  while (z % 3 != 0)
+    z++;
+  bomb->set_x(x);
+  bomb->set_z(z);
+  t.x = x;
+  t.y  = 0;
+  t.z = z;
+  _event->dispatchEvent("bombDrop", &(t));
+  this->_map->setBomb(bomb);
+  return true;
+}
+
+bool	Ia::goBonusIa()
+{
+  return true;
+}
+
+bool	Ia::goWallIa()
+{
+  return true;
+}
+
+bool	Ia::goEnemyNearIa()
+{
+  return true;
+}
+
+void	Ia::changeRot(int x, int z)
+{
+  glm::vec3	A(0, 0, 0);
+  glm::vec3	B(0, 0, 0);
+  float		or1;
+
+  A.x = 100;
+  A.z = 0;
+
+  B.x = x - this->get_x();
+  B.z = z - this->get_z();
+
+  if (x == 0 && z == 0)
+    return;
+  or1 = glm::orientedAngle(glm::normalize(A), glm::normalize(B), glm::vec3(0, 1, 0));
+  this->set_roty(-1 * (or1 + 90));
 }
 
 bool	Ia::move(glm::vec3 direct)
@@ -102,35 +230,45 @@ glm::vec2	Ia::getPositionNoRisk()
     }
 }
 
-int	Ia::minDistanceEnemy()
+APlayer	*Ia::minDistanceEnemy()
 {
   std::list<Ia *>	listIa;
   std::list<Ia *>::iterator	it;
   int			result;
+  APlayer		*resultPlayer;
 
   result = -1;
   listIa = _map->getIa();
   it = listIa.begin();
+  resultPlayer = NULL;
   while (it != listIa.end())
     {
       if ((*it) != this)
 	{
 	  if (result == -1 || result > _map->distanceObj(*it, this))
-	    result = _map->distanceObj(*it, this);
+	    {
+	      result = _map->distanceObj(*it, this);
+	      resultPlayer = *it;
+	    }
 	}
       it++;
     }
   if (result == -1 || result > _map->distanceObj(this))
-    result = _map->distanceObj(this);
-  return result;
+    {
+      result = _map->distanceObj(this);
+      resultPlayer = *it;
+    }
+  return resultPlayer;
 }
 
-int	Ia::minDistanceDestruc()
+AObjectPhysic	*Ia::minDistanceDestruc()
 {
   std::vector<AObjectPhysic *>	list;
   std::vector<AObjectPhysic *>::iterator	it;
   int			result;
+  AObjectPhysic		*resultBloc;
 
+  resultBloc = NULL;
   result = -1;
   list = _map->getObjectsPrecisPos(this, 100, DESTRUCTWALL);
   it = list.begin();
@@ -139,11 +277,14 @@ int	Ia::minDistanceDestruc()
       if ((*it) != this)
 	{
 	  if (result == -1 || result > _map->distanceObj(*it, this))
-	    result = _map->distanceObj(*it, this);
+	    {
+	      result = _map->distanceObj(*it, this);
+	      resultBloc = *it;
+	    }
 	}
       it++;
     }
-  return result;
+  return resultBloc;
 }
 
 ABonus	*Ia::getBonus(int size)
@@ -152,6 +293,7 @@ ABonus	*Ia::getBonus(int size)
   std::vector<AObjectPhysic *>::iterator	it;
   int			result;
   ABonus		*resultBonus;
+
   result = -1;
   list = _map->getObjectsPos(this, size, BONUS);
   it = list.begin();

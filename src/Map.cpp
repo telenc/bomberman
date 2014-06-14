@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Fri Jun 13 17:01:44 2014 Remi telenczak
+// Last update Sat Jun 14 17:58:06 2014 Remi telenczak
 //
 
 #include <cstdlib>
@@ -346,9 +346,10 @@ void		Map::drawIa(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camer
   itO = this->_ia.begin();
   while (itO != this->_ia.end())
     {
+      (void)camera;
       if (this->_pause == true)
 	(*itO)->draw(shader, clock);
-      else if ((*itO) != NULL && (*itO)->isInView(camera) && this->distanceObj(*itO) < 400)
+      else if ((*itO) != NULL)// && (*itO)->isInView(camera) && this->distanceObj(*itO) < 400)
 	(*itO)->draw(shader, clock);
       itO++;
     }

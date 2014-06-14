@@ -24,6 +24,7 @@ void		ModelList::loadModel()
   mod = this->createModel("./assets/cubeWallFer.fbx");
   this->list.push_back(std::make_pair("cube6", mod));
   mod = this->createModel("./assets/bonus_bomb_up.FBX");
+  mod = this->createModel("./assets/bonus_big_bomb.fbx");
   this->list.push_back(std::make_pair("bombBonus", mod));
   mod = this->createModel("./assets/bonus_fire_down.FBX");
   this->list.push_back(std::make_pair("bombDownBonus", mod));
