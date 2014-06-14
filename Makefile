@@ -111,7 +111,7 @@ SRC		= src/main.cpp \
 		src/PlayMenu.cpp \
 		src/SettingsMenu.cpp \
 		src/CreditsMenu.cpp \
-		src/Ia.cpp \
+#		src/Ia.cpp \
 
 OBJECTS       = $(SRC:.cpp=.o)
 
