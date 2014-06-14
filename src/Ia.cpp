@@ -5,10 +5,10 @@
 // Login   <telenc_r@epitech.net>
 //
 // Started on  Fri Jun 13 12:28:13 2014 Remi telenczak
-// Last update Sat Jun 14 21:19:20 2014 Steven Martreux
+// Last update Sat Jun 14 21:58:13 2014 Steven Martreux
 */
 
-#include		"Ia.hpp"
+#include	"Ia.hpp"
 #include	"EventManager.hpp"
 #include	"DefaultBomb.hpp"
 #include	"ABonus.hpp"
@@ -408,14 +408,19 @@ void	Ia::getList()
   //THROW
 }
 
-bool	Ia::update(gdl::Clock const &clock, gdl::Input &input)
+bool		Ia::update(gdl::Clock const &clock, gdl::Input &input)
 {
   std::list<IaXml *>::iterator	it;
+  int		elenczk;
 
+  (void)clock;
+  (void)input;
   it = listXml.begin();
   while (it != listXml.end())
     {
-      if ((this->*_mapName[(*it)->name])();
+      elenczk = (this->*_mapName[(*it)->name])();
+      if (elenczk >= 0 || elenczk <= (*it)->condition)
+	(this->*_mapAction[(*it)->action])();
       it++;
     }
   return true;
