@@ -1,11 +1,11 @@
 //
 // LoadGame.hpp for LoadGame in /home/martre_s/cpp_bomberman/src
-// 
+//
 // Made by Steven Martreux
 // Login   <martre_s@epitech.net>
-// 
+//
 // Started on  Mon May 12 13:51:56 2014 Steven Martreux
-// Last update Sat Jun 14 18:10:31 2014 Steven Martreux
+// Last update Sat Jun 14 18:39:49 2014 Remi telenczak
 //
 
 #ifndef		_LOAD_GAME_HPP
@@ -14,7 +14,6 @@
 #include	<tinyxml.h>
 #include	<string>
 #include	<iostream>
-#include	<fstream>
 #include	<map>
 #include	<vector>
 
@@ -26,7 +25,6 @@
 #include	"Player.hpp"
 #include	"DefaultBomb.hpp"
 #include	"DefaultFire.hpp"
-#include	"SolWall.hpp"
 
 class		LoadGame
 {
@@ -43,12 +41,9 @@ public:
   AObjectPhysic *CreateBonusPo(TiXmlElement *);
   AObjectPhysic *CreateBonusBomb(TiXmlElement *);
   AObjectPhysic	*CreateDefaultFire(TiXmlElement *);
-  AObjectPhysic	*CreateSol(TiXmlElement *);
   std::vector<APlayer *> *getVectorPlayer(TiXmlElement *);
   APlayer	*GetPlayerBomb(int);
   void		 getPlayer();
-  bool		ChangeMd5();
-  bool		checkFile();
 private:
   std::string _file;
   bool	      _loadOkay;
