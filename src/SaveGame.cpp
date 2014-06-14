@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 // 
 // Started on  Fri May 30 16:39:48 2014 Steven Martreux
-// Last update Sat Jun 14 21:19:21 2014 Steven Martreux
+// Last update Sat Jun 14 22:31:31 2014 Steven Martreux
 //
 
 #include	"SaveGame.hpp"
@@ -20,12 +20,12 @@ SaveGame::SaveGame(Map *map, const std::string & filename) : _map(map), _fileNam
   _mapObject.insert(std::pair<TypeObjectPrecis, void(SaveGame::*)(AObjectPhysic *)>(BOMBBONUS, &SaveGame::SaveBonusBomb));
   _mapObject.insert(std::pair<TypeObjectPrecis, void(SaveGame::*)(AObjectPhysic *)>(POBONUS, &SaveGame::SaveBonusPo));
   _mapObject.insert(std::pair<TypeObjectPrecis, void(SaveGame::*)(AObjectPhysic *)>(FIREPRECIS, &SaveGame::SaveDefaultFire));
-  _mapObject.insert(std::pair<TypeObjectPrecis, void(SaveGame::*)(AObjectPhysic *)>(SOLWALL, &SaveGame::SaveSol));
   _bomberman = new TiXmlElement("Bomberman");
   _file.LinkEndChild(_bomberman);
   this->SaveMapSize();
   this->SavePlayer();
   this->setObjMap();
+  this->SaveSol();
   _file.SaveFile(_fileName.c_str());
   this->ChangeMd5();
 }
@@ -82,18 +82,24 @@ std::string	SaveGame::ConstCharByDouble(double x) const
   return tmp.str();
 }
 
-void		SaveGame::SaveSol(AObjectPhysic *Aobj)
+void		SaveGame::SaveSol()
 {
-  SolWall      	*sol;
+  std::list<ABloc *>	sol;
+  std::list<ABloc *>::iterator it;
 
-  sol = (SolWall *)Aobj;
-  _obj = new TiXmlElement("Map");
-  _obj->SetAttribute("object", "wallsol");
-  _obj->SetAttribute("id", ConstCharByInt(sol->getId()).c_str());
-  _obj->SetAttribute("x", ConstCharByFloat(sol->get_x()).c_str());
-  _obj->SetAttribute("y", ConstCharByFloat(sol->get_y()).c_str());
-  _obj->SetAttribute("z", ConstCharByFloat(sol->get_z()).c_str());
-  _bomberman->LinkEndChild(_obj);
+  sol = _map->getSol();
+  it = sol.begin();
+  while (it != sol.end())
+    {
+      _obj = new TiXmlElement("Map");
+      _obj->SetAttribute("object", "wallsol");
+      _obj->SetAttribute("id", ConstCharByInt((*it)->getId()).c_str());
+      _obj->SetAttribute("x", ConstCharByFloat((*it)->get_x()).c_str());
+      _obj->SetAttribute("y", ConstCharByFloat((*it)->get_y()).c_str());
+      _obj->SetAttribute("z", ConstCharByFloat((*it)->get_z()).c_str());
+      _bomberman->LinkEndChild(_obj);
+      it++;
+    }
 }
 
 void		SaveGame::SaveDefaultBomb(AObjectPhysic *Aobj)

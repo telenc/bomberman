@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Fri Jun 13 16:02:12 2014 Remi telenczak
+// Last update Sat Jun 14 22:27:23 2014 Steven Martreux
 //
 
 #ifndef MAP_HPP_
@@ -86,6 +86,7 @@ public:
   std::list<ABloc *>		getBloc() const;
   std::list<ABonus *>		getBonus() const;
   std::list<AObjectPhysic * >	getObject();
+  std::list<ABloc *>		getSol() const;
 
   bool isBlock(int x, int z);
 private:
@@ -104,9 +105,6 @@ private:
   ICallBack	*callPause;
   bool		_pause;
   Skybox	*_skybox;
-
-
-
 };
 
 #endif

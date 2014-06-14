@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 // 
 // Started on  Mon Jun  2 15:02:25 2014 Steven Martreux
-// Last update Sat Jun 14 18:11:26 2014 Steven Martreux
+// Last update Sat Jun 14 22:28:07 2014 Steven Martreux
 //
 
 #ifndef		_SAVEGAME_HPP_
@@ -46,7 +46,7 @@ public:
   void		SavePlayerInFire(AFire *);
   void		SaveDefaultFire(AObjectPhysic *);
   void		ChangeMd5();
-  void		SaveSol(AObjectPhysic *);
+  void		SaveSol();
 private:
   TiXmlDocument _file;
   TiXmlElement	*_mapSize;

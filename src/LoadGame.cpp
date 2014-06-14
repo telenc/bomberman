@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Mon May 12 13:48:39 2014 Steven Martreux
-// Last update Sat Jun 14 18:09:21 2014 Steven Martreux
+// Last update Sat Jun 14 22:34:51 2014 Steven Martreux
 //
 
 #include	<tinyxml.h>
@@ -120,6 +120,7 @@ AObjectPhysic	*LoadGame::CreateBonusPo(TiXmlElement *line)
   obj->set_y(atof(line->Attribute("y")));
   obj->set_z(atof(line->Attribute("z")));
   obj->setDied(atoi(line->Attribute("died")));
+  _mapGame->setBonus((ABonus *)obj);
   return (AObjectPhysic *)obj;
 }
 
@@ -152,6 +153,7 @@ AObjectPhysic	*LoadGame::CreateDefaultFire(TiXmlElement *line)
   fire->setTime(atoi(line->Attribute("time")));
   fire->setDamage(atoi(line->Attribute("damage")));
   fire->setBombId(atoi(line->Attribute("idbomb")));
+  _mapGame->setFire((AFire *)fire);
   return (AObjectPhysic *)fire;
 }
 
@@ -164,6 +166,7 @@ AObjectPhysic	*LoadGame::CreateSol(TiXmlElement *line)
   wall->set_x(atof(line->Attribute("x")));
   wall->set_y(atof(line->Attribute("y")));
   wall->set_z(atof(line->Attribute("z")));
+  _mapGame->setSol((ABloc *)wall);
   return (AObjectPhysic *)wall;
 }
 
@@ -177,6 +180,7 @@ AObjectPhysic	*LoadGame::CreateBonusBomb(TiXmlElement *line)
   obj->set_y(atof(line->Attribute("y")));
   obj->set_z(atof(line->Attribute("z")));
   obj->setDied(atoi(line->Attribute("died")));
+  _mapGame->setBonus((ABonus *)obj);
   return (AObjectPhysic *)obj;
 }
 
@@ -216,6 +220,7 @@ AObjectPhysic	*LoadGame::CreateDefaultBomb(TiXmlElement *line)
   bomb->setTime(atoi(line->Attribute("time")));
   bomb->setPlayerColl(atoi(line->Attribute("playercoll")));
   bomb->setDied(atoi(line->Attribute("died")));
+  _mapGame->setBomb((ABomb *)bomb);
   return (AObjectPhysic *)bomb;
 }
 
@@ -228,6 +233,7 @@ AObjectPhysic	*LoadGame::CreateDefaultWall(TiXmlElement *line)
   wall->set_x(atof(line->Attribute("x")));
   wall->set_y(atof(line->Attribute("y")));
   wall->set_z(atof(line->Attribute("z")));
+  _mapGame->setBloc((ABloc *)wall);
   return (AObjectPhysic *)wall;
 }
 
@@ -241,6 +247,7 @@ AObjectPhysic	*LoadGame::CreateDestrucWall(TiXmlElement *line)
   wall->set_y(atof(line->Attribute("y")));
   wall->set_z(atof(line->Attribute("z")));
   wall->setLife(atoi(line->Attribute("life")));
+  _mapGame->setBloc((ABloc *)wall);
   return (AObjectPhysic *)wall;
 }
 
@@ -254,8 +261,10 @@ void	LoadGame::getObjMap()
   while (_map)
     {
       i = _mapObject.find(_map->Attribute("object"));
-      //if (i != _mapObject.end())
-      //_mapGame->setMap((this->*_mapObject[_map->Attribute("object")])(_map));
+      if (i != _mapObject.end())
+	{
+	  (this->*_mapObject[_map->Attribute("object")])(_map);
+	}
       _map = _map->NextSiblingElement("Map");
     }
 }
