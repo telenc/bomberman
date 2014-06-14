@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 15:52:43 2014 Mathieu Choquart
-// Last update Fri Jun 13 16:10:26 2014 Remi telenczak
+// Last update Sat Jun 14 18:09:22 2014 Steven Martreux
 //
 
 #ifndef			_AOBJECTPHYSIC_HPP_
@@ -52,6 +52,7 @@ enum	TypeObjectPrecis
     FIREPRECIS,
     DEFAULTWALL,
     DESTRUCTWALL,
+    SOLWALL,
   };
 
 class	AObjectPhysic : public	IObjectPhysic

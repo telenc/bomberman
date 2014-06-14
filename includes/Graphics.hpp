@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:10:16 2014 thomas mendez
-// Last update Tue May 27 03:08:41 2014 Remi telenczak
+// Last update Sat Jun 14 18:09:22 2014 Steven Martreux
 //
 
 #ifndef		GRAPHICS_HH__BOMBER
@@ -34,6 +34,7 @@
 #include	"Map.hpp"
 #include	"EventManager.hpp"
 #include	"Menu.hpp"
+
 class Player;
 
 class AObjectPhysic;
