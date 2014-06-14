@@ -5,7 +5,7 @@
 // Login   <telenc_r@epitech.net>
 //
 // Started on  Fri Jun 13 12:28:13 2014 Remi telenczak
-// Last update Sat Jun 14 18:16:17 2014 Remi telenczak
+// Last update Sat Jun 14 18:40:52 2014 Steven Martreux
 */
 
 #include		"Ia.hpp"
@@ -380,5 +380,6 @@ bool	Ia::update(gdl::Clock const &clock, gdl::Input &input)
 {
   (void)clock;
   (void)input;
+
   return true;
 }
