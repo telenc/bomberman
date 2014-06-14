@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Wed May 21 12:42:20 2014 Steven Martreux
-// Last update Wed Jun 11 15:16:57 2014 Steven Martreux
+// Last update Sat Jun 14 17:46:07 2014 Steven Martreux
 //
 
 #include	"Controller.hpp"
@@ -37,25 +37,18 @@ void	Controller::initVar()
   _left = 0;
   _up = 0;
   _down = 0;
-  _rotateLeft = 0;
-  _rotateRight = 0;
   _bomb = 0;
   _upMenu = 0;
   _downMenu = 0;
   _start = 0;
   _back = 0;
+  _stop = 0;
 }
 
 void	Controller::setRightLeft(int right, int left)
 {
   _right = right;
   _left = left;
-}
-
-void	Controller::setRotate(int right, int left)
-{
-  _rotateLeft = left;
-  _rotateRight = right;
 }
 
 void	Controller::setUpDown(int up, int down)
@@ -70,8 +63,6 @@ void	Controller::CheckAxeLeftRight()
     this->setRightLeft(0, 1);
   else if (SDL_JoystickGetAxis(_joystick, 0) > 4000)
     this->setRightLeft(1, 0);
-  else
-    this->setRightLeft(0, 0);
 }
 
 void	Controller::CheckAxeUpDown()
@@ -80,18 +71,6 @@ void	Controller::CheckAxeUpDown()
     this->setUpDown(1, 0);
   else if (SDL_JoystickGetAxis(_joystick, 1) > 4000)
     this->setUpDown(0, 1);
-  else
-    this->setUpDown(0, 0);
-}
-
-void	Controller::CheckAxeRotate()
-{
-  if (SDL_JoystickGetAxis(_joystick, 3) < -4000)
-    this->setRotate(0, 1);
-  else if (SDL_JoystickGetAxis(_joystick, 3) > 4000)
-    this->setRotate(1, 0);
-  else
-    this->setRotate(0, 0);
 }
 
 void	Controller::sendEventMenu()
@@ -111,13 +90,27 @@ void	Controller::sendEventMenu()
 void	Controller::sendEventMove()
 {
   if (_right == 1)
-    _eventManager->dispatchEvent("keyRight", NULL);
+    {
+      _eventManager->dispatchEvent("keyRight", NULL);
+      _stop = 2;
+    }
   else if (_left == 1)
-    _eventManager->dispatchEvent("keyLeft", NULL);
+    {
+      _eventManager->dispatchEvent("keyLeft", NULL);
+      _stop = 2;
+    }
   if (_down == 1)
-    _eventManager->dispatchEvent("keyDown", NULL);
+    {
+      _eventManager->dispatchEvent("keyDown", NULL);
+      _stop = 2;
+    }
   else if (_up == 1)
-    _eventManager->dispatchEvent("keyUp", NULL);
+    {
+      _eventManager->dispatchEvent("keyUp", NULL);
+      _stop = 2;
+    }
+  if (_right == 0 && _up == 0 && _down == 0 && _left == 0 && _stop != 0)
+    _stop = 1;
 }
 
 void	Controller::sendEvent()
@@ -139,6 +132,11 @@ void	Controller::sendEvent()
       _start = 0;
       _eventManager->dispatchEvent("pause", NULL);
     }
+  if (_stop == 1)
+    {
+      _eventManager->dispatchEvent("stopanim", NULL);
+      _stop = 0;
+    }
 }
 
 void	Controller::varUpdate()
@@ -147,20 +145,16 @@ void	Controller::varUpdate()
   _left = 0;
   _up = 0;
   _down = 0;
-  _rotateLeft = 0;
-  _rotateRight = 0;
 }
 
 void	Controller::update()
 {
   SDL_JoystickUpdate();
-  this->varUpdate();
+  varUpdate();
   if (SDL_JoystickGetAxis(_joystick, 0) < -4000 || SDL_JoystickGetAxis(_joystick, 0) > 4000)
     CheckAxeLeftRight();
   else if (SDL_JoystickGetAxis(_joystick, 1) < -4000 || SDL_JoystickGetAxis(_joystick, 1) > 4000)
     CheckAxeUpDown();
-  else if (SDL_JoystickGetAxis(_joystick, 3) < -4000 || SDL_JoystickGetAxis(_joystick, 3) > 4000)
-    CheckAxeRotate();
   if (SDL_JoystickGetButton(_joystick, 0) == 1)
     _bomb = 1;
   else if (SDL_JoystickGetButton(_joystick, 0) != 1 && _bomb == 1)

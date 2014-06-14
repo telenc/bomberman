@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:26:53 2014 Remi telenczak
-// Last update Wed Jun  4 11:30:43 2014 dedicker remi
+// Last update Sat Jun 14 18:09:22 2014 Steven Martreux
 //
 
 #include	"SolWall.hpp"
@@ -16,7 +16,7 @@ SolWall::SolWall(Map *map, ModelList *model, EventManager *event, gdl::Clock *cl
   this->_skin = model->getModel("sol");
   this->_height = 3;
   this->_width = 3;
-  std::cout << "WALL " << std::endl;
+  this->_typePrecis = SOLWALL;
 }
 
 bool SolWall::update(gdl::Clock const &clock, gdl::Input &input)

@@ -64,6 +64,7 @@ LIBS          = -L$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH) \
 		-Wl,-rpath,./LibGdl/libs/ 	\
 		-lsfml-audio 			\
 		-lSDL				\
+		-lvlc				\
 
 SRC		= src/main.cpp \
 		src/Occulus.cpp \
@@ -106,6 +107,7 @@ SRC		= src/main.cpp \
 		src/ABonus.cpp \
 		src/Bonus/PoBonus.cpp \
 		src/Bonus/BombBonus.cpp \
+		src/Bonus/BombDownBonus.cpp \
 		src/SaveGame.cpp	\
 		src/MenuNumber.cpp \
 		src/MainMenu.cpp \
@@ -113,7 +115,7 @@ SRC		= src/main.cpp \
 		src/SettingsMenu.cpp \
 		src/LoadMenu.cpp \
 		src/CreditsMenu.cpp \
-#		src/Ia.cpp \
+		src/IaBomber.cpp \
 
 OBJECTS       = $(SRC:.cpp=.o)
 

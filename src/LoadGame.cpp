@@ -6,7 +6,11 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Mon May 12 13:48:39 2014 Steven Martreux
+<<<<<<< HEAD
 // Last update Sat Jun 14 18:00:09 2014 thomas mendez
+=======
+// Last update Sat Jun 14 22:58:34 2014 Steven Martreux
+>>>>>>> 72f293e10c52f65a9f8e9e9331af7775ac0dd55a
 //
 
 #include	<tinyxml.h>
@@ -14,6 +18,9 @@
 
 LoadGame::LoadGame(const std::string & file, EventManager *event, ModelList *model, gdl::Clock *clock) : _file(file), _event(event), _model(model), _clock(clock)
 {
+  if (checkFile() == false)
+    std::cout << "FAILLLLLLLLLL SAUVEGARDE" << std::endl;
+  //THROW;
   TiXmlDocument	doc(file);
   _loadOkay = doc.LoadFile();
   if (!_loadOkay)
@@ -29,9 +36,74 @@ LoadGame::LoadGame(const std::string & file, EventManager *event, ModelList *mod
   _mapObject.insert(std::pair<std::string, AObjectPhysic*(LoadGame::*)(TiXmlElement *)>("bonuspo", &LoadGame::CreateBonusPo));
   _mapObject.insert(std::pair<std::string, AObjectPhysic*(LoadGame::*)(TiXmlElement *)>("bonusbomb", &LoadGame::CreateBonusBomb));
   _mapObject.insert(std::pair<std::string, AObjectPhysic*(LoadGame::*)(TiXmlElement *)>("fire", &LoadGame::CreateDefaultFire));
+  _mapObject.insert(std::pair<std::string, AObjectPhysic*(LoadGame::*)(TiXmlElement *)>("wallsol", &LoadGame::CreateSol));
   this->getMapSize();
   this->getPlayer();
+  this->getIas();
   this->getObjMap();
+}
+
+bool	LoadGame::ChangeMd5()
+{
+  std::string file2name = "." + _file + "00.md5";
+  std::string filename = "." + _file + ".md5";
+  std::fstream file1(file2name.c_str());
+  std::ofstream file2(filename.c_str());
+  char	string1[256];
+  int	i = 0;
+
+  if (!file1.is_open())
+    {
+      while (!file1.eof())
+	{
+	  file1.getline(string1, 256);
+	  while (string1[i])
+	    i++;
+	  i--;
+	  while (i >= 0)
+	    {
+	      string1[i] = string1[i] - 30;
+	      i--;
+	    }
+	  file2 << string1;
+	}
+      remove(file2name.c_str());
+      return true;
+    }
+  return false;
+}
+
+bool	LoadGame::checkFile()
+{
+  if (this->ChangeMd5() == false)
+    return false;
+  std::string str = "md5sum " + _file + " > ." + _file + ".md5test";
+  system(str.c_str());
+  std::string namefile1 = "." + _file + ".md5test";
+  std::string namefile2 = "." + _file + ".md5";
+  std::fstream file1(namefile1.c_str());
+  std::fstream file2(namefile2.c_str());
+  char	string1[256];
+  char	string2[256];
+
+  if (!file1.is_open() || !file2.is_open())
+    {
+      while (!file1.eof())
+	{
+	  file1.getline(string1, 256);
+	  file2.getline(string2, 256);
+	  if (strcmp(string1, string2) != 0)
+	    {
+	      remove(namefile1.c_str());
+	      remove(namefile2.c_str());
+	      return false;
+	    }
+	}
+      remove(namefile1.c_str());
+      remove(namefile2.c_str());
+      return true;
+    }
+  return false;
 }
 
 Map	*LoadGame::getMap() const
@@ -54,6 +126,7 @@ AObjectPhysic	*LoadGame::CreateBonusPo(TiXmlElement *line)
   obj->set_y(atof(line->Attribute("y")));
   obj->set_z(atof(line->Attribute("z")));
   obj->setDied(atoi(line->Attribute("died")));
+  _mapGame->setBonus((ABonus *)obj);
   return (AObjectPhysic *)obj;
 }
 
@@ -86,7 +159,21 @@ AObjectPhysic	*LoadGame::CreateDefaultFire(TiXmlElement *line)
   fire->setTime(atoi(line->Attribute("time")));
   fire->setDamage(atoi(line->Attribute("damage")));
   fire->setBombId(atoi(line->Attribute("idbomb")));
+  _mapGame->setFire((AFire *)fire);
   return (AObjectPhysic *)fire;
+}
+
+AObjectPhysic	*LoadGame::CreateSol(TiXmlElement *line)
+{
+  SolWall      	*wall;
+
+  wall = new SolWall(_mapGame, _model, _event, _clock);
+  wall->setId(atoi(line->Attribute("id")));
+  wall->set_x(atof(line->Attribute("x")));
+  wall->set_y(atof(line->Attribute("y")));
+  wall->set_z(atof(line->Attribute("z")));
+  _mapGame->setSol((ABloc *)wall);
+  return (AObjectPhysic *)wall;
 }
 
 AObjectPhysic	*LoadGame::CreateBonusBomb(TiXmlElement *line)
@@ -99,6 +186,7 @@ AObjectPhysic	*LoadGame::CreateBonusBomb(TiXmlElement *line)
   obj->set_y(atof(line->Attribute("y")));
   obj->set_z(atof(line->Attribute("z")));
   obj->setDied(atoi(line->Attribute("died")));
+  _mapGame->setBonus((ABonus *)obj);
   return (AObjectPhysic *)obj;
 }
 
@@ -138,6 +226,7 @@ AObjectPhysic	*LoadGame::CreateDefaultBomb(TiXmlElement *line)
   bomb->setTime(atoi(line->Attribute("time")));
   bomb->setPlayerColl(atoi(line->Attribute("playercoll")));
   bomb->setDied(atoi(line->Attribute("died")));
+  _mapGame->setBomb((ABomb *)bomb);
   return (AObjectPhysic *)bomb;
 }
 
@@ -150,6 +239,7 @@ AObjectPhysic	*LoadGame::CreateDefaultWall(TiXmlElement *line)
   wall->set_x(atof(line->Attribute("x")));
   wall->set_y(atof(line->Attribute("y")));
   wall->set_z(atof(line->Attribute("z")));
+  _mapGame->setBloc((ABloc *)wall);
   return (AObjectPhysic *)wall;
 }
 
@@ -163,6 +253,7 @@ AObjectPhysic	*LoadGame::CreateDestrucWall(TiXmlElement *line)
   wall->set_y(atof(line->Attribute("y")));
   wall->set_z(atof(line->Attribute("z")));
   wall->setLife(atoi(line->Attribute("life")));
+  _mapGame->setBloc((ABloc *)wall);
   return (AObjectPhysic *)wall;
 }
 
@@ -176,8 +267,10 @@ void	LoadGame::getObjMap()
   while (_map)
     {
       i = _mapObject.find(_map->Attribute("object"));
-      //if (i != _mapObject.end())
-      //_mapGame->setMap((this->*_mapObject[_map->Attribute("object")])(_map));
+      if (i != _mapObject.end())
+	{
+	  (this->*_mapObject[_map->Attribute("object")])(_map);
+	}
       _map = _map->NextSiblingElement("Map");
     }
 }
@@ -228,6 +321,45 @@ void	 LoadGame::getPlayer()
     }
   else
     std::cerr << "Balise Player not found" << std::endl;
+}
+
+IaBomber	*LoadGame::getIa(int x, int y, int z)
+{
+  IaBomber     	*ia;
+
+  ia = new IaBomber(x, y , z, _mapGame, _model, _event, _clock);
+  ia->setId(atoi(_ia->Attribute("id")));
+  ia->setPo(atoi(_ia->Attribute("po")));
+  ia->setLife(atoi(_ia->Attribute("life")));
+  ia->set_rotx(atoi(_ia->Attribute("rot_x")));
+  ia->set_roty(atoi(_ia->Attribute("rot_y")));
+  ia->set_rotz(atoi(_ia->Attribute("rot_z")));
+  ia->setNbrBomb(atoi(_ia->Attribute("nbrMaxBomb")));
+  ia->setNbrMaxBomb(atoi(_ia->Attribute("nbrCurrentBomb")));
+  return ia;
+}
+
+void	LoadGame::getIas()
+{
+  IaBomber	*ia;
+  int	x;
+  int	y;
+  int	z;
+
+  _ia = _bomberman->FirstChildElement("Ia");
+  if(_ia)
+    {
+      while (_ia)
+	{
+	  x = atoi(_ia->Attribute("x"));
+	  y = atoi(_ia->Attribute("y"));
+	  z = atoi(_ia->Attribute("z"));
+	  ia = getIa(x, y, z);
+	  _mapGame->setIa(ia);
+	  _ia = _ia->NextSiblingElement("Ia");
+	}
+    }
+  std::cerr << "BALISE IA NOT FOUND" << std::endl;
 }
 
 LoadGame::~LoadGame()

@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Fri Jun 13 17:01:44 2014 Remi telenczak
+// Last update Sat Jun 14 22:35:27 2014 Steven Martreux
 //
 
 #include <cstdlib>
@@ -20,7 +20,7 @@
 #include	"ABomb.hpp"
 #include	"ABonus.hpp"
 #include	"AFire.hpp"
-#include	"Ia.hpp"
+#include	"IaBomber.hpp"
 
 Map::Map(int width, int height, EventManager *event) : _width(width), _height(height), _event(event), _pause(false)
 {
@@ -65,7 +65,7 @@ void	Map::updateBomb(gdl::Clock clock, gdl::Input input)
 
 void	Map::updateIa(gdl::Clock clock, gdl::Input input)
 {
-  std::list<Ia *>::iterator itO;
+  std::list<IaBomber *>::iterator itO;
 
   itO = this->_ia.begin();
   while (itO != this->_ia.end())
@@ -341,14 +341,15 @@ void		Map::drawFire(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *cam
 
 void		Map::drawIa(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
 {
-  std::list<Ia *>::iterator	itO;
+  std::list<IaBomber *>::iterator	itO;
 
   itO = this->_ia.begin();
   while (itO != this->_ia.end())
     {
+      (void)camera;
       if (this->_pause == true)
 	(*itO)->draw(shader, clock);
-      else if ((*itO) != NULL && (*itO)->isInView(camera) && this->distanceObj(*itO) < 400)
+      else if ((*itO) != NULL)// && (*itO)->isInView(camera) && this->distanceObj(*itO) < 400)
 	(*itO)->draw(shader, clock);
       itO++;
     }
@@ -400,7 +401,7 @@ void					Map::draw(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *came
   (void)camera;
 }
 
-std::list<Ia *>		Map::getIa() const
+std::list<IaBomber *>		Map::getIa() const
 {
   return _ia;
 }
@@ -455,6 +456,11 @@ std::list<AObjectPhysic *>	Map::getObject()
   return this->getAllObject();
 }
 
+std::list<ABloc *>		Map::getSol() const
+{
+  return _sol;
+}
+
 std::vector<APlayer *>		Map::getPlayers()
 {
   std::vector<APlayer *>	result;
@@ -473,7 +479,7 @@ void	Map::setPlayer(Player *player)
   this->_player = player;
 }
 
-void	Map::setIa(Ia	*ia)
+void	Map::setIa(IaBomber	*ia)
 {
   this->_ia.push_back(ia);
 }

@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 // 
 // Started on  Wed May 21 12:52:03 2014 Steven Martreux
-// Last update Tue Jun 10 13:55:33 2014 Steven Martreux
+// Last update Sat Jun 14 17:45:38 2014 Steven Martreux
 //
 
 #ifndef		_CONTROLLER_HPP_
@@ -13,8 +13,9 @@
 
 #include	<iostream>
 #include	<string>
-#include	"SDL_joystick.h"
 #include	<SDL/SDL.h>
+
+#include	"SDL_joystick.h"
 #include	"EventManager.hpp"
 
 class		Controller
@@ -26,7 +27,6 @@ public:
   void	CheckAxeUpDown();
   void	CheckAxeRotate();
   void	CheckAxeLeftRight();
-  void	setRotate(int, int);
   void	setUpDown(int, int);
   void	setRightLeft(int, int);
   void	sendEvent();
@@ -40,14 +40,13 @@ private:
   int		_left;
   int		_up;
   int		_down;
-  int		_rotateLeft;
-  int		_rotateRight;
   SDL_Joystick	*_joystick;
   int		_bomb;
   int		_back;
   int		_upMenu;
   int		_downMenu;
   int		_start;
+  int		_stop;
 };
 
 #endif		/* _CONTROLLER_HPP_ */
