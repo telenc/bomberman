@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 // 
 // Started on  Fri May 30 16:39:48 2014 Steven Martreux
-// Last update Sat Jun 14 21:19:21 2014 Steven Martreux
+// Last update Sat Jun 14 23:05:16 2014 Steven Martreux
 //
 
 #include	"SaveGame.hpp"
@@ -20,12 +20,13 @@ SaveGame::SaveGame(Map *map, const std::string & filename) : _map(map), _fileNam
   _mapObject.insert(std::pair<TypeObjectPrecis, void(SaveGame::*)(AObjectPhysic *)>(BOMBBONUS, &SaveGame::SaveBonusBomb));
   _mapObject.insert(std::pair<TypeObjectPrecis, void(SaveGame::*)(AObjectPhysic *)>(POBONUS, &SaveGame::SaveBonusPo));
   _mapObject.insert(std::pair<TypeObjectPrecis, void(SaveGame::*)(AObjectPhysic *)>(FIREPRECIS, &SaveGame::SaveDefaultFire));
-  _mapObject.insert(std::pair<TypeObjectPrecis, void(SaveGame::*)(AObjectPhysic *)>(SOLWALL, &SaveGame::SaveSol));
   _bomberman = new TiXmlElement("Bomberman");
   _file.LinkEndChild(_bomberman);
   this->SaveMapSize();
   this->SavePlayer();
+  this->SaveIa();
   this->setObjMap();
+  this->SaveSol();
   _file.SaveFile(_fileName.c_str());
   this->ChangeMd5();
 }
@@ -82,18 +83,24 @@ std::string	SaveGame::ConstCharByDouble(double x) const
   return tmp.str();
 }
 
-void		SaveGame::SaveSol(AObjectPhysic *Aobj)
+void		SaveGame::SaveSol()
 {
-  SolWall      	*sol;
+  std::list<ABloc *>	sol;
+  std::list<ABloc *>::iterator it;
 
-  sol = (SolWall *)Aobj;
-  _obj = new TiXmlElement("Map");
-  _obj->SetAttribute("object", "wallsol");
-  _obj->SetAttribute("id", ConstCharByInt(sol->getId()).c_str());
-  _obj->SetAttribute("x", ConstCharByFloat(sol->get_x()).c_str());
-  _obj->SetAttribute("y", ConstCharByFloat(sol->get_y()).c_str());
-  _obj->SetAttribute("z", ConstCharByFloat(sol->get_z()).c_str());
-  _bomberman->LinkEndChild(_obj);
+  sol = _map->getSol();
+  it = sol.begin();
+  while (it != sol.end())
+    {
+      _obj = new TiXmlElement("Map");
+      _obj->SetAttribute("object", "wallsol");
+      _obj->SetAttribute("id", ConstCharByInt((*it)->getId()).c_str());
+      _obj->SetAttribute("x", ConstCharByFloat((*it)->get_x()).c_str());
+      _obj->SetAttribute("y", ConstCharByFloat((*it)->get_y()).c_str());
+      _obj->SetAttribute("z", ConstCharByFloat((*it)->get_z()).c_str());
+      _bomberman->LinkEndChild(_obj);
+      it++;
+    }
 }
 
 void		SaveGame::SaveDefaultBomb(AObjectPhysic *Aobj)
@@ -176,6 +183,33 @@ void		SaveGame::SavePlayer()
   _obj->SetAttribute("rot_y", ConstCharByDouble(obj->get_roty()).c_str());
   _obj->SetAttribute("rot_z", ConstCharByDouble(obj->get_rotz()).c_str());
   _bomberman->LinkEndChild(_obj);
+}
+
+void		SaveGame::SaveIa()
+{
+  std::list<IaBomber *> ia;
+  std::list<IaBomber *>::iterator it;
+
+  ia = _map->getIa();
+  it = ia.begin();
+  while (it != ia.end())
+    {
+      _obj = new TiXmlElement("Ia");
+      _obj->SetAttribute("object", "ia");
+      _obj->SetAttribute("id", ConstCharByInt((*it)->getId()).c_str());
+      _obj->SetAttribute("x", ConstCharByFloat((*it)->get_x()).c_str());
+      _obj->SetAttribute("y", ConstCharByFloat((*it)->get_y()).c_str());
+      _obj->SetAttribute("z", ConstCharByFloat((*it)->get_z()).c_str());
+      _obj->SetAttribute("po", ConstCharByInt((*it)->getPo()).c_str());
+      _obj->SetAttribute("life", ConstCharByInt((*it)->getLife()).c_str());
+      _obj->SetAttribute("nbrMaxBomb", ConstCharByInt((*it)->getNbrMaxBomb()).c_str());
+      _obj->SetAttribute("nbrCurrentBomb", ConstCharByInt((*it)->getNbrBomb()).c_str());
+      _obj->SetAttribute("rot_x", ConstCharByDouble((*it)->get_rotx()).c_str());
+      _obj->SetAttribute("rot_y", ConstCharByDouble((*it)->get_roty()).c_str());
+      _obj->SetAttribute("rot_z", ConstCharByDouble((*it)->get_rotz()).c_str());
+      _bomberman->LinkEndChild(_obj);
+      it++;
+    }
 }
 
 void		SaveGame::SaveBonusBomb(AObjectPhysic *Aobj)

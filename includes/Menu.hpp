@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:19 2014 Remi telenczak
-// Last update Fri Jun 13 17:58:33 2014 thomas mendez
+// Last update Sat Jun 14 16:58:04 2014 thomas mendez
 // Last update Fri Jun 13 15:29:35 2014 thomas mendez
 //
 
@@ -40,6 +40,7 @@
 # include	"MainMenu.hpp"
 # include	"SettingsMenu.hpp"
 # include	"PlayMenu.hpp"
+# include	"LoadMenu.hpp"
 # include	"MenuNumber.hpp"
 # include	"CreditsMenu.hpp"
 # include	"CallBack.hpp"
@@ -81,6 +82,7 @@ private:
   SettingsMenu *_settingsMenu;
   CreditsMenu *_creditsMenu;
   PlayMenu *_playMenu;
+  LoadMenu *_loadMenu;
   MenuNumber *_MenuNumber;
   int	currentMenu;
   ICallBack *_callKeyA;
