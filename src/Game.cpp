@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Fri May  9 14:18:15 2014 Steven Martreux
-// Last update Sun Jun 15 07:43:10 2014 dedicker remi
+// Last update Sun Jun 15 12:03:37 2014 Steven Martreux
 //
 
 #include	"Game.hpp"
@@ -18,10 +18,11 @@ Game::Game() : _display(0)
 {
   if (getenv("DISPLAY") == NULL)
     throw new myException("Where is env ?");
+  this->intro_game();
   this->eventManager = new EventManager();
   this->load = new Loader();
   while (load->getFinish() != true);
-  this->engine = load->getEngine(); 
+  this->engine = load->getEngine();
   this->menu = new Menu(load->getModel(), load->getEventManager(), engine->getClock()); 
   this->menuIG = new MenuIG(load->getModel(), load->getEventManager(), engine->getClock()); 
   this->joystick = load->getController();
@@ -31,6 +32,26 @@ Game::Game() : _display(0)
   this->menu->setSkybox(new Skybox(NULL, load->getModel(), load->getEventManager(), engine->getClock()));
   this->_callKeyStart = new CallBack<Game>(this, &Game::eventKeyStart);
   this->eventManager->listenEvent("pause", _callKeyStart);
+}
+
+void	Game::intro_game()
+{
+  libvlc_instance_t	*instance;
+  libvlc_media_player_t	*player;
+  libvlc_media_t	*media;
+  std::fstream	        file("sound/intro.avi");
+
+  if (!file.is_open())
+    throw new myException("intro.avi not found.");
+  instance = libvlc_new (0, NULL);
+  media = libvlc_media_new_path (instance, "sound/intro.avi");
+  player = libvlc_media_player_new_from_media (media);
+  libvlc_media_release (media);
+  libvlc_media_player_play (player);
+  sleep(33);
+  libvlc_media_player_stop (player);
+  libvlc_media_player_release (player);
+  libvlc_release (instance);
 }
 
 void    Game::eventKeyStart(void *data)
