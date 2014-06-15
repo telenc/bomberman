@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 14 07:57:08 2014 Remi telenczak
-// Last update Thu Jun 12 18:23:10 2014 dedicker remi
+// Last update Sun Jun 15 16:02:59 2014 Remi telenczak
 //
 
 #include	"CameraBomber.hpp"
@@ -288,6 +288,11 @@ glm::mat4 CameraBomber::getPerspective()
 glm::vec3	CameraBomber::getPosition()
 {
   return this->position;
+}
+
+glm::vec3	CameraBomber::getPositionPause()
+{
+  return this->positionPause;
 }
 
 glm::vec3	CameraBomber::getRotation()

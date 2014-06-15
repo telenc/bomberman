@@ -6,7 +6,7 @@
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
 <<<<<<< HEAD
-// Last update Sun Jun 15 04:56:08 2014 Remi telenczak
+// Last update Sun Jun 15 15:55:08 2014 Remi telenczak
 =======
 // Last update Sun Jun 15 07:10:28 2014 Steven Martreux
 >>>>>>> 2c4c4cadbef375c9030ec89010ba100e149344a4
@@ -43,7 +43,7 @@ int	main(int ac, char **av)
 
 	  //save = new LoadGame("save/test.xml", load->getEventManager(), load->getModel(), engine->getClock());
 	  //m = save->getMap();
-	  GenereMap gen(11, 11, 0, load->getEventManager(), load->getModel(), engine->getClock());
+	  GenereMap gen(41, 41, 8, load->getEventManager(), load->getModel(), engine->getClock());
 	  Map *m = gen.getMap();
 	  Controller	joystick(load->getEventManager());;
 	  m->setSkybox(new Skybox(m, load->getModel(), load->getEventManager(), engine->getClock()));
@@ -59,7 +59,7 @@ int	main(int ac, char **av)
       else
 	{
 	  Game	game;
-	  
+
 	  while (game.isFinish())
 	    game.draw();
 	}

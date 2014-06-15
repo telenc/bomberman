@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Sun Jun 15 12:04:08 2014 Remi telenczak
+// Last update Sun Jun 15 15:56:56 2014 Remi telenczak
 //
 
 #ifndef MAP_HPP_
@@ -89,9 +89,10 @@ public:
   std::list<AObjectPhysic * >	getObject();
   std::list<ABloc *>		getSol() const;
 
-  bool isBlock(int x, int z, bool bomb = false);
+  bool	isBlock(int x, int z, bool bomb = false);
   bool	isFire(int x, int z);
   bool	isFinish();
+  bool	hasPlayer(int x, int y, bool autour);
 private:
   std::list<ABloc * > _blocs;
   std::list<ABomb * > _bombs;

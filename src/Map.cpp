@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Sun Jun 15 12:04:48 2014 Remi telenczak
+// Last update Sun Jun 15 16:11:19 2014 Remi telenczak
 //
 
 #include <cstdlib>
@@ -192,18 +192,18 @@ bool	Map::isBlock(int x, int z, bool bomb)
     }
   if (bomb)
     {
-  std::list<ABomb *>::iterator itB;
+      std::list<ABomb *>::iterator itB;
 
-  itB = this->_bombs.begin();
-  while (itB != this->_bombs.end())
-    {
-      if ((*itB) != NULL)
+      itB = this->_bombs.begin();
+      while (itB != this->_bombs.end())
 	{
-	  if ((*itB)->get_x() == x && (*itB)->get_z() == z)
-	    return true;
+	  if ((*itB) != NULL)
+	    {
+	      if ((*itB)->get_x() == x && (*itB)->get_z() == z)
+		return true;
+	    }
+	  itB++;
 	}
-      itB++;
-    }
     }
   return false;
 }
@@ -429,7 +429,9 @@ void		Map::drawBloc(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *cam
   itO = this->_blocs.begin();
   while (itO != this->_blocs.end())
     {
-      if (this->_pause == true)
+      std::cout << camera->getPositionPause().x << "/0/" << camera->getPositionPause().z << std::endl;
+      //std::cout << glm::distance2(glm::vec3(camera->getPosition().x,0, camera->getPosition().z), (*itO)->getPosition()) << std::endl;
+      if (this->_pause == true && glm::distance2(glm::vec3(camera->getPosition().x,0, camera->getPosition().z), (*itO)->getPosition()) < 400)
 	(*itO)->draw(shader, clock);
       else if ((*itO) != NULL && (*itO)->isInView(camera) && this->distanceObj(*itO) < 400)
 	(*itO)->draw(shader, clock);
@@ -466,6 +468,44 @@ void					Map::draw(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *came
   (void)shader;
   (void)clock;
   (void)camera;
+}
+
+bool		Map::hasPlayer(int x, int y, bool autour)
+{
+  std::list<IaBomber *>::iterator	itO;
+  int					xObj;
+  int					yObj;
+
+  itO = this->_ia.begin();
+  while (itO != this->_ia.end())
+    {
+      if ((*itO) != NULL)
+	{
+	  if ((*itO)->get_x() == x && (*itO)->get_z() == y)
+	    return true;
+	  else if (autour)
+	    {
+	      xObj = (*itO)->get_x();
+	      yObj = (*itO)->get_z();
+	      if (std::max(x, xObj) - std::min(x, xObj) <= 3)
+		{
+		  if (x == xObj)
+		    return true;
+		  else if (std::max(y, yObj) - std::min(y, yObj) <= 3)
+		    return true;
+		}
+	      if (std::max(y, yObj) - std::min(y, yObj) <= 3)
+		{
+		  if (y == yObj)
+		    return true;
+		  else if (std::max(x, xObj) - std::min(x, xObj) <= 3)
+		    return true;
+		}
+	    }
+	}
+      itO++;
+    }
+  return false;
 }
 
 std::list<IaBomber *>		Map::getIa() const

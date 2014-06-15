@@ -5,7 +5,7 @@
 // Login   <telenc_r@epitech.net>
 //
 // Started on  Fri Jun 13 12:28:24 2014 Remi telenczak
-// Last update Sun Jun 15 11:59:11 2014 Remi telenczak
+// Last update Sun Jun 15 16:11:56 2014 Remi telenczak
 //
 
 #ifndef		_IABOMBER
@@ -16,6 +16,7 @@
 # include	"Input.hh"
 # include	<tinyxml.h>
 # include	<time.h>
+
 struct		IaXml
 {
   std::string	name;

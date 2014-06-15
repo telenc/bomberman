@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 17:53:20 2014 dedicker remi
-// Last update Sun Jun 15 06:38:52 2014 Remi telenczak
+// Last update Sun Jun 15 15:54:25 2014 Remi telenczak
 */
 
 #include	<iostream>
@@ -54,14 +54,40 @@ Map	*GenereMap::getMap() const
 void	GenereMap::putIa()
 {
   int	size;
+  int	i;
 
   size = (_height * _width) / 5;
   if (size < _ia)
     std::cout << "Map trop petite par rapport au nombre d'IA" << std::endl;
   else
     std::cout << "Pour les IA: Ok " << size << std::endl;
-  /*  while (_ia > 0)
-      putCorner();*/
+  int x;
+  int y;
+
+  i = 0;
+  while (i < _ia )
+    {
+      if (i == 0)
+	this->_map->setIa(new IaBomber( _width * 3 - 6, 0,_height * 3 - 6, this->_map, this->_model, this->_event, _clock));
+      else if (i == 1)
+	this->_map->setIa(new IaBomber( 3, 0,_height * 3 - 6, this->_map, this->_model, this->_event, _clock));
+      else if (i == 2)
+	this->_map->setIa(new IaBomber(_width * 3 - 6, 0, 3, this->_map, this->_model, this->_event, _clock));
+      else
+	{
+	  x = 0;
+	  y = 0;
+	  while (x <= 6 && y <= 6)
+	    {
+	      x = rand() % (_width * 3 - 9);
+	      y = rand() % (_height * 3 - 9);
+	      x = x - (x % 3);
+	      y = y - (y % 3);
+	    }
+	  this->_map->setIa(new IaBomber(x, 0, y, this->_map, this->_model, this->_event, _clock));
+	}
+      i++;
+    }
 }
 
 void	GenereMap::putWall()
@@ -86,12 +112,14 @@ void	GenereMap::putWall()
 	    }
 	  else if (wall == 1 && (y < (_width - 1)) && (i % 2 == 0))
 	    {
-	      wallObject = new DefaultWall(this->_map, this->_model, this->_event, _clock);
-	      wallObject->set_x(i * 3);
-	      wallObject->set_z(y * 3);
-	      this->_map->setBloc(wallObject);
+	      if (_map->hasPlayer(i * 3, y * 3, false) == false)
+		{
+		  wallObject = new DefaultWall(this->_map, this->_model, this->_event, _clock);
+		  wallObject->set_x(i * 3);
+		  wallObject->set_z(y * 3);
+		  this->_map->setBloc(wallObject);
+		}
 	      wall = 0;
-
 	    }
 	  else
 	    {
@@ -102,17 +130,15 @@ void	GenereMap::putWall()
 	      this->_map->setSol(wallObject);
 	      wall++;
 	    }
-	  if (wall != 0 && ((i > 2  && i < _width-2) || (y > 2 && y < _height - 3) ))
+	  if (wall != 0 && ((i > 0  && i < _width) || (y > 0 && y < _height) ))
 	    {
-	      wallObject = new DestrucWall(this->_map, this->_model, this->_event, _clock);
-	      wallObject->set_x(i * 3);
-	      wallObject->set_z(y * 3);
-	      this->_map->setBloc(wallObject);
-	      wallObject = new SolWall(this->_map, _model, _event, _clock);
-	      wallObject->set_x(i * 3);
-	      wallObject->set_z(y * 3);
-	      wallObject->set_y(-3);
-	      this->_map->setSol(wallObject);
+	      if (_map->hasPlayer(i * 3, y * 3, true) == false)
+		{
+		  wallObject = new DestrucWall(this->_map, this->_model, this->_event, _clock);
+		  wallObject->set_x(i * 3);
+		  wallObject->set_z(y * 3);
+		  this->_map->setBloc(wallObject);
+		}
 	    }
 	  y++;
 	}
@@ -125,22 +151,20 @@ void	GenereMap::putPlayer()
   if (this->_event == NULL)
     std::cout << "EVENNVENEVN NUL" << std::endl;
   this->_map->setPlayer(new Player(1 * 2, 0, 1 * 2, this->_map, this->_model, this->_event, _clock));
-    this->_map->setIa(new IaBomber(6, 0, 3, this->_map, this->_model, this->_event, _clock));
 }
 
 GenereMap::GenereMap(int width, int height, int ia, EventManager *event, ModelList *model, gdl::Clock *clock) : _width(width), _height(height), _ia(ia), _event(event), _model(model), _clock(clock)
 {
 
   _pos = 0;
-  std::cout << "Mapp" << std::endl;
   _map = new Map(width, height, event);
-  std::cout << "Put player" << std::endl;
   //  std::cout << "Nombre possible d'IA : " << ((width * height) / 5) << std::endl;
-  putWall();
   std::cout << "Put wall" << std::endl;
+  putIa();
   putPlayer();
+  putWall();
+
   std::cout << "ici" << std::endl;
-  //  putIa();
 }
 
 GenereMap::~GenereMap()
