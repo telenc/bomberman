@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Sun Jun 15 18:47:33 2014 Remi telenczak
+// Last update Sun Jun 15 19:59:10 2014 Remi telenczak
 //
 
 #include <cstdlib>
@@ -16,7 +16,6 @@
 #include "Skybox.hpp"
 #include	"EventManager.hpp"
 #include	<GL/freeglut.h>
-#include	"drawtext.h"
 #include	"ABomb.hpp"
 #include	"ABonus.hpp"
 #include	"AFire.hpp"
@@ -28,11 +27,6 @@ Map::Map(int width, int height, EventManager *event) : _width(width), _height(he
 {
   glm::vec2	size;
 
-  if (width <= 20 || height <= 20)
-    {
-      std::cout << "Map trop pitite!" << std::endl;
-      //exit(0);
-    }
   callPause = new CallBack<Map>(this, &Map::eventCallPause);
   event->listenEvent("pause", callPause);
   size.x = width;
@@ -47,11 +41,6 @@ Map::Map(int width, int height, EventManager *event, TypeMap type) : _width(widt
 {
   glm::vec2	size;
 
-  if (width <= 20 || height <= 20)
-    {
-      std::cout << "Map trop pitite!" << std::endl;
-      //exit(0);
-    }
   this->vague = 0;
   this->nbrZombie = 5;
   this->vagueFini = true;
@@ -153,7 +142,7 @@ void	Map::updateBloc(gdl::Clock clock, gdl::Input input)
     }
 }
 
-void	Map::updateBonus(gdl::Clock clock, gdl::Input input)
+void				Map::updateBonus(gdl::Clock clock, gdl::Input input)
 {
   std::list<ABonus *>::iterator itO;
 
@@ -172,9 +161,9 @@ void	Map::updateBonus(gdl::Clock clock, gdl::Input input)
     }
 }
 
-void	Map::updateFire(gdl::Clock clock, gdl::Input input)
+void				Map::updateFire(gdl::Clock clock, gdl::Input input)
 {
-  std::list<AFire *>::iterator itO;
+  std::list<AFire *>::iterator	itO;
 
   itO = this->_fire.begin();
   while (itO != this->_fire.end())
@@ -211,9 +200,9 @@ std::list<AFire *>	Map::getFire() const
   return this->_fire;
 }
 
-bool	Map::isFire(int x, int z)
+bool				Map::isFire(int x, int z)
 {
-  std::list<AFire *>::iterator itO;
+  std::list<AFire *>::iterator	itO;
 
   itO = this->_fire.begin();
   while (itO != this->_fire.end())
@@ -228,9 +217,10 @@ bool	Map::isFire(int x, int z)
   return false;
 }
 
-bool	Map::isBlock(int x, int z, bool bomb)
+bool				Map::isBlock(int x, int z, bool bomb)
 {
-  std::list<ABloc *>::iterator itO;
+  std::list<ABloc *>::iterator	 itO;
+  std::list<ABomb *>::iterator itB;
 
   itO = this->_blocs.begin();
   while (itO != this->_blocs.end())
@@ -244,8 +234,6 @@ bool	Map::isBlock(int x, int z, bool bomb)
     }
   if (bomb)
     {
-      std::list<ABomb *>::iterator itB;
-
       itB = this->_bombs.begin();
       while (itB != this->_bombs.end())
 	{
@@ -269,22 +257,21 @@ bool	Map::isFinish()
   return false;
 }
 
-void	Map::updateZombie(gdl::Clock clock, gdl::Input input)
+void					Map::updateZombie(gdl::Clock clock, gdl::Input input)
 {
-  time_t	curTime;
+  time_t				curTime;
   std::list<IaBomber *>::iterator	itO;
-  int		i;
-  int		x;
-  int		y;
-  int		type;
-  APlayer	*play;
+  int					i;
+  int					x;
+  int					y;
+  int					type;
+  APlayer				*play;
 
   (void)clock;
   (void)input;
-  y=0;
+  y = 0;
   if (nbrZomb > 0)
     {
-      std::cout << "On add en " << xZomb << "/" << yZomb << std::endl;
       this->setIa(new IaBomber(xZomb, 0, yZomb, this, _player->getModelList(), this->_event, &clock));
       xZomb += 3;
       if (yZomb != 6 && yZomb < 39 * 3)
@@ -310,10 +297,8 @@ void	Map::updateZombie(gdl::Clock clock, gdl::Input input)
   if (vagueFini == true)
     {
       time(&curTime);
-
       if (difftime(curTime, _timeVague) > 2)
 	{
-	  std::cout << "Debut de vague" << std::endl;
 	  i = 0;
 	  xZomb = 6;
 	  yZomb = 6;
@@ -325,7 +310,6 @@ void	Map::updateZombie(gdl::Clock clock, gdl::Input input)
     {
       if (nbrZomb == 0 && this->_ia.size() == 0)
 	{
-	  std::cout<< "Vague fini" << std::endl;
 	  this->nbrZombie += 5;
 	  if (this->nbrZombie > 25)
 	    this->nbrZombie = 25;
@@ -458,7 +442,7 @@ std::vector<AObjectPhysic *>		Map::getObjectsPos(AObjectPhysic *obj, int dist, T
   std::list<AObjectPhysic *>::iterator	itO;
   std::vector<AObjectPhysic *>		result;
   glm::vec3				position;
-  std::list<AObjectPhysic *>	_map;
+  std::list<AObjectPhysic *>		_map;
 
   _map = this->getAllObject();
   itO = _map.begin();
@@ -482,7 +466,7 @@ std::vector<AObjectPhysic *>		Map::getObjectsPrecisPos(AObjectPhysic *obj, int d
   std::list<AObjectPhysic *>::iterator	itO;
   std::vector<AObjectPhysic *>		result;
   glm::vec3				position;
-  std::list<AObjectPhysic *>	_map;
+  std::list<AObjectPhysic *>		_map;
 
   _map = this->getAllObject();
   itO = _map.begin();
@@ -515,7 +499,6 @@ std::vector<AObjectPhysic *>		Map::getObjectsList(AObjectPhysic *obj, int dist, 
 	      {
 		if ((*itO)->getTypePrecis() == DESTRUCTWALL)
 		  {
-		    std::cout << "ON push un mur" << std::endl;
 		    result.push_back((*itO));
 		  }
 	      }
@@ -525,7 +508,7 @@ std::vector<AObjectPhysic *>		Map::getObjectsList(AObjectPhysic *obj, int dist, 
   return result;
 }
 
-void		Map::drawBomb(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
+void			Map::drawBomb(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
 {
   std::list<ABomb *>::iterator	itO;
 
@@ -540,7 +523,7 @@ void		Map::drawBomb(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *cam
     }
 }
 
-void		Map::drawSol(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
+void				Map::drawSol(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
 {
   std::list<ABloc *>::iterator	itO;
 
@@ -555,7 +538,7 @@ void		Map::drawSol(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *came
     }
 }
 
-void		Map::drawFire(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
+void				Map::drawFire(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
 {
   std::list<AFire *>::iterator	itO;
 
@@ -570,7 +553,7 @@ void		Map::drawFire(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *cam
     }
 }
 
-void		Map::drawIa(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
+void					Map::drawIa(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
 {
   std::list<IaBomber *>::iterator	itO;
 
@@ -580,13 +563,13 @@ void		Map::drawIa(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camer
       (void)camera;
       if (this->_pause == true && glm::distance2(glm::vec3(camera->getPositionPause().x,0, camera->getPositionPause().z), (*itO)->getPosition()) < 600)
 	(*itO)->draw(shader, clock);
-      else if ((*itO) != NULL && this->distanceObj(*itO) < 800)// && (*itO)->isInView(camera) && this->distanceObj(*itO) < 400)
+      else if ((*itO) != NULL && this->distanceObj(*itO) < 800)
 	(*itO)->draw(shader, clock);
       itO++;
     }
 }
 
-void		Map::drawBloc(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
+void				Map::drawBloc(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
 {
   std::list<ABloc *>::iterator	itO;
 
@@ -601,7 +584,7 @@ void		Map::drawBloc(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *cam
     }
 }
 
-void		Map::drawBonus(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
+void				Map::drawBonus(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camera)
 {
   std::list<ABonus *>::iterator	itO;
 
@@ -632,7 +615,7 @@ void					Map::draw(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *came
   (void)camera;
 }
 
-bool		Map::hasPlayer(int x, int y, bool autour)
+bool					Map::hasPlayer(int x, int y, bool autour)
 {
   std::vector<APlayer *>		list;
   std::vector<APlayer *>::iterator	itO;

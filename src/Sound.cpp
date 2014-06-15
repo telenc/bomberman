@@ -1,11 +1,15 @@
 /*
 ** Sound.cpp for make in /home/bernar_x/Tech2/Projets/cpp_bomberman
-** 
+**
 ** Made by mattieu bernard-guêle
 ** Login <bernar_x@epitech.net>
-** 
+**
 ** Started on  Thu Jun  5 16:20:43 2014 mattieu bernard-guêle
+<<<<<<< HEAD
 // Last update Sun Jun 15 18:48:52 2014 thomas mendez
+=======
+// Last update Sun Jun 15 20:03:07 2014 Remi telenczak
+>>>>>>> 85ad641a0fd5cdf5ea54042d653b2ccc9366ca40
 */
 
 #include	"Sound.hpp"
@@ -69,15 +73,9 @@ void	Sound::eventPlayerMove(void *data)
 
 void	Sound::eventBombDrop(void *data)
 {
-  glm::vec3	*test;
-
+  (void)data;
   if (_soundOn == 0)
-    {
-      test = (glm::vec3 *) data;
-      (void)test;
-      //this->StartTicTacBomb(test->x * 10, test->y * 10, test->z * 10);
       this->StartTicTacBomb(1300, 1300, 1300);
-    }
 }
 
 void	Sound::setPlayer(float x, float y, float z)
@@ -154,7 +152,6 @@ void	Sound::StartExplosion(float x, float y, float z)
 {
   if (_soundOn == 0)
     {
-      //_ExplosionBomb.SetLoop(true);
       _ExplosionBomb.SetPosition(x, y, z);
       _ExplosionBomb.Play();
     }

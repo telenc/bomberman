@@ -5,13 +5,13 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Wed May  7 16:03:12 2014 Steven Martreux
-// Last update Fri May 30 08:21:52 2014 Remi telenczak
+// Last update Sun Jun 15 19:05:50 2014 Steven Martreux
 //
 
 #ifndef		_ABOMBBONUS_HPP_
 # define	_ABOMBBONUS_HPP_
 
-#include "ABonus.hpp"
+#include	"ABonus.hpp"
 
 class		BombBonus : public ABonus
 {

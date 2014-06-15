@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Sun Jun 15 17:44:02 2014 dedicker remi
+// Last update Sun Jun 15 20:30:07 2014 thomas mendez
 //
 
 #include	"OVR.h"
@@ -27,9 +27,9 @@
 #include	<glm/glm.hpp>
 #include	<glm/gtc/matrix_transform.hpp>
 #include	"Graphics.hpp"
+#include	"Map.hpp"
 #include	"GL/glut.h"
 #include	"Player.hpp"
-#include	"Cube.hpp"
 #include	"MenuIG.hpp"
 
 
@@ -134,11 +134,13 @@ void		Graphics::inputUpdate()
 
 void		Graphics::drawDoubleStereo(Map *map)
 {
+  glm::vec3	rotationOc;
+
   glViewport(0, 0, 1280/2, 800);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glClearColor(255, 0, 0, 0);
-  glm::vec3 testt = this->_camera->getRotation();
-  _event->dispatchEvent("occulusRotate", &testt);
+  rotationOc = this->_camera->getRotation();
+  _event->dispatchEvent("occulusRotate", &rotationOc);
   _shader.setUniform("view", this->_camera->getTransformationLeft());
   _shader.setUniform("projection", this->_camera->getPerspective());
   map->draw(_shader, *_clock, _camera);
@@ -156,11 +158,6 @@ void		Graphics::drawOneStereo(Map *map)
 
 
   map->draw(_shader, *_clock, this->_camera);
-  //  glm::mat4 t(1);
-
-  //t = glm::translate(t, glm::vec3(0, 4, 0));
-  //t = glm::scale(t, glm::vec3(100, 100, 100));
-  //this->sky->draw(_shader, t, _clock->getElapsed());
   _shader.setUniform("projection", this->_camera->getPerspective());
   _shader.setUniform("view", this->_camera->getTransformation());
 }
@@ -198,11 +195,12 @@ void            Graphics::drawOneStereo(Menu *menu)
 
 bool	Graphics::update(Menu *menu)
 {
+  glm::vec3 rotationOculus;
+
   if (_input.getKey(SDLK_ESCAPE) || _input.getInput(SDL_QUIT))
     return false;
   _context.updateClock(*_clock);
   _context.updateInputs(_input);
-  glm::vec3 rotationOculus;
   rotationOculus = _camera->getRotation();
   menu->update(*_clock, _input, rotationOculus);
   this->inputUpdate();
@@ -231,15 +229,16 @@ void            Graphics::drawOneStereo(MenuIG *menu)
   _shader.setUniform("view", this->_camera->getTransformation());
 }
 
-bool	Graphics::update(MenuIG *menu)
+bool	Graphics::update(MenuIG *menu, Map *map)
 {
+  glm::vec3 rotationOculus;
+
   if (_input.getKey(SDLK_ESCAPE) || _input.getInput(SDL_QUIT))
     return false;
   _context.updateClock(*_clock);
   _context.updateInputs(_input);
-  glm::vec3 rotationOculus;
   rotationOculus = _camera->getRotation();
-  menu->update(*_clock, _input, rotationOculus);
+  menu->update(*_clock, _input, rotationOculus, map);
   this->inputUpdate();
   _event->dispatchEvent("rotOcu", &rotationOculus);
   return true;
@@ -247,12 +246,14 @@ bool	Graphics::update(MenuIG *menu)
 
 void		Graphics::drawDoubleStereo(MenuIG *menu)
 {
+  glm::vec3	rotOculus;
+
   this->_camera->setPosition(0,  0, 0);
   glViewport(0, 0, 1280/2, 800);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glClearColor(255, 0, 0, 0);
-  glm::vec3 testt = this->_camera->getRotation();
-  _event->dispatchEvent("occulusRotate", &testt);
+  rotOculus = this->_camera->getRotation();
+  _event->dispatchEvent("occulusRotate", &rotOculus);
   _shader.setUniform("view", this->_camera->getTransformationLeft());
   _shader.setUniform("projection", this->_camera->getPerspective());
   menu->draw(_shader, *_clock);
@@ -278,12 +279,14 @@ void		Graphics::drawDoubleStereo(MenuIG *menu)
 
 void		Graphics::drawDoubleStereo(Menu *menu)
 {
+  glm::vec3	rotOculus;
+
   this->_camera->setPosition(0,  0, 0);
   glViewport(0, 0, 1280/2, 800);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glClearColor(255, 0, 0, 0);
-  glm::vec3 testt = this->_camera->getRotation();
-  _event->dispatchEvent("occulusRotate", &testt);
+  rotOculus = this->_camera->getRotation();
+  _event->dispatchEvent("occulusRotate", &rotOculus);
   _shader.setUniform("view", this->_camera->getTransformationLeft());
   _shader.setUniform("projection", this->_camera->getPerspective());
   menu->draw(_shader, *_clock);

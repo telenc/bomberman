@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 // 
 // Started on  Tue May  6 15:00:47 2014 Steven Martreux
-// Last update Tue May  6 15:06:02 2014 Steven Martreux
+// Last update Sun Jun 15 20:06:11 2014 Steven Martreux
 //
 
 #include	"Thread.hpp"

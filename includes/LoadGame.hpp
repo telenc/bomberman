@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Mon May 12 13:51:56 2014 Steven Martreux
-// Last update Sun Jun 15 06:02:32 2014 Steven Martreux
+// Last update Sun Jun 15 19:48:10 2014 Steven Martreux
 //
 
 #ifndef		_LOAD_GAME_HPP
@@ -35,10 +35,10 @@ class		LoadGame
 public:
   LoadGame(const std::string & file, EventManager *, ModelList *, gdl::Clock *);
   ~LoadGame();
-  void getMapSize();
-  bool getLoad() const;
-  void getObjMap();
-  Map *getMap() const;
+  void		getMapSize();
+  bool		getLoad() const;
+  void		getObjMap();
+  Map		*getMap() const;
   AObjectPhysic *CreateDefaultWall(TiXmlElement *);
   AObjectPhysic	*CreateDestrucWall(TiXmlElement *);
   AObjectPhysic	*CreateDefaultBomb(TiXmlElement *);
@@ -54,14 +54,14 @@ public:
   IaBomber	*getIa(int, int, int);
   void		getIas();
 private:
-  std::string _file;
-  bool	      _loadOkay;
-  TiXmlElement *_bomberman;
-  TiXmlElement *_map_size;
-  TiXmlElement *_player;
-  TiXmlElement *_ia;
-  TiXmlElement *_map;
-  Map	       *_mapGame;
+  std::string	_file;
+  bool		_loadOkay;
+  TiXmlElement	*_bomberman;
+  TiXmlElement	*_map_size;
+  TiXmlElement	*_player;
+  TiXmlElement	*_ia;
+  TiXmlElement	*_map;
+  Map		*_mapGame;
   EventManager	*_event;
   ModelList	*_model;
   gdl::Clock	*_clock;

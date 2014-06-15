@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 // 
 // Started on  Sun Jun 15 04:19:01 2014 thomas mendez
-// Last update Sun Jun 15 18:40:22 2014 thomas mendez
+// Last update Sun Jun 15 20:35:11 2014 thomas mendez
 //
 
 #ifndef		_MENUIG_BOMBERMAN
@@ -50,8 +50,9 @@ public:
   void	setSkybox(Skybox *skybox);
   void	setBox(gdl::Model *model);
   void  draw(gdl::BasicShader &, gdl::Clock const &);
-  void	update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus);
+  void	update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus, Map *map);
   void  faceSettingsMenuIG();
+  void  faceSaveMenuIG();
   void  faceMainMenuIG();
   void	setFinish(int finish);
   void  callFaceFunction();
@@ -75,6 +76,7 @@ private:
   int	currentMenuIG;
   ICallBack *_callKeyA;
   ICallBack *_callKeyB;
+  Map		*_map;
   int		_finish;
   int		_sound;
   int		_sizemap;

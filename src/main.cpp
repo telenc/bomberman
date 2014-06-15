@@ -5,19 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-// Last update Sun Jun 15 18:42:28 2014 Remi telenczak
-=======
-// Last update Sun Jun 15 07:10:28 2014 Steven Martreux
->>>>>>> 2c4c4cadbef375c9030ec89010ba100e149344a4
-=======
-// Last update Sun Jun 15 12:06:33 2014 Steven Martreux
->>>>>>> 2c520a45a5444d70184b94c02915bf43f88178dd
-=======
-// Last update Sun Jun 15 18:37:25 2014 Steven Martreux
->>>>>>> 9ee29913410d3ee66aec99ec00e3fc6e6dedb447
+// Last update Sun Jun 15 19:18:31 2014 Remi telenczak
 */
 
 #include <iostream>
@@ -45,7 +33,6 @@ int	main(int ac, char **av)
 	{
 	  Loader	*load = new Loader();
 	  Graphics *engine;
-	  //LoadGame	*save;
 	  while (load->getFinish() != true);
 	  engine = load->getEngine();
 
@@ -60,9 +47,6 @@ int	main(int ac, char **av)
 	      engine->draw(m);
 	      joystick.update();
 	    }
-	  SaveGame *test;
-	  test = new SaveGame(m, "test.xml");
-	  (void)test;
 	}
       else
 	{

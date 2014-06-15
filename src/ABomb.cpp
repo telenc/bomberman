@@ -5,12 +5,12 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Wed May  7 16:00:11 2014 Steven Martreux
-// Last update Sun Jun 15 05:31:12 2014 Steven Martreux
+// Last update Sun Jun 15 19:29:27 2014 Remi telenczak
 //
 
 #include	"ABomb.hpp"
 
-ABomb::ABomb(Map *map, ModelList *model, EventManager *event, APlayer *player, gdl::Clock *clock) :AObjectPhysic(map, model, event, clock), _po(1), _time(10000), _damage(1), _player(player), _died(false)
+ABomb::ABomb(Map *map, ModelList *model, EventManager *event, APlayer *player, gdl::Clock *clock) : AObjectPhysic(map, model, event, clock), _po(1), _time(10000), _damage(1), _player(player), _died(false)
 {
   this->_type = BOMB;
   this->_playerColl = false;

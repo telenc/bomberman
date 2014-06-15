@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 // 
 // Started on  Wed Jun  4 11:38:08 2014 thomas mendez
-// Last update Wed Jun  4 17:32:26 2014 dedicker remi
+// Last update Sun Jun 15 19:42:01 2014 Steven Martreux
 //
 
 #ifndef		_SETTINGS_MENU
@@ -44,19 +44,19 @@ class SettingsMenu
 public:
   SettingsMenu(ModelList *mod, EventManager *event);
   ~SettingsMenu();
-  void	setSkybox(Skybox *skybox);
-  void	setBox(gdl::Model *model);
-  int  draw(gdl::BasicShader &, gdl::Clock const &);
-  void	update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus);
-  void	eventKeyA(void *data);
+  void		setSkybox(Skybox *skybox);
+  void		setBox(gdl::Model *model);
+  int		draw(gdl::BasicShader &, gdl::Clock const &);
+  void		update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus);
+  void		eventKeyA(void *data);
 private:
-  gdl::Model *_box;
-  ModelList *_mod;
-  EventManager *_event;
-  SettingBox *_boxmenu;
-  Skybox *_skin;
-  glm::vec3 _rotationOculus;
-  ICallBack *_callKeyA;
+  gdl::Model	*_box;
+  ModelList	*_mod;
+  EventManager	*_event;
+  SettingBox	*_boxmenu;
+  Skybox	*_skin;
+  glm::vec3	_rotationOculus;
+  ICallBack	*_callKeyA;
 };
 
 #endif

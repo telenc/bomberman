@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Mon May 12 13:48:39 2014 Steven Martreux
-// Last update Sun Jun 15 18:33:58 2014 Steven Martreux
+// Last update Sun Jun 15 20:02:14 2014 Remi telenczak
 //
 
 #include	<cstring>
@@ -72,7 +72,6 @@ bool	LoadGame::checkFile()
 {
   if (this->ChangeMd5() == false)
     return false;
-  std::cout << "CheckFIle" << std::endl;
   std::string str = "md5sum " + _file + " > ." + _file + ".md5test";
   system(str.c_str());
   std::string namefile1 = "." + _file + ".md5test";
@@ -126,7 +125,7 @@ AObjectPhysic	*LoadGame::CreateBonusPo(TiXmlElement *line)
   return (AObjectPhysic *)obj;
 }
 
-std::vector<APlayer *> *LoadGame::getVectorPlayer(TiXmlElement *line)
+std::vector<APlayer *>	 *LoadGame::getVectorPlayer(TiXmlElement *line)
 {
   const char	       	*idPlayer;
   char			*id;
@@ -186,10 +185,10 @@ AObjectPhysic	*LoadGame::CreateBonusBomb(TiXmlElement *line)
   return (AObjectPhysic *)obj;
 }
 
-APlayer		*LoadGame::GetPlayerBomb(int id_player)
+APlayer					*LoadGame::GetPlayerBomb(int id_player)
 {
-  std::vector<APlayer *> play;
-  std::vector<APlayer *>::iterator it;
+  std::vector<APlayer *>		play;
+  std::vector<APlayer *>::iterator	it;
 
   play = _mapGame->getPlayers();
   it = play.begin();
@@ -274,7 +273,7 @@ void	LoadGame::getMapSize()
 {
   int	width;
   int	height;
-  //int	type;
+  int	type;
 
   _map_size = _bomberman->FirstChildElement("Map_Size");
   if (_map_size)
@@ -283,11 +282,11 @@ void	LoadGame::getMapSize()
 	throw new myException("<BALISE> Width Height");
       width = atoi(_map_size->Attribute("width"));
       height = atoi(_map_size->Attribute("height"));
-      //type = atoi(_map_size->Attribute("TypeGame"));
-      //      if (type == 0)
+      type = atoi(_map_size->Attribute("TypeGame"));
+      if (type == 0)
 	this->_mapGame = new Map(width, height, _event);
-	//else if (type == 1)
-	//this->_mapGame = new Map(width, height, _event, type);
+      else if (type == 1)
+	this->_mapGame = new Map(width, height, _event, ZOMBIE);
     }
   else
     throw new myException("<Balise Map_Size not find");

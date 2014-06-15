@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 // 
 // Started on  Sun Jun 15 03:43:30 2014 thomas mendez
-// Last update Sun Jun 15 18:42:56 2014 thomas mendez
+// Last update Sun Jun 15 20:36:18 2014 thomas mendez
 //
 
 #include	<iostream>
@@ -14,6 +14,7 @@
 #include	"SettingsMenuIG.hpp"
 #include	"MainMenuIG.hpp"
 #include	"SaveMenu.hpp"
+#include	"SaveGame.hpp"
 #include	"CallBack.hpp"
 
 MenuIG::MenuIG(ModelList *mod, EventManager *event, gdl::Clock *clock) : _mod(mod), _event(event), _clock(clock), _finish(1), _sound(1)
@@ -120,6 +121,37 @@ void	MenuIG::faceSettingsMenuIG()
     currentMenuIG = 0;
 }
 
+void	MenuIG::faceSaveMenuIG()
+{
+  if (_rotationOculus.x <= 40 && _rotationOculus.x >= -40)
+    {
+      if (_rotationOculus.y >= -45 && _rotationOculus.y <= 45)
+	{
+	  SaveGame *save = new SaveGame(_map, "sauv/save1.xml");
+	  (void)save;
+	}
+      else if (_rotationOculus.y >= 45 && _rotationOculus.y <= 135)
+	{
+	  SaveGame *save = new SaveGame(_map, "sauv/save2.xml");
+	  (void)save;
+	}
+      else if (_rotationOculus.y <= -45 && _rotationOculus.y >= -135)
+	{
+	  SaveGame *save = new SaveGame(_map, "sauv/save3.xml");
+	  (void)save;
+	}
+      else if (_rotationOculus.y >= 135 || _rotationOculus.y <= -135)
+	{
+	  SaveGame *save = new SaveGame(_map, "sauv/save4.xml");
+	  (void)save;
+	}
+      else
+	currentMenuIG = 0;
+    }
+  else
+    currentMenuIG = 0;
+}
+
 void	MenuIG::callFaceFunction()
 {
   if (this->currentMenuIG == 0)
@@ -127,7 +159,7 @@ void	MenuIG::callFaceFunction()
   else if (this->currentMenuIG == 1)
     faceSettingsMenuIG();
   else if (this->currentMenuIG == 2)
-    faceSettingsMenuIG();
+    faceSaveMenuIG();
 }
 
 void    MenuIG::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
@@ -140,8 +172,9 @@ void    MenuIG::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
     this->currentMenuIG = _saveMenu->draw(shader, clock);
 }
 
-void	MenuIG::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus)
+void	MenuIG::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus, Map *map)
 {
+  this->_map = map;
   this->_rotationOculus = cameraOculus;
   if (this->currentMenuIG == 0)
     _mainMenuIG->update(clock, input, cameraOculus);

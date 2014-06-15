@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Fri May  9 14:19:13 2014 Steven Martreux
-// Last update Sun Jun 15 19:09:57 2014 thomas mendez
+// Last update Sun Jun 15 20:11:18 2014 thomas mendez
 //
 
 #ifndef		_GAME_HPP_
@@ -52,7 +52,7 @@ private:
   Sound		*sound;
   ICallBack	*_callKeyStart;
   int		state;
-  int	_runMap;
+  int		_runMap;
 };
 
 #endif		/* _GAME_HPP_ */

@@ -1,11 +1,11 @@
 //
 // CreditsBox.cpp for CreditsBox in /home/mendez_t/local/cpp/cpp_bomberman/src/Bloc
-// 
+//
 // Made by thomas mendez
 // Login   <mendez_t@epitech.net>
-// 
+//
 // Started on  Fri Jun 13 15:14:48 2014 thomas mendez
-// Last update Fri Jun 13 17:42:54 2014 thomas mendez
+// Last update Sun Jun 15 19:05:55 2014 Remi telenczak
 //
 
 #include	<iostream>
@@ -28,12 +28,12 @@ CreditsBox::CreditsBox(Map *map, ModelList *model, EventManager *event, gdl::Clo
     {
       this->_position.z = -1;
       this->posSauv.z = -4.5;
-  callRotOcu = new CallBack<CreditsBox>(this, &CreditsBox::eventRotOcu);
+      callRotOcu = new CallBack<CreditsBox>(this, &CreditsBox::eventRotOcu);
     }
   else if (i == 2)
-  callRotOcu = new CallBack<CreditsBox>(this, &CreditsBox::eventRotOcu2);
+    callRotOcu = new CallBack<CreditsBox>(this, &CreditsBox::eventRotOcu2);
   else
-  callRotOcu = new CallBack<CreditsBox>(this, &CreditsBox::eventRotOcu3);
+    callRotOcu = new CallBack<CreditsBox>(this, &CreditsBox::eventRotOcu3);
   event->listenEvent("rotOcu", callRotOcu);
 }
 

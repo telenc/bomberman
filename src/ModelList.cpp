@@ -29,6 +29,8 @@ void		ModelList::loadModel()
   this->list.push_back(std::make_pair("bombDownBonus", mod));
   mod = this->createModel("./assets/bonus_fire_up.FBX");
   this->list.push_back(std::make_pair("poBonus", mod));
+  mod = this->createModel("./assets/zombieFloor2.fbx");
+  this->list.push_back(std::make_pair("zombieFloor", mod));
   mod = this->createModel("./assets/cubeWall.fbx");
   this->list.push_back(std::make_pair("cubeDest2", mod));
   mod = this->createModel("./assets/cubeWall2.fbx");
@@ -112,7 +114,7 @@ gdl::Model	*ModelList::getModel(const std::string name)
   while (it != this->list.end())
     {
       if (it->first == name)
-	return it->second;//(this->createModel(it->second));
+	return it->second;
       it++;
     }
   return (NULL);

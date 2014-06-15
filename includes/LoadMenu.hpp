@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 // 
 // Started on  Sat Jun 14 16:48:41 2014 thomas mendez
-// Last update Sat Jun 14 17:55:42 2014 thomas mendez
+// Last update Sun Jun 15 19:37:12 2014 Steven Martreux
 //
 
 #ifndef		_LOAD_MENU
@@ -44,22 +44,22 @@ class LoadMenu
 public:
   LoadMenu(ModelList *mod, EventManager *event);
   ~LoadMenu();
-  void	setSkybox(Skybox *skybox);
-  void	setBox(gdl::Model *model);
-  int  draw(gdl::BasicShader &, gdl::Clock const &);
-  void	update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus);
-  void	eventKeyA(void *data);
+  void		setSkybox(Skybox *skybox);
+  void		setBox(gdl::Model *model);
+  int		draw(gdl::BasicShader &, gdl::Clock const &);
+  void		update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus);
+  void		eventKeyA(void *data);
 private:
-  gdl::Model *_box;
-  ModelList *_mod;
-  EventManager *_event;
-  LoadBox *_boxmenu;
-  LoadBox *_boxmenu2;
-  LoadBox *_boxmenu3;
-  LoadBox *_boxmenu4;
-  Skybox *_skin;
-  glm::vec3 _rotationOculus;
-  ICallBack *_callKeyA;
+  gdl::Model	*_box;
+  ModelList	*_mod;
+  EventManager	*_event;
+  LoadBox	*_boxmenu;
+  LoadBox	*_boxmenu2;
+  LoadBox	*_boxmenu3;
+  LoadBox	*_boxmenu4;
+  Skybox	*_skin;
+  glm::vec3	_rotationOculus;
+  ICallBack	*_callKeyA;
 };
 
 #endif

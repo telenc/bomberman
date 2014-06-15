@@ -145,8 +145,7 @@ extern DECLSPEC int SDLCALL SDL_JoystickNumAxes(SDL_Joystick * joystick);
  */
 extern DECLSPEC int SDLCALL SDL_JoystickNumBalls(SDL_Joystick * joystick);
 
-
-  /**
+/**
  *  Get the number of POV hats on a joystick.
  */
 extern DECLSPEC int SDLCALL SDL_JoystickNumHats(SDL_Joystick * joystick);

@@ -5,7 +5,7 @@
 // Login   <telenc_r@epitech.net>
 //
 // Started on  Fri Jun 13 12:28:13 2014 Remi telenczak
-// Last update Sun Jun 15 18:52:40 2014 Remi telenczak
+// Last update Sun Jun 15 20:16:01 2014 thomas mendez
 */
 
 #include	"IaBomber.hpp"
@@ -55,7 +55,7 @@ int	IaBomber::targetPlayerIa()
   return 1;
 }
 
-int	IaBomber::enemyDistanceIa()
+int		IaBomber::enemyDistanceIa()
 {
   APlayer	*result;
 
@@ -65,7 +65,7 @@ int	IaBomber::enemyDistanceIa()
   return -1;
 }
 
-int	IaBomber::wallDistanceIa()
+int		IaBomber::wallDistanceIa()
 {
   AObjectPhysic	*result;
 
@@ -75,7 +75,7 @@ int	IaBomber::wallDistanceIa()
   return -1;
 }
 
-int	IaBomber::bonusDistanceIa()
+int		IaBomber::bonusDistanceIa()
 {
   ABonus	*result;
 
@@ -85,7 +85,7 @@ int	IaBomber::bonusDistanceIa()
   return -1;
 }
 
-int	IaBomber::enemyNearIa()
+int		IaBomber::enemyNearIa()
 {
   APlayer	*result;
 
@@ -118,7 +118,6 @@ bool		IaBomber::goPlayerIa()
   player = (APlayer *)(_map->getPlayer());
   target.x = player->get_x();
   target.y = player->get_z();
-
   changeRot(target.x, target.y);
   this->_positionTo.x = target.x;
   this->_positionTo.y = target.y;
@@ -271,7 +270,7 @@ glm::vec2	IaBomber::getChemin(int x, int z)
   return glm::vec2(x, z);
 }
 
-bool	IaBomber::goBonusIa()
+bool		IaBomber::goBonusIa()
 {
   ABonus	*result;
   glm::vec2	target;
@@ -288,7 +287,7 @@ bool	IaBomber::goBonusIa()
   return true;
 }
 
-bool	IaBomber::goWallIa()
+bool		IaBomber::goWallIa()
 {
   AObjectPhysic	*result;
   glm::vec2	target;
@@ -305,7 +304,7 @@ bool	IaBomber::goWallIa()
   return true;
 }
 
-bool	IaBomber::goEnemyNearIa()
+bool		IaBomber::goEnemyNearIa()
 {
   APlayer	*result;
   glm::vec2	target;
@@ -325,7 +324,7 @@ bool	IaBomber::goEnemyNearIa()
   return true;
 }
 
-void	IaBomber::changeRot(int x, int z)
+void		IaBomber::changeRot(int x, int z)
 {
   glm::vec3	A(0, 0, 0);
   glm::vec3	B(0, 0, 0);
@@ -341,7 +340,7 @@ void	IaBomber::changeRot(int x, int z)
   this->set_roty(-1 * (or1 + 90));
 }
 
-bool	IaBomber::move(glm::vec3 direct)
+bool		IaBomber::move(glm::vec3 direct)
 {
   glm::vec3	posSauv;
   glm::vec3	positionTrans;
@@ -470,12 +469,12 @@ glm::vec2	IaBomber::getPositionNoRisk()
   return result;
 }
 
-APlayer	*IaBomber::minDistanceEnemy()
+APlayer					*IaBomber::minDistanceEnemy()
 {
-  std::list<IaBomber *>	listIa;
+  std::list<IaBomber *>			listIa;
   std::list<IaBomber *>::iterator	it;
-  int			result;
-  APlayer		*resultPlayer;
+  int					result;
+  APlayer				*resultPlayer;
 
   result = -1;
   listIa = _map->getIa();
@@ -501,14 +500,14 @@ APlayer	*IaBomber::minDistanceEnemy()
   return resultPlayer;
 }
 
-AObjectPhysic	*IaBomber::minDistanceDestruc()
+AObjectPhysic					*IaBomber::minDistanceDestruc()
 {
-  std::vector<AObjectPhysic *>	list;
+  std::vector<AObjectPhysic *>			list;
   std::vector<AObjectPhysic *>::iterator	it;
-  int			result;
-  AObjectPhysic		*resultBloc;
-  int		sauvX;
-  int		sauvY;
+  int						result;
+  AObjectPhysic					*resultBloc;
+  int						sauvX;
+  int						sauvY;
 
   sauvX = (this)->get_x() - ((int)this->get_x() % 3);
   if (sauvX + 1.5 < this->get_x())
@@ -538,12 +537,12 @@ AObjectPhysic	*IaBomber::minDistanceDestruc()
   return resultBloc;
 }
 
-ABonus	*IaBomber::getBonus(int size)
+ABonus						*IaBomber::getBonus(int size)
 {
-  std::vector<AObjectPhysic *>	list;
+  std::vector<AObjectPhysic *>			list;
   std::vector<AObjectPhysic *>::iterator	it;
-  int			result;
-  ABonus		*resultBonus;
+  int						result;
+  ABonus					*resultBonus;
 
   result = -1;
   list = _map->getObjectsPos(this, size, BONUS);
@@ -564,8 +563,7 @@ ABonus	*IaBomber::getBonus(int size)
   return resultBonus;
 }
 
-
-bool	IaBomber::poseBomb()
+bool		IaBomber::poseBomb()
 {
   DefaultBomb	*bomb;
   int		x;
@@ -619,7 +617,7 @@ bool	IaBomber::poseBomb()
   return true;
 }
 
-bool	IaBomber::isInRisk(int x, int z)
+bool				IaBomber::isInRisk(int x, int z)
 {
   std::list<AFire *>		listFire;
   std::list<AFire *>::iterator	itF;
@@ -699,25 +697,27 @@ bool	IaBomber::isInRisk(int x, int z)
 void	IaBomber::getList()
 {
   std::string file;
-  if (_map->getTypeMap() == NORMAL)
-    file = "ia.xml";
-  else
-    file = "zombie.xml";
-  TiXmlDocument	doc(file);
-  bool CheckFile = doc.LoadFile();
-
-  if (!CheckFile)
-    std::cerr << "LOAD OF FILE IA NOT FOUND" << std::endl;
+  bool CheckFile;
   TiXmlElement	*_ia;
+  TiXmlElement	*_action;
+  int		condition;
+
+  if (_map->getTypeMap() == NORMAL)
+    file = "ia/ia.xml";
+  else
+    file = "ia/zombie.xml";
+  TiXmlDocument	doc(file);
+  CheckFile = doc.LoadFile();
+  if (CheckFile)
+    std::cerr << "LOAD OF FILE IA NOT FOUND" << std::endl;
   _ia = doc.FirstChildElement("ia");
   if (_ia == NULL)
     std::cout << "BALISE <ia> not found" << std::endl;
-  TiXmlElement	*_action;
   _action = _ia->FirstChildElement("action");
   while (_action)
     {
       std::string name(_action->Attribute("name"));
-      int condition = atoi(_action->Attribute("condition"));
+      condition = atoi(_action->Attribute("condition"));
       std::string action(_action->Attribute("action"));
       _IaX = new IaXml;
       _IaX->name = name;
@@ -728,11 +728,11 @@ void	IaBomber::getList()
     }
 }
 
-bool		IaBomber::update(gdl::Clock const &clock, gdl::Input &input)
+bool				IaBomber::update(gdl::Clock const &clock, gdl::Input &input)
 {
   std::list<IaXml *>::iterator	it;
-  int		elenczk;
-  glm::vec2	target;
+  int				elenczk;
+  glm::vec2			target;
 
   (void)clock;
   (void)input;

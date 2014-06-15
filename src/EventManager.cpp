@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May  7 06:31:46 2014 Remi telenczak
-// Last update Tue Jun  3 17:23:35 2014 dedicker remi
+// Last update Sun Jun 15 19:46:52 2014 Remi telenczak
 //
 
 #include	<iostream>
@@ -44,22 +44,15 @@ EventManager::~EventManager()
 
 void	EventManager::listenEvent(std::string event, ICallBack *callBack)
 {
-  std::cout<< "Listen " << event<< std::endl;
-  //if (callBack == NULL)
-  // std::cout << "Pk il est null" << std::endl;
-  //std::pair<std::string, ICallBack *> test;
-  //test = std::make_pair<std::string, ICallBack *>(event, callBack);
-  //_listEvent.push_back(std::pair<std::string, ICallBack *>(event, callBack));
   this->_listEvent.push_back(std::make_pair<std::string, ICallBack *>(event, callBack));
-  std::cout << "Evnd " << std::endl;
 }
 
 
-void	EventManager::dispatchEvent(std::string event, void *data)
+void								EventManager::dispatchEvent(std::string event, void *data)
 {
-  std::vector<std::pair<std::string, ICallBack *> >::iterator it;
-  std::list<ICallBack *>	listCallBack;
-  ICallBack			*tmp;
+  std::vector<std::pair<std::string, ICallBack *> >::iterator	it;
+  std::list<ICallBack *>					listCallBack;
+  ICallBack							*tmp;
 
   it = this->_listEvent.begin();
   while (it != this->_listEvent.end())
@@ -77,9 +70,9 @@ void	EventManager::dispatchEvent(std::string event, void *data)
     }
 }
 
-void	EventManager::removeEvent(std::string event, ICallBack *callBack)
+void								EventManager::removeEvent(std::string event, ICallBack *callBack)
 {
-  std::vector<std::pair<std::string, ICallBack *> >::iterator it;
+  std::vector<std::pair<std::string, ICallBack *> >::iterator	it;
 
   it = this->_listEvent.begin();
   while (it != this->_listEvent.end())

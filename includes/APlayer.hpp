@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:12:08 2014 dedicker remi
-// Last update Sat Jun 14 15:42:21 2014 Remi telenczak
+// Last update Sun Jun 15 19:10:16 2014 Steven Martreux
 //
 
 #ifndef _APLAYER_HPP_
@@ -17,8 +17,6 @@
 # include	<Model.hh>
 # include	<BasicShader.hh>
 # include	"AObjectLife.hpp"
-//# include	"AObjectPhysic.hpp"
-# include	"Inventory.hpp"
 # include	"Map.hpp"
 # include	"Graphics.hpp"
 
@@ -41,7 +39,6 @@ public:
   virtual bool update(gdl::Clock const &clock, gdl::Input &input) = 0;
 protected:
   bool	checkPositionCollisionPlayer();
-  Inventory *_inventory;
   int	_z;
   int	_x;
   int	_y;

@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Fri May  9 14:18:15 2014 Steven Martreux
-// Last update Sun Jun 15 19:25:34 2014 thomas mendez
+// Last update Sun Jun 15 20:29:31 2014 thomas mendez
 //
 
 #include	"Game.hpp"
@@ -143,7 +143,7 @@ void    Game::playMap()
           //      if (menuIG->getBack() == 1)
           //_runMap = 1;
           engine->draw(menuIG);
-	  engine->update(menuIG);
+	  engine->update(menuIG, map);
         }
       joystick->update();
     }

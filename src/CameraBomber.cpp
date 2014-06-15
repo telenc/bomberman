@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 14 07:57:08 2014 Remi telenczak
-// Last update Sun Jun 15 16:02:59 2014 Remi telenczak
+// Last update Sun Jun 15 19:45:33 2014 Remi telenczak
 //
 
 #include	"CameraBomber.hpp"
@@ -25,22 +25,16 @@ CameraBomber::CameraBomber(gdl::BasicShader *shader, EventManager *event, gdl::C
   this->position.z = -3;
   this->position.x = -3;
   this->rot = 4.98002;
-
   this->_occulus = new Occulus();
   _occulus->init();
   _occulus->displayInfo();
   this->stereo = 2;
-
   callKeyUp = new CallBack<CameraBomber>(this, &CameraBomber::eventKeyUp);
   callKeyLeft = new CallBack<CameraBomber>(this, &CameraBomber::eventKeyLeft);
   callKeyRight = new CallBack<CameraBomber>(this, &CameraBomber::eventKeyRight);
   callKeyDown = new CallBack<CameraBomber>(this, &CameraBomber::eventKeyDown);
-
-
   callPlayerMove = new CallBack<CameraBomber>(this, &CameraBomber::eventPlayerMove);
   event->listenEvent("playerMove", callPlayerMove);
-  callTypeDeplacement = new CallBack<CameraBomber>(this, &CameraBomber::eventChangeTypeDeplacement);
-  //event->listenEvent("playerMove", callTypeDeplacement);
   callRotateLeft = new CallBack<CameraBomber>(this, &CameraBomber::eventRotateLeft);
   event->listenEvent("playerRotateLeft", callRotateLeft);
   callRotateRight = new CallBack<CameraBomber>(this, &CameraBomber::eventRotateRight);
@@ -49,54 +43,52 @@ CameraBomber::CameraBomber(gdl::BasicShader *shader, EventManager *event, gdl::C
   event->listenEvent("pause", callPause);
   callNewMap = new CallBack<CameraBomber>(this, &CameraBomber::eventCallNewMap);
   event->listenEvent("newMap", callNewMap);
-
   this->_typeDeplacement = 0;
 }
 
-void	CameraBomber::eventKeyUp(void *data)
+void		CameraBomber::eventKeyUp(void *data)
 {
-  (void)data;
   glm::vec3	vec(0, 0, -1);
 
+  (void)data;
   vec = vec * static_cast<float>(_clock->getElapsed()) * 10.f;
   this->positionPause += vec;
 }
 
-void	CameraBomber::eventKeyDown(void *data)
+void		CameraBomber::eventKeyDown(void *data)
 {
-  (void)data;
   glm::vec3	vec(0, 0, 1);
 
+  (void)data;
   vec = vec * static_cast<float>(_clock->getElapsed()) * 10.f;
   this->positionPause += vec;
 }
 
-void	CameraBomber::eventKeyRight(void *data)
+void		CameraBomber::eventKeyRight(void *data)
 {
-  (void)data;
   glm::vec3	vec(1, 0, 0);
 
+  (void)data;
   vec = vec * static_cast<float>(_clock->getElapsed()) * 10.f;
   this->positionPause += vec;
 }
 
-void	CameraBomber::eventKeyLeft(void *data)
+void		CameraBomber::eventKeyLeft(void *data)
 {
-  (void)data;
   glm::vec3	vec(-1, 0, 0);
 
+  (void)data;
   vec = vec * static_cast<float>(_clock->getElapsed()) * 10.f;
   this->positionPause += vec;
 }
 
-void	CameraBomber::eventCallNewMap(void *data)
+void		CameraBomber::eventCallNewMap(void *data)
 {
   glm::vec2	*size;
 
   size = (glm::vec2 *)data;
   this->sizeMap.x = size->x;
   this->sizeMap.y = size->y;
-  std::cout << "Nex map" << std::endl;
 }
 
 void	CameraBomber::eventChangeTypeDeplacement(void *data)
@@ -121,12 +113,10 @@ void	CameraBomber::eventRotateRight(void *data)
 
 void	CameraBomber::eventPlayerMove(void *data)
 {
-  (void)data;
-  glm::vec3 *test;
+  glm::vec3 *vec;
 
-  test = (glm::vec3 *)data;
-  this->translate(-1 * test->x, 0, -1 * test->z);
-  (void)test;
+  vec = (glm::vec3 *)data;
+  this->translate(-1 * vec->x, 0, -1 * vec->z);
 }
 
 int	CameraBomber::getStereo()
@@ -142,36 +132,24 @@ void CameraBomber::changeStereo(int a)
 void CameraBomber::changeStereoo(int a)
 {
   this->degCam += a;
-  std::cout << degCam << std::endl;
 }
 
 void CameraBomber::changeStereooo(int a)
 {
   this->degCam2 += a;
-  std::cout << "Cam 2" << degCam2 << std::endl;
 }
 
 void		CameraBomber::translate(double x, double y, double z)
 {
-  glm::vec3 vector(x, y, z);
+  glm::vec3	vector(x, y, z);
+
   this->position += vector;
-}
-
-void	testt(const char *format, ...)
-{
-  char textBuff[2048];
-  va_list argList;
-
-  va_start(argList, format);
-  OVR::OVR_vsprintf(textBuff, sizeof(textBuff), format, argList);
-  va_end(argList);
-  //  std::cout << "Tageule" << std::endl;
 }
 
 glm::mat4		CameraBomber::getTransformation()
 {
-  glm::vec3	vec;
-  glm::mat4 transformation;
+  glm::vec3		vec;
+  glm::mat4		transformation;
 
   if (this->_pause == false)
     {
@@ -180,10 +158,7 @@ glm::mat4		CameraBomber::getTransformation()
       transformation = glm::translate(transformation, position);
     }
   else
-    {
       transformation = glm::lookAt(positionPause, glm::vec3(positionPause.x, 0, positionPause.z-1), glm::vec3(0, 1, 0));
-    }
-
   return transformation;
 }
 
@@ -191,13 +166,11 @@ void	CameraBomber::eventCallPause(void *data)
 {
   if (this->_pause == true)
     {
-      std::cout << "false" << std::endl;
       this->_pause = false;
       _event->removeEvent("keyUp", callKeyUp);
       _event->removeEvent("keyLeft", callKeyLeft);
       _event->removeEvent("keyRight", callKeyRight);
       _event->removeEvent("keyDown", callKeyDown);
-
     }
   else
     {
@@ -210,16 +183,14 @@ void	CameraBomber::eventCallPause(void *data)
       this->positionPause.x = sizeMap.x * 3 / 2;
       this->positionPause.z = sizeMap.y * 3 / 2;
       this->positionPause.y = 20;
-      std::cout << "true" << std::endl;
     }
   (void)data;
 }
 
 glm::mat4		CameraBomber::getTransformationMenu()
 {
-  glm::vec3	vec;
-  glm::mat4 transformation;
-
+  glm::vec3		vec;
+  glm::mat4		transformation;
 
   transformation = glm::rotate(transformation, this->rotation.y, glm::vec3(0, 1, 0));
   return transformation;
@@ -227,11 +198,10 @@ glm::mat4		CameraBomber::getTransformationMenu()
 
 glm::mat4		CameraBomber::getTransformationLeft()
 {
-  glm::vec3	vec;
-  glm::mat4 transformation;
+  glm::vec3		vec;
+  glm::mat4		transformation;
 
   vec = this->_occulus->getOrientation();
-
   if (this->_pause == false)
     {
       transformation = glm::rotate(transformation, -1 * vec.z, glm::vec3(0, 0, 1));
@@ -243,17 +213,14 @@ glm::mat4		CameraBomber::getTransformationLeft()
       transformation = glm::translate(transformation, position);
     }
   else
-    {
       transformation = glm::lookAt(positionPause, glm::vec3(positionPause.x, 0, positionPause.z-1), glm::vec3(0, 1, 0));
-    }
-  testt("Salut");
   return transformation;
 }
 
 glm::mat4		CameraBomber::getTransformationRight()
 {
-  glm::vec3	vec;
-  glm::mat4 transformation;
+  glm::vec3		vec;
+  glm::mat4		transformation;
 
   if (this->_pause == false)
     {
@@ -267,9 +234,7 @@ glm::mat4		CameraBomber::getTransformationRight()
       transformation = glm::translate(transformation, position);
     }
   else
-    {
-      transformation = glm::lookAt(positionPause, glm::vec3(positionPause.x, 0, positionPause.z-1), glm::vec3(0, 1, 0));
-    }
+    transformation = glm::lookAt(positionPause, glm::vec3(positionPause.x, 0, positionPause.z-1), glm::vec3(0, 1, 0));
   return transformation;
 }
 
