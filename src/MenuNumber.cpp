@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Mon Jun  2 02:08:04 2014 Remi telenczak
-// Last update Sun Jun 15 02:51:19 2014 Steven Martreux
+// Last update Sun Jun 15 03:02:46 2014 Steven Martreux
 //
 
 #include	"MenuNumber.hpp"
@@ -69,6 +69,7 @@ void	MenuNumber::setMinNumber(int Ntime)
       _event->dispatchEvent("keyUpMenu", NULL);
       i++;
     }
+  _min = Ntime;
 }
 
 void	MenuNumber::upIt(std::list<int>::iterator it)
@@ -137,39 +138,42 @@ void	MenuNumber::downIt(std::list<int>::iterator it)
 
   it = result.begin();
   it3 = listBox.begin();
-  while (it != result.end())
+  if (this->getResult() > _min)
     {
-      if (it == result.begin())
-	*it -= 1;
-      if (*it < 0)
+      while (it != result.end())
 	{
-	  it2 = it;
-	  it2++;
-	  it4 = it3;
-	  it4++;
-	  *it = 9;
-	  //++it2;
-	  if (it2 != result.end())
+	  if (it == result.begin())
+	    *it -= 1;
+	  if (*it < 0)
 	    {
-	      *it2 -= 1;
+	      it2 = it;
 	      it2++;
-	      if (it2 == result.end())
+	      it4 = it3;
+	      it4++;
+	      *it = 9;
+	      //++it2;
+	      if (it2 != result.end())
 		{
-		  it2--;
-		  if (*it2 == 0)
+		  *it2 -= 1;
+		  it2++;
+		  if (it2 == result.end())
 		    {
-		      result.erase(it2);
-		      listBoxToDelete.push_back(*it4);
-		      (*it4)->goDelete();
-		      listBox.erase(it4);
-		      _nextX += 5;
+		      it2--;
+		      if (*it2 == 0)
+			{
+			  result.erase(it2);
+			  listBoxToDelete.push_back(*it4);
+			  (*it4)->goDelete();
+			  listBox.erase(it4);
+			  _nextX += 5;
+			}
 		    }
 		}
-	    }
 
+	    }
+	  it3++;
+	  it++;
 	}
-      it3++;
-      it++;
     }
 }
 
