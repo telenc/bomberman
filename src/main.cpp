@@ -7,6 +7,7 @@
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Last update Sun Jun 15 18:42:28 2014 Remi telenczak
 =======
 // Last update Sun Jun 15 07:10:28 2014 Steven Martreux
@@ -14,6 +15,9 @@
 =======
 // Last update Sun Jun 15 12:06:33 2014 Steven Martreux
 >>>>>>> 2c520a45a5444d70184b94c02915bf43f88178dd
+=======
+// Last update Sun Jun 15 18:37:25 2014 Steven Martreux
+>>>>>>> 9ee29913410d3ee66aec99ec00e3fc6e6dedb447
 */
 
 #include <iostream>

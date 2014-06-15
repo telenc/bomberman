@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 17:53:20 2014 dedicker remi
-// Last update Sun Jun 15 18:00:36 2014 Remi telenczak
+// Last update Sun Jun 15 18:35:32 2014 Steven Martreux
 */
 
 #include	<iostream>
@@ -18,33 +18,11 @@
 #include	"DestrucWall.hpp"
 #include	"SolWall.hpp"
 #include	"IaBomber.hpp"
+
 void	GenereMap::putInside()
 {
 
 }
-
-/*
-void	GenereMap::putCorner()
-{
-  switch(_pos)
-    {
-    case 0:
-      _map[1][_height - 3] = 3;
-      break;
-    case 1:
-      _map[_width - 2][1] = 3;
-      break;
-    case 2:
-      _map[_width - 2][_height - 2] = 3;
-      break;
-    default:
-      putInside();
-      break;
-    }
-  _pos++;
-  _ia--;
-}
-*/
 
 Map	*GenereMap::getMap() const
 {
