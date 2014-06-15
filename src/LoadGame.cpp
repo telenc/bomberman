@@ -1,4 +1,3 @@
-
 //
 // LoadGame.cpp for LoadGame in /home/martre_s/cpp_bomberman/src
 //
@@ -6,8 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Mon May 12 13:48:39 2014 Steven Martreux
-// Last update Sun Jun 15 07:41:40 2014 dedicker remi
-// Last update Sat Jun 14 22:58:34 2014 Steven Martreux
+// Last update Sun Jun 15 17:56:20 2014 Steven Martreux
 //
 
 #include	<cstring>
@@ -38,7 +36,6 @@ LoadGame::LoadGame(const std::string & file, EventManager *event, ModelList *mod
   this->getPlayer();
   this->getIas();
   this->getObjMap();
-std::cout << "Fin" << std::endl;
 }
 
 bool	LoadGame::ChangeMd5()
@@ -279,6 +276,7 @@ void	LoadGame::getMapSize()
 {
   int	width;
   int	height;
+  //int	type;
 
   _map_size = _bomberman->FirstChildElement("Map_Size");
   if (_map_size)
@@ -287,7 +285,11 @@ void	LoadGame::getMapSize()
 	throw new myException("<BALISE> Width Height");
       width = atoi(_map_size->Attribute("width"));
       height = atoi(_map_size->Attribute("height"));
-      this->_mapGame = new Map(width, height, _event);
+      //type = atoi(_map_size->Attribute("TypeGame"));
+      //      if (type == 0)
+	this->_mapGame = new Map(width, height, _event);
+	//else if (type == 1)
+	//this->_mapGame = new Map(width, height, _event, type);
     }
   else
     throw new myException("<Balise Map_Size not find");

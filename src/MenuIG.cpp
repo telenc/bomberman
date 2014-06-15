@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 // 
 // Started on  Sun Jun 15 03:43:30 2014 thomas mendez
-// Last update Sun Jun 15 05:01:41 2014 thomas mendez
+// Last update Sun Jun 15 17:48:53 2014 dedicker remi
 //
 
 #include	<iostream>
@@ -26,6 +26,7 @@ MenuIG::MenuIG(ModelList *mod, EventManager *event, gdl::Clock *clock) : _mod(mo
   _callKeyB = new CallBack<MenuIG>(this, &MenuIG::eventKeyB);
   event->listenEvent("keyB", _callKeyB);  
   std::cout << "Fin constructeur MEnu" << std::endl;
+  _back = 0;
 }
 
 void	MenuIG::setFinish(int finish)
@@ -35,20 +36,26 @@ void	MenuIG::setFinish(int finish)
 
 void    MenuIG::eventKeyB(void *data)
 {
-  currentMenuIG = 0;
+  (void)data;
   switch (currentMenuIG)
     {
-    case 3:
-      currentMenuIG -= 1;
-      break;
-    case 4:
-      currentMenuIG -= 1;
+    case 0:
+      _back = 1;
       break;
     default:
       currentMenuIG = 0;
       break;
     }
-  (void)data;
+}
+
+void    MenuIG::setBack(int back)
+{
+  _back = back;
+}
+
+int    MenuIG::getBack() const
+{
+  return _back;
 }
 
 void    MenuIG::eventKeyA(void *data)

@@ -5,7 +5,11 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
+<<<<<<< HEAD
 // Last update Sun Jun 15 18:31:54 2014 Remi telenczak
+=======
+// Last update Sun Jun 15 17:14:22 2014 dedicker remi
+>>>>>>> 3cb1e73ca0482273bf2ee5965f4a80bea9dbd38f
 //
 
 #include <cstdlib>
@@ -24,7 +28,7 @@
 #include	"PoBonus.hpp"
 #include	"BombBonus.hpp"
 
-Map::Map(int width, int height, EventManager *event) : _width(width), _height(height), _event(event), _pause(false)
+Map::Map(int width, int height, EventManager *event) : _width(width), _height(height), _event(event), _pause(false), _select(false)
 {
   glm::vec2	size;
 
@@ -38,6 +42,7 @@ Map::Map(int width, int height, EventManager *event) : _width(width), _height(he
   size.x = width;
   size.y = height;
   event->dispatchEvent("newMap", &size);
+<<<<<<< HEAD
   _typeMap = NORMAL;
 }
 
@@ -62,8 +67,29 @@ Map::Map(int width, int height, EventManager *event, TypeMap type) : _width(widt
   size.x = width;
   size.y = height;
   event->dispatchEvent("newMap", &size);
-
+=======
+  callSelect = new CallBack<Map>(this, &Map::eventCallSelect);
+  event->listenEvent("select", callSelect);
 }
+
+void    Map::setSelect(bool select)
+{
+  _select = select;
+}
+
+bool    Map::getSelect() const
+{
+  return _select;
+}
+>>>>>>> 3cb1e73ca0482273bf2ee5965f4a80bea9dbd38f
+
+void    Map::eventCallSelect(void *data)
+{
+  (void)data;
+  _select = true;
+  std::cout << "Select Detected" << std::endl;
+}
+
 
 Map::~Map()
 {
