@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Thu Jun 12 15:53:06 2014 Remi telenczak
+// Last update Sun Jun 15 02:08:23 2014 dedicker remi
 //
 
 #include	"OVR.h"
@@ -34,6 +34,7 @@
 Graphics::Graphics(EventManager *event) : _event(event)
 {
   _clock = new gdl::Clock;
+  //  test = 0;
 }
 
 Graphics::~Graphics()
@@ -107,7 +108,7 @@ void		Graphics::inputUpdate()
   if (_input.getKey(SDLK_SPACE))
     this->_event->dispatchEvent("keyA", NULL);
   if (_input.getKey(SDLK_m))
-   this->_camera->translate(0, 1.0, 0);
+    this->_camera->translate(0, 1.0, 0);
   if (_input.getKey(SDLK_p))
     this->_camera->translate(0, -1.0, 0);
   if (_input.getKey(SDLK_e))
@@ -118,7 +119,6 @@ void		Graphics::inputUpdate()
     this->_camera->changeStereoo(-1);
   if (_input.getKey(SDLK_o))
     this->_camera->changeStereoo(1);
-
   if (_input.getKey(SDLK_j))
     this->_camera->changeStereooo(-1);
   if (_input.getKey(SDLK_k))

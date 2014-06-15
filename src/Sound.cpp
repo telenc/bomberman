@@ -5,7 +5,7 @@
 ** Login <bernar_x@epitech.net>
 ** 
 ** Started on  Thu Jun  5 16:20:43 2014 mattieu bernard-guêle
-// Last update Thu Jun 12 17:59:32 2014 dedicker remi
+// Last update Sun Jun 15 01:53:04 2014 dedicker remi
 */
 
 #include	"Sound.hpp"
@@ -28,7 +28,7 @@ Sound::Sound(EventManager *event) : _event(event), _position(0, 0, 0)
   event->listenEvent("soundon", callSoundOn);
   callSoundOff = new CallBack<Sound>(this, &Sound::soundOff);
   event->listenEvent("soundoff", callSoundOff);
-  _soundOn = 0;
+  _soundOn = 1;
 }
 
 Sound::~Sound()

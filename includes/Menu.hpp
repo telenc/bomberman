@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:19 2014 Remi telenczak
-// Last update Sat Jun 14 16:58:04 2014 thomas mendez
+// Last update Sun Jun 15 02:31:45 2014 dedicker remi
 // Last update Fri Jun 13 15:29:35 2014 thomas mendez
 //
 
@@ -62,6 +62,7 @@ public:
   void	faceNumberIa();
   int	getSizemap();
   int	getNumberIa();
+  void	setGoMap(int gomap);
   int	getGoMap();
   void	setFinish(int finish);
   void  callFaceFunction();
@@ -83,7 +84,8 @@ private:
   CreditsMenu *_creditsMenu;
   PlayMenu *_playMenu;
   LoadMenu *_loadMenu;
-  MenuNumber *_MenuNumber;
+  MenuNumber *_MenuNumberia;
+  MenuNumber *_MenuNumbermap;
   int	currentMenu;
   ICallBack *_callKeyA;
   ICallBack *_callKeyB;

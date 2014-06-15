@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Fri May  9 14:18:15 2014 Steven Martreux
-// Last update Fri Jun 13 17:50:55 2014 dedicker remi
+// Last update Sun Jun 15 03:18:28 2014 dedicker remi
 //
 
 #include	"Game.hpp"
@@ -28,29 +28,36 @@ Game::Game() : _display(0)
 
 void	Game::playMenu()
 {
-  while (engine->update(menu) && menu->getFinish() != 0)
+  while (engine->update(menu) && menu->getFinish() != 0 && menu->getGoMap() != 1)
     {
       engine->draw(menu);
       joystick->update();
     }
-  this->menu->setFinish(0);
+  if (menu->getGoMap() == 1 && menu->getFinish() != 0)
+    {
+      this->_gen = new GenereMap(menu->getSizemap(), menu->getSizemap(), menu->getNumberIa(),load->getEventManager(), load->getModel(), engine->getClock());
+      this->map = _gen->getMap();
+      this->map->setSkybox(new Skybox(map, load->getModel(), load->getEventManager(), engine->getClock()));
+      _display = 1;
+      this->menu->setGoMap(0);
+    }
+  if (menu->getGoMap() == 1)
+    this->menu->setFinish(0);
 }
 
 void	Game::draw()
 {
-  if (menu->getGoMap() == 1)
+  while (menu->getFinish())
     {
-      GenereMap gen(menu->getSizemap(), menu->getSizemap(), menu->getNumberIa(),load->getEventManager(), load->getModel(), engine->getClock());
-      this->map = gen.getMap();
-      this->map->setSkybox(new Skybox(map, load->getModel(), load->getEventManager(), engine->getClock()));
-      _display = 1;
-      std::cout << "CREATION DE MAP !" << std::endl;
-      exit(0);
+      if (_display == 0)
+	{
+	  playMenu();
+	}
+      else
+	{
+	  playMap();
+	}
     }
-  if (_display == 0)
-    playMenu();
-  else
-    playMap();
 }
 
 int	Game::isFinish()
@@ -65,6 +72,7 @@ void	Game::playMap()
       engine->draw(map);
       joystick->update();
     }
+
 }
 
 bool	Game::update()

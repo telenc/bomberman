@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Fri May  9 14:19:13 2014 Steven Martreux
-// Last update Wed Jun 11 15:50:32 2014 dedicker remi
+// Last update Sun Jun 15 02:59:05 2014 dedicker remi
 //
 
 #ifndef		_GAME_HPP_
@@ -16,6 +16,7 @@
 # include	"Graphics.hpp"
 # include	"Loader.hpp"
 # include	"Skybox.hpp"
+# include	"GenereMap.hpp"
 
 class		Game
 {
@@ -28,6 +29,7 @@ public:
   void		playMap();
   int		isFinish();
 private:
+  GenereMap	*_gen;
   int		_display;
   EventManager	*eventManager;
   Menu		*menu;

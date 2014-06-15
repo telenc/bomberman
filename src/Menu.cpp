@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:00 2014 Remi telenczak
-// Last update Sat Jun 14 17:11:33 2014 thomas mendez
+// Last update Sun Jun 15 02:44:53 2014 dedicker remi
 // Last update Fri Jun 13 15:51:35 2014 thomas mendez
 //
 
@@ -25,7 +25,11 @@ Menu::Menu(ModelList *mod, EventManager *event, gdl::Clock *clock) : _mod(mod), 
   _loadMenu = new LoadMenu(mod, event);
   _settingsMenu = new SettingsMenu(mod, event);
   _creditsMenu = new CreditsMenu(mod, event);
-  _MenuNumber = new MenuNumber(mod, event, clock);
+  std::cout << "Debut IA" << std::endl;
+  _MenuNumberia = new MenuNumber(mod, event, clock);
+  std::cout << "Debut MAP" << std::endl;
+  _MenuNumbermap = new MenuNumber(mod, event, clock);
+  std::cout << "FIn" << std::endl;
   _playMenu = new PlayMenu(mod, event);
   currentMenu = 0;
   _callKeyA = new CallBack<Menu>(this, &Menu::eventKeyA);
@@ -60,21 +64,27 @@ void    Menu::eventKeyB(void *data)
 
 void    Menu::eventKeyA(void *data)
 {
-  std::cout << "A MENU" << std::endl;
-  this->callFaceFunction();
-  (void)data;
+  std::cout << "Avant  -> " << currentMenu << std::endl;
   if (currentMenu == 3)
     {
-      _sizemap = _MenuNumber->getResult();
+      _sizemap = _MenuNumbermap->getResult();
       std::cout << "Taille de la map = " << _sizemap << std::endl;
       //currentMenu++;
     }
-  if (currentMenu == 4)
+  if (currentMenu == 6)
     {
-      _numberia = _MenuNumber->getResult();
+      _numberia = _MenuNumberia->getResult();
       std::cout << "Number IA = " << _numberia << std::endl;
       // currentMenu++;
     }
+  this->callFaceFunction();
+  std::cout << "Apres = " << currentMenu<< std::endl;
+  (void)data;
+}
+
+void	Menu::setGoMap(int gomap)
+{
+  _gomap = gomap;
 }
 
 int	Menu::getGoMap()
@@ -163,13 +173,15 @@ void	Menu::facePlayMenu()
 
 void	Menu::faceSizeMap()
 {
-  _sizemap = _MenuNumber->getResult();
-  currentMenu++;
+  _sizemap = _MenuNumbermap->getResult();
+  std::cout << "Sizemap " << _sizemap << " ok currentMenu = " << currentMenu << std::endl;
+  currentMenu = 6;
 }
 
 void	Menu::faceNumberIa()
 {
-  _numberia = _MenuNumber->getResult();
+  std::cout << "FACENUMBERIA" << std::endl;
+  _numberia = _MenuNumberia->getResult();
   _gomap = 1;
 }
 
@@ -183,7 +195,7 @@ void	Menu::callFaceFunction()
     facePlayMenu();
   else if (this->currentMenu == 3)
     faceSizeMap();
-  else if (this->currentMenu == 4)
+  else if (this->currentMenu == 6)
     faceNumberIa();
 }
 
@@ -206,11 +218,16 @@ void    Menu::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
   else if (this->currentMenu == 2)
     this->currentMenu = _playMenu->draw(shader, clock);
   else if (this->currentMenu == 3)
-    this->currentMenu = _MenuNumber->draw(shader, clock);
+    this->currentMenu = _MenuNumbermap->draw(shader, clock);
   else if (this->currentMenu == 4)
     this->currentMenu = _creditsMenu->draw(shader, clock);
   else if (this->currentMenu == 5)
     this->currentMenu = _loadMenu->draw(shader, clock);
+  else if (this->currentMenu == 6)
+    {
+      this->currentMenu = _MenuNumberia->draw(shader, clock);
+      this->currentMenu = 6;
+    }
 }
 
 void	Menu::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus)
@@ -223,11 +240,13 @@ void	Menu::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus)
   else if (this->currentMenu == 2)
     _playMenu->update(clock, input, cameraOculus);
   else if (this->currentMenu == 3)
-    _MenuNumber->update(clock, input);
+    _MenuNumbermap->update(clock, input);
   else if (this->currentMenu == 4)
     _creditsMenu->update(clock, input, cameraOculus);
   else if (this->currentMenu == 5)
     _loadMenu->update(clock, input, cameraOculus);
+  else if (this->currentMenu == 6)
+    _MenuNumberia->update(clock, input);
 }
 
 void	Menu::setSkybox(Skybox *skybox)
@@ -235,7 +254,8 @@ void	Menu::setSkybox(Skybox *skybox)
   _mainMenu->setSkybox(skybox);
   _settingsMenu->setSkybox(skybox);
   _playMenu->setSkybox(skybox);
-  _MenuNumber->setSkybox(skybox);
+  _MenuNumberia->setSkybox(skybox);
+  _MenuNumbermap->setSkybox(skybox);
   _creditsMenu->setSkybox(skybox);
   _loadMenu->setSkybox(skybox);
 }
