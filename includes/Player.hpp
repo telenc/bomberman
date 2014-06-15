@@ -5,11 +5,11 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:27:33 2014 dedicker remi
-// Last update Sun Jun 15 05:34:56 2014 Steven Martreux
+// Last update Sun Jun 15 19:04:58 2014 Steven Martreux
 //
 
-#ifndef PLAYER_HPP_
-# define PLAYER_HPP_
+#ifndef		PLAYER_HPP_
+# define	PLAYER_HPP_
 
 # include	"APlayer.hpp"
 
@@ -18,20 +18,20 @@ class Player : public APlayer
 {
 public:
   Player(int x, int y, int z, Map *, ModelList *, EventManager *, gdl::Clock *);
-  virtual bool update(gdl::Clock const &clock, gdl::Input &input);
+  virtual bool	update(gdl::Clock const &clock, gdl::Input &input);
   ~Player();
-  void	eventPosPlayer(void *);
-  void	eventKeyUp(void *data);
-  void	eventKeyDown(void *data);
-  void	eventKeyRight(void *data);
-  void	eventKeyLeft(void *data);
-  void	eventRotate(void *data);
-  void	eventRotateRight(void *data);
-  void	eventRotateLeft(void *data);
-  void	eventKeyA(void *data);
+  void		eventPosPlayer(void *);
+  void		eventKeyUp(void *data);
+  void		eventKeyDown(void *data);
+  void		eventKeyRight(void *data);
+  void		eventKeyLeft(void *data);
+  void		eventRotate(void *data);
+  void		eventRotateRight(void *data);
+  void		eventRotateLeft(void *data);
+  void		eventKeyA(void *data);
 private:
-  void	resetAnim();
-  void	move(glm::vec3, std::string);
+  void		resetAnim();
+  void		move(glm::vec3, std::string);
   ICallBack	*callPosPlayer;
   ICallBack	*callKeyUp;
   ICallBack	*callKeyDown;
@@ -48,4 +48,4 @@ private:
   bool		endRun;
 };
 
-#endif
+#endif		/* PLAYER_HPP_ */

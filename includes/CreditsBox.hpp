@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 // 
 // Started on  Fri Jun 13 15:21:19 2014 thomas mendez
-// Last update Fri Jun 13 16:51:07 2014 thomas mendez
+// Last update Sun Jun 15 19:03:12 2014 Steven Martreux
 //
 
 #ifndef		_CREDITSBOX_HPP
@@ -26,9 +26,6 @@ public:
   void	eventRotOcu3(void *data);
   glm::vec3   *getRotation();
   int   getRotationy();
-  /*  void	checkFacetteBoxMenu(glm::vec3 *rotation);
-  void checkBoxExit(glm::vec3 *rotation);
-  void	checkBoxCredit(glm::vec3 *rotation);*/
 protected:
   int _i;
   glm::vec3 posSauv;

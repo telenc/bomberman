@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Wed May  7 16:03:12 2014 Steven Martreux
-// Last update Sun Jun 15 17:03:00 2014 Remi telenczak
+// Last update Sun Jun 15 19:02:28 2014 Steven Martreux
 //
 
 #ifndef		_ABOMB_HPP_
@@ -29,21 +29,21 @@ protected:
 public:
   ABomb(Map *, ModelList *, EventManager *, APlayer *, gdl::Clock *);
   ~ABomb();
-  void	explode();
-  virtual void createDeflag() = 0;
-  virtual bool update(gdl::Clock const &clock, gdl::Input &input) = 0;
+  void		explode();
+  virtual void  createDeflag() = 0;
+  virtual bool	update(gdl::Clock const &clock, gdl::Input &input) = 0;
   APlayer	*getPlayer() const;
   void		setPlayer(APlayer *);
-  void setPo(int po);
-  int	getPo(void) const;
-  void setDamage(int damage);
-  int getDamage(void) const;
-  void setTime(int time);
-  int getTime(void) const;
-  bool	getPlayerColl() const;
-  bool	getDied() const;
-  void	setPlayerColl(bool);
-  void	setDied(bool);
+  void		setPo(int po);
+  int		getPo(void) const;
+  void		setDamage(int damage);
+  int		getDamage(void) const;
+  void		setTime(int time);
+  int		getTime(void) const;
+  bool		getPlayerColl() const;
+  bool		getDied() const;
+  void		setPlayerColl(bool);
+  void		setDied(bool);
 };
 
 #endif		/* _ABOMB_HPP_ */
