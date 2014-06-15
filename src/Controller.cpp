@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Wed May 21 12:42:20 2014 Steven Martreux
-// Last update Sun Jun 15 07:25:48 2014 Steven Martreux
+// Last update Sun Jun 15 07:28:23 2014 Steven Martreux
 //
 
 #include	"Controller.hpp"
@@ -17,12 +17,9 @@ Controller::Controller(EventManager *event) : _eventManager(event)
   _joystick = SDL_JoystickOpen(0);
   SDL_JoystickEventState(SDL_ENABLE);
   if (_joystick == NULL)
-    std::cout << "FAILLLLLL" << std::endl;
+    throw new myException("No Joystick Found");
   if  (SDL_JoystickNumButtons(_joystick) == 0)
-    {
-      std::cout << "QUITTE" << std::endl;
-      //THROW A FAIRE
-    }
+    throw new myException("No Joystick Found");
   this->initVar();
 }
 

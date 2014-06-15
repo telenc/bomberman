@@ -5,7 +5,7 @@
 ** Login <bernar_x@epitech.net>
 ** 
 ** Started on  Thu Jun  5 16:20:43 2014 mattieu bernard-guêle
-// Last update Sun Jun 15 01:53:04 2014 dedicker remi
+// Last update Sun Jun 15 07:28:22 2014 Steven Martreux
 */
 
 #include	"Sound.hpp"
@@ -13,13 +13,13 @@
 Sound::Sound(EventManager *event) : _event(event), _position(0, 0, 0)
 {
   if (!_InGame.OpenFromFile("sound/SoundInGame.wav"))
-    std::cerr << "Fail to open SoundInGame" << std::endl;
+    throw new myException("Fail to open SoundInGame");
   if (!_TicTacBomb.OpenFromFile("sound/TicTacBomb.wav"))
-    std::cerr << "Fail to open TicTacBomb" << std::endl;
+    throw new myException("Fail to open TicTacBomb");
   if (!_ExplosionBomb.OpenFromFile("sound/Explosion.wav"))
-    std::cerr << "Fail to open Explosion" << std::endl;
+    throw new myException("Fail to open Explosion");
   if (!_InMenu.OpenFromFile("sound/Menu.wav"))
-    std::cerr << "Fail to open Menu.wav" << std::endl;
+    throw new myException("Fail to open Menu.wac");
   callBombDrop = new CallBack<Sound>(this, &Sound::eventBombDrop);
   event->listenEvent("bombDrop", callBombDrop);
   callPlayerMove = new CallBack<Sound>(this, &Sound::eventPlayerMove);
