@@ -5,7 +5,7 @@
 // Login   <telenc_r@epitech.net>
 //
 // Started on  Fri Jun 13 12:28:13 2014 Remi telenczak
-// Last update Sun Jun 15 12:05:35 2014 Remi telenczak
+// Last update Sun Jun 15 18:42:00 2014 Steven Martreux
 */
 
 #include	"IaBomber.hpp"
@@ -26,12 +26,14 @@ IaBomber::IaBomber(int x, int y, int z, Map *map, ModelList *model, EventManager
   _mapName.insert(std::pair<std::string, int (IaBomber::*)()>("wallDistance", &IaBomber::wallDistanceIa));
   _mapName.insert(std::pair<std::string, int (IaBomber::*)()>("bonusDistance", &IaBomber::bonusDistanceIa));
   _mapName.insert(std::pair<std::string, int (IaBomber::*)()>("enemyNear", &IaBomber::enemyNearIa));
+  _mapName.insert(std::pair<std::string, int (IaBomber::*)()>("targetPlayer", &IaBomber::targetPlayerIa));
 
   _mapAction.insert(std::pair<std::string, bool (IaBomber::*)()>("goSafe", &IaBomber::goSafeIa));
   _mapAction.insert(std::pair<std::string, bool (IaBomber::*)()>("poseBomb", &IaBomber::poseBombIa));
   _mapAction.insert(std::pair<std::string, bool (IaBomber::*)()>("goBonus", &IaBomber::goBonusIa));
   _mapAction.insert(std::pair<std::string, bool (IaBomber::*)()>("goWall", &IaBomber::goWallIa));
   _mapAction.insert(std::pair<std::string, bool (IaBomber::*)()>("goEnemyNear", &IaBomber::goEnemyNearIa));
+  _mapAction.insert(std::pair<std::string, bool (IaBomber::*)()>("goPlayer", &IaBomber::goPlayerIa));
   this->_positionTo.x = -1;
   this->changeRot(0, 1);
 }
@@ -46,6 +48,11 @@ int	IaBomber::isInRiskIa()
   if (this->isInRisk() == true)
     return 1;
   return -1;
+}
+
+int	IaBomber::targetPlayerIa()
+{
+  return 1;
 }
 
 int	IaBomber::enemyDistanceIa()
@@ -97,6 +104,22 @@ bool		IaBomber::goSafeIa()
   target = getPositionNoRisk();
   target2 = target;
   changeRot(target2.x, target2.y);
+  this->_positionTo.x = target.x;
+  this->_positionTo.y = target.y;
+  this->move(glm::vec3(0, 0, -0.2));
+  return true;
+}
+
+bool		IaBomber::goPlayerIa()
+{
+  APlayer	*player;
+  glm::vec2	target;
+
+  player = (APlayer *)(_map->getPlayer());
+  target.x = player->get_x();
+  target.y = player->get_z();
+
+  changeRot(target.x, target.y);
   this->_positionTo.x = target.x;
   this->_positionTo.y = target.y;
   this->move(glm::vec3(0, 0, -0.2));
@@ -323,6 +346,8 @@ bool	IaBomber::move(glm::vec3 direct)
   glm::vec3	posSauv;
   glm::vec3	positionTrans;
 
+  if (this->_map->getTypeMap() == ZOMBIE)
+    direct /= 3;
   posSauv = this->_position;
   positionTrans = this->translate(direct);
   if (checkPositionCollisionPlayer() == false)
@@ -672,7 +697,12 @@ bool	IaBomber::isInRisk(int x, int z)
 
 void	IaBomber::getList()
 {
-  TiXmlDocument	doc("ia.xml");
+  std::string file;
+  if (_map->getTypeMap() == NORMAL)
+    file = "ia.xml";
+  else
+    file = "zombie.xml";
+  TiXmlDocument	doc(file);
   bool CheckFile = doc.LoadFile();
 
   if (!CheckFile)
@@ -707,7 +737,7 @@ bool		IaBomber::update(gdl::Clock const &clock, gdl::Input &input)
   (void)input;
   if (this->getLife() <= 0)
     return false;
-  if (this->_positionTo.x != -1)
+  if (this->_map->getTypeMap() == NORMAL && this->_positionTo.x != -1)
     {
       target = getChemin(_positionTo.x, _positionTo.y);
       changeRot(target.x, target.y);

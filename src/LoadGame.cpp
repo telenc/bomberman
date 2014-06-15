@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Mon May 12 13:48:39 2014 Steven Martreux
-// Last update Sun Jun 15 17:56:20 2014 Steven Martreux
+// Last update Sun Jun 15 18:33:58 2014 Steven Martreux
 //
 
 #include	<cstring>
@@ -14,12 +14,10 @@
 
 LoadGame::LoadGame(const std::string & file, EventManager *event, ModelList *model, gdl::Clock *clock) : _file(file), _event(event), _model(model), _clock(clock)
 {
-  std::cout << "Début" << std::endl;
   if (checkFile() == false)
     throw new myException("Save Fail dont change my Save !!");
   TiXmlDocument	doc(file);
   _loadOkay = doc.LoadFile();
-  std::cout << "Début 2" << std::endl;
   if (!_loadOkay)
     throw new myException("Load of file Error");
   _bomberman = doc.FirstChildElement("Bomberman");

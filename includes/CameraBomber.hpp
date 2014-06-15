@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 14 07:57:29 2014 Remi telenczak
-// Last update Tue Jun 10 12:30:39 2014 Remi telenczak
+// Last update Sun Jun 15 16:03:11 2014 Remi telenczak
 //
 
 #ifndef		_CAMERA_BOMBER
@@ -47,7 +47,7 @@ public:
   void	eventKeyDown(void *data);
   void	eventKeyRight(void *data);
   void	eventKeyLeft(void *data);
-
+  glm::vec3	getPositionPause();
 private:
   EventManager *_event;
   int stereo;

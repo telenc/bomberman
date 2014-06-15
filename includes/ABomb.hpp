@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Wed May  7 16:03:12 2014 Steven Martreux
-// Last update Sat Jun  7 18:43:31 2014 Steven Martreux
+// Last update Sun Jun 15 17:03:00 2014 Remi telenczak
 //
 
 #ifndef		_ABOMB_HPP_

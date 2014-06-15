@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
-// Last update Sun Jun 15 12:06:33 2014 Steven Martreux
+// Last update Sun Jun 15 18:37:25 2014 Steven Martreux
 */
 
 #include <iostream>
@@ -39,7 +39,7 @@ int	main(int ac, char **av)
 
 	  //save = new LoadGame("save/test.xml", load->getEventManager(), load->getModel(), engine->getClock());
 	  //m = save->getMap();
-	  GenereMap gen(11, 11, 0, load->getEventManager(), load->getModel(), engine->getClock());
+	  GenereMap gen(41, 41, 10, load->getEventManager(), load->getModel(), engine->getClock());
 	  Map *m = gen.getMap();
 	  Controller	joystick(load->getEventManager());;
 	  m->setSkybox(new Skybox(m, load->getModel(), load->getEventManager(), engine->getClock()));
