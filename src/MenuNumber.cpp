@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Mon Jun  2 02:08:04 2014 Remi telenczak
-// Last update Sun Jun 15 04:57:36 2014 dedicker remi
+// Last update Sun Jun 15 06:08:16 2014 dedicker remi
 //
 
 #include	<list>
@@ -73,6 +73,8 @@ void	MenuNumber::setMinNumber(int Ntime)
   firstBox->set_vy(-1.8);
   this->listBox.push_back(firstBox);
   result.push_back(1);
+  std::cout << getResult() << std::endl;
+  std::cout << Ntime << std::endl;
   int	i = 0;
   while (i < Ntime)
     {

@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Sun Jun 15 02:08:23 2014 dedicker remi
+// Last update Sun Jun 15 05:51:40 2014 thomas mendez
 //
 
 #include	"OVR.h"
@@ -203,6 +203,19 @@ bool	Graphics::update(Menu *menu)
   return true;
 }
 
+// bool	Graphics::update(MenuIG *menuIG)
+// {
+//   if (_input.getKey(SDLK_ESCAPE) || _input.getInput(SDL_QUIT))
+//     return false;
+//   _context.updateClock(*_clock);
+//   _context.updateInputs(_input);
+//   glm::vec3 rotationOculus;
+//   rotationOculus = _camera->getRotation();
+//   menu->update(*_clock, _input, rotationOculus);
+//   this->inputUpdate();
+//   _event->dispatchEvent("rotOcu", &rotationOculus);
+//   return true;
+// }
 
 void		Graphics::drawDoubleStereo(Menu *menu)
 {

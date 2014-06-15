@@ -5,12 +5,12 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Fri May 23 03:51:01 2014 Remi telenczak
-// Last update Sat Jun 14 23:32:19 2014 Remi telenczak
+// Last update Sun Jun 15 05:32:42 2014 Steven Martreux
 //
 
-#include	"AFire.hpp"
-#include	"Map.hpp"
-#include	"APlayer.hpp"
+#include		"AFire.hpp"
+#include		"Map.hpp"
+#include		"APlayer.hpp"
 
 AFire::AFire(Map *map, ModelList *model, EventManager *event, std::vector<APlayer *> *playerTouched, gdl::Clock *clock, int bombId) : AObjectPhysic(map, model, event, clock), _damage(1), _bombId(bombId)
 {
@@ -25,47 +25,47 @@ AFire::~AFire()
 
 }
 
-int	AFire::getBombId() const
+int			AFire::getBombId() const
 {
   return _bombId;
 }
 
-void	AFire::setBombId(int bombId)
+void			AFire::setBombId(int bombId)
 {
   _bombId = bombId;
 }
 
-std::vector<APlayer *> *AFire::getPlayerTouched() const
+std::vector<APlayer *>	*AFire::getPlayerTouched() const
 {
   return _playerTouched;
 }
 
-void	AFire::setPlayerTouched(std::vector<APlayer *> *playerTouched)
+void			AFire::setPlayerTouched(std::vector<APlayer *> *playerTouched)
 {
   _playerTouched = playerTouched;
 }
 
-void	AFire::setTime(int time)
+void			AFire::setTime(int time)
 {
   this->_time = time;
 }
 
-int	AFire::getTime(void) const
+int			AFire::getTime(void) const
 {
   return this->_time;
 }
 
-void	AFire::setDamage(int damage)
+void			AFire::setDamage(int damage)
 {
   this->_damage = damage;
 }
 
-int	AFire::getDamage(void) const
+int			AFire::getDamage(void) const
 {
   return this->_damage;
 }
 
-int	AFire::isInVec(APlayer *player)
+int			AFire::isInVec(APlayer *player)
 {
   std::vector<APlayer *>::iterator it;
 
@@ -79,7 +79,7 @@ int	AFire::isInVec(APlayer *player)
   return 0;
 }
 
-void	AFire::checkPlayerColl()
+void			AFire::checkPlayerColl()
 {
   std::vector<APlayer *>	players;
   std::vector<APlayer *>::iterator it;

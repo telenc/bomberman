@@ -88,11 +88,13 @@ SRC		= src/main.cpp \
 		src/Bloc/DestrucWall.cpp \
 		src/Bloc/MenuWall.cpp \
 		src/Bloc/MenuBox.cpp \
+		src/Bloc/MenuBoxIG.cpp \
 		src/Bloc/PlayBox.cpp \
 		src/Bloc/CreditsBox.cpp \
 		src/Bloc/MenuBoxNumber.cpp \
 		src/Bloc/LoadBox.cpp \
 		src/Bloc/SettingBox.cpp \
+		src/Bloc/SettingBoxIG.cpp \
 		src/GenereMap.cpp	\
 		src/Bomb/DefaultBomb.cpp \
 		src/Controller.cpp	\
@@ -111,8 +113,11 @@ SRC		= src/main.cpp \
 		src/SaveGame.cpp	\
 		src/MenuNumber.cpp \
 		src/MainMenu.cpp \
+		src/MainMenuIG.cpp \
 		src/PlayMenu.cpp \
+		src/MenuIG.cpp \
 		src/SettingsMenu.cpp \
+		src/SettingsMenuIG.cpp \
 		src/LoadMenu.cpp \
 		src/CreditsMenu.cpp \
 		src/IaBomber.cpp \
