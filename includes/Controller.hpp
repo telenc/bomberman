@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 // 
 // Started on  Wed May 21 12:52:03 2014 Steven Martreux
-// Last update Sat Jun 14 17:45:38 2014 Steven Martreux
+// Last update Sun Jun 15 07:21:56 2014 Steven Martreux
 //
 
 #ifndef		_CONTROLLER_HPP_
@@ -47,6 +47,7 @@ private:
   int		_downMenu;
   int		_start;
   int		_stop;
+  int		_select;
 };
 
 #endif		/* _CONTROLLER_HPP_ */

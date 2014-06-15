@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Wed May 21 12:42:20 2014 Steven Martreux
-// Last update Sat Jun 14 17:46:07 2014 Steven Martreux
+// Last update Sun Jun 15 07:25:48 2014 Steven Martreux
 //
 
 #include	"Controller.hpp"
@@ -43,6 +43,7 @@ void	Controller::initVar()
   _start = 0;
   _back = 0;
   _stop = 0;
+  _select = 0;
 }
 
 void	Controller::setRightLeft(int right, int left)
@@ -59,10 +60,12 @@ void	Controller::setUpDown(int up, int down)
 
 void	Controller::CheckAxeLeftRight()
 {
-  if (SDL_JoystickGetAxis(_joystick, 0) < -4000)
+  if (SDL_JoystickGetAxis(_joystick, 0) < -10000)
     this->setRightLeft(0, 1);
-  else if (SDL_JoystickGetAxis(_joystick, 0) > 4000)
+  else if (SDL_JoystickGetAxis(_joystick, 0) > 10000)
     this->setRightLeft(1, 0);
+  else
+    this->setRightLeft(0, 0);
 }
 
 void	Controller::CheckAxeUpDown()
@@ -137,6 +140,12 @@ void	Controller::sendEvent()
       _eventManager->dispatchEvent("stopanim", NULL);
       _stop = 0;
     }
+  if (_select == 2)
+    {
+      _eventManager->dispatchEvent("select", NULL);
+      std::cout << "SELECT PD" << std::endl;
+      _select = 0;
+    }
 }
 
 void	Controller::varUpdate()
@@ -151,7 +160,7 @@ void	Controller::update()
 {
   SDL_JoystickUpdate();
   varUpdate();
-  if (SDL_JoystickGetAxis(_joystick, 0) < -4000 || SDL_JoystickGetAxis(_joystick, 0) > 4000)
+  if (SDL_JoystickGetAxis(_joystick, 0) < -10000 || SDL_JoystickGetAxis(_joystick, 0) > 10000)
     CheckAxeLeftRight();
   else if (SDL_JoystickGetAxis(_joystick, 1) < -4000 || SDL_JoystickGetAxis(_joystick, 1) > 4000)
     CheckAxeUpDown();
@@ -175,5 +184,9 @@ void	Controller::update()
     _start = 1;
   if (_start == 1 && SDL_JoystickGetButton(_joystick, 7) != 1)
     _start = 2;
+  if (SDL_JoystickGetButton(_joystick, 6) == 1)
+    _select = 1;
+  else if (_select == 1 && SDL_JoystickGetButton(_joystick, 6) != 1)
+    _select = 2;
   sendEvent();
 }
