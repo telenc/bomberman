@@ -5,11 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:27:33 2014 dedicker remi
-<<<<<<< HEAD
-// Last update Sun Jun 15 19:12:15 2014 Remi telenczak
-=======
-// Last update Sun Jun 15 19:04:58 2014 Steven Martreux
->>>>>>> 3429f6bd1a594bee6840e7e3fb7e43f74209d422
+// Last update Sun Jun 15 19:17:41 2014 Remi telenczak
 //
 
 #ifndef		PLAYER_HPP_
@@ -34,14 +30,9 @@ public:
   void		eventRotateLeft(void *data);
   void		eventKeyA(void *data);
 private:
-<<<<<<< HEAD
-  void	resetAnim();
-  void	move(glm::vec3, std::string);
-=======
   void		resetAnim();
   void		move(glm::vec3, std::string);
   ICallBack	*callPosPlayer;
->>>>>>> 3429f6bd1a594bee6840e7e3fb7e43f74209d422
   ICallBack	*callKeyUp;
   ICallBack	*callKeyDown;
   ICallBack	*callKeyLeft;
