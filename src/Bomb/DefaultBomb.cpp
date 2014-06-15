@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 21 01:36:36 2014 Remi telenczak
-// Last update Sun Jun 15 19:06:55 2014 Remi telenczak
+// Last update Sun Jun 15 19:40:25 2014 Remi telenczak
 //
 
 #include	"DefaultBomb.hpp"
@@ -24,8 +24,10 @@ DefaultBomb::DefaultBomb(Map *map, ModelList *model, EventManager *event, APlaye
   this->_typePrecis = DEFAULTBOMB;
 }
 
-bool	DefaultBomb::update(gdl::Clock const &clock, gdl::Input &input)
+bool		DefaultBomb::update(gdl::Clock const &clock, gdl::Input &input)
 {
+  time_t	currTime;
+
   if (this->get_scax() >= 1)
     this->_direction = -1;
   else if (this->get_scax() <= 0.5)
@@ -38,8 +40,6 @@ bool	DefaultBomb::update(gdl::Clock const &clock, gdl::Input &input)
       if (this->collision((AObjectPhysic *)this->_player) == false)
 	this->_playerColl = true;
     }
-  time_t currTime;
-
   time(&currTime);
   this->_time -= (clock.getElapsed() * 1000);
   if (this->_died == true)
@@ -55,20 +55,18 @@ bool	DefaultBomb::update(gdl::Clock const &clock, gdl::Input &input)
       return false;
     }
   return true;
-  (void)clock;
   (void)input;
 }
 
-void	DefaultBomb::createDeflag()
+void				DefaultBomb::createDeflag()
 {
-  DefaultFire	*fire;
-  int		x;
-  int		z;
-  std::vector<APlayer *> *listPlayer;
-  ABloc		*bloc;
+  DefaultFire			*fire;
+  int				x;
+  int				z;
+  std::vector<APlayer *>	*listPlayer;
+  ABloc				*bloc;
 
   listPlayer = new std::vector<APlayer *>;
-  (void)listPlayer;
   x = this->_position.x;
   while (x >= (this->_position.x - this->_po * 3))
     {
@@ -88,8 +86,7 @@ void	DefaultBomb::createDeflag()
 	}
       x -= 3;
     }
-
-  x = this->_position.x;// - (this->_po * 3);
+  x = this->_position.x;
   while (x <= (this->_position.x + this->_po * 3))
     {
       if (x != this->_position.x)
@@ -108,8 +105,7 @@ void	DefaultBomb::createDeflag()
 	}
       x += 3;
     }
-
-  z = this->_position.z;// - (this->_po * 3);
+  z = this->_position.z;
   while (z >= this->_position.z - (this->_po * 3))
     {
       if (z != this->_position.z)
@@ -120,19 +116,15 @@ void	DefaultBomb::createDeflag()
 	  if ((bloc = (ABloc *)fire->checkPositionCollision(BLOC)) != NULL)
 	    {
 	      bloc->fireTouch();
-	      //if (bloc->fireTouch() == false)
-	      //this->_map->setMap(fire);
 	      delete fire;
 	      z = this->_position.z - (this->_po * 3) - 1;
 	    }
 	  else
 	    this->_map->setFire(fire);
-
 	}
       z -= 3;
     }
-
-  z = this->_position.z;// - (this->_po * 3);
+  z = this->_position.z;
   while (z <= this->_position.z + (this->_po * 3))
     {
       if (z != this->_position.z)

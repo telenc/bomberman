@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 17:53:20 2014 dedicker remi
-// Last update Sun Jun 15 19:08:49 2014 Remi telenczak
+// Last update Sun Jun 15 19:47:18 2014 Remi telenczak
 */
 
 #include	<iostream>
@@ -67,6 +67,7 @@ void	GenereMap::putWall()
   int	y;
   int	wall;
   ABloc	*wallObject;
+
   i = 0;
   while (i < _width)
     {
@@ -152,5 +153,4 @@ GenereMap::GenereMap(int width, int height, int ia, EventManager *event, ModelLi
 
 GenereMap::~GenereMap()
 {
-  std::cout << "GenereMap Destroyed!" << std::endl;
 }

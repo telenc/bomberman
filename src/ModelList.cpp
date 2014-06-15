@@ -114,7 +114,7 @@ gdl::Model	*ModelList::getModel(const std::string name)
   while (it != this->list.end())
     {
       if (it->first == name)
-	return it->second;//(this->createModel(it->second));
+	return it->second;
       it++;
     }
   return (NULL);

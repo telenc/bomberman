@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:26:53 2014 Remi telenczak
-// Last update Sun Jun 15 19:06:11 2014 Remi telenczak
+// Last update Sun Jun 15 19:38:10 2014 Remi telenczak
 //
 
 #include	"DestrucWall.hpp"
@@ -34,6 +34,10 @@ DestrucWall::DestrucWall(Map *map, ModelList *model, EventManager *event, gdl::C
 
 bool DestrucWall::update(gdl::Clock const &clock, gdl::Input &input)
 {
+  PoBonus	*po;
+  BombBonus	*bomb;
+  int		v1;
+
   if (this->_life == 2)
     {
       this->_skin = modelLife2;
@@ -48,10 +52,10 @@ bool DestrucWall::update(gdl::Clock const &clock, gdl::Input &input)
   (void)input;
   if (this->_life <= 0)
     {
-      int v1 = rand() % 9;
+      v1 = rand() % 7;
       if (v1 == 0 || v1 == 2)
 	{
-	  PoBonus *po = new PoBonus(this->_map, _modelList, _event, _clock);
+	  po = new PoBonus(this->_map, _modelList, _event, _clock);
 	  po->set_x(this->getPosition().x);
 	  po->set_y(this->getPosition().y);
 	  po->set_z(this->getPosition().z);
@@ -59,11 +63,11 @@ bool DestrucWall::update(gdl::Clock const &clock, gdl::Input &input)
 	}
       else if (v1 == 1 || v1 == 3)
 	{
-	  BombBonus *po = new BombBonus(this->_map, _modelList, _event, _clock);
-	  po->set_x(this->getPosition().x);
-	  po->set_y(this->getPosition().y);
-	  po->set_z(this->getPosition().z);
-	  this->_map->setBonus(po);
+	  bomb = new BombBonus(this->_map, _modelList, _event, _clock);
+	  bomb->set_x(this->getPosition().x);
+	  bomb->set_y(this->getPosition().y);
+	  bomb->set_z(this->getPosition().z);
+	  this->_map->setBonus(bomb);
 	}
       return false;
     }

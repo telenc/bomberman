@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:27:38 2014 dedicker remi
-// Last update Sun Jun 15 19:14:56 2014 Remi telenczak
+// Last update Sun Jun 15 20:00:22 2014 Remi telenczak
 //
 
 #include	"Player.hpp"
@@ -70,6 +70,7 @@ void	Player::eventKeyA(void *data)
   DefaultBomb	*bomb;
   int		x;
   int		z;
+  glm::vec3	t;
 
   if (this->_map->isPause() == true)
     return ;
@@ -88,7 +89,6 @@ void	Player::eventKeyA(void *data)
     z++;
   bomb->set_x(x);
   bomb->set_z(z);
-  glm::vec3 t;
   t.x = x;
   t.y  = 0;
   t.z = z;
@@ -105,11 +105,11 @@ void	Player::eventRotateRight(void *data)
   this->_event->dispatchEvent("playerRotateRight", this);
 }
 
-void	Player::eventRotate(void *data)
+void		Player::eventRotate(void *data)
 {
-  glm::vec3 *test;
-  (void)data;
+  glm::vec3	*test;
 
+  (void)data;
   if (this->_map->isPause() == true)
     return ;
   test = (glm::vec3 *)data;
@@ -124,7 +124,7 @@ void	Player::resetAnim()
   this->endRun = false;
 }
 
-void Player::move(glm::vec3 direct, std::string event)
+void		Player::move(glm::vec3 direct, std::string event)
 {
   glm::vec3	posSauv;
   glm::vec3	positionTrans;

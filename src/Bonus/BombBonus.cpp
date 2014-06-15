@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Fri May 30 04:40:51 2014 Remi telenczak
-// Last update Tue Jun  3 16:11:22 2014 Steven Martreux
+// Last update Sun Jun 15 19:40:56 2014 Remi telenczak
 //
 
 #include	"BombBonus.hpp"
@@ -23,14 +23,12 @@ BombBonus::BombBonus(Map *map, ModelList *model, EventManager *event, gdl::Clock
 
 bool	BombBonus::update(gdl::Clock const &clock, gdl::Input &input)
 {
-  float b = 5 * static_cast<float>(_clock->getElapsed()) * 10.f;
-  this->rotate(glm::vec3(0, 1, 0), b);
-  (void)clock;
-  (void)input;
-
   std::vector<APlayer *>	players;
   std::vector<APlayer *>::iterator it;
+  float b;
 
+  b == 5 * static_cast<float>(_clock->getElapsed()) * 10.f;
+  this->rotate(glm::vec3(0, 1, 0), b);
   if (this->_died == true)
     return false;
   players = this->_map->getPlayers();
@@ -45,6 +43,8 @@ bool	BombBonus::update(gdl::Clock const &clock, gdl::Input &input)
       it++;
     }
   return true;
+  (void)clock;
+  (void)input;
 }
 
 BombBonus::~BombBonus()

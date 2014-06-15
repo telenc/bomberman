@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 16:17:56 2014 Mathieu Choquart
-// Last update Sun Jun 15 17:20:26 2014 Remi telenczak
+// Last update Sun Jun 15 19:36:08 2014 Remi telenczak
 //
 
 #include	"AObjectPhysic.hpp"
@@ -64,7 +64,6 @@ void AObjectPhysic::draw(gdl::AShader &shader, gdl::Clock const &clock)
 
 bool AObjectPhysic::isInView(CameraBomber *camera)
 {
-
   glm::vec3	A(0, 0, 0);
   glm::vec3	B(0, 0, 0);
   glm::vec3	C(0, 0, 0);
@@ -85,22 +84,17 @@ bool AObjectPhysic::isInView(CameraBomber *camera)
   D.x = this->_position.x - (camera->getPosition().x * -1);
   D.z = this->_position.z - (camera->getPosition().z * -1);
   D.y = 0;
-
   if (D.x == 0 && D.z == 0)
     return false;
-
   or1 = glm::orientedAngle(glm::normalize(D), glm::normalize(B), glm::vec3(0,1,0));
   or2 = glm::orientedAngle(glm::normalize(C), glm::normalize(D), glm::vec3(0, 1, 0));
   if ((or1 < 0 && or2 < 0))
-    {
-      return true;
-    }
+    return true;
   return false;
 }
 
 bool AObjectPhysic::isInViewSol(CameraBomber *camera)
 {
-
   glm::vec3	A(0, 0, 0);
   glm::vec3	B(0, 0, 0);
   glm::vec3	C(0, 0, 0);
@@ -121,16 +115,12 @@ bool AObjectPhysic::isInViewSol(CameraBomber *camera)
   D.x = this->_position.x - (camera->getPosition().x * -1) - 1;
   D.z = this->_position.z - (camera->getPosition().z * -1) - 1;
   D.y = 0;
-
   if (D.x == 0 && D.z == 0)
     return false;
-
   or1 = glm::orientedAngle(glm::normalize(D), glm::normalize(B), glm::vec3(0,1,0));
   or2 = glm::orientedAngle(glm::normalize(C), glm::normalize(D), glm::vec3(0, 1, 0));
   if ((or1 < 0 && or2 < 0))
-    {
-      return true;
-    }
+    return true;
   return false;
 }
 
@@ -150,6 +140,7 @@ glm::vec3 AObjectPhysic::translate(glm::vec3 const &v)
 {
   glm::vec3 b = v * static_cast<float>(_clock->getElapsed()) * 10.f;
   glm::vec3 test = glm::rotateY(b,  -1 * (_rotation.y - 180));
+
   this->_position += test;
   return test;
 }
@@ -164,30 +155,27 @@ ModelList	*AObjectPhysic::getModelList() const
   return this->_modelList;
 }
 
-bool	AObjectPhysic::collision(AObjectPhysic *object)
+bool					AObjectPhysic::collision(AObjectPhysic *object)
 {
-  std::vector<glm::vec3>	arretePos;
+  std::vector<glm::vec3>		arretePos;
   std::vector<glm::vec3>::iterator	it;
-  glm::vec3	maxPos;
-  glm::vec3	minPos;
-  ABomb		*bomb;
+  glm::vec3				maxPos;
+  glm::vec3				minPos;
+  ABomb					*bomb;
 
   if (this->_type == PLAYER && object->getType() == BOMB)
     {
       bomb = (ABomb *)object;
-      //(void)bomb;
       if (bomb->getPlayerColl() == false && this->getId() == bomb->getPlayer()->getId())
-	{
 	  return false;
-	}
     }
   else if (this->_type == PLAYER && object->getType() == BONUS)
     return false;
   minPos.x = object->get_x() - (object->get_width() / 2);
-  minPos.y = object->get_y();// - (object->get_height() / 2);
+  minPos.y = object->get_y();
   minPos.z = object->get_z() - (object->get_depth() / 2);
   maxPos.x = object->get_x() + (object->get_width() / 2);
-  maxPos.y = object->get_y() + (object->get_height());// / 2);
+  maxPos.y = object->get_y() + (object->get_height());
   maxPos.z = object->get_z() + (object->get_depth() / 2);
   arretePos = this->getAllCorner();
   it = arretePos.begin();
@@ -202,18 +190,18 @@ bool	AObjectPhysic::collision(AObjectPhysic *object)
   return false;
 }
 
-bool	AObjectPhysic::collisionNo(AObjectPhysic *object)
+bool					AObjectPhysic::collisionNo(AObjectPhysic *object)
 {
-  std::vector<glm::vec3>	arretePos;
+  std::vector<glm::vec3>		arretePos;
   std::vector<glm::vec3>::iterator	it;
-  glm::vec3	maxPos;
-  glm::vec3	minPos;
+  glm::vec3				maxPos;
+  glm::vec3				minPos;
 
   minPos.x = object->get_x() - (object->get_width() / 2);
-  minPos.y = object->get_y();// - (object->get_height() / 2);
+  minPos.y = object->get_y();
   minPos.z = object->get_z() - (object->get_depth() / 2);
   maxPos.x = object->get_x() + (object->get_width() / 2);
-  maxPos.y = object->get_y() + (object->get_height());// / 2);
+  maxPos.y = object->get_y() + (object->get_height());
   maxPos.z = object->get_z() + (object->get_depth() / 2);
   arretePos = this->getAllCorner();
   it = arretePos.begin();
@@ -258,7 +246,7 @@ glm::vec3	AObjectPhysic::getCornerOne()
   glm::vec3	result;
 
   result.x = this->_position.x - (this->get_width() / 2);
-  result.y = this->_position.y;// - (this->get_height() / 2);
+  result.y = this->_position.y;
   result.z = this->_position.z - (this->get_depth() / 2);
   return result;
 }
@@ -268,7 +256,7 @@ glm::vec3	AObjectPhysic::getCornerTwo()
   glm::vec3	result;
 
   result.x = this->_position.x - (this->get_width() / 2);
-  result.y = this->_position.y + (this->get_height());// / 2);
+  result.y = this->_position.y + (this->get_height());
   result.z = this->_position.z - (this->get_depth() / 2);
   return result;
 }
@@ -278,7 +266,7 @@ glm::vec3	AObjectPhysic::getCornerThree()
   glm::vec3	result;
 
   result.x = this->_position.x + (this->get_width() / 2);
-  result.y = this->_position.y;// - (this->get_height() / 2);
+  result.y = this->_position.y;
   result.z = this->_position.z - (this->get_depth() / 2);
   return result;
 }
@@ -288,7 +276,7 @@ glm::vec3	AObjectPhysic::getCornerFour()
   glm::vec3	result;
 
   result.x = this->_position.x + (this->get_width() / 2);
-  result.y = this->_position.y + (this->get_height());// / 2);
+  result.y = this->_position.y + (this->get_height());
   result.z = this->_position.z - (this->get_depth() / 2);
   return result;
 }
@@ -298,7 +286,7 @@ glm::vec3	AObjectPhysic::getCornerFive()
   glm::vec3	result;
 
   result.x = this->_position.x - (this->get_width() / 2);
-  result.y = this->_position.y;// - (this->get_height() / 2);
+  result.y = this->_position.y;
   result.z = this->_position.z + (this->get_depth() / 2);
   return result;
 }
@@ -308,7 +296,7 @@ glm::vec3	AObjectPhysic::getCornerSix()
   glm::vec3	result;
 
   result.x = this->_position.x - (this->get_width() / 2);
-  result.y = this->_position.y + (this->get_height());// / 2);
+  result.y = this->_position.y + (this->get_height());
   result.z = this->_position.z + (this->get_depth() / 2);
   return result;
 }
@@ -318,7 +306,7 @@ glm::vec3	AObjectPhysic::getCornerSeven()
   glm::vec3	result;
 
   result.x = this->_position.x + (this->get_width() / 2);
-  result.y = this->_position.y;// - (this->get_height() / 2);
+  result.y = this->_position.y;
   result.z = this->_position.z + (this->get_depth() / 2);
   return result;
 }
@@ -328,7 +316,7 @@ glm::vec3	AObjectPhysic::getCornerHeight()
   glm::vec3	result;
 
   result.x = this->_position.x + (this->get_width() / 2);
-  result.y = this->_position.y + (this->get_height());// / 2);
+  result.y = this->_position.y + (this->get_height());
   result.z = this->_position.z + (this->get_depth() / 2);
   return result;
 }
@@ -338,9 +326,9 @@ TypeObjectPrecis	AObjectPhysic::getTypePrecis() const
   return this->_typePrecis;
 }
 
-AObjectPhysic	*AObjectPhysic::checkPositionCollision(TypeObject type)
+AObjectPhysic					*AObjectPhysic::checkPositionCollision(TypeObject type)
 {
-  std::vector<AObjectPhysic *>	objects;
+  std::vector<AObjectPhysic *>			objects;
   std::vector<AObjectPhysic *>::iterator	it;
 
   objects = this->_map->getObjectsPos(this);
@@ -532,7 +520,6 @@ void		AObjectPhysic::set_depth(int depth)
 {
     this->_depth = depth;
 }
-
 
 void		AObjectPhysic::set_graphic(Graphics *graphic)
 {

@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Fri May 23 03:51:01 2014 Remi telenczak
-// Last update Sun Jun 15 12:00:04 2014 Remi telenczak
+// Last update Sun Jun 15 19:33:03 2014 Remi telenczak
 //
 
 #include		"AFire.hpp"
@@ -65,9 +65,9 @@ int			AFire::getDamage(void) const
   return this->_damage;
 }
 
-int			AFire::isInVec(APlayer *player)
+int					AFire::isInVec(APlayer *player)
 {
-  std::vector<APlayer *>::iterator it;
+  std::vector<APlayer *>::iterator	it;
 
   it = _playerTouched->begin();
   while (it != _playerTouched->end())
@@ -79,17 +79,15 @@ int			AFire::isInVec(APlayer *player)
   return 0;
 }
 
-void			AFire::checkPlayerColl()
+void					AFire::checkPlayerColl()
 {
-  std::vector<APlayer *>	players;
-  std::vector<APlayer *>::iterator it;
+  std::vector<APlayer *>		players;
+  std::vector<APlayer *>::iterator	it;
 
   players = this->_map->getPlayers();
   it = players.begin();
-
   while (it != players.end())
     {
-
       if (this->collision(*it) == true)
 	{
 	  if (isInVec(*it) == 0)

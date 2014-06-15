@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May  7 06:31:46 2014 Remi telenczak
-// Last update Sun Jun 15 19:10:25 2014 Remi telenczak
+// Last update Sun Jun 15 19:46:52 2014 Remi telenczak
 //
 
 #include	<iostream>
@@ -48,11 +48,11 @@ void	EventManager::listenEvent(std::string event, ICallBack *callBack)
 }
 
 
-void	EventManager::dispatchEvent(std::string event, void *data)
+void								EventManager::dispatchEvent(std::string event, void *data)
 {
-  std::vector<std::pair<std::string, ICallBack *> >::iterator it;
-  std::list<ICallBack *>	listCallBack;
-  ICallBack			*tmp;
+  std::vector<std::pair<std::string, ICallBack *> >::iterator	it;
+  std::list<ICallBack *>					listCallBack;
+  ICallBack							*tmp;
 
   it = this->_listEvent.begin();
   while (it != this->_listEvent.end())
@@ -70,9 +70,9 @@ void	EventManager::dispatchEvent(std::string event, void *data)
     }
 }
 
-void	EventManager::removeEvent(std::string event, ICallBack *callBack)
+void								EventManager::removeEvent(std::string event, ICallBack *callBack)
 {
-  std::vector<std::pair<std::string, ICallBack *> >::iterator it;
+  std::vector<std::pair<std::string, ICallBack *> >::iterator	it;
 
   it = this->_listEvent.begin();
   while (it != this->_listEvent.end())
