@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 // 
 // Started on  Sun Jun 15 04:19:01 2014 thomas mendez
-// Last update Sun Jun 15 16:54:43 2014 dedicker remi
+// Last update Sun Jun 15 18:40:22 2014 thomas mendez
 //
 
 #ifndef		_MENUIG_BOMBERMAN
@@ -37,6 +37,7 @@
 #include	"MenuBoxIG.hpp"
 #include	"MenuWall.hpp"
 # include	"MainMenuIG.hpp"
+# include	"SaveMenu.hpp"
 # include	"SettingsMenuIG.hpp"
 # include	"CallBack.hpp"
 
@@ -70,6 +71,7 @@ private:
   glm::vec3 _rotationOculus;
   MainMenuIG *_mainMenuIG;
   SettingsMenuIG *_settingsMenuIG;
+  SaveMenu *_saveMenu;
   int	currentMenuIG;
   ICallBack *_callKeyA;
   ICallBack *_callKeyB;

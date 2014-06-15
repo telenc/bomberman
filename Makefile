@@ -93,6 +93,7 @@ SRC		= src/main.cpp \
 		src/Bloc/CreditsBox.cpp \
 		src/Bloc/MenuBoxNumber.cpp \
 		src/Bloc/LoadBox.cpp \
+		src/Bloc/SaveBox.cpp \
 		src/Bloc/SettingBox.cpp \
 		src/Bloc/SettingBoxIG.cpp \
 		src/GenereMap.cpp	\
@@ -119,6 +120,7 @@ SRC		= src/main.cpp \
 		src/SettingsMenu.cpp \
 		src/SettingsMenuIG.cpp \
 		src/LoadMenu.cpp \
+		src/SaveMenu.cpp \
 		src/CreditsMenu.cpp \
 		src/IaBomber.cpp \
 

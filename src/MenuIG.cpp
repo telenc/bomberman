@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 // 
 // Started on  Sun Jun 15 03:43:30 2014 thomas mendez
-// Last update Sun Jun 15 17:58:00 2014 thomas mendez
+// Last update Sun Jun 15 18:42:56 2014 thomas mendez
 //
 
 #include	<iostream>
@@ -13,6 +13,7 @@
 #include	"Skybox.hpp"
 #include	"SettingsMenuIG.hpp"
 #include	"MainMenuIG.hpp"
+#include	"SaveMenu.hpp"
 #include	"CallBack.hpp"
 
 MenuIG::MenuIG(ModelList *mod, EventManager *event, gdl::Clock *clock) : _mod(mod), _event(event), _clock(clock), _finish(1), _sound(1)
@@ -20,6 +21,7 @@ MenuIG::MenuIG(ModelList *mod, EventManager *event, gdl::Clock *clock) : _mod(mo
   std::cout << "Debut constructeur MEnu" << std::endl;
   _mainMenuIG = new MainMenuIG(mod, event);
   _settingsMenuIG = new SettingsMenuIG(mod, event);
+  _saveMenu = new SaveMenu(mod, event);
   currentMenuIG = 0;
   _callKeyA = new CallBack<MenuIG>(this, &MenuIG::eventKeyA);
   event->listenEvent("keyA", _callKeyA);
@@ -124,6 +126,8 @@ void	MenuIG::callFaceFunction()
     faceMainMenuIG();
   else if (this->currentMenuIG == 1)
     faceSettingsMenuIG();
+  else if (this->currentMenuIG == 2)
+    faceSettingsMenuIG();
 }
 
 void    MenuIG::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
@@ -132,6 +136,8 @@ void    MenuIG::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
     this->currentMenuIG = _mainMenuIG->draw(shader, clock);
   else if (this->currentMenuIG == 1)
     this->currentMenuIG = _settingsMenuIG->draw(shader, clock);
+  else if (this->currentMenuIG == 2)
+    this->currentMenuIG = _saveMenu->draw(shader, clock);
 }
 
 void	MenuIG::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus)
@@ -141,10 +147,13 @@ void	MenuIG::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus
     _mainMenuIG->update(clock, input, cameraOculus);
   else if (this->currentMenuIG == 1)
     _settingsMenuIG->update(clock, input, cameraOculus);
+  else if (this->currentMenuIG == 2)
+    _saveMenu->update(clock, input, cameraOculus);
 }
 
 void	MenuIG::setSkybox(Skybox *skybox)
 {
   _mainMenuIG->setSkybox(skybox);
   _settingsMenuIG->setSkybox(skybox);
+  _saveMenu->setSkybox(skybox);
 }
