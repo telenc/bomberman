@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Fri May  9 14:18:15 2014 Steven Martreux
-// Last update Sun Jun 15 20:29:31 2014 thomas mendez
+// Last update Sun Jun 15 22:08:20 2014 thomas mendez
 //
 
 #include	"Game.hpp"
@@ -18,7 +18,7 @@ Game::Game() : _display(0)
 {
   if (getenv("DISPLAY") == NULL)
     throw new myException("Where is env ?");
-  //  this->intro_game();
+  this->intro_game();
   this->eventManager = new EventManager();
   this->load = new Loader();
   while (load->getFinish() != true);
@@ -71,7 +71,7 @@ void    Game::eventKeyStart(void *data)
 
 void	Game::playMenu()
 {
-  while (engine->update(menu) && menu->getFinish() != 0 && menu->getGoMap() != 1 && menu->getGoMap() != 2)
+  while (engine->update(menu) && menu->getFinish() != 0 && menu->getGoMap() != 1 && menu->getGoMap() != 2 &&  menu->getGoMap() != 3)
     {
       engine->draw(menu);
       joystick->update();
@@ -82,6 +82,7 @@ void	Game::playMenu()
       this->map = _gen->getMap();
       this->map->setSkybox(new Skybox(map, load->getModel(), load->getEventManager(), engine->getClock()));
       _display = 1;
+      this->engine->getCamera()->setPosition(-3, -4, -3);
       this->menu->setGoMap(0);
     }
   else if (menu->getGoMap() == 2 && menu->getFinish() != 0)
@@ -90,6 +91,15 @@ void	Game::playMenu()
       this->map = _gen->getMap();
       this->map->setSkybox(new Skybox(map, load->getModel(), load->getEventManager(), engine->getClock()));
       _display = 1;
+      this->engine->getCamera()->setPosition(-3, -4, -3);
+      this->menu->setGoMap(0);
+    }
+  else if (menu->getGoMap() == 3 && menu->getFinish() != 0)
+    {  
+      this->map = menu->getLoadGame()->getMap();
+      this->map->setSkybox(new Skybox(map, load->getModel(), load->getEventManager(), engine->getClock()));
+      _display = 1;
+      this->engine->getCamera()->setPosition(-3, -4, -3);
       this->menu->setGoMap(0);
     }
   else if (menu->getGoMap() == 0)
@@ -134,21 +144,25 @@ void    Game::playMap()
         engine->draw(map);
       else
         {
-          if (menuIG->getBack() == 1)
+	  engine->draw(menuIG);
+	  engine->update(menuIG, map);
+	  if (menuIG->getBack() == 1)
             {
               this->map->setSelect(false);
               menuIG->setBack(0);
-              this->engine->getCamera()->setPosition(-3, -4, -3);
+	      this->engine->getCamera()->setPosition(-1 * map->getPlayer()->getPosition().x, -4, -1 * map->getPlayer()->getPosition().z);
             }
-          //      if (menuIG->getBack() == 1)
-          //_runMap = 1;
-          engine->draw(menuIG);
-	  engine->update(menuIG, map);
+
         }
       joystick->update();
     }
-
-  this->menu->setFinish(0);
+  if (map->isFinish())
+    {
+      menu->setCurrentMenu(0);
+      _display = 0;
+    }
+  else
+    this->menu->setFinish(0);
 }
 
 bool	Game::update()
@@ -158,5 +172,5 @@ bool	Game::update()
 
 Game::~Game()
 {
-  //  delete eventManager;
+  delete eventManager;
 }

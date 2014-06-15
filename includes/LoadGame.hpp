@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Mon May 12 13:51:56 2014 Steven Martreux
-// Last update Sun Jun 15 19:48:10 2014 Steven Martreux
+// Last update Sun Jun 15 21:14:22 2014 thomas mendez
 //
 
 #ifndef		_LOAD_GAME_HPP
@@ -49,7 +49,6 @@ public:
   std::vector<APlayer *> *getVectorPlayer(TiXmlElement *);
   APlayer	*GetPlayerBomb(int);
   void		 getPlayer();
-  bool		ChangeMd5();
   bool		checkFile();
   IaBomber	*getIa(int, int, int);
   void		getIas();

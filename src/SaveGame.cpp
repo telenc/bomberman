@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 // 
 // Started on  Fri May 30 16:39:48 2014 Steven Martreux
-// Last update Sun Jun 15 17:55:32 2014 Steven Martreux
+// Last update Sun Jun 15 21:46:24 2014 thomas mendez
 //
 
 #include	"SaveGame.hpp"
@@ -35,25 +35,6 @@ void		SaveGame::ChangeMd5()
 {
   std::string str = "md5sum " + _fileName + " > ." +_fileName + ".md5";
   system(str.c_str());
-  std::string filename = "." + _fileName + ".md5";
-  std::fstream file1(filename.c_str());
-  std::string file2name = "." + _fileName + "00.md5";
-  std::ofstream file2(file2name.c_str());
-  char	string1[256];
-  int	i = 0;
-
-  while (!file1.eof())
-    {
-      file1.getline(string1, 256);
-      while (string1[i])
-	{
-	  string1[i] = string1[i] + 30;
-	  i++;
-	}
-      string1[i] = '\0';
-      file2 << string1;
-    }
-  remove(filename.c_str());
 }
 
 std::string	SaveGame::ConstCharByFloat(float x) const
@@ -300,7 +281,7 @@ void	SaveGame::SaveMapSize()
   _mapSize = new TiXmlElement("Map_Size");
   _mapSize->SetAttribute("width", widht.str().c_str());
   _mapSize->SetAttribute("height", height.str().c_str());
-  //_mapSize->SetAttribute("TypeGame", ConstCharByInt(_map->getTypeMap()).c_str());
+  _mapSize->SetAttribute("TypeGame", ConstCharByInt(_map->getTypeMap()).c_str());
   _bomberman->LinkEndChild(_mapSize);
 }
 

@@ -1,7 +1,0 @@
-<Bomberman>
-  <Map_Size width="50" height="50"/>
-  <Map object="defaultwall" x="0" y="0" z="0"/>
-  <Map object="defaultwall" x="1" y="1" z="1"/>
-  <Map object="defaultwall" x="2" y="2" z="2"/>
-  <Map object="defaultwall" x="3" y="3" z="3"/>
-</Bomberman>

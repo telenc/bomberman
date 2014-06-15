@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:10:16 2014 thomas mendez
-// Last update Sun Jun 15 20:34:13 2014 thomas mendez
+// Last update Sun Jun 15 20:55:03 2014 thomas mendez
 //
 
 #ifndef		GRAPHICS_HH__BOMBER
@@ -33,10 +33,10 @@
 #include	"DefaultWall.hpp"
 #include	"Map.hpp"
 #include	"EventManager.hpp"
-#include	"Menu.hpp"
-#include	"MenuIG.hpp"
 
 class Player;
+class Menu;
+class MenuIG;
 
 class AObjectPhysic;
 class		Graphics

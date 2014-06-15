@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 21 01:36:36 2014 Remi telenczak
-// Last update Sun Jun 15 20:23:17 2014 Remi telenczak
+// Last update Sun Jun 15 22:00:03 2014 thomas mendez
 //
 
 #include	"DefaultBomb.hpp"
@@ -16,7 +16,7 @@
 DefaultBomb::DefaultBomb(Map *map, ModelList *model, EventManager *event, APlayer *player, gdl::Clock *clock) : ABomb(map, model, event, player, clock)
 {
   this->_skin = _modelList->getModel("defaultBomb");
-  this->set_y(-2);
+  this->set_y(2);
   this->rotate(glm::vec3(0, 1, 0), 45);
   this->rotate(glm::vec3(1, 0, 0), -25);
   this->rotate(glm::vec3(0, 0, 1), -25);

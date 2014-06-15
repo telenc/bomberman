@@ -5,10 +5,11 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Mon May 12 13:48:39 2014 Steven Martreux
-// Last update Sun Jun 15 20:02:14 2014 Remi telenczak
+// Last update Sun Jun 15 21:48:17 2014 thomas mendez
 //
 
 #include	<cstring>
+#include	<string.h>
 #include	<tinyxml.h>
 #include	"LoadGame.hpp"
 
@@ -36,66 +37,30 @@ LoadGame::LoadGame(const std::string & file, EventManager *event, ModelList *mod
   this->getObjMap();
 }
 
-bool	LoadGame::ChangeMd5()
-{
-  std::string file2name = "." + _file + "00.md5";
-  std::string filename = "." + _file + ".md5";
-  std::fstream file1(file2name.c_str());
-  std::ofstream file2(filename.c_str());
-  char	string1[256];
-  int	i = 0;
-
-  if (!file1.is_open())
-    {
-      while (!file1.eof())
-	{
-	  file1.getline(string1, 256);
-	  if (strlen(string1) == 0)
-	    return false;
-	  while (string1[i])
-	    i++;
-	  i--;
-	  while (i >= 0)
-	    {
-	      string1[i] = string1[i] - 30;
-	      i--;
-	    }
-	  file2 << string1;
-	}
-      remove(file2name.c_str());
-      return true;
-    }
-  return false;
-}
-
 bool	LoadGame::checkFile()
 {
-  if (this->ChangeMd5() == false)
-    return false;
   std::string str = "md5sum " + _file + " > ." + _file + ".md5test";
   system(str.c_str());
   std::string namefile1 = "." + _file + ".md5test";
   std::string namefile2 = "." + _file + ".md5";
   std::fstream file1(namefile1.c_str());
   std::fstream file2(namefile2.c_str());
-  char	string1[256];
-  char	string2[256];
+  std::ifstream fichier1(namefile1.c_str(), std::ios::in);
+  std::ifstream fichier2(namefile2.c_str(), std::ios::in);
 
-  if (!file1.is_open() || !file2.is_open())
+  if (fichier1 && fichier2)
     {
-      while (!file1.eof())
+      std::string lignef1;
+      std::string lignef2;
+      while (std::getline( fichier1, lignef1) && std::getline( fichier2, lignef2))
 	{
-	  file1.getline(string1, 256);
-	  file2.getline(string2, 256);
-	  if (strcmp(string1, string2) != 0)
+	  std::cout << "TEST" << std::endl;
+	  if (strcmp(lignef1.c_str(),lignef2.c_str()) !=0)
 	    {
-	      remove(namefile1.c_str());
-	      remove(namefile2.c_str());
+	      std::cout << "NOT GOOD" << std::endl;
 	      return false;
 	    }
 	}
-      remove(namefile1.c_str());
-      remove(namefile2.c_str());
       return true;
     }
   return false;
@@ -355,6 +320,7 @@ void	LoadGame::getIas()
 	  _mapGame->setIa(ia);
 	  _ia = _ia->NextSiblingElement("Ia");
 	}
+      return;
     }
   throw new myException("PLAYER IA NOT FOUND");
 }

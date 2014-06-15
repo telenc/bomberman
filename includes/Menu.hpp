@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:19 2014 Remi telenczak
-// Last update Sun Jun 15 19:10:34 2014 thomas mendez
+// Last update Sun Jun 15 20:59:46 2014 thomas mendez
 //
 
 #ifndef		_MENU_BOMBERMAN
@@ -39,6 +39,7 @@
 # include	"MainMenu.hpp"
 # include	"SettingsMenu.hpp"
 # include	"PlayMenu.hpp"
+# include	"LoadGame.hpp"
 # include	"LoadMenu.hpp"
 # include	"MenuNumber.hpp"
 # include	"CreditsMenu.hpp"
@@ -70,6 +71,7 @@ public:
   void	eventKeyB(void *data);
   void	setCurrentMenu(int);
   int	getCurrentMenu() const;
+  LoadGame *getLoadGame() const;
 private:
   gdl::Model *_box;
   ModelList *_mod;
@@ -86,6 +88,7 @@ private:
   CreditsMenu *_creditsMenu;
   PlayMenu *_playMenu;
   LoadMenu *_loadMenu;
+  LoadGame *_loadGame;
   MenuNumber *_MenuNumberia;
   MenuNumber *_MenuNumbermap;
   int	currentMenu;

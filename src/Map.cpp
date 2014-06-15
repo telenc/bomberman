@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Sun Jun 15 20:33:09 2014 Remi telenczak
+// Last update Sun Jun 15 22:01:59 2014 thomas mendez
 //
 
 #include <cstdlib>
@@ -250,7 +250,7 @@ bool				Map::isBlock(int x, int z, bool bomb)
 
 bool	Map::isFinish()
 {
-  if (_ia.size() == 0)
+  if (this->_typeMap == NORMAL && _ia.size() == 0)
     return true;
   if (_player->getLife() == 0)
     return true;

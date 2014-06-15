@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Sun Jun 15 20:30:07 2014 thomas mendez
+// Last update Sun Jun 15 22:06:27 2014 thomas mendez
 //
 
 #include	"OVR.h"
@@ -30,6 +30,7 @@
 #include	"Map.hpp"
 #include	"GL/glut.h"
 #include	"Player.hpp"
+#include	"Menu.hpp"
 #include	"MenuIG.hpp"
 
 
@@ -86,13 +87,13 @@ bool		Graphics::update(Map *map)
     return false;
   if (_input.getKey(SDLK_a))
       this->_camera->rot -= 0.1;
-
+  if (map->isFinish())
+    return false;
   if (_input.getKey(SDLK_z))
       this->_camera->rot += 0.1;
   _context.updateClock(*_clock);
   _context.updateInputs(_input);
   map->update(*_clock, _input);
-  this->inputUpdate();
   return true;
 }
 
