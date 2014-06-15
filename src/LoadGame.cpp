@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Mon May 12 13:48:39 2014 Steven Martreux
-// Last update Sun Jun 15 19:55:18 2014 Remi telenczak
+// Last update Sun Jun 15 20:02:14 2014 Remi telenczak
 //
 
 #include	<cstring>
@@ -286,7 +286,7 @@ void	LoadGame::getMapSize()
       if (type == 0)
 	this->_mapGame = new Map(width, height, _event);
       else if (type == 1)
-	this->_mapGame = new Map(width, height, _event, type);
+	this->_mapGame = new Map(width, height, _event, ZOMBIE);
     }
   else
     throw new myException("<Balise Map_Size not find");

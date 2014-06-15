@@ -5,7 +5,7 @@
 ** Login <bernar_x@epitech.net>
 **
 ** Started on  Thu Jun  5 16:20:43 2014 mattieu bernard-guêle
-// Last update Sun Jun 15 20:00:57 2014 Remi telenczak
+// Last update Sun Jun 15 20:03:07 2014 Remi telenczak
 */
 
 #include	"Sound.hpp"
@@ -69,12 +69,9 @@ void	Sound::eventPlayerMove(void *data)
 
 void	Sound::eventBombDrop(void *data)
 {
-  glm::vec3	*test;
-
+  (void)data;
   if (_soundOn == 0)
-    {
       this->StartTicTacBomb(1300, 1300, 1300);
-    }
 }
 
 void	Sound::setPlayer(float x, float y, float z)
