@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:27:33 2014 dedicker remi
-// Last update Sun Jun 15 05:34:56 2014 Steven Martreux
+// Last update Sun Jun 15 19:12:15 2014 Remi telenczak
 //
 
 #ifndef PLAYER_HPP_
@@ -32,13 +32,10 @@ public:
 private:
   void	resetAnim();
   void	move(glm::vec3, std::string);
-  ICallBack	*callPosPlayer;
   ICallBack	*callKeyUp;
   ICallBack	*callKeyDown;
   ICallBack	*callKeyLeft;
   ICallBack	*callKeyRight;
-  ICallBack	*callRotateLeft;
-  ICallBack	*callRotateRight;
   ICallBack	*callRotate;
   ICallBack	*callKeyA;
   bool		none;

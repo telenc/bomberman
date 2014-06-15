@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May  7 06:31:46 2014 Remi telenczak
-// Last update Tue Jun  3 17:23:35 2014 dedicker remi
+// Last update Sun Jun 15 19:10:25 2014 Remi telenczak
 //
 
 #include	<iostream>
@@ -44,14 +44,7 @@ EventManager::~EventManager()
 
 void	EventManager::listenEvent(std::string event, ICallBack *callBack)
 {
-  std::cout<< "Listen " << event<< std::endl;
-  //if (callBack == NULL)
-  // std::cout << "Pk il est null" << std::endl;
-  //std::pair<std::string, ICallBack *> test;
-  //test = std::make_pair<std::string, ICallBack *>(event, callBack);
-  //_listEvent.push_back(std::pair<std::string, ICallBack *>(event, callBack));
   this->_listEvent.push_back(std::make_pair<std::string, ICallBack *>(event, callBack));
-  std::cout << "Evnd " << std::endl;
 }
 
 

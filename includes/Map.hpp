@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Sun Jun 15 18:34:28 2014 Remi telenczak
+// Last update Sun Jun 15 19:15:19 2014 Remi telenczak
 //
 
 #ifndef MAP_HPP_
@@ -118,8 +118,10 @@ private:
   int		_height;
   EventManager	*_event;
   Player *_player;
+
   ICallBack	*callPause;
   ICallBack	*callSelect;
+
   bool		_pause;
   bool		_select;
   Skybox	*_skybox;

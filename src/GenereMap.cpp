@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 17:53:20 2014 dedicker remi
-// Last update Sun Jun 15 18:35:32 2014 Steven Martreux
+// Last update Sun Jun 15 19:08:49 2014 Remi telenczak
 */
 
 #include	<iostream>
@@ -31,14 +31,7 @@ Map	*GenereMap::getMap() const
 
 void	GenereMap::putIa()
 {
-  int	size;
   int	i;
-
-  size = (_height * _width) / 5;
-  if (size < _ia)
-    std::cout << "Map trop petite par rapport au nombre d'IA" << std::endl;
-  else
-    std::cout << "Pour les IA: Ok " << size << std::endl;
   int x;
   int y;
 
@@ -134,8 +127,6 @@ void	GenereMap::putWall()
 
 void	GenereMap::putPlayer()
 {
-  if (this->_event == NULL)
-    std::cout << "EVENNVENEVN NUL" << std::endl;
   this->_map->setPlayer(new Player(1 * 2, 0, 1 * 2, this->_map, this->_model, this->_event, _clock));
 }
 
@@ -144,13 +135,9 @@ GenereMap::GenereMap(int width, int height, int ia, EventManager *event, ModelLi
   (void)type;
   _pos = 0;
   _map = new Map(width, height, event, type);
-  //  std::cout << "Nombre possible d'IA : " << ((width * height) / 5) << std::endl;
-  std::cout << "Put wall" << std::endl;
   putIa();
   putPlayer();
   putWall();
-
-  std::cout << "ici" << std::endl;
 }
 
 GenereMap::GenereMap(int width, int height, int ia, EventManager *event, ModelList *model, gdl::Clock *clock) : _width(width), _height(height), _ia(ia), _event(event), _model(model), _clock(clock)
@@ -158,13 +145,9 @@ GenereMap::GenereMap(int width, int height, int ia, EventManager *event, ModelLi
   _typeMap = NORMAL;
   _pos = 0;
   _map = new Map(width, height, event);
-  //  std::cout << "Nombre possible d'IA : " << ((width * height) / 5) << std::endl;
-  std::cout << "Put wall" << std::endl;
   putIa();
   putPlayer();
   putWall();
-
-  std::cout << "ici" << std::endl;
 }
 
 GenereMap::~GenereMap()

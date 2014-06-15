@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 22 07:22:23 2014 Remi telenczak
-// Last update Tue May 27 03:01:04 2014 Remi telenczak
+// Last update Sun Jun 15 19:12:58 2014 Remi telenczak
 //
 
 #ifndef		_SKYBOX_BOMBER
@@ -18,10 +18,7 @@ class Skybox : public AObjectPhysic
 {
 public:
   Skybox(Map *, ModelList *, EventManager *, gdl::Clock *);
-  void eventPlayerMove(void *);
   ~Skybox();
   virtual bool update(gdl::Clock const &clock, gdl::Input &input);
-private:
-  ICallBack *callPlayerMove;
 };
 #endif

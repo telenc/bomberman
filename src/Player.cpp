@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:27:38 2014 dedicker remi
-// Last update Sat Jun 14 18:39:45 2014 Remi telenczak
+// Last update Sun Jun 15 19:14:56 2014 Remi telenczak
 //
 
 #include	"Player.hpp"
@@ -45,6 +45,15 @@ Player::Player(int x, int y, int z, Map *map, ModelList *model, EventManager *ev
   this->_typePrecis = PLAYERPRECIS;
 }
 
+Player::~Player()
+{
+  _event->removeEvent("keyUp", callKeyUp);
+  _event->removeEvent("keyLeft", callKeyLeft);
+  _event->removeEvent("keyRight", callKeyRight);
+  _event->removeEvent("occulusRotate", callRotate);
+  _event->removeEvent("keyA", callKeyA);
+  _event->removeEvent("keyDown", callKeyDown);
+}
 
 void	Player::eventRotateLeft(void *data)
 {
@@ -92,7 +101,6 @@ void	Player::eventRotateRight(void *data)
   (void)data;
   if (this->_map->isPause() == true)
     return ;
-  //this->rotation.y += 5;
   this->rotate(glm::vec3(0, 1, 0), 5);
   this->_event->dispatchEvent("playerRotateRight", this);
 }
@@ -105,10 +113,7 @@ void	Player::eventRotate(void *data)
   if (this->_map->isPause() == true)
     return ;
   test = (glm::vec3 *)data;
-  //this->rotation.y += 5;
   this->set_roty((-1 * test->y) + 180);
-  //this->rotate(glm::vec3(0, 1, 0), 5);
-  //this->_event->dispatchEvent("playerRotateRight", this);
 }
 
 void	Player::resetAnim()
@@ -158,7 +163,6 @@ void Player::move(glm::vec3 direct, std::string event)
   else
     this->_event->dispatchEvent(event, &positionTrans);
   this->_event->dispatchEvent("playerPosition", &this->_position);
-  //getFrameDuration
 }
 
 void	Player::eventKeyUp(void *data)
@@ -197,15 +201,5 @@ bool Player::update(gdl::Clock const &clock, gdl::Input &input)
 {
   (void)clock;
   (void)input;
-
-  //if (this->_life <= 0)
-    //std::cout << "PLAYER EST MORT CE CON" << std::endl;
   return true;
-}
-
-
-
-Player::~Player()
-{
-  std::cout << "Player Destroyed" << std::endl;
 }

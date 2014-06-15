@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Fri May 23 04:00:03 2014 Remi telenczak
-// Last update Sun Jun 15 04:59:59 2014 Remi telenczak
+// Last update Sun Jun 15 19:08:02 2014 Remi telenczak
 //
 
 #include	"DefaultFire.hpp"
@@ -25,7 +25,6 @@ DefaultFire::DefaultFire(Map *map, ModelList *model, EventManager *event, std::v
 
 DefaultFire::~DefaultFire()
 {
-  //std::cout << "ON DELETE FIRE" << std::endl;
 }
 
 bool	DefaultFire::update(gdl::Clock const &clock, gdl::Input &input)

@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May 21 01:36:36 2014 Remi telenczak
-// Last update Sat Jun 14 22:24:26 2014 Remi telenczak
+// Last update Sun Jun 15 19:06:55 2014 Remi telenczak
 //
 
 #include	"DefaultBomb.hpp"
@@ -52,7 +52,6 @@ bool	DefaultBomb::update(gdl::Clock const &clock, gdl::Input &input)
       this->_died = true;
       this->createDeflag();
       this->_player->incNbrBomb();
-      //this->_map->deleteObject(this);
       return false;
     }
   return true;
@@ -80,9 +79,7 @@ void	DefaultBomb::createDeflag()
 	  fire->set_z(this->_position.z);
 	  if ((bloc = (ABloc *)fire->checkPositionCollision(BLOC)) != NULL)
 	    {
-	      //if (bloc->fireTouch() == false)
 	      bloc->fireTouch();
-	      //this->_map->setMap(fire);
 	      delete fire;
 	      x = this->_position.x - (this->_po * 3) - 1;
 	    }
@@ -103,8 +100,6 @@ void	DefaultBomb::createDeflag()
 	  if ((bloc = (ABloc *)fire->checkPositionCollision(BLOC)) != NULL)
 	    {
 	      bloc->fireTouch();
-	      //if (bloc->fireTouch() == false)
-	      //this->_map->setMap(fire);
 	      delete fire;
 	      x = this->_position.x + (this->_po * 3) + 1;
 	    }
@@ -148,8 +143,6 @@ void	DefaultBomb::createDeflag()
 	  if ((bloc = (ABloc *)fire->checkPositionCollision(BLOC)) != NULL)
 	    {
 	      bloc->fireTouch();
-	      //if (bloc->fireTouch() == false)
-	      //this->_map->setMap(fire);
 	      delete fire;
 	      z = this->_position.z + (this->_po * 3) + 1;
 	    }

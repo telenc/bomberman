@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:26:53 2014 Remi telenczak
-// Last update Sun Jun 15 18:00:36 2014 Remi telenczak
+// Last update Sun Jun 15 19:06:11 2014 Remi telenczak
 //
 
 #include	"DestrucWall.hpp"
@@ -37,13 +37,11 @@ bool DestrucWall::update(gdl::Clock const &clock, gdl::Input &input)
   if (this->_life == 2)
     {
       this->_skin = modelLife2;
-      //this->_skin = _modelList->getModel("cubeDest2");
       this->currentModel = "cubeDest2";
     }
   else
     {
       this->_skin = modelLife1;
-      //this->_skin = _modelList->getModel("cubeDest1");
       this->currentModel = "cubeDest1";
     }
   (void)clock;
