@@ -5,8 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Fri May  9 14:19:13 2014 Steven Martreux
-// Last update Sun Jun 15 06:02:43 2014 thomas mendez
-// Last update Sun Jun 15 05:51:50 2014 Steven Martreux
+// Last update Sun Jun 15 12:03:58 2014 Steven Martreux
 //
 
 #ifndef		_GAME_HPP_
@@ -21,6 +20,12 @@
 # include	"GenereMap.hpp"
 # include	"myException.hpp"
 
+# include      	<stdio.h>
+# include      	<stdlib.h>
+# include      	<iostream>
+# include      	<vlc/vlc.h>
+# include	<fstream>
+
 class		Game
 {
 public:
@@ -32,6 +37,7 @@ public:
   void		playMap();
   int		isFinish();
   void		eventKeyStart(void *data);
+  void		intro_game();
 private:
   GenereMap	*_gen;
   int		_display;
