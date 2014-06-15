@@ -6,7 +6,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Mon May 12 13:48:39 2014 Steven Martreux
-// Last update Sun Jun 15 01:33:39 2014 thomas mendez
+// Last update Sun Jun 15 06:02:31 2014 Steven Martreux
 // Last update Sat Jun 14 22:58:34 2014 Steven Martreux
 //
 
@@ -16,17 +16,14 @@
 LoadGame::LoadGame(const std::string & file, EventManager *event, ModelList *model, gdl::Clock *clock) : _file(file), _event(event), _model(model), _clock(clock)
 {
   if (checkFile() == false)
-    std::cout << "FAILLLLLLLLLL SAUVEGARDE" << std::endl;
-  //THROW;
+    throw new myException("Save Fail dont change my Save !!");
   TiXmlDocument	doc(file);
   _loadOkay = doc.LoadFile();
   if (!_loadOkay)
-     std::cerr << "Load of " << file << " : Error" << std::endl;
-  //THROW A FAIRE
+    throw new myException("Load of file Error");
   _bomberman = doc.FirstChildElement("Bomberman");
   if (_bomberman == NULL)
-    std::cerr << "Balise <Bomberman> inexistant" << std::endl;
-  //TRHOW A FAIRE
+    throw new myException("Balise <Bomberman> inexistant");
   _mapObject.insert(std::pair<std::string, AObjectPhysic*(LoadGame::*)(TiXmlElement *)>("defaultwall", &LoadGame::CreateDefaultWall));
   _mapObject.insert(std::pair<std::string, AObjectPhysic*(LoadGame::*)(TiXmlElement *)>("destrucwall", &LoadGame::CreateDestrucWall));
   _mapObject.insert(std::pair<std::string, AObjectPhysic*(LoadGame::*)(TiXmlElement *)>("defaultbomb", &LoadGame::CreateDefaultBomb));
@@ -200,8 +197,7 @@ APlayer		*LoadGame::GetPlayerBomb(int id_player)
 	return (*it);
       it++;
     }
-  //THROW
-  std::cout << "NOT FIND id_player" << std::endl;
+  throw new myException("Not find id_player. File not good");
   return NULL;
 }
 
@@ -260,7 +256,7 @@ void	LoadGame::getObjMap()
 
   _map = _bomberman->FirstChildElement("Map");
   if (!_map)
-    std::cerr << "Balise <MAP> inexistant" << std::endl;
+    throw new myException("<BALISE> MAP non definie");
   while (_map)
     {
       i = _mapObject.find(_map->Attribute("object"));
@@ -281,15 +277,13 @@ void	LoadGame::getMapSize()
   if (_map_size)
     {
       if (!_map_size->Attribute("width") || !_map_size->Attribute("height"))
-	std::cerr << "Attribute width or height not find" << std::endl;
-      //TRHOW
+	throw new myException("<BALISE> Width Height");
       width = atoi(_map_size->Attribute("width"));
       height = atoi(_map_size->Attribute("height"));
       this->_mapGame = new Map(width, height, _event);
     }
   else
-    std::cerr << "Balise Map_Size not find" << std::endl;
-  //TRHOW
+    throw new myException("<Balise Map_Size not find");
 }
 
 void	 LoadGame::getPlayer()
@@ -317,7 +311,7 @@ void	 LoadGame::getPlayer()
       _mapGame->setPlayer(player);
     }
   else
-    std::cerr << "Balise Player not found" << std::endl;
+    throw new myException("PLAYER BALISE NOT FIND SORRY");
 }
 
 IaBomber	*LoadGame::getIa(int x, int y, int z)
@@ -356,7 +350,7 @@ void	LoadGame::getIas()
 	  _ia = _ia->NextSiblingElement("Ia");
 	}
     }
-  std::cerr << "BALISE IA NOT FOUND" << std::endl;
+  throw new myException("PLAYER IA NOT FOUND");
 }
 
 LoadGame::~LoadGame()

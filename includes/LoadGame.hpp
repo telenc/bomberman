@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Mon May 12 13:51:56 2014 Steven Martreux
-// Last update Sat Jun 14 22:58:05 2014 Steven Martreux
+// Last update Sun Jun 15 06:02:32 2014 Steven Martreux
 //
 
 #ifndef		_LOAD_GAME_HPP
@@ -18,6 +18,7 @@
 #include	<vector>
 #include	<fstream>
 
+#include	"myException.hpp"
 #include	"DefaultWall.hpp"
 #include	"DestrucWall.hpp"
 #include	"Map.hpp"
