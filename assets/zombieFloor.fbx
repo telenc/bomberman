@@ -1687,8 +1687,8 @@ Objects:  {
 			Property: "AccessMode", "enum", "",0
 		}
 		UseMipMap: 0
-		Filename: "tga.tga"
-		RelativeFilename: "tgs.tga"
+		Filename: "zombieFloor.tga"
+		RelativeFilename: "zombieFloor.tga"
 	}
 	Texture: "Texture::mushroomtga_tga", "TextureVideoClip" {
 		Type: "TextureVideoClip"
