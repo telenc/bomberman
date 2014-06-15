@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:00 2014 Remi telenczak
-// Last update Sun Jun 15 03:49:26 2014 thomas mendez
+// Last update Sun Jun 15 05:15:50 2014 Steven Martreux
 // Last update Fri Jun 13 15:51:35 2014 thomas mendez
 //
 
@@ -31,7 +31,8 @@ Menu::Menu(ModelList *mod, EventManager *event, gdl::Clock *clock) : _mod(mod), 
   _callKeyA = new CallBack<Menu>(this, &Menu::eventKeyA);
   event->listenEvent("keyA", _callKeyA);
   _callKeyB = new CallBack<Menu>(this, &Menu::eventKeyB);
-  event->listenEvent("keyB", _callKeyB);  
+  event->listenEvent("keyB", _callKeyB);//  _MenuNumberia->setMinNumber(1);
+  _MenuNumbermap->setMinNumber(20);
 }
 
 void	Menu::setFinish(int finish)
@@ -160,6 +161,7 @@ void	Menu::faceSizeMap()
 {
   _sizemap = _MenuNumbermap->getResult();
   std::cout << "Sizemap " << _sizemap << " ok currentMenu = " << currentMenu << std::endl;
+  _MenuNumberia->setMinNumber(1);
   currentMenu = 6;
 }
 
