@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Fri May  9 14:19:13 2014 Steven Martreux
-// Last update Sun Jun 15 02:59:05 2014 dedicker remi
+// Last update Sun Jun 15 05:51:50 2014 Steven Martreux
 //
 
 #ifndef		_GAME_HPP_
@@ -17,6 +17,7 @@
 # include	"Loader.hpp"
 # include	"Skybox.hpp"
 # include	"GenereMap.hpp"
+# include	"myException.hpp"
 
 class		Game
 {

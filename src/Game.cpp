@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Fri May  9 14:18:15 2014 Steven Martreux
-// Last update Sun Jun 15 03:43:00 2014 dedicker remi
+// Last update Sun Jun 15 05:54:06 2014 Steven Martreux
 //
 
 #include	"Game.hpp"
@@ -15,11 +15,13 @@
 
 Game::Game() : _display(0)
 {
+  if (getenv("DISPLAY") == NULL)
+    throw new myException("Where is env ?");
   this->eventManager = new EventManager();
   this->load = new Loader();
   while (load->getFinish() != true);
-  this->engine = load->getEngine(); 
-  this->menu = new Menu(load->getModel(), load->getEventManager(), engine->getClock()); 
+  this->engine = load->getEngine();
+  this->menu = new Menu(load->getModel(), load->getEventManager(), engine->getClock());
   this->joystick = load->getController();
   this->sound = load->getSound();
   this->sound->InGame();
@@ -49,13 +51,22 @@ void	Game::draw()
 {
   while (menu->getFinish())
     {
-      if (_display == 0)
+      try
 	{
-	  playMenu();
+	  if (_display == 0)
+	    {
+	      playMenu();
+	    }
+	  else
+	    {
+	      playMap();
+	    }
 	}
-      else
+      catch(const myException *e)
 	{
-	  playMap();
+	  std::cerr << "Error : " << e->what() << std::endl;
+	  this->menu->setCurrentMenu(0);
+	  _display = 0;
 	}
     }
 }
