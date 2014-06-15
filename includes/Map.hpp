@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Sun Jun 15 18:34:28 2014 Remi telenczak
+// Last update Sun Jun 15 19:13:31 2014 Steven Martreux
 //
 
 #ifndef MAP_HPP_
@@ -22,7 +22,6 @@
 #include	"CameraBomber.hpp"
 #include	"Texture.hh"
 #include	"Geometry.hh"
-#include "drawtext.h"
 #include	<time.h>
 
 class	ABloc;

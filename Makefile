@@ -36,7 +36,7 @@ endif
 LIBOVRPATH    = LibOVR
 COMMONSRCPATH = CommonSrc
 3RDPARTYPATH  = ../3rdParty
-INCPATH       = -I. -I.. -I$(COMMONSRCPATH) -I$(LIBOVRPATH)/Include -I$(LIBOVRPATH)/Src -I./includes/ -I./LibGdl/includes -I./src_libtext/
+INCPATH       = -I. -I.. -I$(COMMONSRCPATH) -I$(LIBOVRPATH)/Include -I$(LIBOVRPATH)/Src -I./includes/ -I./LibGdl/includes
 OBJPATH       = bomberman
 CXX_BUILD     = $(CXX) -c $(CXXFLAGS) $(INCPATH) 
 CXXFLAGS	= $(INCPATH) -Werror -Wextra -Wall
