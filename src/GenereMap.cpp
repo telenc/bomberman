@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 17:53:20 2014 dedicker remi
-// Last update Sun Jun 15 06:38:52 2014 Remi telenczak
+// Last update Sun Jun 15 18:34:20 2014 Steven Martreux
 */
 
 #include	<iostream>
@@ -18,6 +18,7 @@
 #include	"DestrucWall.hpp"
 #include	"SolWall.hpp"
 #include	"IaBomber.hpp"
+
 void	GenereMap::putInside()
 {
 
