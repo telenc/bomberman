@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Wed May  7 16:03:12 2014 Steven Martreux
-// Last update Sun Jun 15 19:02:52 2014 Steven Martreux
+// Last update Sun Jun 15 19:42:22 2014 Steven Martreux
 //
 
 #ifndef		_ABONUS_HPP_
@@ -24,7 +24,7 @@ public:
   ~ABonus();
   void		fireTouch();
 protected:
-  bool	_died;
+  bool		_died;
 };
 
 #endif		/* _ABOMB_HPP_ */

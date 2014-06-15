@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 05:18:37 2014 Remi telenczak
-// Last update Tue Jun 10 17:58:10 2014 Remi telenczak
+// Last update Sun Jun 15 19:41:11 2014 Steven Martreux
 //
 
 #ifndef		_OCCULUS_BOMBER
@@ -16,8 +16,6 @@
 # include	"OVR.h"
 # include	<iostream>
 # include	<unistd.h>
-
-//using namespace OVR;
 
 class Occulus
 {
@@ -33,10 +31,9 @@ private:
   OVR::Ptr<OVR::HMDDevice> pHMD;
   OVR::Ptr<OVR::SensorDevice> pSensor;
   OVR::SensorFusion *pFusionResult;
-  OVR::HMDInfo Info;
+  OVR::HMDInfo	Info;
   OVR::Util::Render::StereoConfig Sconfig;
-  //OVR::StereoConfig SConfig;
-  bool InfoLoaded;
+  bool		InfoLoaded;
 };
 
 #endif

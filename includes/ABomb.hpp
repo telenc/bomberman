@@ -5,22 +5,22 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Wed May  7 16:03:12 2014 Steven Martreux
-// Last update Sun Jun 15 19:02:28 2014 Steven Martreux
+// Last update Sun Jun 15 19:39:04 2014 Steven Martreux
 //
 
 #ifndef		_ABOMB_HPP_
 # define	_ABOMB_HPP_
 
-#include "AObjectPhysic.hpp"
-#include	<time.h>
+# include	"AObjectPhysic.hpp"
+# include	<time.h>
 
 class		APlayer;
 class		ABomb : public AObjectPhysic
 {
 protected:
-  int _po;
-  int	_time;
-  int _damage;
+  int		_po;
+  int		_time;
+  int		_damage;
   APlayer	*_player;
   bool		_playerColl;
   int		_direction;
