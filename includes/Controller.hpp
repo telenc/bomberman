@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 // 
 // Started on  Wed May 21 12:52:03 2014 Steven Martreux
-// Last update Sun Jun 15 07:30:05 2014 Steven Martreux
+// Last update Sun Jun 15 19:47:07 2014 Steven Martreux
 //
 
 #ifndef		_CONTROLLER_HPP_
@@ -24,17 +24,17 @@ class		Controller
 public:
   Controller(EventManager *);
   ~Controller();
-  void	update();
-  void	CheckAxeUpDown();
-  void	CheckAxeRotate();
-  void	CheckAxeLeftRight();
-  void	setUpDown(int, int);
-  void	setRightLeft(int, int);
-  void	sendEvent();
-  void	sendEventMove();
-  void	sendEventMenu();
-  void	initVar();
-  void	varUpdate();
+  void		update();
+  void		CheckAxeUpDown();
+  void		CheckAxeRotate();
+  void		CheckAxeLeftRight();
+  void		setUpDown(int, int);
+  void		setRightLeft(int, int);
+  void		sendEvent();
+  void		sendEventMove();
+  void		sendEventMenu();
+  void		initVar();
+  void		varUpdate();
 private:
   EventManager	*_eventManager;
   int		_right;

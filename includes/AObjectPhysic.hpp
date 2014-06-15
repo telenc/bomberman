@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 15:52:43 2014 Mathieu Choquart
-// Last update Sun Jun 15 17:19:19 2014 Remi telenczak
+// Last update Sun Jun 15 19:31:42 2014 Steven Martreux
 //
 
 #ifndef			_AOBJECTPHYSIC_HPP_

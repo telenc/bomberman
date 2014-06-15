@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 // 
 // Started on  Sat Jun 14 16:52:25 2014 thomas mendez
-// Last update Sun Jun 15 19:16:41 2014 Steven Martreux
+// Last update Sun Jun 15 19:40:49 2014 Steven Martreux
 //
 
 #ifndef		_LOADBOX_HPP
@@ -31,9 +31,9 @@ public:
   glm::vec3	*getRotation();
   int		getRotationy();
 protected:
-  int _i;
-  glm::vec3 posSauv;
-  glm::vec3 *rot;
+  int		_i;
+  glm::vec3	posSauv;
+  glm::vec3	*rot;
 };
 
 #endif

@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 // 
 // Started on  Sun Jun 15 04:37:45 2014 thomas mendez
-// Last update Sun Jun 15 04:38:48 2014 thomas mendez
+// Last update Sun Jun 15 19:38:31 2014 Steven Martreux
 //
 
 #ifndef		_SETTINGBOXIG_HPP
@@ -22,13 +22,8 @@ public:
   virtual bool fireTouch();
   ICallBack *callRotOcu;
   void	eventRotOcu(void *data);
-  /*void	eventRotOcu2(void *data);
-  void	eventRotOcu3(void *data);*/
   glm::vec3   *getRotation();
   int   getRotationy();
-  /*  void	checkFacetteBoxMenu(glm::vec3 *rotation);
-  void checkBoxExit(glm::vec3 *rotation);
-  void	checkBoxCredit(glm::vec3 *rotation);*/
 protected:
   int _i;
   glm::vec3 posSauv;

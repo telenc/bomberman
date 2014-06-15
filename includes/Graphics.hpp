@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:10:16 2014 thomas mendez
-// Last update Sun Jun 15 15:47:46 2014 dedicker remi
+// Last update Sun Jun 15 19:40:38 2014 Steven Martreux
 //
 
 #ifndef		GRAPHICS_HH__BOMBER
@@ -44,25 +44,23 @@ class		Graphics
 public:
   Graphics(EventManager *);
   ~Graphics();
-  bool		initialize();
-  void		setModelList(ModelList *model);
-  void		draw(Map *);
-  bool		update(Map *);
-  bool		update(Menu *);
-  void		inputUpdate();
-  void		drawDoubleStereo(Map *map);
-  void		drawDoubleStereo(Menu *menu);
-  void		drawOneStereo(Map *map);
-  void		drawOneStereo(Menu *menu);
-  void		draw(Menu *);
-
-  void		drawDoubleStereo(MenuIG *menu);
-  void		drawOneStereo(MenuIG *map);
-  void		draw(MenuIG *);
-  bool		update(MenuIG *);
-
-  CameraBomber	*getCamera() const;
-  gdl::Clock *getClock() const;
+  bool			initialize();
+  void			setModelList(ModelList *model);
+  void			draw(Map *);
+  bool			update(Map *);
+  bool			update(Menu *);
+  void			inputUpdate();
+  void			drawDoubleStereo(Map *map);
+  void			drawDoubleStereo(Menu *menu);
+  void			drawOneStereo(Map *map);
+  void			drawOneStereo(Menu *menu);
+  void			draw(Menu *);
+  void			drawDoubleStereo(MenuIG *menu);
+  void			drawOneStereo(MenuIG *map);
+  void			draw(MenuIG *);
+  bool			update(MenuIG *);
+  CameraBomber		*getCamera() const;
+  gdl::Clock		*getClock() const;
 protected:
   gdl::BasicShader	_shader;
   gdl::Texture		_texture;
@@ -70,10 +68,10 @@ protected:
   gdl::Input		_input;
   std::vector<AObjectPhysic*>	_objects;
   gdl::SdlContext	_context;
-  ModelList *_modelList;
-  CameraBomber	       *_camera;
-  EventManager *_event;
-  gdl::Model *sky;
+  ModelList		*_modelList;
+  CameraBomber		*_camera;
+  EventManager		*_event;
+  gdl::Model		*sky;
 };
 
 #endif
