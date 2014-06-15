@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Sun Jun 15 18:34:01 2014 Remi telenczak
+// Last update Sun Jun 15 18:39:18 2014 Remi telenczak
 //
 
 #include <cstdlib>
@@ -549,7 +549,7 @@ void		Map::drawSol(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *came
     {
       if (this->_pause == true && glm::distance2(glm::vec3(camera->getPositionPause().x,0, camera->getPositionPause().z), (*itO)->getPosition()) < 600)
 	(*itO)->draw(shader, clock);
-      else if ((*itO) != NULL && (*itO)->isInViewSol(camera) && this->distanceObj(*itO) < 400)
+      else if ((*itO) != NULL && this->distanceObj(*itO) < 400)
 	(*itO)->draw(shader, clock);
       itO++;
     }
