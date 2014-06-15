@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 // 
 // Started on  Sun Jun 15 03:43:30 2014 thomas mendez
-// Last update Sun Jun 15 17:42:07 2014 thomas mendez
+// Last update Sun Jun 15 17:58:00 2014 thomas mendez
 //
 
 #include	<iostream>
@@ -37,7 +37,15 @@ void	MenuIG::setFinish(int finish)
 void    MenuIG::eventKeyB(void *data)
 {
   (void)data;
-  _back = 1;
+  switch (currentMenuIG)
+    {
+    case 0:
+      _back = 1;
+      break;
+    default:
+      currentMenuIG = 0;
+      break;
+    }
 }
 
 void    MenuIG::setBack(int back)
