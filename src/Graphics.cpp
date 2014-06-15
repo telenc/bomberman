@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Sun Jun 15 15:50:51 2014 dedicker remi
+// Last update Sun Jun 15 17:44:02 2014 dedicker remi
 //
 
 #include	"OVR.h"

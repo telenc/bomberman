@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Mon May 26 16:41:50 2014 dedicker remi
-// Last update Sun Jun 15 04:29:25 2014 thomas mendez
+// Last update Sun Jun 15 17:50:31 2014 dedicker remi
 //
 
 #include	<iostream>
@@ -15,7 +15,7 @@
 
 MenuBoxIG::MenuBoxIG(Map *map, ModelList *model, EventManager *event, gdl::Clock *clock, int i) : ABloc(map, model, event, clock)
 {
-  this->_skin = model->getModel("menu");
+  this->_skin = model->getModel("box_menuig");
   this->_height = 10;
   this->_width = 10;
   this->set_z(0);
