@@ -1,8 +1,8 @@
 <ia>
   <action name="isInRisk" condition="1" action="goSafe" />
   <action name="enemyDistance" condition="30" action="poseBomb" />
-  <action name="wallDistance" condition="30" action="poseBomb" />
+  <action name="wallDistance" condition="10" action="poseBomb" />
   <action name="bonusDistance" condition="30" action="goBonus" />
   <action name="wallDistance" condition="100" action="goWall" />
-  <action name="enemyNear" condition="1" action="goEnemyNear" />
+  <actionn name="enemyNear" condition="1" action="goEnemyNear" />
 <ia>

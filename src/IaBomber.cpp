@@ -5,11 +5,7 @@
 // Login   <telenc_r@epitech.net>
 //
 // Started on  Fri Jun 13 12:28:13 2014 Remi telenczak
-<<<<<<< HEAD
-// Last update Sun Jun 15 01:36:54 2014 Remi telenczak
-=======
-// Last update Sat Jun 14 22:46:18 2014 Steven Martreux
->>>>>>> 544762e450695e0c4ec2a6538d654c8ff41a9e16
+// Last update Sun Jun 15 12:05:35 2014 Remi telenczak
 */
 
 #include	"IaBomber.hpp"
@@ -20,12 +16,11 @@
 
 IaBomber::IaBomber(int x, int y, int z, Map *map, ModelList *model, EventManager *event, gdl::Clock *clock) : APlayer(x, y, z, map, model, event, clock)
 {
-  std::cout << "Ia created" << std::endl;
   this->getList();
   this->set_x(x);
   this->set_z(z);
   this->set_roty(90);
-
+  time(&_timeBomb);
   _mapName.insert(std::pair<std::string, int (IaBomber::*)()>("isInRisk", &IaBomber::isInRiskIa));
   _mapName.insert(std::pair<std::string, int (IaBomber::*)()>("enemyDistance", &IaBomber::enemyDistanceIa));
   _mapName.insert(std::pair<std::string, int (IaBomber::*)()>("wallDistance", &IaBomber::wallDistanceIa));
@@ -50,7 +45,6 @@ int	IaBomber::isInRiskIa()
 {
   if (this->isInRisk() == true)
     return 1;
-  //std::cout << "Return -1" << std::endl;
   return -1;
 }
 
@@ -70,10 +64,7 @@ int	IaBomber::wallDistanceIa()
 
   result = this->minDistanceDestruc();
   if (result)
-    {
-      std::cout << "Go wall !!!" << std::endl;
     return _map->distanceObj(result, this);
-    }
   return -1;
 }
 
@@ -97,38 +88,52 @@ int	IaBomber::enemyNearIa()
   return -1;
 }
 
-bool	IaBomber::goSafeIa()
+bool		IaBomber::goSafeIa()
 {
   glm::vec2	target;
+  glm::vec2	target2;
+
 
   target = getPositionNoRisk();
-  changeRot(target.x, target.y);
+  target2 = target;
+  changeRot(target2.x, target2.y);
   this->_positionTo.x = target.x;
   this->_positionTo.y = target.y;
-  this->move(glm::vec3(0, 0, -0.5));
+  this->move(glm::vec3(0, 0, -0.2));
   return true;
 }
 
-bool	IaBomber::poseBombIa()
+bool		IaBomber::poseBombIa()
 {
   DefaultBomb	*bomb;
   int		x;
   int		z;
-  glm::vec3 t;
+  glm::vec3	t;
+  time_t	currTime;
+  glm::vec2	testNoRisk;
+  double	second;
 
+  time(&currTime);
   if (this->_nbrBomb <= 0)
     return false;
   if (this->checkPositionCollision(BOMB) != NULL)
     return false;
+  second = difftime(currTime, _timeBomb);
+  if (second < 7)
+    return true;
+  time(&_timeBomb);
+  x = (int)this->get_x() - ((int)this->get_x() % 3);
+  if (x + 1.5 < this->get_x())
+    x += 3;
+  z = (int)this->get_z() - ((int)this->get_z() % 3);
+  if (z + 1.5 < this->get_z())
+    z += 3;
+  testNoRisk = getPositionNoRisk();
+  if (testNoRisk.x == x && testNoRisk.y == z)
+    return true;
   this->_nbrBomb--;
   bomb = new DefaultBomb(_map, _modelList, _event, this, _clock);
   bomb->setPo(this->_po);
-  x = (int)this->_position.x;
-  z = (int)this->_position.z;
-  while (x % 3 != 0)
-    x++;
-  while (z % 3 != 0)
-    z++;
   bomb->set_x(x);
   bomb->set_z(z);
   t.x = x;
@@ -139,41 +144,160 @@ bool	IaBomber::poseBombIa()
   return true;
 }
 
+glm::vec2	IaBomber::getChemin(int x, int z)
+{
+  glm::vec3	pos;
+  glm::vec3	tmp;
+
+  pos.x = (int)this->get_x() - ((int)this->get_x() % 3);
+  if (pos.x + 1.5 < this->get_x())
+    {
+      pos.x += 3;
+    }
+  pos.z = (int)this->get_z() - ((int)this->get_z() % 3);
+  if (pos.z + 1.5 < this->get_z())
+    pos.z += 3;
+  if (std::max((int)pos.x, (int)x) - std::min((int)pos.x,(int) x) <=  3 && std::max((int)pos.z,(int) z) - std::min((int)pos.z, (int)z) <= 3)
+    return glm::vec2(x, z);
+  if (x <= pos.x)
+    {
+      tmp.x = pos.x - 3;
+      tmp.y = 0;
+      tmp.z = pos.z;
+      if (isInRisk(tmp.x, tmp.z) == false && _map->isBlock(tmp.x, tmp.z) == false)
+	return glm::vec2(tmp.x, tmp.z);
+      if (z <= pos.z)
+	{
+	  tmp.x = pos.x;
+	  tmp.z = pos.z - 3;
+	  if (isInRisk(tmp.x, tmp.z) == false && _map->isBlock(tmp.x, tmp.z) == false)
+	    return glm::vec2(tmp.x, tmp.z);
+	  tmp.x = pos.x;
+	  tmp.z = pos.z + 3;
+	  if (isInRisk(tmp.x, tmp.z) == false && _map->isBlock(tmp.x, tmp.z) == false)
+	    return glm::vec2(tmp.x, tmp.z);
+	}
+      else
+	{
+	  tmp.x = pos.x;
+	  tmp.z = pos.z + 3;
+	  if (isInRisk(tmp.x, tmp.z) == false && _map->isBlock(tmp.x, tmp.z) == false)
+	    return glm::vec2(tmp.x, tmp.z);
+	  tmp.x = pos.x;
+	  tmp.z = pos.z - 3;
+	  if (isInRisk(tmp.x, tmp.z) == false && _map->isBlock(tmp.x, tmp.z) == false)
+	    return glm::vec2(tmp.x, tmp.z);
+	}
+      tmp.x = pos.x - 3;
+      tmp.z = pos.z;
+      if (_map->isBlock(tmp.x, tmp.z) == false)
+	return glm::vec2(tmp.x, tmp.z);
+      tmp.x = pos.x;
+      tmp.z = pos.z - 3;
+      if (_map->isBlock(tmp.x, tmp.z) == false)
+	return glm::vec2(tmp.x, tmp.z);
+      tmp.x = pos.x;
+      tmp.z = pos.z + 3;
+      if (_map->isBlock(tmp.x, tmp.z) == false)
+	return glm::vec2(tmp.x, tmp.z);
+      return glm::vec2(x, z);
+    }
+  else
+    {
+      tmp.x = pos.x + 3;
+      tmp.y = 0;
+      tmp.z = pos.z;
+      if (isInRisk(tmp.x, tmp.z) == false && _map->isBlock(tmp.x, tmp.z) == false)
+	return glm::vec2(tmp.x, tmp.z);
+      if (z <= pos.z)
+	{
+	  tmp.x = pos.x;
+	  tmp.z = pos.z - 3;
+	  if (isInRisk(tmp.x, tmp.z) == false && _map->isBlock(tmp.x, tmp.z) == false)
+	    return glm::vec2(tmp.x, tmp.z);
+	  tmp.x = pos.x;
+	  tmp.z = pos.z + 3;
+	  if (isInRisk(tmp.x, tmp.z) == false && _map->isBlock(tmp.x, tmp.z) == false)
+	    return glm::vec2(tmp.x, tmp.z);
+	}
+      else
+	{
+	  tmp.x = pos.x;
+	  tmp.z = pos.z + 3;
+	  if (isInRisk(tmp.x, tmp.z) == false && _map->isBlock(tmp.x, tmp.z) == false)
+	    return glm::vec2(tmp.x, tmp.z);
+	  tmp.x = pos.x;
+	  tmp.z = pos.z - 3;
+	  if (isInRisk(tmp.x, tmp.z) == false && _map->isBlock(tmp.x, tmp.z) == false)
+	    return glm::vec2(tmp.x, tmp.z);
+	}
+      tmp.x = pos.x + 3;
+      tmp.z = pos.z;
+      if (_map->isBlock(tmp.x, tmp.z) == false)
+	return glm::vec2(tmp.x, tmp.z);
+      tmp.x = pos.x;
+      tmp.z = pos.z - 3;
+      if (_map->isBlock(tmp.x, tmp.z) == false)
+	return glm::vec2(tmp.x, tmp.z);
+      tmp.x = pos.x;
+      tmp.z = pos.z + 3;
+      if (_map->isBlock(tmp.x, tmp.z) == false)
+	return glm::vec2(tmp.x, tmp.z);
+      return glm::vec2(x, z);
+    }
+  return glm::vec2(x, z);
+}
+
 bool	IaBomber::goBonusIa()
 {
   ABonus	*result;
+  glm::vec2	target;
 
   result = this->getBonus(100);
-  changeRot(result->get_x(), result->get_z());
-  this->_positionTo.x = result->get_x();
-  this->_positionTo.y = result->get_z();
-  this->move(glm::vec3(0, 0, -0.5));
+  target = getChemin(result->get_x(), result->get_z());
+  if (isInRisk(target.x, target.y) == false)
+    {
+      changeRot(target.x, target.y);
+      this->_positionTo.x = result->get_x();
+      this->_positionTo.y = result->get_z();
+      this->move(glm::vec3(0, 0, -0.2));
+    }
   return true;
 }
 
 bool	IaBomber::goWallIa()
 {
   AObjectPhysic	*result;
+  glm::vec2	target;
 
   result = this->minDistanceDestruc();
-  changeRot(result->get_x(), result->get_z());
-  this->_positionTo.x = result->get_x();
-  this->_positionTo.y = result->get_z();
-  this->move(glm::vec3(0, 0, -0.5));
+  target = getChemin(result->get_x(), result->get_z());
+  if (isInRisk(target.x, target.y) == false)
+    {
+      changeRot(target.x, target.y);
+      this->_positionTo.x = result->get_x();
+      this->_positionTo.y = result->get_z();
+      this->move(glm::vec3(0, 0, -0.2));
+    }
   return true;
 }
 
 bool	IaBomber::goEnemyNearIa()
 {
-   APlayer	*result;
+  APlayer	*result;
+  glm::vec2	target;
 
   result = this->minDistanceEnemy();
   if (result)
     {
-      changeRot(result->get_x(), result->get_z());
-      this->_positionTo.x = result->get_x();
-      this->_positionTo.y = result->get_z();
-      this->move(glm::vec3(0, 0, -0.5));
+      target = getChemin(result->get_x(), result->get_z());
+      if (isInRisk(target.x, target.y) == false)
+	{
+	  changeRot(target.x, target.y);
+	  this->_positionTo.x = result->get_x();
+	  this->_positionTo.y = result->get_z();
+	  this->move(glm::vec3(0, 0, -0.2));
+	}
     }
   return true;
 }
@@ -186,11 +310,9 @@ void	IaBomber::changeRot(int x, int z)
 
   A.x = 100;
   A.z = 0;
-
   B.x = x - this->get_x();
   B.z = z - this->get_z();
-
-  if (x == 0 && z == 0)
+  if (B.x == 0 && B.z == 0)
     return;
   or1 = glm::orientedAngle(glm::normalize(A), glm::normalize(B), glm::vec3(0, 1, 0));
   this->set_roty(-1 * (or1 + 90));
@@ -231,72 +353,96 @@ bool	IaBomber::move(glm::vec3 direct)
     return true;
 }
 
+int		IaBomber::calcPositionNoRisk(glm::vec2 position, glm::vec2 old, int taille)
+{
+  int		max;
+  int		res;
+
+  max = -1;
+  if (isInRisk(position.x, position.y) == false)
+    return taille;
+  if (old.x != position.x - 3 && _map->isBlock(position.x - 3, position.y, true) == false)
+    {
+      res = calcPositionNoRisk(glm::vec2(position.x - 3, position.y), position, taille + 1);
+      if (max == -1 || (res < max && res > 0))
+	max = res;
+    }
+  if (old.x != position.x + 3 && _map->isBlock(position.x + 3, position.y, true) == false)
+    {
+      res = calcPositionNoRisk(glm::vec2(position.x + 3, position.y), position, taille + 1);
+      if (max == -1 || (res < max && res > 0))
+	max = res;
+    }
+  if (old.y != position.y + 3 &&  _map->isBlock(position.x, position.y + 3, true) == false)
+    {
+      res = calcPositionNoRisk(glm::vec2(position.x, position.y + 3), position, taille + 1);
+      if (max == -1 || (res < max && res > 0))
+	max = res;
+    }
+  if (old.y != position.y - 3 && _map->isBlock(position.x, position.y - 3, true) == false)
+    {
+      res = calcPositionNoRisk(glm::vec2(position.x, position.y - 3), position, taille + 1);
+      if (max == -1 || (res < max && res > 0))
+	max = res;
+    }
+  return max;
+}
+
 glm::vec2	IaBomber::getPositionNoRisk()
 {
-  glm::vec2	position;
+  glm::vec2	result;
   int		x;
   int		y;
-  int		sauvX;
-  int		sauvY;
-  int		decal;
-  int		end;
+  int		max;
+  int		res;
 
-  end = 0;
-  decal = 1;
-  //std::cout << "On est en risk" << std::endl;
-  while (1)
+  x = (this)->get_x() - ((int)this->get_x() % 3);
+  if (x + 1.5 < this->get_x())
+    x += 3;
+  y = (this)->get_z() - ((int)this->get_z() % 3);
+  if (y + 1.5 < this->get_z())
+    y += 3;
+  max = -1;
+  result.x = x;
+  result.y = y;
+  res = -1;
+  if (_map->isBlock(x - 3, y, true) == false)
     {
-      sauvX = (this)->get_x() - ((int)this->get_x() % 3);
-      //if (sauvX + 1.5 < this->get_x())
-      //	sauvX += 3;
-      sauvY = (this)->get_z() - ((int)this->get_z() % 3);
-      //if (sauvY += 1.5 < this->get_z())
-      //	sauvY += 3;
-      x = sauvX;
-      y = sauvY;
-      x -= (decal * 3);
-      if (x < 0 && sauvX + (decal * 3) > _map->getWidth() * 3)
+      if (((res = calcPositionNoRisk(glm::vec2(x - 3, y), glm::vec2(x, y), 1)) < max && res > 0) || max == -1)
 	{
-	  position.x = this->get_x();
-	  position.y = this->get_y();
+	  result.x = x - 3;
+	  result.y = y;
+	  max = res;
 	}
-      while (x < sauvX + (decal * 3))
-	{
-	  y = sauvY - (decal * 3);
-	  while (y < sauvY + (decal * 3))
-	    {
-	      //std::cout << "On check " << x << "/" << y << std::endl;
-	      if (x > 0 && y > 0 && x < _map->getWidth() * 3 && y < _map->getHeight() * 3 &&  _map->isBlock(x, y) == false && isInRisk(x, y) == false)
-		{
-		  if (end == 1)
-		    {
-		      if (std::max((int)this->get_x(), (int)x) - std::min((int)this->get_x(),(int) x) + std::max((int)this->get_y(),(int) y) - std::min((int)this->get_y(),(int) y) < std::max((int)position.x, (int)this->get_x()) - std::min((int)position.x, (int)this->get_x()) + std::max((int)position.y, (int)this->get_y()) - std::min((int)position.y,(int) this->get_y()))
-			{
-			  position.x = x;
-			  position.y = y;
-			}
-
-		    }
-		  else
-		    {
-		      position.x = x;
-		      position.y= y;
-		    }
-		  end = 1;
-
-		}
-	      y += 3;
-	    }
-	  x += 3;
-	}
-      if (end == 1)
-	{
-	  //std::cout << "Return " << x << "/" << y << std::endl;
-	  //std::cout << "this " << this->get_x() << "/" << this->get_y() << std::endl;
-	  return position;
-	}
-      decal++;
     }
+  if (_map->isBlock(x + 3, y, true) == false)
+    {
+      if (((res = calcPositionNoRisk(glm::vec2(x + 3, y), glm::vec2(x, y), 1)) < max && res > 0) || max == -1)
+	{
+	  result.x = x + 3;
+	  result.y = y;
+	  max = res;
+	}
+    }
+  if (_map->isBlock(x, y - 3, true) == false)
+    {
+      if (((res = calcPositionNoRisk(glm::vec2(x, y - 3), glm::vec2(x, y), 1)) < max && res > 0) || max == -1)
+	{
+	  result.x = x;
+	  result.y = y-3;
+	  max = res;
+	}
+    }
+  if (_map->isBlock(x, y + 3, true) == false)
+    {
+      if (((res = calcPositionNoRisk(glm::vec2(x, y + 3), glm::vec2(x, y), 1)) < max && res > 0) || max == -1)
+	{
+	  result.x = x ;
+	  result.y = y + 3;
+	  max = res;
+	}
+        }
+  return result;
 }
 
 APlayer	*IaBomber::minDistanceEnemy()
@@ -336,7 +482,15 @@ AObjectPhysic	*IaBomber::minDistanceDestruc()
   std::vector<AObjectPhysic *>::iterator	it;
   int			result;
   AObjectPhysic		*resultBloc;
+  int		sauvX;
+  int		sauvY;
 
+  sauvX = (this)->get_x() - ((int)this->get_x() % 3);
+  if (sauvX + 1.5 < this->get_x())
+    sauvX += 3;
+  sauvY = (this)->get_z() - ((int)this->get_z() % 3);
+  if (sauvY + 1.5 < this->get_z())
+    sauvY += 3;
   resultBloc = NULL;
   result = -1;
   list = _map->getObjectsPrecisPos(this, 10000, DESTRUCTWALL);
@@ -347,8 +501,11 @@ AObjectPhysic	*IaBomber::minDistanceDestruc()
 	{
 	  if (result == -1 || result > _map->distanceObj(*it, this))
 	    {
-	      result = _map->distanceObj(*it, this);
-	      resultBloc = *it;
+	      if ((*it)->get_x() == sauvX || (*it)->get_z() == sauvY)
+		{
+		  result = _map->distanceObj(*it, this);
+		  resultBloc = *it;
+		}
 	    }
 	}
       it++;
@@ -387,11 +544,40 @@ bool	IaBomber::poseBomb()
   DefaultBomb	*bomb;
   int		x;
   int		z;
+  time_t	currTime;
+  double	second;
+  glm::vec2	testNoRisk;
+  int		nbr;
 
+  time(&currTime);
   if (this->_nbrBomb <= 0)
     return false;
   if (this->checkPositionCollision(BOMB) != NULL)
     return false;
+  second = difftime(currTime, _timeBomb);
+  if (second < 7)
+    return true;
+  time(&_timeBomb);
+  x = (int)this->get_x() - ((int)this->get_x() % 3);
+  if (x + 1.5 < this->get_x())
+    x += 3;
+  z = (int)this->get_z() - ((int)this->get_z() % 3);
+  if (z + 1.5 < this->get_z())
+    z += 3;
+  testNoRisk = getPositionNoRisk();
+  if (testNoRisk.x == x && testNoRisk.y == z)
+    return true;
+  nbr = 0;
+  if (_map->isBlock(x - 3, z) == false)
+    nbr += 1;
+  if (_map->isBlock(x + 3, z) == false)
+    nbr += 1;
+  if (_map->isBlock(x , z - 3) == false)
+    nbr += 1;
+  if (_map->isBlock(x, z + 3) == false)
+    nbr += 1;
+  if (nbr < 3)
+    return true;
   this->_nbrBomb--;
   bomb = new DefaultBomb(_map, _modelList, _event, this, _clock);
   bomb->setPo(this->_po);
@@ -403,23 +589,20 @@ bool	IaBomber::poseBomb()
     z++;
   bomb->set_x(x);
   bomb->set_z(z);
-  glm::vec3 t;
-  t.x = x;
-  t.y  = 0;
-  t.z = z;
-  _event->dispatchEvent("bombDrop", &(t));
   this->_map->setBomb(bomb);
   return true;
 }
 
 bool	IaBomber::isInRisk(int x, int z)
 {
-  std::list<AFire *>	listFire;
+  std::list<AFire *>		listFire;
   std::list<AFire *>::iterator	itF;
-  std::list<ABomb *>	list;
+  std::list<ABomb *>		list;
   std::list<ABomb *>::iterator	it;
-  int xB;
-  int zB;
+  int				xB;
+  int				zB;
+  int				i;
+  int				ok;
 
   if (x == -1 || z == -1)
     {
@@ -438,15 +621,39 @@ bool	IaBomber::isInRisk(int x, int z)
     {
       xB = (int)(*it)->get_x();
       zB = (int)(*it)->get_z();
+      if (xB == x && zB == z)
+	return true;
       if (xB == x)
 	{
 	  if (std::max(zB, z) - std::min(zB, z) <= (*it)->getPo() * 3)
-	    return true;
+	    {
+	      ok = 0;
+	      i = std::min(zB, z);
+	      while (i <= std::max(zB, z))
+		{
+		  if (_map->isBlock(x, i) == true)
+		    ok = 1;
+		  i++;
+		}
+	      if (ok == 0)
+		return true;
+	    }
 	}
       else if (zB == z)
 	{
 	  if (std::max(xB, x) - std::min(xB, x) <= (*it)->getPo() * 3)
-	    return true;
+	    {
+	      ok = 0;
+	      i = std::min(xB, x);
+	      while (i <= std::max(xB, x))
+		{
+		  if (_map->isBlock(i, z) == true)
+		    ok = 1;
+		  i++;
+		}
+	      if (ok == 0)
+		return true;
+	    }
 	}
       it++;
     }
@@ -456,11 +663,8 @@ bool	IaBomber::isInRisk(int x, int z)
     {
       xB = (int)(*itF)->get_x();
       zB = (int)(*itF)->get_z();
-      std::cout << xB << "/" << zB << "   " << x << "//" << z << std::endl;
-      if (xB == x)
-	return true;
-      else if (zB == z)
-	return true;
+      if (xB == x && zB == z)
+      	return true;
       itF++;
     }
   return false;
@@ -470,6 +674,7 @@ void	IaBomber::getList()
 {
   TiXmlDocument	doc("ia.xml");
   bool CheckFile = doc.LoadFile();
+
   if (!CheckFile)
     std::cerr << "LOAD OF FILE IA NOT FOUND" << std::endl;
   TiXmlElement	*_ia;
@@ -496,29 +701,28 @@ bool		IaBomber::update(gdl::Clock const &clock, gdl::Input &input)
 {
   std::list<IaXml *>::iterator	it;
   int		elenczk;
+  glm::vec2	target;
 
   (void)clock;
   (void)input;
+  if (this->getLife() <= 0)
+    return false;
   if (this->_positionTo.x != -1)
     {
-      //std::cout << _positionTo.x << "//////" << _positionTo.y << std::endl;
-      changeRot(_positionTo.x, _positionTo.y);
+      target = getChemin(_positionTo.x, _positionTo.y);
+      changeRot(target.x, target.y);
       this->move(glm::vec3(0, 0, -0.5));
-      if (glm::distance2(_position, glm::vec3(_positionTo.x, 0, _positionTo.y)) < 5)
+      if (glm::distance2(_position, glm::vec3(_positionTo.x, 0, _positionTo.y)) < 1)
 	_positionTo.x = -1;
     }
-  //if (this->_life <= 0)
-  //  std::cout << "Ia mort " << std::endl;
   it = listXml.begin();
   while (it != listXml.end())
     {
       elenczk = (this->*_mapName[(*it)->name])();
       if (elenczk >= 0 && elenczk <= (*it)->condition)
 	{
-	  std::cout << (*it)->name << std::endl;
-	  //std::cout << "Elezenc " << elenczk << "   " << (*it)->condition<< std::endl;
 	  if (((this->*_mapAction[(*it)->action])()) ==  true)
-	      return true;
+	    return true;
 	}
       it++;
     }

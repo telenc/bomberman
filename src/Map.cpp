@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Sun Jun 15 01:47:29 2014 Remi telenczak
+// Last update Sun Jun 15 12:04:48 2014 Remi telenczak
 //
 
 #include <cstdlib>
@@ -159,7 +159,24 @@ std::list<AFire *>	Map::getFire() const
   return this->_fire;
 }
 
-bool	Map::isBlock(int x, int z)
+bool	Map::isFire(int x, int z)
+{
+  std::list<AFire *>::iterator itO;
+
+  itO = this->_fire.begin();
+  while (itO != this->_fire.end())
+    {
+      if ((*itO) != NULL)
+	{
+	  if ((*itO)->get_x() == x && (*itO)->get_z() == z)
+	    return true;
+	}
+      itO++;
+    }
+  return false;
+}
+
+bool	Map::isBlock(int x, int z, bool bomb)
 {
   std::list<ABloc *>::iterator itO;
 
@@ -173,6 +190,30 @@ bool	Map::isBlock(int x, int z)
 	}
       itO++;
     }
+  if (bomb)
+    {
+  std::list<ABomb *>::iterator itB;
+
+  itB = this->_bombs.begin();
+  while (itB != this->_bombs.end())
+    {
+      if ((*itB) != NULL)
+	{
+	  if ((*itB)->get_x() == x && (*itB)->get_z() == z)
+	    return true;
+	}
+      itB++;
+    }
+    }
+  return false;
+}
+
+bool	Map::isFinish()
+{
+  if (_ia.size() == 0)
+    return true;
+  if (_player->getLife() == 0)
+    return true;
   return false;
 }
 

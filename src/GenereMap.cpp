@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 17:53:20 2014 dedicker remi
-// Last update Sun Jun 15 01:05:23 2014 Remi telenczak
+// Last update Sun Jun 15 06:38:52 2014 Remi telenczak
 */
 
 #include	<iostream>
@@ -125,7 +125,7 @@ void	GenereMap::putPlayer()
   if (this->_event == NULL)
     std::cout << "EVENNVENEVN NUL" << std::endl;
   this->_map->setPlayer(new Player(1 * 2, 0, 1 * 2, this->_map, this->_model, this->_event, _clock));
-    this->_map->setIa(new IaBomber(_width * 3 - 6, 0, 3, this->_map, this->_model, this->_event, _clock));
+    this->_map->setIa(new IaBomber(6, 0, 3, this->_map, this->_model, this->_event, _clock));
 }
 
 GenereMap::GenereMap(int width, int height, int ia, EventManager *event, ModelList *model, gdl::Clock *clock) : _width(width), _height(height), _ia(ia), _event(event), _model(model), _clock(clock)
