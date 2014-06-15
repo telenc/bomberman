@@ -36,7 +36,7 @@ endif
 LIBOVRPATH    = LibOVR
 COMMONSRCPATH = CommonSrc
 3RDPARTYPATH  = ../3rdParty
-INCPATH       = -I. -I.. -I$(COMMONSRCPATH) -I$(LIBOVRPATH)/Include -I$(LIBOVRPATH)/Src -I./includes/ -I./LibGdl/includes -I./src_libtext/
+INCPATH       = -I. -I.. -I$(COMMONSRCPATH) -I$(LIBOVRPATH)/Include -I$(LIBOVRPATH)/Src -I./includes/ -I./LibGdl/includes
 OBJPATH       = bomberman
 CXX_BUILD     = $(CXX) -c $(CXXFLAGS) $(INCPATH) 
 CXXFLAGS	= $(INCPATH) -Werror -Wextra -Wall
@@ -77,7 +77,6 @@ SRC		= src/main.cpp \
 		src/APlayer.cpp \
 		src/ABomb.cpp \
 		src/AObjectLife.cpp \
-		src/Inventory.cpp \
 		src/Map.cpp \
 		src/Player.cpp \
 		src/LoadGame.cpp \
@@ -98,7 +97,6 @@ SRC		= src/main.cpp \
 		src/GenereMap.cpp	\
 		src/Bomb/DefaultBomb.cpp \
 		src/Controller.cpp	\
-		src/Cube.cpp\
 		src/Skybox.cpp \
 		src/Sound.cpp \
 		src/AFire.cpp  \

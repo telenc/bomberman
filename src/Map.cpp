@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Sun Jun 15 18:47:33 2014 Remi telenczak
+// Last update Sun Jun 15 19:13:52 2014 Steven Martreux
 //
 
 #include <cstdlib>
@@ -16,7 +16,6 @@
 #include "Skybox.hpp"
 #include	"EventManager.hpp"
 #include	<GL/freeglut.h>
-#include	"drawtext.h"
 #include	"ABomb.hpp"
 #include	"ABonus.hpp"
 #include	"AFire.hpp"
