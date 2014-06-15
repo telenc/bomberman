@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Sun Jun 15 06:36:10 2014 Remi telenczak
+// Last update Sun Jun 15 12:04:48 2014 Remi telenczak
 //
 
 #include <cstdlib>
@@ -205,6 +205,15 @@ bool	Map::isBlock(int x, int z, bool bomb)
       itB++;
     }
     }
+  return false;
+}
+
+bool	Map::isFinish()
+{
+  if (_ia.size() == 0)
+    return true;
+  if (_player->getLife() == 0)
+    return true;
   return false;
 }
 

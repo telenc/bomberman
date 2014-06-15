@@ -5,7 +5,7 @@
 // Login   <telenc_r@epitech.net>
 //
 // Started on  Fri Jun 13 12:28:13 2014 Remi telenczak
-// Last update Sun Jun 15 11:56:36 2014 Remi telenczak
+// Last update Sun Jun 15 12:05:35 2014 Remi telenczak
 */
 
 #include	"IaBomber.hpp"
@@ -706,7 +706,7 @@ bool		IaBomber::update(gdl::Clock const &clock, gdl::Input &input)
   (void)clock;
   (void)input;
   if (this->getLife() <= 0)
-    std::cout <<"Ia mort" << std::endl;
+    return false;
   if (this->_positionTo.x != -1)
     {
       target = getChemin(_positionTo.x, _positionTo.y);

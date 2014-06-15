@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Sun Jun 15 06:36:23 2014 Remi telenczak
+// Last update Sun Jun 15 12:04:08 2014 Remi telenczak
 //
 
 #ifndef MAP_HPP_
@@ -91,6 +91,7 @@ public:
 
   bool isBlock(int x, int z, bool bomb = false);
   bool	isFire(int x, int z);
+  bool	isFinish();
 private:
   std::list<ABloc * > _blocs;
   std::list<ABomb * > _bombs;
