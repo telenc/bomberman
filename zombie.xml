@@ -1,0 +1,3 @@
+<ia>
+  <action name="targetPlayer" condition="1" action="goPlayer" />
+<ia>

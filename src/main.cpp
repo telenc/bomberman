@@ -5,7 +5,15 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
+<<<<<<< HEAD
+<<<<<<< HEAD
+// Last update Sun Jun 15 16:53:57 2014 Remi telenczak
+=======
+// Last update Sun Jun 15 07:10:28 2014 Steven Martreux
+>>>>>>> 2c4c4cadbef375c9030ec89010ba100e149344a4
+=======
 // Last update Sun Jun 15 12:06:33 2014 Steven Martreux
+>>>>>>> 2c520a45a5444d70184b94c02915bf43f88178dd
 */
 
 #include <iostream>
@@ -39,7 +47,7 @@ int	main(int ac, char **av)
 
 	  //save = new LoadGame("save/test.xml", load->getEventManager(), load->getModel(), engine->getClock());
 	  //m = save->getMap();
-	  GenereMap gen(11, 11, 0, load->getEventManager(), load->getModel(), engine->getClock());
+	  GenereMap gen(41, 41, 0, load->getEventManager(), load->getModel(), engine->getClock(), ZOMBIE);
 	  Map *m = gen.getMap();
 	  Controller	joystick(load->getEventManager());;
 	  m->setSkybox(new Skybox(m, load->getModel(), load->getEventManager(), engine->getClock()));

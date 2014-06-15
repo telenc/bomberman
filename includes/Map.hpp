@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Sun Jun 15 16:52:15 2014 dedicker remi
+// Last update Sun Jun 15 18:34:28 2014 Remi telenczak
 //
 
 #ifndef MAP_HPP_
@@ -23,7 +23,7 @@
 #include	"Texture.hh"
 #include	"Geometry.hh"
 #include "drawtext.h"
-
+#include	<time.h>
 
 class	ABloc;
 class	ABomb;
@@ -35,10 +35,18 @@ class Skybox;
 class	AFire;
 class	IaBomber;
 class EventManager;
+
+enum TypeMap
+  {
+    NORMAL,
+    ZOMBIE
+  };
+
 class Map
 {
 public:
   Map(int x, int y, EventManager *);
+  Map(int x, int y, EventManager *, TypeMap type);
   ~Map();
   void	update(gdl::Clock, gdl::Input);
   void	updateBomb(gdl::Clock, gdl::Input);
@@ -46,6 +54,7 @@ public:
   void	updateFire(gdl::Clock, gdl::Input);
   void	updateBloc(gdl::Clock, gdl::Input);
   void	updateIa(gdl::Clock, gdl::Input);
+  void	updateZombie(gdl::Clock, gdl::Input);
 
   void	draw(gdl::BasicShader, gdl::Clock, CameraBomber *);
   void	drawSol(gdl::BasicShader, gdl::Clock, CameraBomber *);
@@ -58,7 +67,7 @@ public:
   int	getWidth() const;
   int	getHeight() const;
   bool	isPause();
-
+  TypeMap	getTypeMap() const;
   int	distanceObj(AObjectPhysic *);
   int	distanceObj(AObjectPhysic *, AObjectPhysic *);
   void	eventCallPause(void *);
@@ -92,9 +101,10 @@ public:
   std::list<AObjectPhysic * >	getObject();
   std::list<ABloc *>		getSol() const;
 
-  bool isBlock(int x, int z, bool bomb = false);
+  bool	isBlock(int x, int z, bool bomb = false);
   bool	isFire(int x, int z);
   bool	isFinish();
+  bool	hasPlayer(int x, int y, bool autour);
 private:
   std::list<ABloc * > _blocs;
   std::list<ABomb * > _bombs;
@@ -113,6 +123,14 @@ private:
   bool		_pause;
   bool		_select;
   Skybox	*_skybox;
+  TypeMap	_typeMap;
+  int		vague;
+  int		nbrZombie;
+  bool		vagueFini;
+  time_t	_timeVague;
+  int xZomb;
+  int yZomb;
+  int	nbrZomb;
 };
 
 #endif

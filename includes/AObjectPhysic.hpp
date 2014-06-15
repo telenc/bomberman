@@ -5,7 +5,7 @@
 // Login   <choqua_m@epitech.net>
 //
 // Started on  Wed May  7 15:52:43 2014 Mathieu Choquart
-// Last update Sat Jun 14 18:09:22 2014 Steven Martreux
+// Last update Sun Jun 15 17:19:19 2014 Remi telenczak
 //
 
 #ifndef			_AOBJECTPHYSIC_HPP_
@@ -130,6 +130,7 @@ public:
   int		getId() const;
   void		setId(int);
   TypeObjectPrecis	getTypePrecis() const;
+  ModelList	*getModelList() const;
 protected:
   glm::vec3	_position;
   glm::vec3	_rotation;
