@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
-// Last update Sun Jun 15 01:05:28 2014 Remi telenczak
+// Last update Sun Jun 15 04:56:08 2014 Remi telenczak
 */
 
 #include <iostream>
@@ -43,7 +43,7 @@ int	main(int ac, char **av)
 
 	  //save = new LoadGame("save/test.xml", load->getEventManager(), load->getModel(), engine->getClock());
 	  //m = save->getMap();
-	  GenereMap gen(21, 21, 0, load->getEventManager(), load->getModel(), engine->getClock());
+	  GenereMap gen(11, 11, 0, load->getEventManager(), load->getModel(), engine->getClock());
 	  Map *m = gen.getMap();
 	  m->setSkybox(new Skybox(m, load->getModel(), load->getEventManager(), engine->getClock()));
 	  while (engine->update(m))

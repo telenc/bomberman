@@ -5,7 +5,7 @@
 // Login   <telenc_r@epitech.net>
 //
 // Started on  Fri Jun 13 12:28:24 2014 Remi telenczak
-// Last update Sat Jun 14 23:33:51 2014 Remi telenczak
+// Last update Sun Jun 15 08:20:30 2014 Remi telenczak
 //
 
 #ifndef		_IABOMBER
@@ -15,7 +15,7 @@
 # include	"APlayer.hpp"
 # include	"Input.hh"
 # include	<tinyxml.h>
-
+# include	<time.h>
 struct		IaXml
 {
   std::string	name;
@@ -48,12 +48,15 @@ public:
   bool		goWallIa();
   bool		goEnemyNearIa();
   void		getList();
+  int		calcPositionNoRisk(glm::vec2 position, glm::vec2 old, int taille);
+  glm::vec2	getChemin(int, int);
 private:
   std::map<std::string, int (IaBomber::*)() > _mapName;
   std::map<std::string, bool (IaBomber::*)() > _mapAction;
   std::list<IaXml *>	listXml;
   IaXml		*_IaX;
   glm::vec2	_positionTo;
+  time_t	_timeBomb;
 };
 
 #endif
