@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Fri May  9 14:24:51 2014 Steven Martreux
-// Last update Sun Jun 15 17:56:44 2014 Steven Martreux
+// Last update Sun Jun 15 18:05:59 2014 Steven Martreux
 //
 
 #ifndef		_SOUND_HPP_
@@ -24,7 +24,7 @@ class		Sound
 public:
   Sound(EventManager *);
   ~Sound();
-  void	InGame();
+  void	InGame(void *);
   void	StartTicTacBomb(float, float, float);
   void	StopTicTacBomb();
   void	StartExplosion(float, float, float);
@@ -32,7 +32,7 @@ public:
   void	InGameStop();
   void	InMenuStop();
   void	InMenu();
-  void	InZombie();
+  void	InZombie(void *);
   void	setPlayer(float, float, float);
   void	eventBombDrop(void *data);
   void	eventPlayerMove(void *data);
@@ -44,6 +44,8 @@ private:
   ICallBack		*callPlayerMove;
   ICallBack		*callSoundOn;
   ICallBack		*callSoundOff;
+  ICallBack		*callSoundZombie;
+  ICallBack		*callSoundGame;
   sf::Music		_InGame;
   sf::Music		_TicTacBomb;
   sf::Music		_ExplosionBomb;

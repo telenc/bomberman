@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Fri May  9 14:18:15 2014 Steven Martreux
-// Last update Sun Jun 15 17:45:53 2014 dedicker remi
+// Last update Sun Jun 15 18:06:39 2014 Steven Martreux
 //
 
 #include	"Game.hpp"
@@ -28,7 +28,6 @@ Game::Game() : _display(0)
   this->menuIG->setSkybox(new Skybox(NULL, load->getModel(), load->getEventManager(), engine->getClock()));
   this->joystick = load->getController();
   this->sound = load->getSound();
-  this->sound->InGame();
   this->state = 0;
   this->menu->setSkybox(new Skybox(NULL, load->getModel(), load->getEventManager(), engine->getClock()));
   this->_callKeyStart = new CallBack<Game>(this, &Game::eventKeyStart);
@@ -36,7 +35,7 @@ Game::Game() : _display(0)
 }
 
 void	Game::eventKeySelect(void *data)
-{  
+{
   (void)data;
 }
 
