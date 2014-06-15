@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:00 2014 Remi telenczak
-// Last update Sun Jun 15 02:44:53 2014 dedicker remi
+// Last update Sun Jun 15 03:30:40 2014 dedicker remi
 // Last update Fri Jun 13 15:51:35 2014 thomas mendez
 //
 
@@ -20,23 +20,18 @@
 
 Menu::Menu(ModelList *mod, EventManager *event, gdl::Clock *clock) : _mod(mod), _event(event), _clock(clock), _finish(1), _sound(1), _gomap(0)
 {
-  std::cout << "Debut constructeur MEnu" << std::endl;
   _mainMenu = new MainMenu(mod, event);
   _loadMenu = new LoadMenu(mod, event);
   _settingsMenu = new SettingsMenu(mod, event);
   _creditsMenu = new CreditsMenu(mod, event);
-  std::cout << "Debut IA" << std::endl;
   _MenuNumberia = new MenuNumber(mod, event, clock);
-  std::cout << "Debut MAP" << std::endl;
   _MenuNumbermap = new MenuNumber(mod, event, clock);
-  std::cout << "FIn" << std::endl;
   _playMenu = new PlayMenu(mod, event);
   currentMenu = 0;
   _callKeyA = new CallBack<Menu>(this, &Menu::eventKeyA);
   event->listenEvent("keyA", _callKeyA);
   _callKeyB = new CallBack<Menu>(this, &Menu::eventKeyB);
   event->listenEvent("keyB", _callKeyB);  
-  std::cout << "Fin constructeur MEnu" << std::endl;
 }
 
 void	Menu::setFinish(int finish)
@@ -64,21 +59,11 @@ void    Menu::eventKeyB(void *data)
 
 void    Menu::eventKeyA(void *data)
 {
-  std::cout << "Avant  -> " << currentMenu << std::endl;
   if (currentMenu == 3)
-    {
-      _sizemap = _MenuNumbermap->getResult();
-      std::cout << "Taille de la map = " << _sizemap << std::endl;
-      //currentMenu++;
-    }
+    _sizemap = _MenuNumbermap->getResult();
   if (currentMenu == 6)
-    {
-      _numberia = _MenuNumberia->getResult();
-      std::cout << "Number IA = " << _numberia << std::endl;
-      // currentMenu++;
-    }
+    _numberia = _MenuNumberia->getResult();
   this->callFaceFunction();
-  std::cout << "Apres = " << currentMenu<< std::endl;
   (void)data;
 }
 

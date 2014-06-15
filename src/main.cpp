@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
-// Last update Sun Jun 15 01:05:28 2014 Remi telenczak
+// Last update Sun Jun 15 03:34:51 2014 dedicker remi
 */
 
 #include <iostream>
@@ -36,8 +36,6 @@ int	main(int ac, char **av)
 	  Loader	*load = new Loader();
 	  Graphics *engine;
 	  //LoadGame	*save;
-
-
 	  while (load->getFinish() != true);
 	  engine = load->getEngine();
 
