@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 15 09:26:53 2014 Remi telenczak
-// Last update Sun Jun 15 15:56:57 2014 Remi telenczak
+// Last update Sun Jun 15 18:00:36 2014 Remi telenczak
 //
 
 #include	"DestrucWall.hpp"

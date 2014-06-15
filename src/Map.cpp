@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Sun Jun 15 16:11:19 2014 Remi telenczak
+// Last update Sun Jun 15 18:31:54 2014 Remi telenczak
 //
 
 #include <cstdlib>
@@ -21,6 +21,8 @@
 #include	"ABonus.hpp"
 #include	"AFire.hpp"
 #include	"IaBomber.hpp"
+#include	"PoBonus.hpp"
+#include	"BombBonus.hpp"
 
 Map::Map(int width, int height, EventManager *event) : _width(width), _height(height), _event(event), _pause(false)
 {
@@ -36,12 +38,41 @@ Map::Map(int width, int height, EventManager *event) : _width(width), _height(he
   size.x = width;
   size.y = height;
   event->dispatchEvent("newMap", &size);
+  _typeMap = NORMAL;
+}
+
+Map::Map(int width, int height, EventManager *event, TypeMap type) : _width(width), _height(height), _event(event), _pause(false), _typeMap(type)
+{
+  glm::vec2	size;
+
+  if (width <= 20 || height <= 20)
+    {
+      std::cout << "Map trop pitite!" << std::endl;
+      //exit(0);
+    }
+  this->vague = 0;
+  this->nbrZombie = 5;
+  this->vagueFini = true;
+  this->nbrZomb = 0;
+  xZomb = 6;
+  yZomb =  6;
+  time(&_timeVague);
+  callPause = new CallBack<Map>(this, &Map::eventCallPause);
+  event->listenEvent("pause", callPause);
+  size.x = width;
+  size.y = height;
+  event->dispatchEvent("newMap", &size);
 
 }
 
 Map::~Map()
 {
   std::cout << "Map Destroyed!" << std::endl;
+}
+
+TypeMap		Map::getTypeMap() const
+{
+  return this->_typeMap;
 }
 
 void	Map::updateBomb(gdl::Clock clock, gdl::Input input)
@@ -217,10 +248,122 @@ bool	Map::isFinish()
   return false;
 }
 
+void	Map::updateZombie(gdl::Clock clock, gdl::Input input)
+{
+  time_t	curTime;
+  std::list<IaBomber *>::iterator	itO;
+  int		i;
+  int		x;
+  int		y;
+  int		type;
+  APlayer	*play;
+
+  (void)clock;
+  (void)input;
+  y=0;
+  if (nbrZomb > 0)
+    {
+      std::cout << "On add en " << xZomb << "/" << yZomb << std::endl;
+      this->setIa(new IaBomber(xZomb, 0, yZomb, this, _player->getModelList(), this->_event, &clock));
+      xZomb += 3;
+      if (yZomb != 6 && yZomb < 39 * 3)
+	{
+	  yZomb += 3;
+	  xZomb = 6;
+	}
+      if (xZomb > 39 * 3)
+	{
+	  if (yZomb > 39 * 3)
+	    {
+	      xZomb = 6;
+	      yZomb = 6;
+	    }
+	  else
+	    {
+	      yZomb += 3;
+	      xZomb = 6;
+	    }
+	}
+      nbrZomb -= 1;
+    }
+  if (vagueFini == true)
+    {
+      time(&curTime);
+
+      if (difftime(curTime, _timeVague) > 2)
+	{
+	  std::cout << "Debut de vague" << std::endl;
+	  i = 0;
+	  xZomb = 6;
+	  yZomb = 6;
+	  nbrZomb = nbrZombie;
+	  vagueFini = false;
+	}
+    }
+  else
+    {
+      if (nbrZomb == 0 && this->_ia.size() == 0)
+	{
+	  std::cout<< "Vague fini" << std::endl;
+	  this->nbrZombie += 5;
+	  if (this->nbrZombie > 25)
+	    this->nbrZombie = 25;
+	  this->vague += 1;
+	  this->vagueFini = true;
+	  time(&_timeVague);
+	  i = 0;
+	  while (i < 20)
+	    {
+	      x = rand() % 35 + 2;
+	      x *= 3;
+	      y = rand() % 35 + 2;
+	      y *= 3;
+	      type = rand() % 2;
+	      if (type == 1)
+		{
+		  PoBonus *po = new PoBonus(this, _player->getModelList(), this->_event, &clock);
+		  po->set_x(x);
+		  po->set_y(0);
+		  po->set_z(y);
+		  this->setBonus(po);
+		}
+	      else
+		{
+		  BombBonus *poo = new BombBonus(this, _player->getModelList(), this->_event, &clock);
+		  poo->set_x(x);
+		  poo->set_y(0);
+		  poo->set_z(y);
+		  this->setBonus(poo);
+		}
+	      i++;
+	    }
+	}
+      else
+	{
+	  itO = this->_ia.begin();
+	  while (itO != this->_ia.end())
+	    {
+	      if (this->_player->collision((*itO)) == true)
+		{
+		  play = *itO;
+
+		  itO = _ia.erase(itO);
+		  delete play;
+		  this->_player->decLife();
+		}
+	      itO++;
+	    }
+
+	}
+    }
+}
+
 void	Map::update(gdl::Clock clock, gdl::Input input)
 {
   if (this->_pause == true)
     return;
+  if (this->_typeMap == ZOMBIE)
+    updateZombie(clock, input);
   this->updateBloc(clock, input);
   this->updateBomb(clock, input);
   this->updateBonus(clock, input);
@@ -368,7 +511,7 @@ void		Map::drawBomb(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *cam
   itO = this->_bombs.begin();
   while (itO != this->_bombs.end())
     {
-      if (this->_pause == true)
+      if (this->_pause == true && glm::distance2(glm::vec3(camera->getPositionPause().x,0, camera->getPositionPause().z), (*itO)->getPosition()) < 600)
 	(*itO)->draw(shader, clock);
       else if ((*itO) != NULL && (*itO)->isInView(camera) && this->distanceObj(*itO) < 400)
 	(*itO)->draw(shader, clock);
@@ -383,7 +526,7 @@ void		Map::drawSol(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *came
   itO = this->_sol.begin();
   while (itO != this->_sol.end())
     {
-      if (this->_pause == true)
+      if (this->_pause == true && glm::distance2(glm::vec3(camera->getPositionPause().x,0, camera->getPositionPause().z), (*itO)->getPosition()) < 600)
 	(*itO)->draw(shader, clock);
       else if ((*itO) != NULL && (*itO)->isInViewSol(camera) && this->distanceObj(*itO) < 400)
 	(*itO)->draw(shader, clock);
@@ -398,7 +541,7 @@ void		Map::drawFire(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *cam
   itO = this->_fire.begin();
   while (itO != this->_fire.end())
     {
-      if (this->_pause == true)
+      if (this->_pause == true && glm::distance2(glm::vec3(camera->getPositionPause().x,0, camera->getPositionPause().z), (*itO)->getPosition()) < 600)
 	(*itO)->draw(shader, clock);
       else if ((*itO) != NULL && (*itO)->isInView(camera) && this->distanceObj(*itO) < 400)
 	(*itO)->draw(shader, clock);
@@ -414,9 +557,9 @@ void		Map::drawIa(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *camer
   while (itO != this->_ia.end())
     {
       (void)camera;
-      if (this->_pause == true)
+      if (this->_pause == true && glm::distance2(glm::vec3(camera->getPositionPause().x,0, camera->getPositionPause().z), (*itO)->getPosition()) < 600)
 	(*itO)->draw(shader, clock);
-      else if ((*itO) != NULL)// && (*itO)->isInView(camera) && this->distanceObj(*itO) < 400)
+      else if ((*itO) != NULL && this->distanceObj(*itO) < 800)// && (*itO)->isInView(camera) && this->distanceObj(*itO) < 400)
 	(*itO)->draw(shader, clock);
       itO++;
     }
@@ -429,9 +572,7 @@ void		Map::drawBloc(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *cam
   itO = this->_blocs.begin();
   while (itO != this->_blocs.end())
     {
-      std::cout << camera->getPositionPause().x << "/0/" << camera->getPositionPause().z << std::endl;
-      //std::cout << glm::distance2(glm::vec3(camera->getPosition().x,0, camera->getPosition().z), (*itO)->getPosition()) << std::endl;
-      if (this->_pause == true && glm::distance2(glm::vec3(camera->getPosition().x,0, camera->getPosition().z), (*itO)->getPosition()) < 400)
+      if (this->_pause == true && glm::distance2(glm::vec3(camera->getPositionPause().x,0, camera->getPositionPause().z), (*itO)->getPosition()) < 600)
 	(*itO)->draw(shader, clock);
       else if ((*itO) != NULL && (*itO)->isInView(camera) && this->distanceObj(*itO) < 400)
 	(*itO)->draw(shader, clock);
@@ -446,7 +587,7 @@ void		Map::drawBonus(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *ca
   itO = this->_bonus.begin();
   while (itO != this->_bonus.end())
     {
-      if (this->_pause == true)
+      if (this->_pause == true && glm::distance2(glm::vec3(camera->getPositionPause().x,0, camera->getPositionPause().z), (*itO)->getPosition()) < 600)
 	(*itO)->draw(shader, clock);
       else if ((*itO) != NULL && (*itO)->isInView(camera) && this->distanceObj(*itO) < 400)
 	(*itO)->draw(shader, clock);
@@ -472,12 +613,14 @@ void					Map::draw(gdl::BasicShader shader, gdl::Clock clock, CameraBomber *came
 
 bool		Map::hasPlayer(int x, int y, bool autour)
 {
-  std::list<IaBomber *>::iterator	itO;
+  std::vector<APlayer *>		list;
+  std::vector<APlayer *>::iterator	itO;
   int					xObj;
   int					yObj;
 
-  itO = this->_ia.begin();
-  while (itO != this->_ia.end())
+  list = this->getPlayers();
+  itO = list.begin();
+  while (itO != list.end())
     {
       if ((*itO) != NULL)
 	{
@@ -487,18 +630,18 @@ bool		Map::hasPlayer(int x, int y, bool autour)
 	    {
 	      xObj = (*itO)->get_x();
 	      yObj = (*itO)->get_z();
-	      if (std::max(x, xObj) - std::min(x, xObj) <= 3)
-		{
-		  if (x == xObj)
-		    return true;
-		  else if (std::max(y, yObj) - std::min(y, yObj) <= 3)
-		    return true;
-		}
-	      if (std::max(y, yObj) - std::min(y, yObj) <= 3)
+	      if (std::max(x, xObj) - std::min(x, xObj) <= 6)
 		{
 		  if (y == yObj)
 		    return true;
-		  else if (std::max(x, xObj) - std::min(x, xObj) <= 3)
+		  else if (std::max(y, yObj) - std::min(y, yObj) <= 6)
+		    return true;
+		}
+	      if (std::max(y, yObj) - std::min(y, yObj) <= 6)
+		{
+		  if (x == xObj)
+		    return true;
+		  else if (std::max(x, xObj) - std::min(x, xObj) <= 6)
 		    return true;
 		}
 	    }

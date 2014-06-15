@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 17:53:20 2014 dedicker remi
-// Last update Sun Jun 15 15:54:25 2014 Remi telenczak
+// Last update Sun Jun 15 18:00:36 2014 Remi telenczak
 */
 
 #include	<iostream>
@@ -110,7 +110,7 @@ void	GenereMap::putWall()
 	      wallObject->set_z(y * 3);
 	      this->_map->setBloc(wallObject);
 	    }
-	  else if (wall == 1 && (y < (_width - 1)) && (i % 2 == 0))
+	  else if (_typeMap == NORMAL && wall == 1 && (y < (_width - 1)) && (i % 2 == 0))
 	    {
 	      if (_map->hasPlayer(i * 3, y * 3, false) == false)
 		{
@@ -118,6 +118,14 @@ void	GenereMap::putWall()
 		  wallObject->set_x(i * 3);
 		  wallObject->set_z(y * 3);
 		  this->_map->setBloc(wallObject);
+		}
+	      else
+		{
+		  wallObject = new SolWall(this->_map, _model, _event, _clock);
+		  wallObject->set_x(i * 3);
+		  wallObject->set_z(y * 3);
+		  wallObject->set_y(-3);
+		  this->_map->setSol(wallObject);
 		}
 	      wall = 0;
 	    }
@@ -130,7 +138,7 @@ void	GenereMap::putWall()
 	      this->_map->setSol(wallObject);
 	      wall++;
 	    }
-	  if (wall != 0 && ((i > 0  && i < _width) || (y > 0 && y < _height) ))
+	  if (_typeMap == NORMAL && wall != 0 && ((i > 0  && i < _width) || (y > 0 && y < _height) ))
 	    {
 	      if (_map->hasPlayer(i * 3, y * 3, true) == false)
 		{
@@ -153,9 +161,23 @@ void	GenereMap::putPlayer()
   this->_map->setPlayer(new Player(1 * 2, 0, 1 * 2, this->_map, this->_model, this->_event, _clock));
 }
 
+GenereMap::GenereMap(int width, int height, int ia, EventManager *event, ModelList *model, gdl::Clock *clock, TypeMap type) : _width(width), _height(height), _ia(ia), _typeMap(type), _event(event), _model(model), _clock(clock)
+{
+  (void)type;
+  _pos = 0;
+  _map = new Map(width, height, event, type);
+  //  std::cout << "Nombre possible d'IA : " << ((width * height) / 5) << std::endl;
+  std::cout << "Put wall" << std::endl;
+  putIa();
+  putPlayer();
+  putWall();
+
+  std::cout << "ici" << std::endl;
+}
+
 GenereMap::GenereMap(int width, int height, int ia, EventManager *event, ModelList *model, gdl::Clock *clock) : _width(width), _height(height), _ia(ia), _event(event), _model(model), _clock(clock)
 {
-
+  _typeMap = NORMAL;
   _pos = 0;
   _map = new Map(width, height, event);
   //  std::cout << "Nombre possible d'IA : " << ((width * height) / 5) << std::endl;
