@@ -5,11 +5,7 @@
 ** Login <bernar_x@epitech.net>
 ** 
 ** Started on  Thu Jun  5 16:20:43 2014 mattieu bernard-guêle
-<<<<<<< HEAD
-// Last update Sun Jun 15 18:12:13 2014 thomas mendez
-=======
-// Last update Sun Jun 15 18:12:18 2014 Steven Martreux
->>>>>>> 9ee29913410d3ee66aec99ec00e3fc6e6dedb447
+// Last update Sun Jun 15 18:48:52 2014 thomas mendez
 */
 
 #include	"Sound.hpp"
@@ -24,11 +20,7 @@ Sound::Sound(EventManager *event) : _event(event), _position(0, 0, 0)
     throw new myException("Fail to open Explosion");
   if (!_InMenu.OpenFromFile("sound/Menu.wav"))
     throw new myException("Fail to open Menu.wav");
-<<<<<<< HEAD
-  if (!_Zombie.OpenFromFile("sound/Zombie2.wav"))
-=======
   if (!_Zombie.OpenFromFile("sound/zombie2.wav"))
->>>>>>> 9ee29913410d3ee66aec99ec00e3fc6e6dedb447
     throw new myException("Fail to open Zombie.wav");
   callBombDrop = new CallBack<Sound>(this, &Sound::eventBombDrop);
   event->listenEvent("bombDrop", callBombDrop);

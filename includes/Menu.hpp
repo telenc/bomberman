@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:19 2014 Remi telenczak
-// Last update Sun Jun 15 06:55:46 2014 dedicker remi
+// Last update Sun Jun 15 19:10:34 2014 thomas mendez
 //
 
 #ifndef		_MENU_BOMBERMAN
@@ -49,7 +49,7 @@ class Menu
 public:
   Menu(ModelList *mod, EventManager *event, gdl::Clock *);
   ~Menu();
-  int	getFinish();
+  int	getFinish() const;
   void	setSkybox(Skybox *skybox);
   void	setBox(gdl::Model *model);
   void  draw(gdl::BasicShader &, gdl::Clock const &);
@@ -60,15 +60,16 @@ public:
   void	faceSizeMap();
   void	faceNumberIa();
   void	faceLoadGame();
-  int	getSizemap();
-  int	getNumberIa();
+  int	getSizemap() const;
+  int	getNumberIa() const;
   void	setGoMap(int gomap);
-  int	getGoMap();
+  int	getGoMap() const;
   void	setFinish(int finish);
   void  callFaceFunction();
   void	eventKeyA(void *data);
   void	eventKeyB(void *data);
   void	setCurrentMenu(int);
+  int	getCurrentMenu() const;
 private:
   gdl::Model *_box;
   ModelList *_mod;

@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:00 2014 Remi telenczak
-// Last update Sun Jun 15 07:02:22 2014 dedicker remi
+// Last update Sun Jun 15 19:22:05 2014 thomas mendez
 //
 
 #include	<iostream>
@@ -45,6 +45,11 @@ void	Menu::setCurrentMenu(int current)
   currentMenu = current;
 }
 
+int	Menu::getCurrentMenu() const
+{
+  return this->currentMenu;
+}
+
 void    Menu::eventKeyB(void *data)
 {
   currentMenu = 0;
@@ -78,12 +83,12 @@ void	Menu::setGoMap(int gomap)
   _gomap = gomap;
 }
 
-int	Menu::getGoMap()
+int	Menu::getGoMap() const
 {
   return this->_gomap;
 }
 
-int	Menu::getFinish()
+int	Menu::getFinish() const
 {
   return _finish;
 }
@@ -153,6 +158,7 @@ void	Menu::facePlayMenu()
 	}
       else if (_rotationOculus.y <= -45 && _rotationOculus.y >= -135)
 	{
+	  currentMenu = 7;
 	  std::cout << "L|-- Load Game --|" << std::endl;
 	}
       else if (_rotationOculus.y >= 135 || _rotationOculus.y <= -135)
@@ -217,12 +223,12 @@ void	Menu::callFaceFunction()
     faceNumberIa();
 }
 
-int	Menu::getSizemap()
+int	Menu::getSizemap() const
 {
   return this->_sizemap;
 }
 
-int	Menu::getNumberIa()
+int	Menu::getNumberIa() const
 {
   return this->_numberia;
 }
@@ -266,6 +272,8 @@ void	Menu::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus)
     _loadMenu->update(clock, input, cameraOculus);
   else if (this->currentMenu == 6)
     _MenuNumberia->update(clock, input);
+  else if (this->currentMenu == 7)
+    this->_gomap = 2;
 }
 
 void	Menu::setSkybox(Skybox *skybox)

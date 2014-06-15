@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Fri May  9 14:18:15 2014 Steven Martreux
-// Last update Sun Jun 15 18:34:55 2014 Steven Martreux
+// Last update Sun Jun 15 19:25:34 2014 thomas mendez
 //
 
 #include	"Game.hpp"
@@ -71,7 +71,7 @@ void    Game::eventKeyStart(void *data)
 
 void	Game::playMenu()
 {
-  while (engine->update(menu) && menu->getFinish() != 0 && menu->getGoMap() != 1)
+  while (engine->update(menu) && menu->getFinish() != 0 && menu->getGoMap() != 1 && menu->getGoMap() != 2)
     {
       engine->draw(menu);
       joystick->update();
@@ -79,6 +79,14 @@ void	Game::playMenu()
   if (menu->getGoMap() == 1 && menu->getFinish() != 0)
     {
       this->_gen = new GenereMap(menu->getSizemap(), menu->getSizemap(), menu->getNumberIa(),load->getEventManager(), load->getModel(), engine->getClock());
+      this->map = _gen->getMap();
+      this->map->setSkybox(new Skybox(map, load->getModel(), load->getEventManager(), engine->getClock()));
+      _display = 1;
+      this->menu->setGoMap(0);
+    }
+  else if (menu->getGoMap() == 2 && menu->getFinish() != 0)
+    {
+      this->_gen = new GenereMap(41, 41, 0,load->getEventManager(), load->getModel(), engine->getClock(), ZOMBIE);
       this->map = _gen->getMap();
       this->map->setSkybox(new Skybox(map, load->getModel(), load->getEventManager(), engine->getClock()));
       _display = 1;
