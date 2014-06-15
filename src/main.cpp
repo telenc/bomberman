@@ -8,7 +8,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
-// Last update Sun Jun 15 18:42:28 2014 Remi telenczak
+// Last update Sun Jun 15 18:57:38 2014 Remi telenczak
 =======
 // Last update Sun Jun 15 07:10:28 2014 Steven Martreux
 >>>>>>> 2c4c4cadbef375c9030ec89010ba100e149344a4
@@ -51,7 +51,7 @@ int	main(int ac, char **av)
 
 	  //save = new LoadGame("save/test.xml", load->getEventManager(), load->getModel(), engine->getClock());
 	  //m = save->getMap();
-	  GenereMap gen(41, 41, 10, load->getEventManager(), load->getModel(), engine->getClock());
+	  GenereMap gen(41, 41, 0, load->getEventManager(), load->getModel(), engine->getClock(), ZOMBIE);
 	  Map *m = gen.getMap();
 	  Controller	joystick(load->getEventManager());;
 	  m->setSkybox(new Skybox(m, load->getModel(), load->getEventManager(), engine->getClock()));
