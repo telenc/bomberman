@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:00 2014 Remi telenczak
-// Last update Sun Jun 15 05:15:50 2014 Steven Martreux
+// Last update Sun Jun 15 05:31:13 2014 Steven Martreux
 // Last update Fri Jun 13 15:51:35 2014 thomas mendez
 //
 
@@ -31,7 +31,7 @@ Menu::Menu(ModelList *mod, EventManager *event, gdl::Clock *clock) : _mod(mod), 
   _callKeyA = new CallBack<Menu>(this, &Menu::eventKeyA);
   event->listenEvent("keyA", _callKeyA);
   _callKeyB = new CallBack<Menu>(this, &Menu::eventKeyB);
-  event->listenEvent("keyB", _callKeyB);//  _MenuNumberia->setMinNumber(1);
+  event->listenEvent("keyB", _callKeyB);
   _MenuNumbermap->setMinNumber(20);
 }
 
