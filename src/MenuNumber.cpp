@@ -5,9 +5,10 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Mon Jun  2 02:08:04 2014 Remi telenczak
-// Last update Sun Jun 15 03:02:46 2014 Steven Martreux
+// Last update Sun Jun 15 04:57:36 2014 dedicker remi
 //
 
+#include	<list>
 #include	"MenuNumber.hpp"
 #include	"MenuBoxNumber.hpp"
 #include        "Skybox.hpp"
@@ -46,6 +47,8 @@ void	MenuNumber::setMinNumber(int Ntime)
 {
   MenuBoxNumber	*firstBox;
   std::list<MenuBoxNumber *>::iterator it;
+  std::list<int>::iterator it2;
+
 
   it = this->listBox.begin();
   while (it != this->listBox.end())
@@ -54,6 +57,13 @@ void	MenuNumber::setMinNumber(int Ntime)
       it++;
     }
   listBox.clear();
+  it2 = this->result.begin();
+  while (it2 != this->result.end())
+    {
+      it2 = this->result.erase(it2);
+      it2++;
+    }
+
   result.clear();
   firstBox = new MenuBoxNumber(NULL, _mod, _event, _clock);
   firstBox->set_x(10);
