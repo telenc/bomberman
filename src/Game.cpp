@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Fri May  9 14:18:15 2014 Steven Martreux
-// Last update Sun Jun 15 05:53:15 2014 thomas mendez
+// Last update Sun Jun 15 06:04:02 2014 thomas mendez
 //
 
 #include	"Game.hpp"
@@ -16,6 +16,8 @@
 
 Game::Game() : _display(0)
 {
+  if (getenv("DISPLAY") == NULL)
+    throw new myException("Where is env ?");
   this->eventManager = new EventManager();
   this->load = new Loader();
   while (load->getFinish() != true);
@@ -64,13 +66,22 @@ void	Game::draw()
 {
   while (menu->getFinish())
     {
-      if (_display == 0)
+      try
 	{
-	  playMenu();
+	  if (_display == 0)
+	    {
+	      playMenu();
+	    }
+	  else
+	    {
+	      playMap();
+	    }
 	}
-      else
+      catch(const myException *e)
 	{
-	  playMap();
+	  std::cerr << "Error : " << e->what() << std::endl;
+	  this->menu->setCurrentMenu(0);
+	  _display = 0;
 	}
     }
 }

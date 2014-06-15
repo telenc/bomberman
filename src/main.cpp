@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
-// Last update Sun Jun 15 03:34:51 2014 dedicker remi
+// Last update Sun Jun 15 05:54:07 2014 Steven Martreux
 */
 
 #include <iostream>
@@ -31,8 +31,6 @@ int	main(int ac, char **av)
       (void)ac;
       if (ac == 2)
 	{
-	  if (getenv("DISPLAY") == NULL)
-	    throw new myException("Where is env ?");
 	  Loader	*load = new Loader();
 	  Graphics *engine;
 	  //LoadGame	*save;
@@ -55,7 +53,7 @@ int	main(int ac, char **av)
       else
 	{
 	  Game	game;
-
+	  
 	  while (game.isFinish())
 	    game.draw();
 	}
