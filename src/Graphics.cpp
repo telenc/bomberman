@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Sun Jun 15 17:44:02 2014 dedicker remi
+// Last update Sun Jun 15 19:08:20 2014 Steven Martreux
 //
 
 #include	"OVR.h"
@@ -29,7 +29,6 @@
 #include	"Graphics.hpp"
 #include	"GL/glut.h"
 #include	"Player.hpp"
-#include	"Cube.hpp"
 #include	"MenuIG.hpp"
 
 

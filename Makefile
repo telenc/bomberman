@@ -77,7 +77,6 @@ SRC		= src/main.cpp \
 		src/APlayer.cpp \
 		src/ABomb.cpp \
 		src/AObjectLife.cpp \
-		src/Inventory.cpp \
 		src/Map.cpp \
 		src/Player.cpp \
 		src/LoadGame.cpp \
@@ -98,7 +97,6 @@ SRC		= src/main.cpp \
 		src/GenereMap.cpp	\
 		src/Bomb/DefaultBomb.cpp \
 		src/Controller.cpp	\
-		src/Cube.cpp\
 		src/Skybox.cpp \
 		src/Sound.cpp \
 		src/AFire.cpp  \
