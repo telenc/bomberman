@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Fri May  9 14:18:15 2014 Steven Martreux
-// Last update Sun Jun 15 06:04:02 2014 thomas mendez
+// Last update Sun Jun 15 07:43:10 2014 dedicker remi
 //
 
 #include	"Game.hpp"
@@ -114,5 +114,5 @@ bool	Game::update()
 
 Game::~Game()
 {
-  delete eventManager;
+  //  delete eventManager;
 }

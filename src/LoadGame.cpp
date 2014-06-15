@@ -6,19 +6,22 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Mon May 12 13:48:39 2014 Steven Martreux
-// Last update Sun Jun 15 06:02:31 2014 Steven Martreux
+// Last update Sun Jun 15 07:41:40 2014 dedicker remi
 // Last update Sat Jun 14 22:58:34 2014 Steven Martreux
 //
 
+#include	<cstring>
 #include	<tinyxml.h>
 #include	"LoadGame.hpp"
 
 LoadGame::LoadGame(const std::string & file, EventManager *event, ModelList *model, gdl::Clock *clock) : _file(file), _event(event), _model(model), _clock(clock)
 {
+  std::cout << "Début" << std::endl;
   if (checkFile() == false)
     throw new myException("Save Fail dont change my Save !!");
   TiXmlDocument	doc(file);
   _loadOkay = doc.LoadFile();
+  std::cout << "Début 2" << std::endl;
   if (!_loadOkay)
     throw new myException("Load of file Error");
   _bomberman = doc.FirstChildElement("Bomberman");
@@ -35,6 +38,7 @@ LoadGame::LoadGame(const std::string & file, EventManager *event, ModelList *mod
   this->getPlayer();
   this->getIas();
   this->getObjMap();
+std::cout << "Fin" << std::endl;
 }
 
 bool	LoadGame::ChangeMd5()
@@ -51,6 +55,8 @@ bool	LoadGame::ChangeMd5()
       while (!file1.eof())
 	{
 	  file1.getline(string1, 256);
+	  if (strlen(string1) == 0)
+	    return false;
 	  while (string1[i])
 	    i++;
 	  i--;
@@ -71,6 +77,7 @@ bool	LoadGame::checkFile()
 {
   if (this->ChangeMd5() == false)
     return false;
+  std::cout << "CheckFIle" << std::endl;
   std::string str = "md5sum " + _file + " > ." + _file + ".md5test";
   system(str.c_str());
   std::string namefile1 = "." + _file + ".md5test";

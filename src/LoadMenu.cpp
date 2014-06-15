@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 // 
 // Started on  Wed Jun  4 12:24:31 2014 thomas mendez
-// Last update Sat Jun 14 19:12:54 2014 thomas mendez
+// Last update Sun Jun 15 06:32:29 2014 dedicker remi
 //
 
 #include	<iostream>
@@ -40,7 +40,6 @@ void	LoadMenu::eventKeyA(void *data)
 
 int    LoadMenu::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
 {
-  std::cout << "LoadMenu draw 1" << std::endl;
   glm::mat4 t(1);
   int		roty;
   (void)roty;
@@ -57,13 +56,11 @@ int    LoadMenu::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
   //  _boxmenu2->draw(shader,clock);
   //_boxmenu3->draw(shader,clock);
   //_menu->draw(shader, clock);
-  std::cout << "LoadMenu draw 2" << std::endl;
   return 5;
 }
 
 void	LoadMenu::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus)
 {
-  std::cout << "LoadMenu update 1" << std::endl;
   _boxmenu->update(clock, input);
   _boxmenu2->update(clock, input);
   _boxmenu3->update(clock, input);
@@ -74,7 +71,6 @@ void	LoadMenu::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOcul
       std::cout << this->_rotationOculus.z << std::endl;*/
   (void)clock;
   (void)input;
-  std::cout << "LoadMenu update 2" << std::endl;
 }
 
 void	LoadMenu::setSkybox(Skybox *skybox)

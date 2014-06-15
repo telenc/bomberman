@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:00 2014 Remi telenczak
-// Last update Sun Jun 15 06:07:45 2014 dedicker remi
+// Last update Sun Jun 15 07:02:22 2014 dedicker remi
 //
 
 #include	<iostream>
@@ -16,8 +16,9 @@
 #include	"PlayMenu.hpp"
 #include	"MenuNumber.hpp"
 #include	"CallBack.hpp"
+# include	"LoadGame.hpp"
 
-Menu::Menu(ModelList *mod, EventManager *event, gdl::Clock *clock) : _mod(mod), _event(event), _clock(clock), _finish(1), _sound(1), _gomap(0)
+Menu::Menu(ModelList *mod, EventManager *event, gdl::Clock *clock) : _mod(mod), _event(event), _clock(clock), _finish(1), _sound(1), _gomap(0), _isLoad(false)
 {
   _mainMenu = new MainMenu(mod, event);
   _loadMenu = new LoadMenu(mod, event);
@@ -178,25 +179,25 @@ void	Menu::faceNumberIa()
 
 void	Menu::faceLoadGame()
 {
-  std::cout << "=> " << _rotationOculus.x << " " << _rotationOculus.y << std::endl;
   if (_rotationOculus.x <= 40 && _rotationOculus.x >= -40)
     {
       if (_rotationOculus.y >= -45 && _rotationOculus.y <= 45)
 	{
-	  std::cout << "L|-- Play Game --|" << std::endl;
-	  currentMenu = 3;
+	  std::cout << "L|-- Cube 1 --|" << std::endl;	  
+	  LoadGame *t = new LoadGame("sauv/sauv1.xml", _event, _mod, _clock);
+	  (void)t;
+
 	}
       else if (_rotationOculus.y >= 45 && _rotationOculus.y <= 135)
 	{
-	  currentMenu = 5;
-	  std::cout << "L|-- Load Game --|" << std::endl;
+	  std::cout << "L|-- Cube 2 --|" << std::endl;
 	}
       else if (_rotationOculus.y <= -45 && _rotationOculus.y >= -135)
 	{
-	  std::cout << "L|-- Load Game --|" << std::endl;
+	  std::cout << "L|-- Cube 3 --|" << std::endl;
 	}
       else if (_rotationOculus.y >= 135 || _rotationOculus.y <= -135)
-	std::cout << "L|-- Image de Derriere --|" << std::endl;
+	std::cout << "L|-- Cube 4 --|" << std::endl;
     }
 }
 
@@ -250,6 +251,7 @@ void    Menu::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
 void	Menu::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus)
 {
   this->_rotationOculus = cameraOculus;
+  std::cout << "=>    X = " << _rotationOculus.x << "   | Y = " << _rotationOculus.y << std::endl;
   if (this->currentMenu == 0)
     _mainMenu->update(clock, input, cameraOculus);
   else if (this->currentMenu == 1)

@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:19 2014 Remi telenczak
-// Last update Sun Jun 15 06:09:17 2014 dedicker remi
+// Last update Sun Jun 15 06:55:46 2014 dedicker remi
 //
 
 #ifndef		_MENU_BOMBERMAN
@@ -95,6 +95,7 @@ private:
   int		_sizemap;
   int		_numberia;
   int		_gomap;
+  bool		_isLoad;
 };
 
 #endif
