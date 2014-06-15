@@ -5,11 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Fri May 23 03:51:01 2014 Remi telenczak
-<<<<<<< HEAD
-// Last update Sun Jun 15 05:00:10 2014 Remi telenczak
-=======
-// Last update Sun Jun 15 05:32:42 2014 Steven Martreux
->>>>>>> 2c4c4cadbef375c9030ec89010ba100e149344a4
+// Last update Sun Jun 15 12:00:04 2014 Remi telenczak
 //
 
 #include		"AFire.hpp"
@@ -100,7 +96,6 @@ void			AFire::checkPlayerColl()
 	    {
 	      this->_playerTouched->push_back(*it);
 	      (*it)->decLife();
-	      //std::cout << "Player touched" << std::endl;
 	    }
 	}
       it++;

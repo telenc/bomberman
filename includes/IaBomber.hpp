@@ -5,11 +5,7 @@
 // Login   <telenc_r@epitech.net>
 //
 // Started on  Fri Jun 13 12:28:24 2014 Remi telenczak
-<<<<<<< HEAD
-// Last update Sun Jun 15 08:20:30 2014 Remi telenczak
-=======
-// Last update Sun Jun 15 05:35:56 2014 Steven Martreux
->>>>>>> 2c4c4cadbef375c9030ec89010ba100e149344a4
+// Last update Sun Jun 15 11:59:11 2014 Remi telenczak
 //
 
 #ifndef		_IABOMBER
@@ -55,20 +51,12 @@ public:
   int		calcPositionNoRisk(glm::vec2 position, glm::vec2 old, int taille);
   glm::vec2	getChemin(int, int);
 private:
-<<<<<<< HEAD
-  std::map<std::string, int (IaBomber::*)() > _mapName;
-  std::map<std::string, bool (IaBomber::*)() > _mapAction;
-  std::list<IaXml *>	listXml;
-  IaXml		*_IaX;
-  glm::vec2	_positionTo;
-  time_t	_timeBomb;
-=======
+  time_t					_timeBomb;
   std::map<std::string, int (IaBomber::*)() >	_mapName;
   std::map<std::string, bool (IaBomber::*)() >	_mapAction;
   std::list<IaXml *>				listXml;
   IaXml						*_IaX;
   glm::vec2					_positionTo;
->>>>>>> 2c4c4cadbef375c9030ec89010ba100e149344a4
 };
 
 #endif
