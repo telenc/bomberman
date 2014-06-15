@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Mon May 12 13:48:39 2014 Steven Martreux
-// Last update Sun Jun 15 17:22:44 2014 dedicker remi
+// Last update Sun Jun 15 17:56:20 2014 Steven Martreux
 //
 
 #include	<cstring>
@@ -276,9 +276,8 @@ void	LoadGame::getMapSize()
 {
   int	width;
   int	height;
-  int	type;
+  //int	type;
 
-  (void)type;
   _map_size = _bomberman->FirstChildElement("Map_Size");
   if (_map_size)
     {
@@ -286,11 +285,11 @@ void	LoadGame::getMapSize()
 	throw new myException("<BALISE> Width Height");
       width = atoi(_map_size->Attribute("width"));
       height = atoi(_map_size->Attribute("height"));
-      //      type = atoi(_map_size->Attribute("TypeGame"));
-      //if (type == 0)
-      this->_mapGame = new Map(width, height, _event);
-      //else if (type == 1)
-      //this->_mapGame = new Map(width, height, _event, type);
+      //type = atoi(_map_size->Attribute("TypeGame"));
+      //      if (type == 0)
+	this->_mapGame = new Map(width, height, _event);
+	//else if (type == 1)
+	//this->_mapGame = new Map(width, height, _event, type);
     }
   else
     throw new myException("<Balise Map_Size not find");

@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Fri May  9 14:24:51 2014 Steven Martreux
-// Last update Sun Jun 15 07:29:38 2014 Steven Martreux
+// Last update Sun Jun 15 17:56:44 2014 Steven Martreux
 //
 
 #ifndef		_SOUND_HPP_
@@ -32,6 +32,7 @@ public:
   void	InGameStop();
   void	InMenuStop();
   void	InMenu();
+  void	InZombie();
   void	setPlayer(float, float, float);
   void	eventBombDrop(void *data);
   void	eventPlayerMove(void *data);
@@ -47,6 +48,7 @@ private:
   sf::Music		_TicTacBomb;
   sf::Music		_ExplosionBomb;
   sf::Music		_InMenu;
+  sf::Music		_Zombie;
   glm::vec3		_position;
   int			_soundOn;
 };

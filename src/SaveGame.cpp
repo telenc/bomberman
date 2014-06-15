@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 // 
 // Started on  Fri May 30 16:39:48 2014 Steven Martreux
-// Last update Sun Jun 15 17:21:51 2014 dedicker remi
+// Last update Sun Jun 15 17:55:32 2014 Steven Martreux
 //
 
 #include	"SaveGame.hpp"
