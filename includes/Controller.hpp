@@ -5,18 +5,19 @@
 // Login   <martre_s@epitech.net>
 // 
 // Started on  Wed May 21 12:52:03 2014 Steven Martreux
-// Last update Sat Jun 14 17:45:38 2014 Steven Martreux
+// Last update Sun Jun 15 07:30:05 2014 Steven Martreux
 //
 
 #ifndef		_CONTROLLER_HPP_
 #define		_CONTROLLER_HPP_
 
-#include	<iostream>
-#include	<string>
-#include	<SDL/SDL.h>
+# include	<iostream>
+# include	<string>
+# include	<SDL/SDL.h>
 
-#include	"SDL_joystick.h"
-#include	"EventManager.hpp"
+# include	"SDL_joystick.h"
+# include	"EventManager.hpp"
+# include	"myException.hpp"
 
 class		Controller
 {
@@ -47,6 +48,7 @@ private:
   int		_downMenu;
   int		_start;
   int		_stop;
+  int		_select;
 };
 
 #endif		/* _CONTROLLER_HPP_ */

@@ -60,12 +60,14 @@ void		ModelList::loadModel()
   this->list.push_back(std::make_pair("box_setting", mod));
   mod = this->createModel("./assets/menuPlay.fbx");
   this->list.push_back(std::make_pair("box_play", mod));
-  mod = this->createModel("./assets/menucredit.fbx");
+  mod = this->createModel("./assets/menuCredit.fbx");
   this->list.push_back(std::make_pair("box_credits", mod));
   mod = this->createModel("./assets/menuSave1234.fbx");
   this->list.push_back(std::make_pair("box_sauv", mod));
   mod = this->createModel("./assets/menuSaveVide.fbx");
   this->list.push_back(std::make_pair("box_vide", mod));
+  mod = this->createModel("./assets/menuIngame.fbx");
+  this->list.push_back(std::make_pair("box_menuig", mod));
   this->listChemin.push_back(std::make_pair("marvin", "./assets/marvin.fbx"));
   this->listChemin.push_back(std::make_pair("cube6", "./assets/cubeWallFer.fbx"));
   this->listChemin.push_back(std::make_pair("bombBonus", "./assets/bonus_bomb_up.FBX"));

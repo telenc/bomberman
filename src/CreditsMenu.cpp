@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 // 
 // Started on  Fri Jun 13 15:08:46 2014 thomas mendez
-// Last update Fri Jun 13 16:17:29 2014 thomas mendez
+// Last update Sun Jun 15 05:41:01 2014 dedicker remi
 //
 
 #include	<iostream>
@@ -39,7 +39,6 @@ void	CreditsMenu::eventKeyA(void *data)
 
 int    CreditsMenu::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
 {
-  std::cout << "CreditsMenu draw 1" << std::endl;
   glm::mat4 t(1);
   int		roty;
   (void)roty;
@@ -53,7 +52,6 @@ int    CreditsMenu::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
   _boxmenu2->draw(shader,clock);
   _boxmenu3->draw(shader,clock);
   //_menu->draw(shader, clock);
-  std::cout << "CreditsMenu draw 2" << std::endl;
   return 4;
 }
 

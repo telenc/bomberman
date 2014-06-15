@@ -5,9 +5,10 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Mon Jun  2 02:08:04 2014 Remi telenczak
-// Last update Fri Jun 13 16:10:15 2014 dedicker remi
+// Last update Sun Jun 15 06:08:16 2014 dedicker remi
 //
 
+#include	<list>
 #include	"MenuNumber.hpp"
 #include	"MenuBoxNumber.hpp"
 #include        "Skybox.hpp"
@@ -40,6 +41,47 @@ MenuNumber::MenuNumber(ModelList *mod, EventManager *event, gdl::Clock *clock) :
   rotationCube.insert(std::pair<int, float>(7, 630));
   rotationCube.insert(std::pair<int, float>(8, 720));
   rotationCube.insert(std::pair<int, float>(9, 810));
+}
+
+void	MenuNumber::setMinNumber(int Ntime)
+{
+  MenuBoxNumber	*firstBox;
+  std::list<MenuBoxNumber *>::iterator it;
+  std::list<int>::iterator it2;
+
+
+  it = this->listBox.begin();
+  while (it != this->listBox.end())
+    {
+      delete (*it);
+      it++;
+    }
+  listBox.clear();
+  it2 = this->result.begin();
+  while (it2 != this->result.end())
+    {
+      it2 = this->result.erase(it2);
+      it2++;
+    }
+
+  result.clear();
+  firstBox = new MenuBoxNumber(NULL, _mod, _event, _clock);
+  firstBox->set_x(10);
+  this->end = false;
+  this->_nextX = 5;
+  firstBox->set_y(20);
+  firstBox->set_vy(-1.8);
+  this->listBox.push_back(firstBox);
+  result.push_back(1);
+  std::cout << getResult() << std::endl;
+  std::cout << Ntime << std::endl;
+  int	i = 0;
+  while (i < Ntime)
+    {
+      _event->dispatchEvent("keyUpMenu", NULL);
+      i++;
+    }
+  _min = Ntime;
 }
 
 void	MenuNumber::upIt(std::list<int>::iterator it)
@@ -108,39 +150,42 @@ void	MenuNumber::downIt(std::list<int>::iterator it)
 
   it = result.begin();
   it3 = listBox.begin();
-  while (it != result.end())
+  if (this->getResult() > _min)
     {
-      if (it == result.begin())
-	*it -= 1;
-      if (*it < 0)
+      while (it != result.end())
 	{
-	  it2 = it;
-	  it2++;
-	  it4 = it3;
-	  it4++;
-	  *it = 9;
-	  //++it2;
-	  if (it2 != result.end())
+	  if (it == result.begin())
+	    *it -= 1;
+	  if (*it < 0)
 	    {
-	      *it2 -= 1;
+	      it2 = it;
 	      it2++;
-	      if (it2 == result.end())
+	      it4 = it3;
+	      it4++;
+	      *it = 9;
+	      //++it2;
+	      if (it2 != result.end())
 		{
-		  it2--;
-		  if (*it2 == 0)
+		  *it2 -= 1;
+		  it2++;
+		  if (it2 == result.end())
 		    {
-		  result.erase(it2);
-		  listBoxToDelete.push_back(*it4);
-		  (*it4)->goDelete();
-		  listBox.erase(it4);
-		  _nextX += 5;
+		      it2--;
+		      if (*it2 == 0)
+			{
+			  result.erase(it2);
+			  listBoxToDelete.push_back(*it4);
+			  (*it4)->goDelete();
+			  listBox.erase(it4);
+			  _nextX += 5;
+			}
 		    }
 		}
-	    }
 
+	    }
+	  it3++;
+	  it++;
 	}
-      it3++;
-      it++;
     }
 }
 

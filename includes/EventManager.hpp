@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Wed May  7 06:31:56 2014 Remi telenczak
-// Last update Sat May 17 09:41:14 2014 Remi telenczak
+// Last update Sun Jun 15 05:35:25 2014 Steven Martreux
 //
 
 #ifndef		_EVENT_MANAGER
@@ -21,7 +21,6 @@ class EventManager
 public:
   EventManager();
   ~EventManager();
-
   void	listenEvent(std::string, ICallBack *callBack);
   void	dispatchEvent(std::string, void *);
   void	removeEvent(std::string, ICallBack *);

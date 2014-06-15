@@ -5,7 +5,11 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 04:21:54 2014 Remi telenczak
+<<<<<<< HEAD
 // Last update Sun Jun 15 04:56:08 2014 Remi telenczak
+=======
+// Last update Sun Jun 15 07:10:28 2014 Steven Martreux
+>>>>>>> 2c4c4cadbef375c9030ec89010ba100e149344a4
 */
 
 #include <iostream>
@@ -31,13 +35,9 @@ int	main(int ac, char **av)
       (void)ac;
       if (ac == 2)
 	{
-	  if (getenv("DISPLAY") == NULL)
-	    throw new myException("Where is env ?");
 	  Loader	*load = new Loader();
 	  Graphics *engine;
 	  //LoadGame	*save;
-
-
 	  while (load->getFinish() != true);
 	  engine = load->getEngine();
 
@@ -45,10 +45,12 @@ int	main(int ac, char **av)
 	  //m = save->getMap();
 	  GenereMap gen(11, 11, 0, load->getEventManager(), load->getModel(), engine->getClock());
 	  Map *m = gen.getMap();
+	  Controller	joystick(load->getEventManager());;
 	  m->setSkybox(new Skybox(m, load->getModel(), load->getEventManager(), engine->getClock()));
 	  while (engine->update(m))
 	    {
 	      engine->draw(m);
+	      joystick.update();
 	    }
 	  SaveGame *test;
 	  test = new SaveGame(m, "test.xml");
@@ -57,7 +59,7 @@ int	main(int ac, char **av)
       else
 	{
 	  Game	game;
-
+	  
 	  while (game.isFinish())
 	    game.draw();
 	}

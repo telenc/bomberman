@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Thu May 22 02:54:48 2014 Remi telenczak
-// Last update Tue May 27 03:00:10 2014 Remi telenczak
+// Last update Sun Jun 15 05:35:14 2014 Steven Martreux
 //
 
 #ifndef		_CUBE_HPP
@@ -20,7 +20,7 @@ class Cube : public AObjectPhysic
 private:
   gdl::Texture	_texture;
   gdl::Geometry	_geometry;
-  float	_speed;
+  float		_speed;
 public:
   Cube(Map *, ModelList *, EventManager *, gdl::Clock *);
   virtual ~Cube();

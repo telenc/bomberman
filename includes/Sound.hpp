@@ -5,17 +5,20 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Fri May  9 14:24:51 2014 Steven Martreux
-// Last update Thu Jun 12 16:40:11 2014 Steven Martreux
+// Last update Sun Jun 15 07:29:38 2014 Steven Martreux
 //
 
 #ifndef		_SOUND_HPP_
 #define		_SOUND_HPP_
 
-#include	<string>
-#include	<iostream>
-#include	<SFML/Audio.hpp>
-# include	"EventManager.hpp"
+# include		<string>
+# include		<iostream>
+# include		<SFML/Audio.hpp>
 # include		<glm/glm.hpp>
+
+# include		"EventManager.hpp"
+# include		"myException.hpp"
+
 class		Sound
 {
 public:
@@ -35,17 +38,17 @@ public:
   void	soundOff(void *);
   void	soundOn(void *);
 private:
-  EventManager *_event;
-  ICallBack	*callBombDrop;
-  ICallBack	*callPlayerMove;
-  ICallBack	*callSoundOn;
-  ICallBack	*callSoundOff;
+  EventManager		*_event;
+  ICallBack		*callBombDrop;
+  ICallBack		*callPlayerMove;
+  ICallBack		*callSoundOn;
+  ICallBack		*callSoundOff;
   sf::Music		_InGame;
   sf::Music		_TicTacBomb;
   sf::Music		_ExplosionBomb;
   sf::Music		_InMenu;
   glm::vec3		_position;
-  int		_soundOn;
+  int			_soundOn;
 };
 
 

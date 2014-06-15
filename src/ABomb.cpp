@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Wed May  7 16:00:11 2014 Steven Martreux
-// Last update Sat Jun  7 18:43:33 2014 Steven Martreux
+// Last update Sun Jun 15 05:31:12 2014 Steven Martreux
 //
 
 #include	"ABomb.hpp"
@@ -18,22 +18,22 @@ ABomb::ABomb(Map *map, ModelList *model, EventManager *event, APlayer *player, g
   time(&this->_timeCreate);
 }
 
-bool	ABomb::getDied() const
+bool		ABomb::getDied() const
 {
   return _died;
 }
 
-void	ABomb::setDied(bool died)
+void		ABomb::setDied(bool died)
 {
   _died = died;
 }
 
-bool	ABomb::getPlayerColl() const
+bool		ABomb::getPlayerColl() const
 {
   return this->_playerColl;
 }
 
-void	ABomb::setPlayerColl(bool player)
+void		ABomb::setPlayerColl(bool player)
 {
   _playerColl = player;
 }
@@ -48,32 +48,32 @@ void		ABomb::setPlayer(APlayer *player)
   this->_player = player;
 }
 
-void	ABomb::setPo(int po)
+void		ABomb::setPo(int po)
 {
   this->_po = po;
 }
 
-int	ABomb::getPo(void) const
+int		ABomb::getPo(void) const
 {
   return this->_po;
 }
 
-void	ABomb::setTime(int time)
+void		ABomb::setTime(int time)
 {
   this->_time = time;
 }
 
-int	ABomb::getTime(void) const
+int		ABomb::getTime(void) const
 {
   return this->_time;
 }
 
-void	ABomb::setDamage(int damage)
+void		ABomb::setDamage(int damage)
 {
   this->_damage = damage;
 }
 
-void	ABomb::explode()
+void		ABomb::explode()
 {
   if (this->_died == false)
     {
@@ -82,7 +82,7 @@ void	ABomb::explode()
     }
 }
 
-int	ABomb::getDamage(void) const
+int		ABomb::getDamage(void) const
 {
   return this->_damage;
 }
