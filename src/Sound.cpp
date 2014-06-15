@@ -5,7 +5,7 @@
 ** Login <bernar_x@epitech.net>
 ** 
 ** Started on  Thu Jun  5 16:20:43 2014 mattieu bernard-guêle
-// Last update Sun Jun 15 17:53:52 2014 Steven Martreux
+// Last update Sun Jun 15 18:05:58 2014 Steven Martreux
 */
 
 #include	"Sound.hpp"
@@ -30,6 +30,10 @@ Sound::Sound(EventManager *event) : _event(event), _position(0, 0, 0)
   event->listenEvent("soundon", callSoundOn);
   callSoundOff = new CallBack<Sound>(this, &Sound::soundOff);
   event->listenEvent("soundoff", callSoundOff);
+  callSoundZombie = new CallBack<Sound>(this, &Sound::InZombie);
+  event->listenEvent("soundZombie", callSoundZombie);
+  callSoundGame = new CallBack<Sound>(this, &Sound::InGame);
+  event->listenEvent("soundGame", callSoundGame);
   _soundOn = 1;
 }
 
@@ -84,8 +88,10 @@ void	Sound::setPlayer(float x, float y, float z)
     }
 }
 
-void	Sound::InZombie()
+void	Sound::InZombie(void *data)
 {
+  (void)data;
+  this->InGameStop();
   if (_soundOn == 0)
     {
       _Zombie.SetLoop(true);
@@ -94,8 +100,9 @@ void	Sound::InZombie()
     }
 }
 
-void	Sound::InGame()
+void	Sound::InGame(void *data)
 {
+  (void)data;
   if (_soundOn == 0)
     {
       _InGame.SetLoop(true);
