@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 // 
 // Started on  Fri May 30 16:39:48 2014 Steven Martreux
-// Last update Sat Jun 14 23:05:16 2014 Steven Martreux
+// Last update Sun Jun 15 16:49:44 2014 Steven Martreux
 //
 
 #include	"SaveGame.hpp"
@@ -300,6 +300,7 @@ void	SaveGame::SaveMapSize()
   _mapSize = new TiXmlElement("Map_Size");
   _mapSize->SetAttribute("width", widht.str().c_str());
   _mapSize->SetAttribute("height", height.str().c_str());
+  _mapSize->SetAttribute("TypeGame", ConstCharByInt(_map->getTypeMap()).c_str());
   _bomberman->LinkEndChild(_mapSize);
 }
 
