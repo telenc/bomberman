@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:12:04 2014 thomas mendez
-// Last update Sun Jun 15 05:51:40 2014 thomas mendez
+// Last update Sun Jun 15 15:50:51 2014 dedicker remi
 //
 
 #include	"OVR.h"
@@ -30,6 +30,8 @@
 #include	"GL/glut.h"
 #include	"Player.hpp"
 #include	"Cube.hpp"
+#include	"MenuIG.hpp"
+
 
 Graphics::Graphics(EventManager *event) : _event(event)
 {
@@ -40,6 +42,11 @@ Graphics::Graphics(EventManager *event) : _event(event)
 Graphics::~Graphics()
 {
 
+}
+
+CameraBomber	*Graphics::getCamera() const
+{
+  return _camera;
 }
 
 void		Graphics::setModelList(ModelList *mod)
@@ -201,6 +208,58 @@ bool	Graphics::update(Menu *menu)
   this->inputUpdate();
   _event->dispatchEvent("rotOcu", &rotationOculus);
   return true;
+}
+
+
+void            Graphics::draw(MenuIG *menu)
+{
+  _shader.bind();
+  if (this->_camera->getStereo() == 2)
+    drawDoubleStereo(menu);
+  else
+    drawOneStereo(menu);
+  _context.flush();
+}
+
+void            Graphics::drawOneStereo(MenuIG *menu)
+{
+  glViewport(0, 0, 1280, 800);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  glClearColor(0, 0, 0, 0);
+  menu->draw(_shader, *_clock);
+  _shader.setUniform("projection", this->_camera->getPerspective());
+  _shader.setUniform("view", this->_camera->getTransformation());
+}
+
+bool	Graphics::update(MenuIG *menu)
+{
+  if (_input.getKey(SDLK_ESCAPE) || _input.getInput(SDL_QUIT))
+    return false;
+  _context.updateClock(*_clock);
+  _context.updateInputs(_input);
+  glm::vec3 rotationOculus;
+  rotationOculus = _camera->getRotation();
+  menu->update(*_clock, _input, rotationOculus);
+  this->inputUpdate();
+  _event->dispatchEvent("rotOcu", &rotationOculus);
+  return true;
+}
+
+void		Graphics::drawDoubleStereo(MenuIG *menu)
+{
+  this->_camera->setPosition(0,  0, 0);
+  glViewport(0, 0, 1280/2, 800);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  glClearColor(255, 0, 0, 0);
+  glm::vec3 testt = this->_camera->getRotation();
+  _event->dispatchEvent("occulusRotate", &testt);
+  _shader.setUniform("view", this->_camera->getTransformationLeft());
+  _shader.setUniform("projection", this->_camera->getPerspective());
+  menu->draw(_shader, *_clock);
+  glViewport(1280/2, 0,1280/2, 800);
+  glClearColor(255, 0, 0, 0);
+  _shader.setUniform("view", this->_camera->getTransformationRight());
+  menu->draw(_shader, *_clock);
 }
 
 // bool	Graphics::update(MenuIG *menuIG)

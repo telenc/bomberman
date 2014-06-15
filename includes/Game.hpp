@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Fri May  9 14:19:13 2014 Steven Martreux
-// Last update Sun Jun 15 12:03:58 2014 Steven Martreux
+// Last update Sun Jun 15 16:59:06 2014 dedicker remi
 //
 
 #ifndef		_GAME_HPP_
@@ -37,6 +37,7 @@ public:
   void		playMap();
   int		isFinish();
   void		eventKeyStart(void *data);
+  void		eventKeySelect(void *data);
   void		intro_game();
 private:
   GenereMap	*_gen;
@@ -51,6 +52,7 @@ private:
   Sound		*sound;
   ICallBack	*_callKeyStart;
   int		state;
+  int	_runMap;
 };
 
 #endif		/* _GAME_HPP_ */

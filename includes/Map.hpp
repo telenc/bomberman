@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 15:53:47 2014 dedicker remi
-// Last update Sun Jun 15 12:04:08 2014 Remi telenczak
+// Last update Sun Jun 15 16:52:15 2014 dedicker remi
 //
 
 #ifndef MAP_HPP_
@@ -62,6 +62,9 @@ public:
   int	distanceObj(AObjectPhysic *);
   int	distanceObj(AObjectPhysic *, AObjectPhysic *);
   void	eventCallPause(void *);
+  void eventCallSelect(void *data);
+  void  setSelect(bool);
+  bool  getSelect() const;
 
   void	setPlayer(Player *);
   void	setSkybox(Skybox *);
@@ -106,7 +109,9 @@ private:
   EventManager	*_event;
   Player *_player;
   ICallBack	*callPause;
+  ICallBack	*callSelect;
   bool		_pause;
+  bool		_select;
   Skybox	*_skybox;
 };
 

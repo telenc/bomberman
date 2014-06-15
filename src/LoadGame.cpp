@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Mon May 12 13:48:39 2014 Steven Martreux
-// Last update Sun Jun 15 17:45:51 2014 Steven Martreux
+// Last update Sun Jun 15 17:56:20 2014 Steven Martreux
 //
 
 #include	<cstring>
