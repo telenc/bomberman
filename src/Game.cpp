@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Fri May  9 14:18:15 2014 Steven Martreux
-// Last update Sun Jun 15 12:03:37 2014 Steven Martreux
+// Last update Sun Jun 15 17:19:12 2014 dedicker remi
 //
 
 #include	"Game.hpp"
@@ -18,13 +18,14 @@ Game::Game() : _display(0)
 {
   if (getenv("DISPLAY") == NULL)
     throw new myException("Where is env ?");
-  this->intro_game();
+  //  this->intro_game();
   this->eventManager = new EventManager();
   this->load = new Loader();
   while (load->getFinish() != true);
   this->engine = load->getEngine();
   this->menu = new Menu(load->getModel(), load->getEventManager(), engine->getClock()); 
   this->menuIG = new MenuIG(load->getModel(), load->getEventManager(), engine->getClock()); 
+  this->menuIG->setSkybox(new Skybox(NULL, load->getModel(), load->getEventManager(), engine->getClock()));
   this->joystick = load->getController();
   this->sound = load->getSound();
   this->sound->InGame();
@@ -32,6 +33,11 @@ Game::Game() : _display(0)
   this->menu->setSkybox(new Skybox(NULL, load->getModel(), load->getEventManager(), engine->getClock()));
   this->_callKeyStart = new CallBack<Game>(this, &Game::eventKeyStart);
   this->eventManager->listenEvent("pause", _callKeyStart);
+}
+
+void	Game::eventKeySelect(void *data)
+{  
+  (void)data;
 }
 
 void	Game::intro_game()
@@ -112,19 +118,28 @@ int	Game::isFinish()
   return menu->getFinish();
 }
 
-void	Game::playMap()
+void    Game::playMap()
 {
+  _runMap = 0;
   while (engine->update(map))
     {
-      // if (state == 0)
-	engine->draw(map);
-      // else
-      // 	{
-      // 	  menuIG->update();
-      // 	  menuIG->draw();
-      // 	}
+      if (!map->getSelect())
+        engine->draw(map);
+      else
+        {
+          if (menuIG->getBack() == 1)
+            {
+              this->map->setSelect(false);
+              menuIG->setBack(0);
+              this->engine->getCamera()->setPosition(-3, -4, -3);
+            }
+          //      if (menuIG->getBack() == 1)
+          //_runMap = 1;
+          engine->draw(menuIG);
+        }
       joystick->update();
     }
+
   this->menu->setFinish(0);
 }
 

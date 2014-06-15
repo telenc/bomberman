@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 // 
 // Started on  Sun Jun 15 04:19:01 2014 thomas mendez
-// Last update Sun Jun 15 05:01:10 2014 thomas mendez
+// Last update Sun Jun 15 16:54:43 2014 dedicker remi
 //
 
 #ifndef		_MENUIG_BOMBERMAN
@@ -56,6 +56,8 @@ public:
   void  callFaceFunction();
   void	eventKeyA(void *data);
   void	eventKeyB(void *data);
+  void	setBack(int back);
+  int	getBack() const;
 private:
   gdl::Model *_box;
   ModelList *_mod;
@@ -76,6 +78,7 @@ private:
   int		_sizemap;
   int		_numberia;
   int		_gomap;
+  int		_back;
 };
 
 #endif

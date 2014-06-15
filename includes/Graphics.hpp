@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 //
 // Started on  Tue May 13 15:10:16 2014 thomas mendez
-// Last update Sat Jun 14 18:09:22 2014 Steven Martreux
+// Last update Sun Jun 15 15:47:46 2014 dedicker remi
 //
 
 #ifndef		GRAPHICS_HH__BOMBER
@@ -34,6 +34,7 @@
 #include	"Map.hpp"
 #include	"EventManager.hpp"
 #include	"Menu.hpp"
+#include	"MenuIG.hpp"
 
 class Player;
 
@@ -54,6 +55,13 @@ public:
   void		drawOneStereo(Map *map);
   void		drawOneStereo(Menu *menu);
   void		draw(Menu *);
+
+  void		drawDoubleStereo(MenuIG *menu);
+  void		drawOneStereo(MenuIG *map);
+  void		draw(MenuIG *);
+  bool		update(MenuIG *);
+
+  CameraBomber	*getCamera() const;
   gdl::Clock *getClock() const;
 protected:
   gdl::BasicShader	_shader;
