@@ -1,43 +1,43 @@
 //
-// Menu.cpp for Menu in /home/remi/cpp_bomberman
-//
-// Made by Remi telenczak
-// Login   <remi@epitech.net>
-//
-// Started on  Tue May 13 07:24:00 2014 Remi telenczak
-// Last update Sun Jun 15 04:58:28 2014 thomas mendez
+// MainMenuIG.cpp for MainMenuIG in /home/mendez_t/local/cpp/cpp_bomberman/src
+// 
+// Made by thomas mendez
+// Login   <mendez_t@epitech.net>
+// 
+// Started on  Sun Jun 15 04:30:52 2014 thomas mendez
+// Last update Sun Jun 15 04:58:57 2014 thomas mendez
 //
 
 #include	<iostream>
-#include	"MainMenu.hpp"
+#include	"MainMenuIG.hpp"
 #include	"Skybox.hpp"
 #include	"CallBack.hpp"
 
-MainMenu::MainMenu(ModelList *mod, EventManager *event) : _mod(mod), _event(event)
+MainMenuIG::MainMenuIG(ModelList *mod, EventManager *event) : _mod(mod), _event(event)
 {
-  _boxmenu = new MenuBox(NULL, mod, event, NULL, 1);
-  _boxmenu2 = new MenuBox(NULL, mod, event, NULL, 2);
-  _boxmenu3 = new MenuBox(NULL, mod, event, NULL, 3);
-  _callKeyA = new CallBack<MainMenu>(this, &MainMenu::eventKeyA);
+  _boxmenu = new MenuBoxIG(NULL, mod, event, NULL, 1);
+  _boxmenu2 = new MenuBoxIG(NULL, mod, event, NULL, 2);
+  _boxmenu3 = new MenuBoxIG(NULL, mod, event, NULL, 3);
+  _callKeyA = new CallBack<MainMenuIG>(this, &MainMenuIG::eventKeyA);
   event->listenEvent("keyA", _callKeyA);
   _A = 0;
 }
 
-MainMenu::~MainMenu()
+MainMenuIG::~MainMenuIG()
 {
-  std::cout << "MainMenu Destroyed!" << std::endl;
+  std::cout << "MainMenuIG Destroyed!" << std::endl;
   //delete _callKeyA;
   delete _boxmenu;
   delete _boxmenu2;
   delete _boxmenu3;
 }
 
-void	MainMenu::eventKeyA(void *data)
+void	MainMenuIG::eventKeyA(void *data)
 {
   (void)data;
 }
 
-int    MainMenu::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
+int    MainMenuIG::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
 {
   glm::mat4 t(1);
   int		roty;
@@ -53,7 +53,7 @@ int    MainMenu::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
   return 0;
 }
 
-void	MainMenu::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus)
+void	MainMenuIG::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOculus)
 {
   _boxmenu->update(clock, input);
   _boxmenu2->update(clock, input);
@@ -65,7 +65,7 @@ void	MainMenu::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOcul
   (void)input;
 }
 
-void	MainMenu::setSkybox(Skybox *skybox)
+void	MainMenuIG::setSkybox(Skybox *skybox)
 {
   this->_skin = skybox;
   skybox->setSkin(_mod->getModel("box_menu"));

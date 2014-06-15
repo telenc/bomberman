@@ -5,11 +5,12 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Fri May  9 14:18:15 2014 Steven Martreux
-// Last update Sun Jun 15 03:43:00 2014 dedicker remi
+// Last update Sun Jun 15 05:53:15 2014 thomas mendez
 //
 
 #include	"Game.hpp"
 #include	"Menu.hpp"
+#include	"MenuIG.hpp"
 #include	"GenereMap.hpp"
 #include	"Skybox.hpp"
 
@@ -20,10 +21,24 @@ Game::Game() : _display(0)
   while (load->getFinish() != true);
   this->engine = load->getEngine(); 
   this->menu = new Menu(load->getModel(), load->getEventManager(), engine->getClock()); 
+  this->menuIG = new MenuIG(load->getModel(), load->getEventManager(), engine->getClock()); 
   this->joystick = load->getController();
   this->sound = load->getSound();
   this->sound->InGame();
+  this->state = 0;
   this->menu->setSkybox(new Skybox(NULL, load->getModel(), load->getEventManager(), engine->getClock()));
+  this->_callKeyStart = new CallBack<Game>(this, &Game::eventKeyStart);
+  this->eventManager->listenEvent("pause", _callKeyStart);
+}
+
+void    Game::eventKeyStart(void *data)
+{
+  if (state == 0)
+    state = 1;
+  else
+    state = 0;
+  std::cout << "je suis la " << std::endl;
+  (void)data;
 }
 
 void	Game::playMenu()
@@ -69,7 +84,13 @@ void	Game::playMap()
 {
   while (engine->update(map))
     {
-      engine->draw(map);
+      // if (state == 0)
+	engine->draw(map);
+      // else
+      // 	{
+      // 	  menuIG->update();
+      // 	  menuIG->draw();
+      // 	}
       joystick->update();
     }
   this->menu->setFinish(0);

@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 // 
 // Started on  Sun Jun 15 03:43:30 2014 thomas mendez
-// Last update Sun Jun 15 03:45:03 2014 thomas mendez
+// Last update Sun Jun 15 05:01:41 2014 thomas mendez
 //
 
 #include	<iostream>
@@ -13,23 +13,13 @@
 #include	"Skybox.hpp"
 #include	"SettingsMenuIG.hpp"
 #include	"MainMenuIG.hpp"
-#include	"PlayMenuIG.hpp"
-#include	"MenuIGNumber.hpp"
 #include	"CallBack.hpp"
 
-MenuIG::MenuIG(ModelList *mod, EventManager *event, gdl::Clock *clock) : _mod(mod), _event(event), _clock(clock), _finish(1), _sound(1), _gomap(0)
+MenuIG::MenuIG(ModelList *mod, EventManager *event, gdl::Clock *clock) : _mod(mod), _event(event), _clock(clock), _finish(1), _sound(1)
 {
   std::cout << "Debut constructeur MEnu" << std::endl;
   _mainMenuIG = new MainMenuIG(mod, event);
-  _loadMenuIG = new LoadMenuIG(mod, event);
   _settingsMenuIG = new SettingsMenuIG(mod, event);
-  _creditsMenuIG = new CreditsMenuIG(mod, event);
-  std::cout << "Debut IA" << std::endl;
-  _MenuIGNumberia = new MenuIGNumber(mod, event, clock);
-  std::cout << "Debut MAP" << std::endl;
-  _MenuIGNumbermap = new MenuIGNumber(mod, event, clock);
-  std::cout << "FIn" << std::endl;
-  _playMenuIG = new PlayMenuIG(mod, event);
   currentMenuIG = 0;
   _callKeyA = new CallBack<MenuIG>(this, &MenuIG::eventKeyA);
   event->listenEvent("keyA", _callKeyA);
@@ -63,32 +53,8 @@ void    MenuIG::eventKeyB(void *data)
 
 void    MenuIG::eventKeyA(void *data)
 {
-  std::cout << "Avant  -> " << currentMenuIG << std::endl;
-  if (currentMenuIG == 3)
-    {
-      _sizemap = _MenuIGNumbermap->getResult();
-      std::cout << "Taille de la map = " << _sizemap << std::endl;
-      //currentMenuIG++;
-    }
-  if (currentMenuIG == 6)
-    {
-      _numberia = _MenuIGNumberia->getResult();
-      std::cout << "Number IA = " << _numberia << std::endl;
-      // currentMenuIG++;
-    }
   this->callFaceFunction();
-  std::cout << "Apres = " << currentMenuIG<< std::endl;
   (void)data;
-}
-
-void	MenuIG::setGoMap(int gomap)
-{
-  _gomap = gomap;
-}
-
-int	MenuIG::getGoMap()
-{
-  return this->_gomap;
 }
 
 int	MenuIG::getFinish()
@@ -143,20 +109,6 @@ void	MenuIG::faceSettingsMenuIG()
     }
   else
     currentMenuIG = 0;
-}
-
-void	MenuIG::faceSizeMap()
-{
-  _sizemap = _MenuIGNumbermap->getResult();
-  std::cout << "Sizemap " << _sizemap << " ok currentMenuIG = " << currentMenuIG << std::endl;
-  currentMenuIG = 6;
-}
-
-void	MenuIG::faceNumberIa()
-{
-  std::cout << "FACENUMBERIA" << std::endl;
-  _numberia = _MenuIGNumberia->getResult();
-  _gomap = 1;
 }
 
 void	MenuIG::callFaceFunction()
