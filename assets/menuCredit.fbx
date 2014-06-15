@@ -1674,7 +1674,7 @@ Objects:  {
 			Property: "LastFrame", "int", "",0
 			Property: "Width", "int", "",0
 			Property: "Height", "int", "",0
-			Property: "Path", "charptr", "", "cubeCredit.tga"
+			Property: "Path", "charptr", "", "cubeCredits.tga"
 			Property: "StartFrame", "int", "",0
 			Property: "StopFrame", "int", "",0
 			Property: "PlaySpeed", "double", "",1
@@ -1685,8 +1685,8 @@ Objects:  {
 			Property: "AccessMode", "enum", "",0
 		}
 		UseMipMap: 0
-		Filename: "cubeCredit.tga"
-		RelativeFilename: "cubeCredit.tga"
+		Filename: "cubeCredits.tga"
+		RelativeFilename: "cubeCredits.tga"
 	}
 	Texture: "Texture::untitled_001", "TextureVideoClip" {
 		Type: "TextureVideoClip"
@@ -1710,8 +1710,8 @@ Objects:  {
 			Property: "VideoProperty", "object", ""
 		}
 		Media: "Video::untitled_001"
-		FileName: "cubeCredit.tga"
-		RelativeFilename: "cubeCredit.tga"
+		FileName: "cubeCredits.tga"
+		RelativeFilename: "cubeCredits.tga"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "None"
