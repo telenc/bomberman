@@ -38,7 +38,17 @@ void		ModelList::loadModel()
   mod = this->createModel("./assets/bombe5.fbx");
   this->list.push_back(std::make_pair("defaultBomb", mod));
   mod = this->createModel("./assets/box.fbx");
-  this->list.push_back(std::make_pair("skybox", mod));
+  this->list.push_back(std::make_pair("skybox1", mod));
+  mod = this->createModel("./assets/box2.fbx");
+  this->list.push_back(std::make_pair("skybox2", mod));
+  mod = this->createModel("./assets/box3.fbx");
+  this->list.push_back(std::make_pair("skybox3", mod));
+  mod = this->createModel("./assets/box4.fbx");
+  this->list.push_back(std::make_pair("skybox4", mod));
+  mod = this->createModel("./assets/box5.fbx");
+  this->list.push_back(std::make_pair("skybox5", mod));
+  mod = this->createModel("./assets/box6.fbx");
+  this->list.push_back(std::make_pair("skybox6", mod));
   mod = this->createModel("./assets/fire_box.FBX");
   this->list.push_back(std::make_pair("fire", mod));
   mod = this->createModel("./assets/mytest.fbx");

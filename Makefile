@@ -64,6 +64,7 @@ LIBS          = -L$(LIBOVRPATH)/Lib/Linux/$(RELEASETYPE)/$(SYSARCH)	\
 		-lsfml-audio						\
 		-lSDL							\
 		-lvlc							\
+		-lpthread						\
 
 SRC		= src/main.cpp						\
 		src/Occulus.cpp						\
