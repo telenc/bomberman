@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Tue May 13 17:11:40 2014 dedicker remi
-// Last update Sat Jun 14 15:42:40 2014 Remi telenczak
+// Last update Sun Jun 15 18:46:56 2014 Remi telenczak
 //
 
 #include	"APlayer.hpp"
@@ -16,7 +16,7 @@
 //width 1
 //depth 1
 
-APlayer::APlayer(int x, int y, int z, Map *map, ModelList *model, EventManager *event, gdl::Clock *clock) : AObjectLife(2), AObjectPhysic(map, model, event, clock)
+APlayer::APlayer(int x, int y, int z, Map *map, ModelList *model, EventManager *event, gdl::Clock *clock) : AObjectLife(1), AObjectPhysic(map, model, event, clock)
 {
   this->_skin = model->getModelCopy("marvin");
 

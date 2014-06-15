@@ -5,7 +5,7 @@
 // Login   <telenc_r@epitech.net>
 //
 // Started on  Fri Jun 13 12:28:13 2014 Remi telenczak
-// Last update Sun Jun 15 18:42:00 2014 Steven Martreux
+// Last update Sun Jun 15 18:52:40 2014 Remi telenczak
 */
 
 #include	"IaBomber.hpp"
@@ -548,6 +548,7 @@ ABonus	*IaBomber::getBonus(int size)
   result = -1;
   list = _map->getObjectsPos(this, size, BONUS);
   it = list.begin();
+  resultBonus = NULL;
   while (it != list.end())
     {
       if ((*it) != this)

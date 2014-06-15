@@ -5,7 +5,7 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Wed May  7 16:02:44 2014 dedicker remi
-// Last update Sun Jun 15 18:39:18 2014 Remi telenczak
+// Last update Sun Jun 15 18:47:33 2014 Remi telenczak
 //
 
 #include <cstdlib>
@@ -754,6 +754,8 @@ void	Map::setSkybox(Skybox *skybox)
 
 void	Map::setPlayer(Player *player)
 {
+  if (this->getTypeMap() == ZOMBIE)
+    player->setLife(10);
   this->_player = player;
 }
 
