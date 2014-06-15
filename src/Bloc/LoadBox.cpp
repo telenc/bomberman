@@ -5,11 +5,11 @@
 // Login   <dedick_r@epitech.net>
 //
 // Started on  Mon May 26 16:41:50 2014 dedicker remi
-// Last update Sun Jun 15 01:31:13 2014 thomas mendez
+// Last update Sun Jun 15 01:57:17 2014 thomas mendez
 //
 
 #include	<iostream>
-#include <fstream>
+#include	<fstream>
 #include	"LoadBox.hpp"
 #include	"ModelList.hpp"
 #include	"EventManager.hpp"
@@ -25,7 +25,7 @@ LoadBox::LoadBox(Map *map, ModelList *model, EventManager *event, gdl::Clock *cl
   this->_i = i;
   if (i == 1)
     {
-      std::ifstream fichier("sauv/sauv1.txt", std::ios::in);
+      std::ifstream fichier("sauv/sauv1.xml", std::ios::in);
       if (fichier)
       	this->_skin = model->getModel("box_sauv");
       else
@@ -36,7 +36,7 @@ LoadBox::LoadBox(Map *map, ModelList *model, EventManager *event, gdl::Clock *cl
     }
   else if (i == 2)
     {
-      std::ifstream fichier("sauv/sauv2.txt", std::ios::in);
+      std::ifstream fichier("sauv/sauv2.xml", std::ios::in);
       if (fichier)
       	this->_skin = model->getModel("box_sauv");
       else
@@ -45,7 +45,7 @@ LoadBox::LoadBox(Map *map, ModelList *model, EventManager *event, gdl::Clock *cl
     }
   else if (i == 3)
     {
-      std::ifstream fichier("sauv/sauv3.txt", std::ios::in);
+      std::ifstream fichier("sauv/sauv3.xml", std::ios::in);
       if (fichier)
       	this->_skin = model->getModel("box_sauv");
       else
@@ -54,7 +54,7 @@ LoadBox::LoadBox(Map *map, ModelList *model, EventManager *event, gdl::Clock *cl
     }
   else if (i == 4)
     {
-      std::ifstream fichier("sauv/sauv4.txt", std::ios::in);
+      std::ifstream fichier("sauv/sauv4.xml", std::ios::in);
       if (fichier)
       	this->_skin = model->getModel("box_sauv");
       else
