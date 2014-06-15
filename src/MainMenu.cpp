@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:00 2014 Remi telenczak
-// Last update Sun Jun 15 04:58:28 2014 thomas mendez
+// Last update Sun Jun 15 23:23:16 2014 dedicker remi
 //
 
 #include	<iostream>
@@ -26,7 +26,6 @@ MainMenu::MainMenu(ModelList *mod, EventManager *event) : _mod(mod), _event(even
 MainMenu::~MainMenu()
 {
   std::cout << "MainMenu Destroyed!" << std::endl;
-  //delete _callKeyA;
   delete _boxmenu;
   delete _boxmenu2;
   delete _boxmenu3;
@@ -58,9 +57,6 @@ void	MainMenu::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOcul
   _boxmenu->update(clock, input);
   _boxmenu2->update(clock, input);
   this->_rotationOculus = cameraOculus;
-  /*  std::cout << this->_rotationOculus.x << std::endl;
-  std::cout << this->_rotationOculus.y << std::endl;
-  std::cout << this->_rotationOculus.z << std::endl;*/
   (void)clock;
   (void)input;
 }

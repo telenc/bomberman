@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Mon Jun  2 02:08:04 2014 Remi telenczak
-// Last update Sun Jun 15 06:08:16 2014 dedicker remi
+// Last update Sun Jun 15 23:22:44 2014 dedicker remi
 //
 
 #include	<list>
@@ -119,27 +119,6 @@ void	MenuNumber::upIt(std::list<int>::iterator it)
 	}
       it++;
     }
-  /*
-    if (it == result.end())
-    {
-    MenuBoxNumber	*firstBox;
-
-    firstBox = new MenuBoxNumber(NULL, _mod, _event, _clock);
-    firstBox->set_x(_nextX);
-    std::cout << "ON ADD" << std::endl;
-    _nextX -= 5;
-    firstBox->set_y(20);
-    firstBox->set_vy(-2.0);
-    this->listBox.push_back(firstBox);
-    this->result.push_back(1);
-    return ;
-    }
-    *it += 1;
-    if (*it > 9)
-    {
-    this->upIt(++it);
-    *it = 0;
-    }*/
 }
 
 void	MenuNumber::downIt(std::list<int>::iterator it)
@@ -163,7 +142,6 @@ void	MenuNumber::downIt(std::list<int>::iterator it)
 	      it4 = it3;
 	      it4++;
 	      *it = 9;
-	      //++it2;
 	      if (it2 != result.end())
 		{
 		  *it2 -= 1;
@@ -213,7 +191,6 @@ void	MenuNumber::eventKeyDown(void *data)
     {
       this->downIt(result.begin());
     }
-  //std::cout << "On down " << getResult() << std::endl;
 }
 
 int	MenuNumber::getResult()
@@ -268,8 +245,6 @@ int	MenuNumber::update(gdl::Clock &clock, gdl::Input &input)
   std::list<int>::iterator it2;
   int i = 0;
 
-  //  if (this->end)
-  // return getResult();
   it = listBox.begin();
   it2 = result.begin();
   while (it != listBox.end())
@@ -285,7 +260,6 @@ int	MenuNumber::update(gdl::Clock &clock, gdl::Input &input)
       it2++;
       it++;
     }
-
   it = listBoxToDelete.begin();
   while (it != listBoxToDelete.end())
     {
@@ -293,7 +267,6 @@ int	MenuNumber::update(gdl::Clock &clock, gdl::Input &input)
 	it = listBoxToDelete.erase(it);
       it++;
     }
-
   (void)clock;
   (void)input;
   return -1;

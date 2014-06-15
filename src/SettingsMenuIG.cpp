@@ -5,7 +5,7 @@
 // Login   <mendez_t@epitech.net>
 // 
 // Started on  Sun Jun 15 04:33:28 2014 thomas mendez
-// Last update Sun Jun 15 04:34:05 2014 thomas mendez
+// Last update Sun Jun 15 23:24:06 2014 dedicker remi
 //
 
 #include	<iostream>
@@ -42,15 +42,10 @@ int    SettingsMenuIG::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
   int		roty;
   (void)roty;
 
-  //  roty = _boxmenu->getRotationy();
   t = glm::translate(t, glm::vec3(0, 0, 0));
   t = glm::scale(t, glm::vec3(100, 100, 100));
   _skin->draw(shader, clock);
-  //  _menuwall->draw(shader, clock);
   _boxmenu->draw(shader,clock);
-  //  _boxmenu2->draw(shader,clock);
-  //_boxmenu3->draw(shader,clock);
-  //_menu->draw(shader, clock);
   std::cout << "SettingsMenuIG draw 2" << std::endl;
   return 1;
 }
@@ -60,9 +55,6 @@ void	SettingsMenuIG::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 came
   std::cout << "SettingsMenuIG update 1" << std::endl;
   _boxmenu->update(clock, input);
   this->_rotationOculus = cameraOculus;
-  /*  std::cout << this->_rotationOculus.x << std::endl;
-      std::cout << this->_rotationOculus.y << std::endl;
-      std::cout << this->_rotationOculus.z << std::endl;*/
   (void)clock;
   (void)input;
   std::cout << "SettingsMenuIG update 2" << std::endl;

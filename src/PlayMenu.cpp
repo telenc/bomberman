@@ -5,7 +5,7 @@
 // Login   <remi@epitech.net>
 //
 // Started on  Tue May 13 07:24:00 2014 Remi telenczak
-// Last update Fri Jun  6 15:19:15 2014 thomas mendez
+// Last update Sun Jun 15 23:24:27 2014 dedicker remi
 //
 
 #include	<iostream>
@@ -25,7 +25,6 @@ PlayMenu::PlayMenu(ModelList *mod, EventManager *event) : _mod(mod), _event(even
 PlayMenu::~PlayMenu()
 {
   std::cout << "PlayMenu Destroyed!" << std::endl;
-  //delete _callKeyA;
   delete _boxmenu;
 }
 
@@ -44,11 +43,7 @@ int    PlayMenu::draw(gdl::BasicShader &shader, gdl::Clock const &clock)
   t = glm::translate(t, glm::vec3(0, 0, 0));
   t = glm::scale(t, glm::vec3(100, 100, 100));
   _skin->draw(shader, clock);
-  //  _menuwall->draw(shader, clock);
   _boxmenu->draw(shader,clock);
-  //_menu->draw(shader, clock);
-  //  if (this->_A == 1)
-  //return this->_A;
   return 2;
 }
 
@@ -56,9 +51,6 @@ void	PlayMenu::update(gdl::Clock &clock, gdl::Input &input, glm::vec3 cameraOcul
 {
   _boxmenu->update(clock, input);
   this->_rotationOculus = cameraOculus;
-  /*  std::cout << this->_rotationOculus.x << std::endl;
-  std::cout << this->_rotationOculus.y << std::endl;
-  std::cout << this->_rotationOculus.z << std::endl;*/
   (void)clock;
   (void)input;
 }
