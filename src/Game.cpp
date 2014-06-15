@@ -5,7 +5,7 @@
 // Login   <martre_s@epitech.net>
 //
 // Started on  Fri May  9 14:18:15 2014 Steven Martreux
-// Last update Sun Jun 15 03:32:11 2014 dedicker remi
+// Last update Sun Jun 15 03:43:00 2014 dedicker remi
 //
 
 #include	"Game.hpp"
@@ -72,6 +72,7 @@ void	Game::playMap()
       engine->draw(map);
       joystick->update();
     }
+  this->menu->setFinish(0);
 }
 
 bool	Game::update()
